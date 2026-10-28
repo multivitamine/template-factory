@@ -1,0 +1,9 @@
+{
+  "id": "specimen-cabinet",
+  "name": "Specimen Cabinet",
+  "scheme": "light",
+  "sectors": ["food", "wholesale", "luxury", "b2b"],
+  "mood": ["scholarly", "severe", "quiet", "museum-grade"],
+  "needsProductImages": true,
+  "notes": "Primary fills only the drawer label tabs, the filter and CTA tabs, and (darkened via color-mix) tints the catalogue numbers; accent colours the specimen pin heads; brass, paper and ink stay template-owned."
+}

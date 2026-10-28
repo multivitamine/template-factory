@@ -1,0 +1,23 @@
+{
+  "scoreBefore": 5,
+  "issues": [
+    "Reveal animations gate content: drawer trays start at clip-path 100% and .rv plates at opacity 0. Anything the IntersectionObserver hasn't reached renders as huge blank voids: the story plate, quote and CTA are missing and the gallery drawer is an empty 1000px box on desktop, mobile and stress",
+    "Lazy-loaded category/gallery images never load below the fold, so mobile shows 4 of 6 category mounts empty",
+    "Every image-less specimen shows the same hatched 'FM'/'BB' blob. 24 identical placeholders make the catalog read as a broken template, not a collection",
+    "Sparse drawers break the ruled grid: 6 categories leave a dead empty cell at the end of the row; Birth Bear's 2 specimens sit in the left half of a 4-column board with a blank white expanse beside them",
+    "Mobile categories collapse to one column of 340px squares, a very long scroll of mostly empty mounts",
+    "Hero plate image is undersized for an 'oversized product shot'. The key annotations crowd it and the plate feels like a card, not a plate",
+    "Brand robustness: when --c-primary is golden (Fredimare) the label tab melts into the brass holder and the drawer number loses its frame",
+    "Strong points: the brass label holders, drawer pulls, numbered hairline key, dotted museum labels and a fully implemented lerp loupe (image 2.5x + cloned-text mode) are genuinely art-directed"
+  ],
+  "fixed": [
+    "Reveals are now animations triggered by the observer (keyframes with fill 'both') rather than a hidden default state, with a +12% pre-trigger root margin. Content is never invisible if the observer doesn't fire, and drawers still slide open with a pull-tug on the brass handle. Applied to both pages",
+    "After window load, all remaining lazy images are switched to eager so no drawer opens onto blank mounts",
+    "Missing specimens become 'Desiderata': a genus/species monogram built from the product name (Zeeuwse goudmerk → Zg, Caslon capital + italic Crimson lowercase), a foxed hatch tone and a mono 'DESIDERATUM' tag. Every cell is now distinct and on-concept (home + catalog)",
+    "Category compartments use auto-fit (no dead trailing cell). Drawers with ≤4 categories or ≤3 specimens centre their ruled cells as a fit-content row inside the dark tray, like a half-filled drawer, instead of leaving blank board",
+    "Mobile category min width lowered to 9rem → two-column compartments at 390px",
+    "Hero plate image enlarged (centre column 1.55fr → 2fr, 3fr without key) with more row air for the numbered key",
+    "Label tab gets an inner on-primary hairline and a dark separating edge so it reads as an inset label against brass for any brand colour"
+  ],
+  "scoreAfterEstimate": 7.5
+}

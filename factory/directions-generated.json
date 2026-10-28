@@ -1,0 +1,146 @@
+[
+  {
+    "id": "contour-atlas",
+    "name": "Contour Atlas",
+    "sectors": [
+      "travel",
+      "hospitality",
+      "sports",
+      "lifestyle"
+    ],
+    "sample": "nacrasailing",
+    "stress": "hotelnavarra",
+    "brief": "The page is a bound atlas sheet. A coordinate frame runs around the viewport edge (A–H across the top, 1–12 down the side), and every section is a numbered map sheet with a neat line, scale bar and north arrow in the corner. The hero is a full-bleed contour terrain in hairline strokes of --c-primary on a paper-cream ground, with the headline set like a mountain-range label: italic, widely letterspaced, curving along a path. Product categories are a legend table of symbol, name and count, and products are plotted as numbered survey points on a grid of map tiles; each card carries a grid reference such as 'C4' that the nav search also understands. Contact is a gazetteer entry with lat/long and a CSS-drawn locator inset. The mood is calm, precise and outdoorsy. Any brand colour reads as an elevation tint because all other ink is a warm sepia.",
+    "type": "Display: 'Alegreya' 800 for headlines and italic 400 with 0.3em tracking for 'water-style' labels set on SVG textPath; labels 'Alegreya Sans SC' 500; body 'Alegreya Sans' 400.",
+    "signature": "Live contour terrain: a canvas computes a 2D simplex-noise heightfield and draws isolines with marching squares (about 14 levels, redrawn at 30fps). The pointer acts as a Gaussian 'hill' added to the heightfield, so contour lines bunch and bend around the cursor. Hovering a product point raises a sharp peak at its coordinates and briefly highlights that elevation band in --c-primary. Under prefers-reduced-motion it renders a single static frame.",
+    "source": "Topographic survey maps and 19th-century atlas plates",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:28:17.257Z"
+  },
+  {
+    "id": "departure-board",
+    "name": "Departure Board",
+    "sectors": [
+      "retail",
+      "tech",
+      "b2b",
+      "sports"
+    ],
+    "sample": "bohlt",
+    "stress": "fredimare",
+    "brief": "The homepage is a station concourse after dark: a near-black board housing on a charcoal ground, lit by a single --c-primary status lamp. The hero is a giant board where the brand promise sits in the 'destination' column. Products are listed as departures: 'time' is the price, 'destination' is the product name, 'platform' is the category, and the status column shows In stock, Last few or Delayed (backorder) in the accent colour. Categories are platform signs across a horizontal concourse strip, and 'Now boarding' is the featured-product CTA. Section headers are hanging enamel signs with a numbered platform circle. Contact is an information desk with opening hours set as a timetable. The mood is loud, nocturnal and mechanical.",
+    "type": "Display: 'Big Shoulders Display' 800 uppercase for signage and section titles; flap characters 'Azeret Mono' 600 in fixed-width cells; body 'Hanken Grotesk' 400/500.",
+    "signature": "Real split-flap characters: each character is a cell made of two halves (top and bottom div) with a hinged flap that rotates rotateX(-180deg) in 60ms steps. When a row enters view or a filter changes, every cell cycles through the character set from its current glyph to its target glyph, with a random 0–200ms start per cell, then settles. An optional tiny clack is synthesised with WebAudio noise bursts, muted by default. Filtering categories re-flaps the whole board instead of re-rendering the grid.",
+    "source": "Mechanical split-flap timetable boards in railway halls",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:28:17.257Z"
+  },
+  {
+    "id": "inventory-screen",
+    "name": "Inventory Screen",
+    "sectors": [
+      "sports",
+      "retail",
+      "kids",
+      "makers"
+    ],
+    "sample": "aiki-budo",
+    "stress": "terpstrav2",
+    "brief": "The site is a game's equipment screen. The hero is a split panel: the left side shows a 'character' silhouette built from CSS shapes with equip slots (head, hands, body, feet, bag), and the right side shows the headline and a 'Start' CTA. The catalog is a dense square-slot grid with beveled frames; rarity tiers (common, rare, epic, legendary) map to tints of --c-primary and --c-accent so they work with any brand colour. Each item opens a stat card with bars for weight, durability and price, plus a flavour-text line in italics. The nav is a tab strip (Gear, Quests = services, Map = contact, Bag = cart) with keyboard hints like [Q] [E]. Backgrounds are dark slate with a faint pixel-dither gradient, and the mood is playful and dark.",
+    "type": "Display: 'Pixelify Sans' 700 for tabs, headings and numbers only; body 'Atkinson Hyperlegible' 400/700 for everything readable, including stat cards.",
+    "signature": "Drag-to-equip: product slots are draggable (pointer events, with a ghost image that snaps to an 8px grid). Dropping an item on a matching character slot or the Bag slot animates it into place with a 3-frame 'pop' (scale 1.2 → 0.9 → 1) and adds it to a localStorage cart. The full grid is also navigable with arrow keys and a glowing selection cursor; Enter equips. A tooltip stat card follows the cursor or selection and clamps to the viewport.",
+    "source": "Role-playing game inventory and loadout interfaces",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:28:17.257Z"
+  },
+  {
+    "id": "score-sheet",
+    "name": "Score Sheet",
+    "sectors": [
+      "culture",
+      "food",
+      "lifestyle",
+      "horeca"
+    ],
+    "sample": "terpstrav2",
+    "stress": "brinkscoffeeroasters",
+    "brief": "Every page is a printed score on warm ivory. Five-line staves form the baseline grid, sections are 'movements' with tempo markings (I. Allegro — Our shop, II. Andante — Collection), and bar lines divide content columns. The hero places the headline across a grand staff with a large clef-like brand monogram, and the CTA reads as a fermata-marked button. Products sit as 'notes' along the staves: each card hangs from the line at a height set by its price, with stems and ledger lines drawn in SVG, and opens into a clean detail card. Dynamics (pp, mf, ff) label stock levels and rehearsal letters (A, B, C) act as anchor links in the nav. The mood is calm, literate and light, with --c-primary used only for the playhead and the active notes.",
+    "type": "Display: 'Petrona' 900 for movement titles and 300 italic for tempo and dynamics marks; body 'Inter Tight' 400 at modest sizes; rehearsal letters set in boxed 'Petrona' 700.",
+    "signature": "Playhead performance: a 'Play' button starts a vertical playhead (a --c-primary line) that sweeps across the visible stave at a set tempo using requestAnimationFrame. As it crosses each product note, the note lights up, the card lifts slightly, and WebAudio plays a soft sine-plus-triangle tone whose pitch maps to the note's height. The playhead pauses on hover so the user can click the active product. It is silent until the user presses Play.",
+    "source": "Engraved orchestral music notation",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:28:17.257Z"
+  },
+  {
+    "id": "specimen-cabinet",
+    "name": "Specimen Cabinet",
+    "sectors": [
+      "food",
+      "wholesale",
+      "luxury",
+      "b2b"
+    ],
+    "sample": "fredimare",
+    "stress": "birthbear",
+    "brief": "The site is a naturalist's collection. The layout is a cabinet of shallow drawers stacked down the page, each with a brass-coloured label frame (category name, drawer number and item count). The hero is a single plate: an oversized product shot pinned at the centre of white board, surrounded by a hairline numbered key with the brand story as the plate caption. Products are 'specimens' on a strict ruled grid: each sits in a ruled cell with a catalogue number, a Latin-style italic sub-name, an origin and a weight, like a museum label. Fine dotted rules, a plate border and a faint foxed-paper tone make up the texture. The mood is severe, quiet and scholarly; --c-primary appears only in the label tabs and the catalogue numbers.",
+    "type": "Display: 'Libre Caslon Display' 400 large with optical tightness for plate titles; body 'Crimson Pro' 400 with italic for sub-names; catalogue numbers and specs 'Martian Mono' 300 small caps style.",
+    "signature": "Collector's loupe: holding Shift (or tapping a magnifier toggle on touch) turns the cursor into a 180px circular lens. The lens is a fixed div showing the hovered image as a background at 2.5x scale, with background-position computed from pointer offsets inside the image, a thin brass ring and a crosshair. Over text, the lens enlarges the specimen label instead, using a cloned node scaled with transform. The lens eases toward the pointer with lerp(0.18) so it feels like a physical glass.",
+    "source": "Natural-history taxonomy plates and specimen drawers",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:28:17.257Z"
+  },
+  {
+    "id": "cross-stitch-loom",
+    "name": "Cross-Stitch Loom",
+    "sectors": [
+      "kids",
+      "makers",
+      "lifestyle",
+      "retail"
+    ],
+    "sample": "birthbear",
+    "stress": "kartstoreinternational",
+    "brief": "The page is an embroidered sampler on even-weave linen: a fine CSS grid texture of tiny squares underlies everything. Sections are separated by woven border bands, repeating folk motifs drawn as pixel patterns in SVG and coloured with --c-primary and --c-accent, so any brand colour becomes the thread. The hero is a framed sampler, with the headline stitched in X-stitches above an alphabet row and the year of founding, and the CTA is a stitched ribbon. Product cards sit in hoop or square frames with a running-stitch dashed border and a small stitched initial. Contact is a sampler signature block. The mood is warm, handmade and playful, softened with off-white linen and a cotton-thread sheen on hover.",
+    "type": "Display: 'Yeseva One' 400 for headings and the stitched-word source; body 'Mulish' 400/700; small motif captions in 'Mulish' 800 caps, letterspaced.",
+    "signature": "Self-stitching headline: the headline is rasterised to an offscreen canvas, sampled on a 10px grid, and each filled cell becomes an X stitch drawn on a visible canvas. Stitches are sewn in serpentine row order, about 600 per second, each as two diagonal strokes with a slight random angle jitter and a thread-highlight gradient. Afterwards, the pointer within 60px makes nearby stitches loosen (offset by a spring) and settle back. Card borders use the same stitch renderer to 'unpick' and re-sew on hover.",
+    "source": "Folk embroidery samplers and woven textile bands",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:28:17.257Z"
+  },
+  {
+    "id": "dieline-pack",
+    "name": "Dieline Pack",
+    "sectors": [
+      "food",
+      "horeca",
+      "wholesale",
+      "industrial"
+    ],
+    "sample": "brinkscoffeeroasters",
+    "stress": "droogijs365",
+    "brief": "The homepage is an unfolded carton laid flat. Sections are panels separated by dashed fold lines and dotted cut lines with tiny scissor marks, with glue tabs and registration crosses in the margins. The hero is the carton's front face: a big product name and claim, a 'net weight' badge, and a corner with a barcode generated in CSS that doubles as the CTA. Products are mini cartons on a crisp grid; their specs sit in a strict nutrition-facts-style table (heavy rules, bold numbers) for origin, size, bulk pricing and lead time, which suits B2B. Colour bars and printer's swatches in --c-primary and --c-accent sit along the trim edge. The mood is clean, light and industrial-honest.",
+    "type": "Display: 'Sora' 800 tight for carton fronts and big numbers; body 'Rethink Sans' 400/700; spec tables in 'Rethink Sans' 800 for figures with heavy 8px/4px rules.",
+    "signature": "Fold-up cartons: each product card is a flat net of six panels absolutely positioned with CSS 3D transforms (transform-style: preserve-3d, hinge transform-origin on each panel edge). On hover or focus, the panels fold up in sequence with a staggered GSAP timeline into a rotating box. Click spins the box 180° to show the back panel with the spec table, and Escape unfolds it flat again. On touch, a tap toggles fold/unfold, and reduced-motion users get an instant front/back flip.",
+    "source": "Packaging dielines, fold diagrams and nutrition-facts panels",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:28:17.257Z"
+  },
+  {
+    "id": "wayfinding-system",
+    "name": "Wayfinding System",
+    "sectors": [
+      "hospitality",
+      "services",
+      "b2b",
+      "travel"
+    ],
+    "sample": "hotelnavarra",
+    "stress": "bohlt",
+    "brief": "The site works as a building's signage system. The header is a directory board listing zones (A Rooms / Shop, B Dining / Catalog, C Contact) with arrows and walking-time estimates. Every section is a big sign panel in --c-primary with reversed white type, a zone letter in a circle and a pictogram built from simple SVG geometry. Under it, content sits on calm light-grey 'wall' areas. The hero is one huge directional sign with an arrow and the headline as the destination, and the CTA is the 'You are here' marker. Products are sign-style tiles in a strict modular grid with level and zone codes, plus a legible info strip for price and availability. The mood is severe, bold and highly legible, with strong contrast enforced by computing white or black text against the brand colour.",
+    "type": "Display: 'Overpass' 900 for signage at very large sizes with generous tracking at small sizes; body 'Overpass' 400; zone codes, distances and prices 'Overpass Mono' 600.",
+    "signature": "Pointing arrows: every directional arrow (in the hero, section signs and the directory) continuously rotates to point at its target. On idle, the target is the next section's anchor; while the pointer is over the directory, the target is the hovered zone's section. The angle is computed with Math.atan2 from each arrow's bounding-box centre and eased with a critically damped spring. Hovering a directory entry also draws a temporary dashed route line (SVG polyline with right-angle segments) from the board to that section's sign.",
+    "source": "Airport and hospital directional signage systems",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:28:17.257Z"
+  }
+]
