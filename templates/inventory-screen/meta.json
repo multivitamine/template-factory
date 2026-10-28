@@ -1,0 +1,9 @@
+{
+  "id": "inventory-screen",
+  "name": "Inventory Screen",
+  "scheme": "dark",
+  "sectors": ["sports", "retail", "kids", "makers"],
+  "mood": ["playful", "dark", "gamified", "pixel"],
+  "needsProductImages": true,
+  "notes": "Primary drives CTAs, the selection cursor glow, active tabs and the character's equipped parts; rarity tiers are tints of primary (epic), primary+gold (legendary) and accent+blue (rare), all mixed with white so even near-black brand colours stay visible on the dark slate."
+}

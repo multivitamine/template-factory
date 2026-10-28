@@ -1,0 +1,21 @@
+{
+  "scoreBefore": 5.5,
+  "issues": [
+    "Creativity 7: the CSS-shape hero, equip slots, beveled rarity grid and tab-strip HUD fit the brief well, but the stat card (the core of the brief) never shows up in a static view; it only appears on hover.",
+    "Layout/rhythm 3: on home, more than half the page (Lore, Player stats, Quote, Quest) renders as a black void. Every [data-rv] block stays at opacity 0 until the IntersectionObserver fires, so full-page captures and fast M-key jumps show nothing.",
+    "Polish 5: off-screen fixed UI leaks into the page. The equip dock floats over the perks row (home) and over product slots (catalog), and an empty toast frame sits on the right edge. Both were only moved away with transform, never hidden.",
+    "Catalog loadout panel: the CSS robot is missing (the rig was caught mid-spawn animation), so the 'character' reads as an unrelated stock photo behind empty slots.",
+    "Typography 7: Pixelify display plus Atkinson body is a strong pairing, but the arrow keycaps (← →) fall back to blank dashes in the pixel font.",
+    "Brand robustness 8: the Terpstra stress test holds up because rarity tints derive from --c-primary/--c-accent. No action needed.",
+    "Mobile 6: the hero stacks cleanly, but the phantom dock sits on top of the character stage and the lower page is just as empty.",
+    "Generic-template feel 6: the home inventory's left column is a plain heading, legend and button. It doesn't feel like a game UI yet."
+  ],
+  "fixed": [
+    "Reveal failsafe on both pages: anything not yet revealed after 1.8s gets .in, so Lore, Stats, Quote and Quest always render. The stepped entrance still plays for normal scrolling.",
+    "The dock and toast now toggle visibility (with a delayed visibility transition), so they can't leak into the layout or captures while off-screen. Slide animations are unchanged.",
+    "New always-on INSPECT stat card (home inventory column and catalog loadout): thumbnail, rarity-tinted frame, weight/durability/price bars and an italic flavour line. It starts on the rarest (most expensive) item and follows the arrow-key/hover selection cursor, with a 3-frame pop on each change.",
+    "Catalog mini loadout: the robot no longer depends on the spawn animation and the background photo is dimmed, so the character silhouette is always the hero of the panel.",
+    "Arrow keycaps use the body font, so ← ↑ ↓ → actually render in the key hints."
+  ],
+  "scoreAfterEstimate": 7.3
+}

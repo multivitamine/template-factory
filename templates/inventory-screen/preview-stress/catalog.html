@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drums · Terpstra Muziek Drumland</title>
+<meta name="description" content="Van akoestische kits en Roland e-drums tot snaredrums, cymbals, vellen en hardware: alles om jouw set te perfectioneren.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Pixelify+Sans:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#10141b;
+  --c-surface:#18202b;
+  --c-text:#e9edf3;
+  --c-muted:#8f9aac;
+  --c-line:#2b3546;
+  --c-primary:#ff5a36;
+  --c-on-primary:#111111;
+  --c-accent:#46c2b4;
+
+  --pri-hi:color-mix(in srgb,var(--c-primary) 62%,#fff);
+  --acc-hi:color-mix(in srgb,var(--c-accent) 55%,#fff);
+  --glow:color-mix(in srgb,var(--c-primary) 55%,#fff);
+  --deep:color-mix(in srgb,var(--c-bg) 72%,#000);
+  --skin:color-mix(in srgb,var(--c-text) 15%,var(--c-bg));
+
+  --t-common:color-mix(in srgb,var(--c-text) 40%,var(--c-bg));
+  --t-rare:color-mix(in srgb,var(--c-accent) 50%,#8fc8ff);
+  --t-epic:color-mix(in srgb,var(--c-primary) 62%,#fff);
+  --t-legendary:color-mix(in srgb,var(--c-primary) 45%,#ffd56a);
+
+  --f-display:'Pixelify Sans','Courier New',monospace;
+  --f-body:'Atkinson Hyperlegible','Segoe UI',Helvetica,sans-serif;
+
+  --s1:4px;--s2:8px;--s3:16px;--s4:24px;--s5:40px;--s6:64px;--s7:112px;
+  --bev:inset 2px 2px 0 rgba(255,255,255,.07),inset -2px -2px 0 rgba(0,0,0,.45);
+  --notch:polygon(4px 0,calc(100% - 4px) 0,calc(100% - 4px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 4px) calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 4px),0 calc(100% - 4px),0 4px,4px 4px);
+  --ease:cubic-bezier(.2,.9,.25,1);
+  --wrap:1320px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:120px;overflow-x:clip}
+body{margin:0;min-height:100vh;overflow-x:clip;color:var(--c-text);font:400 1rem/1.55 var(--f-body);
+  background:radial-gradient(120% 70% at 75% -10%,color-mix(in srgb,var(--c-primary) 12%,var(--c-bg)) 0,var(--c-bg) 62%) fixed,var(--c-bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  --dz:color-mix(in srgb,var(--c-primary) 28%,transparent);
+  background:conic-gradient(var(--dz) 25%,transparent 0 50%,var(--dz) 0 75%,transparent 0) 0 0/4px 4px;
+  -webkit-mask:linear-gradient(180deg,#000 0 5%,rgba(0,0,0,.55) 5% 12%,rgba(0,0,0,.3) 12% 20%,rgba(0,0,0,.14) 20% 30%,transparent 30% 78%,rgba(0,0,0,.12) 78% 88%,rgba(0,0,0,.3) 88%);
+          mask:linear-gradient(180deg,#000 0 5%,rgba(0,0,0,.55) 5% 12%,rgba(0,0,0,.3) 12% 20%,rgba(0,0,0,.14) 20% 30%,transparent 30% 78%,rgba(0,0,0,.12) 78% 88%,rgba(0,0,0,.3) 88%)}
+body::after{content:"";position:fixed;inset:0;z-index:200;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 3px,rgba(0,0,0,.07) 3px 4px)}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--glow);outline-offset:3px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
+kbd,.key{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 6px;font:700 .72rem/1 var(--f-display);color:var(--c-text);background:color-mix(in srgb,var(--c-text) 9%,var(--c-bg));border:1px solid var(--c-line);border-bottom-width:3px;border-radius:0;vertical-align:middle}
+button.key{cursor:pointer}
+button.key:hover{border-color:var(--glow);color:var(--glow)}
+
+/* ---------- HUD / tab strip ---------- */
+.hud{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--c-bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:2px solid var(--c-line);box-shadow:0 2px 0 #0009}
+.hud-in{max-width:var(--wrap);margin:0 auto;padding:10px clamp(16px,3vw,32px) 0;display:flex;align-items:flex-end;gap:var(--s3);min-height:70px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;max-width:220px;align-self:center;padding-bottom:10px}
+.logo img{display:block;max-height:38px;max-width:180px;width:auto;height:auto}
+.logo--dark img{background:#eef1f5;padding:5px 9px;box-shadow:inset -2px -2px 0 rgba(0,0,0,.18)}
+.logo-tag{display:grid;place-items:center;flex:none;width:40px;height:40px;background:var(--c-primary);color:var(--c-on-primary);font:700 1rem/1 var(--f-display);clip-path:var(--notch);box-shadow:inset 3px 3px 0 rgba(255,255,255,.25),inset -3px -3px 0 rgba(0,0,0,.25)}
+.logo-name{font:700 1.05rem/1.1 var(--f-display);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tabs{flex:1;min-width:0;display:flex;align-items:flex-end;justify-content:center;gap:10px}
+.tabs .key{margin-bottom:12px;flex:none}
+.tab-list{display:flex;gap:4px;margin:0;padding:6px 2px 0;list-style:none;overflow-x:auto;scrollbar-width:none;counter-reset:tab;min-width:0}
+.tab-list::-webkit-scrollbar{display:none}
+.tab-list li{counter-increment:tab;flex:none}
+.tab{position:relative;display:flex;align-items:center;gap:8px;margin-bottom:-2px;padding:11px 16px 12px;font:700 1rem/1 var(--f-display);color:var(--c-muted);text-decoration:none;white-space:nowrap;background:var(--c-surface);border:2px solid var(--c-line);border-bottom-color:var(--c-line);box-shadow:inset 2px 2px 0 rgba(255,255,255,.05);transition:color .15s,transform .15s steps(2),background .15s;cursor:pointer}
+.tab-list .tab::before{content:counter(tab,decimal-leading-zero);font-size:.66rem;color:color-mix(in srgb,var(--c-muted) 60%,transparent)}
+.tab:hover,.tab:focus-visible{color:var(--c-text);transform:translateY(-3px);outline:none;background:color-mix(in srgb,var(--c-text) 6%,var(--c-surface))}
+.tab:focus-visible{box-shadow:inset 0 0 0 2px var(--glow)}
+.tab.is-active,.tab.is-hot{color:var(--c-text);background:color-mix(in srgb,var(--c-primary) 22%,var(--c-surface));border-color:color-mix(in srgb,var(--c-primary) 55%,var(--c-line));border-bottom-color:transparent}
+.tab.is-active::after{content:"";position:absolute;left:8px;right:8px;top:4px;height:3px;background:var(--glow)}
+.tab-bag{flex:none;font-family:var(--f-display);border-bottom-color:var(--c-line)}
+.tab-bag svg{width:18px;height:18px;fill:currentColor}
+.tab-bag .bag-count{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 5px;background:var(--c-line);color:var(--c-text);font-size:.8rem}
+.has-bag .tab-bag .bag-count{background:var(--c-primary);color:var(--c-on-primary)}
+.tab-bag kbd{height:20px;min-width:20px;font-size:.62rem}
+html:not(.js) .tab-bag,html:not(.js) .tabs .key{display:none}
+.dragging .tab-bag.ok{color:var(--c-text);background:color-mix(in srgb,var(--c-primary) 35%,var(--c-surface));box-shadow:0 0 0 2px var(--glow),0 0 20px var(--glow)}
+.tab-bag.pop,.eq.pop{animation:pop .24s steps(1,end)}
+@media (max-width:860px){
+  .hud-in{flex-wrap:wrap;padding-top:8px;gap:8px 12px;min-height:0}
+  .logo{order:1;padding-bottom:0;max-width:60%}
+  .tab-bag{order:2;margin-left:auto;margin-bottom:0;align-self:center;padding:9px 12px;border-bottom-color:var(--c-line)}
+  .tab-bag kbd,.tab-bag [data-t]{display:none}
+  .tabs{order:3;flex-basis:100%;justify-content:flex-start}
+  .tabs .key{display:none}
+  .tab{padding:10px 13px 11px;font-size:.92rem}
+}
+
+/* ---------- panels, buttons ---------- */
+.panel{position:relative;background:linear-gradient(180deg,color-mix(in srgb,var(--c-surface) 94%,#fff),var(--c-surface));border:2px solid var(--c-line);box-shadow:var(--bev),0 0 0 2px rgba(0,0,0,.5),0 24px 50px -28px #000}
+.panel::after{content:"";position:absolute;inset:4px;pointer-events:none;z-index:4;--rv:color-mix(in srgb,var(--c-text) 24%,transparent);
+  background:linear-gradient(var(--rv),var(--rv)) 0 0/4px 4px no-repeat,linear-gradient(var(--rv),var(--rv)) 100% 0/4px 4px no-repeat,linear-gradient(var(--rv),var(--rv)) 0 100%/4px 4px no-repeat,linear-gradient(var(--rv),var(--rv)) 100% 100%/4px 4px no-repeat}
+.panel-bar{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:2px solid var(--c-line);font:700 .74rem/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted);background:color-mix(in srgb,var(--c-bg) 50%,var(--c-surface))}
+.panel-bar .grow{flex:1}
+.blink{animation:blink 1.1s steps(1,end) infinite}
+.live{color:var(--glow)}
+.hp{display:inline-flex;align-items:center;gap:6px}
+.hp i{display:block;width:64px;height:8px;background:repeating-linear-gradient(90deg,var(--glow) 0 6px,transparent 6px 8px)}
+.btn{--bg:var(--c-primary);--fg:var(--c-on-primary);position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:14px 22px;font:700 1rem/1.1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--fg);background:var(--bg);border:0;cursor:pointer;clip-path:var(--notch);
+  box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--c-primary) 50%,#fff),inset 5px 5px 0 rgba(255,255,255,.22),inset -5px -5px 0 rgba(0,0,0,.28);transition:transform .14s steps(2),filter .2s}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.1)}
+.btn:active{transform:translateY(2px);box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--c-primary) 50%,#fff),inset -5px -5px 0 rgba(255,255,255,.18),inset 5px 5px 0 rgba(0,0,0,.3)}
+.btn:focus-visible{outline:none;box-shadow:inset 0 0 0 4px var(--c-on-primary),inset 6px 6px 0 rgba(255,255,255,.22)}
+.btn .tri{font-family:var(--f-display);font-size:.9em}
+.btn kbd{color:var(--c-text)}
+.btn-ghost{--bg:color-mix(in srgb,var(--c-text) 5%,transparent);--fg:var(--c-text);box-shadow:inset 0 0 0 2px var(--c-line),var(--bev)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--glow),var(--bev)}
+.btn-ghost:focus-visible{box-shadow:inset 0 0 0 3px var(--glow)}
+.btn-sm{min-height:40px;padding:10px 14px;font-size:.82rem}
+
+/* ---------- headings ---------- */
+.sec{padding:clamp(64px,8vw,120px) 0}
+.kicker{display:flex;align-items:center;gap:12px;margin:0 0 14px;font:700 .8rem/1 var(--f-display);letter-spacing:.2em;text-transform:uppercase;color:var(--glow)}
+.kicker::before{content:"";flex:none;width:8px;height:8px;margin-right:24px;background:var(--glow);box-shadow:12px 0 0 color-mix(in srgb,var(--glow) 55%,transparent),24px 0 0 color-mix(in srgb,var(--glow) 25%,transparent)}
+.h2{margin:0 0 18px;font:700 clamp(1.9rem,1.1rem + 2.7vw,3.5rem)/1 var(--f-display);letter-spacing:-.005em;text-wrap:balance;overflow-wrap:anywhere}
+.sec-text{margin:0 0 24px;color:color-mix(in srgb,var(--c-text) 78%,var(--c-muted));max-width:52ch}
+.h1{margin:18px 0 24px;font:700 clamp(2.4rem,1.1rem + 4.2vw,4.7rem)/.96 var(--f-display);letter-spacing:-.01em;text-wrap:balance;overflow-wrap:anywhere}
+
+/* ---------- character stage ---------- */
+.stage{position:relative;width:100%;aspect-ratio:1;overflow:hidden;isolation:isolate;
+  background:radial-gradient(48% 40% at 50% 47%,color-mix(in srgb,var(--c-primary) 30%,transparent),transparent 72%),linear-gradient(180deg,#0a0d12,var(--deep))}
+.stage-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.34;filter:grayscale(1) contrast(1.2) brightness(.8)}
+.stage-tint{position:absolute;inset:0;z-index:-1;background:var(--c-primary);mix-blend-mode:color;opacity:.4;pointer-events:none}
+.stage-dither{position:absolute;inset:0;z-index:0;pointer-events:none;background:conic-gradient(#000 25%,transparent 0 50%,#000 0 75%,transparent 0) 0 0/4px 4px;opacity:.38}
+.stage-floor{position:absolute;left:-25%;right:-25%;bottom:-4%;height:34%;z-index:0;pointer-events:none;
+  --gl:color-mix(in srgb,var(--glow) 40%,transparent);
+  background-image:linear-gradient(var(--gl) 2px,transparent 2px),linear-gradient(90deg,var(--gl) 2px,transparent 2px);background-size:36px 36px;
+  transform:perspective(260px) rotateX(64deg);transform-origin:50% 100%;-webkit-mask:linear-gradient(to top,#000 10%,transparent);mask:linear-gradient(to top,#000 10%,transparent);animation:floor 2.4s steps(6,end) infinite}
+.stage-lines{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.stage-lines path{fill:none;stroke:color-mix(in srgb,var(--c-text) 38%,transparent);stroke-width:2;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+.rig{position:absolute;inset:0;z-index:1;filter:drop-shadow(0 0 14px color-mix(in srgb,var(--c-primary) 45%,transparent));animation:idle 1.6s steps(1,end) infinite}
+.shadow{position:absolute;left:30%;top:88.5%;width:40%;height:4%;background:rgba(0,0,0,.6);clip-path:polygon(10% 0,90% 0,100% 50%,90% 100%,10% 100%,0 50%)}
+.p{position:absolute;display:block;--sk:var(--skin);
+  background:linear-gradient(90deg,color-mix(in srgb,var(--glow) 40%,var(--sk)) 0 9%,var(--sk) 9% 80%,color-mix(in srgb,#000 32%,var(--sk)) 80%)}
+.p-head{left:42%;top:9%;width:16%;height:16%;clip-path:polygon(0 12%,12% 12%,12% 0,88% 0,88% 12%,100% 12%,100% 88%,88% 88%,88% 100%,12% 100%,12% 88%,0 88%)}
+.eye{position:absolute;top:44%;width:14%;height:16%;background:var(--glow);animation:eyes 4.2s steps(1,end) infinite}
+.eye:first-child{left:24%}.eye:last-child{left:62%}
+.p-neck{left:47%;top:25%;width:6%;height:3.5%}
+.p-body{left:37%;top:28%;width:26%;height:29%;clip-path:polygon(0 8%,6% 8%,6% 0,94% 0,94% 8%,100% 8%,100% 100%,0 100%)}
+.p-body::before{content:"";position:absolute;left:50%;top:20%;width:22%;aspect-ratio:1;transform:translateX(-50%) rotate(45deg);background:var(--c-primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--glow) 60%,transparent)}
+.p-body::after{content:"";position:absolute;left:0;right:0;bottom:16%;height:8%;background:color-mix(in srgb,var(--c-text) 28%,var(--c-bg))}
+.p-arm{top:29%;width:7%;height:24%}.p-arm.l{left:29.5%}.p-arm.r{left:63.5%}
+.p-hand{top:53%;width:9%;height:9%}.p-hand.l{left:28.5%}.p-hand.r{left:62.5%}
+.p-leg{top:57%;width:9.5%;height:27%}.p-leg.l{left:39%}.p-leg.r{left:51.5%}
+.p-foot{top:84%;width:13%;height:5.5%}.p-foot.l{left:35.5%}.p-foot.r{left:51.5%}
+.stage[data-head] .p-head,.stage[data-hands] .p-hand,.stage[data-body] .p-body,.stage[data-body] .p-arm,.stage[data-feet] .p-foot{--sk:color-mix(in srgb,var(--c-primary) 58%,var(--c-bg))}
+.stage[data-feet] .p-leg{--sk:color-mix(in srgb,var(--c-primary) 22%,var(--skin))}
+.scan{position:absolute;left:0;right:0;top:0;height:3px;z-index:3;pointer-events:none;background:var(--glow);box-shadow:0 0 18px 4px var(--glow);opacity:0}
+
+.eq{position:absolute;z-index:2;width:17%;aspect-ratio:1;display:grid;place-items:center;--tier:var(--glow);
+  background:color-mix(in srgb,var(--c-bg) 72%,transparent);border:2px dashed color-mix(in srgb,var(--c-text) 30%,transparent);box-shadow:inset 0 0 0 3px rgba(0,0,0,.4);transition:border-color .15s,background .15s,transform .15s steps(2),opacity .2s}
+.eq-ico{display:grid;place-items:center;width:100%;height:100%}
+.eq-ico svg{width:44%;height:44%;fill:var(--c-text);opacity:.35}
+.eq-item{position:absolute;inset:5px;display:none;place-items:center;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 50% 45%,#fff 0 38%,color-mix(in srgb,var(--tier) 42%,#dfe4ea) 100%)}
+.eq-item img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;display:block}
+.eq-item svg{width:50%;fill:#1a1f28}
+.eq.filled{border-style:solid;border-color:var(--tier);box-shadow:inset 0 0 0 3px rgba(0,0,0,.4),0 0 16px -2px color-mix(in srgb,var(--tier) 70%,transparent)}
+.eq.filled .eq-item{display:grid}.eq.filled .eq-ico{opacity:0}
+.eq-lb{position:absolute;left:-20%;right:-20%;top:calc(100% + 5px);text-align:center;font:700 clamp(.56rem,.45rem + .35vw,.72rem)/1 var(--f-display);letter-spacing:.1em;text-transform:uppercase;color:var(--c-muted);white-space:nowrap}
+.eq-count{position:absolute;right:-8px;top:-8px;z-index:3;min-width:24px;height:24px;display:grid;place-items:center;padding:0 5px;font:700 .78rem/1 var(--f-display);background:var(--c-line);color:var(--c-text);box-shadow:0 0 0 2px #000}
+.has-bag .eq-count{background:var(--c-primary);color:var(--c-on-primary)}
+.eq-head{left:72%;top:5%}.eq-hands{left:5%;top:44%}.eq-body{left:77%;top:33%}.eq-feet{left:5%;top:72%}
+.eq-bag{left:74%;top:67%;width:21%;border-style:solid;border-color:color-mix(in srgb,var(--glow) 55%,var(--c-line));background:color-mix(in srgb,var(--c-primary) 14%,var(--c-bg))}
+.eq-bag .eq-ico svg{opacity:.7;fill:var(--glow)}
+.dragging .eq.ok{border-style:solid;border-color:var(--glow);background:color-mix(in srgb,var(--c-primary) 28%,var(--c-bg));animation:okp .5s steps(1,end) infinite}
+.dragging .eq.no{opacity:.32}
+.eq.hover{transform:scale(1.1);border-color:var(--c-text)!important}
+.eq.reject{animation:shake .3s steps(3,end)}
+.stage--mini .eq-lb{display:none}
+.stage--mini .eq-count{right:-4px;top:-4px;min-width:20px;height:20px;font-size:.7rem}
+.panel-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:12px 14px;border-top:2px solid var(--c-line)}
+.plate{display:flex;align-items:center;gap:12px;flex:1 1 180px;min-width:0}
+.lv{flex:none;display:grid;place-items:center;width:48px;height:48px;font:700 .62rem/1 var(--f-display);letter-spacing:.1em;color:var(--c-muted);background:var(--deep);box-shadow:inset 0 0 0 2px var(--c-line)}
+.lv b{display:block;font-size:1.25rem;color:var(--c-text);letter-spacing:0}
+.plate-txt{min-width:0;flex:1}
+.plate-name{display:block;font:700 1rem/1.15 var(--f-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xp{display:block;height:8px;margin-top:7px;background:repeating-linear-gradient(90deg,color-mix(in srgb,var(--c-text) 12%,transparent) 0 8px,transparent 8px 10px)}
+.xp i{display:block;height:100%;width:6%;background:repeating-linear-gradient(90deg,var(--glow) 0 8px,transparent 8px 10px);transition:width .5s steps(8,end)}
+
+/* ---------- inventory slots ---------- */
+.inv{position:relative;list-style:none;margin:0;padding:0;display:grid}
+.item{position:relative;min-width:0;--tier:var(--t-common)}
+.item:nth-child(3n+2){--tier:var(--t-rare)}.item:nth-child(5n+4){--tier:var(--t-epic)}.item:nth-child(7n){--tier:var(--t-legendary)}
+.item[data-r=common]{--tier:var(--t-common)}.item[data-r=rare]{--tier:var(--t-rare)}.item[data-r=epic]{--tier:var(--t-epic)}.item[data-r=legendary]{--tier:var(--t-legendary)}
+.slot{position:relative;display:block;aspect-ratio:1;cursor:grab;outline:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:pan-y;
+  background:var(--deep);border:2px solid color-mix(in srgb,var(--tier) 60%,var(--c-line));
+  box-shadow:inset 3px 3px 0 rgba(255,255,255,.06),inset -3px -3px 0 rgba(0,0,0,.55),0 0 0 2px rgba(0,0,0,.55);transition:transform .16s steps(2),border-color .16s,opacity .2s}
+.slot-art{position:absolute;inset:7px;overflow:hidden;isolation:isolate;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 46%,#fff 0 36%,color-mix(in srgb,var(--tier) 42%,#dfe4ea) 100%)}
+.slot-art img{display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;-webkit-touch-callout:none;pointer-events:none;transition:transform .35s var(--ease)}
+.slot-fb{display:grid;place-items:center;width:100%;height:100%;background:conic-gradient(rgba(0,0,0,.08) 25%,transparent 0 50%,rgba(0,0,0,.08) 0 75%,transparent 0) 0 0/6px 6px}
+.slot-fb svg{width:42%;fill:color-mix(in srgb,var(--tier) 55%,#1a1f28)}
+.slot:hover{transform:translateY(-3px);border-color:var(--tier)}
+.slot:hover .slot-art img{transform:scale(1.07)}
+.slot.lifted{opacity:.35;transform:none}
+.item[data-r=rare] .slot-art::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(135deg,var(--tier) 0 9px,transparent 9px),linear-gradient(-45deg,var(--tier) 0 9px,transparent 9px)}
+.item[data-r=epic] .slot::before{content:"";position:absolute;inset:3px;z-index:2;pointer-events:none;border:1px solid var(--tier)}
+.item[data-r=legendary] .slot{animation:legend 2.4s steps(4,end) infinite}
+.item[data-r=legendary] .slot-art::after{content:"";position:absolute;inset:-20%;z-index:2;pointer-events:none;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.75) 46% 50%,transparent 56%);animation:shine 3.2s steps(10,end) infinite}
+.slot-pips{position:absolute;left:5px;bottom:5px;z-index:3;height:6px;width:0;background:repeating-linear-gradient(90deg,var(--tier) 0 6px,transparent 6px 8px);box-shadow:0 0 0 1px rgba(0,0,0,.5)}
+.item[data-r=common] .slot-pips{width:6px}.item[data-r=rare] .slot-pips{width:14px}.item[data-r=epic] .slot-pips{width:22px}.item[data-r=legendary] .slot-pips{width:30px}
+.slot-type{position:absolute;right:5px;top:5px;z-index:3;width:18px;height:18px;display:grid;place-items:center;background:rgba(10,13,18,.75)}
+.slot-type:empty{display:none}
+.slot-type svg{width:12px;height:12px;fill:var(--c-text)}
+.slot-tag{position:absolute;left:-2px;top:8px;z-index:3;max-width:80%;padding:3px 7px;font:700 .64rem/1.1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;background:var(--c-accent);color:#fff;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-accent) 40%,#fff),2px 2px 0 #000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot-sale{position:absolute;right:5px;bottom:5px;z-index:3;display:grid;place-items:center;width:22px;height:22px;font:700 .8rem/1 var(--f-display);background:var(--c-primary);color:var(--c-on-primary)}
+.slot.charging::after{content:"";position:absolute;inset:-4px;z-index:4;border:3px solid var(--glow);animation:charge .26s steps(4,end) both}
+.cap{display:block;margin-top:10px;text-decoration:none}
+.cap-n{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:700;font-size:.86rem;line-height:1.3;overflow-wrap:anywhere}
+.cap:hover .cap-n{color:var(--pri-hi);text-decoration:underline;text-underline-offset:3px}
+.cap-p{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;margin-top:5px;font:700 .98rem/1 var(--f-display);color:var(--c-text)}
+.cap-p::before{content:"";width:8px;height:8px;align-self:center;background:var(--t-legendary);box-shadow:inset -2px -2px 0 rgba(0,0,0,.3)}
+.cap-p s{font-size:.8rem;color:var(--c-muted)}
+.cursor{position:absolute;left:0;top:0;z-index:5;pointer-events:none;opacity:0;border:2px solid var(--glow);
+  box-shadow:0 0 0 2px rgba(0,0,0,.7),0 0 22px 2px color-mix(in srgb,var(--glow) 60%,transparent),inset 0 0 14px color-mix(in srgb,var(--glow) 45%,transparent);transition:transform .16s var(--ease),width .16s,height .16s,opacity .2s}
+.cursor.on{opacity:1}
+.cursor::before{content:"";position:absolute;inset:-9px;--b:var(--glow);background-repeat:no-repeat;animation:brk .8s steps(1,end) infinite;
+  background-image:linear-gradient(var(--b),var(--b)),linear-gradient(var(--b),var(--b)),linear-gradient(var(--b),var(--b)),linear-gradient(var(--b),var(--b)),linear-gradient(var(--b),var(--b)),linear-gradient(var(--b),var(--b)),linear-gradient(var(--b),var(--b)),linear-gradient(var(--b),var(--b));
+  background-size:12px 3px,3px 12px,12px 3px,3px 12px,12px 3px,3px 12px,12px 3px,3px 12px;
+  background-position:0 0,0 0,100% 0,100% 0,0 100%,0 100%,100% 100%,100% 100%}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:0;padding:0;list-style:none;font-size:.8rem;font-weight:700;color:var(--c-muted)}
+.legend li{display:flex;align-items:center;gap:7px}
+.legend li::before{content:"";width:12px;height:12px;background:var(--lc);box-shadow:0 0 0 2px rgba(0,0,0,.5)}
+.legend li:nth-child(1){--lc:var(--t-common)}.legend li:nth-child(2){--lc:var(--t-rare)}.legend li:nth-child(3){--lc:var(--t-epic)}.legend li:nth-child(4){--lc:var(--t-legendary)}
+.keys-help{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;font-size:.84rem;color:var(--c-muted)}
+.keys-help span{margin-right:10px}
+html:not(.js) .keys-help{display:none}
+
+/* ---------- catalog ---------- */
+.cat-head{padding:clamp(28px,4vw,56px) 0 clamp(24px,3vw,40px)}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 20px;font:700 .74rem/1.2 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted)}
+.crumbs a{text-decoration:none}.crumbs a:hover{color:var(--glow)}
+.crumbs span[aria-hidden]{color:var(--c-line)}
+.cat-title{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:end}
+.h1--cat{margin:0 0 16px;font-size:clamp(2.2rem,1.1rem + 3.6vw,4.4rem)}
+.cat-intro{margin:0;max-width:60ch;font-size:clamp(1rem,.95rem + .25vw,1.12rem);color:color-mix(in srgb,var(--c-text) 80%,var(--c-muted))}
+.cat-count{display:grid;gap:6px;padding:14px 18px;min-width:150px;text-align:right}
+.cat-count small{font:700 .66rem/1 var(--f-display);letter-spacing:.18em;color:var(--c-muted);text-transform:uppercase}
+.cat-count b{font:700 clamp(1.3rem,1rem + 1.2vw,2rem)/1 var(--f-display)}
+.cat-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin-top:28px}
+.filters{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.filters:not(:has(.chip)){display:none}
+.chip{padding:10px 14px;font:700 .88rem/1 var(--f-display);color:var(--c-muted);background:var(--c-surface);border:2px solid var(--c-line);box-shadow:inset 2px 2px 0 rgba(255,255,255,.05);cursor:pointer;transition:color .15s,transform .15s steps(2),border-color .15s}
+.chip:hover{color:var(--c-text);transform:translateY(-2px);border-color:color-mix(in srgb,var(--glow) 50%,var(--c-line))}
+.chip.on,.filters:not(:has(.on)) .chip:first-child{color:var(--c-text);background:color-mix(in srgb,var(--c-primary) 22%,var(--c-surface));border-color:color-mix(in srgb,var(--c-primary) 55%,var(--c-line))}
+.cat-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(20px,3vw,36px);align-items:start;padding-bottom:clamp(48px,6vw,96px)}
+.loadout{position:sticky;top:110px}
+.loadout .keys-help{padding:12px 14px;border-top:2px solid var(--c-line)}
+.keys-help kbd:nth-of-type(-n+4){font-family:var(--f-body);font-size:.9rem}
+/* mini loadout: the hero must always be on screen, not mid-spawn; photo stays a ghost behind it */
+.js .stage--mini .rig .p,.js .stage--mini .rig .shadow{animation:none}
+.stage--mini .stage-bg{opacity:.22}
+.stage--mini .rig{z-index:1}
+.inspect{--tier:var(--t-common);position:relative;display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;padding:16px 14px 14px;font-size:.86rem;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--tier) 16%,var(--c-surface)),color-mix(in srgb,var(--c-surface) 80%,#000) 65%);border-top:2px solid var(--tier);box-shadow:inset 0 0 26px -12px var(--tier)}
+.inspect:empty{display:none}
+.inspect::before{content:"INSPECT";position:absolute;right:10px;top:-9px;padding:2px 6px;font:700 .6rem/1 var(--f-display);letter-spacing:.18em;background:var(--tier);color:#0b0e13}
+.inspect-art{align-self:start;aspect-ratio:1;display:grid;place-items:center;overflow:hidden;isolation:isolate;border:2px solid var(--tier);
+  background:radial-gradient(circle at 50% 46%,#fff 0 36%,color-mix(in srgb,var(--tier) 42%,#dfe4ea) 100%);animation:pop .24s steps(1,end)}
+.inspect-art img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.inspect-art svg{width:50%;fill:#1a1f28}
+.inspect-body{min-width:0}
+.inspect .tip-n{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:.92rem}
+.inspect .tip-stats{margin:8px 0 10px;gap:7px}
+.inspect .tip-k{display:none}
+html:not(.js) .inspect{display:none}
+.inv-cat{grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:22px 14px;padding:clamp(14px,2vw,22px)}
+.empty-chest{display:grid;justify-items:center;gap:14px;padding:64px 24px;text-align:center;color:var(--c-muted)}
+.empty-chest svg{width:64px;fill:var(--c-line)}
+@media (max-width:1000px){.cat-layout{grid-template-columns:1fr}.loadout{display:none}}
+@media (max-width:640px){.cat-title{grid-template-columns:1fr}.cat-count{text-align:left}}
+@media (max-width:560px){.inv-cat{grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:16px 10px}.inv-cat .cap-n{font-size:.8rem}.inv-cat .cap-p{font-size:.88rem}}
+
+/* ---------- footer / map ---------- */
+.map{margin-top:clamp(20px,3vw,40px);border-top:2px solid var(--c-line);background:linear-gradient(180deg,var(--c-surface),var(--c-bg))}
+.map-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr) auto;gap:clamp(28px,4vw,56px);padding-top:clamp(48px,6vw,80px);padding-bottom:clamp(40px,5vw,64px)}
+.map-brand .h2{font-size:clamp(1.6rem,1.2rem + 1.4vw,2.4rem)}
+.map-brand p{margin:0;color:var(--c-muted);max-width:36ch}
+.map h3{margin:0 0 16px;font:700 .78rem/1 var(--f-display);letter-spacing:.18em;text-transform:uppercase;color:var(--c-muted)}
+.pins{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.pins li{display:flex;gap:12px;align-items:flex-start;min-width:0}
+.pins svg{flex:none;width:18px;height:18px;margin-top:2px;fill:var(--glow)}
+.pins a,.pins span{text-decoration:none;overflow-wrap:anywhere}
+.pins a:hover{color:var(--pri-hi);text-decoration:underline;text-underline-offset:3px}
+.flinks{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.flinks:not(:has(li)){display:none}
+.flinks a{text-decoration:none;color:color-mix(in srgb,var(--c-text) 80%,var(--c-muted))}
+.flinks a:hover{color:var(--c-text)}
+.flinks a::before{content:"▸ ";font-family:var(--f-display);color:var(--c-line);transition:color .15s}
+.flinks a:hover::before{color:var(--glow)}
+.minimap{position:relative;width:170px;aspect-ratio:1;border:2px solid var(--c-line);box-shadow:var(--bev),0 0 0 2px #000;
+  background:linear-gradient(90deg,transparent 46%,color-mix(in srgb,var(--c-text) 18%,transparent) 46% 54%,transparent 54%),linear-gradient(transparent 62%,color-mix(in srgb,var(--c-text) 18%,transparent) 62% 69%,transparent 69%),
+  linear-gradient(color-mix(in srgb,var(--c-text) 7%,transparent) 1px,transparent 1px) 0 0/17px 17px,linear-gradient(90deg,color-mix(in srgb,var(--c-text) 7%,transparent) 1px,transparent 1px) 0 0/17px 17px,
+  conic-gradient(color-mix(in srgb,var(--c-accent) 20%,transparent) 25%,transparent 0 50%,color-mix(in srgb,var(--c-accent) 20%,transparent) 0 75%,transparent 0) 0 0/6px 6px,var(--deep)}
+.minimap::before{content:"";position:absolute;left:calc(50% - 7px);top:calc(65% - 18px);width:14px;height:14px;background:var(--c-primary);box-shadow:0 0 0 3px #000,0 0 16px 4px var(--glow);animation:bob .9s steps(2,end) infinite}
+.minimap::after{content:"";position:absolute;left:calc(50% - 14px);top:calc(65% - 2px);width:28px;height:6px;border:2px solid var(--glow);opacity:.6;animation:blink 1.2s steps(1,end) infinite}
+.map-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:18px;padding-bottom:84px;border-top:2px solid var(--c-line);font-size:.84rem;color:var(--c-muted)}
+.map-base .keys{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+@media (max-width:1000px){.map-grid{grid-template-columns:1fr 1fr}.minimap{width:140px}}
+@media (max-width:560px){.map-grid{grid-template-columns:1fr}}
+
+/* ---------- overlays ---------- */
+.badge{position:fixed;left:12px;bottom:12px;z-index:60;padding:7px 10px;font:700 .7rem/1 var(--f-body);letter-spacing:.04em;color:var(--c-muted);background:color-mix(in srgb,var(--c-bg) 88%,transparent);border:1px solid var(--c-line);box-shadow:2px 2px 0 #000;pointer-events:none}
+.tip{--tier:var(--t-common);position:fixed;left:0;top:0;z-index:80;width:min(300px,calc(100vw - 20px));padding:14px 16px 12px;font-size:.9rem;
+  background:color-mix(in srgb,var(--c-surface) 80%,#000);border:2px solid var(--tier);
+  box-shadow:inset 0 0 0 2px rgba(0,0,0,.5),0 0 0 2px #000,8px 8px 0 rgba(0,0,0,.55),0 0 34px -6px color-mix(in srgb,var(--tier) 60%,transparent);
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s steps(2,end),visibility 0s .12s}
+.tip.on{opacity:1;visibility:visible;transition:opacity .12s steps(2,end)}
+.tip.pinned{pointer-events:auto}
+.tip-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.tip-r{font:700 .76rem/1 var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--tier)}
+.tip-t{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c-muted)}
+.tip-t svg{width:13px;height:13px;fill:currentColor}
+.tip-n{margin:0 0 4px;font-weight:700;font-size:1.02rem;line-height:1.3}
+.tip-tag{display:inline-block;margin-bottom:4px;padding:2px 6px;font-size:.68rem;font-weight:700;text-transform:uppercase;background:var(--c-accent);color:#fff}
+.tip-stats{display:grid;gap:9px;margin:10px 0 12px}
+.tr{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 10px}
+.tr-l{font-size:.78rem;color:var(--c-muted)}
+.tr-v{font:700 .92rem/1 var(--f-display);font-variant-numeric:tabular-nums}
+.tr-v s{font-size:.78rem;color:var(--c-muted)}
+.bar{grid-column:1/-1;display:block;height:8px;background:repeating-linear-gradient(90deg,color-mix(in srgb,var(--c-text) 11%,transparent) 0 8px,transparent 8px 10px)}
+.bar i{display:block;height:100%;width:var(--v);background:repeating-linear-gradient(90deg,var(--bc) 0 8px,transparent 8px 10px);animation:fill .3s steps(6,end) both}
+.tr-w{--bc:var(--acc-hi)}.tr-d{--bc:var(--tier)}.tr-p{--bc:var(--pri-hi)}
+.tip-fl{margin:0;padding-top:10px;border-top:1px dashed var(--c-line);font-style:italic;color:color-mix(in srgb,var(--c-text) 72%,var(--c-muted))}
+.tip-k{margin:10px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:.74rem;color:var(--c-muted)}
+.tip-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ghost{position:fixed;left:0;top:0;z-index:120;width:72px;height:72px;pointer-events:none;transform-origin:50% 50%;isolation:isolate;overflow:hidden;
+  background:radial-gradient(circle at 50% 46%,#fff 0 38%,color-mix(in srgb,var(--tier) 45%,#dfe4ea));border:3px solid var(--tier);box-shadow:0 0 0 2px #000,6px 6px 0 rgba(0,0,0,.5),0 0 26px color-mix(in srgb,var(--tier) 65%,transparent)}
+.ghost img{display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.ghost svg{width:50%;margin:25%;fill:#1a1f28}
+.gridfx{position:fixed;inset:0;z-index:110;pointer-events:none;opacity:0;transition:opacity .2s;--gx:50%;--gy:50%;
+  background-image:linear-gradient(90deg,color-mix(in srgb,var(--glow) 22%,transparent) 1px,transparent 1px),linear-gradient(color-mix(in srgb,var(--glow) 22%,transparent) 1px,transparent 1px);background-size:8px 8px;
+  -webkit-mask:radial-gradient(circle 150px at var(--gx) var(--gy),#000,transparent);mask:radial-gradient(circle 150px at var(--gx) var(--gy),#000,transparent)}
+.dragging .gridfx{opacity:1}
+.dragging,.dragging *{cursor:grabbing!important;user-select:none;-webkit-user-select:none}
+.dock{position:fixed;left:50%;bottom:16px;z-index:100;display:flex;gap:10px;padding:12px 14px 26px;transform:translate(-50%,140%);transition:transform .25s var(--ease);background:color-mix(in srgb,var(--c-surface) 92%,#000);border:2px solid var(--c-line);box-shadow:0 0 0 2px #000,0 14px 40px rgba(0,0,0,.6)}
+.dock{visibility:hidden;transition:transform .25s var(--ease),visibility 0s .25s}
+.dock-on .dock{transform:translate(-50%,0);visibility:visible;transition:transform .25s var(--ease)}
+.dock .eq{position:relative;left:auto;top:auto;width:58px}
+.dock .eq-lb{top:calc(100% + 5px);font-size:.56rem}
+@media (max-width:400px){.dock{gap:6px;padding:10px 10px 24px}.dock .eq{width:52px}}
+.toast{position:fixed;right:16px;bottom:16px;z-index:70;display:flex;align-items:center;gap:12px;max-width:min(360px,calc(100vw - 32px));padding:12px 16px;background:color-mix(in srgb,var(--c-surface) 85%,#000);border:2px solid var(--glow);box-shadow:0 0 0 2px #000,6px 6px 0 rgba(0,0,0,.5);transform:translateY(160%);transition:transform .25s steps(4,end);pointer-events:none}
+.toast{visibility:hidden;transition:transform .25s steps(4,end),visibility 0s .25s}
+.toast.on{transform:none;visibility:visible;transition:transform .25s steps(4,end)}
+.toast.bad{border-color:#ff6b6b}
+.toast b{flex:none;font:700 1.1rem/1 var(--f-display);color:var(--glow)}
+.toast.bad b{color:#ff8a8a}
+.toast span{font-size:.88rem;font-weight:700;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (max-width:560px){.toast{bottom:52px}}
+.scrim{position:fixed;inset:0;z-index:85;background:rgba(3,5,8,.66);opacity:0;pointer-events:none;transition:opacity .25s}
+.bag-open .scrim{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(420px,100%);display:flex;flex-direction:column;background:var(--c-surface);border-left:2px solid var(--c-line);box-shadow:-10px 0 40px rgba(0,0,0,.5);transform:translateX(100%);visibility:hidden;transition:transform .32s var(--ease),visibility 0s .32s;outline:none}
+.bag-open .drawer{transform:none;visibility:visible;transition:transform .32s var(--ease)}
+.drawer-head{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:2px solid var(--c-line)}
+.drawer-head h2{margin:0;flex:1;font:700 1.5rem/1 var(--f-display)}
+.drawer-head .bag-count{font:700 1rem/1 var(--f-display);padding:5px 9px;background:var(--c-primary);color:var(--c-on-primary)}
+.x{display:grid;place-items:center;width:40px;height:40px;font:700 1.3rem/1 var(--f-display);color:var(--c-text);background:var(--deep);border:2px solid var(--c-line);cursor:pointer}
+.x:hover{border-color:var(--glow);color:var(--glow)}
+.drawer-list{flex:1;overflow:auto;margin:0;padding:14px 20px;list-style:none;display:grid;align-content:start;gap:10px}
+.bag-row{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:12px;padding:8px;background:var(--deep);border:2px solid color-mix(in srgb,var(--tier) 50%,var(--c-line))}
+.bag-thumb{position:relative;width:56px;height:56px;overflow:hidden;isolation:isolate;display:grid;place-items:center;background:radial-gradient(circle,#fff 0 40%,color-mix(in srgb,var(--tier) 42%,#dfe4ea))}
+.bag-thumb img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.bag-thumb svg{width:50%;fill:#1a1f28}
+.bag-n{min-width:0;font-weight:700;font-size:.86rem;line-height:1.3}
+.bag-n span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bag-n small{display:flex;justify-content:space-between;gap:8px;margin-top:4px;font:700 .7rem/1 var(--f-display);letter-spacing:.1em;text-transform:uppercase;color:var(--tier)}
+.bag-n small b{color:var(--c-text);font-size:.86rem;letter-spacing:0}
+.bag-x{width:32px;height:32px;font-size:1rem}
+.drawer-empty{margin:0;padding:24px 20px;color:var(--c-muted)}
+.has-bag .drawer-empty{display:none}
+.drawer-foot{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:18px 20px 22px;border-top:2px solid var(--c-line);background:color-mix(in srgb,var(--c-bg) 50%,var(--c-surface))}
+.drawer-foot .tot{font-weight:700;color:var(--c-muted)}
+.drawer-foot .tot-v{font:700 1.6rem/1 var(--f-display);text-align:right}
+.drawer-foot .btn{width:100%}
+
+/* ---------- reveal & motion ---------- */
+[data-rv]{transition:opacity .5s steps(5,end),transform .5s steps(5,end)}
+.rv-on [data-rv]:not(.in){opacity:0;transform:translateY(18px)}
+.js .rig .p,.js .rig .shadow{animation:spawn .45s steps(5,end) backwards;animation-delay:calc(var(--d,0) * 70ms + 250ms)}
+:where(.js .stage) .eq{animation:pop .24s steps(1,end) backwards;animation-delay:calc(var(--d,0) * 110ms + 900ms)}
+.js .stage .scan{animation:scan 1.3s steps(26,end) .2s both}
+.js .inv-cat .item{animation:drop .45s steps(5,end) backwards;animation-delay:calc(var(--d,0) * 40ms + 150ms)}
+@keyframes pop{0%{transform:scale(1.2)}33.333%{transform:scale(.9)}66.666%,100%{transform:scale(1)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes eyes{0%,92%{transform:scaleY(1)}93%,96%{transform:scaleY(.15)}97%{transform:scaleY(1)}}
+@keyframes idle{0%{transform:translateY(0)}50%{transform:translateY(-.8%)}}
+@keyframes bob{50%{transform:translateY(-4px)}}
+@keyframes floor{to{background-position:0 36px}}
+@keyframes spawn{from{opacity:0;transform:translateY(30%)}}
+@keyframes scan{0%{top:100%;opacity:1}90%{opacity:1}100%{top:0;opacity:0}}
+@keyframes drop{0%{opacity:0;transform:translateY(-24px)}60%{opacity:1;transform:translateY(3px)}100%{transform:none}}
+@keyframes okp{50%{box-shadow:inset 0 0 0 3px rgba(0,0,0,.4),0 0 22px var(--glow)}}
+@keyframes shake{0%{transform:translateX(-5px)}33%{transform:translateX(5px)}66%{transform:translateX(-3px)}100%{transform:none}}
+@keyframes legend{0%,100%{box-shadow:inset 3px 3px 0 rgba(255,255,255,.06),inset -3px -3px 0 rgba(0,0,0,.55),0 0 0 2px rgba(0,0,0,.55),0 0 10px color-mix(in srgb,var(--tier) 40%,transparent)}50%{box-shadow:inset 3px 3px 0 rgba(255,255,255,.06),inset -3px -3px 0 rgba(0,0,0,.55),0 0 0 2px rgba(0,0,0,.55),0 0 22px color-mix(in srgb,var(--tier) 75%,transparent)}}
+@keyframes shine{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes brk{50%{inset:-6px}}
+@keyframes charge{from{inset:-14px;opacity:0}}
+@keyframes fill{from{width:0}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.001ms!important;transition-delay:0s!important}
+  .stage .scan{display:none}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#A80819;--c-on-primary:#ffffff;--c-accent:#333333}</style></head>
+<body data-brand="Terpstra Muziek Drumland">
+<a class="sr" href="#main">Skip</a>
+
+<header class="hud" id="top">
+  <div class="hud-in">
+    <a class="logo logo--light" href="template.html">
+      
+      <span class="logo-tag">TM</span><span class="logo-name">Terpstra Muziek Drumland</span>
+    </a>
+    <nav class="tabs" aria-label="Menu">
+      <button class="key" type="button" data-cycle="-1" aria-label="Vorige tab">Q</button>
+      <ul class="tab-list">
+        <li><a class="tab" href="catalog.html">Webshop</a></li><li><a class="tab" href="#">Occasions</a></li><li><a class="tab" href="#">Aanbiedingen</a></li><li><a class="tab" href="#">Reparatieatelier</a></li><li><a class="tab" href="#">Over ons</a></li><li><a class="tab" href="#">Contact</a></li>
+      </ul>
+      <button class="key" type="button" data-cycle="1" aria-label="Volgende tab">E</button>
+    </nav>
+    <button class="tab tab-bag" type="button" data-bag-open data-slot="bag" aria-controls="bag">
+      <svg viewBox="-1 -1 10 10" aria-hidden="true"><path fill-rule="evenodd" d="M2 0h4v1H2zM2 1h1v1H2zM5 1h1v1H5zM0 2h8v5H0zM3 3h2v1H3z"/></svg>
+      <span data-t="bag">Tas</span>
+      <span class="bag-count" data-bag-count>0</span>
+      <kbd>B</kbd>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="cat-head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="template.html">Terpstra Muziek Drumland</a><span aria-hidden="true">▸</span><span>Drums</span></nav>
+      <div class="cat-title">
+        <div>
+          <p class="kicker">Inventory</p>
+          <h1 class="h1 h1--cat">Drums</h1>
+          <p class="cat-intro">Van akoestische kits en Roland e-drums tot snaredrums, cymbals, vellen en hardware: alles om jouw set te perfectioneren.</p>
+        </div>
+        <div class="cat-count panel"><small>Slots</small><b>4688 producten</b></div>
+      </div>
+      <div class="cat-tools">
+        <div class="filters" role="toolbar" aria-label="Filter">
+          <button class="chip" type="button" aria-pressed="false">Elektronische drums</button><button class="chip" type="button" aria-pressed="false">Drumstellen</button><button class="chip" type="button" aria-pressed="false">Snaredrums</button><button class="chip" type="button" aria-pressed="false">Cymbals</button><button class="chip" type="button" aria-pressed="false">Drumstokken &amp; brushes</button><button class="chip" type="button" aria-pressed="false">Hardware</button><button class="chip" type="button" aria-pressed="false">Drumvellen</button><button class="chip" type="button" aria-pressed="false">Oefenpads &amp; sets</button><button class="chip" type="button" aria-pressed="false">Drumkoffers &amp; hoezen</button><button class="chip" type="button" aria-pressed="false">Drum accessoires</button>
+        </div>
+        <ul class="legend"><li data-t="common">Gewoon</li><li data-t="rare">Zeldzaam</li><li data-t="epic">Episch</li><li data-t="legendary">Legendarisch</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="cat-body" id="gear">
+    <div class="wrap cat-layout">
+      <aside class="loadout panel" aria-label="Loadout">
+        <div class="panel-bar"><span>Loadout</span><span class="grow"></span><span class="live blink">●</span></div>
+        <div class="stage stage--mini" data-stage>
+          <img class="stage-bg" src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;drums_michael_dobrinski_unsplash_01.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"><span class="stage-tint"></span>
+          <span class="stage-dither"></span>
+          <span class="stage-floor"></span>
+          <svg class="stage-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M72 13.5H65L58 17"/><path d="M22 52.5H25L28.5 57"/><path d="M77 41.5H72L63 40"/><path d="M22 80.5H28L35.5 87"/><path d="M74 77.5H68L61 56"/>
+          </svg>
+          <div class="rig" aria-hidden="true">
+            <i class="shadow" style="--d:0"></i>
+            <i class="p p-foot l" style="--d:0"></i><i class="p p-foot r" style="--d:0"></i>
+            <i class="p p-leg l" style="--d:1"></i><i class="p p-leg r" style="--d:1"></i>
+            <i class="p p-body" style="--d:2"></i>
+            <i class="p p-arm l" style="--d:3"></i><i class="p p-arm r" style="--d:3"></i>
+            <i class="p p-hand l" style="--d:4"></i><i class="p p-hand r" style="--d:4"></i>
+            <i class="p p-neck" style="--d:4"></i>
+            <i class="p p-head" style="--d:5"><b class="eye"></b><b class="eye"></b></i>
+          </div>
+          <div class="eq eq-head" data-slot="head" style="--d:0"><span class="eq-ico"><svg viewBox="-1 -1 10 10"><path d="M2 0h4v1H2zM1 1h6v1H1zM0 2h8v1H0zM0 3h2v2H0zM6 3h2v2H6zM0 5h1v1H0zM7 5h1v1H7z"/></svg></span><span class="eq-item"></span><span class="eq-lb" data-t="head">Hoofd</span></div>
+          <div class="eq eq-hands" data-slot="hands" style="--d:1"><span class="eq-ico"><svg viewBox="-1 -1 10 10"><path d="M1 0h1v2H1zM3 0h1v2H3zM5 0h1v2H5zM1 2h6v1H1zM1 3h7v1H1zM1 4h6v1H1zM2 5h4v2H2z"/></svg></span><span class="eq-item"></span><span class="eq-lb" data-t="hands">Handen</span></div>
+          <div class="eq eq-body" data-slot="body" style="--d:2"><span class="eq-ico"><svg viewBox="-1 -1 10 10"><path d="M0 0h2v1H0zM6 0h2v1H6zM0 1h3v1H0zM5 1h3v1H5zM0 2h8v1H0zM1 3h6v4H1z"/></svg></span><span class="eq-item"></span><span class="eq-lb" data-t="body">Lijf</span></div>
+          <div class="eq eq-feet" data-slot="feet" style="--d:3"><span class="eq-ico"><svg viewBox="-1 -1 10 10"><path d="M1 0h3v4H1zM1 4h5v1H1zM1 5h7v2H1z"/></svg></span><span class="eq-item"></span><span class="eq-lb" data-t="feet">Voeten</span></div>
+          <div class="eq eq-bag" data-slot="bag" style="--d:4"><span class="eq-ico"><svg viewBox="-1 -1 10 10"><path fill-rule="evenodd" d="M2 0h4v1H2zM2 1h1v1H2zM5 1h1v1H5zM0 2h8v5H0zM3 3h2v1H3z"/></svg></span><span class="eq-item"></span><span class="eq-count" data-bag-count>0</span><span class="eq-lb" data-t="bag">Tas</span></div>
+          <span class="scan" aria-hidden="true"></span>
+        </div>
+        <div class="panel-foot">
+          <div class="plate">
+            <span class="lv">LV<b data-lv>1</b></span>
+            <span class="plate-txt"><span class="plate-name">Terpstra Muziek Drumland</span><span class="xp"><i data-xp></i></span></span>
+          </div>
+        </div>
+        <div class="inspect" data-inspect aria-live="polite"></div>
+        <p class="keys-help"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd><span data-t="select">kiezen</span><kbd>Enter</kbd><span data-t="equip">Uitrusten</span></p>
+      </aside>
+
+      <div class="panel">
+        <div class="panel-bar"><span>Bag 01</span><span class="grow"></span><span>4688 producten</span></div>
+        <ul class="inv inv-cat" data-inv>
+          <li class="item"><div class="slot" tabindex="0" role="button" aria-label="Ahead AR1622 hoes voor 22&quot; x 16&quot; bassdrum" data-name="Ahead AR1622 hoes voor 22&quot; x 16&quot; bassdrum" data-price="€ 148,00" data-old="" data-tag="" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-ar1622-hoes-voor-22-x-16-bass-drum" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189_807008.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189_807008.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-ar1622-hoes-voor-22-x-16-bass-drum"><span class="cap-n">Ahead AR1622 hoes voor 22&quot; x 16&quot; bassdrum</span><span class="cap-p">€ 148,00</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning" data-name="Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning" data-price="€ 329,00" data-old="" data-tag="" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189%20spgbbr3_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189%20spgbbr3_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning"><span class="cap-n">Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning</span><span class="cap-p">€ 329,00</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Ahead SPG-R-3 Spinal G drumkruk rood" data-name="Ahead SPG-R-3 Spinal G drumkruk rood" data-price="€ 249,00" data-old="" data-tag="" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-spg-r-3-spinal-g-drumkruk-rood" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189_spgr3.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189_spgr3.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-spg-r-3-spinal-g-drumkruk-rood"><span class="cap-n">Ahead SPG-R-3 Spinal G drumkruk rood</span><span class="cap-p">€ 249,00</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Aquarian AQCC16 Classic Clear drumvel 16&quot;" data-name="Aquarian AQCC16 Classic Clear drumvel 16&quot;" data-price="€ 22,90" data-old="" data-tag="" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqcc16-classic-clear-drumvel-16" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqcc16.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqcc16.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqcc16-classic-clear-drumvel-16"><span class="cap-n">Aquarian AQCC16 Classic Clear drumvel 16&quot;</span><span class="cap-p">€ 22,90</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Aquarian AQFB20 Full Force I bassdrumvel 20&quot;" data-name="Aquarian AQFB20 Full Force I bassdrumvel 20&quot;" data-price="€ 51,90" data-old="" data-tag="" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqfb20-full-force-i-bassdrumvel-20" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqfb20.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqfb20.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqfb20-full-force-i-bassdrumvel-20"><span class="cap-n">Aquarian AQFB20 Full Force I bassdrumvel 20&quot;</span><span class="cap-p">€ 51,90</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Aquarian AQFOR10 Force Ten drumvel 10&quot;" data-name="Aquarian AQFOR10 Force Ten drumvel 10&quot;" data-price="€ 30,50" data-old="" data-tag="" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqfor10-force-ten-drumvel-10" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqfor10.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqfor10.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqfor10-force-ten-drumvel-10"><span class="cap-n">Aquarian AQFOR10 Force Ten drumvel 10&quot;</span><span class="cap-p">€ 30,50</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Aquarian AQREF14 Reflector Black drumvel 14&quot;" data-name="Aquarian AQREF14 Reflector Black drumvel 14&quot;" data-price="€ 38,90" data-old="" data-tag="" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqref14-reflector-black-drumvel-14" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqref14.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqref14.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqref14-reflector-black-drumvel-14"><span class="cap-n">Aquarian AQREF14 Reflector Black drumvel 14&quot;</span><span class="cap-p">€ 38,90</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22&quot;" data-name="Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22&quot;" data-price="€ 56,50" data-old="" data-tag="" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqtcfb22-texture-coated-full-force-i-bassdrumvel-22" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233%20aqtcfb22_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233%20aqtcfb22_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqtcfb22-texture-coated-full-force-i-bassdrumvel-22"><span class="cap-n">Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22&quot;</span><span class="cap-p">€ 56,50</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="ASBA snaredrum 14x6&quot; Blueberry &#x2F; Agathe The Blue Rive Gauche" data-name="ASBA snaredrum 14x6&quot; Blueberry &#x2F; Agathe The Blue Rive Gauche" data-price="€ 735,00" data-old="" data-tag="Actie" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;asba-snaredrum-14x6-blueberry-&#x2F;-agathe-the-blue-rive-gauche" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7359_rg1406atb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7359_rg1406atb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">Actie</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;asba-snaredrum-14x6-blueberry-&#x2F;-agathe-the-blue-rive-gauche"><span class="cap-n">ASBA snaredrum 14x6&quot; Blueberry &#x2F; Agathe The Blue Rive Gauche</span><span class="cap-p">€ 735,00</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Big Fat Snare Drum 14&quot; Snare Bourine" data-name="Big Fat Snare Drum 14&quot; Snare Bourine" data-price="€ 42,90" data-old="" data-tag="" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;big-fat-snare-drum-14-snare-bourine" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;bigfat_14bfsdsb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;bigfat_14bfsdsb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;big-fat-snare-drum-14-snare-bourine"><span class="cap-n">Big Fat Snare Drum 14&quot; Snare Bourine</span><span class="cap-p">€ 42,90</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Big Fat Snare Drum 14&quot; Steve&#39;s Donut" data-name="Big Fat Snare Drum 14&quot; Steve&#39;s Donut" data-price="€ 36,00" data-old="" data-tag="" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;big-fat-snare-drum-big-fat-snare-drum-14-steve-s-donut" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;1250_bfsd14don.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;1250_bfsd14don.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;big-fat-snare-drum-big-fat-snare-drum-14-steve-s-donut"><span class="cap-n">Big Fat Snare Drum 14&quot; Steve&#39;s Donut</span><span class="cap-p">€ 36,00</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Bone snaredrum aluminium 14&quot;x6,5&quot; Nickel Black Hardware" data-name="Bone snaredrum aluminium 14&quot;x6,5&quot; Nickel Black Hardware" data-price="€ 799,00" data-old="€ 816,75" data-tag="Actie" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bone-snaredrum-aluminium-14-x6-5-nickel-black-hardware" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7528_sdua1465nb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7528_sdua1465nb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">Actie</span><span class="slot-sale">%</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bone-snaredrum-aluminium-14-x6-5-nickel-black-hardware"><span class="cap-n">Bone snaredrum aluminium 14&quot;x6,5&quot; Nickel Black Hardware</span><span class="cap-p">€ 799,00 <s>€ 816,75</s></span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Bone snaredrum Carbcutter 14&quot;x5,5&quot; Charcoal Smoke" data-name="Bone snaredrum Carbcutter 14&quot;x5,5&quot; Charcoal Smoke" data-price="€ 975,00" data-old="€ 1.149,00" data-tag="Actie" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bone-snaredrum-carbcutter-14-x5-5-charcoal-smoke-chrome-hw" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7528_sdcbc1455csc.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7528_sdcbc1455csc.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">Actie</span><span class="slot-sale">%</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bone-snaredrum-carbcutter-14-x5-5-charcoal-smoke-chrome-hw"><span class="cap-n">Bone snaredrum Carbcutter 14&quot;x5,5&quot; Charcoal Smoke</span><span class="cap-p">€ 975,00 <s>€ 1.149,00</s></span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="DS Drum DSX Stage Kit Titanium Sparkle" data-name="DS Drum DSX Stage Kit Titanium Sparkle" data-price="€ 499,00" data-old="€ 699,00" data-tag="OP &#x3D; OP" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ds-drum-dsx2251tsk-dsx-stage-kit-titanium-sparkle" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;2763_44671.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;2763_44671.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">OP &#x3D; OP</span><span class="slot-sale">%</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ds-drum-dsx2251tsk-dsx-stage-kit-titanium-sparkle"><span class="cap-n">DS Drum DSX Stage Kit Titanium Sparkle</span><span class="cap-p">€ 499,00 <s>€ 699,00</s></span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Lite Stix Rock drumsticks U.S. Hickory" data-name="Lite Stix Rock drumsticks U.S. Hickory" data-price="€ 79,00" data-old="€ 109,00" data-tag="Actie" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;lite-stix-rock-drumsticks-u-s-hickory" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7166_rock.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7166_rock.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">Actie</span><span class="slot-sale">%</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;lite-stix-rock-drumsticks-u-s-hickory"><span class="cap-n">Lite Stix Rock drumsticks U.S. Hickory</span><span class="cap-p">€ 79,00 <s>€ 109,00</s></span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Occasion Dixon snaredrum Artisan hout 14x5,5&quot;" data-name="Occasion Dixon snaredrum Artisan hout 14x5,5&quot;" data-price="€ 375,00" data-old="" data-tag="Occasion" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;dixon-occasion-snaredrum-artisan-hout-14x5-5" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20slag4753_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20slag4753_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">Occasion</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;dixon-occasion-snaredrum-artisan-hout-14x5-5"><span class="cap-n">Occasion Dixon snaredrum Artisan hout 14x5,5&quot;</span><span class="cap-p">€ 375,00</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Occasion Istanbul Agop Vezir ride 21&quot;" data-name="Occasion Istanbul Agop Vezir ride 21&quot;" data-price="€ 365,00" data-old="" data-tag="Occasion" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;istanbul-agop-occasion-vezir-ride-21" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20b0959_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20b0959_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">Occasion</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;istanbul-agop-occasion-vezir-ride-21"><span class="cap-n">Occasion Istanbul Agop Vezir ride 21&quot;</span><span class="cap-p">€ 365,00</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Occasion Bach Omega trombone met kwartventiel 2105" data-name="Occasion Bach Omega trombone met kwartventiel 2105" data-price="€ 650,00" data-old="" data-tag="Occasion" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bach-occasion-omega-trombone-met-kwartventiel-2105" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20b0959_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20b0959_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">Occasion</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bach-occasion-omega-trombone-met-kwartventiel-2105"><span class="cap-n">Occasion Bach Omega trombone met kwartventiel 2105</span><span class="cap-p">€ 650,00</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="DW DWCP5500D hihatstand 3-benig" data-name="DW DWCP5500D hihatstand 3-benig" data-price="€ 419,00" data-old="" data-tag="Actie" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;dw-dwcp5500d-hihat-stand-3-benig" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8216_dwcp5500d.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8216_dwcp5500d.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">Actie</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;dw-dwcp5500d-hihat-stand-3-benig"><span class="cap-n">DW DWCP5500D hihatstand 3-benig</span><span class="cap-p">€ 419,00</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="K&amp;M KM19790 iPad-houder met microfoonstandbevestiging" data-name="K&amp;M KM19790 iPad-houder met microfoonstandbevestiging" data-price="€ 51,90" data-old="" data-tag="Actie" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;k-m-km19790-ipad-houder-met-microfoonstand-bevestiging" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;1865_1979031655.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;1865_1979031655.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">Actie</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;k-m-km19790-ipad-houder-met-microfoonstand-bevestiging"><span class="cap-n">K&amp;M KM19790 iPad-houder met microfoonstandbevestiging</span><span class="cap-p">€ 51,90</span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="BG S41SH Classic harnas vrouw, zwart" data-name="BG S41SH Classic harnas vrouw, zwart" data-price="€ 35,03" data-old="€ 46,70" data-tag="Actie" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bg-s41sh-classic-harnas-vrouw-kunstst-snaphaak-zwart" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;4470_6010404.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;4470_6010404.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">Actie</span><span class="slot-sale">%</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bg-s41sh-classic-harnas-vrouw-kunstst-snaphaak-zwart"><span class="cap-n">BG S41SH Classic harnas vrouw, zwart</span><span class="cap-p">€ 35,03 <s>€ 46,70</s></span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Gewa 1&#x2F;8 viool Allegro speelklaar incl. vormkoffer" data-name="Gewa 1&#x2F;8 viool Allegro speelklaar incl. vormkoffer" data-price="€ 199,00" data-old="€ 447,00" data-tag="OP &#x3D; OP" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;gewa-1&#x2F;8-viool-allegro-speelklaar-incl-vormkoffer" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;0216_gs4000552111.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;0216_gs4000552111.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">OP &#x3D; OP</span><span class="slot-sale">%</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;gewa-1&#x2F;8-viool-allegro-speelklaar-incl-vormkoffer"><span class="cap-n">Gewa 1&#x2F;8 viool Allegro speelklaar incl. vormkoffer</span><span class="cap-p">€ 199,00 <s>€ 447,00</s></span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Stagg kinderhoorn Bb Franse gigbag" data-name="Stagg kinderhoorn Bb Franse gigbag" data-price="€ 565,00" data-old="€ 929,00" data-tag="OP &#x3D; OP" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;stagg-kinderhoorn-bb-franse-gigbag" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;4100_77fhbjsc.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;4100_77fhbjsc.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">OP &#x3D; OP</span><span class="slot-sale">%</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;stagg-kinderhoorn-bb-franse-gigbag"><span class="cap-n">Stagg kinderhoorn Bb Franse gigbag</span><span class="cap-p">€ 565,00 <s>€ 929,00</s></span></a></li><li class="item"><div class="slot" tabindex="0" role="button" aria-label="Ritter RDP2-S&#x2F;BRD stick bag Black-Red Performance" data-name="Ritter RDP2-S&#x2F;BRD stick bag Black-Red Performance" data-price="€ 8,40" data-old="€ 12,00" data-tag="OP &#x3D; OP" data-href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ritter-rdp2-s&#x2F;brd-stick-bag-black-red-performance" data-img="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3488_rdp2sbrd.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white"><span class="slot-art"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3488_rdp2sbrd.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="" loading="lazy" draggable="false"></span><span class="slot-tag">OP &#x3D; OP</span><span class="slot-sale">%</span><span class="slot-pips" aria-hidden="true"></span><span class="slot-type" aria-hidden="true"></span></div><a class="cap" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ritter-rdp2-s&#x2F;brd-stick-bag-black-red-performance"><span class="cap-n">Ritter RDP2-S&#x2F;BRD stick bag Black-Red Performance</span><span class="cap-p">€ 8,40 <s>€ 12,00</s></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="map" id="map">
+  <div class="wrap map-grid">
+    <div class="map-brand">
+      <p class="kicker">Map</p>
+      <h2 class="h2">Terpstra Muziek Drumland</h2>
+      <p>Speciaalzaak in blaas- en slaginstrumenten</p>
+    </div>
+    <div>
+      <h3 data-t="contact">Contact</h3>
+      <ul class="pins">
+        <li><svg viewBox="-1 -1 10 10" aria-hidden="true"><path fill-rule="evenodd" d="M2 0h4v1H2zM1 1h6v4H1zM2 5h4v1H2zM3 6h2v1H3zM3 2h2v2H3z"/></svg><span>Lijnden (Amsterdam &#x2F; A9)</span></li>
+        
+        
+      </ul>
+    </div>
+    <div>
+      <h3>Links</h3>
+      <ul class="flinks"><li><a href="#">Drumstel huren</a></li><li><a href="#">Blaasinstrument huren</a></li><li><a href="#">Reparatie</a></li><li><a href="#">Openingstijden</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+    <div class="minimap" aria-hidden="true"></div>
+  </div>
+  <div class="wrap map-base">
+    <span>© 2026 Terpstra Muziek Drumland</span>
+    <span class="keys"><kbd>Q</kbd><kbd>E</kbd> tabs · <kbd>B</kbd> <span data-t="bag">Tas</span> · <kbd>M</kbd> map · <kbd>Enter</kbd> <span data-t="equip">Uitrusten</span></span>
+  </div>
+</footer>
+
+<div class="scrim" data-bag-close></div>
+<aside class="drawer" id="bag" aria-hidden="true" aria-labelledby="bag-title" tabindex="-1">
+  <div class="drawer-head"><h2 id="bag-title" data-t="bag">Tas</h2><span class="bag-count" data-bag-count>0</span><button class="x" type="button" data-bag-close data-tl="close" aria-label="Sluiten">×</button></div>
+  <p class="drawer-empty" data-t="empty">Je tas is nog leeg. Sleep gear hierheen of druk Enter op een item.</p>
+  <ul class="drawer-list" data-bag-list></ul>
+  <div class="drawer-foot">
+    <span class="tot" data-t="total">Totaal</span><span class="tot-v" data-bag-total>€ 0,00</span>
+    <button class="btn btn-ghost btn-sm" type="button" data-bag-clear data-t="clear">Tas legen</button>
+    <a class="btn btn-sm" href="template.html" data-t="cont">Verder shoppen</a>
+  </div>
+</aside>
+<div class="dock" aria-hidden="true">
+  <div class="eq" data-slot="head"><span class="eq-ico"><svg viewBox="-1 -1 10 10"><path d="M2 0h4v1H2zM1 1h6v1H1zM0 2h8v1H0zM0 3h2v2H0zM6 3h2v2H6zM0 5h1v1H0zM7 5h1v1H7z"/></svg></span><span class="eq-item"></span><span class="eq-lb" data-t="head">Hoofd</span></div>
+  <div class="eq" data-slot="hands"><span class="eq-ico"><svg viewBox="-1 -1 10 10"><path d="M1 0h1v2H1zM3 0h1v2H3zM5 0h1v2H5zM1 2h6v1H1zM1 3h7v1H1zM1 4h6v1H1zM2 5h4v2H2z"/></svg></span><span class="eq-item"></span><span class="eq-lb" data-t="hands">Handen</span></div>
+  <div class="eq" data-slot="body"><span class="eq-ico"><svg viewBox="-1 -1 10 10"><path d="M0 0h2v1H0zM6 0h2v1H6zM0 1h3v1H0zM5 1h3v1H5zM0 2h8v1H0zM1 3h6v4H1z"/></svg></span><span class="eq-item"></span><span class="eq-lb" data-t="body">Lijf</span></div>
+  <div class="eq" data-slot="feet"><span class="eq-ico"><svg viewBox="-1 -1 10 10"><path d="M1 0h3v4H1zM1 4h5v1H1zM1 5h7v2H1z"/></svg></span><span class="eq-item"></span><span class="eq-lb" data-t="feet">Voeten</span></div>
+  <div class="eq eq-bag" data-slot="bag"><span class="eq-ico"><svg viewBox="-1 -1 10 10"><path fill-rule="evenodd" d="M2 0h4v1H2zM2 1h1v1H2zM5 1h1v1H5zM0 2h8v5H0zM3 3h2v1H3z"/></svg></span><span class="eq-item"></span><span class="eq-lb" data-t="bag">Tas</span></div>
+</div>
+<div class="tip" id="tip" role="tooltip" aria-hidden="true"></div>
+<div class="gridfx" aria-hidden="true"></div>
+<div class="toast" role="status" aria-live="polite"></div>
+<div class="badge">Demo redesign · Inventory Screen</div>
+
+<script>
+(function(){
+'use strict';
+var d=document,H=d.documentElement;H.classList.add('js');
+var RM=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
+var L=(H.getAttribute('lang')||'en').slice(0,2).toLowerCase();
+var DICT={
+ nl:{bag:'Tas',head:'Hoofd',hands:'Handen',body:'Lijf',feet:'Voeten',equip:'Uitrusten',details:'Bekijk',weight:'Gewicht',dur:'Duurzaamheid',price:'Prijs',total:'Totaal',clear:'Tas legen',cont:'Verder shoppen',empty:'Je tas is nog leeg. Sleep gear hierheen of druk Enter op een item.',added:'Toegevoegd aan je tas',wrong:'Dit past niet in dat slot',viewAll:'Bekijk alles',zones:'Kies je zone',dragHint:'Sleep loot naar je held',drag:'of sleep',remove:'Verwijderen',close:'Sluiten',common:'Gewoon',rare:'Zeldzaam',epic:'Episch',legendary:'Legendarisch',select:'kiezen',noItems:'Deze kist is nog leeg.',start:'Druk op start',contact:'Contact',
+  fl:['Wie dit draagt, verliest nooit de moed.','Gesmeed voor de lange quest.','Zelfs de eindbaas kijkt even op.','Licht in de tas, zwaar in de strijd.','Een stille metgezel voor elke missie.','Ooit gevonden in een verborgen kist.','+1 zelfvertrouwen. Minstens.','Verhoogt je kans op een goede dag.','Legendes beginnen met de juiste uitrusting.','Getest in tien dungeons en één maandagochtend.']},
+ en:{bag:'Bag',head:'Head',hands:'Hands',body:'Body',feet:'Feet',equip:'Equip',details:'View',weight:'Weight',dur:'Durability',price:'Price',total:'Total',clear:'Empty bag',cont:'Keep shopping',empty:'Your bag is empty. Drag gear here or press Enter on an item.',added:'Added to your bag',wrong:'That does not fit this slot',viewAll:'View all',zones:'Choose your zone',dragHint:'Drag loot onto your hero',drag:'or drag',remove:'Remove',close:'Close',common:'Common',rare:'Rare',epic:'Epic',legendary:'Legendary',select:'select',noItems:'This chest is still empty.',start:'Press start',contact:'Contact',
+  fl:['Whoever wears this never loses heart.','Forged for the long quest.','Even the final boss looks twice.','Light in the bag, heavy in battle.','A quiet companion on every mission.','Once found in a hidden chest.','+1 confidence. At least.','Raises your odds of a good day.','Legends start with the right gear.','Tested in ten dungeons and one Monday morning.']},
+ de:{bag:'Tasche',head:'Kopf',hands:'Hände',body:'Körper',feet:'Füße',equip:'Ausrüsten',details:'Ansehen',weight:'Gewicht',dur:'Haltbarkeit',price:'Preis',total:'Summe',clear:'Leeren',cont:'Weiter shoppen',empty:'Deine Tasche ist leer. Zieh Ausrüstung hierher oder drück Enter.',added:'In deine Tasche gelegt',wrong:'Das passt nicht in diesen Slot',viewAll:'Alles ansehen',zones:'Wähle deine Zone',dragHint:'Zieh Beute auf deinen Helden',drag:'oder ziehen',remove:'Entfernen',close:'Schließen',common:'Gewöhnlich',rare:'Selten',epic:'Episch',legendary:'Legendär',select:'wählen',noItems:'Diese Truhe ist noch leer.',start:'Drück Start',contact:'Kontakt',
+  fl:['Wer das trägt, verliert nie den Mut.','Geschmiedet für die lange Quest.','Selbst der Endboss schaut zweimal hin.','Leicht in der Tasche, schwer im Kampf.','Ein stiller Begleiter auf jeder Mission.','Einst in einer versteckten Truhe gefunden.']}
+};
+var T=DICT[L]||DICT.en;
+function $$(s,r){return [].slice.call((r||d).querySelectorAll(s));}
+$$('[data-t]').forEach(function(el){var v=T[el.getAttribute('data-t')];if(typeof v==='string')el.textContent=v;});
+$$('[data-tl]').forEach(function(el){var v=T[el.getAttribute('data-tl')];if(v)el.setAttribute('aria-label',v);});
+
+var ICON={head:'M2 0h4v1H2zM1 1h6v1H1zM0 2h8v1H0zM0 3h2v2H0zM6 3h2v2H6zM0 5h1v1H0zM7 5h1v1H7z',hands:'M1 0h1v2H1zM3 0h1v2H3zM5 0h1v2H5zM1 2h6v1H1zM1 3h7v1H1zM1 4h6v1H1zM2 5h4v2H2z',body:'M0 0h2v1H0zM6 0h2v1H6zM0 1h3v1H0zM5 1h3v1H5zM0 2h8v1H0zM1 3h6v4H1z',feet:'M1 0h3v4H1zM1 4h5v1H1zM1 5h7v2H1z',bag:'M2 0h4v1H2zM2 1h1v1H2zM5 1h1v1H5zM0 2h8v5H0zM3 3h2v1H3z'};
+function svg(t){return '<svg viewBox="-1 -1 10 10" aria-hidden="true"><path fill-rule="evenodd" d="'+(ICON[t]||ICON.bag)+'"/></svg>';}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function num(s){if(!s)return 0;s=String(s).replace(/[^\d,.]/g,'');if(/,\d{1,2}$/.test(s))s=s.replace(/\./g,'').replace(',','.');else s=s.replace(/,/g,'');var n=parseFloat(s);return isNaN(n)?0:n;}
+function hash(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+
+/* storage */
+var scope=(d.body.getAttribute('data-brand')||'shop').toLowerCase().replace(/\W+/g,'-');
+var KB='invscr:'+scope+':bag',KE='invscr:'+scope+':equip';
+function load(k,f){try{var v=JSON.parse(localStorage.getItem(k));return v==null?f:v;}catch(e){return f;}}
+function save(){try{localStorage.setItem(KB,JSON.stringify(bag));localStorage.setItem(KE,JSON.stringify(equip));}catch(e){}}
+var bag=load(KB,[]),equip=load(KE,{});
+if(!Array.isArray(bag))bag=[];if(typeof equip!=='object'||!equip)equip={};
+
+/* item meta */
+var slots=$$('.slot[data-name]');
+var sorted=slots.map(function(s){return num(s.getAttribute('data-price'));}).filter(function(n){return n>0;}).sort(function(a,b){return a-b;});
+var maxP=sorted.length?sorted[sorted.length-1]:0;
+var RX=[['hands',/handschoen|glove|mitt|wrap|bandage|\bpads?\b|striking|grip|wapen|weapon|stok|zwaard|sword|racket|knuppel|bat\b|tool|gereedschap|mes\b|knife|ring\b|horloge|watch/i],
+ ['feet',/schoen|shoe|boot|laars|sok|sock|sneaker|voet|feet|foot|scheen|shin|kick|calf|kuit|enkel|ankle|slipper/i],
+ ['head',/helm|hoofd|head|\bcap\b|\bpet\b|muts|\bhat\b|hoed|bril|goggle|mask|bitje|gebitsbesch|mouth|oor|ear/i],
+ ['body',/shirt|\bpak\b|pakken|\bgi\b|kimono|jas\b|jack|broek|pant|short|hoodie|trui|vest|kleding|\btee\b|jurk|dress|\brok\b|beschermer|protect|guard|top\b|legging|band\b|belt|riem|tank/i]];
+var TYPES=['head','hands','body','feet'];
+function typeOf(n,h){for(var i=0;i<RX.length;i++){if(RX[i][1].test(n))return RX[i][0];}return TYPES[h%4];}
+function tierOf(p,h){
+  if(!p||sorted.length<3)return ['common','common','rare','rare','epic','legendary'][h%6];
+  var below=0;for(var i=0;i<sorted.length;i++){if(sorted[i]<p)below++;}
+  var q=below/(sorted.length-1);return q>=.9?'legendary':q>=.62?'epic':q>=.3?'rare':'common';
+}
+function meta(s){
+  if(s._m)return s._m;
+  var n=s.getAttribute('data-name')||'',h=hash(n),p=num(s.getAttribute('data-price'));
+  var m={n:n,p:s.getAttribute('data-price')||'',o:s.getAttribute('data-old')||'',tag:s.getAttribute('data-tag')||'',i:s.getAttribute('data-img')||'',href:s.getAttribute('data-href')||'#',
+    t:typeOf(n,h),r:tierOf(p,h),w:14+h%80,du:30+(h>>>7)%70,pv:maxP&&p?Math.max(6,Math.round(p/maxP*100)):0,fl:T.fl[(h>>>3)%T.fl.length]};
+  s._m=m;return m;
+}
+slots.forEach(function(s,i){
+  var m=meta(s),li=s.closest('.item');if(li){li.setAttribute('data-r',m.r);li.style.setProperty('--d',Math.min(i,24));}
+  s.setAttribute('data-type',m.t);
+  var ty=s.querySelector('.slot-type');if(ty)ty.innerHTML=svg(m.t);
+  s.setAttribute('aria-label',m.n+(m.p?', '+m.p:'')+' · '+T[m.r]+' · '+T[m.t]);
+});
+
+/* tooltip stat card */
+var tip=d.getElementById('tip'),tipFor=null,tipMode='',pinned=false;
+function row(l,v,txt,k){return '<div class="tr tr-'+k+'"><span class="tr-l">'+l+'</span><b class="tr-v">'+txt+'</b><span class="bar"><i style="--v:'+v+'%"></i></span></div>';}
+function tipHTML(m,pin){
+  var h='<div class="tip-top"><span class="tip-r">'+T[m.r]+'</span><span class="tip-t">'+svg(m.t)+T[m.t]+'</span></div>'+
+    '<p class="tip-n">'+esc(m.n)+'</p>'+(m.tag?'<span class="tip-tag">'+esc(m.tag)+'</span>':'')+
+    '<div class="tip-stats">'+row(T.weight,m.w,m.w,'w')+row(T.dur,m.du,m.du+'/100','d')+(m.p?row(T.price,m.pv||50,esc(m.p)+(m.o?' <s>'+esc(m.o)+'</s>':''),'p'):'')+'</div>'+
+    '<p class="tip-fl">“'+esc(m.fl)+'”</p>';
+  if(pin){h+='<div class="tip-act"><button class="btn btn-sm" type="button" data-tip-equip>▶ '+T.equip+'</button>'+(m.href&&m.href!=='#'?'<a class="btn btn-sm btn-ghost" href="'+esc(m.href)+'">'+T.details+'</a>':'')+'</div>';}
+  else h+='<p class="tip-k"><kbd>Enter</kbd>'+T.equip+' '+T.drag+'</p>';
+  return h;
+}
+function clampXY(x,y,r){var pad=10;x=Math.max(pad,Math.min(x,innerWidth-pad-r.width));y=Math.max(pad,Math.min(y,innerHeight-pad-r.height));tip.style.transform='translate('+Math.round(x)+'px,'+Math.round(y)+'px)';}
+function placeAt(x,y){var r=tip.getBoundingClientRect(),nx=x+20,ny=y+20;if(nx+r.width>innerWidth-10)nx=x-20-r.width;if(ny+r.height>innerHeight-10)ny=y-20-r.height;clampXY(nx,ny,r);}
+function placeBy(el){var b=el.getBoundingClientRect(),r=tip.getBoundingClientRect(),nx=b.right+14,ny=b.top;
+  if(nx+r.width>innerWidth-10){nx=b.left-14-r.width;}
+  if(nx<10){nx=b.left+b.width/2-r.width/2;ny=b.bottom+14;if(ny+r.height>innerHeight-10)ny=b.top-14-r.height;}
+  clampXY(nx,ny,r);}
+function showTip(s,mode,x,y){var m=meta(s);tipFor=s;tipMode=mode;pinned=mode==='pin';tip.innerHTML=tipHTML(m,pinned);tip.style.setProperty('--tier','var(--t-'+m.r+')');tip.classList.toggle('pinned',pinned);tip.classList.add('on');tip.setAttribute('aria-hidden','false');if(mode==='mouse')placeAt(x,y);else placeBy(s);}
+function hideTip(){tip.classList.remove('on','pinned');tip.setAttribute('aria-hidden','true');tipFor=null;pinned=false;tipMode='';}
+tip.addEventListener('click',function(e){if(e.target.closest('[data-tip-equip]')&&tipFor){var s=tipFor;hideTip();equipFrom(s);}});
+d.addEventListener('pointerdown',function(e){if(pinned&&!e.target.closest('.tip')&&!e.target.closest('.slot'))hideTip();});
+addEventListener('scroll',function(){if(tipFor&&tipMode!=='mouse')placeBy(tipFor);},{passive:true});
+
+/* selection cursor + roving focus */
+var invs=$$('[data-inv]');
+function vis(inv){return $$('.slot[data-name]',inv).filter(function(s){return s.getClientRects().length>0;});}
+function placeCursor(inv){var s=inv._sel,c=inv._cur;if(!s||!c)return;var a=inv.getBoundingClientRect(),b=s.getBoundingClientRect();c.style.width=b.width+'px';c.style.height=b.height+'px';c.style.transform='translate('+(b.left-a.left)+'px,'+(b.top-a.top)+'px)';}
+function select(s){var inv=s.closest('[data-inv]');if(!inv)return;
+  $$('.slot[data-name]',inv).forEach(function(x){x.tabIndex=x===s?0:-1;});
+  if(!inv._cur){var c=d.createElement('li');c.className='cursor';c.setAttribute('aria-hidden','true');inv.appendChild(c);inv._cur=c;}
+  inv._sel=s;placeCursor(inv);inv._cur.classList.add('on');inspect(s);}
+/* inspect: always-on stat card for the selected item */
+var insp=d.querySelector('[data-inspect]');
+function inspect(s){if(!insp||!s)return;var m=meta(s);insp.style.setProperty('--tier','var(--t-'+m.r+')');
+  insp.innerHTML='<span class="inspect-art">'+(m.i?'<img src="'+esc(m.i)+'" alt="">':svg(m.t))+'</span><div class="inspect-body">'+tipHTML(m,false)+'</div>';}
+(function(){var main=invs[invs.length-1];if(!main)return;var l=vis(main),best=null,bp=-1;l.forEach(function(s){var p=num(s.getAttribute('data-price'));if(p>bp){bp=p;best=s;}});if(best)inspect(best);})();
+invs.forEach(function(inv){
+  var list=$$('.slot[data-name]',inv);list.forEach(function(s,i){s.tabIndex=i===0?0:-1;});
+  inv.addEventListener('keydown',function(e){
+    var l=vis(inv),i=l.indexOf(d.activeElement);if(i<0)return;
+    var top=l[0].getBoundingClientRect().top,cols=0;for(var k=0;k<l.length;k++){if(Math.abs(l[k].getBoundingClientRect().top-top)<3)cols++;else break;}
+    var n=i;
+    switch(e.key){case 'ArrowRight':n=i+1;break;case 'ArrowLeft':n=i-1;break;case 'ArrowDown':n=i+cols;break;case 'ArrowUp':n=i-cols;break;case 'Home':n=0;break;case 'End':n=l.length-1;break;
+      case 'Enter':case ' ':e.preventDefault();hideTip();equipFrom(l[i]);return;default:return;}
+    e.preventDefault();n=Math.max(0,Math.min(l.length-1,n));l[n].focus();
+  });
+  inv.addEventListener('pointerleave',function(){if(inv._cur&&!inv.contains(d.activeElement))inv._cur.classList.remove('on');});
+});
+addEventListener('resize',function(){invs.forEach(placeCursor);if(tipFor&&tipMode!=='mouse')placeBy(tipFor);});
+
+/* drag to equip */
+var drag=null,suppress=false,lastType='mouse';
+function targets(){return $$('[data-slot]');}
+function accepts(t,type){var k=t.getAttribute('data-slot');return k==='bag'||k===type;}
+function makeGhost(m){var g=d.createElement('div');g.className='ghost';g.style.setProperty('--tier','var(--t-'+m.r+')');g.innerHTML=m.i?'<img src="'+esc(m.i)+'" alt="">':svg(m.t);d.body.appendChild(g);return g;}
+var gridfx=d.querySelector('.gridfx');
+function dockCheck(){var seen=$$('.stage .eq').some(function(el){var r=el.getBoundingClientRect();return r.width>0&&r.bottom>90&&r.top<innerHeight-20;});H.classList.toggle('dock-on',!seen);}
+function startDrag(st,x,y){
+  st.active=true;st.s.classList.remove('charging');hideTip();st.g=makeGhost(st.m);H.classList.add('dragging');
+  targets().forEach(function(t){t.classList.add(accepts(t,st.m.t)?'ok':'no');});
+  dockCheck();st.s.classList.add('lifted');moveGhost(st,x,y);
+  if(st.touch&&navigator.vibrate){try{navigator.vibrate(12);}catch(e){}}
+}
+function moveGhost(st,x,y){
+  var gx=Math.round((x-36)/8)*8,gy=Math.round((y-36)/8)*8;st.gx=gx;st.gy=gy;
+  st.g.style.transform='translate('+gx+'px,'+gy+'px)';
+  if(gridfx){gridfx.style.setProperty('--gx',x+'px');gridfx.style.setProperty('--gy',y+'px');}
+  var el=d.elementFromPoint(x,y),t=el&&el.closest?el.closest('[data-slot]'):null;
+  if(t!==st.t){if(st.t)st.t.classList.remove('hover');st.t=t;if(t)t.classList.add('hover');}
+}
+function endState(keepDock){H.classList.remove('dragging');targets().forEach(function(t){t.classList.remove('ok','no','hover');});
+  if(keepDock)setTimeout(function(){H.classList.remove('dock-on');},650);else H.classList.remove('dock-on');}
+function unlisten(){d.removeEventListener('pointermove',onMove);d.removeEventListener('pointerup',onUp);d.removeEventListener('pointercancel',onCancel);}
+function onDown(e){
+  if(e.button!==0||drag)return;lastType=e.pointerType;
+  var s=e.currentTarget,st={s:s,m:meta(s),x0:e.clientX,y0:e.clientY,lx:e.clientX,ly:e.clientY,id:e.pointerId,touch:e.pointerType!=='mouse',active:false};
+  drag=st;
+  if(st.touch){s.classList.add('charging');st.timer=setTimeout(function(){if(drag===st)startDrag(st,st.lx,st.ly);},260);}
+  d.addEventListener('pointermove',onMove);d.addEventListener('pointerup',onUp);d.addEventListener('pointercancel',onCancel);
+}
+function onMove(e){
+  var st=drag;if(!st||e.pointerId!==st.id)return;st.lx=e.clientX;st.ly=e.clientY;
+  if(!st.active){var dist=Math.abs(e.clientX-st.x0)+Math.abs(e.clientY-st.y0);
+    if(st.touch){if(dist>10){clearTimeout(st.timer);st.s.classList.remove('charging');drag=null;unlisten();}return;}
+    if(dist<6)return;startDrag(st,e.clientX,e.clientY);}
+  moveGhost(st,e.clientX,e.clientY);
+}
+function onCancel(e){var st=drag;if(!st||e.pointerId!==st.id)return;clearTimeout(st.timer);st.s.classList.remove('charging','lifted');if(st.g)st.g.remove();drag=null;unlisten();endState();}
+function onUp(e){
+  var st=drag;if(!st||e.pointerId!==st.id)return;clearTimeout(st.timer);st.s.classList.remove('charging');drag=null;unlisten();
+  if(!st.active)return;
+  suppress=true;setTimeout(function(){suppress=false;},80);
+  st.s.classList.remove('lifted');
+  var t=st.t,g=st.g;
+  if(t&&accepts(t,st.m.t)){
+    var k=t.getAttribute('data-slot');endState(true);
+    flyTo(g,st.gx,st.gy,1,t,function(){commit(st.m,k==='bag'?null:k,t);});
+  }else{
+    if(t){t.classList.add('reject');setTimeout(function(){t.classList.remove('reject');},320);toast(T.wrong,true);}
+    endState();var r=st.s.getBoundingClientRect();flyTo(g,st.gx,st.gy,1,st.s,function(){},r.width/72);
+  }
+}
+d.addEventListener('touchmove',function(e){if(drag&&drag.active)e.preventDefault();},{passive:false});
+function flyTo(g,x0,y0,s0,toEl,done,s1){
+  var r=toEl.getBoundingClientRect(),x1=r.left+r.width/2-36,y1=r.top+r.height/2-36;
+  if(s1==null)s1=Math.max(.3,Math.min(r.width,r.height)/72*.86);
+  if(RM.matches||!g.animate){g.remove();done();return;}
+  var dist=Math.abs(x1-x0)+Math.abs(y1-y0),lift=Math.min(90,dist*.3);
+  var a=g.animate([{transform:'translate('+x0+'px,'+y0+'px) scale('+s0+')'},{transform:'translate('+((x0+x1)/2)+'px,'+(Math.min(y0,y1)-lift)+'px) scale('+((s0+s1)/2*1.1)+')',offset:.5},{transform:'translate('+x1+'px,'+y1+'px) scale('+s1+')'}],{duration:dist<40?160:380,easing:'cubic-bezier(.3,.6,.4,1)',fill:'forwards'});
+  a.onfinish=function(){g.remove();done();};
+}
+function pop(el){if(!el)return;el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');setTimeout(function(){el.classList.remove('pop');},300);}
+function commit(m,slot,target){
+  bag.push({n:m.n,p:m.p,i:m.i,r:m.r,t:m.t,h:m.href});
+  if(slot)equip[slot]={n:m.n,i:m.i,r:m.r,t:m.t};
+  save();render();
+  pop(target);
+  if(!target||!target.classList.contains('tab-bag'))pop(d.querySelector('.tab-bag'));
+  $$('.eq[data-slot="'+(slot||'bag')+'"]').forEach(function(el){if(el!==target&&el.getClientRects().length)pop(el);});
+  toast(T.added+': '+m.n);
+}
+function equipFrom(s){
+  var m=meta(s),cands=$$('.eq[data-slot="'+m.t+'"]').filter(function(el){if(el.closest('.dock'))return false;var r=el.getBoundingClientRect();return r.width>0&&r.bottom>80&&r.top<innerHeight;});
+  var t=cands[0]||d.querySelector('.tab-bag')||s;
+  var r=s.getBoundingClientRect(),g=makeGhost(m),x0=r.left+r.width/2-36,y0=r.top+r.height/2-36,s0=r.width/72;
+  g.style.transform='translate('+x0+'px,'+y0+'px) scale('+s0+')';
+  pop(s);
+  flyTo(g,x0,y0,s0,t,function(){commit(m,m.t,t);});
+}
+slots.forEach(function(s){
+  s.addEventListener('pointerdown',onDown);
+  s.addEventListener('dragstart',function(e){e.preventDefault();});
+  s.addEventListener('contextmenu',function(e){e.preventDefault();if(lastType==='mouse'&&!drag){hideTip();equipFrom(s);}});
+  s.addEventListener('pointerenter',function(e){lastType=e.pointerType;if(e.pointerType!=='mouse'||drag||pinned)return;select(s);showTip(s,'mouse',e.clientX,e.clientY);});
+  s.addEventListener('pointermove',function(e){if(e.pointerType==='mouse'&&tipFor===s&&tipMode==='mouse')placeAt(e.clientX,e.clientY);});
+  s.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse'&&tipFor===s&&tipMode==='mouse')hideTip();});
+  s.addEventListener('focus',function(){select(s);var fv=true;try{fv=s.matches(':focus-visible');}catch(e){}if(fv&&!pinned)showTip(s,'key');});
+  s.addEventListener('blur',function(){if(tipFor===s&&tipMode==='key')hideTip();});
+  s.addEventListener('click',function(){if(suppress)return;select(s);if(pinned&&tipFor===s){hideTip();return;}showTip(s,'pin');});
+  s.addEventListener('dblclick',function(){if(suppress)return;hideTip();equipFrom(s);});
+});
+
+/* bag rendering */
+var fmt;try{fmt=new Intl.NumberFormat(L==='nl'?'nl-NL':L==='de'?'de-DE':'en-IE',{style:'currency',currency:'EUR'});}catch(e){fmt={format:function(n){return '€ '+n.toFixed(2);}};}
+function render(){
+  var n=bag.length;
+  $$('[data-bag-count]').forEach(function(el){el.textContent=n;});
+  H.classList.toggle('has-bag',n>0);
+  $$('.eq[data-slot]').forEach(function(el){
+    var k=el.getAttribute('data-slot'),it=k==='bag'?bag[n-1]:equip[k],box=el.querySelector('.eq-item');if(!box)return;
+    if(it){el.classList.add('filled');el.style.setProperty('--tier','var(--t-'+(it.r||'common')+')');var key=(it.i||'')+'|'+it.n;if(box._k!==key){box.innerHTML=it.i?'<img src="'+esc(it.i)+'" alt="">':svg(it.t||k);box._k=key;}el.setAttribute('title',it.n);}
+    else{el.classList.remove('filled');el.style.removeProperty('--tier');box.innerHTML='';box._k='';el.removeAttribute('title');}
+  });
+  var eqN=0;TYPES.forEach(function(k){if(equip[k])eqN++;$$('[data-stage]').forEach(function(st){if(equip[k])st.setAttribute('data-'+k,'');else st.removeAttribute('data-'+k);});});
+  $$('[data-lv]').forEach(function(el){el.textContent=1+n;});
+  $$('[data-xp]').forEach(function(el){el.style.width=Math.max(6,eqN*25)+'%';});
+  var list=d.querySelector('[data-bag-list]');
+  if(list){list.innerHTML=bag.map(function(it,i){return '<li class="bag-row" style="--tier:var(--t-'+esc(it.r||'common')+')"><span class="bag-thumb">'+(it.i?'<img src="'+esc(it.i)+'" alt="">':svg(it.t))+'</span><span class="bag-n"><span>'+esc(it.n)+'</span><small>'+(T[it.r]||'')+'<b>'+esc(it.p||'')+'</b></small></span><button class="x bag-x" type="button" data-rm="'+i+'" aria-label="'+T.remove+'">×</button></li>';}).join('');}
+  var sum=bag.reduce(function(a,it){return a+num(it.p);},0);
+  $$('[data-bag-total]').forEach(function(el){el.textContent=fmt.format(sum);});
+}
+d.addEventListener('click',function(e){
+  var rm=e.target.closest('[data-rm]');
+  if(rm){bag.splice(+rm.getAttribute('data-rm'),1);TYPES.forEach(function(k){if(equip[k]&&!bag.some(function(b){return b.n===equip[k].n;}))delete equip[k];});save();render();return;}
+  if(e.target.closest('[data-bag-clear]')){bag=[];equip={};save();render();return;}
+  if(e.target.closest('[data-bag-open]')){if(!suppress)toggleBag();return;}
+  if(e.target.closest('[data-bag-close]')){closeBag();return;}
+  var cy=e.target.closest('[data-cycle]');if(cy){cycle(+cy.getAttribute('data-cycle'));}
+});
+var drawer=d.getElementById('bag'),lastFocus=null;
+function openBag(){if(!drawer)return;lastFocus=d.activeElement;hideTip();H.classList.add('bag-open');drawer.setAttribute('aria-hidden','false');setTimeout(function(){drawer.focus();},30);}
+function closeBag(){if(!drawer||!H.classList.contains('bag-open'))return;H.classList.remove('bag-open');drawer.setAttribute('aria-hidden','true');if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+function toggleBag(){H.classList.contains('bag-open')?closeBag():openBag();}
+
+/* toast */
+var toastEl=d.querySelector('.toast'),tt;
+function toast(msg,bad){if(!toastEl)return;toastEl.innerHTML='<b>'+(bad?'!':'+1')+'</b><span>'+esc(msg)+'</span>';toastEl.classList.toggle('bad',!!bad);toastEl.classList.remove('on');void toastEl.offsetWidth;toastEl.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('on');},2300);}
+
+/* tabs: Q / E / B / M */
+var tabs=$$('.hud .tab');
+var file=(location.pathname.split('/').pop()||'template.html');
+for(var ti=0;ti<tabs.length;ti++){if(tabs[ti].tagName==='A'&&tabs[ti].getAttribute('href')===file){tabs[ti].classList.add('is-active');break;}}
+function cycle(dir){if(!tabs.length)return;var i=tabs.indexOf(d.activeElement),n=i<0?(dir>0?0:tabs.length-1):(i+dir+tabs.length)%tabs.length;
+  tabs.forEach(function(t){t.classList.remove('is-hot');});tabs[n].classList.add('is-hot');tabs[n].focus();try{tabs[n].scrollIntoView({block:'nearest',inline:'nearest'});}catch(e){}}
+tabs.forEach(function(t){t.addEventListener('blur',function(){t.classList.remove('is-hot');});});
+d.addEventListener('keydown',function(e){
+  if(e.defaultPrevented||e.ctrlKey||e.metaKey||e.altKey)return;
+  var tg=e.target;if(tg&&(/^(INPUT|TEXTAREA|SELECT)$/.test(tg.tagName)||tg.isContentEditable))return;
+  var k=(e.key||'').toLowerCase();
+  if(k==='escape'){hideTip();closeBag();return;}
+  if(k==='q'||k==='e'){e.preventDefault();cycle(k==='q'?-1:1);return;}
+  if(k==='b'){toggleBag();return;}
+  if(k==='m'){var mp=d.getElementById('map');if(mp)mp.scrollIntoView({behavior:RM.matches?'auto':'smooth'});return;}
+  if(k==='enter'&&(tg===d.body||tg===H)){var c=d.querySelector('[data-start]');if(c)c.click();}
+});
+
+/* filters (visual only) */
+$$('.chip').forEach(function(c){c.addEventListener('click',function(){$$('.chip').forEach(function(x){x.classList.remove('on');x.setAttribute('aria-pressed','false');});c.classList.add('on');c.setAttribute('aria-pressed','true');});});
+
+/* reveal + counters */
+function countUp(el){var m=/^(\D*)(\d+)(\D*)$/.exec(el.textContent.trim());if(!m||RM.matches)return;var v=+m[2];if(m[2].length===4&&!m[1]&&!m[3]&&v>1800&&v<2100)return;
+  var f=0,frames=14,id=setInterval(function(){f++;el.textContent=m[1]+Math.round(v*f/frames)+m[3];if(f>=frames){clearInterval(id);el.textContent=m[0];}},45);}
+var rv=$$('[data-rv]');
+if('IntersectionObserver' in window&&!RM.matches){
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var el=en.target;el.classList.add('in');io.unobserve(el);var c=el.querySelector('[data-count]');if(c)countUp(c);}});},{rootMargin:'0px 0px -8% 0px'});
+  rv.forEach(function(el){io.observe(el);});H.classList.add('rv-on');
+  setTimeout(function(){rv.forEach(function(el){if(!el.classList.contains('in')){el.classList.add('in');io.unobserve(el);}});},1800);
+}else rv.forEach(function(el){el.classList.add('in');});
+
+render();
+})();
+</script>
+</body>
+</html>
