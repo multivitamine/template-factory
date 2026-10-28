@@ -1,0 +1,9 @@
+{
+  "id": "score-sheet",
+  "name": "Score Sheet",
+  "scheme": "light",
+  "sectors": ["culture", "food", "lifestyle", "horeca"],
+  "mood": ["calm", "literate", "musical", "warm ivory"],
+  "needsProductImages": true,
+  "notes": "Ink-on-ivory score; --c-primary only lights the Play button, playhead, fermata marks and active notes; --c-accent tints expression marks (tags) and sale strikes, both ink-mixed for contrast."
+}

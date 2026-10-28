@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Terpstra Muziek Drumland · Speciaalzaak in blaas- en slaginstrumenten</title>
+<meta name="description" content="Van akoestische drumkits tot Roland V-Drums, van klarinet tot trompet: ontdek het grootste assortiment in Noord-Holland, met deskundig advies in onze showroom in Lijnden.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Petrona:ital,wght@0,300;0,700;0,900;1,300;1,700;1,900&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --c-bg:#f4eee1;
+  --c-surface:#fbf8f0;
+  --c-text:#1e1a15;
+  --c-muted:#6f665a;
+  --c-line:#d9cfbc;
+  --c-primary:#b3342b;
+  --c-on-primary:#ffffff;
+  --c-accent:#2f4b63;
+  --pi:color-mix(in srgb,var(--c-primary) 74%,var(--c-text));
+  --ai:color-mix(in srgb,var(--c-accent) 66%,var(--c-text));
+  --staff:color-mix(in srgb,var(--c-text) 40%,var(--c-bg));
+  --faint:color-mix(in srgb,var(--c-text) 7%,var(--c-bg));
+  --f-d:'Petrona',Georgia,'Times New Roman',serif;
+  --f-b:'Inter Tight','Helvetica Neue',Helvetica,sans-serif;
+  --ease:cubic-bezier(.22,.8,.16,1);
+  --gut:clamp(20px,4vw,56px);
+  --max:1320px;
+  --r:3px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 15.5px/1.6 var(--f-b);overflow-x:clip;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;counter-reset:mvt}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4,p,figure,blockquote{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--pi);outline-offset:3px}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
+.sheet{background-image:repeating-linear-gradient(to bottom,transparent 0 40px,var(--faint) 40px 41px,transparent 41px 48px,var(--faint) 48px 49px,transparent 49px 56px,var(--faint) 56px 57px,transparent 57px 64px,var(--faint) 64px 65px,transparent 65px 72px,var(--faint) 72px 73px,transparent 73px 120px);background-size:calc(100% - 2 * var(--gut)) 120px;background-position:center top;background-repeat:repeat-y}
+.solid{background:var(--c-bg)}
+
+/* ---------- header ---------- */
+.hd{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--c-bg) 90%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--c-text)}
+.hd::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:var(--c-line)}
+.hd-in{display:flex;align-items:center;gap:20px 32px;min-height:74px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;max-width:min(300px,60vw)}
+.brand img{max-height:42px;width:auto;max-width:190px;object-fit:contain}
+.brand.light img{filter:brightness(0)}
+.brand-name{font:900 clamp(1.1rem,1.6vw,1.35rem)/1.05 var(--f-d);letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:2px 20px;margin-left:auto;counter-reset:reh}
+.nav a{counter-increment:reh;display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:14px;font-weight:500;padding:8px 0;white-space:nowrap}
+.nav a::before{content:counter(reh,upper-alpha);display:grid;place-items:center;width:21px;height:21px;border:1.3px solid var(--c-text);font:700 12px/1 var(--f-d);transition:background .3s var(--ease),color .3s var(--ease)}
+.nav a span{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .45s var(--ease)}
+.nav a:hover::before,.nav a[aria-current]::before{background:var(--c-text);color:var(--c-bg)}
+.nav a:hover span{background-size:100% 1px}
+
+/* ---------- shared type ---------- */
+.tempo{font:italic 300 clamp(1.05rem,1.5vw,1.3rem)/1.2 var(--f-d);color:var(--c-muted)}
+.tempo b{font-weight:700;color:var(--c-text)}
+.mm{font:italic 300 1em var(--f-d);white-space:nowrap}
+.eyebrow{font:600 11.5px/1.3 var(--f-b);letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted)}
+
+/* ---------- buttons ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 26px;border-radius:999px;border:1.5px solid var(--c-text);font:600 14.5px/1.1 var(--f-b);letter-spacing:.005em;text-decoration:none;cursor:pointer;transition:background .35s var(--ease),color .35s var(--ease),transform .35s var(--ease)}
+.btn svg.arr{width:16px;height:16px;transition:transform .45s var(--ease)}
+.btn:hover svg.arr{transform:translateX(4px)}
+.btn-ink{background:var(--c-text);color:var(--c-bg)}
+.btn-ink:hover{background:color-mix(in srgb,var(--c-text) 86%,var(--c-primary))}
+.btn-ghost{background:transparent;color:var(--c-text)}
+.btn-ghost:hover{background:var(--c-text);color:var(--c-bg)}
+.ferm{position:absolute;left:50%;bottom:calc(100% + 5px);width:36px;height:18px;margin-left:-18px;color:var(--pi);overflow:visible;transition:transform .55s var(--ease)}
+.ferm path{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round}
+.btn:hover .ferm{transform:translateY(-4px) scaleX(1.12)}
+.play{display:inline-flex;align-items:center;gap:11px;height:48px;padding:0 22px 0 8px;border-radius:999px;border:0;background:var(--c-primary);color:var(--c-on-primary);font:600 14px/1 var(--f-b);cursor:pointer;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c-text) 18%,transparent);transition:transform .35s var(--ease),box-shadow .35s}
+.play:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c-text) 18%,transparent),0 10px 22px -12px var(--pi)}
+.pi{position:relative;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--c-on-primary);color:var(--c-primary);flex-shrink:0}
+.pi svg{width:12px;height:12px}
+.pi .i-pause{display:none}
+.is-playing .pi .i-play{display:none}
+.is-playing .pi .i-pause{display:block}
+.is-playing .pi::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1.5px solid var(--c-on-primary);opacity:.6;animation:pulse 1.3s var(--ease) infinite}
+@keyframes pulse{from{transform:scale(.85);opacity:.7}to{transform:scale(1.35);opacity:0}}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(28px,4.5vw,60px) clamp(36px,5vw,72px)}
+.sheet > .mvt:first-child{padding-top:clamp(56px,7vw,96px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.5fr);grid-template-areas:"meta meta" "sys plate" "foot plate";column-gap:clamp(32px,5vw,84px)}
+.score-meta{grid-area:meta;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 26px;padding-bottom:14px;border-bottom:1px solid var(--c-line);margin-bottom:clamp(36px,6vw,80px)}
+.score-meta .opus{margin-left:auto;font:italic 300 1.05rem/1 var(--f-d);color:var(--c-muted)}
+.system{grid-area:sys;display:flex;align-items:stretch;min-width:0;--clefw:clamp(92px,12vw,196px)}
+.brace{flex:0 0 clamp(12px,1.3vw,20px);margin-right:6px;position:relative}
+.brace svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.brace path{fill:none;stroke:var(--c-text);stroke-width:2.4;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.sys-body{position:relative;flex:1;min-width:0;border-left:2px solid var(--c-text)}
+.clef{position:absolute;left:0;top:0;bottom:0;width:var(--clefw);display:flex;align-items:center;justify-content:center;pointer-events:none}
+.clef span{font:italic 900 calc(var(--clefw) * .62)/.8 var(--f-d);letter-spacing:-.07em;padding-right:.08em;color:var(--c-text);text-shadow:0 0 0 var(--c-bg)}
+.clef i{position:absolute;right:4px;top:50%;width:7px;height:30px;margin-top:-22px;background:radial-gradient(circle at 50% 4px,var(--c-text) 3px,transparent 3.6px),radial-gradient(circle at 50% 26px,var(--c-text) 3px,transparent 3.6px)}
+.staffed{--lh:1.14em;font:900 clamp(2.25rem,5.9vw,6.1rem)/var(--lh) var(--f-d);letter-spacing:-.03em;padding-left:calc(var(--clefw) + 10px);background-image:linear-gradient(to bottom,transparent 0 .36em,var(--staff) .36em calc(.36em + 1px),transparent calc(.36em + 1px) .485em,var(--staff) .485em calc(.485em + 1px),transparent calc(.485em + 1px) .61em,var(--staff) .61em calc(.61em + 1px),transparent calc(.61em + 1px) .735em,var(--staff) .735em calc(.735em + 1px),transparent calc(.735em + 1px) .86em,var(--staff) .86em calc(.86em + 1px),transparent calc(.86em + 1px));background-size:100% var(--lh);background-repeat:repeat-y;overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
+.staffed > span{display:block}
+.staffed .t2{font-style:italic;font-weight:300;letter-spacing:-.02em}
+.ph-intro{position:absolute;top:-10px;bottom:-10px;left:0;width:2px;margin-left:-1px;background:var(--pi);opacity:0;pointer-events:none;box-shadow:0 0 0 5px color-mix(in srgb,var(--c-primary) 14%,transparent)}
+.hero-foot{grid-area:foot;display:grid;gap:34px;margin-top:clamp(34px,4.5vw,56px);padding-left:calc(clamp(12px,1.3vw,20px) + 8px);max-width:720px}
+.lede{font-size:clamp(1rem,1.25vw,1.12rem);line-height:1.62;color:color-mix(in srgb,var(--c-text) 82%,var(--c-bg));max-width:54ch}
+.ctas{display:flex;flex-wrap:wrap;align-items:center;gap:26px 14px;padding-top:12px}
+.hero-play{display:inline-flex;align-items:center;gap:11px;text-decoration:none;font:600 14px/1.1 var(--f-b);margin-left:8px}
+.hero-play .pi{width:44px;height:44px;background:var(--c-primary);color:var(--c-on-primary);box-shadow:0 0 0 5px var(--c-bg),0 0 0 6px color-mix(in srgb,var(--c-primary) 45%,transparent);transition:transform .4s var(--ease)}
+.hero-play .pi svg{width:14px;height:14px;margin-left:2px}
+.hero-play small{display:block;font:italic 300 13px/1.2 var(--f-d);color:var(--c-muted)}
+.hero-play:hover .pi{transform:scale(1.1)}
+.plate{grid-area:plate;align-self:start;position:relative;margin-top:6px;isolation:isolate}
+.plate::before{content:"";position:absolute;inset:18px -14px -14px 18px;background:repeating-linear-gradient(to bottom,var(--staff) 0 1px,transparent 1px 10px);opacity:.35;z-index:-1}
+.plate-frame{position:relative;aspect-ratio:4/5;padding:10px;background:var(--c-surface);border:1px solid var(--c-text);box-shadow:0 30px 50px -36px rgba(30,26,21,.5)}
+.plate-frame img{width:100%;height:100%;object-fit:cover}
+.plate-fb{width:100%;height:100%;display:grid;place-items:center;background:repeating-linear-gradient(to bottom,transparent 0 22px,var(--staff) 22px 23px,transparent 23px 34px) center/100% 100%,color-mix(in srgb,var(--c-primary) 8%,var(--c-surface))}
+.plate-fb span{font:italic 900 clamp(4rem,9vw,8rem)/1 var(--f-d);letter-spacing:-.06em;background:var(--c-surface);padding:0 .12em}
+.plate figcaption{display:flex;gap:12px;align-items:baseline;margin-top:14px;font:italic 300 1rem/1.35 var(--f-d);color:var(--c-muted)}
+.plate figcaption b{font:700 12px/1 var(--f-d);font-style:normal;border:1.2px solid var(--c-text);color:var(--c-text);padding:4px 6px;flex-shrink:0;letter-spacing:.04em}
+
+/* ---------- movements ---------- */
+.mvt{counter-increment:mvt;padding-block:clamp(72px,10vw,136px);position:relative}
+.mvt-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:20px 40px;padding-bottom:22px;margin-bottom:clamp(36px,5vw,60px);position:relative}
+.mvt-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--c-text);transform-origin:left;transition:transform 1.2s var(--ease)}
+.mvt-kicker{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;margin-bottom:12px}
+.mvt-kicker .no{font:700 clamp(1.05rem,1.5vw,1.3rem)/1 var(--f-d);color:var(--c-text);font-style:normal}
+.mvt-kicker .no::before{content:counter(mvt,upper-roman) "."}
+.mvt-title{font:900 clamp(2.1rem,5vw,4.3rem)/1.02 var(--f-d);letter-spacing:-.025em;text-wrap:balance;overflow-wrap:break-word}
+.mvt-aux{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:14px 22px}
+.tutti{display:inline-flex;align-items:center;gap:8px;font:500 14px/1.2 var(--f-b);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--c-text)}
+.tutti i{font:italic 300 1.05rem/1 var(--f-d)}
+.tutti:hover svg{transform:translateX(4px)}
+.tutti svg{width:15px;height:15px;transition:transform .4s var(--ease)}
+
+/* USPs as measures */
+.measures{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));row-gap:48px;counter-reset:bar -3}
+.measure{counter-increment:bar 4;position:relative;padding:76px clamp(16px,2vw,30px) 6px;border-left:1px solid var(--staff)}
+.measure:last-child{border-right:1px solid var(--staff)}
+.measure:last-child::after{content:"";position:absolute;right:-6px;top:0;width:4px;height:49px;background:var(--c-text)}
+.measure::before{content:counter(bar);position:absolute;left:5px;top:-22px;font:italic 300 13px/1 var(--f-d);color:var(--c-muted)}
+.mstaff{position:absolute;left:0;right:0;top:0;height:49px;background:repeating-linear-gradient(to bottom,var(--staff) 0 1px,transparent 1px 12px)}
+.motif{position:absolute;top:-14px;left:clamp(16px,2vw,30px);width:92px;height:64px;overflow:visible;color:var(--c-text)}
+.measure:nth-child(2n) .motif{transform:scaleX(-1);left:auto;right:clamp(16px,2vw,30px)}
+.measure:nth-child(3n) .motif{transform:translateY(6px)}
+.measure h3{font:700 clamp(1.25rem,1.7vw,1.5rem)/1.15 var(--f-d);letter-spacing:-.01em;margin-bottom:10px;text-wrap:balance}
+.measure p{font-size:14.5px;line-height:1.6;color:var(--c-muted);max-width:36ch}
+
+/* ---------- score of products ---------- */
+.score-wrap{position:relative}
+.score{--cols:4;display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));row-gap:clamp(18px,3vw,40px)}
+.score.home .note:nth-child(n+9){display:none}
+.note{--p:4;position:relative;min-width:0;padding:0 clamp(8px,1.1vw,16px) 14px}
+.note:nth-child(8n+1){--p:2}.note:nth-child(8n+2){--p:5}.note:nth-child(8n+3){--p:8}.note:nth-child(8n+4){--p:4}
+.note:nth-child(8n+5){--p:6}.note:nth-child(8n+6){--p:9}.note:nth-child(8n+7){--p:3}.note:nth-child(8n+8){--p:7}
+.note::before{content:"";position:absolute;left:0;right:0;top:40px;height:49px;background:repeating-linear-gradient(to bottom,var(--staff) 0 1px,transparent 1px 12px);pointer-events:none}
+.note::after{content:"";position:absolute;left:0;top:40px;width:1px;height:49px;background:var(--staff)}
+.endbar{display:none;position:absolute;right:0;top:40px;width:7px;height:49px;border-left:1px solid var(--c-text);border-right:4px solid var(--c-text)}
+.score.home .note:is(:nth-child(8),:last-child) .endbar,.score:not(.home) .note:last-child .endbar{display:block}
+.note.sys .clefmark{display:block}
+.clefmark{display:none;position:absolute;left:8px;top:32px;font:italic 900 34px/1 var(--f-d);letter-spacing:-.08em;color:var(--c-text);pointer-events:none}
+.note.sys::after{width:2px}
+.barno{display:none;position:absolute;left:4px;top:24px;font:italic 300 11px/1 var(--f-d);color:var(--c-muted)}
+.note.sys .barno{display:block}
+.expr{position:absolute;top:6px;left:clamp(8px,1.1vw,16px);max-width:calc(50% - 30px);font:italic 300 15px/1.1 var(--f-d);color:var(--ai);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.note.sys .expr{left:clamp(26px,3vw,40px)}
+.nsvg{position:absolute;top:0;left:50%;margin-left:-20px;width:40px;height:200px;overflow:visible;pointer-events:none;z-index:2}
+.nh{transform:translateY(calc(var(--p) * -6px));transition:transform .9s var(--ease)}
+.head{fill:var(--c-text);stroke:var(--pi);stroke-width:0;transition:fill .25s,stroke-width .25s}
+.note.hollow .head{fill:var(--c-bg);stroke:var(--c-text);stroke-width:1.8}
+.stem{stroke:var(--c-text);stroke-width:1.4;transition:stroke .25s}
+.ledger{stroke:var(--c-text);stroke-width:1.3}
+.ledger.lo{opacity:clamp(0,calc(-1 - var(--p)),1)}
+.ledger.hi{opacity:clamp(0,calc(var(--p) - 9),1)}
+.halo{fill:none;stroke:var(--pi);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center}
+.card{position:relative;display:block;margin-top:calc(172px - var(--p) * 6px);background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--r);text-decoration:none;transition:margin-top .9s var(--ease),transform .5s var(--ease),translate .9s var(--ease),box-shadow .5s var(--ease),border-color .3s}
+.pin{position:absolute;top:-4px;left:calc(50% - 10.3px);width:7px;height:7px;border-radius:50%;background:var(--c-text);transition:background .25s}
+.c-img{display:block;aspect-ratio:4/3;overflow:hidden;background:#fff;border-bottom:1px solid var(--c-line);border-radius:var(--r) var(--r) 0 0}
+.c-img img{width:100%;height:100%;object-fit:contain;padding:7% 9%;mix-blend-mode:multiply;transition:transform .9s var(--ease)}
+.card:hover .c-img img{transform:scale(1.045)}
+.c-fb{display:grid;place-items:center;width:100%;height:100%;background:repeating-linear-gradient(to bottom,transparent 0 30%,var(--staff) 30% calc(30% + 1px),transparent calc(30% + 1px) 40%,var(--staff) 40% calc(40% + 1px),transparent calc(40% + 1px) 50%,var(--staff) 50% calc(50% + 1px),transparent calc(50% + 1px) 60%,var(--staff) 60% calc(60% + 1px),transparent calc(60% + 1px) 70%,var(--staff) 70% calc(70% + 1px),transparent calc(70% + 1px)),var(--c-surface)}
+.c-fb svg{width:34%;height:auto;color:var(--c-text)}
+.c-body{display:block;padding:12px 13px 13px}
+.c-name{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13.5px;line-height:1.38;min-height:2.76em;font-weight:500}
+.c-foot{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 8px;margin-top:9px}
+.c-price{font:700 1.08rem/1.1 var(--f-d);letter-spacing:-.01em;transition:color .25s}
+.c-foot s{font-size:12px;color:var(--c-muted);text-decoration-color:var(--ai)}
+.dyn{margin-left:auto;font:italic 300 1.3rem/1 var(--f-d);letter-spacing:-.06em;color:var(--c-text)}
+.card:hover{transform:translateY(-4px);border-color:var(--c-text);box-shadow:0 18px 28px -22px rgba(30,26,21,.55)}
+.note:hover .head{fill:var(--pi)}
+.note.on .head{fill:var(--c-primary);stroke-width:1.4}
+.note.on .stem{stroke:var(--pi);stroke-width:2}
+.note.on .halo{animation:halo 1.1s var(--ease) both}
+@keyframes halo{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(2.4)}}
+.note.on .pin{background:var(--c-primary);box-shadow:0 0 0 1.5px var(--pi)}
+.note.on .card{transform:translateY(-9px);border-color:var(--pi);box-shadow:0 0 0 1px var(--pi),0 22px 34px -22px color-mix(in srgb,var(--c-primary) 70%,var(--c-text))}
+.note.on .c-price{color:var(--pi)}
+.playhead{position:absolute;left:0;top:0;width:2px;margin-left:-1px;height:0;background:var(--pi);opacity:0;pointer-events:none;z-index:6;will-change:transform;transition:opacity .45s}
+.playhead::before{content:"";position:absolute;top:-2px;left:50%;width:14px;height:12px;margin-left:-7px;background:var(--c-primary);clip-path:polygon(0 0,100% 0,50% 100%)}
+.playhead::after{content:"";position:absolute;top:0;bottom:0;right:1px;width:46px;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--c-primary) 14%,transparent))}
+.playing .playhead,.held .playhead{opacity:1}
+.held .playhead::before,.hover-hold .playhead::before{animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+.tacet{padding:60px 0;text-align:center;font:italic 300 clamp(2rem,4vw,3rem)/1 var(--f-d);color:var(--c-muted)}
+.transport{display:flex;align-items:center;gap:14px}
+.transport .mm{color:var(--c-muted);font-size:1.05rem}
+
+/* ---------- categories ---------- */
+.cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(28px,5vw,80px);counter-reset:vari;border-top:1px solid var(--c-text)}
+.cat{counter-increment:vari;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:20px;padding:18px 4px;border-bottom:1px solid var(--c-line);text-decoration:none;transition:background .4s var(--ease),padding .5s var(--ease)}
+.cat-th{position:relative;width:clamp(78px,8vw,104px);aspect-ratio:1.38;border-radius:50%;overflow:hidden;transform:rotate(-20deg);background:var(--c-text);flex-shrink:0;transition:transform .6s var(--ease)}
+.cat-th img{width:100%;height:100%;object-fit:cover;transform:rotate(20deg) scale(1.35);transition:transform .8s var(--ease)}
+.cat-fb{display:block;width:100%;height:100%;background:var(--c-text)}
+.cat-name small{display:block;font:italic 300 13px/1.2 var(--f-d);color:var(--c-muted);margin-bottom:3px}
+.cat-name small::before{content:"Var. " counter(vari)}
+.cat-name b{display:block;font:700 clamp(1.3rem,2.1vw,1.85rem)/1.12 var(--f-d);letter-spacing:-.015em;overflow-wrap:break-word}
+.cat svg{width:22px;height:22px;transition:transform .45s var(--ease)}
+.cat:hover{background:color-mix(in srgb,var(--c-primary) 6%,var(--c-bg));padding-inline:14px}
+.cat:hover .cat-th{transform:rotate(-8deg) scale(1.06)}
+.cat:hover .cat-th img{transform:rotate(8deg) scale(1.2)}
+.cat:hover svg{transform:translateX(5px)}
+
+/* ---------- story ---------- */
+.story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(36px,6vw,100px);align-items:center}
+.story.noimg{grid-template-columns:minmax(0,1fr)}
+.story.noimg .story-text{max-width:760px}
+.story .plate{margin:0}
+.story-text p{font-size:clamp(1rem,1.2vw,1.1rem);line-height:1.72;color:color-mix(in srgb,var(--c-text) 84%,var(--c-bg))}
+.story-text p::first-letter{float:left;font:900 4.4em/.8 var(--f-d);margin:.06em .1em 0 -.02em;color:var(--c-text)}
+.story-sign{display:flex;align-items:center;gap:14px;margin-top:30px;font:italic 300 1.05rem/1.2 var(--f-d);color:var(--c-muted)}
+.story-sign::before{content:"";width:46px;height:1px;background:var(--c-text)}
+
+/* stats */
+.stats-band{padding-block:clamp(48px,7vw,88px);border-block:1px solid var(--c-line);background:var(--c-surface)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:30px 0}
+.stat{padding:4px clamp(16px,2.5vw,36px);border-left:1px solid var(--staff)}
+.stat:last-child{border-right:1px solid var(--staff);box-shadow:4px 0 0 0 var(--c-text)}
+.stat b{display:block;font:900 clamp(2.4rem,4.8vw,4.2rem)/1 var(--f-d);letter-spacing:-.035em;overflow-wrap:break-word}
+.stat span{display:block;margin-top:10px;font-size:14px;line-height:1.45;color:var(--c-muted);max-width:28ch}
+.stat i{display:block;font:italic 300 14px/1 var(--f-d);color:var(--c-muted);margin-bottom:12px}
+
+/* quote */
+.quote{padding-block:clamp(72px,10vw,130px);text-align:center}
+.quote svg{width:min(520px,80%);height:40px;color:var(--c-text);margin:0 auto 22px;display:block}
+.quote blockquote p{font:italic 300 clamp(1.6rem,3.4vw,2.9rem)/1.22 var(--f-d);letter-spacing:-.015em;max-width:24ch;margin-inline:auto;text-wrap:balance}
+.quote cite{display:inline-block;margin-top:26px;font:600 12px/1 var(--f-b);font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted)}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
+.gal figure{position:relative;grid-column:span 4;height:clamp(200px,24vw,340px);overflow:hidden;background:var(--c-surface);border-radius:var(--r)}
+.gal figure:nth-child(6n+1),.gal figure:nth-child(6n+6){grid-column:span 5}
+.gal figure:nth-child(6n+2),.gal figure:nth-child(6n+5){grid-column:span 3}
+.gal figure:nth-child(n+9){display:none}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.gal figure:hover img{transform:scale(1.05)}
+.gal figure::after{content:"";position:absolute;inset:0;border:1px solid color-mix(in srgb,var(--c-text) 18%,transparent);border-radius:inherit;pointer-events:none}
+
+/* ---------- finale ---------- */
+.finale{counter-increment:mvt;background:var(--c-surface);border-top:1px solid var(--c-text);position:relative;overflow:hidden}
+.finale-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px clamp(40px,7vw,120px);align-items:end;padding-block:clamp(72px,10vw,140px)}
+.finale h2{font:900 clamp(2.5rem,6.6vw,6rem)/.98 var(--f-d);letter-spacing:-.035em;text-wrap:balance;margin-top:14px;overflow-wrap:break-word}
+.finale p.txt{margin-top:24px;font-size:clamp(1rem,1.2vw,1.1rem);color:var(--c-muted);max-width:52ch}
+.finale .ctas{margin-top:36px}
+.fine{display:flex;align-items:stretch;gap:14px;height:clamp(150px,18vw,240px)}
+.fine em{writing-mode:vertical-rl;transform:rotate(180deg);font:italic 300 1.3rem/1 var(--f-d);color:var(--c-muted);align-self:flex-end}
+.fine span{width:2px;background:var(--c-text)}
+.fine span + span{width:10px}
+.finale-staff{position:absolute;left:0;right:0;bottom:clamp(28px,4vw,48px);height:49px;background:repeating-linear-gradient(to bottom,var(--faint) 0 1px,transparent 1px 12px);pointer-events:none;filter:contrast(1.4)}
+
+/* ---------- footer ---------- */
+.ft{padding-block:clamp(56px,8vw,96px) 32px;border-top:4px double var(--c-text)}
+.ft-grid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:36px clamp(24px,4vw,56px)}
+.coda{width:46px;height:46px;color:var(--c-text);margin-bottom:18px}
+.ft-brand{font:900 clamp(1.5rem,2.4vw,2rem)/1.05 var(--f-d);letter-spacing:-.02em}
+.ft-tag{margin-top:10px;font:italic 300 1.08rem/1.4 var(--f-d);color:var(--c-muted);max-width:32ch}
+.ft h4{font:italic 300 1.08rem/1 var(--f-d);color:var(--c-muted);margin:6px 0 18px;padding-bottom:12px;border-bottom:1px solid var(--c-line)}
+.ft ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:14px}
+.ft ul a{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .4s var(--ease)}
+.ft ul a:hover{background-size:100% 1px}
+.ft-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;margin-top:clamp(48px,7vw,80px);padding-top:20px;border-top:1px solid var(--c-line);font-size:12.5px;color:var(--c-muted)}
+.ft-bottom a{font:italic 300 1rem/1 var(--f-d);color:var(--c-text);text-decoration:none}
+.ft-bottom a:hover{color:var(--pi)}
+
+/* ---------- rail + badge ---------- */
+.rail{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:30;display:none;flex-direction:column;align-items:flex-end;gap:4px;padding:10px 12px 10px 0;border-right:1px solid var(--c-line)}
+.rail a{position:relative;font:italic 300 13px/1 var(--f-d);color:var(--c-muted);text-decoration:none;padding:4px 0;transition:color .3s}
+.rail a.cur{color:var(--c-text);font-weight:700;font-style:normal}
+.rail a.cur::after{content:"";position:absolute;right:-13.5px;top:50%;width:2px;height:18px;margin-top:-9px;background:var(--c-primary)}
+@media (min-width:1440px){.js .rail{display:flex}}
+.badge{position:fixed;right:14px;bottom:14px;z-index:60;display:inline-flex;align-items:center;gap:8px;padding:8px 13px 8px 10px;border-radius:999px;background:color-mix(in srgb,var(--c-surface) 92%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--c-line);font:500 11px/1 var(--f-b);color:var(--c-muted);letter-spacing:.02em;max-width:calc(100vw - 28px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c-primary);flex-shrink:0}
+
+/* ---------- detail dialog ---------- */
+dialog.detail{border:0;padding:0;width:min(880px,calc(100% - 28px));max-height:calc(100dvh - 28px);background:var(--c-surface);color:var(--c-text);border-radius:4px;box-shadow:0 0 0 1px var(--c-text),0 40px 80px -30px rgba(30,26,21,.55);overflow:auto}
+dialog.detail::backdrop{background:color-mix(in srgb,var(--c-bg) 72%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+dialog.detail[open]{animation:dIn .55s var(--ease)}
+@keyframes dIn{from{opacity:0;transform:translateY(24px) scale(.98)}}
+.d-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+.d-img{aspect-ratio:1;background:#fff;overflow:hidden;border-right:1px solid var(--c-line)}
+.d-img img{width:100%;height:100%;object-fit:contain;padding:8%;mix-blend-mode:multiply}
+.d-img.fb{display:grid;place-items:center;background:var(--c-surface)}
+.d-img .c-fb{height:100%}
+.d-body{position:relative;display:flex;flex-direction:column;gap:16px;padding:clamp(26px,4vw,48px)}
+.d-meta{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;font:italic 300 1.05rem/1.2 var(--f-d);color:var(--c-muted);padding-right:40px}
+.d-tag{color:var(--ai)}
+.d-name{font:700 clamp(1.5rem,2.6vw,2.2rem)/1.12 var(--f-d);letter-spacing:-.015em;overflow-wrap:break-word}
+.d-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-block:14px;border-block:1px solid var(--c-line);margin-top:auto}
+.d-price b{font:900 clamp(1.7rem,3vw,2.4rem)/1 var(--f-d);letter-spacing:-.02em}
+.d-price s{color:var(--c-muted);font-size:14px}
+.d-price .dyn{font-size:1.8rem}
+.d-staff{height:49px;position:relative;background:repeating-linear-gradient(to bottom,var(--staff) 0 1px,transparent 1px 12px)}
+.d-staff svg{position:absolute;left:24px;top:0;width:40px;height:49px;overflow:visible}
+.d-go{align-self:flex-start;margin-top:22px}
+.d-x{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:1px solid var(--c-line);background:var(--c-surface);cursor:pointer;display:grid;place-items:center;z-index:2;transition:background .3s,color .3s}
+.d-x:hover{background:var(--c-text);color:var(--c-bg)}
+.d-x svg{width:14px;height:14px}
+
+/* ---------- reveal & intro motion ---------- */
+.rv-on .rv{opacity:0;transform:translateY(22px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv-on .rv.in{opacity:1;transform:none}
+.rv-on .mvt-head.rv::after{transform:scaleX(0)}
+.rv-on .mvt-head.rv.in::after{transform:none}
+.rv-on .score .note{transition:opacity .8s var(--ease) calc(var(--i,0) * 70ms)}
+.rv-on .score:not(.in) .note{opacity:0}
+.rv-on .score:not(.in) .card{translate:0 26px}
+.rv-on .score .card{transition-delay:0s,0s,calc(var(--i,0) * 70ms),0s,0s}
+@media (prefers-reduced-motion:no-preference){
+  .js .staffed{animation:staffIn 1.5s var(--ease) both}
+  .js .staffed > span{animation:ink 1.6s linear .6s both}
+  .js .ph-intro{animation:sweep 1.6s linear .6s both}
+  .js .clef{animation:clefIn 1.3s var(--ease) .15s both}
+  .js .brace path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s var(--ease) .1s forwards}
+  .js .hero .plate{animation:plateIn 1.3s var(--ease) 1s both}
+  .js .hero-foot{animation:up 1s var(--ease) 1.6s both}
+  .js .score-meta{animation:fade 1s var(--ease) both}
+}
+@keyframes staffIn{from{background-size:0% var(--lh)}}
+@keyframes ink{from{clip-path:inset(-25% 100% -25% -4%)}to{clip-path:inset(-25% -8% -25% -4%)}}
+@keyframes sweep{0%{left:0;opacity:0}6%{opacity:1}92%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes clefIn{from{opacity:0;transform:translateY(16px) scale(.92)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes plateIn{from{opacity:0;transform:translateY(30px) rotate(1.5deg)}}
+@keyframes up{from{opacity:0;transform:translateY(18px)}}
+@keyframes fade{from{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1180px){.score{--cols:3}}
+@media (max-width:980px){
+  .hd{position:relative}
+  .hd-in{flex-wrap:wrap;padding-block:14px 0;min-height:0}
+  .nav{order:3;width:100%;margin:0 calc(-1 * var(--gut));padding:4px var(--gut) 10px;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;width:calc(100% + 2 * var(--gut))}
+  .nav::-webkit-scrollbar{display:none}
+  .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"meta" "sys" "foot" "plate"}
+  .plate{margin-top:64px;max-width:520px;width:calc(100% - 18px)}
+  .story{grid-template-columns:minmax(0,1fr)}
+  .story .plate{max-width:520px}
+  .cats{grid-template-columns:minmax(0,1fr)}
+  .finale-in{grid-template-columns:minmax(0,1fr)}
+  .fine{display:none}
+  .ft-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ft-grid > :first-child{grid-column:1/-1}
+  .d-grid{grid-template-columns:minmax(0,1fr)}
+  .d-img{aspect-ratio:4/3;border-right:0;border-bottom:1px solid var(--c-line)}
+}
+@media (max-width:720px){
+  .score{--cols:2}
+  .mvt-head{grid-template-columns:minmax(0,1fr)}
+  .mvt-aux{justify-content:flex-start}
+  .system{--clefw:64px}
+  .clef{position:relative;height:80px;width:auto;justify-content:flex-start;padding-left:12px;top:auto;bottom:auto}
+  .clef span{font-size:68px}
+  .clef i{position:relative;right:auto;margin:-14px 0 0 6px}
+  .staffed{padding-left:12px}
+  .hero-foot{padding-left:0}
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .gal figure,.gal figure:nth-child(n){grid-column:span 1;height:auto;aspect-ratio:1}
+  .gal figure:nth-child(3n+1){grid-column:span 2;aspect-ratio:16/10}
+  .score-meta .opus{margin-left:0}
+}
+@media (max-width:520px){
+  .note{padding-inline:6px}
+  .c-body{padding:10px 10px 11px}
+  .c-name{font-size:12.5px}
+  .dyn{font-size:1.1rem}
+  .expr{font-size:13px;max-width:calc(50% - 22px)}
+  .clefmark{font-size:26px;left:5px}
+  .ft-grid{grid-template-columns:minmax(0,1fr)}
+  .btn{padding:0 20px}
+  .badge{font-size:10px}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#A80819;--c-on-primary:#ffffff;--c-accent:#333333}</style></head>
+<body data-brand="Terpstra Muziek Drumland">
+
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand light" href="template.html" aria-label="Terpstra Muziek Drumland">
+      
+      <span class="brand-name">Terpstra Muziek Drumland</span>
+    </a>
+    <nav class="nav" aria-label="Menu">
+      <a href="catalog.html"><span>Webshop</span></a><a href="#"><span>Occasions</span></a><a href="#"><span>Aanbiedingen</span></a><a href="#"><span>Reparatieatelier</span></a><a href="#"><span>Over ons</span></a><a href="#"><span>Contact</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Title page: grand staff -->
+  <section class="hero solid" id="top">
+    <div class="wrap hero-grid">
+      <div class="score-meta">
+        <span class="tempo"><b>Allegro con brio</b> <span class="mm">♩ = 92</span></span>
+        <span class="eyebrow">Drumland sinds 40+ jaar</span>
+        <span class="opus">Op. 2026</span>
+      </div>
+
+      <div class="system">
+        <span class="brace" aria-hidden="true"><svg viewBox="0 0 20 200" preserveAspectRatio="none"><path pathLength="1" d="M18 2 C4 12 15 72 3 100 C15 128 4 188 18 198"/></svg></span>
+        <div class="sys-body">
+          <div class="clef" aria-hidden="true"><span>TM</span><i></i></div>
+          <h1 class="staffed"><span class="t1">Alles voor de drummer</span> <span class="t2">en elke andere muzikant</span></h1>
+          <span class="ph-intro" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="hero-foot">
+        <p class="lede">Van akoestische drumkits tot Roland V-Drums, van klarinet tot trompet: ontdek het grootste assortiment in Noord-Holland, met deskundig advies in onze showroom in Lijnden.</p>
+        <div class="ctas">
+          <a class="btn btn-ink" href="catalog.html"><svg class="ferm" viewBox="0 0 36 18" aria-hidden="true"><path d="M2 17 A16 15 0 0 1 34 17"/><circle cx="18" cy="13" r="2.6" fill="currentColor"/></svg><span>Bekijk de drums</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+          <a class="btn btn-ghost" href="#coda">Reparatieatelier</a>
+          <a class="hero-play" href="#notes" data-play><span class="pi"><svg class="i-play" viewBox="0 0 12 12"><path d="M2.5 1.2v9.6L10.6 6z" fill="currentColor"/></svg></span><span>Play<small>♩ = 92 · con sordino</small></span></a>
+        </div>
+      </div>
+
+      <figure class="plate">
+        <div class="plate-frame">
+          <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;drums_michael_dobrinski_unsplash_01.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Alles voor de drummer" fetchpriority="high">
+          
+        </div>
+        <figcaption><b>Tav. I</b><span>Speciaalzaak in blaas- en slaginstrumenten</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="sheet">
+
+  <section class="mvt" id="allegro" data-rail>
+    <div class="wrap">
+      <header class="mvt-head rv">
+        <div>
+          <p class="mvt-kicker"><span class="no"></span><span class="tempo"><b>Allegro</b> moderato <span class="mm">♩ = 112</span></span></p>
+          <h2 class="mvt-title">Terpstra Muziek Drumland</h2>
+        </div>
+      </header>
+      <div class="measures rv">
+        <article class="measure">
+          <span class="mstaff" aria-hidden="true"></span>
+          <svg class="motif" viewBox="0 -14 92 64" aria-hidden="true"><g fill="currentColor"><ellipse cx="14" cy="30" rx="6.4" ry="4.6" transform="rotate(-22 14 30)"/><ellipse cx="44" cy="18" rx="6.4" ry="4.6" transform="rotate(-22 44 18)"/><ellipse cx="74" cy="24" rx="6.4" ry="4.6" transform="rotate(-22 74 24)"/><path d="M19 -10H80.6V-5H19Z"/></g><path d="M19.7 -7V29M49.7 -7V17M79.7 -7V23" stroke="currentColor" stroke-width="1.4"/></svg>
+          <h3>Morgen in huis</h3>
+          <p>Voor 13:00 uur besteld, morgen bij je thuis (*zie voorwaarden).</p>
+        </article>
+        <article class="measure">
+          <span class="mstaff" aria-hidden="true"></span>
+          <svg class="motif" viewBox="0 -14 92 64" aria-hidden="true"><g fill="currentColor"><ellipse cx="14" cy="30" rx="6.4" ry="4.6" transform="rotate(-22 14 30)"/><ellipse cx="44" cy="18" rx="6.4" ry="4.6" transform="rotate(-22 44 18)"/><ellipse cx="74" cy="24" rx="6.4" ry="4.6" transform="rotate(-22 74 24)"/><path d="M19 -10H80.6V-5H19Z"/></g><path d="M19.7 -7V29M49.7 -7V17M79.7 -7V23" stroke="currentColor" stroke-width="1.4"/></svg>
+          <h3>Demoruimten</h3>
+          <p>Probeer instrumenten rustig uit in onze demoruimten, met advies van echte specialisten.</p>
+        </article>
+        <article class="measure">
+          <span class="mstaff" aria-hidden="true"></span>
+          <svg class="motif" viewBox="0 -14 92 64" aria-hidden="true"><g fill="currentColor"><ellipse cx="14" cy="30" rx="6.4" ry="4.6" transform="rotate(-22 14 30)"/><ellipse cx="44" cy="18" rx="6.4" ry="4.6" transform="rotate(-22 44 18)"/><ellipse cx="74" cy="24" rx="6.4" ry="4.6" transform="rotate(-22 74 24)"/><path d="M19 -10H80.6V-5H19Z"/></g><path d="M19.7 -7V29M49.7 -7V17M79.7 -7V23" stroke="currentColor" stroke-width="1.4"/></svg>
+          <h3>Eigen reparatieatelier</h3>
+          <p>Ons reparatieatelier houdt jouw instrument in topconditie.</p>
+        </article>
+        <article class="measure">
+          <span class="mstaff" aria-hidden="true"></span>
+          <svg class="motif" viewBox="0 -14 92 64" aria-hidden="true"><g fill="currentColor"><ellipse cx="14" cy="30" rx="6.4" ry="4.6" transform="rotate(-22 14 30)"/><ellipse cx="44" cy="18" rx="6.4" ry="4.6" transform="rotate(-22 44 18)"/><ellipse cx="74" cy="24" rx="6.4" ry="4.6" transform="rotate(-22 74 24)"/><path d="M19 -10H80.6V-5H19Z"/></g><path d="M19.7 -7V29M49.7 -7V17M79.7 -7V23" stroke="currentColor" stroke-width="1.4"/></svg>
+          <h3>Instrumenten huren</h3>
+          <p>Huur een drumstel of blaasinstrument en begin direct met spelen.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="mvt solid" id="notes" data-rail>
+    <div class="wrap">
+      <header class="mvt-head rv">
+        <div>
+          <p class="mvt-kicker"><span class="no"></span><span class="tempo"><b>Andante</b> cantabile <span class="mm">♩ = 92</span></span></p>
+          <h2 class="mvt-title">Drums</h2>
+        </div>
+        <div class="mvt-aux">
+          <div class="transport">
+            <button class="play" type="button" data-toggle-play aria-pressed="false"><span class="pi"><svg class="i-play" viewBox="0 0 12 12"><path d="M2.5 1.2v9.6L10.6 6z" fill="currentColor"/></svg><svg class="i-pause" viewBox="0 0 12 12"><path d="M2.2 1.5h2.8v9H2.2zM7 1.5h2.8v9H7z" fill="currentColor"/></svg></span><span class="pl">Play</span></button>
+          </div>
+          <a class="tutti" href="catalog.html"><i>Tutti</i> · 4688 producten<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        </div>
+      </header>
+
+      <div class="score-wrap">
+        <div class="score home" role="list">
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-ar1622-hoes-voor-22-x-16-bass-drum">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189_807008.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ahead AR1622 hoes voor 22&quot; x 16&quot; bassdrum" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Ahead AR1622 hoes voor 22&quot; x 16&quot; bassdrum</span>
+                <span class="c-foot"><span class="c-price">€ 148,00</span><i class="dyn" aria-hidden="true">p</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189%20spgbbr3_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning</span>
+                <span class="c-foot"><span class="c-price">€ 329,00</span><i class="dyn" aria-hidden="true">p</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-spg-r-3-spinal-g-drumkruk-rood">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189_spgr3.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ahead SPG-R-3 Spinal G drumkruk rood" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Ahead SPG-R-3 Spinal G drumkruk rood</span>
+                <span class="c-foot"><span class="c-price">€ 249,00</span><i class="dyn" aria-hidden="true">p</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqcc16-classic-clear-drumvel-16">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqcc16.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQCC16 Classic Clear drumvel 16&quot;" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Aquarian AQCC16 Classic Clear drumvel 16&quot;</span>
+                <span class="c-foot"><span class="c-price">€ 22,90</span><i class="dyn" aria-hidden="true">p</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqfb20-full-force-i-bassdrumvel-20">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqfb20.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQFB20 Full Force I bassdrumvel 20&quot;" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Aquarian AQFB20 Full Force I bassdrumvel 20&quot;</span>
+                <span class="c-foot"><span class="c-price">€ 51,90</span><i class="dyn" aria-hidden="true">p</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqfor10-force-ten-drumvel-10">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqfor10.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQFOR10 Force Ten drumvel 10&quot;" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Aquarian AQFOR10 Force Ten drumvel 10&quot;</span>
+                <span class="c-foot"><span class="c-price">€ 30,50</span><i class="dyn" aria-hidden="true">p</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqref14-reflector-black-drumvel-14">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqref14.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQREF14 Reflector Black drumvel 14&quot;" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Aquarian AQREF14 Reflector Black drumvel 14&quot;</span>
+                <span class="c-foot"><span class="c-price">€ 38,90</span><i class="dyn" aria-hidden="true">p</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqtcfb22-texture-coated-full-force-i-bassdrumvel-22">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233%20aqtcfb22_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22&quot;" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22&quot;</span>
+                <span class="c-foot"><span class="c-price">€ 56,50</span><i class="dyn" aria-hidden="true">p</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">Actie</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;asba-snaredrum-14x6-blueberry-&#x2F;-agathe-the-blue-rive-gauche">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7359_rg1406atb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="ASBA snaredrum 14x6&quot; Blueberry &#x2F; Agathe The Blue Rive Gauche" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">ASBA snaredrum 14x6&quot; Blueberry &#x2F; Agathe The Blue Rive Gauche</span>
+                <span class="c-foot"><span class="c-price">€ 735,00</span><i class="dyn" aria-hidden="true">mf</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;big-fat-snare-drum-14-snare-bourine">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;bigfat_14bfsdsb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Big Fat Snare Drum 14&quot; Snare Bourine" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Big Fat Snare Drum 14&quot; Snare Bourine</span>
+                <span class="c-foot"><span class="c-price">€ 42,90</span><i class="dyn" aria-hidden="true">p</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;big-fat-snare-drum-big-fat-snare-drum-14-steve-s-donut">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;1250_bfsd14don.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Big Fat Snare Drum 14&quot; Steve&#39;s Donut" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Big Fat Snare Drum 14&quot; Steve&#39;s Donut</span>
+                <span class="c-foot"><span class="c-price">€ 36,00</span><i class="dyn" aria-hidden="true">p</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">Actie</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bone-snaredrum-aluminium-14-x6-5-nickel-black-hardware">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7528_sdua1465nb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Bone snaredrum aluminium 14&quot;x6,5&quot; Nickel Black Hardware" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Bone snaredrum aluminium 14&quot;x6,5&quot; Nickel Black Hardware</span>
+                <span class="c-foot"><span class="c-price">€ 799,00</span><s>€ 816,75</s><i class="dyn" aria-hidden="true">ff</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">Actie</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bone-snaredrum-carbcutter-14-x5-5-charcoal-smoke-chrome-hw">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7528_sdcbc1455csc.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Bone snaredrum Carbcutter 14&quot;x5,5&quot; Charcoal Smoke" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Bone snaredrum Carbcutter 14&quot;x5,5&quot; Charcoal Smoke</span>
+                <span class="c-foot"><span class="c-price">€ 975,00</span><s>€ 1.149,00</s><i class="dyn" aria-hidden="true">ff</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">OP &#x3D; OP</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ds-drum-dsx2251tsk-dsx-stage-kit-titanium-sparkle">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;2763_44671.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="DS Drum DSX Stage Kit Titanium Sparkle" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">DS Drum DSX Stage Kit Titanium Sparkle</span>
+                <span class="c-foot"><span class="c-price">€ 499,00</span><s>€ 699,00</s><i class="dyn" aria-hidden="true">ff</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">Actie</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;lite-stix-rock-drumsticks-u-s-hickory">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7166_rock.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Lite Stix Rock drumsticks U.S. Hickory" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Lite Stix Rock drumsticks U.S. Hickory</span>
+                <span class="c-foot"><span class="c-price">€ 79,00</span><s>€ 109,00</s><i class="dyn" aria-hidden="true">ff</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">Occasion</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;dixon-occasion-snaredrum-artisan-hout-14x5-5">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20slag4753_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Occasion Dixon snaredrum Artisan hout 14x5,5&quot;" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Occasion Dixon snaredrum Artisan hout 14x5,5&quot;</span>
+                <span class="c-foot"><span class="c-price">€ 375,00</span><i class="dyn" aria-hidden="true">mf</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">Occasion</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;istanbul-agop-occasion-vezir-ride-21">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20b0959_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Occasion Istanbul Agop Vezir ride 21&quot;" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Occasion Istanbul Agop Vezir ride 21&quot;</span>
+                <span class="c-foot"><span class="c-price">€ 365,00</span><i class="dyn" aria-hidden="true">mf</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">Occasion</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bach-occasion-omega-trombone-met-kwartventiel-2105">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20b0959_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Occasion Bach Omega trombone met kwartventiel 2105" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Occasion Bach Omega trombone met kwartventiel 2105</span>
+                <span class="c-foot"><span class="c-price">€ 650,00</span><i class="dyn" aria-hidden="true">mf</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">Actie</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;dw-dwcp5500d-hihat-stand-3-benig">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8216_dwcp5500d.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="DW DWCP5500D hihatstand 3-benig" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">DW DWCP5500D hihatstand 3-benig</span>
+                <span class="c-foot"><span class="c-price">€ 419,00</span><i class="dyn" aria-hidden="true">mf</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">Actie</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;k-m-km19790-ipad-houder-met-microfoonstand-bevestiging">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;1865_1979031655.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="K&amp;M KM19790 iPad-houder met microfoonstandbevestiging" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">K&amp;M KM19790 iPad-houder met microfoonstandbevestiging</span>
+                <span class="c-foot"><span class="c-price">€ 51,90</span><i class="dyn" aria-hidden="true">mf</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">Actie</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bg-s41sh-classic-harnas-vrouw-kunstst-snaphaak-zwart">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;4470_6010404.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="BG S41SH Classic harnas vrouw, zwart" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">BG S41SH Classic harnas vrouw, zwart</span>
+                <span class="c-foot"><span class="c-price">€ 35,03</span><s>€ 46,70</s><i class="dyn" aria-hidden="true">ff</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">OP &#x3D; OP</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;gewa-1&#x2F;8-viool-allegro-speelklaar-incl-vormkoffer">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;0216_gs4000552111.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Gewa 1&#x2F;8 viool Allegro speelklaar incl. vormkoffer" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Gewa 1&#x2F;8 viool Allegro speelklaar incl. vormkoffer</span>
+                <span class="c-foot"><span class="c-price">€ 199,00</span><s>€ 447,00</s><i class="dyn" aria-hidden="true">ff</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">OP &#x3D; OP</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;stagg-kinderhoorn-bb-franse-gigbag">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;4100_77fhbjsc.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Stagg kinderhoorn Bb Franse gigbag" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Stagg kinderhoorn Bb Franse gigbag</span>
+                <span class="c-foot"><span class="c-price">€ 565,00</span><s>€ 929,00</s><i class="dyn" aria-hidden="true">ff</i></span>
+              </span>
+            </a>
+          </div>
+          <div class="note" role="listitem">
+            <span class="barno" aria-hidden="true"></span>
+            <span class="clefmark" aria-hidden="true">TM</span>
+            <span class="expr">OP &#x3D; OP</span>
+            <svg class="nsvg" viewBox="0 0 40 200" aria-hidden="true">
+              <line class="ledger lo" x1="7" y1="100" x2="33" y2="100"/>
+              <line class="ledger hi" x1="7" y1="28" x2="33" y2="28"/>
+              <g class="nh"><line class="stem" x1="13.4" y1="89" x2="13.4" y2="172"/><ellipse class="head" cx="20" cy="88" rx="7.6" ry="5.4" transform="rotate(-22 20 88)"/><circle class="halo" cx="20" cy="88" r="11"/></g>
+            </svg>
+            <span class="endbar" aria-hidden="true"></span>
+            <a class="card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ritter-rdp2-s&#x2F;brd-stick-bag-black-red-performance">
+              <span class="pin" aria-hidden="true"></span>
+              <span class="c-img"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3488_rdp2sbrd.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ritter RDP2-S&#x2F;BRD stick bag Black-Red Performance" decoding="async"></span>
+              <span class="c-body">
+                <span class="c-name">Ritter RDP2-S&#x2F;BRD stick bag Black-Red Performance</span>
+                <span class="c-foot"><span class="c-price">€ 8,40</span><s>€ 12,00</s><i class="dyn" aria-hidden="true">ff</i></span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="playhead" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mvt" id="variazioni" data-rail>
+    <div class="wrap">
+      <header class="mvt-head rv">
+        <div>
+          <p class="mvt-kicker"><span class="no"></span><span class="tempo"><b>Scherzo</b> leggiero <span class="mm">♩ = 144</span></span></p>
+          <h2 class="mvt-title">Tema con variazioni</h2>
+        </div>
+      </header>
+      <div class="cats rv">
+        <a class="cat" href="catalog.html">
+          <span class="cat-th"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;blaasinstrumenten_v2.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Blaasinstrumenten" loading="lazy"></span>
+          <span class="cat-name"><small></small><b>Blaasinstrumenten</b></span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+        <a class="cat" href="catalog.html">
+          <span class="cat-th"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;drums_michael_dobrinski_unsplash_01.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Drums" loading="lazy"></span>
+          <span class="cat-name"><small></small><b>Drums</b></span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+        <a class="cat" href="catalog.html">
+          <span class="cat-th"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;percussie_640x385.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Percussie" loading="lazy"></span>
+          <span class="cat-name"><small></small><b>Percussie</b></span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+        <a class="cat" href="catalog.html">
+          <span class="cat-th"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;concert_640x385.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Concert &amp; Marching" loading="lazy"></span>
+          <span class="cat-name"><small></small><b>Concert &amp; Marching</b></span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+        <a class="cat" href="catalog.html">
+          <span class="cat-th"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;gitaar_640x385.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Snaarinstrumenten" loading="lazy"></span>
+          <span class="cat-name"><small></small><b>Snaarinstrumenten</b></span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+        <a class="cat" href="catalog.html">
+          <span class="cat-th"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;piano_640x385.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Toetsen" loading="lazy"></span>
+          <span class="cat-name"><small></small><b>Toetsen</b></span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mvt" id="adagio" data-rail>
+    <div class="wrap">
+      <header class="mvt-head rv">
+        <div>
+          <p class="mvt-kicker"><span class="no"></span><span class="tempo"><b>Adagio</b> — Over Terpstra Muziek</span></p>
+          <h2 class="mvt-title">Een thuishaven voor muzikanten, al 40+ jaar</h2>
+        </div>
+      </header>
+      <div class="story">
+        <figure class="plate rv">
+          <div class="plate-frame"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;reparatieatelier-bovenheader.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Een thuishaven voor muzikanten, al 40+ jaar" loading="lazy"></div>
+          <figcaption><b>Tav. II</b><span>Terpstra Muziek Drumland</span></figcaption>
+        </figure>
+        <div class="story-text rv">
+          <p>Terpstra Muziek Drumland in Lijnden is dé specialist in blaas- en slaginstrumenten, met de grootste drumspeciaalzaak van Noord-Holland. Of je nu net begint of al jaren op het podium staat: bij ons vind je het juiste instrument, advies, reparatie en verhuur onder één dak.</p>
+          <p class="story-sign">Terpstra Muziek Drumland</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-band">
+    <div class="wrap">
+      <div class="stats rv">
+        <div class="stat"><i>a tempo</i><b>4688</b><span>producten in de categorie Drums</span></div><div class="stat"><i>a tempo</i><b>€ 400</b><span>korting op geselecteerde klarinetten</span></div><div class="stat"><i>a tempo</i><b>€ 600</b><span>korting op geselecteerde instrumenten</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="mvt" id="intermezzo" data-rail>
+    <div class="wrap">
+      <header class="mvt-head rv">
+        <div>
+          <p class="mvt-kicker"><span class="no"></span><span class="tempo"><b>Intermezzo</b> rubato</span></p>
+          <h2 class="mvt-title">Speciaalzaak in blaas- en slaginstrumenten</h2>
+        </div>
+      </header>
+      <div class="gal rv">
+        <figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;roland_qa_261128_02.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Terpstra Muziek Drumland" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;buffetcrampon_261006.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Terpstra Muziek Drumland" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;besson_261006.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Terpstra Muziek Drumland" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;dw-banner2603.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Terpstra Muziek Drumland" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;yamaha-pro-trumpet.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Terpstra Muziek Drumland" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;yamaha_ead50_01.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Terpstra Muziek Drumland" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;buffet-crampon_gala_klarinet_01.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Terpstra Muziek Drumland" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;audio_midi_fernando_lavin_640x385.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Terpstra Muziek Drumland" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+  <section class="finale" id="finale" data-rail>
+    <div class="wrap finale-in">
+      <div class="rv">
+        <p class="mvt-kicker"><span class="no"></span><span class="tempo"><b>Finale</b> presto <span class="mm">♩ = 168</span></span></p>
+        <h2>Kom langs in Lijnden</h2>
+        <p class="txt">Proef de klank van je volgende instrument in onze demoruimten, of laat je adviseren door onze specialisten.</p>
+        <div class="ctas">
+          <a class="btn btn-ink" href="#"><svg class="ferm" viewBox="0 0 36 18" aria-hidden="true"><path d="M2 17 A16 15 0 0 1 34 17"/><circle cx="18" cy="13" r="2.6" fill="currentColor"/></svg><span>Neem contact op</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+          
+        </div>
+      </div>
+      <div class="fine" aria-hidden="true"><em>Fine</em><span></span><span></span></div>
+    </div>
+  </section>
+</main>
+
+<footer class="ft" id="coda">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <svg class="coda" viewBox="0 0 46 46" aria-hidden="true"><ellipse cx="23" cy="23" rx="11" ry="14" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M23 2v42M3 23h40" stroke="currentColor" stroke-width="1.6"/></svg>
+        <p class="ft-brand">Terpstra Muziek Drumland</p>
+        <p class="ft-tag">Speciaalzaak in blaas- en slaginstrumenten</p>
+      </div>
+      <div>
+        <h4>Indice</h4>
+        <ul><li><a href="catalog.html">Webshop</a></li><li><a href="#">Occasions</a></li><li><a href="#">Aanbiedingen</a></li><li><a href="#">Reparatieatelier</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Appendice</h4>
+        <ul><li><a href="#">Drumstel huren</a></li><li><a href="#">Blaasinstrument huren</a></li><li><a href="#">Reparatie</a></li><li><a href="#">Openingstijden</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Coda</h4>
+        <ul>
+          <li>Lijnden (Amsterdam &#x2F; A9)</li>
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© 2026 Terpstra Muziek Drumland</span>
+      <a href="#top">D.C. al Fine ↑</a>
+    </div>
+  </div>
+</footer>
+
+<nav class="rail" aria-label="Movements"></nav>
+<div class="badge">Demo redesign · Score Sheet</div>
+
+<dialog class="detail" id="detail" aria-labelledby="d-name">
+  <button class="d-x" type="button" data-close aria-label="Close"><svg viewBox="0 0 14 14"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6"/></svg></button>
+  <div class="d-grid">
+    <div class="d-img"></div>
+    <div class="d-body">
+      <p class="d-meta"><span class="d-pitch"></span><span class="d-tag"></span></p>
+      <h3 class="d-name" id="d-name"></h3>
+      <div class="d-staff" aria-hidden="true"><svg viewBox="0 0 40 49"><g class="d-nh"><line x1="13.4" y1="0" x2="13.4" y2="0" stroke="currentColor" stroke-width="1.4"/><ellipse cx="20" cy="0" rx="7.6" ry="5.4" style="fill:var(--c-primary);stroke:var(--pi);stroke-width:1.2"/></g></svg></div>
+      <p class="d-price"><b></b><s></s><i class="dyn"></i></p>
+      <a class="btn btn-ink d-go" href="#"><svg class="ferm" viewBox="0 0 36 18" aria-hidden="true"><path d="M2 17 A16 15 0 0 1 34 17"/><circle cx="18" cy="13" r="2.6" fill="currentColor"/></svg><span class="d-go-l"></span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13L13 3M5 3h8v8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $$=function(s,c){return Array.prototype.slice.call((c||d).querySelectorAll(s))};
+
+  /* reveal */
+  if('IntersectionObserver' in window){
+    root.classList.add('rv-on');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px',threshold:.06});
+    $$('.rv,.score').forEach(function(el){io.observe(el)});
+    /* failsafe: never leave a movement blank (print, full-page capture, fast jumps) */
+    var reveal=function(){$$('.rv:not(.in),.score:not(.in)').forEach(function(el){el.classList.add('in');io.unobserve(el)})};
+    window.addEventListener('load',function(){setTimeout(reveal,1800)});
+    window.addEventListener('beforeprint',reveal);
+  }
+
+  /* movement rail */
+  var roman=function(n){var m=[[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']],s='';m.forEach(function(p){while(n>=p[0]){s+=p[1];n-=p[0]}});return s};
+  var rail=d.querySelector('.rail'), secs=$$('[data-rail]');
+  if(rail&&secs.length&&'IntersectionObserver' in window){
+    secs.forEach(function(s,i){var a=d.createElement('a');a.href='#'+s.id;a.textContent=roman(i+1);var t=s.querySelector('.mvt-title,h2');if(t)a.title=t.textContent.trim();rail.appendChild(a)});
+    var links=$$('a',rail);
+    var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=secs.indexOf(e.target);links.forEach(function(l,k){l.classList.toggle('cur',k===i)})}})},{rootMargin:'-45% 0px -50% 0px'});
+    secs.forEach(function(s){ro.observe(s)});
+  }
+
+  /* filters (visual only) */
+  $$('.chip').forEach(function(c){c.addEventListener('click',function(){$$('.chip').forEach(function(o){o.setAttribute('aria-pressed',o===c?'true':'false')})})});
+
+  /* ---------- the score ---------- */
+  var wrap=d.querySelector('.score-wrap'); if(!wrap) return;
+  var score=wrap.querySelector('.score'), ph=wrap.querySelector('.playhead');
+  var BEAT=60000/92, LET=['C','D','E','F','G','A','B'], SEMI=[0,2,4,5,7,9,11];
+  var notes=$$('.note',score), rows=[], st=null, hover=false, raf=0, last=0, lit=null, ac=null, master=null;
+  notes.forEach(function(n,i){n.style.setProperty('--i',i%8)});
+
+  function num(s){
+    if(!s) return NaN; s=String(s).replace(/[^\d.,]/g,''); if(!s) return NaN;
+    var c=s.lastIndexOf(','), p=s.lastIndexOf('.');
+    if(c>-1&&p>-1){s=c>p?s.replace(/\./g,'').replace(',','.'):s.replace(/,/g,'')}
+    else if(c>-1){s=/,\d{1,2}$/.test(s)?s.replace(/\./g,'').replace(',','.'):s.replace(/,/g,'')}
+    else if(p>-1&&/\.\d{3}$/.test(s)){s=s.replace(/\./g,'')}
+    return parseFloat(s);
+  }
+  var shown=function(){return notes.filter(function(n){return n.offsetParent!==null})};
+  function pitches(){
+    var vis=shown(), vals=vis.map(function(n){var e=n.querySelector('.c-price');return Math.log(num(e&&e.textContent))});
+    var ok=vals.filter(function(v){return isFinite(v)}), lo=Math.min.apply(null,ok), hi=Math.max.apply(null,ok);
+    vis.forEach(function(n,k){
+      var v=vals[k], p=!isFinite(v)?3:(hi-lo<1e-6?4:Math.round(-2+12*(v-lo)/(hi-lo)));
+      var i=p+2, oct=Math.floor(i/7), midi=60+12*oct+SEMI[i%7];
+      n.style.setProperty('--p',p);
+      n.dataset.p=p; n.dataset.pitch=LET[i%7]+(4+oct); n.dataset.freq=(440*Math.pow(2,(midi-69)/12)).toFixed(2);
+    });
+  }
+  function layout(){
+    var wr=wrap.getBoundingClientRect(); rows=[];
+    notes.forEach(function(n){n.classList.remove('sys')});
+    shown().forEach(function(el,k){
+      var r=el.getBoundingClientRect(), top=r.top-wr.top, row=null;
+      for(var j=0;j<rows.length;j++){if(Math.abs(rows[j].top-top)<6){row=rows[j];break}}
+      if(!row){row={top:top,bottom:top+r.height,cells:[]};rows.push(row)}
+      row.bottom=Math.max(row.bottom,top+r.height);
+      row.cells.push({el:el,l:r.left-wr.left,w:r.width});
+      var bn=el.querySelector('.barno'); if(bn)bn.textContent=k+1;
+    });
+    rows.sort(function(a,b){return a.top-b.top});
+    rows.forEach(function(R){R.cells.sort(function(a,b){return a.l-b.l});R.x0=R.cells[0].l;var z=R.cells[R.cells.length-1];R.x1=z.l+z.w;R.cells[0].el.classList.add('sys')});
+    if(st&&rows.length){st.row=Math.min(st.row,rows.length-1);var R=rows[st.row];st.x=Math.max(R.x0,Math.min(st.x,R.x1));draw()}
+  }
+  pitches(); layout();
+  if(d.fonts&&d.fonts.ready) d.fonts.ready.then(layout);
+  window.addEventListener('load',layout);
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(layout,120)});
+
+  function audio(){
+    if(!ac){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ac=new AC();master=ac.createGain();master.gain.value=.5;var lp=ac.createBiquadFilter();lp.type='lowpass';lp.frequency.value=2400;master.connect(lp);lp.connect(ac.destination)}
+    if(ac.state==='suspended')ac.resume();
+  }
+  function tone(f){
+    if(!ac||!f)return; var t=ac.currentTime+.01, g=ac.createGain();
+    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.22,t+.02); g.gain.exponentialRampToValueAtTime(.0001,t+1.7); g.connect(master);
+    var o=ac.createOscillator(); o.type='sine'; o.frequency.value=f; o.connect(g);
+    var o2=ac.createOscillator(), g2=ac.createGain(); o2.type='triangle'; o2.frequency.value=f; g2.gain.value=.3; o2.connect(g2); g2.connect(g);
+    o.start(t); o2.start(t); o.stop(t+1.8); o2.stop(t+1.8);
+  }
+  function hit(el){ if(lit&&lit!==el)lit.classList.remove('on'); el.classList.remove('on'); void el.offsetWidth; el.classList.add('on'); lit=el; tone(+el.dataset.freq) }
+  function draw(){ var R=rows[st.row]; if(!R)return; ph.style.transform='translate3d('+st.x+'px,'+(R.top+18)+'px,0)'; ph.style.height=(R.bottom-R.top-18)+'px' }
+  var btns=$$('[data-toggle-play]');
+  function ui(on){ btns.forEach(function(b){b.classList.toggle('is-playing',on);b.setAttribute('aria-pressed',on?'true':'false');var l=b.querySelector('.pl');if(l)l.textContent=on?'Pause':'Play'}) }
+  function follow(R){
+    var wr=wrap.getBoundingClientRect(), top=wr.top+R.top, bot=wr.top+R.bottom, vh=window.innerHeight;
+    if(top<70||bot>vh-10) window.scrollBy({top:top-Math.max(80,(vh-(R.bottom-R.top))/2),behavior:reduce?'auto':'smooth'});
+  }
+  function start(){
+    audio(); layout(); if(!rows.length)return;
+    if(!st||st.done){
+      var wr=wrap.getBoundingClientRect(), ri=0;
+      for(var j=0;j<rows.length;j++){if(wr.top+rows[j].bottom>110){ri=j;break}}
+      st={row:ri,x:rows[ri].x0,fired:[],done:false}; follow(rows[ri]);
+    }
+    st.playing=true; wrap.classList.add('playing'); wrap.classList.remove('held'); ui(true);
+    last=performance.now(); cancelAnimationFrame(raf); draw(); raf=requestAnimationFrame(tick);
+  }
+  function pause(){ if(!st||!st.playing)return; st.playing=false; cancelAnimationFrame(raf); wrap.classList.remove('playing'); wrap.classList.add('held'); ui(false) }
+  function finish(){
+    st.playing=false; st.done=true; wrap.classList.remove('playing','held'); ui(false);
+    var l=lit; setTimeout(function(){ if(l&&!(st&&st.playing)){l.classList.remove('on'); if(lit===l)lit=null} },1500);
+  }
+  function tick(t){
+    if(!st||!st.playing)return;
+    var dt=Math.min(50,t-last); last=t;
+    if(!hover){
+      var R=rows[st.row], cw=(R.x1-R.x0)/R.cells.length; st.x+=dt*cw/BEAT;
+      R.cells.forEach(function(c){ if(st.fired.indexOf(c.el)<0&&st.x>=c.l+c.w/2){st.fired.push(c.el);hit(c.el)} });
+      if(st.x>=R.x1){
+        if(st.row+1>=rows.length){draw();return finish()}
+        st.row++; st.x=rows[st.row].x0; follow(rows[st.row]);
+      }
+    }
+    draw(); raf=requestAnimationFrame(tick);
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){ st&&st.playing?pause():start() })});
+  $$('[data-play]').forEach(function(a){a.addEventListener('click',function(e){
+    e.preventDefault(); audio();
+    wrap.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    score.classList.add('in'); setTimeout(start,reduce?60:800);
+  })});
+  score.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse'){hover=true;wrap.classList.add('hover-hold')}});
+  score.addEventListener('pointerleave',function(){hover=false;wrap.classList.remove('hover-hold')});
+
+  /* detail card */
+  var dlg=d.getElementById('detail');
+  if(dlg&&typeof dlg.showModal==='function'){
+    var q=function(s){return dlg.querySelector(s)};
+    score.addEventListener('click',function(e){
+      var a=e.target.closest('.card'); if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;
+      e.preventDefault(); open(a.closest('.note'));
+    });
+    function open(n){
+      var g=function(s){return n.querySelector(s)}, img=g('.c-img img'), di=q('.d-img');
+      di.innerHTML='';
+      if(img){var im=new Image();im.src=img.currentSrc||img.src;im.alt=img.alt;di.appendChild(im);di.classList.remove('fb')}
+      else{di.classList.add('fb');var fb=g('.c-fb');if(fb)di.appendChild(fb.cloneNode(true))}
+      q('.d-name').textContent=g('.c-name').textContent;
+      var pr=g('.c-price'), op=g('.c-foot s'), tg=g('.expr');
+      q('.d-price b').textContent=pr?pr.textContent:'';
+      q('.d-price s').textContent=op?op.textContent:''; q('.d-price s').style.display=op?'':'none';
+      q('.d-price .dyn').textContent=g('.dyn').textContent;
+      q('.d-tag').textContent=tg?tg.textContent:'';
+      q('.d-pitch').textContent=n.dataset.pitch?'♪ '+n.dataset.pitch:'';
+      var p=+(n.dataset.p||4), y=48-p*6, nh=q('.d-nh');
+      nh.querySelector('ellipse').setAttribute('cy',y); nh.querySelector('ellipse').setAttribute('transform','rotate(-22 20 '+y+')');
+      var ln=nh.querySelector('line'); ln.setAttribute('y1',y); ln.setAttribute('y2',y+(p<4?-34:34)); ln.setAttribute('x1',p<4?26.6:13.4); ln.setAttribute('x2',p<4?26.6:13.4);
+      var href=g('.card').getAttribute('href')||'#', go=q('.d-go'), label=d.body.getAttribute('data-brand')||'';
+      go.href=href;
+      try{var u=new URL(href,location.href); if(u.hostname&&u.hostname!==location.hostname)label=u.hostname.replace(/^www\./,'')}catch(x){}
+      q('.d-go-l').textContent=label;
+      if(st&&st.playing)pause();
+      dlg.showModal();
+    }
+    dlg.addEventListener('click',function(e){ if(e.target===dlg||e.target.closest('[data-close]'))dlg.close() });
+  }
+})();
+</script>
+</body>
+</html>

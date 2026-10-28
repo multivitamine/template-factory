@@ -1,0 +1,86 @@
+{
+  "id": "score-sheet",
+  "name": "Score Sheet",
+  "sectors": [
+    "culture",
+    "food",
+    "lifestyle",
+    "horeca"
+  ],
+  "sample": "terpstrav2",
+  "stress": "brinkscoffeeroasters",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793226497261
+    },
+    {
+      "step": "Rendering",
+      "at": 1793227384484
+    },
+    {
+      "step": "Critique",
+      "at": 1793227399450
+    },
+    {
+      "step": "Final render",
+      "at": 1793227484262
+    },
+    {
+      "step": "Done",
+      "at": 1793227499547
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793226497260,
+  "startedAt": 1793226497261,
+  "finishedAt": 1793227499547,
+  "model": "opus",
+  "costUsd": 3.926080800000001,
+  "meta": {
+    "id": "score-sheet",
+    "name": "Score Sheet",
+    "scheme": "light",
+    "sectors": [
+      "culture",
+      "food",
+      "lifestyle",
+      "horeca"
+    ],
+    "mood": [
+      "calm",
+      "literate",
+      "musical",
+      "warm ivory"
+    ],
+    "needsProductImages": true,
+    "notes": "Ink-on-ivory score; --c-primary only lights the Play button, playhead, fermata marks and active notes; --c-accent tints expression marks (tags) and sale strikes, both ink-mixed for contrast."
+  },
+  "score": {
+    "scoreBefore": 5.5,
+    "issues": [
+      "Creativity 8, typography 8, layout 6, polish 4, brand robustness 7, mobile 4, generic-ness 8 (not generic): the concept is strong but its execution falls apart on the page",
+      "Reveal-on-scroll relied only on IntersectionObserver. In full-page renders, the bottom third of the homepage (variations, story, stats, quote, gallery, finale) was an empty ivory void. On mobile, the whole product score was blank too",
+      "The catalog finale/footer area rendered empty. Its last row of product cards showed blank white images because they were lazy-loaded",
+      "Product packshots were cropped with object-fit:cover in a 4:3 box. Brinks coffee bags lost their tops and labels, and drum hardware was clipped",
+      "The detail card also cropped the product with cover",
+      "The fixed 'Demo redesign' badge sat bottom-left on top of the hero's fermata CTA",
+      "The hero's Play trigger, the signature interaction, was a tiny 32px dot that read as an afterthought",
+      "Too much dead air between the hero and Movement I (about 250px of empty staff paper)"
+    ],
+    "fixed": [
+      "Added a failsafe for reveals on both pages: everything resolves 1.8s after load and on beforeprint, so no movement can stay blank. Scroll-driven entrances still play for real users",
+      "Product images are now eagerly decoded (async), with no lazy loading, so every note on the stave has its picture",
+      "Packshots use object-fit:contain with breathing room on white, multiplied onto the card. Coffee bags and drum hardware now show in full",
+      "The detail card image uses contain with padding, giving a clean specimen-style product view",
+      "Moved the demo badge bottom-right so it no longer covers the hero CTA",
+      "Made the hero Play bigger: a 44px primary disc with an offset ring, so the playhead performance is clearly the hero's second voice",
+      "Tightened the gap between the hero and Movement I so the score flows straight from the title page into the first movement"
+    ],
+    "scoreAfterEstimate": 7.4
+  },
+  "version": 1793227499547
+}
