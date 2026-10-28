@@ -1,0 +1,9 @@
+{
+  "id": "soft-blob",
+  "name": "Soft Blob",
+  "scheme": "light",
+  "sectors": ["kids", "lifestyle", "food"],
+  "mood": ["tender", "playful", "pillowy", "warm"],
+  "needsProductImages": true,
+  "notes": "Warm cream base; primary drives buttons, stickers, CTA blob and squiggles, with color-mix tints of primary and accent filling the morphing background blobs. Accent is only used decoratively, never as a text colour."
+}

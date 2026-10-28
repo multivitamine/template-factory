@@ -1,0 +1,9 @@
+{
+  "id": "warehouse-brutal",
+  "name": "Warehouse Brutal",
+  "scheme": "light",
+  "sectors": ["b2b", "industrial", "wholesale"],
+  "mood": ["raw", "industrial", "stamped", "no-nonsense", "data-dense"],
+  "needsProductImages": true,
+  "notes": "Primary fills labels, tags, highlight blocks, the CTA band, hazard stripes and the hard-offset stamp hover shadow (always paired with on-primary text and a black outline); a darkened primary mix inks the rubber stamps; accent is reserved for tiny signals (focus ring, REC dots)."
+}

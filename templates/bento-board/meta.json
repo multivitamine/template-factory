@@ -1,0 +1,9 @@
+{
+  "id": "bento-board",
+  "name": "Bento Board",
+  "scheme": "light",
+  "sectors": ["b2b", "services", "tech", "retail"],
+  "mood": ["product launch", "modular", "playful precision", "crisp"],
+  "needsProductImages": true,
+  "notes": "Primary fills the CTA tile, lead USP, 'view all' tile, title highlight, tags and map pin (always with on-primary text); light primary tints colour the quote/contact tiles; accent only marks small dots, water and image fallbacks, so any brand colour stays legible on the warm-grey board."
+}

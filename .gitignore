@@ -1,0 +1,13 @@
+node_modules/
+
+# Crawled third-party sites, their screenshots and generated redesigns
+output/
+
+# Scraped Refero style data (not ours to redistribute; rebuild locally with `node lib/refero.js`)
+data/styles.json
+data/styles/
+
+# Agent transcripts and scratch renders
+**/agent.log.jsonl
+templates/_check/
+shot--*.jpg

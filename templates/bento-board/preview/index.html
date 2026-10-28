@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOHLT · Aanzetten en wegrijden, zo simpel is het</title>
+<meta name="description" content="Stoere, minimalistische e-bikes met opvallende details, gemaakt voor jong en oud. Aanzetten en wegrijden: meer hoef je niet te weten.">
+<script>document.documentElement.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm')}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#ECEBE6;
+  --c-surface:#FFFFFF;
+  --c-text:#141416;
+  --c-muted:#6B6964;
+  --c-line:#DAD8D0;
+  --c-primary:#3B4BFF;
+  --c-on-primary:#FFFFFF;
+  --c-accent:#FF8A3D;
+
+  --r:24px; --r-in:16px;
+  --gap:clamp(8px,1vw,14px);
+  --pad:clamp(18px,2vw,28px);
+  --wrap:1440px;
+  --f-display:'Bricolage Grotesque','Geist',sans-serif;
+  --f-body:'Geist','Figtree',sans-serif;
+  --f-mono:'Geist Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --shadow:0 0 0 1px rgba(20,20,22,.045),0 1px 2px rgba(20,20,22,.05),0 8px 22px -12px rgba(20,20,22,.16);
+  --shadow-lift:0 0 0 1px rgba(20,20,22,.05),0 4px 8px -2px rgba(20,20,22,.06),0 30px 60px -22px rgba(20,20,22,.34);
+}
+@supports (transition-timing-function:linear(0,1)){
+  :root{--spring:linear(0,.009,.035 2.1%,.141,.281 6.7%,.723 12.9%,.938 16.7%,1.017,1.077,1.121,1.149 24.3%,1.159,1.163,1.161,1.154 29.9%,1.129 32.8%,1.051 39.6%,1.017 43.1%,.991,.977 51%,.974 53.8%,.975 57.1%,.997 69.8%,1.003 76.9%,1.004 83.8%,1)}
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;counter-reset:sec}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(12px,2vw,28px)}
+.mono{font:500 11.5px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- tiles ---------- */
+.tile{position:relative;border-radius:var(--r);background:var(--c-surface);box-shadow:var(--shadow);overflow:hidden;isolation:isolate;
+  transition:transform .8s var(--spring),box-shadow .5s var(--ease),background-color .3s}
+.tile::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:5;border-radius:inherit;opacity:0;transition:opacity .4s var(--ease);
+  background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),var(--glow,color-mix(in srgb,var(--c-primary) 9%,transparent)),transparent 65%)}
+.tile:hover::after{opacity:1}
+.lift:hover{transform:translateY(-6px) scale(1.012);box-shadow:var(--shadow-lift)}
+.ink{background:var(--c-text);color:var(--c-bg);--glow:rgba(255,255,255,.09)}
+.brand{background:var(--c-primary);color:var(--c-on-primary);--glow:color-mix(in srgb,var(--c-on-primary) 16%,transparent)}
+.tint{background:color-mix(in srgb,var(--c-primary) 13%,var(--c-surface))}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;background:color-mix(in srgb,var(--c-text) 5%,transparent);font:500 13px/1 var(--f-body);max-width:100%}
+.eyebrow span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--c-accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--c-accent) 28%,transparent),inset 0 0 0 1px rgba(0,0,0,.12)}
+
+.btn{display:inline-flex;align-items:center;gap:12px;height:54px;padding:0 8px 0 24px;border-radius:999px;font:600 15px/1 var(--f-body);white-space:nowrap;border:0;cursor:pointer;
+  transition:transform .6s var(--spring),background-color .3s,box-shadow .3s;max-width:100%}
+.btn>span:first-child{overflow:hidden;text-overflow:ellipsis}
+.btn i{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;transition:transform .6s var(--spring)}
+.btn:hover{transform:translateY(-2px)}
+.btn:hover i{transform:rotate(-45deg)}
+.btn-primary{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.btn-primary i{background:var(--c-on-primary);color:var(--c-primary)}
+.btn-ghost{background:color-mix(in srgb,var(--c-text) 6%,transparent);padding:0 24px}
+.btn-ghost:hover{background:color-mix(in srgb,var(--c-text) 11%,transparent)}
+.btn-sm{height:44px;padding:0 6px 0 18px;font-size:14px}
+.btn-sm i{width:32px;height:32px}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:50;padding:10px 0}
+.hdr-in{display:flex;align-items:center;gap:12px;padding:7px 7px 7px 14px;border-radius:20px;background:color-mix(in srgb,var(--c-surface) 84%,transparent);
+  -webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);box-shadow:var(--shadow)}
+.logo{display:inline-flex;align-items:center;flex:none;min-height:40px;max-width:200px}
+.logo img{height:26px;width:auto;max-width:150px;object-fit:contain}
+.logo-txt{font:700 21px/1 var(--f-display);letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+.logo--light{background:var(--c-text);color:var(--c-bg);padding:7px 14px;border-radius:13px}
+.f-nav .logo:not(.logo--light){background:var(--c-surface);padding:7px 14px;border-radius:13px;box-shadow:inset 0 0 0 1px var(--c-line)}
+.nav{display:flex;gap:2px;margin:0 auto;min-width:0;overflow:hidden}
+.nav a{padding:10px 13px;border-radius:999px;font-size:14.5px;font-weight:500;white-space:nowrap;transition:background-color .25s}
+.nav a:hover{background:color-mix(in srgb,var(--c-text) 6%,transparent)}
+.hdr-r{display:flex;align-items:center;gap:8px;margin-left:auto;flex:none}
+.mnav{position:relative;display:none}
+.mnav summary{list-style:none;width:44px;height:44px;border-radius:14px;background:var(--c-text);display:grid;place-content:center;gap:5px;cursor:pointer}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav summary span{display:block;width:18px;height:2px;border-radius:2px;background:var(--c-bg);transition:transform .5s var(--spring)}
+.mnav[open] summary span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.mnav[open] summary span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.mnav-panel{position:absolute;right:0;top:calc(100% + 10px);width:min(340px,calc(100vw - 24px));padding:10px;display:grid;gap:4px;box-shadow:var(--shadow-lift);animation:pop .6s var(--spring)}
+.mnav-panel a{padding:14px 16px;border-radius:14px;font:700 1.35rem/1.1 var(--f-display);letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center}
+.mnav-panel a:hover{background:color-mix(in srgb,var(--c-primary) 12%,var(--c-surface))}
+@keyframes pop{from{opacity:0;transform:translateY(-8px) scale(.96)}}
+
+/* ---------- hero bento ---------- */
+.hero{padding-top:4px}
+.bento-hero{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(clamp(84px,8.4vw,122px),auto);gap:var(--gap)}
+.t-head{grid-column:1/8;grid-row:1/4}
+.t-img{grid-column:8/13;grid-row:1/5}
+.t-stat{grid-column:1/4;grid-row:4/6}
+.t-prod{grid-column:4/8;grid-row:4/8}
+.t-map{grid-column:1/4;grid-row:6/8}
+.t-quote{grid-column:8/11;grid-row:5/8}
+.t-cta{grid-column:11/13;grid-row:5/7}
+.t-chips{grid-column:11/13;grid-row:7/8}
+
+.assemble>.tile:not(.t-head):hover{transform:translateY(-6px) scale(1.012);box-shadow:var(--shadow-lift)}
+.js:not(.rm) .assemble>.tile:not(.in){opacity:0;animation:failsafe 0s 2.8s forwards}
+@keyframes failsafe{to{opacity:1}}
+
+.t-head{padding:clamp(22px,3vw,44px);display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.h1{font:700 clamp(2.35rem,1rem + 4.2vw,5.6rem)/.93 var(--f-display);letter-spacing:-.045em;text-wrap:balance;overflow-wrap:break-word;hyphens:manual}
+.h1.is-long{font-size:clamp(2.05rem,.9rem + 3vw,4.2rem)}
+.mark{color:var(--c-on-primary);background:linear-gradient(var(--c-primary),var(--c-primary)) no-repeat 0 0/100% 100%;padding:0 .12em;margin:0 -.04em;border-radius:.16em;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size 1s var(--ease),color .5s var(--ease)}
+.js:not(.rm) .mark.pre{background-size:0% 100%;color:var(--c-text)}
+.head-foot{display:flex;flex-direction:column;gap:22px}
+.lead{max-width:46ch;color:var(--c-muted);font-size:clamp(1rem,.95rem + .2vw,1.13rem);line-height:1.5;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+
+.t-img{background:var(--c-surface)}
+.t-img>img,.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.t-img:hover>img,.cat:hover img,.g-tile:hover img,.st-img:hover img{transform:scale(1.045)}
+.spin{position:absolute;left:16px;bottom:16px;width:118px;height:118px;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);z-index:3;display:grid;place-items:center;box-shadow:0 10px 30px -10px rgba(0,0,0,.45)}
+.spin svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 18s linear infinite}
+.spin text{font:500 9.4px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;fill:currentColor}
+.spin b{font:800 22px/1 var(--f-display);letter-spacing:-.04em}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.ph{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;
+  background:radial-gradient(110% 80% at 0% 0%,color-mix(in srgb,var(--c-primary) 50%,var(--c-surface)),transparent 62%),
+  radial-gradient(90% 90% at 100% 100%,color-mix(in srgb,var(--c-accent) 42%,var(--c-surface)),transparent 60%),
+  color-mix(in srgb,var(--c-primary) 10%,var(--c-surface))}
+.ph::before{content:"";position:absolute;inset:0;background-image:radial-gradient(color-mix(in srgb,var(--c-text) 22%,transparent) 1px,transparent 1.6px);background-size:16px 16px;
+  -webkit-mask:linear-gradient(135deg,#000,transparent 70%);mask:linear-gradient(135deg,#000,transparent 70%)}
+.ph span{position:relative;font:800 clamp(2.4rem,7vw,7rem)/1 var(--f-display);letter-spacing:-.05em;color:color-mix(in srgb,var(--c-text) 82%,transparent)}
+.ph-sm span{font-size:clamp(1.6rem,3vw,2.6rem)}
+
+.t-stat{padding:var(--pad);display:flex;flex-direction:column;container-type:inline-size}
+.t-stat::before{content:"";width:34px;height:6px;border-radius:6px;background:var(--c-primary);box-shadow:0 0 0 1px rgba(255,255,255,.18);margin-bottom:auto}
+.stats{display:flex;flex-wrap:wrap;gap:14px 18px;margin-top:16px}
+.stat{min-width:0}
+.stat-v{display:block;font:700 1.45rem/1 var(--f-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.stat-l{display:block;margin-top:8px;font:500 11.5px/1.3 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;opacity:.62}
+.stat:first-child{flex:1 0 100%}
+.stat:first-child .stat-v{font-size:clamp(2.6rem,calc(165cqi / var(--len,4)),7.6rem);font-weight:800;line-height:.84;letter-spacing:-.055em}
+.stat:not(:first-child){flex:1 1 0;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--c-bg) 18%,transparent)}
+
+.t-prod{padding:10px;display:flex;flex-direction:column;gap:8px}
+.tp-top{display:flex;justify-content:space-between;align-items:center;padding:10px 12px 4px;color:var(--c-muted)}
+.pstack{flex:1;display:grid;min-height:0}
+.pitem{grid-area:1/1;display:flex;flex-direction:column;gap:12px;transition:opacity .45s var(--ease),transform .9s var(--spring)}
+.pstack:not(.is-live) .pitem:not(:first-child){display:none}
+.pstack.is-live .pitem{opacity:0;transform:translateX(34px) scale(.97);pointer-events:none}
+.pstack.is-live .pitem.on{opacity:1;transform:none;pointer-events:auto}
+.pstack.is-live .pitem.out{opacity:0;transform:translateX(-34px) scale(.97)}
+.frame{position:relative;border-radius:var(--r-in);overflow:hidden;background:color-mix(in srgb,var(--c-bg) 45%,var(--c-surface))}
+.frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7%;mix-blend-mode:multiply;transition:transform 1s var(--spring)}
+.frame>img.photo{object-fit:cover;padding:0;mix-blend-mode:normal}
+.pitem .frame{flex:1;min-height:200px}
+.pitem:hover .frame>img,.pcard:hover .frame>img{transform:scale(1.06) rotate(-1.5deg)}
+.pitem-info{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:4px 12px 12px}
+.pname{font:700 clamp(1.1rem,.95rem + .45vw,1.45rem)/1.08 var(--f-display);letter-spacing:-.025em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.price{display:flex;align-items:baseline;gap:8px;margin-top:8px;font-weight:600;font-variant-numeric:tabular-nums;flex-wrap:wrap}
+.price s{color:var(--c-muted);font-weight:400;font-size:.88em}
+.tag{position:absolute;left:12px;top:12px;z-index:2;padding:6px 11px;border-radius:999px;background:var(--c-primary);color:var(--c-on-primary);font:600 12px/1 var(--f-body);box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.round{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--c-text);color:var(--c-bg);transition:transform .6s var(--spring)}
+.pitem:hover .round,.pcard:hover .round{transform:rotate(-45deg)}
+.pdots{display:flex;gap:5px}
+.pdots i{width:6px;height:6px;border-radius:6px;background:color-mix(in srgb,var(--c-text) 18%,transparent);transition:width .5s var(--spring),background-color .3s}
+.pdots i.on{width:20px;background:var(--c-text)}
+.uspmini{list-style:none;margin:0;padding:8px 12px 12px;display:grid;gap:10px}
+.uspmini li{display:flex;gap:12px;padding:14px;border-radius:var(--r-in);background:color-mix(in srgb,var(--c-bg) 45%,var(--c-surface));font-weight:600;line-height:1.3}
+
+.t-map{background:var(--c-surface)}
+.map-svg{position:absolute;inset:0;width:100%;height:100%}
+.m-land{fill:color-mix(in srgb,var(--c-text) 4%,var(--c-surface))}
+.m-block{fill:color-mix(in srgb,var(--c-text) 8%,var(--c-surface))}
+.m-park{fill:color-mix(in srgb,var(--c-primary) 24%,var(--c-surface))}
+.m-water{fill:color-mix(in srgb,var(--c-accent) 26%,var(--c-surface))}
+.m-road{fill:none;stroke:var(--c-surface);stroke-width:7;stroke-linecap:round}
+.m-road.lg{stroke-width:12}
+.m-route{fill:none;stroke:color-mix(in srgb,var(--c-primary) 70%,var(--c-text));stroke-width:3.5;stroke-linecap:round;stroke-dasharray:2 8;animation:route 1.6s linear infinite}
+@keyframes route{to{stroke-dashoffset:-20}}
+.pin{position:absolute;left:50%;top:50%;z-index:2;width:30px;height:30px;margin:-34px 0 0 -15px}
+.pin::before{content:"";position:absolute;inset:0;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--c-primary);box-shadow:0 0 0 3px var(--c-surface),0 8px 16px -4px rgba(0,0,0,.35)}
+.pin::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-6px 0 0 -5px;border-radius:50%;background:var(--c-on-primary)}
+.pin i{position:absolute;left:50%;top:100%;width:60px;height:24px;margin:-6px 0 0 -30px;border-radius:50%;background:color-mix(in srgb,var(--c-primary) 45%,transparent);animation:pulse 2.2s var(--ease) infinite;z-index:-1}
+@keyframes pulse{0%{transform:scale(.2);opacity:1}100%{transform:scale(1.4);opacity:0}}
+.map-card{position:absolute;left:10px;right:10px;bottom:10px;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 14px;border-radius:var(--r-in);
+  background:color-mix(in srgb,var(--c-surface) 90%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 6px 18px -10px rgba(0,0,0,.3)}
+.map-card b{display:block;font-weight:600;font-size:14px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.map-card .mono{color:var(--c-muted);display:block;margin-bottom:4px}
+.map-card .round{width:36px;height:36px}
+.map-card a:hover .round{transform:rotate(-45deg)}
+
+.t-quote{padding:var(--pad);display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.q-mark{font:800 6rem/.7 var(--f-display);height:.5em;color:color-mix(in srgb,var(--c-primary) 60%,var(--c-text))}
+.q-text{font:600 clamp(1.15rem,.85rem + .75vw,1.62rem)/1.16 var(--f-display);letter-spacing:-.02em;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden}
+.q-by{display:flex;align-items:center;gap:10px;color:color-mix(in srgb,var(--c-text) 70%,transparent)}
+.q-by::before{content:"";width:22px;height:2px;background:currentColor}
+
+.t-cta{padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;container-type:inline-size}
+.t-cta .mono{opacity:.75}
+.cta-n{font:800 clamp(1.5rem,15cqi,2.6rem)/.9 var(--f-display);letter-spacing:-.045em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.cta-l{font:700 clamp(1.05rem,11cqi,1.65rem)/1.02 var(--f-display);letter-spacing:-.025em;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:break-word}
+.t-cta .arr{align-self:flex-end;width:54px;height:54px;border-radius:50%;background:var(--c-on-primary);color:var(--c-primary);display:grid;place-items:center;transition:transform .7s var(--spring)}
+.t-cta:hover .arr{transform:rotate(-45deg) scale(1.12)}
+
+.t-chips{display:flex;align-items:center;-webkit-mask:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.marq{display:flex;width:max-content;animation:marq 22s linear infinite}
+.t-chips:hover .marq{animation-play-state:paused}
+.marq-g{display:flex;gap:8px;padding-right:8px}
+.marq a{padding:11px 16px;border-radius:999px;border:1px solid color-mix(in srgb,var(--c-bg) 24%,transparent);font-weight:600;font-size:14.5px;white-space:nowrap;transition:background-color .25s,color .25s}
+.marq a:hover{background:var(--c-bg);color:var(--c-text)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.sec{margin-top:clamp(56px,8vw,120px)}
+.sec-tight{margin-top:var(--gap)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px 32px;flex-wrap:wrap;margin:0 4px clamp(18px,2.2vw,30px)}
+.kicker{display:flex;align-items:center;gap:10px;color:var(--c-muted)}
+.kicker::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);padding:5px 8px;border-radius:8px;background:var(--c-text);color:var(--c-bg)}
+.h2{font:700 clamp(2rem,1.1rem + 3.1vw,4.2rem)/.95 var(--f-display);letter-spacing:-.04em;margin-top:14px;max-width:18ch;text-wrap:balance}
+.more{display:inline-flex;align-items:center;gap:12px;font-weight:600}
+.more .round{width:48px;height:48px}
+.more:hover .round{transform:rotate(-45deg)}
+.more small{color:var(--c-muted);font:500 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+
+.io .reveal:not(.in){opacity:0;transform:translateY(46px) scale(.965);animation:revealsafe .9s var(--ease) 2.4s forwards}
+@keyframes revealsafe{to{opacity:1;transform:none}}
+.reveal.in{transition:opacity .7s var(--ease),transform 1.1s var(--spring),box-shadow .5s var(--ease)}
+
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+
+/* usps */
+.bento-usps{counter-reset:usp}
+.usp{grid-column:span 4;padding:var(--pad);display:flex;flex-direction:column;gap:14px;min-height:200px;counter-increment:usp}
+.usp-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:auto;padding-bottom:20px}
+.usp-top::after{content:counter(usp,decimal-leading-zero);font:500 12px var(--f-mono);letter-spacing:.08em;opacity:.55}
+.usp-ico{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;background:color-mix(in srgb,var(--c-primary) 15%,var(--c-surface));transition:transform .8s var(--spring)}
+.usp:hover .usp-ico{transform:rotate(-12deg) scale(1.08)}
+.usp-ico::before{content:"";width:20px;height:20px;background:color-mix(in srgb,var(--c-primary) 62%,var(--c-text))}
+.usp:nth-child(4n+1) .usp-ico::before{border-radius:50%}
+.usp:nth-child(4n+2) .usp-ico::before{border-radius:5px;transform:rotate(45deg);width:17px;height:17px}
+.usp:nth-child(4n+3) .usp-ico::before{border-radius:20px 20px 3px 3px;height:12px}
+.usp:nth-child(4n) .usp-ico::before{clip-path:polygon(38% 0,62% 0,62% 38%,100% 38%,100% 62%,62% 62%,62% 100%,38% 100%,38% 62%,0 62%,0 38%,38% 38%)}
+.usp h3{font:700 clamp(1.25rem,1rem + .7vw,1.7rem)/1.06 var(--f-display);letter-spacing:-.03em;max-width:22ch}
+.usp p{color:var(--c-muted);max-width:52ch}
+.usp:first-child{background:var(--c-primary);color:var(--c-on-primary);--glow:color-mix(in srgb,var(--c-on-primary) 16%,transparent)}
+.usp:first-child p{color:inherit;opacity:.78}
+.usp:first-child .usp-ico{background:color-mix(in srgb,var(--c-on-primary) 16%,transparent);width:76px;height:76px;border-radius:22px}
+.usp:first-child .usp-ico::before{background:var(--c-on-primary);width:30px;height:30px}
+.usp:first-child h3{font-size:clamp(1.6rem,1.1rem + 1.4vw,2.5rem)}
+@media (min-width:1061px){
+  .bento-usps:has(>.usp:nth-child(3)) .usp:first-child{grid-row:span 2}
+  .bento-usps:has(>.usp:nth-child(3):last-child) .usp:not(:first-child){grid-column:span 8}
+  .bento-usps .usp:nth-child(4){grid-column:span 8}
+  .bento-usps:has(>.usp:nth-child(2):last-child) .usp{grid-column:span 6}
+  .bento-usps .usp:only-child{grid-column:1/-1}
+}
+.sec-cats:not(:has(.cat)),.gallery:not(:has(.g-tile)),.sec-usps:not(:has(.usp)),.f-links:not(:has(li)),.f-contact:not(:has(p)),.sec-cta:not(:has(.cta-big,.ctile)){display:none}
+
+/* categories */
+.cats{grid-auto-rows:minmax(clamp(180px,17vw,250px),auto)}
+.cat{grid-column:span 4;min-height:clamp(180px,17vw,250px);color:#fff}
+@media (min-width:861px){
+  .cats:has(>.cat:nth-child(3)) .cat:first-child{grid-column:span 6;grid-row:span 2}
+  .cats:has(>.cat:nth-child(3):last-child) .cat:not(:first-child){grid-column:span 6}
+  .cats:has(>.cat:nth-child(4):last-child) .cat:nth-child(2){grid-column:span 6}
+  .cats:has(>.cat:nth-child(4):last-child) .cat:nth-child(n+3),.cats:has(>.cat:nth-child(5):last-child) .cat:not(:first-child){grid-column:span 3}
+  .cats:has(>.cat:nth-child(6)) .cat:nth-child(n){grid-column:span 4;grid-row:auto}
+  .cats:has(>.cat:nth-child(2):last-child) .cat:first-child{grid-column:span 7}
+  .cats:has(>.cat:nth-child(2):last-child) .cat:last-child{grid-column:span 5}
+}
+.cats .cat:only-child{grid-column:1/-1}
+.cat::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.42))}
+.cat-l{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 16px;border-radius:var(--r-in);
+  background:var(--c-surface);color:var(--c-text);box-shadow:0 10px 24px -12px rgba(0,0,0,.4);transition:transform .7s var(--spring)}
+.cat:hover .cat-l{transform:translateY(-4px)}
+.cat-l b{font:700 clamp(1.05rem,.9rem + .5vw,1.4rem)/1.1 var(--f-display);letter-spacing:-.025em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cat-l .round{width:38px;height:38px;background:var(--c-primary);color:var(--c-on-primary)}
+.cat:hover .cat-l .round{transform:rotate(-45deg)}
+.cat .ph span{font-size:clamp(2rem,5vw,4.5rem)}
+
+/* products */
+.pgrid{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense}
+.pcard{display:flex;flex-direction:column;padding:8px;gap:4px}
+.pcard .frame{flex:1;min-height:clamp(190px,17vw,250px)}
+.pcard-info{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:12px 10px 10px}
+.pcard .pname{font-size:clamp(1.02rem,.92rem + .3vw,1.22rem)}
+.pcard .round{width:40px;height:40px}
+.pgrid .pcard:first-child{grid-column:span 2;grid-row:span 2}
+.pgrid .pcard:first-child .pname{font-size:clamp(1.4rem,1rem + 1.2vw,2.2rem)}
+.pgrid .pcard:first-child .price{font-size:1.1rem}
+.pgrid .pcard:first-child .round{width:52px;height:52px}
+.pgrid .pcard:nth-child(n+9){display:none}
+.pall{padding:var(--pad);display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:180px}
+.pall b{font:700 clamp(1.4rem,1rem + 1.1vw,2.3rem)/1 var(--f-display);letter-spacing:-.035em}
+.pall .round{background:var(--c-on-primary);color:var(--c-primary);width:56px;height:56px;align-self:flex-end}
+.pall:hover .round{transform:rotate(-45deg) scale(1.1)}
+@media (min-width:861px){
+  .pgrid:has(>.pcard:nth-child(1):nth-last-child(2)) .pall{grid-column:span 2;grid-row:span 2}
+  .pgrid:has(>.pcard:nth-child(2):nth-last-child(2)) .pall,.pgrid:has(>.pcard:nth-child(2):nth-last-child(2)) .pcard:nth-child(2){grid-row:span 2}
+  .pgrid:has(>.pcard:nth-child(3):nth-last-child(2)) .pall{grid-column:span 2}
+  .pgrid:has(>.pcard:nth-child(5):nth-last-child(2)) .pall{grid-column:span 4}
+  .pgrid:has(>.pcard:nth-child(6):nth-last-child(2)) .pall{grid-column:span 3}
+  .pgrid:has(>.pcard:nth-child(7):nth-last-child(2)) .pall{grid-column:span 2}
+}
+
+/* story */
+.st-img{grid-column:span 7;min-height:clamp(320px,40vw,600px)}
+.st-text{grid-column:span 5;padding:clamp(24px,3vw,46px);display:flex;flex-direction:column;gap:22px}
+.bento-story:not(:has(.st-img)) .st-text{grid-column:1/-1}
+.st-text .h2{margin-top:auto;max-width:16ch}
+.st-text p{color:var(--c-muted);font-size:clamp(1rem,.95rem + .25vw,1.15rem);max-width:50ch}
+.stamp{display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid var(--c-line);font-weight:600}
+.stamp i{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--c-primary);color:var(--c-on-primary);font:800 14px var(--f-display);font-style:normal;letter-spacing:-.02em}
+.rail{display:flex;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;margin-top:var(--gap);padding:4px 2px 16px;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+.rail.drag{cursor:grabbing;scroll-snap-type:none}
+.g-tile{flex:1 0 auto;height:clamp(220px,26vw,360px);aspect-ratio:4/5;scroll-snap-align:start}
+.g-tile:nth-child(3n+2){aspect-ratio:16/10}
+.g-tile:nth-child(3n){aspect-ratio:1}
+.g-tile img{pointer-events:none}
+
+/* cta + contact */
+.cta-big{grid-column:span 7;padding:clamp(26px,3.6vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:34px;min-height:clamp(340px,34vw,480px)}
+.cta-big .h2{font-size:clamp(2.3rem,1.2rem + 3.8vw,5.2rem);max-width:13ch;margin:0}
+.cta-big p{opacity:.8;max-width:44ch;font-size:clamp(1rem,.95rem + .25vw,1.15rem)}
+.cta-big .btn{background:var(--c-on-primary);color:var(--c-primary)}
+.cta-big .btn i{background:var(--c-primary);color:var(--c-on-primary)}
+.rings{position:absolute;right:-18%;top:-30%;width:min(560px,80%);aspect-ratio:1;z-index:-1;border-radius:50%;opacity:.16;
+  background:repeating-radial-gradient(circle,transparent 0 26px,var(--c-on-primary) 27px 28px);animation:spin 60s linear infinite}
+.cstack{grid-column:span 5;display:flex;flex-direction:column;gap:var(--gap)}
+.bento-cta:not(:has(.ctile)) .cta-big{grid-column:1/-1}
+.bento-cta:not(:has(.cta-big)) .cstack{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}
+.ctile{flex:1 1 200px;padding:var(--pad);display:flex;align-items:center;gap:18px;min-height:110px}
+.ctile .ico{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--c-primary) 15%,var(--c-surface));color:color-mix(in srgb,var(--c-primary) 55%,var(--c-text));transition:transform .7s var(--spring)}
+.ctile:hover .ico{transform:rotate(-10deg) scale(1.08)}
+.ctile .mono{color:var(--c-muted);display:block;margin-bottom:6px}
+.ctile b{display:block;font:700 clamp(1.1rem,.95rem + .5vw,1.45rem)/1.15 var(--f-display);letter-spacing:-.02em;overflow-wrap:anywhere}
+.ctile .round{margin-left:auto;width:40px;height:40px}
+.ctile:hover .round{transform:rotate(-45deg)}
+
+/* footer */
+.ftr{margin-top:clamp(56px,8vw,120px);padding-bottom:clamp(12px,2vw,28px)}
+.ftr-top{display:flex;flex-wrap:wrap;gap:var(--gap);margin-bottom:var(--gap)}
+.ftr-top .tile{padding:var(--pad);flex:1 1 260px}
+.ftr-top .f-links{flex:2 1 420px}
+.f-nav{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.flist{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.f-links .flist{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));column-gap:20px}
+.flist a{display:inline-flex;padding:6px 0;color:var(--c-muted);font-weight:500;transition:color .2s,transform .5s var(--spring)}
+.flist a:hover{color:var(--c-text);transform:translateX(4px)}
+.f-h{display:block;color:var(--c-muted);margin-bottom:14px}
+.f-contact p{font-weight:500;line-height:1.55}
+.f-contact a:hover{text-decoration:underline}
+.f-giant{padding:clamp(22px,3vw,44px) clamp(22px,3vw,44px) clamp(16px,2vw,26px)}
+.giant{display:block;font:800 clamp(3rem,13vw,13rem)/.82 var(--f-display);letter-spacing:-.06em;overflow-wrap:anywhere}
+.giant.fit{display:inline-block;white-space:nowrap}
+.giant em{font-style:normal;color:var(--c-primary)}
+.f-bar{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;margin-top:clamp(20px,3vw,40px);padding-top:18px;border-top:1px solid color-mix(in srgb,var(--c-bg) 16%,transparent);opacity:.7}
+
+.demo{position:fixed;left:12px;bottom:12px;z-index:60;display:inline-flex;align-items:center;gap:8px;padding:8px 12px 8px 10px;border-radius:999px;background:color-mix(in srgb,var(--c-text) 88%,transparent);color:var(--c-bg);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font:500 11px/1 var(--f-mono);letter-spacing:.04em;box-shadow:0 8px 20px -10px rgba(0,0,0,.5);max-width:calc(100vw - 24px)}
+.demo .dot{width:6px;height:6px}
+
+/* ---------- catalog ---------- */
+.bento-cat{grid-auto-rows:minmax(80px,auto)}
+.ch-title{grid-column:span 8;padding:clamp(24px,3vw,46px);display:flex;flex-direction:column;gap:20px;min-height:clamp(260px,24vw,340px)}
+.ch-title .h1{font-size:clamp(2.2rem,1rem + 3.6vw,4.8rem);margin-top:auto}
+.ch-count{grid-column:span 4;padding:var(--pad);display:flex;flex-direction:column;justify-content:space-between;container-type:inline-size}
+.ch-count .n{font:700 clamp(1.6rem,1rem + 2vw,2.6rem)/1 var(--f-display);letter-spacing:-.03em}
+.ch-count .n b{display:block;font-size:clamp(3.5rem,42cqi,9rem);font-weight:800;line-height:.82;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.ch-count .n span{display:block;margin-top:10px;font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+.ch-filters{grid-column:1/-1;padding:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{height:44px;padding:0 18px;border-radius:999px;border:0;background:color-mix(in srgb,var(--c-text) 5%,transparent);font-weight:600;font-size:14.5px;cursor:pointer;transition:transform .6s var(--spring),background-color .25s,color .25s}
+.chip:hover{transform:translateY(-2px);background:color-mix(in srgb,var(--c-text) 10%,transparent)}
+.chip[aria-pressed="true"]{background:var(--c-text);color:var(--c-bg)}
+.ch-filters .mono{margin-left:auto;padding:0 12px;color:var(--c-muted)}
+.cgrid{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense;margin-top:var(--gap)}
+.cgrid .pcard:first-child{grid-column:span 2;grid-row:span 2}
+.cgrid .pcard:first-child .pname{font-size:clamp(1.4rem,1rem + 1.2vw,2.2rem)}
+.empty{grid-column:1/-1;padding:clamp(28px,4vw,60px);display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+
+/* ---------- responsive ---------- */
+@media (max-width:1180px){
+  .nav{display:none}
+  .mnav{display:block}
+}
+@media (max-width:1060px){
+  .bento-hero{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .t-head{grid-column:1/7;grid-row:1/4}
+  .t-img{grid-column:1/4;grid-row:4/7}
+  .t-prod{grid-column:4/7;grid-row:4/7}
+  .t-stat{grid-column:1/3;grid-row:7/9}
+  .t-map{grid-column:3/5;grid-row:7/9}
+  .t-cta{grid-column:5/7;grid-row:7/9}
+  .t-quote{grid-column:1/5;grid-row:9/11}
+  .t-chips{grid-column:5/7;grid-row:9/11}
+  .usp{grid-column:span 6}
+  .usp:first-child:nth-last-child(odd){grid-column:1/-1}
+  .st-img,.st-text{grid-column:1/-1}
+  .cta-big,.cstack{grid-column:1/-1}
+  .cstack{flex-direction:row;flex-wrap:wrap}
+  .ch-title{grid-column:span 7}.ch-count{grid-column:span 5}
+  .cgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  .pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pgrid .pcard:first-child{grid-row:auto}
+  .pgrid .pall{grid-column:span 2;min-height:150px}
+  .pgrid:has(>.pcard:nth-child(even):nth-last-child(2)) .pall,.pgrid:has(>.pcard:nth-child(9)) .pall{grid-column:span 1}
+  .cat{grid-column:span 6}
+  .cats .cat:first-child,.cats:has(>.cat:nth-child(even):last-child) .cat:last-child{grid-column:1/-1}
+}
+@media (max-width:680px){
+  .bento-hero{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto;grid-auto-flow:row dense}
+  .t-head{order:1}.t-img{order:2}.t-stat{order:3}.t-map{order:4}.t-prod{order:5}.t-cta{order:6}.t-chips{order:7}.t-quote{order:8}
+  .bento-hero>.tile{grid-row:auto!important}
+  .t-head,.t-img,.t-prod,.t-quote{grid-column:1/-1!important}
+  .t-stat,.t-map,.t-cta,.t-chips{grid-column:span 1!important}
+  .t-img{min-height:320px}
+  .t-prod{min-height:400px}
+  .t-stat,.t-map,.t-cta{min-height:200px}
+  .t-chips{min-height:200px;align-items:center}
+  .marq{animation-duration:14s}
+  .t-head{gap:36px}
+  .spin{width:96px;height:96px}
+  .usp,.usp:first-child:nth-last-child(odd){grid-column:1/-1}
+  .usp{min-height:0}
+  .cats .cat:nth-child(n){grid-column:1/-1}
+  .ch-title,.ch-count{grid-column:1/-1}
+  .ch-count{min-height:200px}
+  .cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cgrid .pcard:first-child{grid-row:auto}
+  .pcard .frame{min-height:150px}
+  .pcard-info{flex-direction:column;align-items:flex-start}
+  .pcard .round{display:none}
+  .pgrid .pcard:first-child .round{display:grid}
+  .pgrid .pcard:first-child .pcard-info{flex-direction:row;align-items:flex-end}
+  .ctile{flex-basis:100%}
+  .hdr-r .btn{display:none}
+  .btn{height:52px}
+  .demo{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#FEED36;--c-on-primary:#111111;--c-accent:#35352D}</style></head>
+<body>
+
+<header class="hdr">
+  <div class="wrap">
+    <div class="hdr-in">
+      <a class="logo logo--light" href="template.html" aria-label="BOHLT"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-bohlt.svg" alt="BOHLT"></a>
+      <nav class="nav" aria-label="Hoofdmenu"><a href="catalog.html">Vouwfietsen</a><a href="catalog.html">Fatbikes</a><a href="catalog.html">Elektrische fietsen</a><a href="catalog.html">Accessoires</a><a href="#">Winkel vinden</a><a href="#">Contact</a></nav>
+      <div class="hdr-r">
+        <a class="btn btn-sm btn-primary" href="#"><span>Proefrit aanvragen</span><i><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+        <details class="mnav">
+          <summary aria-label="Menu"><span></span><span></span></summary>
+          <div class="mnav-panel tile"><a href="catalog.html">Vouwfietsen<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a><a href="catalog.html">Fatbikes<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a><a href="catalog.html">Elektrische fietsen<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a><a href="catalog.html">Accessoires<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a><a href="#">Winkel vinden<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a><a href="#">Contact<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO BENTO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="bento-hero assemble">
+
+        <div class="tile t-head">
+          <div><span class="eyebrow"><i class="dot"></i><span>Electrify your style</span></span></div>
+          
+          <h1 class="h1">Take a ride, <span class="mark pre">own the city</span></h1>
+          <div class="head-foot">
+            <p class="lead">Stoere, minimalistische e-bikes met opvallende details, gemaakt voor jong en oud. Aanzetten en wegrijden: meer hoef je niet te weten.</p>
+            <div class="btns">
+              <a class="btn btn-primary" href="catalog.html"><span>Bekijk onze producten</span><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+              <a class="btn btn-ghost" href="#contact"><span>Gratis proefrit maken</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile t-img">
+          <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-electrify-your-style-homepage.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Take a ride," fetchpriority="high">
+          
+          <div class="spin" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><defs><path id="spinpath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#spinpath" class="spin-tp">BOHLT ✦ </textPath></text></svg>
+            <b>BO</b>
+          </div>
+        </div>
+
+        <div class="tile ink t-stat">
+          <div class="stats">
+            <div class="stat"><span class="stat-v" data-count>117</span><span class="stat-l">Dealers</span></div><div class="stat"><span class="stat-v" data-count>7</span><span class="stat-l">Ster-Dealers</span></div>
+            
+          </div>
+        </div>
+
+        <div class="tile t-prod">
+          <div class="tp-top"><span class="mono pcount">BOHLT</span><span class="pdots" aria-hidden="true"></span></div>
+          <div class="pstack">
+            <a class="pitem" href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-fattwenty">
+              <div class="frame">
+                <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;d9abac0cab16e12de10314861d949fd69f6aeb54.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT Fattwenty" loading="lazy">
+                
+                <span class="tag">Fatbike</span>
+              </div>
+              <div class="pitem-info">
+                <div><h3 class="pname">BOHLT Fattwenty</h3><div class="price"><span>€ 1.499,00</span></div></div>
+                <span class="round"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </a>
+            <a class="pitem" href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-rebel">
+              <div class="frame">
+                <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;fdbff358fe50671702b6ff4f09fe397f718e2fa8.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT Rebel" loading="lazy">
+                
+                
+              </div>
+              <div class="pitem-info">
+                <div><h3 class="pname">BOHLT Rebel</h3><div class="price"><span>€ 1.899,00</span></div></div>
+                <span class="round"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </a>
+            <a class="pitem" href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-x200-or">
+              <div class="frame">
+                <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;092b39b1a1df91b0d990eda9c1041fdd9da73d8b.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT X200 OR" loading="lazy">
+                
+                <span class="tag">Vouwfiets</span>
+              </div>
+              <div class="pitem-info">
+                <div><h3 class="pname">BOHLT X200 OR</h3><div class="price"><span>€ 1.699,00</span></div></div>
+                <span class="round"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="tile t-map">
+          <svg class="map-svg" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect class="m-land" width="300" height="220"/>
+            <rect class="m-block" x="8" y="10" width="56" height="44" rx="8"/>
+            <rect class="m-block" x="78" y="14" width="44" height="58" rx="8"/>
+            <rect class="m-park" x="182" y="8" width="84" height="54" rx="14"/>
+            <rect class="m-block" x="170" y="104" width="52" height="40" rx="8"/>
+            <rect class="m-block" x="234" y="92" width="60" height="48" rx="8"/>
+            <rect class="m-block" x="20" y="108" width="60" height="38" rx="8"/>
+            <path class="m-water" d="M-10 176 C 50 150, 110 206, 170 174 S 270 136, 320 156 L 320 240 L -10 240 Z"/>
+            <path class="m-road lg" d="M-10 90 L 320 76"/>
+            <path class="m-road" d="M140 -10 L 158 240"/>
+            <path class="m-road" d="M70 -10 L 96 170"/>
+            <path class="m-road" d="M232 -10 L 222 160"/>
+            <path class="m-road" d="M-10 160 L 160 150"/>
+            <path class="m-route" d="M40 30 C 70 60, 60 84, 100 92 S 140 100, 150 110"/>
+          </svg>
+          <div class="pin"><i></i></div>
+          <div class="map-card">
+            <div style="min-width:0"><span class="mono">BOHLT</span>
+              <b>Vareseweg 44, 3047 AV Rotterdam</b></div>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Vareseweg 44, 3047 AV Rotterdam" target="_blank" rel="noopener" aria-label="Route"><span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="tile tint t-quote">
+          <div class="q-mark" aria-hidden="true">“</div>
+          <p class="q-text">Aanzetten en wegrijden, zo simpel is het</p>
+          <span class="mono q-by">BOHLT</span>
+        </div>
+
+        <a class="tile brand t-cta" href="catalog.html">
+          <span class="cta-n" data-count>3 producten</span>
+          <span class="cta-l">Elektrische fietsen en meer</span>
+          <span class="arr"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <div class="tile ink t-chips">
+          <div class="marq">
+            <div class="marq-g"><a href="catalog.html">Vouwfietsen</a><a href="catalog.html">Fatbikes</a><a href="catalog.html">Elektrische fietsen</a><a href="catalog.html">Accessoires</a><a href="#">Winkel vinden</a><a href="#">Contact</a></div>
+            <div class="marq-g" aria-hidden="true"><a href="catalog.html" tabindex="-1">Vouwfietsen</a><a href="catalog.html" tabindex="-1">Fatbikes</a><a href="catalog.html" tabindex="-1">Elektrische fietsen</a><a href="catalog.html" tabindex="-1">Accessoires</a><a href="#" tabindex="-1">Winkel vinden</a><a href="#" tabindex="-1">Contact</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- USPS -->
+  <section class="sec-tight sec-usps">
+    <div class="wrap">
+      <div class="bento bento-usps">
+        <article class="tile lift usp reveal">
+          <div class="usp-top"><span class="usp-ico" aria-hidden="true"></span></div>
+          <h3>Gratis proefrit</h3>
+          <p>Voel zelf hoe makkelijk elektrisch rijden is en vraag een gratis proefrit aan.</p>
+        </article>
+        <article class="tile lift usp reveal">
+          <div class="usp-top"><span class="usp-ico" aria-hidden="true"></span></div>
+          <h3>Dealers in meerdere landen</h3>
+          <p>Via ons dealernetwerk vind je BOHLT ook in jouw buurt, in Nederland, België, Duitsland en Frankrijk.</p>
+        </article>
+        <article class="tile lift usp reveal">
+          <div class="usp-top"><span class="usp-ico" aria-hidden="true"></span></div>
+          <h3>Geschikt voor jong en oud</h3>
+          <p>Toegankelijke, robuuste e-mobility met één gemeenschappelijk idee: eenvoud.</p>
+        </article>
+        <article class="tile lift usp reveal">
+          <div class="usp-top"><span class="usp-ico" aria-hidden="true"></span></div>
+          <h3>Gates Belt Drive, 100% legaal</h3>
+          <p>Onze elektrische fatbikes rijden met een Gates Belt Drive en voldoen aan de wet.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="sec sec-cats">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="mono kicker">Collecties</span><h2 class="h2">Aanzetten en wegrijden, zo simpel is het</h2></div>
+      </div>
+      <div class="bento cats">
+        <a class="tile lift cat reveal" href="catalog.html">
+          <img class="cover" src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;afbeelding_product_categorie_04.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1103" alt="Elektrische fatbikes" loading="lazy">
+          
+          <span class="cat-l"><b>Elektrische fatbikes</b><span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </a>
+        <a class="tile lift cat reveal" href="catalog.html">
+          <img class="cover" src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-city-bikes-3-copy.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1298" alt="Elektrische citybikes" loading="lazy">
+          
+          <span class="cat-l"><b>Elektrische citybikes</b><span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </a>
+        <a class="tile lift cat reveal" href="catalog.html">
+          <img class="cover" src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;afbeelding_product_categorie_vouwfiets.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1103" alt="Elektrische vouwfietsen" loading="lazy">
+          
+          <span class="cat-l"><b>Elektrische vouwfietsen</b><span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </a>
+        <a class="tile lift cat reveal" href="catalog.html">
+          <img class="cover" src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-accessoires-2-copy.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1296" alt="Accessoires" loading="lazy">
+          
+          <span class="cat-l"><b>Accessoires</b><span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="sec sec-products">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="mono kicker">Uitgelicht</span><h2 class="h2">Elektrische fietsen en meer</h2></div>
+        <a class="more" href="catalog.html"><span><small>3 producten</small><br>Bekijk alles</span><span class="round"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+      <div class="bento pgrid">
+        <a class="tile lift pcard reveal" href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-fattwenty">
+          <div class="frame">
+            <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;d9abac0cab16e12de10314861d949fd69f6aeb54.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT Fattwenty" loading="lazy">
+            
+            <span class="tag">Fatbike</span>
+          </div>
+          <div class="pcard-info">
+            <div style="min-width:0"><h3 class="pname">BOHLT Fattwenty</h3><div class="price"><span>€ 1.499,00</span></div></div>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="tile lift pcard reveal" href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-rebel">
+          <div class="frame">
+            <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;fdbff358fe50671702b6ff4f09fe397f718e2fa8.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT Rebel" loading="lazy">
+            
+            
+          </div>
+          <div class="pcard-info">
+            <div style="min-width:0"><h3 class="pname">BOHLT Rebel</h3><div class="price"><span>€ 1.899,00</span></div></div>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="tile lift pcard reveal" href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-x200-or">
+          <div class="frame">
+            <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;092b39b1a1df91b0d990eda9c1041fdd9da73d8b.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT X200 OR" loading="lazy">
+            
+            <span class="tag">Vouwfiets</span>
+          </div>
+          <div class="pcard-info">
+            <div style="min-width:0"><h3 class="pname">BOHLT X200 OR</h3><div class="price"><span>€ 1.699,00</span></div></div>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="tile lift brand pall reveal" href="catalog.html">
+          <span class="mono">3 producten</span>
+          <b>Bekijk alles</b>
+          <span class="round"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY + GALLERY -->
+  <section class="sec sec-story">
+    <div class="wrap">
+      <div class="bento bento-story">
+        <div class="tile st-img reveal"><img class="cover" src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt_main_image-_05.jpg?cropX&#x3D;0&amp;cropY&#x3D;178&amp;cropW&#x3D;1275&amp;cropH&#x3D;519" alt="Rijden van A naar B, weer écht leuk" loading="lazy"></div>
+        <div class="tile st-text reveal">
+          <div><span class="eyebrow"><i class="dot"></i><span>Over BOHLT</span></span></div>
+          <h2 class="h2">Rijden van A naar B, weer écht leuk</h2>
+          <p>BOHLT ontwerpt e-mobility die tot de verbeelding spreekt: minimalistisch van vorm, met opvallende details en een stoere uitstraling. Van elektrische vouwfietsen en steps tot citybikes: wij zorgen dat iedereen snel en zonder gedoe op zijn bestemming komt.</p>
+          <div class="stamp"><i>BO</i><span>BOHLT</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-tight gallery">
+    <div class="wrap">
+      <div class="rail">
+        <div class="tile g-tile reveal"><img class="cover" src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;ls3_7942-klein.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy" draggable="false"></div><div class="tile g-tile reveal"><img class="cover" src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-proefrit-aanvragen.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy" draggable="false"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + CONTACT -->
+  <section class="sec sec-cta" id="contact">
+    <div class="wrap">
+      <div class="bento bento-cta">
+        <div class="tile brand cta-big reveal">
+          <span class="rings" aria-hidden="true"></span>
+          <span class="mono">BOHLT</span>
+          <div>
+            <h2 class="h2">Ervaar het zelf</h2>
+            <p style="margin-top:18px">Benieuwd hoe BOHLT rijdt? Vraag een gratis proefrit aan of zoek een dealer bij jou in de buurt.</p>
+          </div>
+          <div><a class="btn" href="#"><span>Proefrit aanvragen</span><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a></div>
+        </div>
+        <div class="cstack">
+          <a class="tile lift ctile reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Vareseweg 44, 3047 AV Rotterdam" target="_blank" rel="noopener">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+            <span style="min-width:0"><span class="mono">Adres</span><b>Vareseweg 44, 3047 AV Rotterdam</b></span>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+          <a class="tile lift ctile reveal" href="tel:010 304 11 00">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+            <span style="min-width:0"><span class="mono">Bel</span><b>010 304 11 00</b></span>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+          <a class="tile lift ctile reveal" href="mailto:info@bohlt.nl">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span style="min-width:0"><span class="mono">Mail</span><b>info@bohlt.nl</b></span>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <div class="tile f-nav reveal">
+        <a class="logo logo--light" href="template.html" aria-label="BOHLT"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-bohlt.svg" alt="BOHLT" loading="lazy"></a>
+        <ul class="flist"><li><a href="catalog.html">Vouwfietsen</a></li><li><a href="catalog.html">Fatbikes</a></li><li><a href="catalog.html">Elektrische fietsen</a></li><li><a href="catalog.html">Accessoires</a></li><li><a href="#">Winkel vinden</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div class="tile f-links reveal">
+        <span class="mono f-h">BOHLT</span>
+        <ul class="flist"><li><a href="#">Winkel vinden</a></li><li><a href="#">Dealer worden</a></li><li><a href="#">Levertijden</a></li><li><a href="#">Retouren</a></li><li><a href="#">Garantie</a></li><li><a href="#">Klantenservice</a></li><li><a href="#">Algemene voorwaarden</a></li><li><a href="#">Privacy statement</a></li></ul>
+      </div>
+      <div class="tile tint f-contact reveal">
+        <span class="mono f-h">Contact</span>
+        <p>Vareseweg 44, 3047 AV Rotterdam</p>
+        <p><a href="tel:010 304 11 00">010 304 11 00</a></p>
+        <p><a href="mailto:info@bohlt.nl">info@bohlt.nl</a></p>
+      </div>
+    </div>
+    <div class="tile ink f-giant reveal">
+      <div class="giant-wrap"><span class="giant">BOHLT<em>.</em></span></div>
+      <div class="f-bar"><span>Aanzetten en wegrijden, zo simpel is het</span><span class="mono">© 2026 BOHLT</span></div>
+    </div>
+  </div>
+</footer>
+
+<div class="demo"><i class="dot"></i>Demo redesign · Bento Board</div>
+
+<script>
+(function(){
+  var d=document,root=d.documentElement,rm=root.classList.contains('rm');
+  // hide empty optional frames
+  [['.f-links','.flist li'],['.f-contact','p'],['.sec-cats','.cat'],['.gallery','.g-tile'],['.sec-usps','.usp']].forEach(function(p){
+    d.querySelectorAll(p[0]).forEach(function(el){if(!el.querySelector(p[1]))el.style.display='none'});
+  });
+  var sc=d.querySelector('.sec-cta');if(sc&&!sc.querySelector('.cta-big,.ctile'))sc.style.display='none';
+
+  var h1=d.querySelector('.t-head .h1');if(h1&&h1.textContent.trim().length>46)h1.classList.add('is-long');
+
+  // stat font length
+  d.querySelectorAll('.stat:first-child .stat-v').forEach(function(el){el.style.setProperty('--len',Math.max(3,el.textContent.trim().length))});
+
+  // spin badge text
+  var tp=d.querySelector('.spin-tp');
+  if(tp){var base=tp.textContent;try{var w=tp.getComputedTextLength();var circ=2*Math.PI*38;var n=Math.max(1,Math.floor(circ/(w||circ)));tp.textContent=new Array(n+1).join(base);tp.setAttribute('textLength',(circ-2).toFixed(1));tp.setAttribute('lengthAdjust','spacing')}catch(e){}}
+
+  // count up
+  function countUp(el){
+    var raw=el.getAttribute('data-raw')||el.textContent.trim();el.setAttribute('data-raw',raw);
+    var m=raw.match(/\d[\d.,]*/);if(!m||rm)return;
+    var ns=m[0].replace(/[.,]$/,''),pre=raw.slice(0,m.index),post=raw.slice(m.index+ns.length),dec=0,st='',sd=',',clean=ns;
+    var li=Math.max(ns.lastIndexOf('.'),ns.lastIndexOf(','));
+    if(li>-1){var ch=ns[li],tail=ns.length-li-1;
+      if(tail===3&&/^\d{1,3}([.,]\d{3})+$/.test(ns)){st=ch;clean=ns.split(ch).join('')}
+      else{dec=tail;sd=ch;var o=ch==='.'?',':'.';st=ns.indexOf(o)>-1?o:'';clean=ns.split(o).join('').replace(ch,'.')}}
+    var target=parseFloat(clean);if(!isFinite(target))return;
+    function fmt(v){var s=v.toFixed(dec).split('.'),i=s[0];if(st)i=i.replace(/\B(?=(\d{3})+(?!\d))/g,st);return pre+i+(s[1]?sd+s[1]:'')+post}
+    var t0=null,dur=1700;el.textContent=fmt(0);
+    requestAnimationFrame(function tick(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur),e=p===1?1:1-Math.pow(2,-10*p);el.textContent=fmt(target*e);if(p<1)requestAnimationFrame(tick);else el.textContent=raw});
+  }
+
+  // assemble hero
+  var hero=d.querySelector('.assemble'),mark=d.querySelector('.mark.pre');
+  var supportsLinear=window.CSS&&CSS.supports&&CSS.supports('animation-timing-function','linear(0, 1)');
+  var spring=supportsLinear?'linear(0, .02 2%, .08 4%, .18 6%, .32 8%, .47 10%, .62 12%, .75 14%, .86 16%, .94 18%, 1 20%, 1.04 22%, 1.065 24.5%, 1.072 27%, 1.068 30%, 1.05 34%, 1.025 39%, 1.005 44%, .993 50%, .99 56%, .994 64%, 1 76%, 1)':'cubic-bezier(.34,1.4,.64,1)';
+  function heroDone(){if(mark)setTimeout(function(){mark.classList.remove('pre')},rm?0:150)}
+  if(hero){
+    var tiles=[].slice.call(hero.children);
+    if(!rm&&hero.animate){
+      var g=hero.getBoundingClientRect(),cx=g.left+g.width/2,cy=g.top+Math.min(g.height,innerHeight)/2;
+      tiles.forEach(function(t,i){
+        var r=t.getBoundingClientRect(),dx=cx-(r.left+r.width/2),dy=cy-(r.top+r.height/2);
+        var rot=(i%2?1:-1)*(5+(i*37)%7),delay=120+i*80;
+        var a1=t.animate([{transform:'translate('+dx*.82+'px,'+dy*.82+'px) scale(.38) rotate('+rot+'deg)'},{transform:'none'}],{duration:1450,delay:delay,easing:spring,fill:'both'});
+        var a2=t.animate([{opacity:0},{opacity:1}],{duration:420,delay:delay,easing:'ease-out',fill:'both'});
+        a1.onfinish=function(){t.classList.add('in');a1.cancel();a2.cancel()};
+        if(i===0)setTimeout(heroDone,delay+700);
+      });
+    }else{tiles.forEach(function(t){t.classList.add('in')});heroDone()}
+  }
+
+  // reveal + counters
+  var counters=[].slice.call(d.querySelectorAll('[data-count]'));
+  if('IntersectionObserver' in window&&!rm){
+    root.classList.add('io');
+    var io=new IntersectionObserver(function(es){
+      var k=0;es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);
+        el.style.transitionDelay=(k++*70)+'ms';el.classList.add('in');
+        setTimeout(function(){el.style.transitionDelay=''},1300)});
+    },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    d.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+    var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);
+      var inHero=e.target.closest('.assemble');setTimeout(function(){countUp(e.target)},inHero?750:150)})},{threshold:.4});
+    counters.forEach(function(c){co.observe(c)});
+  }
+
+  // product stack
+  d.querySelectorAll('.pstack').forEach(function(s){
+    var items=[].slice.call(s.querySelectorAll('.pitem')),tile=s.closest('.t-prod'),dots=tile&&tile.querySelector('.pdots'),cnt=tile&&tile.querySelector('.pcount');
+    if(!items.length)return;
+    var i=0,timer,pad=function(n){return(n<10?'0':'')+n};
+    if(dots)items.forEach(function(){dots.appendChild(d.createElement('i'))});
+    function show(n){items.forEach(function(it,j){it.classList.toggle('on',j===n);it.classList.toggle('out',j===i&&j!==n)});
+      if(dots)[].forEach.call(dots.children,function(dt,j){dt.classList.toggle('on',j===n)});
+      if(cnt)cnt.textContent=pad(n+1)+' / '+pad(items.length);i=n}
+    s.classList.add('is-live');show(0);
+    if(items.length>1&&!rm){
+      var go=function(){timer=setInterval(function(){show((i+1)%items.length)},3200)};
+      tile.addEventListener('mouseenter',function(){clearInterval(timer)});tile.addEventListener('mouseleave',go);go();
+    }
+  });
+
+  // photos (not cut-outs) fill the frame instead of floating small inside it
+  function photoCheck(img){try{var c=d.createElement('canvas');c.width=c.height=8;var x=c.getContext('2d');x.drawImage(img,0,0,8,8);
+    var p=x.getImageData(0,0,8,8).data,dark=0;[0,7,56,63].forEach(function(k){var o=k*4;if(p[o+3]>200&&(p[o]+p[o+1]+p[o+2])/3<200)dark++});
+    if(dark>=2)img.classList.add('photo')}catch(e){}}
+  d.querySelectorAll('.frame>img').forEach(function(img){if(img.complete&&img.naturalWidth)photoCheck(img);else img.addEventListener('load',function(){photoCheck(img)})});
+
+  // pointer spotlight
+  d.addEventListener('pointermove',function(e){var t=e.target.closest&&e.target.closest('.tile');if(!t)return;var r=t.getBoundingClientRect();
+    t.style.setProperty('--mx',(e.clientX-r.left)+'px');t.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true});
+
+  // drag rail
+  d.querySelectorAll('.rail').forEach(function(r){var down=false,x0,s0;
+    r.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;x0=e.clientX;s0=r.scrollLeft;r.classList.add('drag')});
+    addEventListener('pointerup',function(){down=false;r.classList.remove('drag')});
+    r.addEventListener('pointermove',function(e){if(down)r.scrollLeft=s0-(e.clientX-x0)})});
+
+  // fit giant footer name
+  function fit(){d.querySelectorAll('.giant').forEach(function(g){var w=g.parentElement.clientWidth;g.classList.add('fit');g.style.fontSize='100px';
+    var fs=Math.min(100*w/g.scrollWidth,260);g.style.fontSize=fs+'px'})}
+  fit();if(d.fonts&&d.fonts.ready)d.fonts.ready.then(fit);var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(fit,120)});
+
+  // close mobile nav on outside click
+  d.addEventListener('click',function(e){d.querySelectorAll('.mnav[open]').forEach(function(m){if(!m.contains(e.target))m.removeAttribute('open')})});
+})();
+</script>
+</body>
+</html>

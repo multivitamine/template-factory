@@ -1,0 +1,207 @@
+{
+  "runId": "2026-10-28T18-43-49",
+  "model": "opus",
+  "concurrency": 10,
+  "sites": 10,
+  "done": 10,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 239,
+  "p50": 182.9,
+  "p95": 238.9,
+  "max": 238.9,
+  "avgPhases": {
+    "crawl": 18.4,
+    "analyseAndPick": 16,
+    "homepage": 86.7,
+    "catalog": 67
+  },
+  "throughputPerMin": 2.51,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 15.9,
+  "projected40MinIfSlotsOnly": 11.5,
+  "totalCostUsd": 8.65,
+  "jobs": [
+    {
+      "key": "brinkscoffeeroasters",
+      "status": "done",
+      "template": "Intercom",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 21.6,
+      "analyseAndPick": 13.2,
+      "homepage": 68.8,
+      "catalog": 51.8,
+      "total": 156.7,
+      "turns": 8,
+      "costUsd": 0.8093286000000001,
+      "error": null
+    },
+    {
+      "key": "aiki-budo",
+      "status": "done",
+      "template": "teenage engineering",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 16.6,
+      "analyseAndPick": 11.5,
+      "homepage": 81.8,
+      "catalog": 71.7,
+      "total": 182.9,
+      "turns": 8,
+      "costUsd": 0.9661911999999999,
+      "error": null
+    },
+    {
+      "key": "birthbear",
+      "status": "done",
+      "template": "Cursor",
+      "pages": [
+        "index.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 21.6,
+      "analyseAndPick": 25.3,
+      "homepage": 87.3,
+      "catalog": null,
+      "total": 141.2,
+      "turns": 10,
+      "costUsd": 0.5837600000000001,
+      "error": null
+    },
+    {
+      "key": "nacrasailing",
+      "status": "done",
+      "template": "Brex",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.7,
+      "analyseAndPick": 22.1,
+      "homepage": 86.6,
+      "catalog": 67,
+      "total": 195.6,
+      "turns": 8,
+      "costUsd": 0.9542468000000001,
+      "error": null
+    },
+    {
+      "key": "terpstrav2",
+      "status": "done",
+      "template": "teenage engineering",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 25.4,
+      "analyseAndPick": 14.5,
+      "homepage": 111.2,
+      "catalog": 78.1,
+      "total": 238.9,
+      "turns": 10,
+      "costUsd": 1.2405504000000003,
+      "error": null
+    },
+    {
+      "key": "fredimare",
+      "status": "done",
+      "template": "Apple iPhone 18 Pro",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.7,
+      "analyseAndPick": 24.1,
+      "homepage": 75.2,
+      "catalog": 72.9,
+      "total": 195.1,
+      "turns": 8,
+      "costUsd": 0.977341,
+      "error": null
+    },
+    {
+      "key": "kartstoreinternational",
+      "status": "done",
+      "template": "Apple iPhone 18 Pro",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 25.6,
+      "analyseAndPick": 15.9,
+      "homepage": 88.6,
+      "catalog": 62.8,
+      "total": 194.7,
+      "turns": 9,
+      "costUsd": 0.9526391999999999,
+      "error": null
+    },
+    {
+      "key": "bohlt",
+      "status": "done",
+      "template": "Wise",
+      "pages": [
+        "index.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 16.4,
+      "analyseAndPick": 11.1,
+      "homepage": 83.2,
+      "catalog": null,
+      "total": 112.1,
+      "turns": 7,
+      "costUsd": 0.577532,
+      "error": null
+    },
+    {
+      "key": "hotelnavarra",
+      "status": "done",
+      "template": "Cursor",
+      "pages": [
+        "index.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 9.2,
+      "analyseAndPick": 13.5,
+      "homepage": 91.6,
+      "catalog": null,
+      "total": 123.6,
+      "turns": 8,
+      "costUsd": 0.6816269999999999,
+      "error": null
+    },
+    {
+      "key": "droogijs365",
+      "status": "done",
+      "template": "Authkit",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 16.3,
+      "analyseAndPick": 9,
+      "homepage": 93,
+      "catalog": 64.6,
+      "total": 184.3,
+      "turns": 8,
+      "costUsd": 0.9076316,
+      "error": null
+    }
+  ]
+}

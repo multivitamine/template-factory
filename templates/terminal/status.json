@@ -1,0 +1,82 @@
+{
+  "id": "terminal",
+  "name": "Terminal",
+  "sectors": [
+    "tech",
+    "b2b",
+    "electronics"
+  ],
+  "sample": "kartstoreinternational",
+  "stress": "droogijs365",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793217538492
+    },
+    {
+      "step": "Rendering",
+      "at": 1793218152901
+    },
+    {
+      "step": "Critique",
+      "at": 1793218167405
+    },
+    {
+      "step": "Final render",
+      "at": 1793218301026
+    },
+    {
+      "step": "Done",
+      "at": 1793218318452
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793217538492,
+  "finishedAt": 1793218318452,
+  "model": "opus",
+  "costUsd": 2.8946152,
+  "meta": {
+    "id": "terminal",
+    "name": "Terminal",
+    "scheme": "dark",
+    "sectors": [
+      "tech",
+      "b2b",
+      "electronics"
+    ],
+    "mood": [
+      "technical",
+      "precise",
+      "nocturnal",
+      "crafted"
+    ],
+    "needsProductImages": true,
+    "notes": "Brand primary replaces the phosphor green: filled CTAs use --c-primary/--c-on-primary, while prompts, caret, prices and highlights use a lightness-clamped version (oklch) so even navy or near-black stays legible on the dark screen; accent drives status tags and labels."
+  },
+  "score": {
+    "scoreBefore": 5,
+    "issues": [
+      "Catastrophic: every section below the hero (products ls -la, tree, story, stats, gallery, quote) renders as an empty void with just '~$' — content was hidden until IntersectionObserver fired with a -14% margin, so screenshots, fast scrolls and full-page captures show ~3000px of black",
+      "Hero typewriter is far too slow for long headlines: the Droogijs365 stress hero is captured mid-word ('snel en') with a giant orphan caret block on its own line",
+      "Caret was appended after the block-level accent span, so it always dropped to its own line, leaving a phantom empty line / big gap between headline and body text even after typing finished",
+      "Reserved headline height was measured before the VT323 pixel font loaded, inflating the hero gap",
+      "Kartstore logo (flagged 'light') has dark lettering that disappears on the black header",
+      "ASCII dividers are anonymous dashes; the section numbering lives only in a tiny corner tag",
+      "Creativity 7, typography 7, layout & rhythm 4 (empty voids), polish 4, brand robustness 7, mobile 5 (same empty voids), generic-template feel 6"
+    ],
+    "fixed": [
+      "Rewrote the section reveal: output is visible by default and only blanks for the instant its command is typed (triggered as soon as the section edge enters the viewport) — the 'run on scroll' signature is preserved but nothing can ever stay empty",
+      "Typewriter speed now scales with headline length so any brand's headline lands in ~1.6s",
+      "Caret is kept inside the segment being typed (text node + caret), so it hugs the last character and never orphans onto a new line or leaves a gap",
+      "Hero height is reserved only after document.fonts.ready (with timeout fallback), removing the phantom gap",
+      "Light-flagged logos get a hairline white halo so dark lettering stays readable on the terminal background",
+      "ASCII dividers now read '+--[ 02 ]------+', turning every section break into a numbered terminal frame"
+    ],
+    "scoreAfterEstimate": 7.5
+  },
+  "version": 1793218318452
+}

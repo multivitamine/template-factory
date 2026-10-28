@@ -1,0 +1,81 @@
+{
+  "id": "velocity",
+  "name": "Velocity",
+  "sectors": [
+    "sports",
+    "automotive",
+    "retail"
+  ],
+  "sample": "kartstoreinternational",
+  "stress": "aiki-budo",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793216912354
+    },
+    {
+      "step": "Rendering",
+      "at": 1793217548063
+    },
+    {
+      "step": "Critique",
+      "at": 1793217561716
+    },
+    {
+      "step": "Final render",
+      "at": 1793217640751
+    },
+    {
+      "step": "Done",
+      "at": 1793217657221
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793216912354,
+  "finishedAt": 1793217657221,
+  "model": "opus",
+  "costUsd": 2.7084544,
+  "meta": {
+    "id": "velocity",
+    "name": "Velocity",
+    "scheme": "dark",
+    "sectors": [
+      "sports",
+      "automotive",
+      "retail"
+    ],
+    "mood": [
+      "fast",
+      "aggressive",
+      "race-day",
+      "kinetic"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary is the racing stripe (hero title band, ticker, CTA band, P1 badge, start lights, streak wipes) always paired with on-primary text and a hairline edge so near-black brands stay visible; accent is a secondary pin-stripe only."
+  },
+  "score": {
+    "scoreBefore": 5,
+    "issues": [
+      "Homepage dies after the product grid: categories, story, gallery, quote and CTA render as ~2000px of empty asphalt because reveal is tied to IntersectionObserver only and the 3s fallback is disabled once the main script runs (desktop, mobile and stress brand all broken)",
+      "The signature speed-streak wipe is coupled to content visibility, so if the observer misses a section, the content stays hidden too",
+      "Hero race number '01' is tucked behind the header and hero image, almost invisible, so the 'huge race numbers behind content' idea barely reads",
+      "Background race numbers stroked at 9% alpha are too faint to register on the noise texture",
+      "The product 'starting grid' has no grid of its own: no racing stripe or track markings, so it reads like a generic 4-up shop grid",
+      "Product cards stretch to the row height, which leaves a big dead gap between the product name and the price",
+      "Typography (italic condensed uppercase), the lap-timer strip, the parallelogram crops and the P1-P4 badges are strong, and the stress brand holds up well"
+    ],
+    "fixed": [
+      "Split reveal into 'in' (content visible) and 'wipe' (streak animation). Sections are now also revealed from the scroll loop as soon as their top passes 80% of the viewport, and a 3.2s safety net makes all content visible while still playing the streak wipe when each section arrives",
+      "Moved the hero race number to bottom-left at up to 42rem, with a brand-colour stroke and a gradient fill, so it reads as a giant number painted on the car behind the copy, with parallax kept",
+      "Raised the stroke contrast of the background race numbers from 9% to 13%",
+      "Added a diagonal brand-colour racing stripe with an accent pinstripe across the top of the products section, and dashed grid-slot track markings behind the P1/P2… cards",
+      "Cards now align to the top (align-self:start), so the price sits right under the product name"
+    ],
+    "scoreAfterEstimate": 7.5
+  },
+  "version": 1793217657221
+}

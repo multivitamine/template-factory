@@ -1,0 +1,21 @@
+{
+  "scoreBefore": 4,
+  "issues": [
+    "Everything below the first viewport rendered as empty colour blocks (products, story, stats, gallery, quote, CTA, footer): .reveal and divider bands were hidden at opacity 0 / translated off-screen until an IntersectionObserver fired, so static captures and slow scrolls showed a broken page",
+    "Horizontal overflow on all home renders: the 110%-wide rotated marquee bands and off-edge shapes leaked past the viewport",
+    "Hero dot field sat directly under the body copy; with a dark accent (Fredimare) the copy became nearly unreadable",
+    "USP wave pattern used a 58% accent tint, so with a dark accent it turned into a heavy grey zebra that fought the cards",
+    "Catalog count badge broke '2 producten' mid-word ('producte / n') because of overflow-wrap:anywhere",
+    "Products and gallery sections were just pattern wallpaper with no giant SVG shape, so the brief's 'giant friendly shapes' only appeared in the hero",
+    "Creativity 6, typography 6, layout & rhythm 3 (empty blocks), polish 3, brand robustness 5, mobile 4, generic-template feel 5"
+  ],
+  "fixed": [
+    "Reveals and divider slides now only add motion: content is visible by default and plays a 'sticker slap' (pop + rotate) or slide-in animation when it enters view. The observer fires 12% before an element enters, so it doesn't flash. Applied to both pages",
+    "Overflow: html gets overflow-x:clip, with hidden as a fallback; the marquee clips horizontally but keeps its vertical rotation visible; the product and gallery sections clip their giant shapes",
+    "Hero dot field moved behind the artwork on the right, softened to a 38% accent tint and faded at the edges with a radial mask, so the copy stays clean for any brand",
+    "USP wave pattern softened to a 34% accent tint, so a dark accent no longer overwhelms the section",
+    "Catalog count badge: whole words only (keep-all, no hyphenation), slightly smaller type that fits the burst",
+    "Added giant slowly spinning SVG-mask flowers in brand colours: accent flower peeking into the products section, primary flower into the gallery"
+  ],
+  "scoreAfterEstimate": 7
+}

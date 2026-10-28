@@ -1,0 +1,9 @@
+{
+  "id": "chrome-y2k",
+  "name": "Chrome Y2K",
+  "scheme": "dark",
+  "sectors": ["sports", "tech", "retail"],
+  "mood": ["liquid chrome", "holographic", "energetic", "millennium"],
+  "needsProductImages": true,
+  "notes": "Primary fills the glossy pill buttons, starburst price stickers and the first tape, and is mixed with white to drive the glow, perspective grid and brand-chrome headline; the accent colour is unused so dark accents can't hurt legibility, and chrome/silver stays neutral."
+}

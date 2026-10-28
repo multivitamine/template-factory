@@ -1,0 +1,228 @@
+{
+  "brand": {
+    "name": "Hotel Navarra",
+    "tagline": "Historic charm, contemporary comfort in Bruges",
+    "logo": "https://www.hotelnavarra.com/dist/images/logos/logo-hotelnavarra.svg",
+    "logoIsLight": false,
+    "initials": "HN",
+    "lang": "en",
+    "colors": {
+      "primary": "#00467F",
+      "accent": "#C19B3C"
+    }
+  },
+  "nav": [
+    {
+      "label": "Rooms",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Hotel Facilities",
+      "href": "#"
+    },
+    {
+      "label": "Package Deals",
+      "href": "#"
+    },
+    {
+      "label": "Meetings",
+      "href": "#"
+    },
+    {
+      "label": "Discover Bruges",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "4-star boutique hotel",
+    "title": "Discover Bruges",
+    "titleAccent": "as never before",
+    "text": "Stay in a stately historic building in the heart of Bruges, with an indoor pool, garden, bar and on-site parking. Book direct for the lowest rate guaranteed.",
+    "cta": "Book now",
+    "ctaHref": "catalog.html",
+    "cta2": "View our rooms",
+    "image": "https://www.hotelnavarra.com/media/homepage-header-1.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  },
+  "usps": [
+    {
+      "title": "In the heart of Bruges",
+      "text": "All the highlights of the city are within easy walking distance, about 100 metres from the main square."
+    },
+    {
+      "title": "Pool, sauna & fitness",
+      "text": "Unwind in a unique space in the former wine cellar, then enjoy the sunny terrace and garden."
+    },
+    {
+      "title": "Book direct, book better",
+      "text": "Lowest rate guaranteed, direct contact with the team and free cancellation until 24 hours before arrival."
+    },
+    {
+      "title": "On-site parking",
+      "text": "Park safely at the hotel while you explore the city on foot."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Comfort Superior",
+      "image": "https://www.hotelnavarra.com/media/homepage-kamer1-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=850",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Comfort",
+      "image": "https://www.hotelnavarra.com/media/homepage-kamer2-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=500",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Comfort Mini",
+      "image": "https://www.hotelnavarra.com/media/homepage-kamer3-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=500",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Comfort Superior Room",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.hotelnavarra.com/media/homepage-kamer1-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=850",
+      "tag": "A little more luxury",
+      "href": "https://www.hotelnavarra.com/rooms/comfort-superior"
+    },
+    {
+      "name": "Comfort Room",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.hotelnavarra.com/media/homepage-kamer2-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=500",
+      "tag": "Total relaxation",
+      "href": "https://www.hotelnavarra.com/rooms/comfort"
+    },
+    {
+      "name": "Comfort Mini Room",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.hotelnavarra.com/media/homepage-kamer3-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=500",
+      "tag": "Ideal for shorter stays",
+      "href": "https://www.hotelnavarra.com/rooms/comfort-mini"
+    }
+  ],
+  "story": {
+    "eyebrow": "Swim and relax",
+    "title": "A pool in the former wine cellar",
+    "text": "Beneath this historic building lies a one-of-a-kind spot to unwind: an indoor pool and sauna set in the former wine cellar. After a day exploring Bruges, it is the perfect place to switch off.",
+    "image": "https://www.hotelnavarra.com/media/zwembad-header1.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  },
+  "stats": [
+    {
+      "value": "4.6/5",
+      "label": "Guest rating"
+    },
+    {
+      "value": "1508",
+      "label": "Guest reviews"
+    },
+    {
+      "value": "4-star",
+      "label": "Boutique hotel"
+    },
+    {
+      "value": "100 m",
+      "label": "From the main square"
+    }
+  ],
+  "gallery": [
+    "https://www.hotelnavarra.com/media/to-do-list-bar.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.hotelnavarra.com/media/to-do-list-sauna.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.hotelnavarra.com/media/to-do-list-fitness.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.hotelnavarra.com/media/to-do-list-tuin.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.hotelnavarra.com/media/to-do-list-zwembad.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.hotelnavarra.com/media/to-do-list-ontdek-brugge.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.hotelnavarra.com/media/to-do-list-ontbijt.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  ],
+  "quote": {
+    "text": "From the moment you enter this wonderful and historic hotel, you are made to feel welcome by the reception staff. The hotel is spotlessly clean and the rooms are just the same.",
+    "author": "Hotel guest"
+  },
+  "cta": {
+    "title": "Your Bruges stay starts here",
+    "text": "Book direct for the lowest rate guaranteed and free cancellation until 24 hours before arrival.",
+    "label": "Book now",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Sint-Jakobsstraat 41, Bruges",
+    "phone": "+32 (0)50 34 05 61",
+    "email": ""
+  },
+  "footerLinks": [
+    {
+      "label": "About us",
+      "href": "#"
+    },
+    {
+      "label": "Rooms",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Hotel facilities",
+      "href": "#"
+    },
+    {
+      "label": "Package deals",
+      "href": "#"
+    },
+    {
+      "label": "Meetings",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    },
+    {
+      "label": "Jobs",
+      "href": "#"
+    },
+    {
+      "label": "Photo gallery",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Our rooms in Bruges",
+    "intro": "Three room categories, each combining the comfort of a 4-star hotel with the charm of a historic Bruges building.",
+    "filters": [
+      "All",
+      "Comfort Superior",
+      "Comfort",
+      "Comfort Mini"
+    ],
+    "count": "3 rooms"
+  },
+  "featured": [
+    {
+      "name": "Comfort Superior Room",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.hotelnavarra.com/media/homepage-kamer1-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=850",
+      "tag": "A little more luxury",
+      "href": "https://www.hotelnavarra.com/rooms/comfort-superior"
+    },
+    {
+      "name": "Comfort Room",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.hotelnavarra.com/media/homepage-kamer2-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=500",
+      "tag": "Total relaxation",
+      "href": "https://www.hotelnavarra.com/rooms/comfort"
+    },
+    {
+      "name": "Comfort Mini Room",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.hotelnavarra.com/media/homepage-kamer3-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=500",
+      "tag": "Ideal for shorter stays",
+      "href": "https://www.hotelnavarra.com/rooms/comfort-mini"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

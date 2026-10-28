@@ -1,0 +1,267 @@
+{
+  "brand": {
+    "name": "Droogijs365",
+    "tagline": "Droogijs op maat, altijd bereikbaar",
+    "logo": "https://www.droogijs365.nl/dist/images/logos/logo-droogijs365.svg",
+    "logoIsLight": true,
+    "initials": "D3",
+    "lang": "nl",
+    "colors": {
+      "primary": "#113BFB",
+      "accent": "#00051A"
+    }
+  },
+  "nav": [
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Toepassingen",
+      "href": "#"
+    },
+    {
+      "label": "Producten",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Containers",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Producent van droogijs",
+    "title": "Droogijs van de producent,",
+    "titleAccent": "snel en betrouwbaar geleverd",
+    "text": "Van 3 mm pellets tot 5 kilo blokken: Droogijs365 maakt en levert droogijs voor elke toepassing, met focus op kwaliteit en ontzorging van begin tot eind. Wij zijn altijd bereikbaar.",
+    "cta": "Bekijk producten",
+    "ctaHref": "catalog.html",
+    "cta2": "Offerte opvragen",
+    "image": "https://www.droogijs365.nl/media/heroslide.jpg?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1920"
+  },
+  "usps": [
+    {
+      "title": "Altijd bereikbaar",
+      "text": "Je kunt dag en nacht op ons rekenen, ook als het snel moet."
+    },
+    {
+      "title": "Eigen productie",
+      "text": "Wij produceren zelf droogijs, dus kwaliteit en levering houden we in eigen hand."
+    },
+    {
+      "title": "Voor elke branche",
+      "text": "Zes toepassingsgebieden, van medisch en farmaceutisch tot horeca en evenementen."
+    },
+    {
+      "title": "Ontzorging van A tot Z",
+      "text": "Van advies en product tot levering: wij regelen het hele traject voor je."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Medisch & Farmaceutisch",
+      "image": "https://www.droogijs365.nl/media/medisch-en-farmaceutisch.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=443",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Voedselindustrie",
+      "image": "https://www.droogijs365.nl/media/voedselindustrie.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=443",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Transport",
+      "image": "https://www.droogijs365.nl/media/transport.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=443",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Industrieel reinigen",
+      "image": "https://www.droogijs365.nl/media/industrieel-reinigen.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=380",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Evenementenindustrie",
+      "image": "https://www.droogijs365.nl/media/evenementenindustrie.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=380",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Horeca",
+      "image": "https://www.droogijs365.nl/media/horeca-slide.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=379",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Droogijs pellets 3 mm",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
+      "tag": "Pellets",
+      "href": "#"
+    },
+    {
+      "name": "Droogijs pellets 10 mm",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
+      "tag": "Pellets",
+      "href": "#"
+    },
+    {
+      "name": "Droogijs pellets 16 mm",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
+      "tag": "Pellets",
+      "href": "#"
+    },
+    {
+      "name": "Droogijsschijven 500 gram",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "Schijven",
+      "href": "#"
+    },
+    {
+      "name": "Droogijsschijven 700 gram",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "Schijven",
+      "href": "#"
+    },
+    {
+      "name": "Droogijsblok 5 kilo",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "Blokken",
+      "href": "#"
+    }
+  ],
+  "story": {
+    "eyebrow": "Over Droogijs365",
+    "title": "Jouw partner in droogijsoplossingen",
+    "text": "Droogijs365 is producent en partner voor bedrijven die op droogijs rekenen. Kwaliteit, professionaliteit en klanttevredenheid staan voorop, en we zijn altijd bereikbaar. Benieuwd wat wij voor jou kunnen betekenen? Neem contact met ons op.",
+    "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697"
+  },
+  "stats": [
+    {
+      "value": "6",
+      "label": "toepassingsgebieden"
+    },
+    {
+      "value": "3",
+      "label": "pelletformaten"
+    },
+    {
+      "value": "3",
+      "label": "soorten schijven en blokken"
+    }
+  ],
+  "gallery": [
+    "https://www.droogijs365.nl/media/medisch-en-farmaceutisch.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=443",
+    "https://www.droogijs365.nl/media/voedselindustrie.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=443",
+    "https://www.droogijs365.nl/media/transport.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=443",
+    "https://www.droogijs365.nl/media/industrieel-reinigen.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=380",
+    "https://www.droogijs365.nl/media/evenementenindustrie.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=380",
+    "https://www.droogijs365.nl/media/horeca-slide.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=379"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Droogijs nodig? Vraag direct een offerte aan",
+    "text": "Vertel ons wat je nodig hebt en wij denken met je mee. Bel 0294 300 010 of stuur een bericht.",
+    "label": "Offerte opvragen",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Droogijs365 B.V., Tokyostraat 6, 1175 RB Lijnden",
+    "phone": "0294 300 010",
+    "email": "info@droogijs365.nl"
+  },
+  "footerLinks": [
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Toepassingen",
+      "href": "#"
+    },
+    {
+      "label": "Producten",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Wat is droogijs?",
+      "href": "#"
+    },
+    {
+      "label": "Duurzaamheid",
+      "href": "#"
+    },
+    {
+      "label": "Algemene voorwaarden",
+      "href": "#"
+    },
+    {
+      "label": "Privacyverklaring",
+      "href": "#"
+    },
+    {
+      "label": "Cookieverklaring",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Onze droogijsproducten",
+    "intro": "Pellets, schijven en blokken: voor elke toepassing hebben wij de juiste oplossing.",
+    "filters": [
+      "Alle producten",
+      "Pellets",
+      "Schijven",
+      "Blokken"
+    ],
+    "count": "6 producten"
+  },
+  "featured": [
+    {
+      "name": "Droogijs pellets 3 mm",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
+      "tag": "Pellets",
+      "href": "#"
+    },
+    {
+      "name": "Droogijs pellets 10 mm",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
+      "tag": "Pellets",
+      "href": "#"
+    },
+    {
+      "name": "Droogijs pellets 16 mm",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
+      "tag": "Pellets",
+      "href": "#"
+    },
+    {
+      "name": "Droogijsschijven 500 gram",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "Schijven",
+      "href": "#"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

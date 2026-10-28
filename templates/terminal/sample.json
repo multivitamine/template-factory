@@ -1,0 +1,245 @@
+{
+  "brand": {
+    "name": "Kartstore International",
+    "tagline": "Alles voor de kartracer, onder één dak",
+    "logo": "https://www.kartstoreinternational.com/dist/images/logos/logo-falcon.svg",
+    "logoIsLight": true,
+    "initials": "KI",
+    "lang": "nl",
+    "colors": {
+      "primary": "#F13240",
+      "accent": "#272727"
+    }
+  },
+  "nav": [
+    {
+      "label": "Producten",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Kartschool Strijen",
+      "href": "#"
+    },
+    {
+      "label": "Huurkarts",
+      "href": "#"
+    },
+    {
+      "label": "Over Kartstore",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Karting specialist sinds 50+ jaar",
+    "title": "Jouw favoriete",
+    "titleAccent": "kart shop",
+    "text": "Van complete karts en motoren tot banden, kleding en gereedschap: alles wat je nodig hebt om sneller te worden, vind je bij Kartstore International. Met ruim 50 jaar kartervaring achter de balie.",
+    "cta": "Bekijk onze producten",
+    "ctaHref": "catalog.html",
+    "cta2": "Kartschool Strijen",
+    "image": "https://www.kartstoreinternational.com/media/noah-27_05_2026-58.jpg?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1920"
+  },
+  "usps": [
+    {
+      "title": "8.000+ producten",
+      "text": "Een webshop vol karts, motoren, onderdelen, banden, kleding en gereedschap."
+    },
+    {
+      "title": "50+ jaar ervaring",
+      "text": "De kennis van Peter de Bruijn Kart Racing en MP Group onder één dak."
+    },
+    {
+      "title": "Eigen kartmerken",
+      "text": "Falcon en Henza karts, verkocht via een internationaal dealernetwerk."
+    },
+    {
+      "title": "Advies en maatwerk",
+      "text": "Technische ondersteuning en karts op maat gebouwd voor jouw klasse."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Karts",
+      "image": "https://www.kartstoreinternational.com/media/kart.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=528",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Motoren",
+      "image": "https://www.kartstoreinternational.com/media/motor-thumbnail.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=176",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Banden",
+      "image": "https://www.kartstoreinternational.com/media/slickband.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=945",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Olie, vet en reiniging",
+      "image": "https://www.kartstoreinternational.com/media/kartstore-webshop-exact-product-foto-s-1.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=945",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Kleding / accessoires",
+      "image": "https://www.kartstoreinternational.com/media/600150-1.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=945",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Kart onderdelen",
+      "image": "https://www.kartstoreinternational.com/media/120290.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=945",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Kart Falcon Charlotte KZ 2,0mm",
+      "price": "€ 5.282,00",
+      "oldPrice": null,
+      "image": "https://www.kartstoreinternational.com/content/products/100_529.jpg?width=360",
+      "tag": "Beperkte voorraad",
+      "href": "https://www.kartstoreinternational.com/nl/product/kart-falcon-charlotte-kz-20mm"
+    },
+    {
+      "name": "Kartbanden regen Komet K3W set",
+      "price": "€ 185,95",
+      "oldPrice": null,
+      "image": "https://www.kartstoreinternational.com/content/products/304_317.jpg?width=360",
+      "tag": "Op voorraad",
+      "href": "https://www.kartstoreinternational.com/nl/product/kartbanden-regen-komet-k3w-set"
+    },
+    {
+      "name": "RK kettingspray",
+      "price": "€ 12,85",
+      "oldPrice": null,
+      "image": "https://www.kartstoreinternational.com/content/products/550_715.jpg?width=360",
+      "tag": "Op voorraad",
+      "href": "https://www.kartstoreinternational.com/nl/product/rk-kettingspray"
+    },
+    {
+      "name": "Balans tandwiel X30 Super Iame",
+      "price": "€ 82,66",
+      "oldPrice": null,
+      "image": "https://www.kartstoreinternational.com/content/products/282_071.jpg?width=360",
+      "tag": "Op voorraad",
+      "href": "https://www.kartstoreinternational.com/nl/product/balans-tandwiel-x30-super-iame"
+    }
+  ],
+  "story": {
+    "eyebrow": "Bezoek ons",
+    "title": "Samen naar de beste kartprestaties",
+    "text": "Onze winkel zit in Zuid-Holland, vlak bij Rotterdam en Kartbaan Strijen. Loop binnen, praat met mensen die de sport kennen en ontdek wat jou sneller maakt. Al veel winnaars gingen je voor.",
+    "image": "https://www.kartstoreinternational.com/media/kartstore-external.jpg?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1920"
+  },
+  "stats": [
+    {
+      "value": "8.000+",
+      "label": "producten in de webshop"
+    },
+    {
+      "value": "50+",
+      "label": "jaar kartervaring"
+    },
+    {
+      "value": "2",
+      "label": "eigen kartmerken: Falcon en Henza"
+    }
+  ],
+  "gallery": [
+    "https://www.kartstoreinternational.com/media/falcon.jpg?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1080",
+    "https://www.kartstoreinternational.com/media/henzakart-3.jpg?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1080",
+    "https://www.kartstoreinternational.com/media/carb-1.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=945",
+    "https://www.kartstoreinternational.com/media/480109.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=945"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Kom ook karten",
+    "text": "Met ons Trainingcenter stap je al op jonge leeftijd in een kart en leer je alle skills. Of ga er met vrienden of collega's op uit tijdens een bedrijfsuitje op Kartbaan Strijen.",
+    "label": "Ontdek de Kartschool",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Ferrarilaan 2, 3261 NC Oud-Beijerland",
+    "phone": "+31850410184",
+    "email": "info@kartstoreinternational.com"
+  },
+  "footerLinks": [
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Kartschool Strijen",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    },
+    {
+      "label": "Terms and conditions",
+      "href": "#"
+    },
+    {
+      "label": "Cookie settings",
+      "href": "#"
+    },
+    {
+      "label": "Webshop dissolution form",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Alle producten",
+    "intro": "Ontdek karts, motoren, banden, onderdelen, kleding en gereedschap voor elke klasse, van Mini tot KZ.",
+    "filters": [
+      "Karts",
+      "Motoren",
+      "Banden",
+      "Olie, vet en reiniging",
+      "Kleding / accessoires",
+      "Kart onderdelen",
+      "Motor onderdelen",
+      "Gereedschap"
+    ],
+    "count": "4 producten"
+  },
+  "featured": [
+    {
+      "name": "Kart Falcon Charlotte KZ 2,0mm",
+      "price": "€ 5.282,00",
+      "oldPrice": null,
+      "image": "https://www.kartstoreinternational.com/content/products/100_529.jpg?width=360",
+      "tag": "Beperkte voorraad",
+      "href": "https://www.kartstoreinternational.com/nl/product/kart-falcon-charlotte-kz-20mm"
+    },
+    {
+      "name": "Kartbanden regen Komet K3W set",
+      "price": "€ 185,95",
+      "oldPrice": null,
+      "image": "https://www.kartstoreinternational.com/content/products/304_317.jpg?width=360",
+      "tag": "Op voorraad",
+      "href": "https://www.kartstoreinternational.com/nl/product/kartbanden-regen-komet-k3w-set"
+    },
+    {
+      "name": "RK kettingspray",
+      "price": "€ 12,85",
+      "oldPrice": null,
+      "image": "https://www.kartstoreinternational.com/content/products/550_715.jpg?width=360",
+      "tag": "Op voorraad",
+      "href": "https://www.kartstoreinternational.com/nl/product/rk-kettingspray"
+    },
+    {
+      "name": "Balans tandwiel X30 Super Iame",
+      "price": "€ 82,66",
+      "oldPrice": null,
+      "image": "https://www.kartstoreinternational.com/content/products/282_071.jpg?width=360",
+      "tag": "Op voorraad",
+      "href": "https://www.kartstoreinternational.com/nl/product/balans-tandwiel-x30-super-iame"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

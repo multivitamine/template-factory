@@ -1,0 +1,3 @@
+{ "id": "terminal", "name": "Terminal", "scheme": "dark", "sectors": ["tech","b2b","electronics"],
+  "mood": ["technical", "precise", "nocturnal", "crafted"], "needsProductImages": true,
+  "notes": "Brand primary replaces the phosphor green: filled CTAs use --c-primary/--c-on-primary, while prompts, caret, prices and highlights use a lightness-clamped version (oklch) so even navy or near-black stays legible on the dark screen; accent drives status tags and labels." }

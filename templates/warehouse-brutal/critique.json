@@ -1,0 +1,18 @@
+{
+  "scoreBefore": 5,
+  "issues": [
+    "Scores before: creativity 7, typography 6, layout & rhythm 4, polish 4, brand-colour robustness 7, mobile 5, still looks like a generic template: partly (6/10 distinct).",
+    "Broken: the reveal CSS sets content to opacity:0 until an IntersectionObserver fires, so on the homepage the products grid, the story text, the gallery, the quote and the CTA all showed up as huge empty areas (on desktop, mobile and the stress brand). The catalog CTA was also a blank primary-coloured slab.",
+    "Hero headline: the accent highlight (inline background with line-height .9) runs over the line above, cutting off 'SCHAAL-' and 'FAVORIETE'. This looks like a rendering bug, not brutalism.",
+    "Manifest box on desktop: a tall dead void between the stats and the clock/barcode because the aside stretches to the hero's height.",
+    "Catalog with no product images: 24 identical placeholder crates, monotonous wallpaper with nothing that tells one SKU from another.",
+    "Signature stamp hover and continuous ticker were there, but you couldn't see them on the homepage because the crates were invisible."
+  ],
+  "fixed": [
+    "Reveals can no longer hide content. Elements are visible at rest and the drop/rise animation only plays once .in is added (in template.html and catalog.html). This brings back the products, story, gallery, quote and CTA, plus the catalog CTA.",
+    "Hero accent rebuilt as a stamped shipping label: an inline-block slab with a 2px border, a hard 8px black offset and a -1.2deg tilt. It sits on its own line with clean spacing, so it no longer runs over the line above, for any brand.",
+    "Manifest void filled with a CSS-drawn crate end: plank slats, X-bracing, black edge rails and a rotated 'Handle with care ↑↑ This side up' stamp that straightens on hover. Hidden on stacked mobile.",
+    "Crate placeholders now come in 4 construction variants (horizontal slats, vertical boards, plywood frame with cross-bracing, hazard-striped pallet). Each also gets a big outlined stencil SKU number, so the grid has rhythm and each item reads as its own crate even without photos."
+  ],
+  "scoreAfterEstimate": 7.5
+}

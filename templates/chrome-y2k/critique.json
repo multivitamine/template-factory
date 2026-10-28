@@ -1,0 +1,22 @@
+{
+  "scoreBefore": 5,
+  "issues": [
+    "Homepage is blank after the product grid: categories, story, stats, gallery, quote, CTA and footer are stuck at opacity 0 because the IntersectionObserver reveal hides content until it fires. This hits all three homepage renders.",
+    "Invalid calc() (`84px +clamp(...)`, missing whitespace) drops the hero padding, so on mobile the hero title sits under the sticky header and on the catalog page the breadcrumb and title collide with the nav.",
+    "Mobile scrolls horizontally: the starburst on the story bezel (right:-18px) and the oversized orbit/hero card push past the 390px viewport.",
+    "The hero card's holo overlay at 0.75 opacity washes the hero photo out into a flat lilac smear, so the main image is barely readable for both brands.",
+    "Product photos use object-fit:cover on white packshots, which crops the kart and the gloves. The cards read like a generic shop grid, not collectibles.",
+    "The signature shimmer only changes the card face. The chrome border stays static, so the interaction feels thin for a 'collectible' concept.",
+    "Typography and chrome headline treatment are strong and survive the stress brand. The starbursts and tapes are on-brief.",
+    "Big empty gaps between sections make the rhythm sag, partly because of the hidden reveal blocks."
+  ],
+  "fixed": [
+    "Replaced the JS reveal with CSS scroll-driven animations (animation-timeline:view()) behind @supports. Content can't get stuck invisible: browsers without support, full-page captures and reduced-motion users all see everything. Staggered ranges keep the card cascade.",
+    "Fixed calc() spacing in the hero and catalog hero so content clears the floating header on every viewport.",
+    "Clipped horizontal overflow on html/main and pulled the starbursts and hero card in on mobile.",
+    "Toned down the hero card hologram overlay (0.4, multiply layer 0.3) so the photo stays clear and the foil still reads.",
+    "Product cards are now collectibles: uncropped object-fit:contain packshots on a pearl spotlight with a brand-tinted rim and drop shadow, plus a 'Nº 01' serial stamp via CSS counters.",
+    "Extended the signature interaction: on pointer move the chrome border becomes a holographic conic foil that rotates and recentres with the same CSS variables (--px/--mx/--my) the JS already drives."
+  ],
+  "scoreAfterEstimate": 7.5
+}

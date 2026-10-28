@@ -1,0 +1,9 @@
+{
+  "id": "blueprint",
+  "name": "Blueprint",
+  "scheme": "light",
+  "sectors": ["industrial", "b2b", "engineering"],
+  "mood": ["precise", "technical", "nerdy", "drafted"],
+  "needsProductImages": true,
+  "notes": "Primary is the drawing ink: grid, construction/leader lines and image duotone are color-mix tints of it, with solid primary fills only on buttons, spec headers and the CTA plate; accent marks leader-line endpoints, the section cut and hover brackets."
+}

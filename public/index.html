@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redesign Booth — Control Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f12; --panel: #15181d; --panel-2: #1c2027; --line: #262b33;
+    --text: #e8eaed; --muted: #8b939e; --accent: #c6ff3d; --run: #5ab0ff; --fail: #ff6b5a;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 "Space Grotesk", system-ui, sans-serif; }
+  header { display: flex; align-items: center; gap: 24px; padding: 18px 28px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  header h1 { font-size: 20px; margin: 0; letter-spacing: -0.02em; }
+  header h1 span { color: var(--accent); }
+  .stats { display: flex; gap: 22px; margin-left: auto; font-family: var(--mono); font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+  .stats b { color: var(--text); font-weight: 500; }
+  main { display: grid; grid-template-columns: 300px 1fr; gap: 24px; padding: 24px 28px; }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; padding: 16px; } header { padding: 16px; } }
+
+  /* Phone mock with the QR code */
+  .phone { position: sticky; top: 24px; align-self: start; background: var(--panel); border: 1px solid var(--line); border-radius: 28px; padding: 22px; text-align: center; }
+  .phone h2 { font-size: 16px; margin: 0 0 4px; }
+  .phone p { color: var(--muted); font-size: 13px; margin: 0 0 16px; }
+  .qr { background: #fff; border-radius: 14px; padding: 12px; width: 196px; margin: 0 auto 10px; }
+  .qr img { width: 100%; display: block; }
+  .scanurl { font-family: var(--mono); font-size: 11px; color: var(--muted); word-break: break-all; margin-bottom: 18px; }
+  button.go { width: 100%; padding: 15px; border: 0; border-radius: 14px; background: var(--accent); color: #0d0f12; font: 700 16px "Space Grotesk"; cursor: pointer; transition: transform .1s; }
+  button.go:hover { transform: translateY(-1px); }
+  button.go:disabled { opacity: .45; cursor: default; transform: none; }
+  .models { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: var(--panel-2); padding: 4px; border-radius: 12px; margin-bottom: 8px; }
+  .models button { border: 0; background: transparent; color: var(--muted); font: 500 14px "Space Grotesk"; padding: 9px 4px; border-radius: 9px; cursor: pointer; text-transform: capitalize; }
+  .models button[aria-checked="true"] { background: var(--text); color: var(--bg); }
+  .models button:disabled { cursor: default; }
+  .model-hint { font: 11px var(--mono); color: var(--muted); margin-bottom: 14px; min-height: 16px; }
+  button.go.alt { margin-top: 10px; background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+  .meta { margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.7; }
+
+  /* Job cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+  .card.running { border-color: #2b4a6b; }
+  .card.done { border-color: #4d6320; }
+  .card.failed { border-color: #6b2f28; }
+  .thumb { position: relative; aspect-ratio: 16/10; background: var(--panel-2); overflow: hidden; }
+  .thumb img, .thumb iframe { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; border: 0; }
+  .thumb iframe { width: 400%; height: 400%; transform: scale(.25); transform-origin: 0 0; pointer-events: none; background: #fff; }
+  .thumb .label { position: absolute; left: 10px; top: 10px; z-index: 2; font: 500 11px var(--mono); background: rgba(13,15,18,.8); padding: 3px 8px; border-radius: 6px; }
+  .thumb .empty { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 13px; }
+  .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .row { display: flex; align-items: center; gap: 10px; }
+  .name { font-weight: 700; font-size: 16px; letter-spacing: -0.01em; }
+  .url { font-family: var(--mono); font-size: 11px; color: var(--muted); text-decoration: none; }
+  .pill { margin-left: auto; font: 500 11px var(--mono); padding: 3px 9px; border-radius: 99px; background: var(--panel-2); color: var(--muted); white-space: nowrap; }
+  .running .pill { background: #16304a; color: var(--run); }
+  .done .pill { background: #2a3812; color: var(--accent); }
+  .failed .pill { background: #3d1a16; color: var(--fail); }
+  .bar { height: 4px; background: var(--panel-2); border-radius: 4px; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--run); transition: width .5s; }
+  .done .bar i { background: var(--accent); }
+  .failed .bar i { background: var(--fail); }
+  .step { font-weight: 500; }
+  .detail { font-family: var(--mono); font-size: 11.5px; color: var(--muted); min-height: 34px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .swatches { display: flex; gap: 4px; align-items: center; }
+  .swatches i { width: 18px; height: 18px; border-radius: 5px; border: 1px solid rgba(255,255,255,.12); }
+  .tpl { font-size: 12.5px; color: var(--muted); }
+  .tpl b { color: var(--text); font-weight: 500; }
+  .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+  .links a { font: 500 12px var(--mono); color: var(--text); text-decoration: none; border: 1px solid var(--line); padding: 6px 10px; border-radius: 8px; }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .time { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  /* Measurements */
+  .right { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+  .metrics { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 16px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .kpi { background: var(--panel-2); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
+  .kpi span { font: 500 11px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .kpi b { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .kpi small { font: 11px var(--mono); color: var(--muted); }
+  .kpi.target.ok { box-shadow: inset 0 0 0 1px var(--accent); } .kpi.target.ok b { color: var(--accent); }
+  .kpi.target.bad { box-shadow: inset 0 0 0 1px var(--fail); } .kpi.target.bad b { color: var(--fail); }
+  .phases { font: 12px var(--mono); color: var(--muted); display: flex; gap: 18px; flex-wrap: wrap; }
+  .phases b { color: var(--text); font-weight: 500; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font: 11px var(--mono); color: var(--muted); margin-bottom: 10px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+  .seg-queue { background: #3a404a; } .seg-crawl { background: #5ab0ff; } .seg-analyse { background: #a78bfa; } .seg-home { background: #c6ff3d; } .seg-catalog { background: #2dd4bf; }
+  .grow { animation: pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .55; } }
+  .g-row { display: grid; grid-template-columns: 150px 1fr 56px; gap: 10px; align-items: center; height: 24px; }
+  .g-name { font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .g-track { position: relative; height: 14px; background: var(--panel-2); border-radius: 4px; overflow: hidden; }
+  .g-track i { position: absolute; top: 0; bottom: 0; }
+  .g-track .target-line { background: var(--fail); width: 1px; opacity: .7; }
+  .g-t { font: 11px var(--mono); color: var(--muted); text-align: right; }
+  .g-row.failed .g-name { color: var(--fail); }
+  .axis { position: relative; height: 18px; margin: 4px 66px 0 160px; font: 10px var(--mono); color: var(--muted); }
+  .axis span { position: absolute; transform: translateX(-50%); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Redesign Booth <span>/ control room</span></h1>
+  <a href="/factory" style="font:500 13px var(--mono);color:var(--muted);text-decoration:none">template factory →</a>
+  <div class="stats">
+    <span>queued <b id="s-queued">0</b></span>
+    <span>running <b id="s-running">0</b></span>
+    <span>done <b id="s-done">0</b></span>
+    <span>failed <b id="s-failed">0</b></span>
+    <span>elapsed <b id="s-elapsed">0:00</b></span>
+    <span>cost <b id="s-cost">$0.00</b></span>
+  </div>
+</header>
+<main>
+  <aside class="phone">
+    <h2>Scan to start</h2>
+    <p>Simulates 10 visitors scanning the QR code at the same time.</p>
+    <div class="qr"><img src="/api/qr.svg" alt="QR code to the scan page"></div>
+    <div class="scanurl" id="scanurl"></div>
+    <div class="models" id="models" role="radiogroup" aria-label="Model"></div>
+    <div class="model-hint" id="model-hint"></div>
+    <button class="go" id="go">▶ Simulate 10 scans</button>
+    <button class="go alt" id="go40">▶ Load test: 40 scans</button>
+    <div class="meta" id="meta"></div>
+  </aside>
+  <div class="right">
+    <section class="metrics">
+      <div class="kpis">
+        <div class="kpi"><span>wall clock</span><b id="k-wall">–</b></div>
+        <div class="kpi"><span>completed</span><b id="k-done">–</b></div>
+        <div class="kpi"><span>p50 / p95 per site</span><b id="k-pct">–</b></div>
+        <div class="kpi"><span>throughput</span><b id="k-tp">–</b><small>need 2.0 / min</small></div>
+        <div class="kpi target" id="k-target"><span>projected: 40 sites</span><b id="k-proj">–</b><small id="k-proj2">target ≤ 20 min</small></div>
+      </div>
+      <div class="phases" id="phases"></div>
+      <div class="gantt">
+        <div class="legend">
+          <span><i class="seg-queue"></i>queue</span><span><i class="seg-crawl"></i>crawl</span><span><i class="seg-analyse"></i>analyse + pick template</span><span><i class="seg-home"></i>homepage</span><span><i class="seg-catalog"></i>catalog</span>
+        </div>
+        <div id="gantt"></div>
+        <div class="axis" id="axis"></div>
+      </div>
+    </section>
+    <section class="grid" id="grid"></section>
+  </div>
+</main>
+<script>
+const STEPS = ["Queued", "Crawling site", "Site crawled", "Agent started", "Looking at their site", "Choosing a Refero template", "Template chosen", "Building homepage", "Building catalog page", "Done"];
+const jobs = new Map();
+let firstStart = null;
+
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = (ms) => { const s = Math.max(0, Math.round(ms / 1000)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
+
+function progress(j) {
+  if (j.status === "done") return 100;
+  const seen = j.steps.map((s) => STEPS.indexOf(s.step)).filter((i) => i >= 0);
+  const idx = Math.max(0, ...seen);
+  return Math.round((idx / (STEPS.length - 1)) * 100);
+}
+
+function thumb(j) {
+  if (j.status === "done" && j.pages.includes("index.html"))
+    return `<span class="label">NEW</span><iframe loading="lazy" src="/sites/${j.key}/index.html" tabindex="-1"></iframe>`;
+  if (j.steps.some((s) => s.step === "Site crawled"))
+    return `<span class="label">ORIGINAL</span><img src="/sites/${j.key}/crawl/home.png?${j.startedAt}" alt="">`;
+  return `<div class="empty">${j.status === "queued" ? "waiting in queue…" : "crawling…"}</div>`;
+}
+
+function card(j) {
+  const b = j.brand || {};
+  const colors = [b.primary, b.secondary, b.accent, b.background, b.text].filter(Boolean);
+  const t = j.startedAt ? fmt((j.finishedAt || Date.now()) - j.startedAt) : "";
+  const links = [`<a href="${esc(j.url)}" target="_blank">original ↗</a>`];
+  if (j.pages.includes("index.html")) links.push(`<a href="/sites/${j.key}/index.html" target="_blank">new home ↗</a>`);
+  if (j.pages.includes("catalog.html")) links.push(`<a href="/sites/${j.key}/catalog.html" target="_blank">new catalog ↗</a>`);
+  return `
+    <div class="thumb">${thumb(j)}</div>
+    <div class="body">
+      <div class="row"><div><div class="name">${esc(j.name)}</div><a class="url" href="${esc(j.url)}" target="_blank">${esc(j.url.replace(/^https?:\/\//, ""))}</a></div><span class="pill">${esc(j.status)}</span></div>
+      <div class="bar"><i style="width:${progress(j)}%"></i></div>
+      <div class="row"><span class="step">${esc(j.step)}</span><span class="time" style="margin-left:auto" data-start="${j.startedAt || ""}" data-end="${j.finishedAt || ""}">${t}</span></div>
+      <div class="detail">${esc(j.error || j.detail)}</div>
+      ${colors.length || j.template ? `<div class="row"><div class="swatches">${colors.map((c) => `<i title="${esc(c)}" style="background:${esc(c)}"></i>`).join("")}</div>
+        ${j.template ? `<div class="tpl">→ <b>${esc(j.template.name)}</b></div>` : ""}</div>` : ""}
+      ${j.template?.why ? `<div class="tpl">${esc(j.template.why)}</div>` : ""}
+      <div class="links">${links.join("")}${j.costUsd ? `<span class="time" style="margin-left:auto;align-self:center">$${j.costUsd.toFixed(2)}</span>` : ""}</div>
+    </div>`;
+}
+
+let currentRun = null;
+function render(j) {
+  // A new run replaces the previous one on screen.
+  if (j.runId && j.runId !== currentRun) {
+    if (currentRun && j.runId < currentRun) return;
+    currentRun = j.runId;
+    jobs.clear();
+    document.getElementById("grid").innerHTML = "";
+  }
+  let el = document.getElementById("job-" + j.key);
+  const prev = jobs.get(j.key);
+  jobs.set(j.key, j);
+  if (!el) {
+    el = document.createElement("article");
+    el.id = "job-" + j.key;
+    document.getElementById("grid").appendChild(el);
+  }
+  // Avoid reloading the preview iframe on every event once a job is done.
+  if (prev && prev.status === "done" && j.status === "done" && prev.costUsd === j.costUsd) return;
+  el.className = "card " + j.status;
+  el.innerHTML = card(j);
+  stats();
+}
+
+function stats() {
+  const all = [...jobs.values()];
+  for (const s of ["queued", "running", "done", "failed"]) document.getElementById("s-" + s).textContent = all.filter((j) => j.status === s).length;
+  document.getElementById("s-cost").textContent = "$" + all.reduce((a, j) => a + (j.costUsd || 0), 0).toFixed(2);
+  const starts = all.map((j) => j.startedAt).filter(Boolean);
+  firstStart = starts.length ? Math.min(...starts) : null;
+  const busy = all.some((j) => j.status === "running" || j.status === "queued");
+  document.getElementById("go").disabled = busy;
+  document.getElementById("go40").disabled = busy;
+  for (const b of document.querySelectorAll(".models button")) b.disabled = busy;
+}
+
+setInterval(() => {
+  const all = [...jobs.values()];
+  if (firstStart) {
+    const active = all.some((j) => j.status === "running" || j.status === "queued");
+    const end = active ? Date.now() : Math.max(...all.map((j) => j.finishedAt || 0));
+    document.getElementById("s-elapsed").textContent = fmt(end - firstStart);
+  }
+  for (const el of document.querySelectorAll(".time[data-start]")) {
+    if (el.dataset.start && !el.dataset.end) el.textContent = fmt(Date.now() - Number(el.dataset.start));
+  }
+}, 1000);
+
+// ---- Model switch ------------------------------------------------------------
+const MODEL_HINTS = { sonnet: "fast · good quality (default)", opus: "best quality · slower · more usage", haiku: "fastest · cheapest · simpler designs" };
+let model = "sonnet", cfg = null;
+
+function drawModels() {
+  document.getElementById("models").innerHTML = cfg.models.map((m) =>
+    `<button role="radio" aria-checked="${m === model}" data-m="${m}">${m}</button>`).join("");
+  document.getElementById("model-hint").textContent = MODEL_HINTS[model] || "";
+  document.getElementById("meta").innerHTML = `model: ${model}<br>parallel agents: ${cfg.concurrency}<br>sites: ${cfg.sites.length}`;
+  const busy = document.getElementById("go").disabled;
+  for (const b of document.querySelectorAll(".models button")) b.disabled = busy;
+}
+
+document.getElementById("models").onclick = async (e) => {
+  const m = e.target.closest("button")?.dataset.m;
+  if (!m || m === model || e.target.disabled) return;
+  model = m;
+  try { localStorage.setItem("model", m); } catch {}
+  drawModels();
+  await fetch("/api/model", { method: "POST", body: JSON.stringify({ model: m }) });
+};
+
+fetch("/api/config").then((r) => r.json()).then((c) => {
+  cfg = c;
+  document.getElementById("scanurl").textContent = c.scanUrl;
+  let saved = null;
+  try { saved = localStorage.getItem("model"); } catch {}
+  model = c.models.includes(saved) ? saved : c.model;
+  if (model !== c.model) fetch("/api/model", { method: "POST", body: JSON.stringify({ model }) });
+  drawModels();
+});
+
+const start = (copies) => async () => {
+  document.getElementById("go").disabled = document.getElementById("go40").disabled = true;
+  await fetch("/api/start", { method: "POST", body: JSON.stringify({ copies, model }) });
+};
+document.getElementById("go").onclick = start(1);
+document.getElementById("go40").onclick = start(4);
+
+new EventSource("/api/events").onmessage = (e) => render(JSON.parse(e.data));
+
+// ---- Measurements: Gantt timeline + KPIs -----------------------------------
+const at = (j, step) => j.steps.find((s) => s.step === step)?.at;
+
+function segments(j, now) {
+  const end = j.finishedAt || now;
+  const crawled = at(j, "Site crawled");
+  // Write events arrive once a file has been written, so "Building homepage" marks the END of homepage work.
+  const homeWritten = at(j, "Building homepage");
+  const pick = at(j, "Template chosen") || homeWritten;
+  const seg = [];
+  const add = (cls, a, b) => a && seg.push({ cls, a, b: b || end, live: !b && !j.finishedAt });
+  add("queue", j.queuedAt, j.startedAt);
+  if (j.startedAt) add("crawl", j.startedAt, crawled);
+  if (crawled) add("analyse", crawled, pick);
+  if (pick) add("home", pick, homeWritten || j.finishedAt);
+  if (homeWritten && (at(j, "Building catalog page") || !j.finishedAt))
+    add("catalog", homeWritten, j.finishedAt);
+  return seg;
+}
+
+function drawGantt() {
+  const list = [...jobs.values()].filter((j) => j.queuedAt);
+  if (!list.length) return;
+  const now = Date.now();
+  const t0 = Math.min(...list.map((j) => j.queuedAt));
+  const tEnd = Math.max(now - t0, ...list.map((j) => (j.finishedAt || now) - t0));
+  const active = list.some((j) => !j.finishedAt);
+  // Scale: at least 5 min, and round up to whole minutes.
+  const spanMs = Math.max(5, Math.ceil((active ? now - t0 : tEnd) / 60000) + (active ? 1 : 0)) * 60000;
+  const x = (t) => ((t - t0) / spanMs) * 100;
+  document.getElementById("gantt").innerHTML = list.map((j) => {
+    const segs = segments(j, now).map((s) => `<i class="seg-${s.cls}${s.live ? " grow" : ""}" style="left:${x(s.a)}%;width:${Math.max(0.4, x(s.b) - x(s.a))}%" title="${s.cls}: ${fmt(s.b - s.a)}"></i>`).join("");
+    const total = (j.finishedAt || now) - j.queuedAt;
+    return `<div class="g-row ${j.status}"><div class="g-name">${esc(j.name)}</div><div class="g-track">${segs}</div><div class="g-t">${j.status === "failed" ? "✕ " : ""}${fmt(total)}</div></div>`;
+  }).join("");
+  const mins = spanMs / 60000, stepMin = mins > 12 ? 2 : 1;
+  let ticks = "";
+  for (let m = 0; m <= mins; m += stepMin) ticks += `<span style="left:${(m / mins) * 100}%">${m}m</span>`;
+  document.getElementById("axis").innerHTML = ticks;
+}
+
+async function drawKpis() {
+  const r = await fetch("/api/run").then((x) => x.json()).catch(() => null);
+  if (!r) return;
+  const live = [...jobs.values()].filter((j) => j.runId === r.runId);
+  const t0 = Math.min(...live.map((j) => j.queuedAt));
+  const wall = r.finished ? r.wallSec * 1000 : Date.now() - t0;
+  document.getElementById("k-wall").textContent = fmt(wall);
+  document.getElementById("k-done").textContent = `${r.done}/${r.sites}${r.failed ? ` · ${r.failed}✕` : ""}`;
+  document.getElementById("k-pct").textContent = r.p50 != null ? `${fmt(r.p50 * 1000)} / ${fmt(r.p95 * 1000)}` : "–";
+  document.getElementById("k-tp").textContent = r.throughputPerMin != null ? `${r.throughputPerMin.toFixed(2)}/min` : "–";
+  const proj = r.projected40Min;
+  const box = document.getElementById("k-target");
+  box.className = "kpi target" + (proj == null ? "" : proj <= 20 ? " ok" : " bad");
+  document.getElementById("k-proj").textContent = proj != null ? `${proj} min` : "–";
+  document.getElementById("k-proj2").textContent = r.projected40MinIfSlotsOnly != null
+    ? `target ≤ 20 min · slot math: ${r.projected40MinIfSlotsOnly} min @${r.concurrency}` : "target ≤ 20 min";
+  const ph = r.avgPhases;
+  const f = (v) => (v == null ? "–" : fmt(v * 1000));
+  document.getElementById("phases").innerHTML =
+    `model <b>${esc(r.model)}</b> · avg phases (done sites): crawl <b>${f(ph.crawl)}</b> · analyse+pick <b>${f(ph.analyseAndPick)}</b> · homepage <b>${f(ph.homepage)}</b> · catalog <b>${f(ph.catalog)}</b> · cost <b>$${r.totalCostUsd.toFixed(2)}</b>${r.finished ? ` · report saved: data/runs/${r.runId}.json` : ""}`;
+}
+
+setInterval(drawGantt, 1000);
+setInterval(drawKpis, 2000);
+drawKpis();
+</script>
+</body>
+</html>

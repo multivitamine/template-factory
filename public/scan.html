@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>See your site reimagined</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: #0d0f12; color: #e8eaed; font: 16px/1.5 "Space Grotesk", system-ui, sans-serif; display: flex; flex-direction: column; padding: 32px 20px; }
+  h1 { font-size: 34px; line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 12px; }
+  h1 span { color: #c6ff3d; }
+  p { color: #8b939e; margin: 0 0 28px; }
+  ol { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 8px; }
+  li { background: #15181d; border: 1px solid #262b33; border-radius: 12px; padding: 12px 14px; display: flex; justify-content: space-between; gap: 10px; font-size: 14px; }
+  li small { color: #8b939e; font-size: 12px; }
+  li b { font-weight: 500; }
+  li .s { color: #8b939e; font-size: 12px; text-align: right; }
+  li.done .s { color: #c6ff3d; }
+  li a { color: #c6ff3d; }
+  button { margin-top: auto; width: 100%; padding: 18px; border: 0; border-radius: 14px; background: #c6ff3d; color: #0d0f12; font: 700 17px "Space Grotesk"; }
+  button:disabled { opacity: .45; }
+</style>
+</head>
+<body>
+  <h1>See your website <span>reimagined</span> in minutes.</h1>
+  <p>Simulation: pressing start acts like 10 visitors at the stand who each typed in their shop URL.</p>
+  <ol id="list"></ol>
+  <button id="go">Start redesign</button>
+<script>
+const list = document.getElementById("list");
+const jobs = new Map();
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function draw() {
+  list.innerHTML = [...jobs.values()].map((j) => `<li class="${j.status}"><div><b>${esc(j.name)}</b><br><small>${esc(j.url.replace(/^https?:\/\//, ""))}</small></div>
+    <div class="s">${j.status === "done" ? `<a href="/sites/${j.key}/index.html">open ↗</a>` : esc(j.step)}</div></li>`).join("");
+  document.getElementById("go").disabled = [...jobs.values()].some((j) => j.status === "running" || j.status === "queued");
+}
+document.getElementById("go").onclick = () => { document.getElementById("go").disabled = true; fetch("/api/start", { method: "POST" }); };
+new EventSource("/api/events").onmessage = (e) => { const j = JSON.parse(e.data); jobs.set(j.key, j); draw(); };
+</script>
+</body>
+</html>

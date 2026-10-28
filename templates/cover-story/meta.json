@@ -1,0 +1,9 @@
+{
+  "id": "cover-story",
+  "name": "Cover Story",
+  "scheme": "light",
+  "sectors": ["lifestyle", "culture", "retail"],
+  "mood": ["editorial", "bold", "high-contrast", "magazine"],
+  "needsProductImages": true,
+  "notes": "Black-and-white newsprint base; primary colours the masthead, stickers, sale tags and the full back-cover band; light/pastel primaries switch the masthead to black and become the hero ground instead."
+}

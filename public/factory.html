@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Template Factory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f12; --panel: #15181d; --panel-2: #1c2027; --line: #262b33;
+    --text: #e8eaed; --muted: #8b939e; --accent: #c6ff3d; --run: #5ab0ff; --fail: #ff6b5a; --star: #ffc93d;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 "Space Grotesk", system-ui, sans-serif; }
+  a { color: inherit; }
+  header { display: flex; align-items: center; gap: 24px; padding: 18px 28px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  header h1 { font-size: 20px; margin: 0; letter-spacing: -0.02em; }
+  header h1 span { color: var(--accent); }
+  header nav a { font: 500 13px var(--mono); color: var(--muted); text-decoration: none; margin-right: 14px; }
+  header nav a.on { color: var(--text); }
+  .stats { display: flex; gap: 22px; margin-left: auto; font-family: var(--mono); font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+  .stats b { color: var(--text); font-weight: 500; }
+  .bar-top { display: flex; gap: 12px; align-items: center; padding: 18px 28px 0; flex-wrap: wrap; }
+  .seg { display: inline-flex; gap: 4px; background: var(--panel-2); padding: 4px; border-radius: 12px; }
+  .seg button { border: 0; background: transparent; color: var(--muted); font: 500 13.5px "Space Grotesk"; padding: 8px 14px; border-radius: 9px; cursor: pointer; text-transform: capitalize; }
+  .seg button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+  .go { padding: 11px 18px; border: 0; border-radius: 12px; background: var(--accent); color: #0d0f12; font: 700 14.5px "Space Grotesk"; cursor: pointer; }
+  .go:disabled { opacity: .45; cursor: default; }
+  .hint { font: 12px var(--mono); color: var(--muted); }
+  main { padding: 18px 28px 40px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 18px; }
+  @media (max-width: 700px) { main, .bar-top, header { padding-left: 16px; padding-right: 16px; } .grid { grid-template-columns: 1fr; } }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+  .card.running, .card.queued { border-color: #2b4a6b; }
+  .card.failed { border-color: #6b2f28; }
+  .shot { position: relative; aspect-ratio: 16/11; background: var(--panel-2); overflow: hidden; display: block; }
+  .shot img.d { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: opacity .25s; }
+  .shot img.m { position: absolute; right: 10px; bottom: 10px; width: 22%; aspect-ratio: 390/844; object-fit: cover; object-position: top; border-radius: 10px; border: 2px solid #0d0f12; box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+  .shot .ph { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font: 13px var(--mono); text-align: center; padding: 20px; }
+  .shot .tag { position: absolute; left: 10px; top: 10px; font: 500 11px var(--mono); background: rgba(13,15,18,.82); padding: 3px 8px; border-radius: 6px; }
+  .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .name { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+  .pill { margin-left: auto; font: 500 11px var(--mono); padding: 3px 9px; border-radius: 99px; background: var(--panel-2); color: var(--muted); }
+  .running .pill, .queued .pill { background: #16304a; color: var(--run); }
+  .done .pill { background: #2a3812; color: var(--accent); }
+  .failed .pill { background: #3d1a16; color: var(--fail); }
+  .chips span { font: 11px var(--mono); color: var(--muted); border: 1px solid var(--line); border-radius: 99px; padding: 2px 8px; }
+  .progress { height: 4px; background: var(--panel-2); border-radius: 4px; overflow: hidden; }
+  .progress i { display: block; height: 100%; background: var(--run); transition: width .5s; }
+  .done .progress i { background: var(--accent); }
+  .failed .progress i { background: var(--fail); }
+  .detail { font: 11.5px var(--mono); color: var(--muted); min-height: 32px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .time { font: 11px var(--mono); color: var(--muted); }
+  .stars { display: inline-flex; gap: 2px; }
+  .stars button { background: none; border: 0; padding: 0 1px; font-size: 22px; line-height: 1; color: #3a404a; cursor: pointer; }
+  .stars button.on { color: var(--star); }
+  .stars button:disabled { cursor: default; }
+  .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+  .links a, .links button { font: 500 12px var(--mono); color: var(--text); text-decoration: none; border: 1px solid var(--line); background: none; padding: 6px 10px; border-radius: 8px; cursor: pointer; }
+  .links a:hover, .links button:hover { border-color: var(--accent); color: var(--accent); }
+  .jury { font: 12px var(--mono); color: var(--muted); }
+  .jury b { color: var(--text); font-weight: 500; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Template Factory <span>/ gallery</span></h1>
+  <nav><a href="/">control room</a><a href="/factory" class="on">factory</a></nav>
+  <div class="stats">
+    <span>done <b id="s-done">0</b>/<b id="s-total">0</b></span>
+    <span>building <b id="s-run">0</b></span>
+    <span>queued <b id="s-queue">0</b></span>
+    <span>avg build <b id="s-avg">–</b></span>
+    <span>rated <b id="s-rated">0</b></span>
+    <span>★4+ <b id="s-good">0</b></span>
+    <span>cost <b id="s-cost">$0.00</b></span>
+  </div>
+</header>
+<div class="bar-top">
+  <div class="seg" id="model"><button aria-pressed="true" data-m="opus">opus</button><button aria-pressed="false" data-m="sonnet">sonnet</button></div>
+  <button class="go" id="build">▶ Build all missing templates</button>
+  <div class="seg" id="filter"><button aria-pressed="true" data-f="all">all</button><button aria-pressed="false" data-f="done">done</button><button aria-pressed="false" data-f="good">★4+</button><button aria-pressed="false" data-f="unrated">unrated</button></div>
+  <span class="hint">Each template: build → render with 2 real brands → jury round → final. Rate with stars; only ★4+ go to the event.</span>
+</div>
+<main><section class="grid" id="grid"></section></main>
+<script>
+const STEPS = ["Queued", "Building", "Rendering", "Critique", "Final render", "Done"];
+const items = new Map();
+let model = "opus", filter = "all";
+try { model = localStorage.getItem("factoryModel") || "opus"; filter = localStorage.getItem("factoryFilter") || "all"; } catch {}
+
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = (ms) => { const s = Math.max(0, Math.round(ms / 1000)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
+
+function shot(t) {
+  const v = t.version || 0;
+  const busy = t.status === "running" || t.status === "queued";
+  if (t.status === "done" || (busy && t.version))
+    return `<a class="shot" href="/tpl/${t.id}/preview/index.html" target="_blank">
+      <span class="tag">${busy ? "previous version" : "with real content"}</span>
+      <img class="d" src="/tpl/${t.id}/shots/home-desktop.jpg?v=${v}" alt="" loading="lazy">
+      <img class="m" src="/tpl/${t.id}/shots/home-mobile.jpg?v=${v}" alt="" loading="lazy"></a>`;
+  if (t.step === "Critique" || t.step === "Final render")
+    return `<a class="shot" href="/tpl/${t.id}/preview/index.html" target="_blank"><span class="tag">first draft · jury reviewing</span>
+      <img class="d" src="/tpl/${t.id}/shots/before-home-desktop.jpg?v=${t.steps.length}" alt=""></a>`;
+  return `<div class="shot"><div class="ph">${t.status === "todo" ? "not built yet" : t.status === "failed" ? "failed" : esc(t.step || "queued") + "…"}</div></div>`;
+}
+
+function card(t) {
+  const pct = t.status === "done" ? 100 : Math.max(0, t.stepIndex) / (STEPS.length - 1) * 100;
+  const time = t.startedAt ? fmt((t.finishedAt || Date.now()) - t.startedAt) : "";
+  const done = t.status === "done";
+  const stars = [1, 2, 3, 4, 5].map((n) => `<button data-star="${n}" class="${(t.rating || 0) >= n ? "on" : ""}" ${done ? "" : "disabled"} aria-label="${n} stars">★</button>`).join("");
+  const busy = t.status === "running" || t.status === "queued";
+  return `${shot(t)}
+    <div class="body">
+      <div class="row"><span class="name">${esc(t.name)}</span><span class="pill">${esc(t.status)}</span></div>
+      <div class="row chips">${(t.sectors || []).map((s) => `<span>${esc(s)}</span>`).join("")}${t.model ? `<span>${esc(t.model)}</span>` : ""}</div>
+      <div class="progress"><i style="width:${pct}%"></i></div>
+      <div class="row"><span>${esc(t.step || "–")}</span><span class="time" style="margin-left:auto" data-start="${t.startedAt || ""}" data-end="${t.finishedAt || ""}">${time}</span></div>
+      <div class="detail">${esc(t.error || t.detail)}</div>
+      <div class="row"><div class="stars" data-id="${t.id}">${stars}</div>
+        ${t.score ? `<span class="jury" style="margin-left:auto">jury <b>${esc(t.score.scoreBefore)}</b> → <b>~${esc(t.score.scoreAfterEstimate)}</b>/10</span>` : ""}</div>
+      <div class="links">
+        ${done ? `<a href="/tpl/${t.id}/preview/index.html" target="_blank">home ↗</a>
+          <a href="/tpl/${t.id}/preview/catalog.html" target="_blank">catalog ↗</a>
+          <a href="/tpl/${t.id}/preview-stress/index.html" target="_blank">other brand ↗</a>
+          <a href="/tpl/${t.id}/shots/before-home-desktop.jpg?v=${t.version}" target="_blank">before jury ↗</a>` : ""}
+        <button data-rebuild="${t.id}" ${busy ? "disabled" : ""}>${t.status === "todo" ? "build" : "rebuild"}</button>
+        ${t.costUsd ? `<span class="time" style="margin-left:auto;align-self:center">$${t.costUsd.toFixed(2)}</span>` : ""}
+      </div>
+    </div>`;
+}
+
+function visible(t) {
+  if (filter === "done") return t.status === "done";
+  if (filter === "good") return (t.rating || 0) >= 4;
+  if (filter === "unrated") return t.status === "done" && !t.rating;
+  return true;
+}
+
+function draw() {
+  const grid = document.getElementById("grid");
+  const list = [...items.values()].sort((a, b) => (b.rating || 0) - (a.rating || 0));
+  // Re-use card elements so images don't flicker.
+  for (const t of list) {
+    let el = document.getElementById("t-" + t.id);
+    if (!el) { el = document.createElement("article"); el.id = "t-" + t.id; }
+    const key = JSON.stringify([t.status, t.step, t.detail, t.rating, t.version, t.error, t.costUsd]);
+    if (el.dataset.key !== key) { el.className = "card " + t.status; el.innerHTML = card(t); el.dataset.key = key; }
+    el.style.display = visible(t) ? "" : "none";
+    grid.appendChild(el);
+  }
+  const all = [...items.values()];
+  const done = all.filter((t) => t.status === "done");
+  document.getElementById("s-done").textContent = done.length;
+  document.getElementById("s-total").textContent = all.length;
+  document.getElementById("s-run").textContent = all.filter((t) => t.status === "running").length;
+  document.getElementById("s-queue").textContent = all.filter((t) => t.status === "queued").length;
+  const durs = done.filter((t) => t.startedAt && t.finishedAt).map((t) => t.finishedAt - t.startedAt);
+  document.getElementById("s-avg").textContent = durs.length ? fmt(durs.reduce((a, b) => a + b, 0) / durs.length) : "–";
+  document.getElementById("s-rated").textContent = all.filter((t) => t.rating).length;
+  document.getElementById("s-good").textContent = all.filter((t) => (t.rating || 0) >= 4).length;
+  document.getElementById("s-cost").textContent = "$" + all.reduce((a, t) => a + (t.costUsd || 0), 0).toFixed(2);
+  document.getElementById("build").disabled = !all.some((t) => t.status === "todo" || t.status === "failed");
+}
+
+function setSeg(id, attr, val) {
+  for (const b of document.querySelectorAll(`#${id} button`)) b.setAttribute("aria-pressed", String(b.dataset[attr] === val));
+}
+setSeg("model", "m", model);
+setSeg("filter", "f", filter);
+
+document.getElementById("model").onclick = (e) => {
+  const m = e.target.dataset.m; if (!m) return;
+  model = m; setSeg("model", "m", m);
+  try { localStorage.setItem("factoryModel", m); } catch {}
+};
+document.getElementById("filter").onclick = (e) => {
+  const f = e.target.dataset.f; if (!f) return;
+  filter = f; setSeg("filter", "f", f);
+  try { localStorage.setItem("factoryFilter", f); } catch {}
+  draw();
+};
+const build = (ids) => fetch("/api/factory/build", { method: "POST", body: JSON.stringify({ ids, model }) });
+document.getElementById("build").onclick = () => { document.getElementById("build").disabled = true; build(); };
+
+document.getElementById("grid").onclick = async (e) => {
+  const star = e.target.closest("[data-star]");
+  if (star && !star.disabled) {
+    const id = star.parentElement.dataset.id;
+    const cur = items.get(id)?.rating || 0;
+    const n = Number(star.dataset.star);
+    await fetch("/api/factory/rate", { method: "POST", body: JSON.stringify({ id, stars: cur === n ? 0 : n }) });
+    return;
+  }
+  const rb = e.target.closest("[data-rebuild]");
+  if (rb && !rb.disabled) { rb.disabled = true; build([rb.dataset.rebuild]); }
+};
+
+setInterval(() => {
+  for (const el of document.querySelectorAll(".time[data-start]"))
+    if (el.dataset.start && !el.dataset.end) el.textContent = fmt(Date.now() - Number(el.dataset.start));
+}, 1000);
+
+new EventSource("/api/factory/events").onmessage = (e) => { const t = JSON.parse(e.data); items.set(t.id, t); draw(); };
+</script>
+</body>
+</html>

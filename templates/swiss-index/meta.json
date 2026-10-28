@@ -1,0 +1,9 @@
+{
+  "id": "swiss-index",
+  "name": "Swiss Index",
+  "scheme": "light",
+  "sectors": ["b2b", "industrial", "retail"],
+  "mood": ["typographic", "rational", "bold", "gridded", "precise"],
+  "needsProductImages": true,
+  "notes": "Primary fills large solid blocks only (12-segment hero bar, row-hover fills, CTA band, buttons with on-primary text), so pastels, navies and near-blacks all stay legible; images get a primary duotone; accent is only used for small tag markers."
+}

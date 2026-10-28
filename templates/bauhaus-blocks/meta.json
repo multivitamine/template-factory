@@ -1,0 +1,9 @@
+{
+  "id": "bauhaus-blocks",
+  "name": "Bauhaus Blocks",
+  "scheme": "light",
+  "sectors": ["culture", "education", "retail"],
+  "mood": ["geometric", "poster-bold", "constructivist", "playful"],
+  "needsProductImages": true,
+  "notes": "Primary fills the hero circle, CTA disc, ticker and stats colour field (always with on-primary text); accent only colours decorative triangles and quarter-discs on a fixed cream/black Bauhaus canvas."
+}

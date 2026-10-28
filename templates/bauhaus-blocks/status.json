@@ -1,0 +1,62 @@
+{
+  "id": "bauhaus-blocks",
+  "name": "Bauhaus Blocks",
+  "sectors": [
+    "culture",
+    "education",
+    "retail"
+  ],
+  "sample": "terpstrav2",
+  "stress": "bohlt",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793217657223
+    },
+    {
+      "step": "Rendering",
+      "at": 1793218421884
+    },
+    {
+      "step": "Critique",
+      "at": 1793218436427
+    },
+    {
+      "step": "Final render",
+      "at": 1793218438073
+    },
+    {
+      "step": "Done",
+      "at": 1793218452865
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793217657223,
+  "finishedAt": 1793218452865,
+  "model": "opus",
+  "costUsd": 2.5942678,
+  "meta": {
+    "id": "bauhaus-blocks",
+    "name": "Bauhaus Blocks",
+    "scheme": "light",
+    "sectors": [
+      "culture",
+      "education",
+      "retail"
+    ],
+    "mood": [
+      "geometric",
+      "poster-bold",
+      "constructivist",
+      "playful"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary fills the hero circle, CTA disc, ticker and stats colour field (always with on-primary text); accent only colours decorative triangles and quarter-discs on a fixed cream/black Bauhaus canvas."
+  },
+  "score": null,
+  "version": 1793218452865
+}

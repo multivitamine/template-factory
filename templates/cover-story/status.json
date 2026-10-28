@@ -1,0 +1,90 @@
+{
+  "id": "cover-story",
+  "name": "Cover Story",
+  "sectors": [
+    "lifestyle",
+    "culture",
+    "retail"
+  ],
+  "sample": "terpstrav2",
+  "stress": "nacrasailing",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793217495383
+    },
+    {
+      "step": "Rendering",
+      "at": 1793218292903
+    },
+    {
+      "step": "Critique",
+      "at": 1793218311131
+    },
+    {
+      "step": "Final render",
+      "at": 1793218423871
+    },
+    {
+      "step": "Done",
+      "at": 1793218437956
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793217495383,
+  "finishedAt": 1793218437956,
+  "model": "opus",
+  "costUsd": 3.4880113999999995,
+  "meta": {
+    "id": "cover-story",
+    "name": "Cover Story",
+    "scheme": "light",
+    "sectors": [
+      "lifestyle",
+      "culture",
+      "retail"
+    ],
+    "mood": [
+      "editorial",
+      "bold",
+      "high-contrast",
+      "magazine"
+    ],
+    "needsProductImages": true,
+    "notes": "Black-and-white newsprint base; primary colours the masthead, stickers, sale tags and the full back-cover band; light/pastel primaries switch the masthead to black and become the hero ground instead."
+  },
+  "score": {
+    "scoreBefore": 5,
+    "scores": {
+      "creativity": 7,
+      "typography": 8,
+      "layoutRhythm": 4,
+      "polish": 4,
+      "brandColourRobustness": 6,
+      "mobile": 4,
+      "genericTemplateFeel": 6
+    },
+    "issues": [
+      "Scroll reveal (.rv at opacity 0) never fired in full-page renders: the home product grid, Contents index (stress + mobile) and catalog rows 13+ showed up as huge empty bands of cream, so half the page read as broken",
+      "Story cover image was lazy-loaded and rendered as an empty beige box behind the 'TM'/'NS' masthead, which killed the signature image-over-letters layering on the strongest cover",
+      "The front cropped copy (arch clip) was so wide that it ate whole letters: 'Terpstra Muziek Drumland' read as 'Dru  land' and 'Nacra Sailing' as 'Sa  ng'. The overlap trick hurt legibility instead of teasing it",
+      "Images had no cover lines: the brief asks for corner cover lines ('+ 24 new arrivals') but the image only carried a tiny 'No. 2026' tag, so it read as a hero photo, not a magazine cover",
+      "Catalog featured card: both .pc-img and .pc-body had flex:1, leaving a dead gap under the title, and a 2x2 feature near the end of the list left a hole in the grid",
+      "On mobile the image started at 38% of a 3-line masthead and buried the middle line almost completely",
+      "Light/mid brand colours (Nacra orange) give a lower-contrast masthead on cream. It still works at display size, but it's the weakest brand case"
+    ],
+    "fixed": [
+      "Added a fail-safe to the reveal (both pages): everything is forced to .in after 2.6s, so no cover can stay blank while the scroll-in motion still plays",
+      "Story and contact-sheet images now load eagerly with async decoding, so the story cover renders its image and the cropped front copy",
+      "Tightened the front-copy arch (19% side inset, starts lower) so letters break around the subject but the masthead stays readable. Mobile gets its own arch and pushes the image down to 50% of the masthead height",
+      "New .ph-cl corner cover line on the image: a brand-colour label chip ('Inside this issue', 'Cover story' or the brand name) over a big white Oswald '+ 4688 producten' / '+ eyebrow' line on the hero, story and catalog covers",
+      "Catalog feature card only spans 2x2 when at least 4 items follow it (no grid holes), its body no longer stretches, and the image uses contain with padding so packshots aren't cropped"
+    ],
+    "scoreAfterEstimate": 7.5
+  },
+  "version": 1793218437956
+}

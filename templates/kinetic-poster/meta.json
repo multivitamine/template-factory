@@ -1,0 +1,9 @@
+{
+  "id": "kinetic-poster",
+  "name": "Kinetic Poster",
+  "scheme": "light",
+  "sectors": ["sports", "culture", "retail"],
+  "mood": ["loud", "typographic", "kinetic", "street-poster"],
+  "needsProductImages": true,
+  "notes": "Primary floods the tilted tagline marquee, the CTA block, tags, stamps and hover fills (always with on-primary text). Accent stays out of the way, so any brand colour reads on the off-white and black poster palette."
+}

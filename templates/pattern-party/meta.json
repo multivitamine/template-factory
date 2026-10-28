@@ -1,0 +1,3 @@
+{ "id": "pattern-party", "name": "Pattern Party", "scheme": "light", "sectors": ["kids","food","retail"],
+  "mood": ["maximalist", "playful", "sticker-bomb", "candy-bold"], "needsProductImages": true,
+  "notes": "Cream base with ink outlines; primary drives solid colour blocks, highlights and buttons (always paired with on-primary), accent and primary tints feed every repeating pattern, divider and sticker shadow so any brand colour reads as a party." }

@@ -1,0 +1,80 @@
+{
+  "id": "broadsheet",
+  "name": "The Broadsheet",
+  "sectors": [
+    "food",
+    "hospitality",
+    "retail"
+  ],
+  "sample": "brinkscoffeeroasters",
+  "stress": "nacrasailing",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793215482789
+    },
+    {
+      "step": "Rendering",
+      "at": 1793216134237
+    },
+    {
+      "step": "Critique",
+      "at": 1793216148059
+    },
+    {
+      "step": "Final render",
+      "at": 1793216241296
+    },
+    {
+      "step": "Done",
+      "at": 1793216254557
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793215482789,
+  "finishedAt": 1793216254557,
+  "model": "opus",
+  "costUsd": 2.8819774,
+  "meta": {
+    "id": "broadsheet",
+    "name": "The Broadsheet",
+    "scheme": "light",
+    "sectors": [
+      "food",
+      "hospitality",
+      "retail"
+    ],
+    "mood": [
+      "editorial",
+      "newsprint",
+      "classic",
+      "witty"
+    ],
+    "needsProductImages": true,
+    "notes": "Cream newsprint and black ink stay fixed; primary drives buttons, ad tags, the ticker label, the press-roll rule and the full-bleed Notice band, with a text-darkened primary mix for drop caps and italic headline accents; accent tints the rotating stamp and ticker prices."
+  },
+  "score": {
+    "scoreBefore": 5,
+    "issues": [
+      "Broken: scroll-reveal content never appeared in full-page renders. The classifieds grid was an empty hatched box on desktop, mobile and the stress brand. The feature, numbers, letter and gallery sections were blank, and the catalog's Market Pages grid and Public Notice were empty. The 2.5s fallback only ran if the main script failed.",
+      "Lead article body was starved: a 1–2 sentence hero text was squeezed into a two-column justified layout. This left rivers, a tiny drop-cap paragraph and CTAs floating in column two, so the hero felt weak under a strong headline.",
+      "Brand-colour robustness: Nacra's light orange primary kept white text on buttons, the ticker label and ad tags, which made the contrast unreadable (~2.4:1).",
+      "Featured classified (No. 01) stretched its image to the full card height, leaving a big dead void between the product name and the price.",
+      "Product photos were cropped with object-fit:cover. The Nacra sail lost its head and foot, and the boat cut-outs were clipped, which is wrong for classified-ad product shots.",
+      "Typography and masthead are strong (huge Playfair nameplate, double rules, edition/date ears, ticker, rotating stamp), and the sticky fold-to-nameplate interaction is in place. Below the fold, though, it read as unfinished because of the reveal bug."
+    ],
+    "fixed": [
+      "The reveal fallback now runs unconditionally after 2.2s and skips the transition, so content can never stay invisible. In-view items still get the IntersectionObserver ink-in. Fixed on both the homepage and the catalog.",
+      "Added a runtime WCAG contrast guard: if --c-on-primary is below 3.6:1 against the primary, it switches to whichever of brand text or white reads better. Every primary-filled element (buttons, ticker label, tags, notice block) stays legible for any brand.",
+      "Short hero text is detected and set as a single wide lede (larger type, wide drop cap, CTAs on their own row) instead of a broken two-column split. Long copy keeps the newspaper columns.",
+      "Featured classified redesigned: 4:3 image, heavy 3px rule over the copy, and a hatched 'tear' band anchoring the price. No more empty void.",
+      "Ad images use object-fit:contain with padding, plus a multiply blend on the paper tint. Product cut-outs now sit fully inside the box like printed classifieds (homepage and catalog)."
+    ],
+    "scoreAfterEstimate": 7.5
+  },
+  "version": 1793216254557
+}

@@ -1,0 +1,83 @@
+{
+  "id": "split-theatre",
+  "name": "Split Theatre",
+  "sectors": [
+    "retail",
+    "lifestyle",
+    "sports"
+  ],
+  "sample": "bohlt",
+  "stress": "birthbear",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793216254559
+    },
+    {
+      "step": "Rendering",
+      "at": 1793216756377
+    },
+    {
+      "step": "Critique",
+      "at": 1793216769100
+    },
+    {
+      "step": "Final render",
+      "at": 1793216884725
+    },
+    {
+      "step": "Done",
+      "at": 1793216897391
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793216254559,
+  "finishedAt": 1793216897391,
+  "model": "opus",
+  "costUsd": 2.4458121999999998,
+  "meta": {
+    "id": "split-theatre",
+    "name": "Split Theatre",
+    "scheme": "light",
+    "sectors": [
+      "retail",
+      "lifestyle",
+      "sports"
+    ],
+    "mood": [
+      "confident",
+      "editorial",
+      "product-as-hero",
+      "cinematic"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary drives the stage wipe curtain, CTAs, the closing CTA band, active-row bars and the tinted packshot backdrop (white packshots are blended into it). Primary is never used as text on the cream page, so pastel and near-black brand colours stay readable. Accent appears only as a small decorative offset square."
+  },
+  "score": {
+    "scoreBefore": 5,
+    "issues": [
+      "Scores before: creativity 6, typography 6, layout & rhythm 4, polish 4, brand-colour robustness 6, mobile 5, generic-template feel 5.",
+      "The featured products (the whole point of 'product-as-hero') stayed invisible: the .rv reveal depended only on IntersectionObserver, so the right column showed huge blank 68svh slabs on desktop and mobile.",
+      "Hero title 'bleed' pushed the first line into the stage image with mix-blend-mode:difference. 'Take a ride,' and 'Een levenslange herinnering,' looked misaligned and garbled, like a layout bug rather than a choice.",
+      "The multi-line accent highlight (.mark) was a block with fit-content, so with long brand copy (Birth Bear) one flat slab sat behind the last line instead of a per-line marker.",
+      "Outside the sticky viewport the left half of the theatre was an empty flat void, which made the page read as half-empty.",
+      "Stage caption was a timid pill in the corner. 'Big prices' were not big on the stage itself.",
+      "Products without a price (Birth Bear) collapsed to a small name plus a button, an empty-looking act.",
+      "Mobile lost the signature wipe entirely; stacked images just appeared."
+    ],
+    "fixed": [
+      "Added a reveal safety net (all .rv content shown after 2.6s) on both pages, so products, stats and story can never stay invisible.",
+      "Removed the broken bleed/difference effect. The hero title is now a clean, balanced display setting (text-wrap:balance, slightly tighter clamp), and .mark is inline with box-decoration-break so the brand-colour highlight follows each line.",
+      "Gave the theatre's left column a 'backstage' surface (brand tint plus 16-column brand-colour rules echoing the curtain stripes), so the split always reads as a deliberate stage, whatever the brand colour.",
+      "Rebuilt the stage caption: bottom-left, elevated card, tracked uppercase label, price at up to 5rem. Big price, small details, right on the hero image.",
+      "Price-less products switch to a giant display-sized name, so the act still has a hero line.",
+      "Brought the signature wipe to mobile: product and story images reveal with a clip-path curtain plus scale settle as they enter view."
+    ],
+    "scoreAfterEstimate": 7
+  },
+  "version": 1793216897391
+}

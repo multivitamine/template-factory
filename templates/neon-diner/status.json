@@ -1,0 +1,83 @@
+{
+  "id": "neon-diner",
+  "name": "Neon Diner",
+  "sectors": [
+    "food",
+    "horeca",
+    "retail"
+  ],
+  "sample": "fredimare",
+  "stress": "brinkscoffeeroasters",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793216739096
+    },
+    {
+      "step": "Rendering",
+      "at": 1793217512575
+    },
+    {
+      "step": "Critique",
+      "at": 1793217525496
+    },
+    {
+      "step": "Final render",
+      "at": 1793217636484
+    },
+    {
+      "step": "Done",
+      "at": 1793217654278
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793216739096,
+  "finishedAt": 1793217654278,
+  "model": "opus",
+  "costUsd": 3.6770748,
+  "meta": {
+    "id": "neon-diner",
+    "name": "Neon Diner",
+    "scheme": "dark",
+    "sectors": [
+      "food",
+      "horeca",
+      "retail"
+    ],
+    "mood": [
+      "retro",
+      "glowing",
+      "loud",
+      "playful",
+      "warm"
+    ],
+    "needsProductImages": false,
+    "notes": "Primary drives the neon tubes (auto-lightened via oklch so navy or near-black still glow), awning stripes, ticker, buttons and the Today's special starburst; accent lights the CTA sign tube; bg/cream/checkerboard stay template-owned."
+  },
+  "score": {
+    "scoreBefore": 4,
+    "issues": [
+      "Broken: every .reveal element was opacity:0 until an IntersectionObserver fired, so on the homepage the menu board, stats, story, gallery, quote and CTA rendered as ~2000px of empty black (desktop, mobile and stress). The signature dotted-leader menu board was not visible on the homepage at all",
+      "Catalog: CTA section invisible for the same reason, leaving a huge dead gap between the menu board and the footer",
+      "Today's special plate: .plate__img and .plate__body are inline spans, so aspect-ratio was ignored. With no image the dish placeholder collapsed to a tiny 'FM' and the burst badge covered the product name",
+      "Brand robustness: muted brand colours (Brinks brown, Fredimare ochre) came out as beige/cream tubes, so the 'neon' read as dull white text instead of gas-lit glass",
+      "Category records grid left-aligned a lone record (Brinks has 1 category) with a big empty cream field on the right; 6 records gave a ragged 4+2 row",
+      "Menu board title 'MENU.' was plain slab text, which missed the chance to repeat the neon motif on the signature board",
+      "Good stuff: the hero neon sign with hanging wires, the checker floor in perspective, the record-sleeve categories, the awning and the chrome-framed board are genuinely characterful (creativity 7, typography 7, layout 5 because of the voids, polish 3, brand robustness 5, mobile 5, generic-ness: low)"
+    ],
+    "fixed": [
+      "Reveal system rebuilt so content is never hidden by default. The entrance is a keyframe animation (fill: backwards) that only plays once .in is added, so no-JS, no-scroll and screenshot renders show every section. Dotted leaders now draw in with the same pattern, staggered per row",
+      "Plate image/body set to display:block, so the Today's special card gets its square photo or striped dish placeholder again and the burst sits on the image, not the title",
+      "Neon colours derived with a chroma floor (oklch max(c,.13)), so brown or grey brands still produce a saturated glowing tube in their own hue",
+      "Category records switched to a centred flex layout: one record shows large and centred, two or three share the row in thirds, four or more go in quarters, and mobile uses two columns",
+      "Menu board title is now a Monoton neon tube in the brand colour that flicks on when the board enters the viewport, tying the signature board to the hero sign",
+      "IntersectionObserver thresholds relaxed so tall boards on mobile still trigger the leader animation"
+    ],
+    "scoreAfterEstimate": 7.5
+  },
+  "version": 1793217654278
+}

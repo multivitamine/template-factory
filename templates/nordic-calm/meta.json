@@ -1,0 +1,9 @@
+{
+  "id": "nordic-calm",
+  "name": "Nordic Calm",
+  "scheme": "light",
+  "sectors": ["lifestyle", "hospitality", "kids"],
+  "mood": ["quiet", "warm greige", "editorial", "slow", "airy"],
+  "needsProductImages": true,
+  "notes": "Primary appears only as a few 'ceramic objects': the glazed hero disc, CTA pills, the drag cursor, hover dots and a soft color-mix tint; everything else stays warm greige so any brand colour reads as a single accent."
+}

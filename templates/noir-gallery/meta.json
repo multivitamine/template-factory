@@ -1,0 +1,9 @@
+{
+  "id": "noir-gallery",
+  "name": "Noir Gallery",
+  "scheme": "dark",
+  "sectors": ["hospitality", "luxury", "retail"],
+  "mood": ["nocturnal", "curated", "hushed", "theatrical"],
+  "needsProductImages": true,
+  "notes": "Primary fills the main buttons and tints the cursor spotlight; a lightened mix of primary (and of accent for tag dots) draws the thin hairlines, room numbers and italic accents, so even navy or near-black brands stay visible on the dark canvas."
+}

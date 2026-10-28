@@ -1,0 +1,9 @@
+{
+  "id": "neon-diner",
+  "name": "Neon Diner",
+  "scheme": "dark",
+  "sectors": ["food", "horeca", "retail"],
+  "mood": ["retro", "glowing", "loud", "playful", "warm"],
+  "needsProductImages": false,
+  "notes": "Primary drives the neon tubes (auto-lightened via oklch so navy or near-black still glow), awning stripes, ticker, buttons and the Today's special starburst; accent lights the CTA sign tube; bg/cream/checkerboard stay template-owned."
+}

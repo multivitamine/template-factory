@@ -1,0 +1,89 @@
+{
+  "id": "atelier-craft",
+  "name": "Atelier Craft",
+  "sectors": [
+    "food",
+    "makers",
+    "lifestyle"
+  ],
+  "sample": "brinkscoffeeroasters",
+  "stress": "birthbear",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793217654279
+    },
+    {
+      "step": "Rendering",
+      "at": 1793218297683
+    },
+    {
+      "step": "Critique",
+      "at": 1793218314878
+    },
+    {
+      "step": "Final render",
+      "at": 1793218392521
+    },
+    {
+      "step": "Done",
+      "at": 1793218406004
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793217654279,
+  "finishedAt": 1793218406004,
+  "model": "opus",
+  "costUsd": 2.8302496,
+  "meta": {
+    "id": "atelier-craft",
+    "name": "Atelier Craft",
+    "scheme": "light",
+    "sectors": [
+      "food",
+      "makers",
+      "lifestyle"
+    ],
+    "mood": [
+      "handmade",
+      "warm",
+      "tactile",
+      "artisanal"
+    ],
+    "needsProductImages": true,
+    "notes": "Linen/kraft palette stays fixed; primary inks the rotating stamp, script accents, handwritten prices, buttons, marquee ribbon and the perforated postage-stamp CTA (text-ink uses are mixed 72% with dark text so pastels stay readable); accent tints the washi tape and footer link hovers."
+  },
+  "score": {
+    "scoreBefore": 4,
+    "scores": {
+      "creativity": 7,
+      "typography": 7,
+      "layoutRhythm": 3,
+      "polish": 3,
+      "brandColourRobustness": 6,
+      "mobile": 2,
+      "genericTemplateFeel": 7
+    },
+    "issues": [
+      "Catastrophic: every .rv element and every price tag was set to opacity:0 until an IntersectionObserver fired. In the full-page renders more than half of the homepage is blank parchment: no story, stats, gallery, quote, postage CTA or footer on desktop; on mobile the whole product wall is just empty twine lines; on the Birth Bear stress test even the process timeline and its heading are missing.",
+      "Catalog: the postage-stamp CTA is invisible, leaving roughly 1,300px of dead space between the last row of tags and the footer.",
+      "Catalog stamp badge: 'producten' breaks mid-word ('producte / n') because of overflow-wrap:anywhere, so the signature badge looks broken.",
+      "Stress hero: the script accent plus its swash underline is wider than the copy column and runs into the deckled photo.",
+      "Home rhythm: the process ruler and the shop heading are separated by about 300px of double section padding, so the page sags in the middle.",
+      "Hiding content by default is fragile. If JS lags or the page is captured without scrolling, the signature hanging tags never show at all."
+    ],
+    "fixed": [
+      "Replaced the hide-until-scrolled reveal with a progressive enhancement: content is always rendered, and sections entering the viewport get a short stamped 'settle' (translate + slight rotate). Tags still play their swing-on-the-twine drop. This brings back the story, stats, polaroid gallery, quote, postage CTA, footer, the mobile product wall and the stress-test timeline (template.html + catalog.html).",
+      "Catalog CTA and footer render again, so the empty gap is gone.",
+      "Catalog stamp: the count now never breaks mid-word. The number sits large on the first line, the label small underneath, and the centre is tilted -8deg like a hand-pressed stamp.",
+      "Hero script accent is capped to the copy column (max-width minus its indent), so long accents and their swash no longer cross into the photo.",
+      "Tightened the space between the process section and the shop so the ruler leads straight into the twine of price tags."
+    ],
+    "scoreAfterEstimate": 7.5
+  },
+  "version": 1793218406004
+}

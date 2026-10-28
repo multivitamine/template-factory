@@ -1,0 +1,9 @@
+{
+  "id": "scrolly-voyage",
+  "name": "Scrolly Voyage",
+  "scheme": "dark",
+  "sectors": ["hospitality", "sports", "travel"],
+  "mood": ["cinematic", "editorial", "immersive", "adventurous"],
+  "needsProductImages": true,
+  "notes": "Primary drives buttons, tags, the CTA orb and a soft-light wash over the sticky image stage; a lightened mix of primary colours the progress rail, chapter numerals and italic accents so even near-black brands stay legible on the dark stage, with accent only tinting the image-less fallback gradients."
+}

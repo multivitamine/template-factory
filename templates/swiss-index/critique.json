@@ -1,0 +1,21 @@
+{
+  "scoreBefore": 6,
+  "scores": { "creativity": 7, "typography": 8, "layoutRhythm": 6, "polish": 5, "brandColourRobustness": 8, "mobile": 4, "genericTemplateFeel": 6 },
+  "issues": [
+    "Scroll reveals broke the page: CSS scroll-behavior:smooth made fast or programmatic scrolling skip the IntersectionObserver, so from section 03 down the giant section numerals, USP list, story and stats stayed invisible. That left huge empty voids, and the whole of section 02 was blank on the stress brand",
+    "Mobile product index broken: the later `.g` 4-column rule overrode the `.ix-a` row template, so product names got squeezed into a quarter-width column and cut off ('Droogijss…')",
+    "Desktop index rows only light up on hover; the number column is tiny and gets lost, with no big typographic moment inside the row",
+    "Reveal caption shows only the number and tag, and never the price, which is a core column of the INDEX",
+    "Hero plate is a small 3-column thumbnail lost in the bottom-right corner with no frame",
+    "Mobile header nav is clipped hard at the edge ('Contai') with no hint that it scrolls"
+  ],
+  "fixed": [
+    "Removed CSS smooth scrolling and moved smooth scrolling for in-page anchors to JS. Added a scroll-pass check so any element at or above the viewport bottom is always revealed. Every numeral and section now renders",
+    "Raised the mobile row template's specificity (`.ix-a.g`) so it beats the 4-column grid: thumbnail / full-width name / price layout restored",
+    "Signature push: a giant outlined grotesk numeral (01, 02…) rises inside the primary-colour fill of the hovered index row, clipped to the row, next to the cursor image reveal",
+    "The cursor reveal caption now reads number — tag — price",
+    "Hero plate widened to 4 columns at 3:2 with a hairline frame; CTAs top-aligned in their 4 columns",
+    "Mobile/tablet nav gets a right-edge fade mask to signal that it scrolls"
+  ],
+  "scoreAfterEstimate": 8
+}

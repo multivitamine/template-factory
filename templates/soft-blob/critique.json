@@ -1,0 +1,16 @@
+{
+  "scoreBefore": 4,
+  "issues": [
+    "Homepage is ~70% empty cream void below the marquee: every .rv section (USPs, categories, products, story, stats, gallery, quote, CTA) stays at opacity 0 because the reveal fallback only fires when the main script fails, so anything never intersected (full-page capture, fast scroll, print) stays invisible",
+    "Horizontal overflow on every page: the -4vw rotated marquee, the off-canvas hero/catalog background blobs and floating CTA blobs push the document wider than the viewport (body overflow-x:clip doesn't stop the root scroll width)",
+    "The signature interaction is weak: the hero image morph is a single border-radius loop sitting on a mostly static tint, so it reads as 'rounded photo' rather than living, breathing blob masks",
+    "Creativity 6, typography 7 (Fraunces SOFT/WONK + Nunito suit the brief), layout & rhythm 3 (broken by the invisible sections), polish 4, brand-colour robustness 7 (tints derived via color-mix hold up for the Brinks dark brown), mobile 5, generic-template feel 5",
+    "Catalog with only 2 products leaves a large empty right side; the demo badge overlaps the hero image on mobile"
+  ],
+  "fixed": [
+    "Reveal fallback now always sets .rv-all after 1.8s on both pages, so content can never stay hidden; in-view elements still animate through IntersectionObserver first",
+    "Killed horizontal overflow: html gets overflow-x:clip, and main and footer get overflow-x:clip. Using clip instead of hidden keeps sticky headers/sticky shop column working and leaves the footer wave and rotated marquee visible",
+    "Upgraded the hero signature: added a brand-tinted halo blob and a dashed outline blob, each morphing out of phase with the image mask and on its own parallax depth, so the hero image sits in layered, slowly breathing organic shapes that follow the cursor"
+  ],
+  "scoreAfterEstimate": 7
+}

@@ -1,0 +1,9 @@
+{
+  "id": "atelier-craft",
+  "name": "Atelier Craft",
+  "scheme": "light",
+  "sectors": ["food", "makers", "lifestyle"],
+  "mood": ["handmade", "warm", "tactile", "artisanal"],
+  "needsProductImages": true,
+  "notes": "Linen/kraft palette stays fixed; primary inks the rotating stamp, script accents, handwritten prices, buttons, marquee ribbon and the perforated postage-stamp CTA (text-ink uses are mixed 72% with dark text so pastels stay readable); accent tints the washi tape and footer link hovers."
+}

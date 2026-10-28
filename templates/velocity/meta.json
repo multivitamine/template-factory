@@ -1,0 +1,9 @@
+{
+  "id": "velocity",
+  "name": "Velocity",
+  "scheme": "dark",
+  "sectors": ["sports", "automotive", "retail"],
+  "mood": ["fast", "aggressive", "race-day", "kinetic"],
+  "needsProductImages": true,
+  "notes": "Primary is the racing stripe (hero title band, ticker, CTA band, P1 badge, start lights, streak wipes) always paired with on-primary text and a hairline edge so near-black brands stay visible; accent is a secondary pin-stripe only."
+}

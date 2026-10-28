@@ -1,0 +1,82 @@
+{
+  "id": "bento-board",
+  "name": "Bento Board",
+  "sectors": [
+    "b2b",
+    "services",
+    "tech",
+    "retail"
+  ],
+  "sample": "bohlt",
+  "stress": "droogijs365",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793216121813
+    },
+    {
+      "step": "Rendering",
+      "at": 1793216946701
+    },
+    {
+      "step": "Critique",
+      "at": 1793216960647
+    },
+    {
+      "step": "Final render",
+      "at": 1793217045221
+    },
+    {
+      "step": "Done",
+      "at": 1793217059672
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793216121813,
+  "finishedAt": 1793217059672,
+  "model": "opus",
+  "costUsd": 3.71554,
+  "meta": {
+    "id": "bento-board",
+    "name": "Bento Board",
+    "scheme": "light",
+    "sectors": [
+      "b2b",
+      "services",
+      "tech",
+      "retail"
+    ],
+    "mood": [
+      "product launch",
+      "modular",
+      "playful precision",
+      "crisp"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary fills the CTA tile, lead USP, 'view all' tile, title highlight, tags and map pin (always with on-primary text); light primary tints colour the quote/contact tiles; accent only marks small dots, water and image fallbacks, so any brand colour stays legible on the warm-grey board."
+  },
+  "score": {
+    "scoreBefore": 5,
+    "issues": [
+      "Everything below the fold (categories, products, story, gallery, CTA, footer) stayed invisible on the homepage, mobile, stress and catalog captures: the .reveal elements were hidden until an IntersectionObserver fired, and nothing showed them if it never did. Half the site rendered as a blank beige void.",
+      "Stress brand: hyphens:auto broke the hero headline into 'pro-ducent' and 'be-trouwbaar' inside a wide tile. It looks amateurish.",
+      "Mobile hero: the stat and map tiles sit alone in half-width rows with an empty column beside them, so the bento falls apart into a ragged list.",
+      "Product tile: real photos (Droogijs pellets) were set to contain with 7% padding and a multiply blend, so they floated small and letterboxed in a big grey frame.",
+      "The brand-colour CTA tile was mostly empty, with a tiny mono label and a lot of dead yellow/blue space. Only the stat tile used the count-up signature.",
+      "Typography and tile system are strong (Bricolage at display sizes, spring hover, pointer spotlight). Creativity is good in the hero but the template reads as generic once the hero ends."
+    ],
+    "fixed": [
+      "Added a CSS failsafe animation (revealsafe, 2.4s) to .reveal in template.html and catalog.html. Content now always springs into view even when the observer never fires, and scroll-triggered reveals still work normally.",
+      "Changed hyphens:auto to hyphens:manual on the h1 in both files, so the stress headline wraps on whole words.",
+      "Mobile hero now uses grid-auto-flow:dense plus explicit ordering. Stat+map and CTA+chips form proper half-width pairs and the bento rhythm holds at 390px.",
+      "Added a canvas corner-sample check. Opaque photos get .photo (object-fit:cover, no padding, no multiply) so they fill the frame, while cut-out product shots keep the floating contain look.",
+      "The CTA tile now shows the catalog count as a big display number with data-count, so a second number counts up during hero assembly and the brand tile has a strong focal point."
+    ],
+    "scoreAfterEstimate": 7.5
+  },
+  "version": 1793217059672
+}

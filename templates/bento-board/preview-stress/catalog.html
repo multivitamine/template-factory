@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Onze droogijsproducten · Droogijs365</title>
+<meta name="description" content="Pellets, schijven en blokken: voor elke toepassing hebben wij de juiste oplossing.">
+<script>document.documentElement.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm')}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#ECEBE6;
+  --c-surface:#FFFFFF;
+  --c-text:#141416;
+  --c-muted:#6B6964;
+  --c-line:#DAD8D0;
+  --c-primary:#3B4BFF;
+  --c-on-primary:#FFFFFF;
+  --c-accent:#FF8A3D;
+
+  --r:24px; --r-in:16px;
+  --gap:clamp(8px,1vw,14px);
+  --pad:clamp(18px,2vw,28px);
+  --wrap:1440px;
+  --f-display:'Bricolage Grotesque','Geist',sans-serif;
+  --f-body:'Geist','Figtree',sans-serif;
+  --f-mono:'Geist Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --shadow:0 0 0 1px rgba(20,20,22,.045),0 1px 2px rgba(20,20,22,.05),0 8px 22px -12px rgba(20,20,22,.16);
+  --shadow-lift:0 0 0 1px rgba(20,20,22,.05),0 4px 8px -2px rgba(20,20,22,.06),0 30px 60px -22px rgba(20,20,22,.34);
+}
+@supports (transition-timing-function:linear(0,1)){
+  :root{--spring:linear(0,.009,.035 2.1%,.141,.281 6.7%,.723 12.9%,.938 16.7%,1.017,1.077,1.121,1.149 24.3%,1.159,1.163,1.161,1.154 29.9%,1.129 32.8%,1.051 39.6%,1.017 43.1%,.991,.977 51%,.974 53.8%,.975 57.1%,.997 69.8%,1.003 76.9%,1.004 83.8%,1)}
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;counter-reset:sec}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(12px,2vw,28px)}
+.mono{font:500 11.5px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------- tiles ---------- */
+.tile{position:relative;border-radius:var(--r);background:var(--c-surface);box-shadow:var(--shadow);overflow:hidden;isolation:isolate;
+  transition:transform .8s var(--spring),box-shadow .5s var(--ease),background-color .3s}
+.tile::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:5;border-radius:inherit;opacity:0;transition:opacity .4s var(--ease);
+  background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),var(--glow,color-mix(in srgb,var(--c-primary) 9%,transparent)),transparent 65%)}
+.tile:hover::after{opacity:1}
+.lift:hover{transform:translateY(-6px) scale(1.012);box-shadow:var(--shadow-lift)}
+.ink{background:var(--c-text);color:var(--c-bg);--glow:rgba(255,255,255,.09)}
+.brand{background:var(--c-primary);color:var(--c-on-primary);--glow:color-mix(in srgb,var(--c-on-primary) 16%,transparent)}
+.tint{background:color-mix(in srgb,var(--c-primary) 13%,var(--c-surface))}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;background:color-mix(in srgb,var(--c-text) 5%,transparent);font:500 13px/1 var(--f-body);max-width:100%}
+.eyebrow span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--c-accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--c-accent) 28%,transparent),inset 0 0 0 1px rgba(0,0,0,.12)}
+
+.btn{display:inline-flex;align-items:center;gap:12px;height:54px;padding:0 8px 0 24px;border-radius:999px;font:600 15px/1 var(--f-body);white-space:nowrap;border:0;cursor:pointer;
+  transition:transform .6s var(--spring),background-color .3s,box-shadow .3s;max-width:100%}
+.btn>span:first-child{overflow:hidden;text-overflow:ellipsis}
+.btn i{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;transition:transform .6s var(--spring)}
+.btn:hover{transform:translateY(-2px)}
+.btn:hover i{transform:rotate(-45deg)}
+.btn-primary{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.btn-primary i{background:var(--c-on-primary);color:var(--c-primary)}
+.btn-sm{height:44px;padding:0 6px 0 18px;font-size:14px}
+.btn-sm i{width:32px;height:32px}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:50;padding:10px 0}
+.hdr-in{display:flex;align-items:center;gap:12px;padding:7px 7px 7px 14px;border-radius:20px;background:color-mix(in srgb,var(--c-surface) 84%,transparent);
+  -webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);box-shadow:var(--shadow)}
+.logo{display:inline-flex;align-items:center;flex:none;min-height:40px;max-width:200px}
+.logo img{height:26px;width:auto;max-width:150px;object-fit:contain}
+.logo-txt{font:700 21px/1 var(--f-display);letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+.logo--light{background:var(--c-text);color:var(--c-bg);padding:7px 14px;border-radius:13px}
+.f-nav .logo:not(.logo--light){background:var(--c-surface);padding:7px 14px;border-radius:13px;box-shadow:inset 0 0 0 1px var(--c-line)}
+.nav{display:flex;gap:2px;margin:0 auto;min-width:0;overflow:hidden}
+.nav a{padding:10px 13px;border-radius:999px;font-size:14.5px;font-weight:500;white-space:nowrap;transition:background-color .25s}
+.nav a:hover{background:color-mix(in srgb,var(--c-text) 6%,transparent)}
+.hdr-r{display:flex;align-items:center;gap:8px;margin-left:auto;flex:none}
+.mnav{position:relative;display:none}
+.mnav summary{list-style:none;width:44px;height:44px;border-radius:14px;background:var(--c-text);display:grid;place-content:center;gap:5px;cursor:pointer}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav summary span{display:block;width:18px;height:2px;border-radius:2px;background:var(--c-bg);transition:transform .5s var(--spring)}
+.mnav[open] summary span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.mnav[open] summary span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.mnav-panel{position:absolute;right:0;top:calc(100% + 10px);width:min(340px,calc(100vw - 24px));padding:10px;display:grid;gap:4px;box-shadow:var(--shadow-lift);animation:pop .6s var(--spring)}
+.mnav-panel a{padding:14px 16px;border-radius:14px;font:700 1.35rem/1.1 var(--f-display);letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center}
+.mnav-panel a:hover{background:color-mix(in srgb,var(--c-primary) 12%,var(--c-surface))}
+@keyframes pop{from{opacity:0;transform:translateY(-8px) scale(.96)}}
+
+.hero{padding-top:4px}
+.js:not(.rm) .assemble>.tile:not(.in){opacity:0;animation:failsafe 0s 2.8s forwards}
+@keyframes failsafe{to{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.h1{font:700 clamp(2.35rem,1rem + 4.2vw,5.6rem)/.93 var(--f-display);letter-spacing:-.045em;text-wrap:balance;overflow-wrap:break-word;hyphens:manual}
+.lead{max-width:46ch;color:var(--c-muted);font-size:clamp(1rem,.95rem + .2vw,1.13rem);line-height:1.5;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+
+.ph{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;
+  background:radial-gradient(110% 80% at 0% 0%,color-mix(in srgb,var(--c-primary) 50%,var(--c-surface)),transparent 62%),
+  radial-gradient(90% 90% at 100% 100%,color-mix(in srgb,var(--c-accent) 42%,var(--c-surface)),transparent 60%),
+  color-mix(in srgb,var(--c-primary) 10%,var(--c-surface))}
+.ph::before{content:"";position:absolute;inset:0;background-image:radial-gradient(color-mix(in srgb,var(--c-text) 22%,transparent) 1px,transparent 1.6px);background-size:16px 16px;
+  -webkit-mask:linear-gradient(135deg,#000,transparent 70%);mask:linear-gradient(135deg,#000,transparent 70%)}
+.ph span{position:relative;font:800 clamp(2.4rem,7vw,7rem)/1 var(--f-display);letter-spacing:-.05em;color:color-mix(in srgb,var(--c-text) 82%,transparent)}
+.ph-sm span{font-size:clamp(1.6rem,3vw,2.6rem)}
+
+.frame{position:relative;border-radius:var(--r-in);overflow:hidden;background:color-mix(in srgb,var(--c-bg) 45%,var(--c-surface))}
+.frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7%;mix-blend-mode:multiply;transition:transform 1s var(--spring)}
+.pcard:hover .frame>img{transform:scale(1.06) rotate(-1.5deg)}
+.pname{font:700 clamp(1.1rem,.95rem + .45vw,1.45rem)/1.08 var(--f-display);letter-spacing:-.025em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.price{display:flex;align-items:baseline;gap:8px;margin-top:8px;font-weight:600;font-variant-numeric:tabular-nums;flex-wrap:wrap}
+.price s{color:var(--c-muted);font-weight:400;font-size:.88em}
+.tag{position:absolute;left:12px;top:12px;z-index:2;padding:6px 11px;border-radius:999px;background:var(--c-primary);color:var(--c-on-primary);font:600 12px/1 var(--f-body);box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.round{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--c-text);color:var(--c-bg);transition:transform .6s var(--spring)}
+.pcard:hover .round{transform:rotate(-45deg)}
+
+/* ---------- sections ---------- */
+.sec{margin-top:clamp(56px,8vw,120px)}
+.h2{font:700 clamp(2rem,1.1rem + 3.1vw,4.2rem)/.95 var(--f-display);letter-spacing:-.04em;margin-top:14px;max-width:18ch;text-wrap:balance}
+.io .reveal:not(.in){opacity:0;transform:translateY(46px) scale(.965);animation:revealsafe .9s var(--ease) 2.4s forwards}
+@keyframes revealsafe{to{opacity:1;transform:none}}
+.reveal.in{transition:opacity .7s var(--ease),transform 1.1s var(--spring),box-shadow .5s var(--ease)}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+.f-links:not(:has(li)),.f-contact:not(:has(p)),.sec-cta:not(:has(.cta-big,.ctile)){display:none}
+
+.pcard{display:flex;flex-direction:column;padding:8px;gap:4px}
+.pcard .frame{flex:1;min-height:clamp(190px,17vw,250px)}
+.frame>img.photo{object-fit:cover;padding:0;mix-blend-mode:normal}
+.pcard-info{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:12px 10px 10px}
+.pcard .pname{font-size:clamp(1.02rem,.92rem + .3vw,1.22rem)}
+.pcard .round{width:40px;height:40px}
+
+/* cta + contact */
+.cta-big{grid-column:span 7;padding:clamp(26px,3.6vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:34px;min-height:clamp(340px,34vw,480px)}
+.cta-big .h2{font-size:clamp(2.3rem,1.2rem + 3.8vw,5.2rem);max-width:13ch;margin:0}
+.cta-big p{opacity:.8;max-width:44ch;font-size:clamp(1rem,.95rem + .25vw,1.15rem)}
+.cta-big .btn{background:var(--c-on-primary);color:var(--c-primary)}
+.cta-big .btn i{background:var(--c-primary);color:var(--c-on-primary)}
+.rings{position:absolute;right:-18%;top:-30%;width:min(560px,80%);aspect-ratio:1;z-index:-1;border-radius:50%;opacity:.16;
+  background:repeating-radial-gradient(circle,transparent 0 26px,var(--c-on-primary) 27px 28px);animation:spin 60s linear infinite}
+.cstack{grid-column:span 5;display:flex;flex-direction:column;gap:var(--gap)}
+.bento-cta:not(:has(.ctile)) .cta-big{grid-column:1/-1}
+.bento-cta:not(:has(.cta-big)) .cstack{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}
+.ctile{flex:1 1 200px;padding:var(--pad);display:flex;align-items:center;gap:18px;min-height:110px}
+.ctile .ico{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--c-primary) 15%,var(--c-surface));color:color-mix(in srgb,var(--c-primary) 55%,var(--c-text));transition:transform .7s var(--spring)}
+.ctile:hover .ico{transform:rotate(-10deg) scale(1.08)}
+.ctile .mono{color:var(--c-muted);display:block;margin-bottom:6px}
+.ctile b{display:block;font:700 clamp(1.1rem,.95rem + .5vw,1.45rem)/1.15 var(--f-display);letter-spacing:-.02em;overflow-wrap:anywhere}
+.ctile .round{margin-left:auto;width:40px;height:40px}
+.ctile:hover .round{transform:rotate(-45deg)}
+
+/* footer */
+.ftr{margin-top:clamp(56px,8vw,120px);padding-bottom:clamp(12px,2vw,28px)}
+.ftr-top{display:flex;flex-wrap:wrap;gap:var(--gap);margin-bottom:var(--gap)}
+.ftr-top .tile{padding:var(--pad);flex:1 1 260px}
+.ftr-top .f-links{flex:2 1 420px}
+.f-nav{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.flist{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.f-links .flist{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));column-gap:20px}
+.flist a{display:inline-flex;padding:6px 0;color:var(--c-muted);font-weight:500;transition:color .2s,transform .5s var(--spring)}
+.flist a:hover{color:var(--c-text);transform:translateX(4px)}
+.f-h{display:block;color:var(--c-muted);margin-bottom:14px}
+.f-contact p{font-weight:500;line-height:1.55}
+.f-contact a:hover{text-decoration:underline}
+.f-giant{padding:clamp(22px,3vw,44px) clamp(22px,3vw,44px) clamp(16px,2vw,26px)}
+.giant{display:block;font:800 clamp(3rem,13vw,13rem)/.82 var(--f-display);letter-spacing:-.06em;overflow-wrap:anywhere}
+.giant.fit{display:inline-block;white-space:nowrap}
+.giant em{font-style:normal;color:var(--c-primary)}
+.f-bar{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;margin-top:clamp(20px,3vw,40px);padding-top:18px;border-top:1px solid color-mix(in srgb,var(--c-bg) 16%,transparent);opacity:.7}
+
+.demo{position:fixed;left:12px;bottom:12px;z-index:60;display:inline-flex;align-items:center;gap:8px;padding:8px 12px 8px 10px;border-radius:999px;background:color-mix(in srgb,var(--c-text) 88%,transparent);color:var(--c-bg);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font:500 11px/1 var(--f-mono);letter-spacing:.04em;box-shadow:0 8px 20px -10px rgba(0,0,0,.5);max-width:calc(100vw - 24px)}
+.demo .dot{width:6px;height:6px}
+
+/* ---------- catalog ---------- */
+.bento-cat{grid-auto-rows:minmax(80px,auto)}
+.ch-title{grid-column:span 8;padding:clamp(24px,3vw,46px);display:flex;flex-direction:column;gap:20px;min-height:clamp(260px,24vw,340px)}
+.ch-title .h1{font-size:clamp(2.2rem,1rem + 3.6vw,4.8rem);margin-top:auto}
+.ch-count{grid-column:span 4;padding:var(--pad);display:flex;flex-direction:column;justify-content:space-between;gap:24px;container-type:inline-size}
+.ch-count::before{content:"";width:34px;height:6px;border-radius:6px;background:var(--c-primary);box-shadow:0 0 0 1px rgba(255,255,255,.18)}
+.ch-count .n{font:700 clamp(1.6rem,1rem + 2vw,2.6rem)/1 var(--f-display);letter-spacing:-.03em;overflow-wrap:anywhere}
+.ch-count .n b{display:block;font-size:clamp(3.5rem,42cqi,9rem);font-weight:800;line-height:.82;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.ch-count .n span{display:block;margin-top:10px;font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+.ch-filters{grid-column:1/-1;padding:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{height:44px;padding:0 18px;border-radius:999px;border:0;background:color-mix(in srgb,var(--c-text) 5%,transparent);font-weight:600;font-size:14.5px;cursor:pointer;transition:transform .6s var(--spring),background-color .25s,color .25s}
+.chip:hover{transform:translateY(-2px);background:color-mix(in srgb,var(--c-text) 10%,transparent)}
+.chip[aria-pressed="true"]{background:var(--c-text);color:var(--c-bg)}
+.ch-filters .mono{margin-left:auto;padding:0 12px;color:var(--c-muted)}
+.cgrid{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense;margin-top:var(--gap)}
+.cgrid .pcard:first-child{grid-column:span 2;grid-row:span 2}
+.cgrid .pcard:first-child .pname{font-size:clamp(1.4rem,1rem + 1.2vw,2.2rem)}
+.cgrid .pcard:first-child .round{width:52px;height:52px}
+.empty{grid-column:1/-1;padding:clamp(28px,4vw,60px);display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.empty p{color:var(--c-muted);max-width:50ch}
+
+/* ---------- responsive ---------- */
+@media (max-width:1180px){
+  .nav{display:none}
+  .mnav{display:block}
+}
+@media (max-width:1060px){
+  .cta-big,.cstack{grid-column:1/-1}
+  .cstack{flex-direction:row;flex-wrap:wrap}
+  .ch-title{grid-column:span 7}.ch-count{grid-column:span 5}
+  .cgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:680px){
+  .ch-title,.ch-count{grid-column:1/-1}
+  .ch-count{min-height:200px}
+  .ch-filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .ch-filters::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+  .ch-filters .mono{display:none}
+  .cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cgrid .pcard:first-child{grid-row:auto}
+  .pcard .frame{min-height:150px}
+  .pcard-info{flex-direction:column;align-items:flex-start}
+  .pcard .round{display:none}
+  .cgrid .pcard:first-child .round{display:grid}
+  .cgrid .pcard:first-child .pcard-info{flex-direction:row;align-items:flex-end}
+  .ctile{flex-basis:100%}
+  .hdr-r .btn{display:none}
+  .btn{height:52px}
+  .demo{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#113BFB;--c-on-primary:#ffffff;--c-accent:#00051A}</style></head>
+<body>
+
+<header class="hdr">
+  <div class="wrap">
+    <div class="hdr-in">
+      <a class="logo logo--light" href="template.html" aria-label="Droogijs365"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-droogijs365.svg" alt="Droogijs365"></a>
+      <nav class="nav" aria-label="Hoofdmenu"><a href="#">Over ons</a><a href="#">Toepassingen</a><a href="catalog.html">Producten</a><a href="#">Containers</a><a href="#">Contact</a></nav>
+      <div class="hdr-r">
+        <a class="btn btn-sm btn-primary" href="#"><span>Offerte opvragen</span><i><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+        <details class="mnav">
+          <summary aria-label="Menu"><span></span><span></span></summary>
+          <div class="mnav-panel tile"><a href="#">Over ons<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a><a href="#">Toepassingen<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a><a href="catalog.html">Producten<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a><a href="#">Containers<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a><a href="#">Contact<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="bento bento-cat assemble">
+        <div class="tile ch-title">
+          <div><a class="eyebrow" href="template.html"><i class="dot"></i><span>Droogijs365</span></a></div>
+          <h1 class="h1">Onze droogijsproducten</h1>
+          <p class="lead">Pellets, schijven en blokken: voor elke toepassing hebben wij de juiste oplossing.</p>
+        </div>
+        <div class="tile ink ch-count">
+          <div class="n" data-split>6 producten</div>
+        </div>
+        <div class="tile ch-filters" role="toolbar">
+          <button class="chip" type="button" aria-pressed="true">Alles</button><button class="chip" type="button" aria-pressed="false">Alle producten</button><button class="chip" type="button" aria-pressed="false">Pellets</button><button class="chip" type="button" aria-pressed="false">Schijven</button><button class="chip" type="button" aria-pressed="false">Blokken</button>
+          <span class="mono">6 producten</span>
+        </div>
+      </div>
+
+      <div class="bento cgrid">
+        <a class="tile lift pcard reveal" href="#">
+          <div class="frame">
+            <img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="Droogijs pellets 3 mm" loading="lazy">
+            
+            <span class="tag">Pellets</span>
+          </div>
+          <div class="pcard-info">
+            <div style="min-width:0"><h3 class="pname">Droogijs pellets 3 mm</h3></div>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="tile lift pcard reveal" href="#">
+          <div class="frame">
+            <img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="Droogijs pellets 10 mm" loading="lazy">
+            
+            <span class="tag">Pellets</span>
+          </div>
+          <div class="pcard-info">
+            <div style="min-width:0"><h3 class="pname">Droogijs pellets 10 mm</h3></div>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="tile lift pcard reveal" href="#">
+          <div class="frame">
+            <img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="Droogijs pellets 16 mm" loading="lazy">
+            
+            <span class="tag">Pellets</span>
+          </div>
+          <div class="pcard-info">
+            <div style="min-width:0"><h3 class="pname">Droogijs pellets 16 mm</h3></div>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="tile lift pcard reveal" href="#">
+          <div class="frame">
+            
+            <div class="ph ph-sm"><span>D3</span></div>
+            <span class="tag">Schijven</span>
+          </div>
+          <div class="pcard-info">
+            <div style="min-width:0"><h3 class="pname">Droogijsschijven 500 gram</h3></div>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="tile lift pcard reveal" href="#">
+          <div class="frame">
+            
+            <div class="ph ph-sm"><span>D3</span></div>
+            <span class="tag">Schijven</span>
+          </div>
+          <div class="pcard-info">
+            <div style="min-width:0"><h3 class="pname">Droogijsschijven 700 gram</h3></div>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="tile lift pcard reveal" href="#">
+          <div class="frame">
+            
+            <div class="ph ph-sm"><span>D3</span></div>
+            <span class="tag">Blokken</span>
+          </div>
+          <div class="pcard-info">
+            <div style="min-width:0"><h3 class="pname">Droogijsblok 5 kilo</h3></div>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + CONTACT -->
+  <section class="sec sec-cta" id="contact">
+    <div class="wrap">
+      <div class="bento bento-cta">
+        <div class="tile brand cta-big reveal">
+          <span class="rings" aria-hidden="true"></span>
+          <span class="mono">Droogijs365</span>
+          <div>
+            <h2 class="h2">Droogijs nodig? Vraag direct een offerte aan</h2>
+            <p style="margin-top:18px">Vertel ons wat je nodig hebt en wij denken met je mee. Bel 0294 300 010 of stuur een bericht.</p>
+          </div>
+          <div><a class="btn" href="#"><span>Offerte opvragen</span><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a></div>
+        </div>
+        <div class="cstack">
+          <a class="tile lift ctile reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Droogijs365 B.V., Tokyostraat 6, 1175 RB Lijnden" target="_blank" rel="noopener">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+            <span style="min-width:0"><span class="mono">Adres</span><b>Droogijs365 B.V., Tokyostraat 6, 1175 RB Lijnden</b></span>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+          <a class="tile lift ctile reveal" href="tel:0294 300 010">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+            <span style="min-width:0"><span class="mono">Bel</span><b>0294 300 010</b></span>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+          <a class="tile lift ctile reveal" href="mailto:info@droogijs365.nl">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span style="min-width:0"><span class="mono">Mail</span><b>info@droogijs365.nl</b></span>
+            <span class="round"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <div class="tile f-nav reveal">
+        <a class="logo logo--light" href="template.html" aria-label="Droogijs365"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-droogijs365.svg" alt="Droogijs365" loading="lazy"></a>
+        <ul class="flist"><li><a href="#">Over ons</a></li><li><a href="#">Toepassingen</a></li><li><a href="catalog.html">Producten</a></li><li><a href="#">Containers</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div class="tile f-links reveal">
+        <span class="mono f-h">Droogijs365</span>
+        <ul class="flist"><li><a href="#">Over ons</a></li><li><a href="#">Toepassingen</a></li><li><a href="catalog.html">Producten</a></li><li><a href="#">Wat is droogijs?</a></li><li><a href="#">Duurzaamheid</a></li><li><a href="#">Algemene voorwaarden</a></li><li><a href="#">Privacyverklaring</a></li><li><a href="#">Cookieverklaring</a></li></ul>
+      </div>
+      <div class="tile tint f-contact reveal">
+        <span class="mono f-h">Contact</span>
+        <p>Droogijs365 B.V., Tokyostraat 6, 1175 RB Lijnden</p>
+        <p><a href="tel:0294 300 010">0294 300 010</a></p>
+        <p><a href="mailto:info@droogijs365.nl">info@droogijs365.nl</a></p>
+      </div>
+    </div>
+    <div class="tile ink f-giant reveal">
+      <div class="giant-wrap"><span class="giant">Droogijs365<em>.</em></span></div>
+      <div class="f-bar"><span>Droogijs op maat, altijd bereikbaar</span><span class="mono">© 2026 Droogijs365</span></div>
+    </div>
+  </div>
+</footer>
+
+<div class="demo"><i class="dot"></i>Demo redesign · Bento Board</div>
+
+<script>
+(function(){
+  var d=document,root=d.documentElement,rm=root.classList.contains('rm');
+  [['.f-links','.flist li'],['.f-contact','p']].forEach(function(p){
+    d.querySelectorAll(p[0]).forEach(function(el){if(!el.querySelector(p[1]))el.style.display='none'});
+  });
+  var sc=d.querySelector('.sec-cta');if(sc&&!sc.querySelector('.cta-big,.ctile'))sc.style.display='none';
+
+  // split "13 producten" into big number + label
+  d.querySelectorAll('[data-split]').forEach(function(el){
+    var raw=el.textContent.trim(),m=raw.match(/^(\D*?)(\d[\d.,]*)\s*(.*)$/);
+    if(!m)return;el.textContent='';
+    var b=d.createElement('b');b.textContent=m[1]+m[2];b.setAttribute('data-count','');el.appendChild(b);
+    if(m[3]){var s=d.createElement('span');s.textContent=m[3];el.appendChild(s)}
+  });
+
+  function countUp(el){
+    var raw=el.getAttribute('data-raw')||el.textContent.trim();el.setAttribute('data-raw',raw);
+    var m=raw.match(/\d[\d.,]*/);if(!m||rm)return;
+    var ns=m[0].replace(/[.,]$/,''),pre=raw.slice(0,m.index),post=raw.slice(m.index+ns.length),dec=0,st='',sd=',',clean=ns;
+    var li=Math.max(ns.lastIndexOf('.'),ns.lastIndexOf(','));
+    if(li>-1){var ch=ns[li],tail=ns.length-li-1;
+      if(tail===3&&/^\d{1,3}([.,]\d{3})+$/.test(ns)){st=ch;clean=ns.split(ch).join('')}
+      else{dec=tail;sd=ch;var o=ch==='.'?',':'.';st=ns.indexOf(o)>-1?o:'';clean=ns.split(o).join('').replace(ch,'.')}}
+    var target=parseFloat(clean);if(!isFinite(target))return;
+    function fmt(v){var s=v.toFixed(dec).split('.'),i=s[0];if(st)i=i.replace(/\B(?=(\d{3})+(?!\d))/g,st);return pre+i+(s[1]?sd+s[1]:'')+post}
+    var t0=null,dur=1500;el.textContent=fmt(0);
+    requestAnimationFrame(function tick(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur),e=p===1?1:1-Math.pow(2,-10*p);el.textContent=fmt(target*e);if(p<1)requestAnimationFrame(tick);else el.textContent=raw});
+  }
+
+  var supportsLinear=window.CSS&&CSS.supports&&CSS.supports('animation-timing-function','linear(0, 1)');
+  var spring=supportsLinear?'linear(0, .02 2%, .08 4%, .18 6%, .32 8%, .47 10%, .62 12%, .75 14%, .86 16%, .94 18%, 1 20%, 1.04 22%, 1.065 24.5%, 1.072 27%, 1.068 30%, 1.05 34%, 1.025 39%, 1.005 44%, .993 50%, .99 56%, .994 64%, 1 76%, 1)':'cubic-bezier(.34,1.4,.64,1)';
+
+  var hero=d.querySelector('.assemble');
+  if(hero){
+    var tiles=[].slice.call(hero.children);
+    if(!rm&&hero.animate){
+      var g=hero.getBoundingClientRect(),cx=g.left+g.width/2,cy=g.top+g.height/2;
+      tiles.forEach(function(t,i){
+        var r=t.getBoundingClientRect(),dx=cx-(r.left+r.width/2),dy=cy-(r.top+r.height/2);
+        var rot=(i%2?1:-1)*(4+i*2),delay=100+i*90;
+        var a1=t.animate([{transform:'translate('+dx*.7+'px,'+dy*.7+'px) scale(.5) rotate('+rot+'deg)'},{transform:'none'}],{duration:1350,delay:delay,easing:spring,fill:'both'});
+        var a2=t.animate([{opacity:0},{opacity:1}],{duration:420,delay:delay,easing:'ease-out',fill:'both'});
+        a1.onfinish=function(){t.classList.add('in');a1.cancel();a2.cancel()};
+      });
+    }else tiles.forEach(function(t){t.classList.add('in')});
+  }
+
+  var counters=[].slice.call(d.querySelectorAll('[data-count]'));
+  if('IntersectionObserver' in window&&!rm){
+    root.classList.add('io');
+    var io=new IntersectionObserver(function(es){
+      var k=0;es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);
+        el.style.transitionDelay=(k++*60)+'ms';el.classList.add('in');
+        setTimeout(function(){el.style.transitionDelay=''},1300)});
+    },{rootMargin:'0px 0px -6% 0px',threshold:.06});
+    d.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+    var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);
+      setTimeout(function(){countUp(e.target)},e.target.closest('.assemble')?600:150)})},{threshold:.4});
+    counters.forEach(function(c){co.observe(c)});
+  }
+
+  // visual-only filters: toggle + springy shuffle
+  var chips=[].slice.call(d.querySelectorAll('.chip'));
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
+    if(rm)return;
+    d.querySelectorAll('.cgrid .pcard').forEach(function(p,i){if(!p.animate)return;
+      p.animate([{transform:'translateY(18px) scale(.94)',opacity:.4},{transform:'none',opacity:1}],{duration:900,delay:Math.min(i,12)*40,easing:spring})});
+  })});
+
+  // photos (not cut-outs) fill the frame instead of floating small inside it
+  function photoCheck(img){try{var c=d.createElement('canvas');c.width=c.height=8;var x=c.getContext('2d');x.drawImage(img,0,0,8,8);
+    var p=x.getImageData(0,0,8,8).data,dark=0;[0,7,56,63].forEach(function(k){var o=k*4;if(p[o+3]>200&&(p[o]+p[o+1]+p[o+2])/3<200)dark++});
+    if(dark>=2)img.classList.add('photo')}catch(e){}}
+  d.querySelectorAll('.frame>img').forEach(function(img){if(img.complete&&img.naturalWidth)photoCheck(img);else img.addEventListener('load',function(){photoCheck(img)})});
+
+  d.addEventListener('pointermove',function(e){var t=e.target.closest&&e.target.closest('.tile');if(!t)return;var r=t.getBoundingClientRect();
+    t.style.setProperty('--mx',(e.clientX-r.left)+'px');t.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true});
+
+  function fit(){d.querySelectorAll('.giant').forEach(function(g){var w=g.parentElement.clientWidth;g.classList.add('fit');g.style.fontSize='100px';
+    var fs=Math.min(100*w/g.scrollWidth,260);g.style.fontSize=fs+'px'})}
+  fit();if(d.fonts&&d.fonts.ready)d.fonts.ready.then(fit);var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(fit,120)});
+
+  d.addEventListener('click',function(e){d.querySelectorAll('.mnav[open]').forEach(function(m){if(!m.contains(e.target))m.removeAttribute('open')})});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "scoreBefore": 5.5,
+  "scores": {
+    "creativity": 6,
+    "typography": 8,
+    "layoutRhythm": 6,
+    "polish": 4,
+    "brandColourRobustness": 8,
+    "mobile": 5,
+    "genericTemplateFeel": 6
+  },
+  "issues": [
+    "Everything below the lookbook (featured products, story, stats, quote, categories, CTA) renders as a vast empty void on desktop, stress and mobile: the IntersectionObserver-only reveal misses elements during fast scrolls/anchor jumps, so whole sections stay at opacity 0. 'Silence' is not the same as missing content",
+    "Catalog CTA block is an empty greige slab for the same reason: the heading and button never reveal",
+    "Lookbook product cutouts sit on harsh #FFF rectangles that punch holes in the warm greige palette (tape measure, spools, bear). Clinical, like a webshop rather than a calm editorial strip",
+    "The catalog header's ceramic disc and ring are pinned top-right on top of the product-count label ('(01) ... en'), an obvious collision in the first viewport",
+    "The signature drag-to-scroll has no affordance until the cursor hovers it; on screenshots and touch the strip reads as a static row of three images",
+    "There is too much dead air between the hero and the USPs, with a lonely '(01)' marker floating in it, so the pause reads as a gap instead of a deliberate one",
+    "Hero is strong (masked word rise, clip reveal, ceramic disc), and Navarra navy proves the brand-colour system is robust"
+  ],
+  "fixed": [
+    "Reveal system made robust in both pages: IO plus a rAF-throttled catch-up sweep on scroll/resize/load that reveals everything already passed. No more invisible sections, and the slow fade-and-rise remains for real readers",
+    "Lookbook images are now multiplied onto the greige surface with a slightly desaturated, faintly warm matte (white backgrounds melt into the palette). Full colour returns slowly on hover, with a 1px hairline frame for gallery-print feel",
+    "Catalog ceramic disc moved into the empty gutter between title and intro, resting on the title baseline with a tighter ring. It no longer collides with the count; hidden on tablet/mobile where there's no gutter",
+    "Signature interaction gets a first-sighting 'exhale': when the lookbook first comes into view the rail drifts ~140px and settles back over 2.6s, so the drag/momentum strip is discoverable. Cancelled instantly by any user input and skipped for reduced motion",
+    "Hero-to-USP gap tightened so the pause feels deliberate rather than broken"
+  ],
+  "scoreAfterEstimate": 7.6
+}

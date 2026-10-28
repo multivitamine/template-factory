@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 5,
+  "issues": [
+    "After the hero the voyage collapses into ~3000px of empty black: chapters rely 100% on the sticky stage, so wherever it isn't visible (full-page capture, slow image load, odd viewports) the chapters are dead space",
+    "Chapter panels started at opacity 0 and only appeared via IntersectionObserver, so chapters 04–07 rendered completely invisible; looked broken",
+    "Each chapter was 100vh with a small 560px card, so the rhythm was huge voids and tiny cards and the catalog, ports and finale were pushed far below the fold",
+    "Chapter panels had no imagery, only text cards that look like generic template boxes",
+    "Mobile hero: body copy and the small headline sit on bright sail/sky with a weak scrim, so contrast is low; headline lacks scale on 390px",
+    "Brand-colour robustness is decent (lift/tint derive from primary) but the stress brand shows the same emptiness"
+  ],
+  "fixed": [
+    "Added a 'viewfinder' frame to every chapter panel: JS clones the exact image the stage cross-fades to into the top of the panel, with a chapter counter caption and a slow zoom-settle on enter, so the chapter carries its own image even when the stage isn't visible",
+    "Huge outlined italic ghost numerals (01–07) set opposite each panel in the brand-derived lift colour, drifting into place on enter; fills the void with editorial typography and strengthens the chapter/rail metaphor",
+    "Panels are no longer opacity-gated: the reveal is transform-only, so content is never invisible",
+    "Tightened the chapter rhythm: non-hero chapters go from 100vh to 74vh (auto height on mobile) so the voyage is denser and the product section and finale arrive sooner; cross-fade still triggers at the viewport midline",
+    "Mobile hero: stronger bottom scrim, text-shadow and a bigger clamp on the headline for legibility and impact"
+  ],
+  "scoreAfterEstimate": 7
+}

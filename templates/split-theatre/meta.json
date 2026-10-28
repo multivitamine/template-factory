@@ -1,0 +1,9 @@
+{
+  "id": "split-theatre",
+  "name": "Split Theatre",
+  "scheme": "light",
+  "sectors": ["retail", "lifestyle", "sports"],
+  "mood": ["confident", "editorial", "product-as-hero", "cinematic"],
+  "needsProductImages": true,
+  "notes": "Primary drives the stage wipe curtain, CTAs, the closing CTA band, active-row bars and the tinted packshot backdrop (white packshots are blended into it). Primary is never used as text on the cream page, so pastel and near-black brand colours stay readable. Accent appears only as a small decorative offset square."
+}

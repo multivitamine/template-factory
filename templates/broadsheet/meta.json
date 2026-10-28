@@ -1,0 +1,9 @@
+{
+  "id": "broadsheet",
+  "name": "The Broadsheet",
+  "scheme": "light",
+  "sectors": ["food", "hospitality", "retail"],
+  "mood": ["editorial", "newsprint", "classic", "witty"],
+  "needsProductImages": true,
+  "notes": "Cream newsprint and black ink stay fixed; primary drives buttons, ad tags, the ticker label, the press-roll rule and the full-bleed Notice band, with a text-darkened primary mix for drop caps and italic headline accents; accent tints the rotating stamp and ticker prices."
+}

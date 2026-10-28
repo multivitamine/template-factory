@@ -1,0 +1,292 @@
+{
+  "brand": {
+    "name": "Brinks Coffee Roasters",
+    "tagline": "Easy to love, recognized by most.",
+    "logo": "https://www.brinkscoffeeroasters.nl/dist/images/logos/logo-brinks-b2c.svg",
+    "logoIsLight": true,
+    "initials": "BC",
+    "lang": "nl",
+    "colors": {
+      "primary": "#5A402E",
+      "accent": "#B37756"
+    }
+  },
+  "nav": [
+    {
+      "label": "Home",
+      "href": "#"
+    },
+    {
+      "label": "Shop",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    },
+    {
+      "label": "Account aanmaken",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Specialty coffee als norm",
+    "title": "Koffie waar mensen",
+    "titleAccent": "voor terugkomen",
+    "text": "Geen bittere, verwarrende of te complexe koffie meer. Brinks brandt verfijnde blends vol smaak en balans, met heldere uitleg erbij.",
+    "cta": "Bekijk ons assortiment",
+    "ctaHref": "catalog.html",
+    "cta2": "Bestel zakelijk",
+    "image": "https://www.brinkscoffeeroasters.nl/media/brinkscoffeeroasters_-26-verkleind.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1754"
+  },
+  "usps": [
+    {
+      "title": "Duidelijke smaken",
+      "text": "Gebalanceerde smaken voor een breed publiek: easy to love, hard to forget."
+    },
+    {
+      "title": "Heldere uitleg en begeleiding",
+      "text": "Een betrokken team van professionals tilt jouw koffie-ervaring naar een hoger niveau."
+    },
+    {
+      "title": "Alles onder één dak",
+      "text": "Van bonen tot machines en barista-trainingen: wij regelen het."
+    },
+    {
+      "title": "Samen groeien",
+      "text": "Geen losse orders, maar duurzame partnerships die jouw business versterken."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Premium koffie",
+      "image": "https://www.brinkscoffeeroasters.nl/content/categories/premium-koffie.png?width=150",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Brinks Specialty koffiebonen proefpakket 2-pack",
+      "price": "€ 34,00",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2179.png?width=360",
+      "tag": "Proefpakket",
+      "href": "#"
+    },
+    {
+      "name": "Brinks koffiebonen proefpakket black collection 3-pack",
+      "price": "€ 47,00",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2180.png?width=360",
+      "tag": "Proefpakket",
+      "href": "#"
+    },
+    {
+      "name": "Brasil Black Diamond 500 gram",
+      "price": "€ 15,75",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2128.png?width=360",
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Chocolate Berry 250 gram",
+      "price": "€ 9,95",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2265.png?width=360",
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Guatemala Adventure 500 gram",
+      "price": "€ 17,45",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2132.png?width=360",
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "PC Blend 500 gram",
+      "price": "€ 15,95",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2130.png?width=360",
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Supreme Black 500 gram",
+      "price": "€ 15,50",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2129.png?width=360",
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Sweet Combo 500 gram",
+      "price": "€ 16,75",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2131.png?width=360",
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Decaf Peru Swiss Water 500gr (espresso maling)",
+      "price": "€ 21,76",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/1007.png?width=360",
+      "tag": "Cafeïnevrij",
+      "href": "#"
+    },
+    {
+      "name": "Decaf Peru Swiss Water 500gr bonen",
+      "price": "€ 21,76",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/1008.png?width=360",
+      "tag": "Cafeïnevrij",
+      "href": "#"
+    },
+    {
+      "name": "Decafe cups doos 20 cups",
+      "price": "€ 5,98",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2335.png?width=360",
+      "tag": "Cafeïnevrij",
+      "href": "#"
+    },
+    {
+      "name": "Cafferati espresso dispenser doos 80 cups",
+      "price": "€ 21,75",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/1012.png?width=360",
+      "tag": "Cups",
+      "href": "#"
+    },
+    {
+      "name": "Cafferati lungo dispenser doos 80 cups",
+      "price": "€ 21,75",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/1096.png?width=360",
+      "tag": "Cups",
+      "href": "#"
+    }
+  ],
+  "story": {
+    "eyebrow": "Onze missie",
+    "title": "Koffie met karakter, niet met kapsones",
+    "text": "Wij vechten tegen een onoverzichtelijke en oneerlijke koffiewereld. Bij Brinks geloven we dat goede koffie voor iedereen een glimlach moet bezorgen: een easy-to-love smaakprofiel, eerlijk verhandeld in een transparante keten.",
+    "image": "https://www.brinkscoffeeroasters.nl/media/brinkscoffeeroasters_-58-verkleind.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1754"
+  },
+  "stats": [
+    {
+      "value": "1000+",
+      "label": "klanten gingen je voor"
+    },
+    {
+      "value": "10+",
+      "label": "jaar ervaring"
+    }
+  ],
+  "gallery": [
+    "https://www.brinkscoffeeroasters.nl/media/kantoor-e7a41318fd7c1958fe062d1eb398a16cb74e9cb42b440e85818ce04830728fe5-1.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=940",
+    "https://www.brinkscoffeeroasters.nl/media/ontwerp-zonder-titel-20.png?cropX=0&cropY=0&cropW=0&cropH=0&width=250"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Klaar om indruk te maken met jouw koffie?",
+    "text": "Laat ons je helpen koffie simpeler, lekkerder en indrukwekkender te maken, voor horeca, kantoor, retail of thuis.",
+    "label": "Neem contact op",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Veldweg 26, 5321 JE Hedel",
+    "phone": "+31 073-7200721",
+    "email": "hallo@brinkscoffeeroasters.nl"
+  },
+  "footerLinks": [
+    {
+      "label": "Koffie",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Thee",
+      "href": "#"
+    },
+    {
+      "label": "Accessoires",
+      "href": "#"
+    },
+    {
+      "label": "Barista tools",
+      "href": "#"
+    },
+    {
+      "label": "Onderhoudsproducten",
+      "href": "#"
+    },
+    {
+      "label": "Zakelijk",
+      "href": "#"
+    },
+    {
+      "label": "Cookieverklaring",
+      "href": "#"
+    },
+    {
+      "label": "Privacyverklaring",
+      "href": "#"
+    },
+    {
+      "label": "Algemene voorwaarden",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Koffie",
+    "intro": "Ontdek onze premium en specialty koffies, proefpakketten en cups, allemaal met een smaak die je makkelijk waardeert.",
+    "filters": [
+      "Premium koffie",
+      "Specialty koffie"
+    ],
+    "count": "13 producten"
+  },
+  "featured": [
+    {
+      "name": "Brinks Specialty koffiebonen proefpakket 2-pack",
+      "price": "€ 34,00",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2179.png?width=360",
+      "tag": "Proefpakket",
+      "href": "#"
+    },
+    {
+      "name": "Brinks koffiebonen proefpakket black collection 3-pack",
+      "price": "€ 47,00",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2180.png?width=360",
+      "tag": "Proefpakket",
+      "href": "#"
+    },
+    {
+      "name": "Brasil Black Diamond 500 gram",
+      "price": "€ 15,75",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2128.png?width=360",
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Chocolate Berry 250 gram",
+      "price": "€ 9,95",
+      "oldPrice": null,
+      "image": "https://www.brinkscoffeeroasters.nl/content/products/2265.png?width=360",
+      "tag": null,
+      "href": "#"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

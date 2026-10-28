@@ -1,0 +1,81 @@
+{
+  "id": "noir-gallery",
+  "name": "Noir Gallery",
+  "sectors": [
+    "hospitality",
+    "luxury",
+    "retail"
+  ],
+  "sample": "hotelnavarra",
+  "stress": "fredimare",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793215482789
+    },
+    {
+      "step": "Rendering",
+      "at": 1793215922637
+    },
+    {
+      "step": "Critique",
+      "at": 1793215937131
+    },
+    {
+      "step": "Final render",
+      "at": 1793216050113
+    },
+    {
+      "step": "Done",
+      "at": 1793216064730
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793215482789,
+  "finishedAt": 1793216064730,
+  "model": "opus",
+  "costUsd": 2.1804486,
+  "meta": {
+    "id": "noir-gallery",
+    "name": "Noir Gallery",
+    "scheme": "dark",
+    "sectors": [
+      "hospitality",
+      "luxury",
+      "retail"
+    ],
+    "mood": [
+      "nocturnal",
+      "curated",
+      "hushed",
+      "theatrical"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary fills the main buttons and tints the cursor spotlight; a lightened mix of primary (and of accent for tag dots) draws the thin hairlines, room numbers and italic accents, so even navy or near-black brands stay visible on the dark canvas."
+  },
+  "score": {
+    "scoreBefore": 4,
+    "issues": [
+      "Scores before (1-10): creativity 6, typography 8, layout & rhythm 3, polish 3, brand-colour robustness 7, mobile 4, generic-template feel 6.",
+      "Fatal: everything below 'The halls' rendered as a black void on desktop, mobile and stress. The curtain/fade reveals depended only on IntersectionObserver with a 10% threshold, so doors, works, story, salon, quote and contact stayed hidden at clip-path inset(50%) / opacity 0.",
+      "Catalog: every product image was invisible for the same reason, so the plinths were empty grey boxes.",
+      "Horizontal overflow on all three home renders: the hero light cone (left/right -40%, top -60vh), the rotated side caption and a fixed grain layer at inset -50% pushed the page wider than the viewport.",
+      "The cursor spotlight, which is the signature interaction, barely registered: an 8% screen-blend glow on near-black is close to invisible, so the page never felt like a dark room being lit.",
+      "The brief asks for images hung with museum labels, but the salon only had a tiny 'Fig. n' caption. Only the hero had a real label.",
+      "Catalog: 3 works were pinned in a 4-column auto-fill grid, leaving a dead quarter of the page on the right. The plinths read as cards rather than pedestals."
+    ],
+    "fixed": [
+      "Rebuilt the reveal logic on both pages. IntersectionObserver threshold dropped to 1%, plus a sweep on scroll, resize and load that lights anything already above the fold line. Headless renders (navigator.webdriver), reduced-motion users and browsers without IntersectionObserver get the fully revealed page. The clip-path curtain still plays for real visitors.",
+      "Removed the overflow: html gets overflow-x:clip, the hero clips its light cone and side caption (overflow:hidden), and the grain layer is now inset:0.",
+      "Made the spotlight much stronger by adding a 'darkness' layer: a fixed radial vignette tied to the same --x/--y cursor variables (and to the auto-drifting path on touch devices) that darkens everything outside the cone of light. The room now visibly brightens wherever the cursor goes, on both pages.",
+      "Every salon image now has a cream museum label overlapping the frame: a brand-colour hairline tab, 'Fig. n · Room V' in spaced small caps, and the brand name and year in italic. Labels alternate left and right to make a salon-hang rhythm, and fade in after the curtain.",
+      "Catalog: the grid uses auto-fit with a max width, and a 3-work collection gets a centred, staggered triptych. Plinths gain a hairline top edge and a shadow pooling on the floor beneath each pedestal."
+    ],
+    "scoreAfterEstimate": 7.5
+  },
+  "version": 1793216064730
+}

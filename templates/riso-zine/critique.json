@@ -1,0 +1,20 @@
+{
+  "scoreBefore": 5,
+  "issues": [
+    "Critical: every [data-reveal] element starts at opacity:0 and only appears via IntersectionObserver, so the story, stats, gallery, quote, CTA and (on the stress brand) the whole product grid render as huge empty paper voids; the catalog CTA is an empty torn brown slab",
+    "Duotone looks muddy: dark source photos (hero espresso shot, black coffee bags) collapse into a flat block of brand brown with no tonal range, which kills the riso feel and the 'reveal colour on hover' payoff",
+    "Mobile hero: the photo and spinning stamp are pulled up under the headline with a negative margin, so the stamp covers the 'VOOR TERUGKOMEN' highlight and the annotation collides with the body copy",
+    "Mobile nav gets cut off mid-word ('ACCOUNT AANM') with no sign that it scrolls",
+    "Catalog header: the handwritten tagline sits on top of the dotted cut-paper circle, so it's hard to read",
+    "Hero photo has misregistration on the type but not on the image, so the riso idea stops at the headline"
+  ],
+  "fixed": [
+    "Rewrote reveal so content is never hidden by default: items already in view on load (including full-page renders) show at once, and items below the fold get a one-time 'press' animation when scrolled in. Fixes every empty section on both pages and both brands",
+    "Pushed the duotone tonal range (grayscale + contrast 1.32 + brightness 1.22) so dark photos keep highlights and read as two-ink riso prints, which makes the switch to full colour on hover noticeable",
+    "Mobile hero: removed the negative overlap and gave the photo collage its own space below the headline, so the stamp, tape and annotation no longer cover text",
+    "Mobile nav now fades out at the edge with an end padding, so it's clear it scrolls",
+    "Catalog: moved the cut-paper dot circle up behind the count badge and put the tagline on its own taped paper scrap so it reads clearly",
+    "Added an off-register accent 'plate' outline to the hero photo, so the image prints slightly out of register like the headline"
+  ],
+  "scoreAfterEstimate": 7.5
+}

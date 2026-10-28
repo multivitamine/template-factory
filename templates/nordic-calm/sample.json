@@ -1,0 +1,190 @@
+{
+  "brand": {
+    "name": "Birth Bear",
+    "tagline": "Het unieke kraamcadeau, op ware grootte",
+    "logo": "https://www.birthbear.com/dist/images/logos/logo-birthbear.svg",
+    "logoIsLight": false,
+    "initials": "BB",
+    "lang": "nl",
+    "colors": {
+      "primary": "#C89173",
+      "accent": "#CCBDB6"
+    }
+  },
+  "nav": [
+    {
+      "label": "Ontwerp jouw beer",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Hoe werkt het?",
+      "href": "#"
+    },
+    {
+      "label": "Gift cards",
+      "href": "#"
+    },
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Het unieke kraamcadeau",
+    "title": "Een levenslange herinnering,",
+    "titleAccent": "zo groot als je kindje bij de geboorte",
+    "text": "Elke Birth Bear heeft precies de lengte en het gewicht van jouw pasgeboren baby. Persoonlijk geborduurd, met liefde gemaakt in ons atelier.",
+    "cta": "Ontwerp jouw beer",
+    "ctaHref": "catalog.html",
+    "cta2": "Hoe werkt het?",
+    "image": "https://www.birthbear.com/media/by-demelza-veldheer-fotografie-birthbear16.jpg?cropX=1296&cropY=0&cropW=3368&cropH=4000"
+  },
+  "usps": [
+    {
+      "title": "Exacte lengte en gewicht",
+      "text": "Jouw beer is net zo lang en zwaar als je kindje op de dag van de geboorte."
+    },
+    {
+      "title": "Persoonlijk geborduurd",
+      "text": "Naam en geboortedatum op de poot, in een van zeven garenkleuren, met een velours strik naar keuze."
+    },
+    {
+      "title": "Officieel geboortecertificaat",
+      "text": "Elke beer wordt geleverd met een certificaat met de naam, geboortedatum, lengte en gewicht van je baby."
+    },
+    {
+      "title": "Gratis verzending binnen de EU",
+      "text": "Met zorg gemaakt door onze coupeuses en bij jou thuis bezorgd, zonder verzendkosten."
+    }
+  ],
+  "categories": [],
+  "products": [
+    {
+      "name": "Birth Bear",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.birthbear.com/media/by-demelza-veldheer-fotografie-birthbear16.jpg?cropX=1296&cropY=0&cropW=3368&cropH=4000",
+      "tag": "Op maat gemaakt",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Gift card",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "Cadeautip",
+      "href": "#"
+    }
+  ],
+  "story": {
+    "eyebrow": "Ons atelier",
+    "title": "Maatwerk, dat zie je nog maar zelden",
+    "text": "In ons atelier in het midden van het land maakt een team coupeuses elke Birth Bear op maat voor de ouders. Met veel liefde en aandacht wordt elke beer een klein kunstwerk, een bijzonder cadeau voor jezelf of voor een ander.",
+    "image": "https://www.birthbear.com/media/hoe-wordt-een-birth-bear-gemaakt-1.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=942"
+  },
+  "stats": [
+    {
+      "value": "5500 g",
+      "label": "maximaal gewicht van je beer"
+    },
+    {
+      "value": "56 cm",
+      "label": "maximale lengte"
+    },
+    {
+      "value": "7",
+      "label": "kleuren borduurgaren"
+    },
+    {
+      "value": "4",
+      "label": "stappen naar jouw eigen beer"
+    }
+  ],
+  "gallery": [
+    "https://www.birthbear.com/media/hoe-wordt-een-birth-bear-gemaakt-2.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=632",
+    "https://www.birthbear.com/media/hoe-wordt-een-birth-bear-gemaakt-3.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=628",
+    "https://www.birthbear.com/media/04-green-blue-original.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=628",
+    "https://www.birthbear.com/media/reel1-instagram-bericht-vierkant-your-story-1380-x-1920-px-1980-x-1200-px-3.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1920",
+    "https://www.birthbear.com/media/reel1-instagram-bericht-vierkant-your-story-1380-x-1920-px-10-x-10-cm-4.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.birthbear.com/media/reel1-instagram-bericht-vierkant-your-story-1380-x-1920-px-10-x-10-cm-9.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1181"
+  ],
+  "quote": {
+    "text": "Hoe gaaf is het om je kinderen later te kunnen laten voelen hoe zwaar en lang ze waren bij de geboorte? Oprecht het meest unieke geboortecadeau wat mij betreft.",
+    "author": "Justine Pierau"
+  },
+  "cta": {
+    "title": "Ontwerp jouw eigen Birth Bear",
+    "text": "Voer lengte en gewicht in, kies je kleuren en borduur de naam van je kleine wonder op de poot.",
+    "label": "Ontwerp jouw beer",
+    "href": "catalog.html"
+  },
+  "contact": {
+    "address": "",
+    "phone": "",
+    "email": ""
+  },
+  "footerLinks": [
+    {
+      "label": "Algemene voorwaarden",
+      "href": "#"
+    },
+    {
+      "label": "Privacy statement",
+      "href": "#"
+    },
+    {
+      "label": "Disclaimer",
+      "href": "#"
+    },
+    {
+      "label": "FAQ",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    },
+    {
+      "label": "Reviews",
+      "href": "#"
+    },
+    {
+      "label": "Nieuwsbrief",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Ontwerp jouw Birth Bear",
+    "intro": "Kies de lengte, het gewicht en de persoonlijke details, en wij maken een beer die helemaal van jullie is.",
+    "filters": [
+      "Alles",
+      "Birth Bear",
+      "Gift cards"
+    ],
+    "count": "2 producten"
+  },
+  "featured": [
+    {
+      "name": "Birth Bear",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.birthbear.com/media/by-demelza-veldheer-fotografie-birthbear16.jpg?cropX=1296&cropY=0&cropW=3368&cropH=4000",
+      "tag": "Op maat gemaakt",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Gift card",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "Cadeautip",
+      "href": "#"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

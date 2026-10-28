@@ -1,0 +1,89 @@
+{
+  "id": "blueprint",
+  "name": "Blueprint",
+  "sectors": [
+    "industrial",
+    "b2b",
+    "engineering"
+  ],
+  "sample": "droogijs365",
+  "stress": "fredimare",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793216696874
+    },
+    {
+      "step": "Rendering",
+      "at": 1793217408434
+    },
+    {
+      "step": "Critique",
+      "at": 1793217421916
+    },
+    {
+      "step": "Final render",
+      "at": 1793217525430
+    },
+    {
+      "step": "Done",
+      "at": 1793217538490
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793215482788,
+  "startedAt": 1793216696874,
+  "finishedAt": 1793217538490,
+  "model": "opus",
+  "costUsd": 3.0999732,
+  "meta": {
+    "id": "blueprint",
+    "name": "Blueprint",
+    "scheme": "light",
+    "sectors": [
+      "industrial",
+      "b2b",
+      "engineering"
+    ],
+    "mood": [
+      "precise",
+      "technical",
+      "nerdy",
+      "drafted"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary is the drawing ink: grid, construction/leader lines and image duotone are color-mix tints of it, with solid primary fills only on buttons, spec headers and the CTA plate; accent marks leader-line endpoints, the section cut and hover brackets."
+  },
+  "score": {
+    "scoreBefore": 6.5,
+    "scores": {
+      "creativity": 8,
+      "typography": 7.5,
+      "layoutRhythm": 6,
+      "polish": 5,
+      "brandColourRobustness": 8,
+      "mobile": 6,
+      "genericTemplateFeel": 7
+    },
+    "issues": [
+      "Products section (and the story copy) rendered completely blank on the Droogijs homepage: the reveal relied only on IntersectionObserver, so sections skipped by a fast scroll/anchor jump/full-page capture stayed at opacity 0 with undrawn lines, leaving a ~700px empty hole mid-page",
+      "Leader-line annotations only exist in the hero; the category index — the most image-heavy section — had no callouts at all, so the 'technical drawing' idea faded after the first screen",
+      "Empty cells in the parts grid (catalog 6 items in 4 columns) were bare background with a ragged, borderless edge, which looks unfinished",
+      "Mobile: the hero annotations became a plain list of chips with no leader lines, so the signature interaction disappeared on phones",
+      "Mobile: the category index stacked as six full-width cards, one per row, which made the page very long and monotonous",
+      "Products without images show the same isometric placeholder over and over (a content issue, but repetitive)"
+    ],
+    "fixed": [
+      "Robust reveal in template.html and catalog.html: a rAF-throttled scroll/load catch-up marks every [data-draw] section above the viewport bottom as revealed, so nothing stays blank after jumps; the stroke-dashoffset drawing still runs on normal scrolling",
+      "Self-drawing leader lines on every category card: an ink leader with a surface halo runs from the DET. letter bubble into the image and ends in an accent dot, staggered per column and drawn with stroke-dashoffset",
+      "Empty parts-grid cells now read as a hatched section-cut area (45° ink hatch) with a closed inset ink border, in both the homepage and catalog grids",
+      "Mobile hero annotations get a vertical ink rail that draws down from the figure, plus horizontal leader ticks that draw out to each chip and end in accent nodes, so the signature works on phones too",
+      "Mobile category index is now a staggered 2-column grid with smaller detail bubbles and leaders, which roughly halves its height and keeps the offset drawing rhythm"
+    ],
+    "scoreAfterEstimate": 8
+  },
+  "version": 1793217538490
+}

@@ -1,0 +1,31 @@
+{
+  "scoreBefore": 5.8,
+  "scores": {
+    "creativity": 6.5,
+    "typography": 6.5,
+    "layoutRhythm": 5,
+    "polish": 5,
+    "brandColourRobustness": 6.5,
+    "mobile": 5,
+    "genericTemplateFeel": 6
+  },
+  "issues": [
+    "Hero title only fills about 60% of the desktop width. Its height was capped by a 1fr grid row inside a fixed 100vh hero, so 'typography IS the image' fell short and the hero read like a normal headline.",
+    "Opacity-0 scroll reveals left whole sections blank when the IntersectionObserver never fired (story on Birth Bear, CTA on catalog). The page showed large empty off-white and red slabs.",
+    "Mobile category word-marks broke mid-word (BOKSHANDSC/HOENEN, PROTECTIE/B/ESCHERMING, OEFENWAPEN/S) because of overflow-wrap:anywhere.",
+    "The second (black) marquee band sat almost entirely behind the red one. Only slivers showed, so the crossed-tape effect was lost.",
+    "The pinned product rail sat on plain off-white with tiny cards. The signature section had no colour block and little visual weight, which left the 'bold primary-colour blocks' brief unmet.",
+    "With only two products (Birth Bear), the rail still pinned for a tiny horizontal distance, leaving dead scroll space.",
+    "The rail track did not react to scroll velocity, unlike the marquees, so the kinetic language was inconsistent."
+  ],
+  "fixed": [
+    "Hero is now min-height instead of a fixed height. The title is fitted against 60% of the viewport height instead of the leftover grid row, so the condensed face spreads across the full width.",
+    "Reveals are transform-only (slide plus slight tilt) in template and catalog. Content can never be invisible, but the kinetic entrance stays.",
+    "Category names stay on one line and are fitted by JS to their column, shrinking only when needed. No more mid-word breaks on mobile.",
+    "Marquee bands are now offset and crossed (black +3.2deg high, primary -3deg low with a hard black drop shadow). Both tapes read as a deliberate X.",
+    "The product rail is now a full primary-colour block. It has a giant outlined ghost word-mark (product count or brand name) behind the cards, bigger cards, a black 'Alles bekijken' disc and an on-primary progress bar.",
+    "The rail only pins when the horizontal overflow is at least 30% of the viewport. Otherwise it falls back to a native swipe strip.",
+    "The rail track now skews with scroll velocity, the same as the marquee bands and word-marks."
+  ],
+  "scoreAfterEstimate": 7.4
+}
