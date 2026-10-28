@@ -142,5 +142,149 @@
     "source": "Airport and hospital directional signage systems",
     "generated": true,
     "generatedAt": "2026-10-28T22:28:17.257Z"
+  },
+  {
+    "id": "marbled-endpapers",
+    "name": "Marbled Endpapers",
+    "sectors": [
+      "luxury",
+      "hospitality",
+      "lifestyle",
+      "food"
+    ],
+    "sample": "hotelnavarra",
+    "stress": "fredimare",
+    "brief": "The site opens like a finely bound book. The hero is a full-bleed marbled endpaper in --c-primary, --c-accent and two derived tints, with a cream bookplate centred on it that holds the brand name, a one-line promise and the CTA. Below it, the page becomes a quiet text block with wide margins, folio numbers and running heads. Products sit in a 'tipped-in plates' grid: each card is a cream plate with a thin ruled border, a marbled corner swatch and a small caption like a bound-in illustration. Section breaks are narrow marbled bands that act as a book's edge decoration, and the contact section is an imprint/colophon page. The mood is calm, warm and tactile, with paper grain from an SVG feTurbulence filter at low opacity.",
+    "type": "Display: 'Italiana' 400 at very large sizes for bookplate titles and running heads, with letterspaced small caps for folios; body 'Spectral' 300/400 with italic for captions and prices set as old-style figures.",
+    "signature": "Live mathematical marbling: a canvas keeps a list of ink drops, each stored as a polygon of about 120 vertices. On load, 5–7 drops are 'floated' in brand tints using the drop transform: each existing vertex p moves to c + (p−c)·sqrt(1 + r²/|p−c|²). Dragging the pointer applies a tine-line transform to every vertex: displacement = z·u^(|d|) along the drag direction, where d is the distance to the drag line and z/u are constants, so the pattern combs and feathers exactly like a marbling stylus. Clicking drops a new ink circle at the pointer. Polygons are refilled each frame only while interacting. A 'Reset bath' button and prefers-reduced-motion both render one pre-combed static pattern.",
+    "source": "Bookbinding: hand-marbled endpapers and the floating-ink bath of paper marbling",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:45:12.797Z"
+  },
+  {
+    "id": "signal-hoist",
+    "name": "Signal Hoist",
+    "sectors": [
+      "sports",
+      "travel",
+      "makers",
+      "retail"
+    ],
+    "sample": "nacrasailing",
+    "stress": "kartstoreinternational",
+    "brief": "The page is a bright, windy harbour signal mast. A tall vertical halyard line runs down the left edge with a hoist of geometric flags, one flag per section, which serve as the main navigation. The hero is a giant, crisp headline across sky-white space, with a string of code flags spelling the brand's initials flying above it, built from simple quartered, striped and crossed patterns in --c-primary, --c-accent, black and white. Products are shown as 'pennant cards': rectangular cards with a swallow-tail notch cut by clip-path and a hoist number in the corner, laid out in a staggered three-column grid. Spec rows use semaphore-style pictograms drawn in SVG. The mood is loud, sunny and athletic, with lots of white and hard geometric colour.",
+    "type": "Display: 'Saira Extra Condensed' 800 uppercase, very tall, with hoist numbers set in 'Saira Extra Condensed' 300; body 'Public Sans' 400/600.",
+    "signature": "Cloth-simulated flags: each flag is a canvas mesh of about 14×9 Verlet particles, pinned along its hoist edge, with distance constraints solved 3 times per frame and gravity plus a wind vector. The wind is a gentle noise breeze, increased by pointer speed (the pointer's velocity is added to the wind as it passes) and by scroll velocity. Each quad is drawn with the flag's pattern as a texture, with shading from the cross product of its normal for fold highlights. Clicking a flag on the halyard 'runs it up' to the top of the mast (a tweened y on the pin points) and scrolls to that section. Under prefers-reduced-motion the flags render flat and still.",
+    "source": "Maritime signal flags and the international code of flag hoists on a ship's halyard",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:45:12.797Z"
+  },
+  {
+    "id": "card-catalogue",
+    "name": "Card Catalogue",
+    "sectors": [
+      "b2b",
+      "wholesale",
+      "culture",
+      "makers"
+    ],
+    "sample": "terpstrav2",
+    "stress": "droogijs365",
+    "brief": "The homepage is a wall of small oak-toned drawers, each with a brass label holder showing a category name in typed letters. The hero is a single large drawer pulled open, with the headline typed on a guide card and the CTA on a raised tab. The catalogue page is one open drawer: products are typed index cards with a punched rod hole, a call number (SKU), a ruled heading, a typewritten description and price, and pencil-style marginalia for stock notes. Category filters are tabbed guide cards in --c-primary that sit between the cards. Contact is a 'request slip' form on cheap pink-buff paper. The mood is studious, calm and orderly, with cream card stock, faint ruled lines and wood shading built from CSS gradients.",
+    "type": "Display: 'Special Elite' for typed card headings and drawer labels; body 'Literata' 400/600 for longer reading; call numbers in 'Literata' 700 small caps with tabular figures.",
+    "signature": "Flip-through drawer: the product list is a stack of absolutely positioned cards in a perspective container, each rotated around its bottom edge (rotateX) according to its distance from a 'current index' value. Wheel, drag and arrow keys change the target index, and a spring smooths the current index toward it, so cards fan forward and fall back like real index cards under a thumb. The front card stands upright and is fully interactive; cards in front of it lie flat toward the viewer and cards behind it lean back. Clicking a guide tab springs the index to that category's first card. Under prefers-reduced-motion it falls back to a plain vertical list of cards.",
+    "source": "Library card catalogues: oak drawer cabinets, typed index cards, guide cards with tabs",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:45:12.797Z"
+  },
+  {
+    "id": "till-roll",
+    "name": "Till Roll",
+    "sectors": [
+      "food",
+      "wholesale",
+      "horeca",
+      "retail"
+    ],
+    "sample": "brinkscoffeeroasters",
+    "stress": "aiki-budo",
+    "brief": "The whole page is a long, narrow strip of thermal paper running down the centre of a muted counter-top background, with the brand name in a bold header block printed at the top. The hero is printed as a receipt header: store name, address, a big dot-matrix headline, a barcode-style divider and the CTA set as a 'TOTAL' line. Sections are separated by dashed tear lines and '* * *' rows, and products are listed as line items with quantity, name, dotted leaders and price, each expandable into a mini-card with a pixel-dithered SVG illustration. A docked cart on the right edge is a second, shorter receipt. Light, dry and a little funny: the paper's slight curl, faded print edges and an occasional --c-primary stamp keep it warm.",
+    "type": "Display: 'DotGothic16' for headers, totals and big numbers, set wide with a printed-dot feel; body 'Red Hat Text' 400/500 for descriptions; line items in 'Red Hat Mono' 500 for perfect column alignment.",
+    "signature": "Printing and tearing the cart receipt: adding a product makes the cart receipt 'print' a new line from a slot at the top. The paper grows downward with a stepped height animation in 12px increments that mimics stepper-motor jerks, and the line's characters appear left-to-right in quick bursts. The receipt can be torn off by dragging its bottom edge sideways: a pointer drag past 80px across triggers a jagged clip-path tear (a random zigzag polygon), and the torn piece falls with rotation and gravity before the checkout panel opens. Keyboard users get a 'Tear off and check out' button that runs the same animation. The cart is stored in localStorage.",
+    "source": "Thermal till receipts and shop-counter receipt printers",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:45:12.797Z"
+  },
+  {
+    "id": "flight-deck",
+    "name": "Flight Deck",
+    "sectors": [
+      "sports",
+      "industrial",
+      "tech",
+      "b2b"
+    ],
+    "sample": "bohlt",
+    "stress": "nacrasailing",
+    "brief": "A dark, matte instrument panel fills the screen. The hero is a cluster of round gauges set into a riveted panel, with the headline on a placard strip above them and the CTA as a guarded toggle switch that lifts its cover on hover. Product cards are individual instruments: each one has a circular bezel framing an SVG product illustration, an outer scale that shows key specs (range, weight, power) as needle positions, and a placard label under it. Section headings are amber-style annunciator lights tinted with --c-primary that switch on as you reach them. Dark, loud and precise: brushed graphite surfaces, screw heads, and crisp white scale ticks hold up against any brand colour.",
+    "type": "Display: 'Michroma' for placards and section titles, wide and small-caps style; body 'Exo 2' 400/600; gauge numerals in 'Exo 2' 700 with tabular figures.",
+    "signature": "Live instruments driven by springs: every gauge needle is an SVG line whose angle follows a critically damped spring toward a target value. On the homepage, one gauge reads scroll velocity, one reads page progress, and an artificial horizon tilts with the pointer's x/y offset from the centre (pitch and roll clamped to ±15°). In the catalogue, choosing a filter or sorting sets every product's needles to that spec, so all instruments sweep to new readings at once with slight overshoot. Hovering a product makes its bezel glow in --c-primary and the needle trembles with a small noise term. Under prefers-reduced-motion the needles snap directly to their values.",
+    "source": "Analogue aircraft instrument panels: round gauges, bezels, warning annunciators",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:45:12.797Z"
+  },
+  {
+    "id": "azulejo-wall",
+    "name": "Azulejo Wall",
+    "sectors": [
+      "food",
+      "hospitality",
+      "horeca",
+      "lifestyle"
+    ],
+    "sample": "fredimare",
+    "stress": "birthbear",
+    "brief": "The page is a sunlit tiled facade. The background is a grid of square tiles with procedurally generated SVG ornaments (rosettes, quatrefoils, corner arcs) drawn in --c-primary on a glazed off-white, so any brand colour reads as cobalt-like glaze. The hero is a large tile panel framed by a border of edge tiles, with the headline set as a painted cartouche in the middle. Products sit on tiles too: each card is a 2×2 tile block that shows ornament on its face and the product on its back. Section dividers are single rows of border tiles, and the contact block is a painted house-number plaque. The mood is bright, warm and decorative, with glaze highlights from radial gradients and slightly uneven hand-set grout lines.",
+    "type": "Display: 'Rozha One' for headings and the painted cartouche; body 'Albert Sans' 400/600; tile captions and prices in 'Albert Sans' 800 caps.",
+    "signature": "Ripple flip across the tiles: the wall is a grid of tile elements with a matching height field in a Float32Array. Clicking (or pressing Enter on) a tile injects an impulse there, and a discrete 2D wave equation (next = 2·cur − prev + c²·laplacian, damped by 0.96) spreads the disturbance. Each frame, every tile's rotateY is set from its local wave height, so a ring of tiles visibly tilts outward. Tiles whose height crosses a threshold flip 180° to swap face (ornament ↔ product), so a click in the catalogue 'turns over' a neighbourhood of tiles to reveal the products. The simulation sleeps when the energy falls below an epsilon. Under prefers-reduced-motion, only the clicked tile flips.",
+    "source": "Hand-painted glazed ceramic wall tiles from Iberian building facades",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:45:12.797Z"
+  },
+  {
+    "id": "zoetrope-reel",
+    "name": "Zoetrope Reel",
+    "sectors": [
+      "kids",
+      "makers",
+      "culture",
+      "retail"
+    ],
+    "sample": "birthbear",
+    "stress": "terpstrav2",
+    "brief": "A playful, dark parlour with a single warm lamp. The hero is a slotted drum seen at an angle: through its black slits you glimpse a looping animation strip of the brand's mark or a simple product silhouette, with the headline arching above it like a toy's printed lid. Products are presented as animation strips: each card shows a 12-frame filmstrip of the product drawn as a generated SVG (tilting, bouncing, opening) with a sprocket-hole border, and the strip comes alive on hover. Section titles sit on round paper discs with radial frame divisions. Paper textures, gold-ink rules and --c-primary as the strip's background colour keep the toy-box mood while staying usable.",
+    "type": "Display: 'Limelight' for lid titles and section discs; body 'Spline Sans' 400/500; frame numbers and prices in 'Spline Sans Mono' 500.",
+    "signature": "Scroll-wound zoetrope: the hero drum is a CSS 3D cylinder of 12 slot panels (rotateY(i·30deg) translateZ(r)) with the animation frames on its inner face. Its angular velocity comes from scroll velocity, plus a flick when you drag it, decaying with friction. A slit-shutter stroboscope effect is simulated: when angular velocity is above a threshold, the visible frame is selected by floor(angle / 30°) and shown in a single fixed viewing window, so the toy appears to 'animate' at speed and blur back to separate frames as it slows down. A small speed dial shows the current fps. Product cards reuse the effect in 2D, scrubbing frames with the pointer's x. Under prefers-reduced-motion, frames are shown side by side as a static strip.",
+    "source": "Pre-cinema optical toys: zoetrope drums, slit shutters and phenakistoscope discs",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:45:12.797Z"
+  },
+  {
+    "id": "escapement",
+    "name": "Escapement",
+    "sectors": [
+      "luxury",
+      "makers",
+      "b2b",
+      "industrial"
+    ],
+    "sample": "kartstoreinternational",
+    "stress": "hotelnavarra",
+    "brief": "The page is the open back of a watch movement, severe and exact. A deep anthracite plate with fine Geneva-stripe gradients and perlage circles (CSS repeating radial gradients) runs behind everything, and --c-primary appears only as polished screw heads, jewel highlights and active states. The hero is a large SVG gear train that interlocks across the full width, with the headline engraved on a bridge plate and the CTA as a crown you can 'wind'. Products sit on the arbors of the gears as circular cards, and the catalogue lays them out on a grid of bridges with engraved calibre numbers. The mood is silent, technical and premium, with hairline rules, engraving-style type and generous dark space.",
+    "type": "Display: 'Marcellus' with wide tracking for engraved bridge titles; body 'Questrial' 400; calibre numbers, prices and specs in 'Tenor Sans' small with tabular spacing.",
+    "signature": "A meshed gear train driven by scroll: the hero and section dividers are SVG gears with real tooth counts. A single 'drive angle' comes from scroll position, and each gear's rotation is computed through the train with correct ratios (θ_next = −θ·teeth_a/teeth_b), so every gear turns in true mesh with no visible slipping. An escapement wheel and pallet fork step the seconds wheel in 6° ticks with a short ease-out, giving a mechanical tick even while scrolling smoothly. Dragging the crown in the hero winds the train and stores energy that runs it for a few seconds after release. Hovering a product gear stops the train and lifts that gear's card forward. Under prefers-reduced-motion the gears stay still and only the seconds hand ticks.",
+    "source": "Mechanical watchmaking: gear trains, jewelled bridges, the tick of an escapement",
+    "generated": true,
+    "generatedAt": "2026-10-28T22:45:12.797Z"
   }
 ]

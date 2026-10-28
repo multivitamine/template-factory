@@ -1,0 +1,9 @@
+{
+  "id": "contour-atlas",
+  "name": "Contour Atlas",
+  "scheme": "light",
+  "sectors": ["travel", "hospitality", "sports", "lifestyle"],
+  "mood": ["calm", "precise", "outdoorsy", "cartographic"],
+  "needsProductImages": true,
+  "notes": "All ink is warm sepia on paper-cream; the brand primary only appears as contour lines, stepped elevation tints, highlighted bands and CTA fills, with the accent used for tag borders and the top step of the tint key."
+}

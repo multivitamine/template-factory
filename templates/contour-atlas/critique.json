@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 5,
+  "issues": [
+    "Creativity 8 / typography 7.5 / layout 5 / polish 3.5 / brand robustness 7.5 / mobile 5 / generic-ness 7 (not generic): the concept is strong, but the page breaks badly",
+    "Reveal-on-scroll leaves whole sheets blank: on home the survey grid, story, plates and quote are all invisible (just empty sheet frames hundreds of px tall), on catalog the gazetteer text is missing. This happens on desktop, mobile and the stress brand",
+    "Hero headline SVG is about 410px tall at 1440px, so the cartouche CTAs and the hero plate are cut off by the fold",
+    "Ragged survey grid: with 11 products the last map tile is just an empty box, so the 'grid of map tiles' looks unfinished",
+    "Products read as plain e-commerce cards; nothing marks them as plotted survey points on the terrain beyond the tiny header glyph",
+    "The fixed frame's bottom rail and the demo badge sit mid-page in full-page captures (inherent to the fixed coordinate frame)"
+  ],
+  "fixed": [
+    "Reveal system made fail-safe in both files: elements already scrolled past reveal immediately, a scroll sweep catches fast scrolls, beforeprint reveals all, and a 2.6s safety reveals everything so no sheet can render blank",
+    "Desktop curved headline capped at min(390px, 42svh) so the cartouche, CTAs and plate fit above the fold",
+    "Empty grid cells are filled with hatched 'unsurveyed' map tiles (localised nl/en/de/fr). They are computed per breakpoint column count and recomputed on resize and catalog filtering",
+    "Every product image now has a theodolite survey-point crosshair at its centre. On hover it rotates and a dashed ring in the brand ink expands, in sync with the canvas peak that rises at those coordinates",
+    "Mustache contract untouched; all changes are CSS and JS additions only"
+  ],
+  "scoreAfterEstimate": 7.4
+}
