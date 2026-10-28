@@ -286,5 +286,149 @@
     "source": "Mechanical watchmaking: gear trains, jewelled bridges, the tick of an escapement",
     "generated": true,
     "generatedAt": "2026-10-28T22:45:12.797Z"
+  },
+  {
+    "id": "lead-light",
+    "name": "Lead Light",
+    "sectors": [
+      "hospitality",
+      "luxury",
+      "culture",
+      "food"
+    ],
+    "sample": "hotelnavarra",
+    "stress": "kartstoreinternational",
+    "brief": "The homepage is one tall lancet window seen from inside a cool stone interior: a pointed-arch frame holds an irregular mosaic of glass panes separated by thick dark lead lines. The hero panes carry the headline and CTA, and the lower panes become the catalogue: each product sits in its own pane, glazed in a tint derived from --c-primary or --c-accent mixed with amber, rose and sea-green neutrals so any brand colour reads as one more colour of glass. Below the window, the sections sit on pale limestone with a soft coloured light pool on the floor, drawn as a blurred, low-opacity copy of the window. The navigation is a small rose window: a circular row of six petals. Texture comes from seeded-noise mottling inside each pane and a faint reamy wobble on the edges. The mood is luminous, hushed and devotional, but warm.",
+    "type": "Display: 'Cinzel' 600 in widely spaced capitals for headings and pane titles, with 'Cinzel Decorative' 700 used only for one illuminated initial per section; body 'EB Garamond' 400/500 with italic for prices and captions.",
+    "signature": "Breathing leadwork: the window is an additively weighted Voronoi diagram of about 40 seeds (products, hero and filler panes), rasterised on a 4px grid in a canvas. For each grid cell, compute the seed that minimises distance − weight. Draw lead lines wherever neighbouring cells belong to different seeds, as 6px dark strokes with a 1px highlight. Hovering or focusing a product pane tweens its seed weight from 0 to 90px with a spring, so that pane swells, its neighbours are squeezed, and the lead lines visibly re-route around it. Recompute only inside the dirty bounding box at 30fps. Real DOM buttons are absolutely positioned at each seed so the panes are clickable and tabbable. Under prefers-reduced-motion the weights jump instantly.",
+    "source": "Gothic and Arts & Crafts stained-glass windows with leaded cames",
+    "generated": true,
+    "generatedAt": "2026-10-28T23:13:41.694Z"
+  },
+  {
+    "id": "job-case",
+    "name": "Job Case",
+    "sectors": [
+      "makers",
+      "retail",
+      "wholesale",
+      "b2b"
+    ],
+    "sample": "brinkscoffeeroasters",
+    "stress": "bohlt",
+    "brief": "The page is a printer's wooden type case pulled out of its cabinet. The hero is a grid of compartments in the real, unequal job-case proportions, with big boxes for common letters and tiny ones for rare letters. Each compartment holds a pile of metal sorts drawn in CSS, and the largest compartments double as category tiles. Below, the catalogue is laid out as printed proofs: each product card is a proof pulled on cream stock, with slight ink-squash edges and a registration mark, and with the price set in a locked-up chase of furniture. Section dividers are lengths of brass rule and wooden reglet. The brand colour becomes the ink on the proofs and the paint on the drawer pull. The mood is warm, tactile and confident.",
+    "type": "Display: 'Ultra' for headlines and the product names on proofs, set tight like wood type; body 'Old Standard TT' 400/700; compartment labels and specs 'Sedan SC' small caps.",
+    "signature": "Composing-stick search: typing in the search field 'picks' each letter from its compartment in the hero case. A sort element is cloned at that compartment's centre and flies along a GSAP bezier arc into a composing stick at the top of the page, landing mirrored (scaleX(-1)) like real metal type. It then flips to read correctly once the word is complete. Backspace flies the last sort back to its box. The product proofs filter live under the stick, and matching letters in product names flash in --c-primary ink. Clicking a compartment types that letter. Spaces drop in as blank quads. Under prefers-reduced-motion, letters appear in the stick without the flight.",
+    "source": "Letterpress composing room: the California job case and the composing stick",
+    "generated": true,
+    "generatedAt": "2026-10-28T23:13:41.694Z"
+  },
+  {
+    "id": "planisphere",
+    "name": "Planisphere",
+    "sectors": [
+      "travel",
+      "hospitality",
+      "lifestyle",
+      "tech"
+    ],
+    "sample": "nacrasailing",
+    "stress": "birthbear",
+    "brief": "The site opens on a deep ink-blue night with a large circular star disc behind an oval horizon window cut in a matte black mask, like a cardboard planisphere. Products are stars: each category is a constellation, and the products are bright points joined by thin lines, with their names set on the date ring that circles the disc. Below the hero, the page continues as a navigator's log on midnight paper, with product rows given right-ascension and declination-style codes, a bright hour/date scale as the section rule, and the contact block styled as a sighting report. The brand colour tints the brightest stars and the horizon window rim, which reads well in any hue against near-black. The mood is quiet, nocturnal and precise.",
+    "type": "Display: 'Bellefair' 400 at large sizes with wide tracking for headings and constellation names; body 'Sarabun' 300/500; coordinates, hours and prices 'Fragment Mono' 400.",
+    "signature": "Turn the sky: the star disc is an SVG group rotated behind a fixed horizon mask (an SVG clipPath ellipse). Dragging anywhere on the disc rotates it by the change in Math.atan2 from the disc centre, and on release it keeps spinning with angular momentum and friction 0.95. The date ring outside stays fixed, so the current 'time' reads off a pointer tick. Only the stars inside the horizon window are interactive. Stars entering the window fade up from 0 brightness, and the constellation whose centroid is nearest the zenith draws its lines with stroke-dashoffset and makes its product list the active panel below. Arrow keys rotate in 15° steps, and the category menu tweens the disc to bring that constellation to the zenith. Under prefers-reduced-motion, the rotation is instant.",
+    "source": "Celestial navigation and the rotating star-finder wheel",
+    "generated": true,
+    "generatedAt": "2026-10-28T23:13:41.694Z"
+  },
+  {
+    "id": "tactics-board",
+    "name": "Tactics Board",
+    "sectors": [
+      "sports",
+      "retail",
+      "services",
+      "b2b"
+    ],
+    "sample": "kartstoreinternational",
+    "stress": "droogijs365",
+    "brief": "The homepage is a big glossy whiteboard bolted to a breeze-block wall, with a pitch or track diagram printed faintly in grey. The hero headline is scrawled in marker, and the CTA is a round magnet in --c-primary. Products are magnetic counters with a photo-swatch, name and price, placed in formations on the board. Each category is a 'play', with arrows, X's and O's in dry-erase marker showing how the counters relate. Sections below are taped-on sheets: a fixtures list for opening hours, a squad list for the team, and a clipboard for contact. Texture comes from marker ghosting (faint erased strokes) and glossy reflections on the board. The mood is loud, energetic and hands-on.",
+    "type": "Display: 'Teko' 600 uppercase for headings, numbers and counter labels; annotations 'Permanent Marker' used only for hand-drawn notes and arrows; body 'Be Vietnam Pro' 400/600.",
+    "signature": "Lasso to compare: the user draws with the pointer (or a marker tool button on touch) directly on the board. The freehand path is captured as points, smoothed with Chaikin's algorithm and rendered as a slightly jittered marker stroke in --c-primary. When the stroke ends near its start (within 40px), it is closed into a polygon, and every product counter whose centre passes a point-in-polygon test is 'circled': it wobbles, gets a marker ring, and is added to a comparison table that slides up from the bottom with specs side by side. Open strokes drawn from one counter to another become arrows with a computed arrowhead. An eraser button wipes all strokes with an animated smear. Keyboard users select counters with Space and press C to compare.",
+    "source": "A coach's magnetic tactics whiteboard in the changing room",
+    "generated": true,
+    "generatedAt": "2026-10-28T23:13:41.694Z"
+  },
+  {
+    "id": "guilloche-note",
+    "name": "Guilloché Note",
+    "sectors": [
+      "luxury",
+      "b2b",
+      "wholesale",
+      "food"
+    ],
+    "sample": "fredimare",
+    "stress": "terpstrav2",
+    "brief": "The page is a high-value certificate on pale security paper. A wide engraved border of interlaced guilloché bands frames the hero, a large rosette is placed off-centre behind the headline, and a microtext line repeats the business name around every panel. Products are issued as numbered coupons, each with its own unique rosette, a serial number, the denomination-style price set large, and a perforated stub edge for the add-to-cart button. Sections are separated by rows of fine hairline waves. The brand colour is the engraving ink, printed at fine line weights over an off-white ground so it holds in any hue. The mood is severe, exact and quietly luxurious.",
+    "type": "Display: 'Gilda Display' 400 at large sizes for headlines and denominations, with tracked small caps for certificate titles; body 'Newsreader' 400 with italic; serial numbers, specs and microtext 'Cutive Mono'.",
+    "signature": "Living rosettes: every rosette is an SVG path generated from summed hypotrochoids, x(t) = (R−r)cos t + d cos((R−r)/r·t) plus a second harmonic. About 24 phase-shifted copies are drawn at 0.5px for the engraved interference look. Each product's R/r/d values are seeded from a hash of its SKU, so no two coupons match. Moving the pointer over a rosette maps its offset from the centre to d and the harmonic amplitude, and the path is regenerated at 30fps, so the engraving breathes and moirés under the cursor. Leaving a rosette springs the parameters back. Adding to cart 'cancels' the coupon: a rubber-stamp SVG lands with a scale-down thud and the stub tears along its perforation (clip-path). Under prefers-reduced-motion the rosettes stay static.",
+    "source": "Security printing: banknotes, share certificates and guilloché engraving",
+    "generated": true,
+    "generatedAt": "2026-10-28T23:13:41.694Z"
+  },
+  {
+    "id": "pinball-playfield",
+    "name": "Pinball Playfield",
+    "sectors": [
+      "sports",
+      "retail",
+      "kids",
+      "tech"
+    ],
+    "sample": "terpstrav2",
+    "stress": "hotelnavarra",
+    "brief": "The homepage is a tilted pinball playfield seen from the player's end on a dark cabinet. The backglass at the top holds the brand name, the headline and a score display. Below it, the playfield has lanes, slingshots and round pop bumpers, and the bumpers are the category links. Product cards are drop targets and lit inserts arranged along the ramps. The rest of the page goes 'under the glass': the catalogue is a grid of inserts with chrome rails, the info sections sit on apron cards, and the contact block is the instruction card. The brand colour drives every lit insert and the bumper caps, against black and chrome, with a subtle glass glare overlay. The mood is loud, playful and noisy, but built on a clear grid.",
+    "type": "Display: 'Bungee' for headings, with 'Bungee Shade' used only for the backglass title; score and prices 'Orbitron' 800 with tabular figures; body 'Sen' 400/700.",
+    "signature": "A playable ball in the hero: a canvas runs a fixed-timestep 2D physics loop (120Hz) with gravity tilted down the table, circle-vs-segment collisions for walls and flippers, and circle-vs-circle collisions for the bumpers, which add an outward impulse. The Left/Right arrow keys, or tapping the left and right halves on touch, fire the flippers, which are line segments rotated with angular velocity so their tip speed transfers to the ball. Each bumper hit lights its insert in --c-primary, increments the backglass score, and plays a short WebAudio blip (muted by default). Hitting a category bumper three times opens that category, and the ball draining scrolls to the catalogue. The physics pauses when the hero is out of view. Under prefers-reduced-motion it becomes a static table with clickable bumpers.",
+    "source": "Electromechanical pinball tables and their backglass art",
+    "generated": true,
+    "generatedAt": "2026-10-28T23:13:41.694Z"
+  },
+  {
+    "id": "papercut-fold",
+    "name": "Papercut Fold",
+    "sectors": [
+      "kids",
+      "makers",
+      "lifestyle",
+      "retail"
+    ],
+    "sample": "birthbear",
+    "stress": "nacrasailing",
+    "brief": "The site is layered coloured paper on a sunny kitchen table. The hero is a large symmetrical papercut medallion in --c-primary laid over a contrasting paper, with the headline sitting in its uncut centre. Each section is a new sheet pinned slightly askew, with the edge of the next colour peeking from behind, and cast shadows that show the layered depth. Products are presented in scalloped papercut frames with folk motifs (birds, leaves, hearts) cut around them, and the price sits on a little paper flag. Section dividers are strips of paper-chain garland. Texture comes from fibrous paper grain and the slight lift shadow of cut edges. The mood is light, handmade and joyful.",
+    "type": "Display: 'Bagel Fat One' for headings and big labels; body 'Quicksand' 500/700; tiny motif captions 'Quicksand' 700 caps, letterspaced.",
+    "signature": "Fold and cut your own: the hero has a 'Cut' mode where the visible paper is one wedge (360/n degrees, with n = 6 or 8) of a folded sheet. The user draws a closed cut shape inside the wedge with the pointer, and on release the polygon is clipped to the wedge, mirrored across its fold line, and rotated n times. The result is subtracted from the medallion using an SVG mask (the cut polygons in black over a white rect), and the paper 'unfolds' in a stagger of rotate transforms on the wedge copies to reveal the new symmetrical pattern. Up to 6 cuts can be made, Undo pops the last one, and 'Fresh sheet' resets. The final pattern is reused as the decorative frame mask on product cards for the session. Keyboard users get preset motif cuts.",
+    "source": "Folk papercutting traditions (wycinanki, scherenschnitte) — folded and cut symmetrical paper",
+    "generated": true,
+    "generatedAt": "2026-10-28T23:13:41.694Z"
+  },
+  {
+    "id": "brush-and-seal",
+    "name": "Brush and Seal",
+    "sectors": [
+      "food",
+      "makers",
+      "lifestyle",
+      "luxury"
+    ],
+    "sample": "aiki-budo",
+    "stress": "terpstrav2",
+    "brief": "The page is a tall hanging scroll on warm rice paper, mounted in a silk border band in a muted tone, with wooden roller ends at the top and bottom. The hero is a single large brushed word with lots of empty paper around it, the headline set vertically alongside it, and one red seal impression (in --c-primary) as the logo. Sections are separate album leaves with generous margins, each with a short column of text. Products are shown in a sparse two-column album, each with a small ink-wash swatch, its name, a short poem-like description and a seal-style price chop. Texture comes from paper fibres, ink bleed at stroke edges and a slight silk sheen on the mounting. The mood is calm, severe and spacious.",
+    "type": "Display: 'Shippori Mincho B1' 800 for headings, set vertically with writing-mode: vertical-rl where it fits; body 'Zen Kaku Gothic New' 400/500; prices and seal text 'Shippori Mincho B1' 700 inside square chops.",
+    "signature": "Velocity-sensitive brush: in the hero (and in a 'sign the guestbook' contact field), pointer movement paints ink on a canvas. Each frame, the brush width is mapped inversely to pointer speed (from 2px to 28px, smoothed with lerp 0.25), and the ink load decreases with distance travelled. As it runs dry, the stroke breaks into 8–12 parallel bristle lines with noise gaps, giving a dry-brush streak. The stroke is drawn as a filled quad strip so the width tapers at the start and end, and pausing on the paper spreads a soft bleed blot. Adding a product to cart presses the red seal: an SVG chop scales from 1.15 to 1 with a slight rotation and leaves a speckled impression made with feTurbulence plus feDisplacementMap. Under prefers-reduced-motion the brush is disabled and the seal appears without the press.",
+    "source": "East Asian ink calligraphy, hanging scrolls and red seal stamps",
+    "generated": true,
+    "generatedAt": "2026-10-28T23:13:41.694Z"
   }
 ]

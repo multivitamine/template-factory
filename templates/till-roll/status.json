@@ -1,0 +1,82 @@
+{
+  "id": "till-roll",
+  "name": "Till Roll",
+  "sectors": [
+    "food",
+    "wholesale",
+    "horeca",
+    "retail"
+  ],
+  "sample": "brinkscoffeeroasters",
+  "stress": "aiki-budo",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793228389631
+    },
+    {
+      "step": "Rendering",
+      "at": 1793229128297
+    },
+    {
+      "step": "Critique",
+      "at": 1793229140032
+    },
+    {
+      "step": "Final render",
+      "at": 1793229242399
+    },
+    {
+      "step": "Done",
+      "at": 1793229253966
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793227512798,
+  "startedAt": 1793228389631,
+  "finishedAt": 1793229253966,
+  "model": "opus",
+  "costUsd": 3.2351882,
+  "meta": {
+    "id": "till-roll",
+    "name": "Till Roll",
+    "scheme": "light",
+    "sectors": [
+      "food",
+      "wholesale",
+      "horeca",
+      "retail"
+    ],
+    "mood": [
+      "dry",
+      "printed",
+      "playful",
+      "tactile"
+    ],
+    "needsProductImages": true,
+    "notes": "Thermal paper and ink stay neutral; primary fills the TOTAL CTA, title-accent highlight, add/checkout buttons and printer LED, a primary-into-ink mix drives the stamps, accent only tints the tape on pinned photos."
+  },
+  "score": {
+    "scoreBefore": 5,
+    "issues": [
+      "Every section below the featured items (house rules, departments, story, totals, gallery, quote, CTA) rendered as empty paper: the scroll-reveal hid content with clip-path until an IntersectionObserver fired, so full-page captures, fast scrolls and no-scroll visitors saw thousands of px of blank roll (also the CTA gap on catalog)",
+      "Hero dot-matrix headline: line-height 1.04 let the --c-primary accent block overlap the glyph descenders of the line above ('waar', 'power.'), so it read as a rendering bug",
+      "Brand tagline stamp was mix-blend multiply over a grayscale photo, so on dark hero images (Brinks) it vanished into an empty outline",
+      "Only one --c-primary stamp on the whole page; after the hero the paper feels sterile, with none of the warmth the art direction asks for",
+      "No paper curl: the roll ends in a flat zigzag and there's no slot shadow under the printer head",
+      "Creativity 7, typography 6.5, layout/rhythm 4 (blank roll), polish 5, brand robustness 7, mobile 6, generic-ness: low; the receipt concept is strong but undermined by the empty sections"
+    ],
+    "fixed": [
+      "Reveal rewritten so content is always printed and the stepped feed animation only plays (animation-fill backwards) when a section intersects, on both template.html and catalog.html. No more blank paper",
+      "Headline line-height raised to 1.16 with accent padding tuned so the primary block sits cleanly behind its own line",
+      "Hero stamp now uses an opaque paper ground (no multiply) with a halftone mask, so it reads on any photo and in any brand colour",
+      "Added a second rotated 'Freshly printed ★' --c-primary stamp straddling the tear line above Today's items, which thunks in when the section prints",
+      "Paper curl: shadow where the strip leaves the printer slot, and the roll's torn end lifts with a 3D rotateX, shaded underside and contact shadow on the counter"
+    ],
+    "scoreAfterEstimate": 7.2
+  },
+  "version": 1793229253966
+}

@@ -1,0 +1,9 @@
+{
+  "id": "till-roll",
+  "name": "Till Roll",
+  "scheme": "light",
+  "sectors": ["food", "wholesale", "horeca", "retail"],
+  "mood": ["dry", "printed", "playful", "tactile"],
+  "needsProductImages": true,
+  "notes": "Thermal paper and ink stay neutral; primary fills the TOTAL CTA, title-accent highlight, add/checkout buttons and printer LED, a primary-into-ink mix drives the stamps, accent only tints the tape on pinned photos."
+}
