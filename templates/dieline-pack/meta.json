@@ -1,0 +1,9 @@
+{
+  "id": "dieline-pack",
+  "name": "Dieline Pack",
+  "scheme": "light",
+  "sectors": ["food", "horeca", "wholesale", "industrial"],
+  "mood": ["industrial-honest", "printed", "crisp", "playful-technical"],
+  "needsProductImages": true,
+  "notes": "Primary fills the carton faces, hero side panel, title highlight and CTA bars (always with on-primary text); accent drives scan laser, swatches and secondary tabs; tints come from color-mix on the light paper sheet."
+}

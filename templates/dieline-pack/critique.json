@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 5.5,
+  "issues": [
+    "Half the homepage is blank: categories, story, stats, gallery, quote and coupon panels (and the catalog coupon) sit at opacity 0 because the GSAP from() reveals hide content until a scroll trigger fires, which may never happen. Only the panel labels and glue tabs are left on empty paper",
+    "Hero H1 uses hyphens:auto in a narrow column, which breaks words badly ('terugko-men', 'produ-cent', 'be-trouw-baar'). The stress headline turns into a 9-line ladder",
+    "The 'net weight' badge overflows its rounded border when a stat label is one long word ('TOEPASSINGSGEBIEDEN')",
+    "The colour bars and printer's swatches are only a tiny strip in the top trim, so the brand colours don't really sit along the trim edge as the brief asks",
+    "Price-less B2B catalogues (Droogijs365) leave an empty price line under each card and a near-empty spec table on the back panel",
+    "The fold-up carton signature works, but the flat nets are dense and small; the typography on the mini panels is mostly decoration at grid size"
+  ],
+  "fixed": [
+    "Reveals no longer hide content up front: fromTo with immediateRender:false, elements already in view are skipped, and the trigger point is at the bottom edge (home + catalog). Fold-line draws use the same fail-safe pattern",
+    "The hero H1 is now sized by a container query on the copy column (11.5cqi) with manual hyphenation and balanced wrapping. The front panel gives the copy more width (1.3fr / .7fr), so headlines break on whole words for both brands",
+    "The net-weight badge now constrains itself: min-width 0, tighter tracking and overflow-wrap on long labels",
+    "Added printer's colour bars as vertical strips along the sheet's trim edges (8 tints on the right, a 4-ink control strip on the left), built from --c-primary, --c-accent and --c-text. They are hidden below 1100px",
+    "B2B fallback for products without a price: the label gets a dashed 'tear-off' quote chip that uses hero.cta2, and the spec table's bold row shows ℮ RFQ, so the nutrition-facts back panel never looks empty"
+  ],
+  "scoreAfterEstimate": 7.3
+}
