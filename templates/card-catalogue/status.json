@@ -1,0 +1,85 @@
+{
+  "id": "card-catalogue",
+  "name": "Card Catalogue",
+  "sectors": [
+    "b2b",
+    "wholesale",
+    "culture",
+    "makers"
+  ],
+  "sample": "terpstrav2",
+  "stress": "droogijs365",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793228341129
+    },
+    {
+      "step": "Rendering",
+      "at": 1793229176604
+    },
+    {
+      "step": "Critique",
+      "at": 1793229190108
+    },
+    {
+      "step": "Final render",
+      "at": 1793229322806
+    },
+    {
+      "step": "Done",
+      "at": 1793229335258
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793227512798,
+  "startedAt": 1793228341129,
+  "finishedAt": 1793229335258,
+  "model": "opus",
+  "costUsd": 3.5384308,
+  "meta": {
+    "id": "card-catalogue",
+    "name": "Card Catalogue",
+    "scheme": "light",
+    "sectors": [
+      "b2b",
+      "wholesale",
+      "culture",
+      "makers"
+    ],
+    "mood": [
+      "studious",
+      "calm",
+      "orderly",
+      "tactile"
+    ],
+    "needsProductImages": true,
+    "notes": "Oak, brass and cream card stock are fixed. Primary is used for the guide cards and tabs, the CTA tab, the red ruled heading lines and the stamp ink (mixed with the text colour so pastels stay readable). Accent is barely used, so any brand pairing works."
+  },
+  "score": {
+    "scoreBefore": 6.5,
+    "issues": [
+      "Catalog flip-drawer: cards that have fallen forward render above the drawer lip as a garbled red strip of flattened text across the bottom of the front card, which is the single ugliest moment on the site",
+      "Catalog index cards are mostly empty ruled space: the description is just 'Drums · Brand', there's no typed catalogue entry or marginalia, and the white-background product shots are cover-cropped",
+      "Hero typewriter headline is captured half-typed ('gelev|') because typing takes over 3s for long headlines",
+      "Stress brand: the featured heading breaks mid-word ('droogijspro / ducten') because of overflow-wrap:anywhere at display size in a narrow column",
+      "Stress brand: featured cards without prices have an empty left column",
+      "Gallery is a generic auto-fill polaroid grid with orphan rows (5+3, 5+1) and no catalogue character",
+      "Catalog tab strip is cut off hard at the right edge ('Oefenpads &')"
+    ],
+    "fixed": [
+      "Drawer lip and side rails now sit above every card, so fallen cards slide under the drawer front. Forward cards fade sooner and darken as they fall into shadow, which gives a clean, believable flip",
+      "Index cards now carry a library-style typed entry ('Category. — Publisher, Place.'), an inked accession stamp (initials · year) and a pencil ✎ on old prices. Product photos use contain on white so nothing gets cropped",
+      "The typewriter speed scales with headline length, so the whole headline lands in about 1.4s with a natural uneven rhythm and pauses at punctuation",
+      "Display headings use hyphens:auto with break-word and a tighter clamp, so Dutch compounds hyphenate properly instead of splitting arbitrarily",
+      "Price-less featured cards show a pencil marginal note linking to the catalogue",
+      "The gallery is now a centred, flex-wrapped pin-board with mixed sizes, staggered offsets, scraps of tape and typed 'fig. 01' captions, and orphans are centred",
+      "Catalog tab strip fades out at the right edge to show it scrolls"
+    ],
+    "scoreAfterEstimate": 7.4
+  },
+  "version": 1793229335258
+}
