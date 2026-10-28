@@ -1,0 +1,9 @@
+{
+  "id": "azulejo-wall",
+  "name": "Azulejo Wall",
+  "scheme": "light",
+  "sectors": ["food", "hospitality", "horeca", "lifestyle"],
+  "mood": ["sunlit", "decorative", "warm", "hand-glazed", "playful"],
+  "needsProductImages": true,
+  "notes": "Brand primary is the glaze colour: it paints all procedurally generated tile ornaments, frames, bosses and buttons (darkened via color-mix for text), while accent dots the rosette centres; the glazed off-white ground and grout stay fixed."
+}

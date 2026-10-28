@@ -1,0 +1,407 @@
+{
+  "brand": {
+    "name": "Fredimare",
+    "tagline": "Premium vis, schaal- en schelpdieren",
+    "logo": null,
+    "logoIsLight": true,
+    "initials": "FM",
+    "lang": "nl",
+    "colors": {
+      "primary": "#D4AD62",
+      "accent": "#1A1A1A"
+    }
+  },
+  "nav": [
+    {
+      "label": "Assortiment",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Dagvangst",
+      "href": "#"
+    },
+    {
+      "label": "Balfegó",
+      "href": "#"
+    },
+    {
+      "label": "Ambassadeurs",
+      "href": "#"
+    },
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Van bron tot bord",
+    "title": "Premium vis, schaal-",
+    "titleAccent": "en schelpdieren",
+    "text": "Rechtstreeks ingekocht bij visser en kweker, voor horeca en particulier. Bestel vooruit voor maandag 03:00 uur en ontvang je vis koel bezorgd in Nederland en België.",
+    "cta": "Bekijk het assortiment",
+    "ctaHref": "catalog.html",
+    "cta2": "Bekijk de dagvangst",
+    "image": "https://www.fredimare.com/_assets/ff72c80b5e2f1b66/1536.avif"
+  },
+  "usps": [
+    {
+      "title": "Gratis levering vanaf €75",
+      "text": "Gekoeld bezorgd in Nederland en België, voor zakelijke klanten én particulieren."
+    },
+    {
+      "title": "Rechtstreeks van de bron",
+      "text": "We kopen direct in bij visafslag, vissers en kwekers, zodat de keten kort blijft."
+    },
+    {
+      "title": "Dagverse kwaliteit",
+      "text": "Veel producten bestellen we pas als jij bestelt, voor maximale versheid."
+    },
+    {
+      "title": "Voor horeca & particulier",
+      "text": "Zakelijke klanten zien hun eigen prijzen en staffelkortingen na inloggen."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Bluefin Tonijn",
+      "image": "https://www.fredimare.com/_assets/2acdc729a03e748a/320.avif",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Langoustines",
+      "image": "https://www.fredimare.com/_assets/71b647c18884d3d1/320.avif",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Dorade",
+      "image": "https://www.fredimare.com/_assets/080edbb0187f3c0f/320.avif",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Kaviaar",
+      "image": "https://www.fredimare.com/_assets/65e0b2a54a1a511d/320.avif",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Kreeften",
+      "image": "https://www.fredimare.com/_assets/dae10e3574b24086/320.avif",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Oesters",
+      "image": "https://www.fredimare.com/_assets/057e64e3810091cd/320.avif",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Balfegó hele tonijn",
+      "price": "€ 35,97",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Balfegó",
+      "href": "#"
+    },
+    {
+      "name": "Zeeuwse Goudmerk mosselen",
+      "price": "€ 9,48",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Zeeuwse Jumbo mosselen",
+      "price": "€ 8,45",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "The Oyster Grand Impériale",
+      "price": "€ 15,15",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Oesters",
+      "href": "#"
+    },
+    {
+      "name": "Zeeuwse Imperial mosselen",
+      "price": "€ 7,41",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Balfegó tonijn loin (geen center)",
+      "price": "€ 47,96",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Balfegó",
+      "href": "#"
+    },
+    {
+      "name": "The Oyster Prestige Spéciale",
+      "price": "€ 13,30",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Oesters",
+      "href": "#"
+    },
+    {
+      "name": "Alikruik vers",
+      "price": "€ 13,63",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Zeeuwse Super mosselen",
+      "price": "€ 5,12",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Zeebaars Corsica",
+      "price": "€ 11,66",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Dorade Corsica",
+      "price": "€ 11,94",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Balfegó tonijn buik loin",
+      "price": "€ 53,41",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Balfegó",
+      "href": "#"
+    },
+    {
+      "name": "The Oyster Signature Fines",
+      "price": "€ 7,58",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Oesters",
+      "href": "#"
+    },
+    {
+      "name": "Amandes vers",
+      "price": "€ 6,27",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Zeeuwse Extra mosselen",
+      "price": "€ 3,76",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Ostra Regal Gold Selection",
+      "price": "€ 29,32",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Oesters",
+      "href": "#"
+    },
+    {
+      "name": "Clams vers",
+      "price": "€ 15,37",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Gerookte zalmsalade",
+      "price": "€ 4,25",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Balfegó tonijn center loin",
+      "price": "€ 53,41",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Balfegó",
+      "href": "#"
+    },
+    {
+      "name": "Ostra Regal",
+      "price": "€ 16,73",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Oesters",
+      "href": "#"
+    },
+    {
+      "name": "Sentinelle",
+      "price": "€ 14,72",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Roodbaars heel 700+",
+      "price": "€ 10,90",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Schelvishaas met vel geschubd lijnvangst",
+      "price": "€ 34,88",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Lijnvangst",
+      "href": "#"
+    },
+    {
+      "name": "Forel",
+      "price": "€ 9,81",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    }
+  ],
+  "story": {
+    "eyebrow": "Blauwvintonijn",
+    "title": "Ontdek de keizer van de oceaan",
+    "text": "Onze Balfegó-tonijn wordt met zorg duurzaam gevangen en verwerkt, met respect voor de oceaan en het leven erin. Alleen de beste kwaliteit, want goede tonijn verdient aandacht, vakmanschap en verantwoordelijkheid.",
+    "image": "https://www.fredimare.com/_assets/d31aac242b7b67b2/960.webp"
+  },
+  "stats": [
+    {
+      "value": "182",
+      "label": "producten in het assortiment"
+    },
+    {
+      "value": "€75",
+      "label": "gratis levering vanaf"
+    },
+    {
+      "value": "3e",
+      "label": "generatie viskenner achter Fredimare"
+    }
+  ],
+  "gallery": [
+    "https://www.fredimare.com/_assets/a35463db7fc2c7f4/1280.webp",
+    "https://www.fredimare.com/_assets/f92d318164d30694/960.webp",
+    "https://www.fredimare.com/_assets/15092f4b10a977c8/960.webp",
+    "https://www.fredimare.com/_assets/1b1dcdde5ca24606/960.avif",
+    "https://www.fredimare.com/_assets/b5b4987d41afb713/960.avif",
+    "https://www.fredimare.com/_assets/fd1dcc5f3bd0b9c6/960.avif"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Vers van de afslag, elke dinsdag",
+    "text": "Elke dinsdag om 18:00 uur verschijnt de Dagvangst: wisselend verse vis tegen een scherpe prijs. Op = op.",
+    "label": "Bekijk de dagvangst",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Ambachtsweg 10, 4691 SC Tholen, Nederland",
+    "phone": "",
+    "email": ""
+  },
+  "footerLinks": [
+    {
+      "label": "Bestellen en bezorgen",
+      "href": "#"
+    },
+    {
+      "label": "Restaurants & partners",
+      "href": "#"
+    },
+    {
+      "label": "Algemene voorwaarden",
+      "href": "#"
+    },
+    {
+      "label": "Privacyverklaring",
+      "href": "#"
+    },
+    {
+      "label": "Cookieverklaring",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Ons assortiment",
+    "intro": "Van Balfegó-tonijn en oesters tot Zeeuwse mosselen en verse vis: kies zakelijk of particulier.",
+    "filters": [
+      "Bluefin Tonijn",
+      "Langoustines",
+      "Dorade",
+      "Oesters",
+      "Kaviaar",
+      "Kreeften",
+      "Mosselen",
+      "Gerookte vis"
+    ],
+    "count": "182 producten"
+  },
+  "featured": [
+    {
+      "name": "Balfegó hele tonijn",
+      "price": "€ 35,97",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Balfegó",
+      "href": "#"
+    },
+    {
+      "name": "Zeeuwse Goudmerk mosselen",
+      "price": "€ 9,48",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "Zeeuwse Jumbo mosselen",
+      "price": "€ 8,45",
+      "oldPrice": null,
+      "image": null,
+      "tag": null,
+      "href": "#"
+    },
+    {
+      "name": "The Oyster Grand Impériale",
+      "price": "€ 15,15",
+      "oldPrice": null,
+      "image": null,
+      "tag": "Oesters",
+      "href": "#"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

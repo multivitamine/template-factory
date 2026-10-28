@@ -1,0 +1,92 @@
+{
+  "id": "azulejo-wall",
+  "name": "Azulejo Wall",
+  "sectors": [
+    "food",
+    "hospitality",
+    "horeca",
+    "lifestyle"
+  ],
+  "sample": "fredimare",
+  "stress": "birthbear",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793228553345
+    },
+    {
+      "step": "Rendering",
+      "at": 1793229750566
+    },
+    {
+      "step": "Critique",
+      "at": 1793229766303
+    },
+    {
+      "step": "Final render",
+      "at": 1793229882542
+    },
+    {
+      "step": "Done",
+      "at": 1793229897304
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793227512798,
+  "startedAt": 1793228553345,
+  "finishedAt": 1793229897304,
+  "model": "opus",
+  "costUsd": 4.626890599999999,
+  "meta": {
+    "id": "azulejo-wall",
+    "name": "Azulejo Wall",
+    "scheme": "light",
+    "sectors": [
+      "food",
+      "hospitality",
+      "horeca",
+      "lifestyle"
+    ],
+    "mood": [
+      "sunlit",
+      "decorative",
+      "warm",
+      "hand-glazed",
+      "playful"
+    ],
+    "needsProductImages": true,
+    "notes": "Brand primary is the glaze colour: it paints all procedurally generated tile ornaments, frames, bosses and buttons (darkened via color-mix for text), while accent dots the rosette centres; the glazed off-white ground and grout stay fixed."
+  },
+  "score": {
+    "scoreBefore": 5.8,
+    "scores": {
+      "creativity": 7.5,
+      "typography": 7,
+      "layoutRhythm": 5.5,
+      "polish": 4.5,
+      "brandRobustness": 6.5,
+      "mobile": 4,
+      "genericTemplate": 7
+    },
+    "issues": [
+      "Scroll reveal hid content until an IntersectionObserver fired: in the mobile and Birth Bear captures the story, stats, gallery and CTA are completely blank, so the page has huge empty voids and an empty grout box",
+      "Product flip cascade ran one card every 420ms, so the catalog is captured mid-animation: grey half-turned cards and two tiles stuck edge-on at 90°. On mobile, no card ever turned over and the shop shows only ornament with no products",
+      "Products without photos had a back face that looked almost the same as the ornament front (beige tile, faint rosette), so the 'turn over to reveal' signature had no visible payoff",
+      "With only 2 products (Birth Bear), the 4-column grout panel left three quarters of the band as an empty beige slab",
+      "Mobile USPs stacked as four 270px-tall tiles, which is a long dead scroll before any product",
+      "Hero wall photo cut into tiles gives patchy pure-black tiles for dark product shots (Fredimare); acceptable but noisy"
+    ],
+    "fixed": [
+      "Reveal now has a load-time safety net that reveals every .rv section, so no section can stay invisible (both pages)",
+      "Card ripple cascade is faster (200ms pacing, wider flip radius, lower intersection threshold), and a staggered diagonal 'settle' turns over any card the wave hasn't reached after about 2.4s, so the wall always ends with products showing",
+      "Photo-less product backs are now fully glazed brand-colour tiles with an on-primary ornament watermark, inner keyline, inverted tag and a surface price pill. Flipping now reads as ornament turning into glazed tile, like cobalt azulejo in any brand colour",
+      "Grids with fewer than 4 products become a centred, fit-content tile panel instead of an empty slab",
+      "Mobile USPs become a compact 2×2 tile block with smaller numerals and tighter type"
+    ],
+    "scoreAfterEstimate": 7.2
+  },
+  "version": 1793229897304
+}
