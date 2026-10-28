@@ -1,0 +1,88 @@
+{
+  "id": "marbled-endpapers",
+  "name": "Marbled Endpapers",
+  "sectors": [
+    "luxury",
+    "hospitality",
+    "lifestyle",
+    "food"
+  ],
+  "sample": "hotelnavarra",
+  "stress": "fredimare",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793227631704
+    },
+    {
+      "step": "Rendering",
+      "at": 1793228409410
+    },
+    {
+      "step": "Critique",
+      "at": 1793228424279
+    },
+    {
+      "step": "Final render",
+      "at": 1793228538564
+    },
+    {
+      "step": "Done",
+      "at": 1793228553340
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793227512798,
+  "startedAt": 1793227631704,
+  "finishedAt": 1793228553340,
+  "model": "opus",
+  "costUsd": 3.425591,
+  "meta": {
+    "id": "marbled-endpapers",
+    "name": "Marbled Endpapers",
+    "scheme": "light",
+    "sectors": [
+      "luxury",
+      "hospitality",
+      "lifestyle",
+      "food"
+    ],
+    "mood": [
+      "calm",
+      "warm",
+      "tactile",
+      "bookish",
+      "crafted"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary and accent (plus two derived tints, a deep primary and a cream vein) float as ink in a live canvas marbling bath; its snapshot then drives every edge band, plate corner, roundel and printer's device, while cream paper, ink text and rules stay template-owned."
+  },
+  "score": {
+    "scoreBefore": 6,
+    "issues": [
+      "Hero 'endpaper' doesn't read as marbling: 5-7 small drops with 3-5 rings float in a mostly empty pale bath, so it looks like scattered heart-shaped stickers, not a full-bleed marbled sheet",
+      "Combing is too coarse (5 tines + 2 verticals), so the pre-combed pattern never feathers; no get-gel or nonpareil character",
+      "Edge bands, plate corners, roundel and CTA endpaper sample the snapshot of that sparse canvas, so most bands are flat bath colour with a stray blob",
+      "Catalog CTA endpaper is a 1:1 blow-up of the same sparse hero pattern, so it repeats like a second hero",
+      "Brand initials placeholder (data-i ::after) shows through product photos because of mix-blend-mode:multiply, giving ghost 'HN' letters on the plates",
+      "Missing or failed category images leave blank cream boxes with faint initials (Fredimare Kreeften/Oesters)",
+      "Stress brand: the long header CTA 'Bekijk het assortiment' overlaps the last nav item 'Contact'",
+      "Mobile: the bookplate fills almost the whole hero, leaving a sliver of marble and almost no endpaper feel",
+      "Typography (Italiana/Spectral SC), running heads, folios, TOC leaders and the colophon are strong; layout rhythm is good but the hero undercuts it"
+    ],
+    "fixed": [
+      "Rebuilt the pre-combed scene: drops are sized to the bath area (sqrt(W*H)), with 5-7 concentric rings per site, so floated ink covers the whole sheet on every viewport. It's still the exact drop transform with 120-vertex polygons",
+      "Replaced the comb with a proper get-gel pass: 9 alternating horizontal tine lines, then 4 alternating vertical sweeps that feather them. The bath is tinted toward accent/primary so gaps read as ink, not paper. Intro frames were rebalanced so the float-and-comb animation stays brisk",
+      "Bands, corners, swatches and the colophon device now sample a dense, combed sheet. The CTA endpaper uses a zoomed, offset crop so it no longer copies the hero",
+      "Initials placeholder is suppressed when a frame holds an image (:has). An empty or failed frame becomes a marbled swatch with a small cream label",
+      "Header nav is now flexible and scrolls horizontally when crowded. The CTA truncates and hides between 901-1180px, so long nav/CTA labels can't collide",
+      "Mobile hero: narrower bookplate, larger marble margins and a scaled title, so the endpaper frames the plate like a real book",
+      "All fixes applied to both template.html and catalog.html; Mustache contract untouched"
+    ],
+    "scoreAfterEstimate": 7.4
+  },
+  "version": 1793228553340
+}

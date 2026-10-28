@@ -1,0 +1,9 @@
+{
+  "id": "marbled-endpapers",
+  "name": "Marbled Endpapers",
+  "scheme": "light",
+  "sectors": ["luxury", "hospitality", "lifestyle", "food"],
+  "mood": ["calm", "warm", "tactile", "bookish", "crafted"],
+  "needsProductImages": true,
+  "notes": "Primary and accent (plus two derived tints, a deep primary and a cream vein) float as ink in a live canvas marbling bath; its snapshot then drives every edge band, plate corner, roundel and printer's device, while cream paper, ink text and rules stay template-owned."
+}
