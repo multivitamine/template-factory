@@ -1,0 +1,22 @@
+{
+  "scoreBefore": 6.6,
+  "issues": [
+    "Creativity 8: the gauge cluster, artificial horizon and guarded toggle are true to the brief, but the lower half of the homepage turns into generic boxes",
+    "Typography 7: Michroma on lit annunciators reads well, but unlit annunciators (story, CTA) show near-black text on black and look broken in static captures",
+    "Layout 6: the Feeds/gallery section is two to four giant pure-black boxes, the biggest empty area on the page. With 6 categories (stress brand) the grid leaves a lone orphan card on its own row",
+    "Catalogue 6: three instruments sit in the left half of a 1440px grid (auto-fill), so the right half is empty and the dials are too small to show off the products",
+    "Polish 6: the fixed 'Demo redesign' badge sits on top of content (it covers the first instrument's readout in the catalogue and overlaps the hero edge on the homepage)",
+    "Home instrument readouts show 'SYS --.-' until the section intersects, so captures and quick scrolls show dead displays",
+    "Brand robustness 8: the yellow and orange brands both hold up because --c-lamp is lightness-clamped; hazard stripes and annunciators recolour well",
+    "Mobile 7: the gauge cluster scales down neatly, but the instruments are small and the hero is dense"
+  ],
+  "fixed": [
+    "Gallery cams now sit on a brand-tinted radar graticule with a 'NO SIGNAL' readout behind each image, so a missing or slow image looks deliberate instead of a black hole. Images load eagerly, remove themselves on error, and two feeds switch to a 16:9 aspect",
+    "Unlit annunciators are now dimmed amber glass (tinted with --c-primary, text at 48% lamp) so they read as 'off but present' and the switch-on is a visible change from dim to blazing",
+    "Category grid adapts to how many categories there are: 3 or 6 become a 3-column grid, 5 becomes a 2+3 split, and with 7 the first card is a 2x2 feature tile. No more orphans",
+    "Catalogue grid uses auto-fit. Three products fill the row as large instruments with wider gutters, and one or two products are capped at 420px so they never stretch",
+    "Demo badge is no longer fixed. It sits centred in normal flow under the footer, so it never covers content (both pages)",
+    "Home instrument readouts are filled with the default spec values at load, so they never show '--.-'. The needles still sweep in when the section scrolls into view"
+  ],
+  "scoreAfterEstimate": 7.4
+}
