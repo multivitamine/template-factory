@@ -29,6 +29,12 @@
   .go { padding: 11px 18px; border: 0; border-radius: 12px; background: var(--accent); color: #0d0f12; font: 700 14.5px "Space Grotesk"; cursor: pointer; }
   .go:disabled { opacity: .45; cursor: default; }
   .hint { font: 12px var(--mono); color: var(--muted); }
+  .go.pilot { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+  .go.pilot[aria-pressed="true"] { background: var(--accent); color: #0d0f12; animation: glow 2s ease-in-out infinite; }
+  @keyframes glow { 50% { box-shadow: 0 0 0 4px rgba(198,255,61,.18); } }
+  #pilot-status.stopped { color: var(--fail); }
+  .pushed { font: 11px var(--mono); color: var(--muted); }
+  .pushed.ok { color: var(--accent); }
   main { padding: 18px 28px 40px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 18px; }
   @media (max-width: 700px) { main, .bar-top, header { padding-left: 16px; padding-right: 16px; } .grid { grid-template-columns: 1fr; } }
@@ -82,6 +88,8 @@
 <div class="bar-top">
   <div class="seg" id="model"><button aria-pressed="true" data-m="opus">opus</button><button aria-pressed="false" data-m="sonnet">sonnet</button></div>
   <button class="go" id="build">▶ Build all missing templates</button>
+  <button class="go pilot" id="pilot" aria-pressed="false">✦ Autopilot: off</button>
+  <span class="hint" id="pilot-status"></span>
   <div class="seg" id="filter"><button aria-pressed="true" data-f="all">all</button><button aria-pressed="false" data-f="done">done</button><button aria-pressed="false" data-f="good">★4+</button><button aria-pressed="false" data-f="unrated">unrated</button></div>
   <span class="hint">Each template: build → render with 2 real brands → jury round → final. Rate with stars; only ★4+ go to the event.</span>
 </div>
@@ -132,6 +140,7 @@ function card(t) {
         <button data-rebuild="${t.id}" ${busy ? "disabled" : ""}>${t.status === "todo" ? "build" : "rebuild"}</button>
         ${t.costUsd ? `<span class="time" style="margin-left:auto;align-self:center">$${t.costUsd.toFixed(2)}</span>` : ""}
       </div>
+      ${t.pushed ? `<div class="pushed ${t.pushed.startsWith("pushed") ? "ok" : ""}">github: ${esc(t.pushed)}</div>` : ""}
     </div>`;
 }
 
@@ -149,7 +158,7 @@ function draw() {
   for (const t of list) {
     let el = document.getElementById("t-" + t.id);
     if (!el) { el = document.createElement("article"); el.id = "t-" + t.id; }
-    const key = JSON.stringify([t.status, t.step, t.detail, t.rating, t.version, t.error, t.costUsd]);
+    const key = JSON.stringify([t.status, t.step, t.detail, t.rating, t.version, t.error, t.costUsd, t.pushed]);
     if (el.dataset.key !== key) { el.className = "card " + t.status; el.innerHTML = card(t); el.dataset.key = key; }
     el.style.display = visible(t) ? "" : "none";
     grid.appendChild(el);
@@ -206,7 +215,25 @@ setInterval(() => {
     if (el.dataset.start && !el.dataset.end) el.textContent = fmt(Date.now() - Number(el.dataset.start));
 }, 1000);
 
-new EventSource("/api/factory/events").onmessage = (e) => { const t = JSON.parse(e.data); items.set(t.id, t); draw(); };
+// ---- Autopilot: invent new directions, build them, push each one, until the usage limit ----
+let pilot = { on: false };
+function drawPilot() {
+  const b = document.getElementById("pilot");
+  b.setAttribute("aria-pressed", String(!!pilot.on));
+  b.textContent = pilot.on ? "✦ Autopilot: on" : "✦ Autopilot: off";
+  const st = document.getElementById("pilot-status");
+  st.className = "hint" + (pilot.stoppedReason ? " stopped" : "");
+  st.textContent = pilot.stoppedReason ? `stopped: ${pilot.stoppedReason}`
+    : pilot.generating ? "art director is inventing new directions…"
+    : pilot.on ? `${pilot.generated || 0} new ideas so far · ${pilot.running || 0} building · ${pilot.queued || 0} queued`
+    : pilot.generated ? `${pilot.generated} new ideas generated` : "";
+}
+document.getElementById("pilot").onclick = () =>
+  fetch("/api/factory/autopilot", { method: "POST", body: JSON.stringify({ on: !pilot.on, model }) });
+
+const events = new EventSource("/api/factory/events");
+events.onmessage = (e) => { const t = JSON.parse(e.data); items.set(t.id, t); draw(); };
+events.addEventListener("autopilot", (e) => { pilot = JSON.parse(e.data); drawPilot(); });
 </script>
 </body>
 </html>

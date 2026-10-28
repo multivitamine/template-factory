@@ -8,6 +8,6 @@ data/styles.json
 data/styles/
 
 # Agent transcripts and scratch renders
-**/agent.log.jsonl
+**/*.log.jsonl
 templates/_check/
 shot--*.jpg

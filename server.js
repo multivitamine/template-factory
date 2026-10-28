@@ -5,7 +5,7 @@ import path from "node:path";
 import QRCode from "qrcode";
 import { config } from "./config.js";
 import { bus, jobs, publicJob, runs, runSummary, startAll } from "./lib/jobs.js";
-import { buildTemplates, factoryBus, loadTemplates, publicTemplate, rateTemplate, templates, templatesDir } from "./lib/factory.js";
+import { buildTemplates, factoryBus, getAutopilot, loadTemplates, publicTemplate, rateTemplate, setAutopilot, templates, templatesDir } from "./lib/factory.js";
 
 await loadTemplates();
 
@@ -98,6 +98,13 @@ const server = http.createServer(async (req, res) => {
     const { ids, model } = JSON.parse(body || "{}");
     return json(res, { started: buildTemplates({ ids, model: config.models.includes(model) ? model : "opus" }) });
   }
+  if (p === "/api/factory/autopilot") {
+    if (req.method !== "POST") return json(res, getAutopilot());
+    let body = "";
+    for await (const c of req) body += c;
+    const { on, model } = JSON.parse(body || "{}");
+    return json(res, setAutopilot(on, config.models.includes(model) ? model : undefined));
+  }
   if (p === "/api/factory/rate" && req.method === "POST") {
     let body = "";
     for await (const c of req) body += c;
@@ -109,8 +116,11 @@ const server = http.createServer(async (req, res) => {
     const send = (t) => res.write(`data: ${JSON.stringify(t)}\n\n`);
     for (const t of templates.values()) send(publicTemplate(t));
     factoryBus.on("tpl", send);
+    const sendPilot = (a) => res.write(`event: autopilot\ndata: ${JSON.stringify(a)}\n\n`);
+    sendPilot(getAutopilot());
+    factoryBus.on("autopilot", sendPilot);
     const ping = setInterval(() => res.write(": ping\n\n"), 15000);
-    req.on("close", () => { factoryBus.off("tpl", send); clearInterval(ping); });
+    req.on("close", () => { factoryBus.off("tpl", send); factoryBus.off("autopilot", sendPilot); clearInterval(ping); });
     return;
   }
   const tm = p.match(/^\/tpl\/([\w-]+)\/(.+)$/);
