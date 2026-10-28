@@ -1,0 +1,20 @@
+{
+  "scoreBefore": 5.5,
+  "scores": { "creativity": 7, "typography": 7, "layoutRhythm": 5, "polish": 4, "brandColourRobustness": 6, "mobile": 4, "genericTemplate": 6 },
+  "issues": [
+    "Reveal-on-scroll left whole sections blank: the category locker showed as a solid black slab (its black gap background with every cell at opacity 0), the pennant-card grid on home and catalog was an empty grey field, and stress USP rows 3–4 were missing",
+    "The hero code flags hung limp and greyish in the first seconds. They hoisted from far below the rope, so the cloth trailed straight down over the headline, and heavy fold shading turned them muddy",
+    "The inline orange box behind the second headline line covered the lower half of 'THE NEW NACRA' / 'JOUW FAVORIETE' because the inline background box was taller than the .82 line-height",
+    "On mobile the halyard was hidden entirely (rail 0px), so the signature mast and flag navigation were missing below 820px",
+    "Hero copy column was pinned to the bottom of the image, leaving a dead white block left of the photo",
+    "Hero flag string was small relative to the sky-white space"
+  ],
+  "fixed": [
+    "Reveal is now robust: anything already in view reveals at once, the rest via IntersectionObserver, with a 3 s fail-safe that reveals everything (home + catalog). The locker grid now uses per-cell borders, so it can never show as a black slab",
+    "Every cloth flag is pre-settled for 150 Verlet steps in a steady breeze on build, so it flies from frame one. The hero hoist starts from just below the rope (snappier, 950 ms staggered) and fold shadows are capped lighter so the brand colours stay loud",
+    "The second headline line is now an inline-block with tight line-height and a swallow-tail clip-path (a pennant tag), so it no longer covers line one",
+    "Mobile keeps a slim 40px halyard with scaled cloth flags as working navigation (mast x and flag size adapt to the rail width; numbers and tooltips hidden). Applied to home and catalog",
+    "Hero foot is vertically centred and the hero flag string can grow up to 340px wide"
+  ],
+  "scoreAfterEstimate": 7.3
+}

@@ -1,0 +1,9 @@
+{
+  "id": "signal-hoist",
+  "name": "Signal Hoist",
+  "scheme": "light",
+  "sectors": ["sports", "travel", "makers", "retail"],
+  "mood": ["sunny", "athletic", "loud", "geometric", "windy"],
+  "needsProductImages": true,
+  "notes": "Primary and accent paint the cloth-simulated code flags, swatches, CTA buttons, the stats band and card hover fills (text on primary always uses --c-on-primary); black/white structure keeps any brand readable."
+}
