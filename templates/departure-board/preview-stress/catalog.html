@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ons assortiment · Fredimare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#141518;
+  --c-surface:#0b0b0d;
+  --c-text:#efebe0;
+  --c-muted:#8e8c85;
+  --c-line:#2a2b30;
+  --c-primary:#ffc531;
+  --c-on-primary:#121212;
+  --c-accent:#ff6a3d;
+
+  --glyph:#f3eee2;
+  --housing:#09090b;
+  --row:#0d0d0f;
+  --p-ring:color-mix(in oklab, var(--c-primary), #fff 30%);
+  --p-glow:color-mix(in srgb, var(--c-primary) 55%, transparent);
+  --p-wash:color-mix(in srgb, var(--c-primary) 9%, var(--row));
+  --a-ink:color-mix(in oklab, var(--c-accent) 62%, #f5f0e4);
+  --enamel:#e8e3d4;
+  --enamel-ink:#121316;
+  --f-disp:'Big Shoulders Display','Big Shoulders',Oswald,Impact,sans-serif;
+  --f-mono:'Azeret Mono',ui-monospace,Menlo,Consolas,monospace;
+  --f-body:'Hanken Grotesk','Helvetica Neue',Helvetica,sans-serif;
+  --pad:clamp(16px,4vw,56px);
+  --r-s:4px;
+  --r-l:14px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 16px/1.6 var(--f-body);counter-reset:sec;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    radial-gradient(900px 520px at 12% -8%, color-mix(in srgb, var(--c-primary) 11%, transparent), transparent 70%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.014) 0 1px, transparent 1px 5px),
+    var(--c-bg)}
+main{overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:100%;max-width:1480px;margin:0 auto;padding-inline:var(--pad)}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--p-ring);outline-offset:3px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.6em;font:800 17px/1 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;padding:.9em 1.25em;border-radius:var(--r-s);white-space:nowrap;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s}
+.btn .arr{display:inline-block;transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.btn--p{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 0 0 1px var(--p-ring)}
+.btn--p:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--p-ring),0 14px 34px -12px var(--p-glow)}
+.btn--ghost{color:var(--c-text);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--c-text) 32%, transparent)}
+.btn--ghost:hover{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--c-text)}
+.btn--inv{background:var(--c-on-primary);color:var(--c-primary)}
+.btn--inv:hover{transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(0,0,0,.6)}
+.btn--lg{font-size:clamp(17px,1.4vw,20px);padding:1em 1.45em}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--c-surface) 90%, transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:3px solid var(--c-primary);border-bottom:1px solid var(--c-line)}
+.hdr-in{display:flex;align-items:center;gap:24px;min-height:66px}
+.logo{display:flex;align-items:center;flex:none;max-width:200px}
+.logo img{height:30px;width:auto;max-width:170px;object-fit:contain}
+.logo--plate{background:var(--enamel);padding:7px 12px;border-radius:var(--r-s)}
+.logo-txt{font:800 26px/1 var(--f-disp);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;display:block}
+.logo--plate .logo-txt{color:var(--enamel-ink)}
+.nav{flex:1;min-width:0}
+.nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:8px 12px;font:500 14px/1.2 var(--f-body);color:var(--c-muted);white-space:nowrap;border-radius:var(--r-s);transition:color .2s,background .2s}
+.nav a:hover{color:var(--c-text);background:rgba(255,255,255,.06)}
+.hdr-tools{display:flex;gap:10px;align-items:center;margin-left:auto;flex:none}
+.hdr .btn{font-size:15px;padding:.8em 1.05em}
+.snd{display:none}
+.js .snd{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--c-line);color:var(--c-muted);border-radius:var(--r-s);padding:8px 10px;font:600 11px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transition:color .2s,border-color .2s}
+.snd:hover{color:var(--c-text)}
+.snd svg{width:16px;height:16px}
+.snd .wv{display:none}
+.snd[aria-pressed="true"]{color:var(--c-text);border-color:var(--p-ring)}
+.snd[aria-pressed="true"] .wv{display:inline}
+.snd[aria-pressed="true"] .mx{display:none}
+@media (max-width:1060px){
+  .hdr-in{flex-wrap:wrap;gap:0 14px;padding-top:10px}
+  .nav{order:3;flex-basis:100%;margin:10px calc(var(--pad) * -1) 0;padding-inline:calc(var(--pad) - 12px);border-top:1px solid var(--c-line)}
+  .nav ul{padding-block:5px}
+}
+@media (max-width:520px){
+  .snd span{display:none}
+  .hdr .btn{font-size:14px;padding:.75em .9em}
+  .logo img{height:26px;max-width:130px}
+  .logo-txt{font-size:22px;max-width:150px}
+}
+
+/* ---------- split-flap cells ---------- */
+[data-flap]{font-family:var(--f-mono);font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--glyph)}
+.built{display:block}
+.fl{display:flex;flex-wrap:wrap;row-gap:.1em}
+.fl .w{display:inline-flex;flex-wrap:wrap;row-gap:.1em}
+.c{position:relative;display:inline-block;flex:none;width:.7em;height:1.2em;margin-right:.05em;perspective:3.6em;color:var(--glyph);border-radius:.09em;box-shadow:0 .05em .1em #000}
+.c .h{position:absolute;left:0;right:0;overflow:hidden}
+.c>.t{top:0;height:50%;border-radius:.09em .09em 0 0;background:linear-gradient(#27282c,#1d1e21)}
+.c>.b{bottom:0;height:50%;border-radius:0 0 .09em .09em;background:linear-gradient(#18191c,#131416)}
+.c i{display:block;height:200%;line-height:1.2em;text-align:center;font-style:normal}
+.c .b i{transform:translateY(-50%)}
+.c .f{position:absolute;left:0;right:0;top:0;height:50%;transform-origin:50% 100%;transform-style:preserve-3d;z-index:2}
+.c .f .h{top:0;bottom:0;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.c .f .t{border-radius:.09em .09em 0 0;background:linear-gradient(#27282c,#1d1e21)}
+.c .f .bk{transform:rotateX(180deg);border-radius:0 0 .09em .09em;background:linear-gradient(#18191c,#131416)}
+.c::after{content:"";position:absolute;left:0;right:0;top:50%;height:.06em;min-height:1px;transform:translateY(-50%);background:#030304;z-index:3}
+.hl:not(.built){display:inline;background:var(--c-primary);color:var(--c-on-primary);padding:0 .15em}
+.hl .c{color:var(--c-on-primary)}
+.hl .c>.t,.hl .c .f .t{background:var(--c-primary)}
+.hl .c>.b,.hl .c .f .bk{background:color-mix(in srgb, var(--c-primary) 84%, #000)}
+.hl .c::after{background:color-mix(in srgb, var(--c-primary) 45%, #000)}
+
+/* ---------- shared board housing ---------- */
+.board{position:relative;background:linear-gradient(180deg,#0f0f12,var(--housing));border-radius:var(--r-l);padding:clamp(16px,2.4vw,34px);overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 0 0 7px #111215,inset 0 0 0 8px #000,0 0 0 1px var(--c-line),0 50px 90px -50px #000}
+.board::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(640px 320px at 0% 0%, color-mix(in srgb, var(--c-primary) 15%, transparent), transparent 70%)}
+.board::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle, #3a3b40 0 2px, #000 2.6px, transparent 3.2px) left 14px top 14px/8px 8px no-repeat,
+    radial-gradient(circle, #3a3b40 0 2px, #000 2.6px, transparent 3.2px) right 14px top 14px/8px 8px no-repeat,
+    radial-gradient(circle, #3a3b40 0 2px, #000 2.6px, transparent 3.2px) left 14px bottom 14px/8px 8px no-repeat,
+    radial-gradient(circle, #3a3b40 0 2px, #000 2.6px, transparent 3.2px) right 14px bottom 14px/8px 8px no-repeat}
+.board>*{position:relative;z-index:1}
+.board-top{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;padding:0 6px 14px;border-bottom:1px solid #1f2023;font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted)}
+.board-name{font:800 clamp(20px,2vw,28px)/1 var(--f-disp);letter-spacing:.06em;color:var(--c-text)}
+.board-top .sp{margin-left:auto;display:flex;align-items:center;gap:8px;color:var(--a-ink)}
+.lamp{width:14px;height:14px;border-radius:50%;flex:none;background:var(--c-primary);box-shadow:0 0 0 2px #000,0 0 0 3px var(--p-ring),0 0 20px 4px var(--p-glow);animation:buzz 3.2s linear infinite}
+@keyframes buzz{0%,44%,50%,56%,100%{opacity:1}46%{opacity:.35}53%{opacity:.6}}
+.dot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--a-ink);box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 12px 1px color-mix(in srgb, var(--a-ink) 70%, transparent)}
+.k{font:600 10px/1.2 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted)}
+@keyframes blink{50%{opacity:.15}}
+.fb{display:grid;place-items:center;width:100%;height:100%;background:var(--housing);color:var(--c-muted);font:800 clamp(40px,5vw,72px)/1 var(--f-disp);text-transform:uppercase}
+.dep-thumb:has(.fb){background:#18191c;box-shadow:inset 0 0 0 1px #2a2b30}
+.dep-thumb .fb{background:linear-gradient(#232428 0 50%,#16171a 50%);color:var(--a-ink)!important}
+.pcirc{display:grid;place-items:center;width:clamp(42px,4.2vw,62px);aspect-ratio:1;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);font:800 clamp(22px,2.2vw,34px)/1 var(--f-disp);box-shadow:0 0 0 2px #000,0 0 0 3px var(--p-ring)}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--c-primary);color:var(--c-on-primary);overflow:hidden;border-block:1px solid #000;box-shadow:0 0 50px -10px var(--p-glow)}
+.ticker-track{display:flex;width:max-content;animation:tick 48s linear infinite}
+.ticker-seq{display:flex;align-items:center;flex:none;font:600 13px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;padding-block:14px;white-space:nowrap}
+.ticker-seq span{padding-inline:22px}
+.ticker-seq i{font-style:normal;opacity:.55}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- catalog board header ---------- */
+.cat-hero{padding-block:clamp(18px,3.4vw,44px) clamp(18px,2.4vw,28px)}
+.cat-tab{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(14px,2.2vw,32px);align-items:start;padding:clamp(16px,2vw,24px) 6px 0}
+.cat-tab .k{grid-column:1/-1;margin-bottom:-4px}
+.cat-title{margin:0;font-size:clamp(26px,5vw,84px);line-height:1.04;font-weight:600}
+.board-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 32px;align-items:end;margin-top:clamp(22px,3vw,36px);padding:clamp(16px,2vw,22px) 6px 0;border-top:1px solid #1f2023}
+.cat-intro{margin:0;max-width:62ch;color:color-mix(in srgb, var(--c-text) 80%, transparent);font-size:clamp(15px,1.15vw,18px)}
+.cat-count{font:600 12px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--a-ink);display:flex;align-items:center;gap:8px;white-space:nowrap}
+@media (max-width:640px){.board-foot{grid-template-columns:1fr}}
+
+/* ---------- platform filter chips ---------- */
+.fbar{display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;margin-bottom:clamp(16px,2vw,24px)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;counter-reset:chip}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 7px;background:#0d0d0f;color:var(--c-text);border:1px solid var(--c-line);border-radius:6px;font:800 18px/1 var(--f-disp);letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s var(--ease)}
+.chip:not(:first-child){counter-increment:chip}
+.chip-n{display:grid;place-items:center;width:28px;aspect-ratio:1;border-radius:50%;border:1px solid #3a3b40;font:600 11px/1 var(--f-mono);color:var(--c-muted);transition:inherit}
+.chip-n::before{content:counter(chip)}
+.chip:first-child .chip-n::before{content:"*"}
+.chip:hover{border-color:var(--p-ring);transform:translateY(-1px)}
+.chip.is-on{background:var(--enamel);color:var(--enamel-ink);border-color:var(--enamel)}
+.chip.is-on .chip-n{background:var(--c-primary);color:var(--c-on-primary);border-color:var(--enamel-ink)}
+.fbar-count{display:none;align-items:center;gap:12px}
+.js .fbar-count{display:flex}
+.fbar-count [data-flap]{font-size:18px}
+
+/* ---------- departures board ---------- */
+.dep-board{padding:clamp(10px,1.2vw,14px)}
+.dep-head,.dep-row{display:grid;grid-template-columns:52px 8.6em minmax(0,1fr) 9em 10.4em 1.2em;grid-template-areas:"th time dest plat st go";column-gap:clamp(12px,1.4vw,22px);align-items:center}
+.dep-head{padding:8px 16px 12px;font:600 10px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted);font-size:clamp(13px,1.1vw,16px)}
+.dep-head span{font-size:10px}
+.dep-head span:nth-child(1){grid-area:th}.dep-head span:nth-child(2){grid-area:time}.dep-head span:nth-child(3){grid-area:dest}.dep-head span:nth-child(4){grid-area:plat}.dep-head span:nth-child(5){grid-area:st}
+.dep-list{list-style:none;margin:0;padding:0;counter-reset:row;border-radius:9px;overflow:hidden;box-shadow:0 0 0 1px #000}
+.dep-item{counter-increment:row;display:grid;grid-template-rows:1fr;transition:grid-template-rows .55s var(--ease),opacity .4s}
+.dep-item.gone{grid-template-rows:0fr;opacity:0}
+.dep-clip{min-height:0;overflow:hidden}
+.dep-row{position:relative;padding:12px 16px;background:var(--row);border-bottom:1px solid #1c1d20;font-size:clamp(13px,1.1vw,16px);transition:background .3s}
+.dep-item:nth-child(even) .dep-row{background:#101013}
+.dep-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c-primary);transform:scaleY(0);transition:transform .35s var(--ease)}
+.dep-row:hover{background:var(--p-wash)!important}
+.dep-row:hover::before{transform:scaleY(1)}
+.dep-thumb{grid-area:th;width:52px;aspect-ratio:1;border-radius:var(--r-s);overflow:hidden;background:#fff;align-self:start}
+.dep-thumb img{width:100%;height:100%;object-fit:cover}
+.dep-thumb .fb{font-size:20px}
+.dep-time{grid-area:time;display:flex;flex-direction:column;gap:5px;min-width:0}
+.dep-time s{font:500 11px/1 var(--f-mono);color:var(--c-muted)}
+.dep-dest{grid-area:dest;min-width:0}
+.dep-dest [data-flap]{font-size:1.06em}
+.dep-plat{grid-area:plat;display:flex;align-items:center;gap:10px;min-width:0}
+.plat-num{display:grid;place-items:center;flex:none;width:26px;aspect-ratio:1;border-radius:50%;border:1px solid #34353a;font:600 11px/1 var(--f-mono);color:var(--c-muted)}
+.plat-num::before{content:counter(row)}
+.dep-plat [data-flap]{font-size:.8em;color:var(--c-muted);min-width:0}
+.dep-plat .c{color:#cfcbc0}
+.dep-status{grid-area:st;display:flex;align-items:center;gap:9px;min-width:0}
+.dep-status [data-flap]{font-size:.84em;color:var(--a-ink);white-space:nowrap}
+.dep-status .c{color:var(--a-ink)}
+.dep-status .fl{flex-wrap:nowrap}
+.is-few .dot{animation:blink 1s steps(2,jump-none) infinite}
+.dep-go{grid-area:go;font:800 20px/1 var(--f-disp);color:var(--c-muted);transition:transform .3s var(--ease),color .3s}
+.dep-row:hover .dep-go{transform:translateX(4px);color:var(--c-text)}
+.dep-empty{padding:28px 18px;font:600 13px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--c-muted)}
+.board-more{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 8px 4px}
+@media (max-width:860px){
+  .dep-head{display:none}
+  .dep-row{grid-template-columns:46px minmax(0,1fr) auto;grid-template-areas:"th dest dest" "th time st";row-gap:10px;padding:12px}
+  .dep-thumb{width:46px}
+  .dep-plat,.dep-go{display:none}
+  .dep-status{justify-content:flex-end}
+}
+
+/* ---------- final call (cta) ---------- */
+.gate{position:relative;margin-top:clamp(64px,9vw,128px);background:var(--c-primary);color:var(--c-on-primary);overflow:hidden}
+.gate::before,.gate::after{content:"";position:absolute;left:0;right:0;height:14px;background:repeating-linear-gradient(-45deg,color-mix(in srgb, var(--c-on-primary) 85%, transparent) 0 14px,transparent 14px 28px)}
+.gate::before{top:0}
+.gate::after{bottom:0}
+.gate-in{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px 48px;align-items:end;padding-block:clamp(64px,8vw,120px)}
+.gate-k{margin:0 0 18px;font:600 11px/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.gate h2{margin:0;font:800 clamp(48px,8.6vw,150px)/.84 var(--f-disp);text-transform:uppercase;text-wrap:balance;overflow-wrap:anywhere}
+.gate p{margin:0 0 26px;font-size:clamp(16px,1.25vw,19px);max-width:44ch;opacity:.86}
+@media (max-width:800px){.gate-in{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+.ftr{margin-top:clamp(64px,9vw,128px);background:var(--c-surface);border-top:1px solid var(--c-line);padding-block:clamp(44px,6vw,84px) 90px}
+.gate+.ftr,main:has(.gate:last-child)+.ftr{margin-top:0}
+.ftr-brand{margin:0 0 clamp(28px,4vw,52px);font:800 clamp(52px,11vw,190px)/.8 var(--f-disp);text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb, var(--c-text) 38%, transparent);overflow-wrap:anywhere}
+.ftr-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:32px}
+.ftr ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.ftr ul a{color:color-mix(in srgb, var(--c-text) 80%, transparent);transition:color .2s}
+.ftr ul a:hover{color:var(--c-text);text-decoration:underline;text-decoration-color:var(--p-ring);text-underline-offset:4px}
+.ftr-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:clamp(36px,5vw,64px);padding-top:20px;border-top:1px solid var(--c-line);font:600 10.5px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted)}
+
+/* ---------- badge ---------- */
+.badge{position:fixed;left:12px;bottom:12px;z-index:60;display:inline-flex;align-items:center;gap:8px;max-width:calc(100vw - 24px);padding:7px 11px;border-radius:var(--r-s);background:rgba(9,9,11,.88);border:1px solid var(--c-line);color:var(--c-muted);font:600 10px/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;flex:none;background:var(--c-primary);box-shadow:0 0 0 1px var(--p-ring)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .ticker-track{flex-wrap:wrap}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#D4AD62;--c-on-primary:#111111;--c-accent:#1A1A1A}</style></head>
+<body class="cat">
+
+<header class="hdr">
+  <div class="hdr-in wrap">
+    <a class="logo " href="template.html">
+      <span class="logo-txt">Fredimare</span>
+    </a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <ul><li><a href="catalog.html">Assortiment</a></li><li><a href="#">Dagvangst</a></li><li><a href="#">Balfegó</a></li><li><a href="#">Ambassadeurs</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul>
+    </nav>
+    <div class="hdr-tools">
+      <button class="snd" type="button" aria-pressed="false" data-sound>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wv" d="M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13"/><path class="mx" d="M16.5 9.5l5 5M21.5 9.5l-5 5"/></svg>
+        <span>Geluid</span>
+      </button>
+      <a class="btn btn--p" href="template.html">Home <span class="arr">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ CATALOG BOARD HEADER ============ -->
+<section class="cat-hero wrap">
+  <div class="board" data-board>
+    <div class="board-top">
+      <span class="lamp" aria-hidden="true"></span>
+      <span class="board-name">Vertrek</span>
+      <span>Departures · Fredimare</span>
+      <span class="sp"><i class="dot"></i><span data-flap data-clock>Nu</span></span>
+    </div>
+    <div class="cat-tab">
+      <span class="k">Bestemming</span>
+      <h1 class="cat-title"><span data-flap>Ons assortiment</span></h1>
+      <span class="pcirc" aria-hidden="true">A</span>
+    </div>
+    <div class="board-foot">
+      <p class="cat-intro">Van Balfegó-tonijn en oesters tot Zeeuwse mosselen en verse vis: kies zakelijk of particulier.</p>
+      <span class="cat-count"><i class="dot"></i>182 producten</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPARTURES (all products) ============ -->
+<section class="wrap" id="vertrek">
+  <div class="fbar">
+    <div class="chips" role="group" aria-label="Filter op perron">
+      <button class="chip is-on" type="button" data-filter="" aria-pressed="true"><span class="chip-n" aria-hidden="true"></span>Alle</button>
+      <button class="chip" type="button" data-filter="Bluefin Tonijn" aria-pressed="false"><span class="chip-n" aria-hidden="true"></span>Bluefin Tonijn</button><button class="chip" type="button" data-filter="Langoustines" aria-pressed="false"><span class="chip-n" aria-hidden="true"></span>Langoustines</button><button class="chip" type="button" data-filter="Dorade" aria-pressed="false"><span class="chip-n" aria-hidden="true"></span>Dorade</button><button class="chip" type="button" data-filter="Oesters" aria-pressed="false"><span class="chip-n" aria-hidden="true"></span>Oesters</button><button class="chip" type="button" data-filter="Kaviaar" aria-pressed="false"><span class="chip-n" aria-hidden="true"></span>Kaviaar</button><button class="chip" type="button" data-filter="Kreeften" aria-pressed="false"><span class="chip-n" aria-hidden="true"></span>Kreeften</button><button class="chip" type="button" data-filter="Mosselen" aria-pressed="false"><span class="chip-n" aria-hidden="true"></span>Mosselen</button><button class="chip" type="button" data-filter="Gerookte vis" aria-pressed="false"><span class="chip-n" aria-hidden="true"></span>Gerookte vis</button>
+    </div>
+    <div class="fbar-count"><span class="k">Getoond</span><span data-flap data-pad="3" data-shown></span></div>
+  </div>
+  <div class="board dep-board">
+    <div class="dep-head" aria-hidden="true"><span></span><span>Tijd · Prijs</span><span>Bestemming</span><span>Spoor</span><span>Status</span></div>
+    <ul class="dep-list">
+      <li class="dep-item" data-board data-row data-tag="Balfegó" data-name="Balfegó hele tonijn">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 35,97</span></span>
+            <span class="dep-dest"><span data-flap>Balfegó hele tonijn</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Balfegó</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeeuwse Goudmerk mosselen">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 9,48</span></span>
+            <span class="dep-dest"><span data-flap>Zeeuwse Goudmerk mosselen</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeeuwse Jumbo mosselen">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 8,45</span></span>
+            <span class="dep-dest"><span data-flap>Zeeuwse Jumbo mosselen</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Oesters" data-name="The Oyster Grand Impériale">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 15,15</span></span>
+            <span class="dep-dest"><span data-flap>The Oyster Grand Impériale</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Oesters</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeeuwse Imperial mosselen">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 7,41</span></span>
+            <span class="dep-dest"><span data-flap>Zeeuwse Imperial mosselen</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Balfegó" data-name="Balfegó tonijn loin (geen center)">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 47,96</span></span>
+            <span class="dep-dest"><span data-flap>Balfegó tonijn loin (geen center)</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Balfegó</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Oesters" data-name="The Oyster Prestige Spéciale">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 13,30</span></span>
+            <span class="dep-dest"><span data-flap>The Oyster Prestige Spéciale</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Oesters</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Alikruik vers">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 13,63</span></span>
+            <span class="dep-dest"><span data-flap>Alikruik vers</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeeuwse Super mosselen">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 5,12</span></span>
+            <span class="dep-dest"><span data-flap>Zeeuwse Super mosselen</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeebaars Corsica">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 11,66</span></span>
+            <span class="dep-dest"><span data-flap>Zeebaars Corsica</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Dorade Corsica">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 11,94</span></span>
+            <span class="dep-dest"><span data-flap>Dorade Corsica</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Balfegó" data-name="Balfegó tonijn buik loin">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 53,41</span></span>
+            <span class="dep-dest"><span data-flap>Balfegó tonijn buik loin</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Balfegó</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Oesters" data-name="The Oyster Signature Fines">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 7,58</span></span>
+            <span class="dep-dest"><span data-flap>The Oyster Signature Fines</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Oesters</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Amandes vers">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 6,27</span></span>
+            <span class="dep-dest"><span data-flap>Amandes vers</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeeuwse Extra mosselen">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 3,76</span></span>
+            <span class="dep-dest"><span data-flap>Zeeuwse Extra mosselen</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Oesters" data-name="Ostra Regal Gold Selection">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 29,32</span></span>
+            <span class="dep-dest"><span data-flap>Ostra Regal Gold Selection</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Oesters</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Clams vers">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 15,37</span></span>
+            <span class="dep-dest"><span data-flap>Clams vers</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Gerookte zalmsalade">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 4,25</span></span>
+            <span class="dep-dest"><span data-flap>Gerookte zalmsalade</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Balfegó" data-name="Balfegó tonijn center loin">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 53,41</span></span>
+            <span class="dep-dest"><span data-flap>Balfegó tonijn center loin</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Balfegó</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Oesters" data-name="Ostra Regal">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 16,73</span></span>
+            <span class="dep-dest"><span data-flap>Ostra Regal</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Oesters</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Sentinelle">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 14,72</span></span>
+            <span class="dep-dest"><span data-flap>Sentinelle</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Roodbaars heel 700+">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 10,90</span></span>
+            <span class="dep-dest"><span data-flap>Roodbaars heel 700+</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Lijnvangst" data-name="Schelvishaas met vel geschubd lijnvangst">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 34,88</span></span>
+            <span class="dep-dest"><span data-flap>Schelvishaas met vel geschubd lijnvangst</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Lijnvangst</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Forel">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 9,81</span></span>
+            <span class="dep-dest"><span data-flap>Forel</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+    
+    <div class="board-more">
+      <span class="k">Alle tijden en prijzen onder voorbehoud</span>
+      <a class="btn btn--ghost" href="template.html">Terug naar de hal <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CALL ============ -->
+<section class="gate">
+  <div class="wrap gate-in">
+    <div>
+      <p class="gate-k">Laatste oproep · Final call</p>
+      <h2>Vers van de afslag, elke dinsdag</h2>
+    </div>
+    <div>
+      <p>Elke dinsdag om 18:00 uur verschijnt de Dagvangst: wisselend verse vis tegen een scherpe prijs. Op &#x3D; op.</p>
+      <a class="btn btn--inv btn--lg" href="#">Bekijk de dagvangst <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <p class="ftr-brand">Fredimare</p>
+    <div class="ftr-cols">
+      <div>
+        <span class="k">Spoorwijzer</span>
+        <ul><li><a href="catalog.html">Assortiment</a></li><li><a href="#">Dagvangst</a></li><li><a href="#">Balfegó</a></li><li><a href="#">Ambassadeurs</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div>
+        <span class="k">Service</span>
+        <ul><li><a href="#">Bestellen en bezorgen</a></li><li><a href="#">Restaurants &amp; partners</a></li><li><a href="#">Algemene voorwaarden</a></li><li><a href="#">Privacyverklaring</a></li><li><a href="#">Cookieverklaring</a></li></ul>
+      </div>
+      <div>
+        <span class="k">Informatiebalie</span>
+        <ul>
+          <li>Ambachtsweg 10, 4691 SC Tholen, Nederland</li>
+          
+          
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-bot"><span>© 2026 Fredimare</span><span>Alle tijden en prijzen onder voorbehoud</span></div>
+  </div>
+</footer>
+
+<div class="badge">Demo redesign · Departure Board</div>
+
+<script>
+(function () {
+  var d = document, root = d.documentElement;
+  root.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!('animate' in Element.prototype)) reduce = true;
+
+  /* ---------- split-flap engine ---------- */
+  var WHEEL = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789€.,:-/&+'!?%@";
+  var L = WHEEL.length, NB = ' ';
+  var active = [], running = false;
+
+  function mk(tag, cls) { var e = d.createElement(tag); if (cls) e.className = cls; return e; }
+  function vis(ch) { return ch === ' ' ? NB : ch; }
+
+  function cell() {
+    var c = mk('span', 'c'), t = mk('span', 'h t'), b = mk('span', 'h b'),
+        f = mk('span', 'f'), ff = mk('span', 'h t'), fb = mk('span', 'h b bk');
+    var it = mk('i'), ib = mk('i'), iff = mk('i'), ifb = mk('i');
+    it.textContent = ib.textContent = iff.textContent = ifb.textContent = NB;
+    t.appendChild(it); b.appendChild(ib); ff.appendChild(iff); fb.appendChild(ifb);
+    f.appendChild(ff); f.appendChild(fb);
+    c.appendChild(t); c.appendChild(b); c.appendChild(f);
+    return { el: c, top: it, bot: ib, ff: iff, fb: ifb, flap: f, cur: ' ', path: null, i: 0, due: 0, anim: null, on: false };
+  }
+
+  function build(el) {
+    if (el._cells) return;
+    var raw = (el.getAttribute('data-text') || el.textContent).replace(/\s+/g, ' ').trim();
+    var pad = +el.getAttribute('data-pad') || 0;
+    var sr = mk('span', 'sr'), box = mk('span', 'fl'), cells = [];
+    sr.textContent = raw;
+    box.setAttribute('aria-hidden', 'true');
+    if (pad) {
+      for (var k = 0; k < Math.max(pad, raw.length); k++) { var c = cell(); cells.push(c); box.appendChild(c.el); }
+    } else {
+      var words = raw.split(' ');
+      words.forEach(function (w, wi) {
+        var ws = mk('span', 'w');
+        for (var k = 0; k < w.length; k++) { var c = cell(); cells.push(c); ws.appendChild(c.el); }
+        if (wi < words.length - 1) { var s = cell(); cells.push(s); ws.appendChild(s.el); }
+        box.appendChild(ws);
+      });
+    }
+    el.textContent = '';
+    el.appendChild(sr); el.appendChild(box);
+    el._cells = cells; el._text = raw;
+    /* the board is never blank: every cell rests on its glyph until it gets flapped */
+    var up = raw.toUpperCase();
+    cells.forEach(function (c, k) { setNow(c, up.charAt(k) || ' '); });
+    el.classList.add('built');
+  }
+
+  function setNow(c, ch) {
+    if (c.anim) { c.anim.cancel(); c.anim = null; }
+    c.path = null; c.cur = ch;
+    c.top.textContent = c.bot.textContent = c.ff.textContent = c.fb.textContent = vis(ch);
+  }
+
+  function pathTo(from, to, spin) {
+    var ti = WHEEL.indexOf(to), fi = WHEEL.indexOf(from), p = [], n, k;
+    if (ti < 0) {
+      n = 5 + (Math.random() * 6 | 0);
+      var base = Math.random() * L | 0;
+      for (k = 0; k < n; k++) p.push(WHEEL.charAt((base + k) % L));
+      p.push(to);
+      return p;
+    }
+    var dist = fi < 0 ? 12 : (ti - fi + L) % L;
+    if (dist === 0) dist = spin ? 5 + (Math.random() * 6 | 0) : 0;
+    n = Math.min(dist, 9 + (Math.random() * 5 | 0));
+    for (k = n - 1; k >= 0; k--) p.push(WHEEL.charAt((ti - k + L * 2) % L));
+    return p;
+  }
+
+  function flap(el, text, opt) {
+    build(el);
+    opt = opt || {};
+    var s = (text == null ? el._text : text).toUpperCase();
+    var cells = el._cells, now = performance.now(), delay = opt.delay || 0;
+    for (var k = 0; k < cells.length; k++) {
+      var c = cells[k], ch = s.charAt(k) || ' ';
+      if (reduce) { setNow(c, ch); continue; }
+      if (ch === c.cur && !opt.spin && !c.path) continue;
+      c.path = pathTo(c.cur, ch, opt.spin);
+      c.i = 0;
+      c.due = now + delay + Math.random() * 200;
+      if (!c.on) { c.on = true; active.push(c); }
+    }
+    if (active.length && !running) { running = true; requestAnimationFrame(tick); }
+  }
+
+  function tick(now) {
+    var keep = [];
+    for (var k = 0; k < active.length; k++) {
+      var c = active[k];
+      if (!c.path) { c.on = false; continue; }
+      if (now >= c.due) {
+        if (c.anim) { c.anim.cancel(); c.anim = null; c.bot.textContent = c.ff.textContent = vis(c.cur); }
+        if (c.i >= c.path.length) { c.path = null; c.on = false; continue; }
+        var nx = c.path[c.i++], v = vis(nx);
+        c.top.textContent = v; c.fb.textContent = v;
+        c.anim = c.flap.animate(
+          [{ transform: 'rotateX(0deg)' }, { transform: 'rotateX(-180deg)' }],
+          { duration: 60, easing: 'cubic-bezier(.55,0,.9,.55)', fill: 'forwards' }
+        );
+        c.cur = nx; c.due = now + 62;
+        clack();
+      }
+      keep.push(c);
+    }
+    active = keep;
+    if (active.length) requestAnimationFrame(tick); else running = false;
+  }
+
+  /* ---------- clack: WebAudio noise bursts, muted by default ---------- */
+  var ac = null, noise = null, soundOn = false, lastClack = 0;
+  function clack() {
+    if (!soundOn || !ac) return;
+    var t = ac.currentTime;
+    if (t - lastClack < 0.024) return;
+    lastClack = t;
+    var src = ac.createBufferSource(), bp = ac.createBiquadFilter(), g = ac.createGain();
+    src.buffer = noise;
+    bp.type = 'bandpass'; bp.frequency.value = 1700 + Math.random() * 2200; bp.Q.value = 1.4;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.14 + Math.random() * 0.08, t + 0.002);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.03);
+    src.connect(bp); bp.connect(g); g.connect(ac.destination);
+    src.start(t); src.stop(t + 0.04);
+  }
+  var sndBtn = d.querySelector('[data-sound]');
+  if (sndBtn) sndBtn.addEventListener('click', function () {
+    soundOn = !soundOn;
+    sndBtn.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+    if (soundOn && !ac) {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) {
+        ac = new AC();
+        noise = ac.createBuffer(1, Math.floor(ac.sampleRate * 0.04), ac.sampleRate);
+        var data = noise.getChannelData(0);
+        for (var i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 3);
+      }
+    }
+    if (ac && ac.state === 'suspended') ac.resume();
+    if (soundOn) {
+      var first = d.querySelector('[data-board]');
+      if (first) first.querySelectorAll('[data-flap]').forEach(function (el) { flap(el, null, { spin: true }); });
+    }
+  });
+
+  /* ---------- clock ---------- */
+  function hhmm() { var n = new Date(); return ('0' + n.getHours()).slice(-2) + ':' + ('0' + n.getMinutes()).slice(-2); }
+  var clock = d.querySelector('[data-clock]');
+  if (clock) {
+    clock.setAttribute('data-text', hhmm());
+    setInterval(function () { var t = hhmm(); if (clock._text !== t) { clock._text = t; flap(clock, t); } }, 5000);
+  }
+
+  /* ---------- build boards, flap rows as they enter view ---------- */
+  var groups = [].slice.call(d.querySelectorAll('[data-board]'));
+  groups.forEach(function (g) { g.querySelectorAll('[data-flap]').forEach(build); });
+
+  function fire(g, delay) {
+    if (g.classList.contains('sign')) { g.classList.add('in'); return; }
+    if (g.classList.contains('gone')) return;
+    g.querySelectorAll('[data-flap]').forEach(function (el) { flap(el, null, { delay: delay, spin: true }); });
+  }
+  var signs = [].slice.call(d.querySelectorAll('.sign'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      var n = 0;
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        fire(e.target, (n++) * 90);
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.01 });
+    groups.concat(signs).forEach(function (g) { io.observe(g); });
+  } else {
+    groups.forEach(function (g) { fire(g, 0); });
+  }
+
+  /* ---------- platform filter re-flaps the board ---------- */
+  var chips = [].slice.call(d.querySelectorAll('[data-filter]'));
+  var rows = [].slice.call(d.querySelectorAll('[data-row]'));
+  var shown = d.querySelector('[data-shown]');
+  function fold(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim(); }
+  function stem(s) { s = fold(s); return s.length > 4 ? s.replace(/(en|es|s|e)$/, '') : s; }
+  function matches(row, f) {
+    if (!f) return true;
+    var fs = stem(f), t = stem(row.getAttribute('data-tag')), n = fold(row.getAttribute('data-name'));
+    if (!fs) return true;
+    return (t && (t.indexOf(fs) > -1 || fs.indexOf(t) > -1)) || n.indexOf(fs) > -1;
+  }
+  function count(n) { if (shown) flap(shown, ('   ' + n).slice(-3)); }
+  if (shown) { shown.setAttribute('data-text', ('   ' + rows.length).slice(-3)); build(shown); count(rows.length); }
+
+  function apply(f) {
+    var m = rows.map(function (r) { return matches(r, f); });
+    if (!m.some(Boolean)) m = rows.map(function () { return true; });
+    var visible = 0;
+    rows.forEach(function (r, i) {
+      clearTimeout(r._t);
+      var flaps = [].slice.call(r.querySelectorAll('[data-flap]'));
+      if (m[i]) {
+        visible++;
+        if (r.classList.contains('gone')) {
+          r.classList.remove('gone'); r.removeAttribute('aria-hidden');
+          r._t = setTimeout(function () { flaps.forEach(function (el) { flap(el, null); }); }, reduce ? 0 : 280);
+        } else {
+          flaps.forEach(function (el) { flap(el, null, { spin: true }); });
+        }
+      } else {
+        flaps.forEach(function (el) { flap(el, el.hasAttribute('data-pad') ? 'Vertrokken' : ''); });
+        r._t = setTimeout(function () { r.classList.add('gone'); r.setAttribute('aria-hidden', 'true'); }, reduce ? 0 : 1350);
+      }
+    });
+    count(visible);
+  }
+  chips.forEach(function (ch) {
+    ch.addEventListener('click', function () {
+      chips.forEach(function (o) { o.classList.toggle('is-on', o === ch); o.setAttribute('aria-pressed', o === ch ? 'true' : 'false'); });
+      apply(ch.getAttribute('data-filter'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

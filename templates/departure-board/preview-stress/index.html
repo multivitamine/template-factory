@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fredimare · Premium vis, schaal- en schelpdieren</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#141518;
+  --c-surface:#0b0b0d;
+  --c-text:#efebe0;
+  --c-muted:#8e8c85;
+  --c-line:#2a2b30;
+  --c-primary:#ffc531;
+  --c-on-primary:#121212;
+  --c-accent:#ff6a3d;
+
+  --glyph:#f3eee2;
+  --housing:#09090b;
+  --row:#0d0d0f;
+  --p-ring:color-mix(in oklab, var(--c-primary), #fff 30%);
+  --p-glow:color-mix(in srgb, var(--c-primary) 55%, transparent);
+  --p-wash:color-mix(in srgb, var(--c-primary) 9%, var(--row));
+  --a-ink:color-mix(in oklab, var(--c-accent) 62%, #f5f0e4);
+  --enamel:#e8e3d4;
+  --enamel-ink:#121316;
+  --f-disp:'Big Shoulders Display','Big Shoulders',Oswald,Impact,sans-serif;
+  --f-mono:'Azeret Mono',ui-monospace,Menlo,Consolas,monospace;
+  --f-body:'Hanken Grotesk','Helvetica Neue',Helvetica,sans-serif;
+  --pad:clamp(16px,4vw,56px);
+  --r-s:4px;
+  --r-l:14px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 16px/1.6 var(--f-body);counter-reset:sec;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    radial-gradient(900px 520px at 12% -8%, color-mix(in srgb, var(--c-primary) 11%, transparent), transparent 70%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.014) 0 1px, transparent 1px 5px),
+    var(--c-bg)}
+main{overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:100%;max-width:1480px;margin:0 auto;padding-inline:var(--pad)}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--p-ring);outline-offset:3px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.6em;font:800 17px/1 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;padding:.9em 1.25em;border-radius:var(--r-s);white-space:nowrap;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s}
+.btn .arr{display:inline-block;transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.btn--p{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 0 0 1px var(--p-ring)}
+.btn--p:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--p-ring),0 14px 34px -12px var(--p-glow)}
+.btn--ghost{color:var(--c-text);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--c-text) 32%, transparent)}
+.btn--ghost:hover{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--c-text)}
+.btn--inv{background:var(--c-on-primary);color:var(--c-primary)}
+.btn--inv:hover{transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(0,0,0,.6)}
+.btn--lg{font-size:clamp(17px,1.4vw,20px);padding:1em 1.45em}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--c-surface) 90%, transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:3px solid var(--c-primary);border-bottom:1px solid var(--c-line)}
+.hdr-in{display:flex;align-items:center;gap:24px;min-height:66px}
+.logo{display:flex;align-items:center;flex:none;max-width:200px}
+.logo img{height:30px;width:auto;max-width:170px;object-fit:contain}
+.logo--plate{background:var(--enamel);padding:7px 12px;border-radius:var(--r-s)}
+.logo-txt{font:800 26px/1 var(--f-disp);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;display:block}
+.logo--plate .logo-txt{color:var(--enamel-ink)}
+.nav{flex:1;min-width:0}
+.nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:8px 12px;font:500 14px/1.2 var(--f-body);color:var(--c-muted);white-space:nowrap;border-radius:var(--r-s);transition:color .2s,background .2s}
+.nav a:hover{color:var(--c-text);background:rgba(255,255,255,.06)}
+.hdr-tools{display:flex;gap:10px;align-items:center;margin-left:auto;flex:none}
+.hdr .btn{font-size:15px;padding:.8em 1.05em}
+.snd{display:none}
+.js .snd{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--c-line);color:var(--c-muted);border-radius:var(--r-s);padding:8px 10px;font:600 11px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transition:color .2s,border-color .2s}
+.snd:hover{color:var(--c-text)}
+.snd svg{width:16px;height:16px}
+.snd .wv{display:none}
+.snd[aria-pressed="true"]{color:var(--c-text);border-color:var(--p-ring)}
+.snd[aria-pressed="true"] .wv{display:inline}
+.snd[aria-pressed="true"] .mx{display:none}
+@media (max-width:1060px){
+  .hdr-in{flex-wrap:wrap;gap:0 14px;padding-top:10px}
+  .nav{order:3;flex-basis:100%;margin:10px calc(var(--pad) * -1) 0;padding-inline:calc(var(--pad) - 12px);border-top:1px solid var(--c-line)}
+  .nav ul{padding-block:5px}
+}
+@media (max-width:520px){
+  .snd span{display:none}
+  .hdr .btn{font-size:14px;padding:.75em .9em}
+  .logo img{height:26px;max-width:130px}
+  .logo-txt{font-size:22px;max-width:150px}
+}
+
+/* ---------- split-flap cells ---------- */
+[data-flap]{font-family:var(--f-mono);font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--glyph)}
+.built{display:block}
+.fl{display:flex;flex-wrap:wrap;row-gap:.1em}
+.fl .w{display:inline-flex;flex-wrap:wrap;row-gap:.1em}
+.c{position:relative;display:inline-block;flex:none;width:.7em;height:1.2em;margin-right:.05em;perspective:3.6em;color:var(--glyph);border-radius:.09em;box-shadow:0 .05em .1em #000}
+.c .h{position:absolute;left:0;right:0;overflow:hidden}
+.c>.t{top:0;height:50%;border-radius:.09em .09em 0 0;background:linear-gradient(#27282c,#1d1e21)}
+.c>.b{bottom:0;height:50%;border-radius:0 0 .09em .09em;background:linear-gradient(#18191c,#131416)}
+.c i{display:block;height:200%;line-height:1.2em;text-align:center;font-style:normal}
+.c .b i{transform:translateY(-50%)}
+.c .f{position:absolute;left:0;right:0;top:0;height:50%;transform-origin:50% 100%;transform-style:preserve-3d;z-index:2}
+.c .f .h{top:0;bottom:0;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.c .f .t{border-radius:.09em .09em 0 0;background:linear-gradient(#27282c,#1d1e21)}
+.c .f .bk{transform:rotateX(180deg);border-radius:0 0 .09em .09em;background:linear-gradient(#18191c,#131416)}
+.c::after{content:"";position:absolute;left:0;right:0;top:50%;height:.06em;min-height:1px;transform:translateY(-50%);background:#030304;z-index:3}
+.hl:not(.built){display:inline;background:var(--c-primary);color:var(--c-on-primary);padding:0 .15em}
+.hl .c{color:var(--c-on-primary)}
+.hl .c>.t,.hl .c .f .t{background:var(--c-primary)}
+.hl .c>.b,.hl .c .f .bk{background:color-mix(in srgb, var(--c-primary) 84%, #000)}
+.hl .c::after{background:color-mix(in srgb, var(--c-primary) 45%, #000)}
+
+/* ---------- shared board housing ---------- */
+.board{position:relative;background:linear-gradient(180deg,#0f0f12,var(--housing));border-radius:var(--r-l);padding:clamp(16px,2.4vw,34px);overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 0 0 7px #111215,inset 0 0 0 8px #000,0 0 0 1px var(--c-line),0 50px 90px -50px #000}
+.board::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(640px 320px at 0% 0%, color-mix(in srgb, var(--c-primary) 15%, transparent), transparent 70%)}
+.board::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle, #3a3b40 0 2px, #000 2.6px, transparent 3.2px) left 14px top 14px/8px 8px no-repeat,
+    radial-gradient(circle, #3a3b40 0 2px, #000 2.6px, transparent 3.2px) right 14px top 14px/8px 8px no-repeat,
+    radial-gradient(circle, #3a3b40 0 2px, #000 2.6px, transparent 3.2px) left 14px bottom 14px/8px 8px no-repeat,
+    radial-gradient(circle, #3a3b40 0 2px, #000 2.6px, transparent 3.2px) right 14px bottom 14px/8px 8px no-repeat}
+.board>*{position:relative;z-index:1}
+.board-top{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;padding:0 6px 14px;border-bottom:1px solid #1f2023;font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted)}
+.board-name{font:800 clamp(20px,2vw,28px)/1 var(--f-disp);letter-spacing:.06em;color:var(--c-text)}
+.board-top .sp{margin-left:auto;display:flex;align-items:center;gap:8px;color:var(--a-ink)}
+.lamp{width:14px;height:14px;border-radius:50%;flex:none;background:var(--c-primary);box-shadow:0 0 0 2px #000,0 0 0 3px var(--p-ring),0 0 20px 4px var(--p-glow);animation:buzz 3.2s linear infinite}
+@keyframes buzz{0%,44%,50%,56%,100%{opacity:1}46%{opacity:.35}53%{opacity:.6}}
+.dot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--a-ink);box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 12px 1px color-mix(in srgb, var(--a-ink) 70%, transparent)}
+.k{font:600 10px/1.2 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted)}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(18px,3.4vw,44px) clamp(28px,4vw,56px)}
+.hero-grid{display:grid;gap:clamp(14px,1.8vw,24px)}
+.hero-grid.has-img{grid-template-columns:minmax(0,1fr) minmax(250px,.36fr)}
+.hero-tab{display:grid;grid-template-columns:auto minmax(0,1fr) auto;column-gap:clamp(14px,2.2vw,32px);align-items:start;padding:clamp(14px,2vw,22px) 6px 0}
+.hero-tab .k{padding-bottom:12px}
+.hr-time{font-size:clamp(17px,2vw,28px);padding-top:.2em}
+.hr-dest{margin:0;font-size:clamp(25px,5.3vw,88px);line-height:1.04;font-weight:600}
+.has-img .hr-dest{font-size:clamp(25px,4.2vw,72px)}
+.hr-dest>[data-flap]{display:block}
+.hr-dest>.hl{margin-top:.12em}
+.hr-dest>.hl:not(.built){display:inline-block}
+.pcirc{display:grid;place-items:center;width:clamp(42px,4.2vw,62px);aspect-ratio:1;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);font:800 clamp(22px,2.2vw,34px)/1 var(--f-disp);box-shadow:0 0 0 2px #000,0 0 0 3px var(--p-ring)}
+.board-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 32px;align-items:end;margin-top:clamp(22px,3vw,40px);padding:clamp(16px,2vw,24px) 6px 0;border-top:1px solid #1f2023}
+.via{margin:0 0 10px;font:600 11px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted)}
+.via b{color:var(--c-text);font-weight:600}
+.hero-text{margin:0;max-width:58ch;color:color-mix(in srgb, var(--c-text) 80%, transparent);font-size:clamp(15px,1.15vw,18px)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.lightbox{position:relative;margin:0;border-radius:var(--r-l);overflow:hidden;background:#000;box-shadow:inset 0 0 0 1px #2c2d31,0 40px 70px -40px #000}
+.lightbox img{position:absolute;inset:10px;width:calc(100% - 20px);height:calc(100% - 20px);object-fit:cover;border-radius:7px}
+.lightbox::after{content:"";position:absolute;inset:10px;border-radius:7px;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.12),transparent 30%,transparent 62%,rgba(0,0,0,.6));box-shadow:inset 0 0 40px rgba(0,0,0,.45)}
+.lb-tag{position:absolute;z-index:2;top:20px;right:20px;font:600 9.5px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;background:rgba(0,0,0,.6);color:var(--c-text);padding:6px 8px;border-radius:3px}
+.lb-cap{position:absolute;z-index:2;left:22px;right:22px;bottom:20px;font:800 clamp(20px,1.8vw,28px)/1 var(--f-disp);text-transform:uppercase;color:#fff;text-wrap:balance}
+.hero-img{min-height:320px}
+@media (max-width:900px){
+  .hero-grid.has-img{grid-template-columns:1fr}
+  .hero-img{min-height:0;aspect-ratio:4/3}
+}
+@media (max-width:640px){
+  .hero-tab{grid-template-columns:1fr auto;row-gap:12px}
+  .hero-tab>.k{display:none}
+  .hr-time{order:1}
+  .hr-plat{order:2}
+  .hr-dest{order:3;grid-column:1/-1}
+  .board-foot{grid-template-columns:1fr}
+}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--c-primary);color:var(--c-on-primary);overflow:hidden;border-block:1px solid #000;box-shadow:0 0 50px -10px var(--p-glow)}
+.ticker-track{display:flex;width:max-content;animation:tick 48s linear infinite}
+.ticker-seq{display:flex;align-items:center;flex:none;font:600 13px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;padding-block:14px;white-space:nowrap}
+.ticker-seq span{padding-inline:22px}
+.ticker-seq i{font-style:normal;opacity:.55}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- section signage ---------- */
+.sec{padding-top:clamp(64px,9vw,128px)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px 32px;flex-wrap:wrap;margin-bottom:clamp(26px,3.4vw,44px)}
+.sign{position:relative;display:inline-flex;align-items:center;gap:clamp(12px,1.4vw,18px);margin-top:46px;padding:clamp(10px,1.1vw,14px) clamp(18px,2.2vw,30px) clamp(10px,1.1vw,14px) clamp(10px,1.1vw,14px);background:var(--enamel);color:var(--enamel-ink);border-radius:7px;transform-origin:50% -46px;
+  box-shadow:inset 0 0 0 3px var(--enamel),inset 0 0 0 4.5px var(--enamel-ink),0 22px 34px -18px #000}
+.sign::before,.sign::after{content:"";position:absolute;bottom:100%;width:2px;height:46px;background:linear-gradient(#2c2d31,#83848a)}
+.sign::before{left:18%}
+.sign::after{right:18%}
+.sign-num{display:grid;place-items:center;flex:none;width:clamp(42px,4.2vw,60px);aspect-ratio:1;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);font:800 clamp(22px,2.2vw,32px)/1 var(--f-disp);box-shadow:0 0 0 2.5px var(--enamel-ink)}
+.sign-num::before{counter-increment:sec;content:counter(sec)}
+.sign-num--i::before{counter-increment:none;content:"i";font-family:Georgia,serif;font-style:italic;font-weight:700}
+.sign h2,.sign h1{margin:0;font:800 clamp(30px,4.4vw,64px)/.9 var(--f-disp);text-transform:uppercase;letter-spacing:.005em}
+.sign small{display:block;margin-top:6px;font:600 10px/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;opacity:.55}
+.js .sign.in{animation:swing 1.8s cubic-bezier(.3,.7,.3,1) both}
+@keyframes swing{0%{transform:rotate(-6deg)}28%{transform:rotate(3.4deg)}52%{transform:rotate(-1.6deg)}74%{transform:rotate(.6deg)}100%{transform:rotate(0)}}
+.sec-aside{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+
+/* ---------- now boarding (passes) ---------- */
+.passes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:clamp(14px,1.6vw,22px);counter-reset:pass}
+.pass{counter-increment:pass}
+@media (max-width:640px){
+  .passes{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78vw;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--pad) * -1);padding:0 var(--pad) 18px;scroll-padding-inline:var(--pad);scrollbar-width:none}
+  .passes::-webkit-scrollbar{display:none}
+  .pass{scroll-snap-align:start}
+  .pass-img{aspect-ratio:16/11}
+}
+.pass-link{display:flex;flex-direction:column;height:100%;background:var(--enamel);color:var(--enamel-ink);border-radius:10px;overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease);box-shadow:0 30px 50px -30px #000}
+.pass-link:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 40px 60px -30px #000}
+.pass-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;background:var(--enamel-ink);color:var(--enamel);font:600 10.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.pass-head .no::before{content:"Nº " counter(pass, decimal-leading-zero)}
+.pass-head .now{display:none;align-items:center;gap:8px}
+.pass:first-child .pass-head{background:var(--c-primary);color:var(--c-on-primary)}
+.pass:first-child .pass-head .now{display:inline-flex}
+.pass:first-child .pass-head .std{display:none}
+.now::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;animation:blink 1s steps(2,jump-none) infinite}
+@keyframes blink{50%{opacity:.15}}
+.pass-img{position:relative;aspect-ratio:4/3;background:#fff;overflow:hidden}
+.pass-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.pass-link:hover .pass-img img{transform:scale(1.05)}
+.pass-tag{position:absolute;top:12px;left:12px;background:var(--enamel-ink);color:var(--enamel);font:600 10px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:6px 8px;border-radius:3px;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fb{position:relative;display:grid;place-items:center;width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%, color-mix(in srgb, var(--c-primary) 14%, transparent), transparent 65%),var(--housing);color:var(--c-muted);font:800 clamp(40px,5vw,72px)/1 var(--f-disp);text-transform:uppercase}
+/* missing photo = one giant split-flap tile carrying the brand initials */
+.pass-img .fb{font:600 clamp(54px,6vw,88px)/1 var(--f-mono);letter-spacing:.04em;color:var(--glyph)}
+.pass-img .fb::before{content:"";position:absolute;left:50%;top:50%;width:2.6em;height:1.5em;transform:translate(-50%,-50%);border-radius:.1em;background:linear-gradient(#27282c 0 50%,#16171a 50%);box-shadow:0 .06em .14em #000,inset 0 1px 0 rgba(255,255,255,.06);z-index:-1}
+.pass-img .fb::after{content:"";position:absolute;left:50%;top:50%;width:2.6em;height:.05em;transform:translate(-50%,-50%);background:#030304;z-index:1}
+.pass-img .fb{isolation:isolate}
+.pass-img:has(.fb){background:var(--housing)}
+.dep-thumb:has(.fb){background:#18191c;box-shadow:inset 0 0 0 1px #2a2b30}
+.dep-thumb .fb{background:linear-gradient(#232428 0 50%,#16171a 50%);color:var(--a-ink)!important}
+.pass-body{display:flex;flex-direction:column;gap:12px;padding:16px;flex:1}
+.pass-body .k{color:rgba(18,19,22,.55)}
+.pass-name{margin:4px 0 0;font:800 clamp(22px,1.8vw,28px)/1 var(--f-disp);text-transform:uppercase;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pass-fields{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:auto;padding-top:12px;border-top:1.5px dashed rgba(18,19,22,.28)}
+.pass-fields b{display:block;margin-top:4px;font:600 15px/1.2 var(--f-mono)}
+.pass-fields s{display:block;font:500 11px/1.2 var(--f-mono);opacity:.55}
+.pass-fields .plat b::before{content:counter(pass)}
+.pass-stub{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-top:2px dashed rgba(18,19,22,.3)}
+.pass-stub::before,.pass-stub::after{content:"";position:absolute;top:-10px;width:18px;height:18px;border-radius:50%;background:var(--c-bg)}
+.pass-stub::before{left:-9px}
+.pass-stub::after{right:-9px}
+.barcode{width:92px;height:28px;flex:none;background:repeating-linear-gradient(90deg,#121316 0 2px,transparent 2px 4px,#121316 4px 5px,transparent 5px 8px,#121316 8px 11px,transparent 11px 12px,#121316 12px 13px,transparent 13px 16px)}
+.pass-cta{font:800 17px/1 var(--f-disp);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.pass-cta .arr{display:inline-block;transition:transform .3s var(--ease)}
+.pass-link:hover .pass-cta .arr{transform:translateX(5px)}
+
+/* ---------- concourse (categories) ---------- */
+.cats:not(:has(.plat)){display:none}
+.concourse{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(min(76vw,250px),1fr);gap:clamp(12px,1.6vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:26px;counter-reset:plat;scrollbar-width:thin;scrollbar-color:var(--c-line) transparent;position:relative}
+.concourse-floor{height:10px;margin-top:-6px;border-radius:2px;background:repeating-linear-gradient(90deg,var(--c-primary) 0 22px,transparent 22px 30px);opacity:.75;box-shadow:0 0 24px -4px var(--p-glow)}
+.plat{counter-increment:plat;scroll-snap-align:start;display:flex;flex-direction:column;padding-top:30px}
+.plat-sign{position:relative;display:flex;align-items:center;gap:12px;padding:10px 14px 10px 10px;background:var(--enamel);color:var(--enamel-ink);border-radius:6px;transform-origin:50% -30px;transition:transform .7s var(--ease);box-shadow:inset 0 0 0 2.5px var(--enamel),inset 0 0 0 3.5px rgba(18,19,22,.5),0 16px 24px -14px #000}
+.plat-sign::before,.plat-sign::after{content:"";position:absolute;bottom:100%;width:2px;height:30px;background:linear-gradient(#2c2d31,#83848a)}
+.plat-sign::before{left:20%}
+.plat-sign::after{right:20%}
+.plat:hover .plat-sign{transform:rotate(-2deg)}
+.plat-circle{display:grid;place-items:center;flex:none;width:40px;aspect-ratio:1;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);font:800 22px/1 var(--f-disp);box-shadow:0 0 0 2px var(--enamel-ink)}
+.plat-circle::before{content:counter(plat)}
+.plat-name{flex:1;min-width:0;font:800 clamp(20px,1.7vw,26px)/.95 var(--f-disp);text-transform:uppercase;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.plat-arr{font:800 22px/1 var(--f-disp);transition:transform .3s var(--ease)}
+.plat:hover .plat-arr{transform:translateX(4px)}
+.plat-view{position:relative;margin-top:14px;aspect-ratio:4/5;border-radius:var(--r-s);overflow:hidden;background:#0c0c0e;box-shadow:inset 0 0 0 1px #000}
+.plat-view img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.04);transition:transform 1s var(--ease)}
+.plat:hover .plat-view img{transform:scale(1.05)}
+.plat-view::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.75))}
+.plat-meta{position:absolute;z-index:1;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;font:600 10.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.plat-meta b::before{content:"Spoor " counter(plat)}
+.plat-view .fb::before{content:counter(plat);font-size:clamp(90px,10vw,150px);color:transparent;-webkit-text-stroke:2px var(--c-line)}
+
+/* ---------- departures board ---------- */
+.dep-board{padding:clamp(10px,1.2vw,14px)}
+.dep-head,.dep-row{display:grid;grid-template-columns:52px 8.6em minmax(0,1fr) 9em 10.4em 1.2em;grid-template-areas:"th time dest plat st go";column-gap:clamp(12px,1.4vw,22px);align-items:center}
+.dep-head{padding:8px 16px 12px;font:600 10px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted);font-size:clamp(13px,1.1vw,16px)}
+.dep-head span{font-size:10px}
+.dep-head span:nth-child(1){grid-area:th}.dep-head span:nth-child(2){grid-area:time}.dep-head span:nth-child(3){grid-area:dest}.dep-head span:nth-child(4){grid-area:plat}.dep-head span:nth-child(5){grid-area:st}
+.dep-list{list-style:none;margin:0;padding:0;counter-reset:row;border-radius:9px;overflow:hidden;box-shadow:0 0 0 1px #000}
+.dep-item{counter-increment:row;display:grid;grid-template-rows:1fr;transition:grid-template-rows .55s var(--ease),opacity .4s}
+.dep-item.gone{grid-template-rows:0fr;opacity:0}
+.dep-clip{min-height:0;overflow:hidden}
+.home .dep-item:nth-child(n+9){display:none}
+.dep-row{position:relative;padding:12px 16px;background:var(--row);border-bottom:1px solid #1c1d20;font-size:clamp(13px,1.1vw,16px);transition:background .3s}
+.dep-item:nth-child(even) .dep-row{background:#101013}
+.dep-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c-primary);transform:scaleY(0);transition:transform .35s var(--ease)}
+.dep-row:hover{background:var(--p-wash)!important}
+.dep-row:hover::before{transform:scaleY(1)}
+.dep-thumb{grid-area:th;width:52px;aspect-ratio:1;border-radius:var(--r-s);overflow:hidden;background:#fff;align-self:start}
+.dep-thumb img{width:100%;height:100%;object-fit:cover}
+.dep-thumb .fb{font-size:20px}
+.dep-time{grid-area:time;display:flex;flex-direction:column;gap:5px;min-width:0}
+.dep-time s{font:500 11px/1 var(--f-mono);color:var(--c-muted)}
+.dep-dest{grid-area:dest;min-width:0}
+.dep-dest [data-flap]{font-size:1.06em}
+.dep-plat{grid-area:plat;display:flex;align-items:center;gap:10px;min-width:0}
+.plat-num{display:grid;place-items:center;flex:none;width:26px;aspect-ratio:1;border-radius:50%;border:1px solid #34353a;font:600 11px/1 var(--f-mono);color:var(--c-muted)}
+.plat-num::before{content:counter(row)}
+.dep-plat [data-flap]{font-size:.8em;color:var(--c-muted);min-width:0}
+.dep-plat .c{color:#cfcbc0}
+.dep-status{grid-area:st;display:flex;align-items:center;gap:9px;min-width:0}
+.dep-status [data-flap]{font-size:.84em;color:var(--a-ink);white-space:nowrap}
+.dep-status .c{color:var(--a-ink)}
+.dep-status .fl{flex-wrap:nowrap}
+.is-few .dot{animation:blink 1s steps(2,jump-none) infinite}
+.dep-go{grid-area:go;font:800 20px/1 var(--f-disp);color:var(--c-muted);transition:transform .3s var(--ease),color .3s}
+.dep-row:hover .dep-go{transform:translateX(4px);color:var(--c-text)}
+.dep-empty{padding:28px 18px;font:600 13px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--c-muted)}
+.board-more{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 8px 4px}
+@media (max-width:860px){
+  .dep-head{display:none}
+  .dep-row{grid-template-columns:46px minmax(0,1fr) auto;grid-template-areas:"th dest dest" "th time st";row-gap:10px;padding:12px}
+  .dep-thumb{width:46px}
+  .dep-plat,.dep-go{display:none}
+  .dep-status{justify-content:flex-end}
+}
+
+/* ---------- announcements (usps) ---------- */
+.ann:not(:has(.ann-item)){display:none}
+.ann-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1px;background:var(--c-line);border-radius:var(--r-l);overflow:hidden;box-shadow:0 0 0 1px var(--c-line);counter-reset:ann}
+.ann-item{position:relative;counter-increment:ann;display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.4vw,34px);background:var(--c-surface);transition:background .3s}
+.ann-item::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c-primary);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.ann-item:hover{background:#0f0f12}
+.ann-item:hover::before{transform:scaleX(1)}
+.ann-k{display:flex;align-items:center;gap:10px}
+.ann-k svg{width:18px;height:18px;color:var(--c-muted)}
+.ann-k .k::before{content:"Bericht " counter(ann, decimal-leading-zero)}
+.ann-item h3{margin:0;font:800 clamp(24px,2.2vw,34px)/.95 var(--f-disp);text-transform:uppercase;text-wrap:balance}
+.ann-item p{margin:0;color:var(--c-muted);font-size:15px}
+
+/* ---------- story & stats ---------- */
+.story:not(:has(.story-grid)):not(:has(.stat)){display:none}
+.story-grid{display:grid;gap:clamp(28px,4vw,72px);align-items:center}
+.story-grid.has-img{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+.story-title{margin:0 0 24px;font:800 clamp(40px,5.8vw,96px)/.86 var(--f-disp);text-transform:uppercase;text-wrap:balance;overflow-wrap:anywhere}
+.story-text{margin:0;max-width:60ch;color:color-mix(in srgb, var(--c-text) 78%, transparent);font-size:clamp(16px,1.2vw,18px)}
+.story-img{aspect-ratio:5/4}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:12px;margin-top:clamp(28px,4vw,48px)}
+.stats:not(:has(.stat)){display:none}
+.stat{padding:18px 18px 16px;background:linear-gradient(180deg,#0f0f12,var(--housing));border-radius:10px;box-shadow:inset 0 0 0 1px #000,0 0 0 1px var(--c-line)}
+.stat-v{font-size:clamp(28px,3.2vw,46px)}
+.stat .k{display:block;margin-top:12px}
+@media (max-width:900px){.story-grid.has-img{grid-template-columns:1fr}}
+
+/* ---------- gallery ---------- */
+.gal:not(:has(.gal-item)){display:none}
+.gal-track{display:flex;gap:clamp(12px,1.4vw,18px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:var(--c-line) transparent}
+.gal-item{flex:1 1 0;min-width:min(78vw,300px);height:clamp(240px,30vw,420px);scroll-snap-align:start}
+.gal-item:nth-child(3n+2){flex-grow:1.5}
+
+/* ---------- quote ---------- */
+.quote-board{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:start}
+.quote-board .pcirc{font-family:Georgia,serif}
+.quote-board blockquote{margin:0;font:800 clamp(30px,4.2vw,64px)/.95 var(--f-disp);text-transform:uppercase;text-wrap:balance}
+.quote-board figcaption{margin-top:20px}
+
+/* ---------- final call (cta) ---------- */
+.gate{position:relative;margin-top:clamp(64px,9vw,128px);background:var(--c-primary);color:var(--c-on-primary);overflow:hidden}
+.gate::before,.gate::after{content:"";position:absolute;left:0;right:0;height:14px;background:repeating-linear-gradient(-45deg,color-mix(in srgb, var(--c-on-primary) 85%, transparent) 0 14px,transparent 14px 28px)}
+.gate::before{top:0}
+.gate::after{bottom:0}
+.gate-in{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px 48px;align-items:end;padding-block:clamp(64px,8vw,120px)}
+.gate-k{margin:0 0 18px;font:600 11px/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.gate h2{margin:0;font:800 clamp(48px,8.6vw,150px)/.84 var(--f-disp);text-transform:uppercase;text-wrap:balance;overflow-wrap:anywhere}
+.gate p{margin:0 0 26px;font-size:clamp(16px,1.25vw,19px);max-width:44ch;opacity:.86}
+@media (max-width:800px){.gate-in{grid-template-columns:1fr}}
+
+/* ---------- information desk ---------- */
+.desk-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4vw,72px);align-items:start}
+.desk-title{margin:0 0 18px;font:800 clamp(44px,6vw,100px)/.86 var(--f-disp);text-transform:uppercase;overflow-wrap:anywhere}
+.desk-text{margin:0 0 26px;color:var(--c-muted);max-width:44ch}
+.tt-row{display:grid;grid-template-columns:8.5em minmax(0,1fr) auto;gap:16px;align-items:center;padding:18px 6px;border-bottom:1px solid #1f2023;font-size:clamp(13px,1.15vw,17px);transition:background .3s}
+a.tt-row:hover{background:var(--p-wash)}
+.tt-row:last-child{border-bottom:0}
+.tt-go{font:800 20px/1 var(--f-disp);color:var(--c-muted)}
+.tt-row .k{font-size:10px}
+.tt-row .k b{display:block;margin-top:5px;color:var(--a-ink);font-weight:600}
+@media (max-width:860px){.desk-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.tt-row{grid-template-columns:minmax(0,1fr) auto}.tt-row .k{grid-column:1/-1}}
+
+/* ---------- footer ---------- */
+.ftr{margin-top:clamp(64px,9vw,128px);background:var(--c-surface);border-top:1px solid var(--c-line);padding-block:clamp(44px,6vw,84px) 90px}
+.ftr-brand{margin:0 0 clamp(28px,4vw,52px);font:800 clamp(52px,11vw,190px)/.8 var(--f-disp);text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb, var(--c-text) 38%, transparent);overflow-wrap:anywhere}
+.ftr-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:32px}
+.ftr ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.ftr ul a{color:color-mix(in srgb, var(--c-text) 80%, transparent);transition:color .2s}
+.ftr ul a:hover{color:var(--c-text);text-decoration:underline;text-decoration-color:var(--p-ring);text-underline-offset:4px}
+.ftr-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:clamp(36px,5vw,64px);padding-top:20px;border-top:1px solid var(--c-line);font:600 10.5px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted)}
+
+/* ---------- badge ---------- */
+.badge{position:fixed;left:12px;bottom:12px;z-index:60;display:inline-flex;align-items:center;gap:8px;max-width:calc(100vw - 24px);padding:7px 11px;border-radius:var(--r-s);background:rgba(9,9,11,.88);border:1px solid var(--c-line);color:var(--c-muted);font:600 10px/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;flex:none;background:var(--c-primary);box-shadow:0 0 0 1px var(--p-ring)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .ticker-track{flex-wrap:wrap}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#D4AD62;--c-on-primary:#111111;--c-accent:#1A1A1A}</style></head>
+<body class="home">
+
+<header class="hdr">
+  <div class="hdr-in wrap">
+    <a class="logo " href="template.html">
+      <span class="logo-txt">Fredimare</span>
+    </a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <ul><li><a href="catalog.html">Assortiment</a></li><li><a href="#">Dagvangst</a></li><li><a href="#">Balfegó</a></li><li><a href="#">Ambassadeurs</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul>
+    </nav>
+    <div class="hdr-tools">
+      <button class="snd" type="button" aria-pressed="false" data-sound>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wv" d="M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13"/><path class="mx" d="M16.5 9.5l5 5M21.5 9.5l-5 5"/></svg>
+        <span>Geluid</span>
+      </button>
+      <a class="btn btn--p" href="catalog.html">Assortiment <span class="arr">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO: the big board ============ -->
+<section class="hero wrap">
+  <div class="hero-grid has-img">
+    <div class="board" data-board>
+      <div class="board-top">
+        <span class="lamp" aria-hidden="true"></span>
+        <span class="board-name">Vertrek</span>
+        <span>Departures · Fredimare</span>
+        <span class="sp"><i class="dot"></i>Op tijd</span>
+      </div>
+      <div class="hero-tab">
+        <span class="k">Tijd</span><span class="k">Bestemming</span><span class="k">Spoor</span>
+        <span class="hr-time" data-flap data-clock>Nu</span>
+        <h1 class="hr-dest">
+          <span data-flap>Premium vis, schaal-</span>
+          <span class="hl" data-flap>en schelpdieren</span>
+        </h1>
+        <span class="hr-plat"><span class="pcirc">1</span></span>
+      </div>
+      <div class="board-foot">
+        <div>
+          <p class="via">Via <b>Van bron tot bord</b></p>
+          <p class="hero-text">Rechtstreeks ingekocht bij visser en kweker, voor horeca en particulier. Bestel vooruit voor maandag 03:00 uur en ontvang je vis koel bezorgd in Nederland en België.</p>
+        </div>
+        <div class="ctas">
+          <a class="btn btn--p btn--lg" href="catalog.html">Bekijk het assortiment <span class="arr">→</span></a>
+          <a class="btn btn--ghost btn--lg" href="#info">Bekijk de dagvangst</a>
+        </div>
+      </div>
+    </div>
+    <figure class="lightbox hero-img">
+      <img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;ff72c80b5e2f1b66&#x2F;1536.avif" alt="Premium vis, schaal-" fetchpriority="high">
+      <span class="lb-tag">Spoor 1</span>
+      <figcaption class="lb-cap">Van bron tot bord</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" role="marquee" aria-label="Fredimare">
+  <div class="ticker-track">
+    <div class="ticker-seq">
+      <span>Fredimare</span><i>●</i><span>Premium vis, schaal- en schelpdieren</span><i>●</i><span>Gratis levering vanaf €75</span><i>●</i><span>Rechtstreeks van de bron</span><i>●</i><span>Dagverse kwaliteit</span><i>●</i><span>Voor horeca &amp; particulier</span><i>●</i>
+      <span>Fredimare</span><i>●</i><span>Premium vis, schaal- en schelpdieren</span><i>●</i><span>Gratis levering vanaf €75</span><i>●</i><span>Rechtstreeks van de bron</span><i>●</i><span>Dagverse kwaliteit</span><i>●</i><span>Voor horeca &amp; particulier</span><i>●</i>
+    </div>
+    <div class="ticker-seq" aria-hidden="true">
+      <span>Fredimare</span><i>●</i><span>Premium vis, schaal- en schelpdieren</span><i>●</i><span>Gratis levering vanaf €75</span><i>●</i><span>Rechtstreeks van de bron</span><i>●</i><span>Dagverse kwaliteit</span><i>●</i><span>Voor horeca &amp; particulier</span><i>●</i>
+      <span>Fredimare</span><i>●</i><span>Premium vis, schaal- en schelpdieren</span><i>●</i><span>Gratis levering vanaf €75</span><i>●</i><span>Rechtstreeks van de bron</span><i>●</i><span>Dagverse kwaliteit</span><i>●</i><span>Voor horeca &amp; particulier</span><i>●</i>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NOW BOARDING (featured) ============ -->
+<section class="sec wrap">
+  <div class="sec-head">
+    <div class="sign"><span class="sign-num" aria-hidden="true"></span><h2>Nu instappen<small>Now boarding</small></h2></div>
+  </div>
+  <div class="passes">
+    <article class="pass">
+      <a class="pass-link" href="#">
+        <div class="pass-head"><span class="now">Nu instappen</span><span class="std">Instapkaart</span><span class="no"></span></div>
+        <div class="pass-img">
+          
+          <span class="fb" aria-hidden="true">FM</span>
+          <span class="pass-tag">Balfegó</span>
+        </div>
+        <div class="pass-body">
+          <div><span class="k">Bestemming</span><h3 class="pass-name">Balfegó hele tonijn</h3></div>
+          <div class="pass-fields">
+            <div><span class="k">Prijs</span><b>€ 35,97</b></div>
+            <div class="plat"><span class="k">Spoor</span><b></b></div>
+          </div>
+        </div>
+        <div class="pass-stub"><span class="barcode" aria-hidden="true"></span><span class="pass-cta">Nu instappen <span class="arr">→</span></span></div>
+      </a>
+    </article>
+    <article class="pass">
+      <a class="pass-link" href="#">
+        <div class="pass-head"><span class="now">Nu instappen</span><span class="std">Instapkaart</span><span class="no"></span></div>
+        <div class="pass-img">
+          
+          <span class="fb" aria-hidden="true">FM</span>
+          
+        </div>
+        <div class="pass-body">
+          <div><span class="k">Bestemming</span><h3 class="pass-name">Zeeuwse Goudmerk mosselen</h3></div>
+          <div class="pass-fields">
+            <div><span class="k">Prijs</span><b>€ 9,48</b></div>
+            <div class="plat"><span class="k">Spoor</span><b></b></div>
+          </div>
+        </div>
+        <div class="pass-stub"><span class="barcode" aria-hidden="true"></span><span class="pass-cta">Nu instappen <span class="arr">→</span></span></div>
+      </a>
+    </article>
+    <article class="pass">
+      <a class="pass-link" href="#">
+        <div class="pass-head"><span class="now">Nu instappen</span><span class="std">Instapkaart</span><span class="no"></span></div>
+        <div class="pass-img">
+          
+          <span class="fb" aria-hidden="true">FM</span>
+          
+        </div>
+        <div class="pass-body">
+          <div><span class="k">Bestemming</span><h3 class="pass-name">Zeeuwse Jumbo mosselen</h3></div>
+          <div class="pass-fields">
+            <div><span class="k">Prijs</span><b>€ 8,45</b></div>
+            <div class="plat"><span class="k">Spoor</span><b></b></div>
+          </div>
+        </div>
+        <div class="pass-stub"><span class="barcode" aria-hidden="true"></span><span class="pass-cta">Nu instappen <span class="arr">→</span></span></div>
+      </a>
+    </article>
+    <article class="pass">
+      <a class="pass-link" href="#">
+        <div class="pass-head"><span class="now">Nu instappen</span><span class="std">Instapkaart</span><span class="no"></span></div>
+        <div class="pass-img">
+          
+          <span class="fb" aria-hidden="true">FM</span>
+          <span class="pass-tag">Oesters</span>
+        </div>
+        <div class="pass-body">
+          <div><span class="k">Bestemming</span><h3 class="pass-name">The Oyster Grand Impériale</h3></div>
+          <div class="pass-fields">
+            <div><span class="k">Prijs</span><b>€ 15,15</b></div>
+            <div class="plat"><span class="k">Spoor</span><b></b></div>
+          </div>
+        </div>
+        <div class="pass-stub"><span class="barcode" aria-hidden="true"></span><span class="pass-cta">Nu instappen <span class="arr">→</span></span></div>
+      </a>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CONCOURSE (categories) ============ -->
+<section class="sec wrap cats">
+  <div class="sec-head">
+    <div class="sign"><span class="sign-num" aria-hidden="true"></span><h2>Perrons<small>Platforms</small></h2></div>
+  </div>
+  <div class="concourse">
+    <a class="plat" href="catalog.html">
+      <span class="plat-sign"><span class="plat-circle" aria-hidden="true"></span><span class="plat-name">Bluefin Tonijn</span><span class="plat-arr" aria-hidden="true">→</span></span>
+      <span class="plat-view">
+        <img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;2acdc729a03e748a&#x2F;320.avif" alt="Bluefin Tonijn" loading="lazy">
+        
+        <span class="plat-meta"><b></b><span>Bekijk →</span></span>
+      </span>
+    </a>
+    <a class="plat" href="catalog.html">
+      <span class="plat-sign"><span class="plat-circle" aria-hidden="true"></span><span class="plat-name">Langoustines</span><span class="plat-arr" aria-hidden="true">→</span></span>
+      <span class="plat-view">
+        <img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;71b647c18884d3d1&#x2F;320.avif" alt="Langoustines" loading="lazy">
+        
+        <span class="plat-meta"><b></b><span>Bekijk →</span></span>
+      </span>
+    </a>
+    <a class="plat" href="catalog.html">
+      <span class="plat-sign"><span class="plat-circle" aria-hidden="true"></span><span class="plat-name">Dorade</span><span class="plat-arr" aria-hidden="true">→</span></span>
+      <span class="plat-view">
+        <img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;080edbb0187f3c0f&#x2F;320.avif" alt="Dorade" loading="lazy">
+        
+        <span class="plat-meta"><b></b><span>Bekijk →</span></span>
+      </span>
+    </a>
+    <a class="plat" href="catalog.html">
+      <span class="plat-sign"><span class="plat-circle" aria-hidden="true"></span><span class="plat-name">Kaviaar</span><span class="plat-arr" aria-hidden="true">→</span></span>
+      <span class="plat-view">
+        <img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;65e0b2a54a1a511d&#x2F;320.avif" alt="Kaviaar" loading="lazy">
+        
+        <span class="plat-meta"><b></b><span>Bekijk →</span></span>
+      </span>
+    </a>
+    <a class="plat" href="catalog.html">
+      <span class="plat-sign"><span class="plat-circle" aria-hidden="true"></span><span class="plat-name">Kreeften</span><span class="plat-arr" aria-hidden="true">→</span></span>
+      <span class="plat-view">
+        <img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;dae10e3574b24086&#x2F;320.avif" alt="Kreeften" loading="lazy">
+        
+        <span class="plat-meta"><b></b><span>Bekijk →</span></span>
+      </span>
+    </a>
+    <a class="plat" href="catalog.html">
+      <span class="plat-sign"><span class="plat-circle" aria-hidden="true"></span><span class="plat-name">Oesters</span><span class="plat-arr" aria-hidden="true">→</span></span>
+      <span class="plat-view">
+        <img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;057e64e3810091cd&#x2F;320.avif" alt="Oesters" loading="lazy">
+        
+        <span class="plat-meta"><b></b><span>Bekijk →</span></span>
+      </span>
+    </a>
+  </div>
+  <div class="concourse-floor" aria-hidden="true"></div>
+</section>
+
+<!-- ============ DEPARTURES (products) ============ -->
+<section class="sec wrap" id="vertrek">
+  <div class="sec-head">
+    <div class="sign"><span class="sign-num" aria-hidden="true"></span><h2>Vertrektijden<small>Departures</small></h2></div>
+    <div class="sec-aside"><a class="btn btn--ghost" href="catalog.html">Alle vertrekken <span class="arr">→</span></a></div>
+  </div>
+  <div class="board dep-board">
+    <div class="dep-head" aria-hidden="true"><span></span><span>Tijd · Prijs</span><span>Bestemming</span><span>Spoor</span><span>Status</span></div>
+    <ul class="dep-list">
+      <li class="dep-item" data-board data-row data-tag="Balfegó" data-name="Balfegó hele tonijn">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 35,97</span></span>
+            <span class="dep-dest"><span data-flap>Balfegó hele tonijn</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Balfegó</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeeuwse Goudmerk mosselen">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 9,48</span></span>
+            <span class="dep-dest"><span data-flap>Zeeuwse Goudmerk mosselen</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeeuwse Jumbo mosselen">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 8,45</span></span>
+            <span class="dep-dest"><span data-flap>Zeeuwse Jumbo mosselen</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Oesters" data-name="The Oyster Grand Impériale">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 15,15</span></span>
+            <span class="dep-dest"><span data-flap>The Oyster Grand Impériale</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Oesters</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeeuwse Imperial mosselen">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 7,41</span></span>
+            <span class="dep-dest"><span data-flap>Zeeuwse Imperial mosselen</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Balfegó" data-name="Balfegó tonijn loin (geen center)">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 47,96</span></span>
+            <span class="dep-dest"><span data-flap>Balfegó tonijn loin (geen center)</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Balfegó</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Oesters" data-name="The Oyster Prestige Spéciale">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 13,30</span></span>
+            <span class="dep-dest"><span data-flap>The Oyster Prestige Spéciale</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Oesters</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Alikruik vers">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 13,63</span></span>
+            <span class="dep-dest"><span data-flap>Alikruik vers</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeeuwse Super mosselen">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 5,12</span></span>
+            <span class="dep-dest"><span data-flap>Zeeuwse Super mosselen</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeebaars Corsica">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 11,66</span></span>
+            <span class="dep-dest"><span data-flap>Zeebaars Corsica</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Dorade Corsica">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 11,94</span></span>
+            <span class="dep-dest"><span data-flap>Dorade Corsica</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Balfegó" data-name="Balfegó tonijn buik loin">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 53,41</span></span>
+            <span class="dep-dest"><span data-flap>Balfegó tonijn buik loin</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Balfegó</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Oesters" data-name="The Oyster Signature Fines">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 7,58</span></span>
+            <span class="dep-dest"><span data-flap>The Oyster Signature Fines</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Oesters</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Amandes vers">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 6,27</span></span>
+            <span class="dep-dest"><span data-flap>Amandes vers</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Zeeuwse Extra mosselen">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 3,76</span></span>
+            <span class="dep-dest"><span data-flap>Zeeuwse Extra mosselen</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Oesters" data-name="Ostra Regal Gold Selection">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 29,32</span></span>
+            <span class="dep-dest"><span data-flap>Ostra Regal Gold Selection</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Oesters</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Clams vers">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 15,37</span></span>
+            <span class="dep-dest"><span data-flap>Clams vers</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Gerookte zalmsalade">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 4,25</span></span>
+            <span class="dep-dest"><span data-flap>Gerookte zalmsalade</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Balfegó" data-name="Balfegó tonijn center loin">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 53,41</span></span>
+            <span class="dep-dest"><span data-flap>Balfegó tonijn center loin</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Balfegó</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Oesters" data-name="Ostra Regal">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 16,73</span></span>
+            <span class="dep-dest"><span data-flap>Ostra Regal</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Oesters</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Sentinelle">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 14,72</span></span>
+            <span class="dep-dest"><span data-flap>Sentinelle</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Roodbaars heel 700+">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 10,90</span></span>
+            <span class="dep-dest"><span data-flap>Roodbaars heel 700+</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="Lijnvangst" data-name="Schelvishaas met vel geschubd lijnvangst">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 34,88</span></span>
+            <span class="dep-dest"><span data-flap>Schelvishaas met vel geschubd lijnvangst</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span><span data-flap>Lijnvangst</span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+      <li class="dep-item" data-board data-row data-tag="" data-name="Forel">
+        <div class="dep-clip">
+          <a class="dep-row" href="#">
+            <span class="dep-thumb"><span class="fb" aria-hidden="true">→</span></span>
+            <span class="dep-time"><span data-flap>€ 9,81</span></span>
+            <span class="dep-dest"><span data-flap>Forel</span></span>
+            <span class="dep-plat"><span class="plat-num" aria-hidden="true"></span></span>
+            <span class="dep-status "><i class="dot" aria-hidden="true"></i><span data-flap data-pad="13">Op voorraad</span></span>
+            <span class="dep-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+    <div class="board-more">
+      <span class="k">182 producten · Wijzigingen voorbehouden</span>
+      <a class="btn btn--p" href="catalog.html">Volledig overzicht <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANNOUNCEMENTS (usps) ============ -->
+<section class="sec wrap ann">
+  <div class="sec-head">
+    <div class="sign"><span class="sign-num" aria-hidden="true"></span><h2>Omroep<small>Announcements</small></h2></div>
+  </div>
+  <ol class="ann-list">
+    <li class="ann-item">
+      <span class="ann-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 10v4h3l6 5V5L6 10H3z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg><span class="k"></span></span>
+      <h3>Gratis levering vanaf €75</h3>
+      <p>Gekoeld bezorgd in Nederland en België, voor zakelijke klanten én particulieren.</p>
+    </li>
+    <li class="ann-item">
+      <span class="ann-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 10v4h3l6 5V5L6 10H3z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg><span class="k"></span></span>
+      <h3>Rechtstreeks van de bron</h3>
+      <p>We kopen direct in bij visafslag, vissers en kwekers, zodat de keten kort blijft.</p>
+    </li>
+    <li class="ann-item">
+      <span class="ann-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 10v4h3l6 5V5L6 10H3z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg><span class="k"></span></span>
+      <h3>Dagverse kwaliteit</h3>
+      <p>Veel producten bestellen we pas als jij bestelt, voor maximale versheid.</p>
+    </li>
+    <li class="ann-item">
+      <span class="ann-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 10v4h3l6 5V5L6 10H3z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg><span class="k"></span></span>
+      <h3>Voor horeca &amp; particulier</h3>
+      <p>Zakelijke klanten zien hun eigen prijzen en staffelkortingen na inloggen.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ STORY + STATS ============ -->
+<section class="sec wrap story">
+  <div class="sec-head">
+    <div class="sign"><span class="sign-num" aria-hidden="true"></span><h2>Blauwvintonijn<small>Fredimare</small></h2></div>
+  </div>
+  <div class="story-grid has-img">
+    <div>
+      <h2 class="story-title">Ontdek de keizer van de oceaan</h2>
+      <p class="story-text">Onze Balfegó-tonijn wordt met zorg duurzaam gevangen en verwerkt, met respect voor de oceaan en het leven erin. Alleen de beste kwaliteit, want goede tonijn verdient aandacht, vakmanschap en verantwoordelijkheid.</p>
+    </div>
+    <figure class="lightbox story-img"><img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;d31aac242b7b67b2&#x2F;960.webp" alt="Ontdek de keizer van de oceaan" decoding="async"><span class="lb-tag">Reclame</span></figure>
+  </div>
+  <div class="stats" data-board>
+    <div class="stat"><span class="stat-v" data-flap>182</span><span class="k">producten in het assortiment</span></div><div class="stat"><span class="stat-v" data-flap>€75</span><span class="k">gratis levering vanaf</span></div><div class="stat"><span class="stat-v" data-flap>3e</span><span class="k">generatie viskenner achter Fredimare</span></div>
+  </div>
+</section>
+
+<!-- ============ GALLERY (lightboxes) ============ -->
+<section class="sec wrap gal" aria-label="Galerij">
+  <div class="gal-track">
+    <figure class="lightbox gal-item"><img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;a35463db7fc2c7f4&#x2F;1280.webp" alt="" loading="lazy"></figure><figure class="lightbox gal-item"><img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;f92d318164d30694&#x2F;960.webp" alt="" loading="lazy"></figure><figure class="lightbox gal-item"><img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;15092f4b10a977c8&#x2F;960.webp" alt="" loading="lazy"></figure><figure class="lightbox gal-item"><img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;1b1dcdde5ca24606&#x2F;960.avif" alt="" loading="lazy"></figure><figure class="lightbox gal-item"><img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;b5b4987d41afb713&#x2F;960.avif" alt="" loading="lazy"></figure><figure class="lightbox gal-item"><img src="https:&#x2F;&#x2F;www.fredimare.com&#x2F;_assets&#x2F;fd1dcc5f3bd0b9c6&#x2F;960.avif" alt="" loading="lazy"></figure>
+  </div>
+</section>
+
+
+<!-- ============ FINAL CALL ============ -->
+<section class="gate">
+  <div class="wrap gate-in">
+    <div>
+      <p class="gate-k">Laatste oproep · Final call</p>
+      <h2>Vers van de afslag, elke dinsdag</h2>
+    </div>
+    <div>
+      <p>Elke dinsdag om 18:00 uur verschijnt de Dagvangst: wisselend verse vis tegen een scherpe prijs. Op &#x3D; op.</p>
+      <a class="btn btn--inv btn--lg" href="#">Bekijk de dagvangst <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFORMATION DESK ============ -->
+<section class="sec wrap" id="info">
+  <div class="sec-head">
+    <div class="sign"><span class="sign-num sign-num--i" aria-hidden="true"></span><h2>Informatie<small>Information desk</small></h2></div>
+  </div>
+  <div class="desk-grid">
+    <div>
+      <p class="desk-title">Fredimare</p>
+      <p class="desk-text">Vragen over een product of je bestelling? De informatiebalie staat voor je klaar.</p>
+      <a class="btn btn--p" href="catalog.html">Naar het assortiment <span class="arr">→</span></a>
+    </div>
+    <div class="board" data-board>
+      <div class="board-top"><span class="lamp" aria-hidden="true"></span><span class="board-name">Dienstregeling</span><span class="sp"><i class="dot"></i>Bereikbaar</span></div>
+      <div class="tt-row"><span class="k">Adres<b>Bezoek</b></span><span data-flap>Ambachtsweg 10, 4691 SC Tholen, Nederland</span><span class="tt-go" aria-hidden="true"></span></div>
+      
+      
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <p class="ftr-brand">Fredimare</p>
+    <div class="ftr-cols">
+      <div>
+        <span class="k">Spoorwijzer</span>
+        <ul><li><a href="catalog.html">Assortiment</a></li><li><a href="#">Dagvangst</a></li><li><a href="#">Balfegó</a></li><li><a href="#">Ambassadeurs</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div>
+        <span class="k">Service</span>
+        <ul><li><a href="#">Bestellen en bezorgen</a></li><li><a href="#">Restaurants &amp; partners</a></li><li><a href="#">Algemene voorwaarden</a></li><li><a href="#">Privacyverklaring</a></li><li><a href="#">Cookieverklaring</a></li></ul>
+      </div>
+      <div>
+        <span class="k">Informatiebalie</span>
+        <ul>
+          <li>Ambachtsweg 10, 4691 SC Tholen, Nederland</li>
+          
+          
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-bot"><span>© 2026 Fredimare</span><span>Alle tijden en prijzen onder voorbehoud</span></div>
+  </div>
+</footer>
+
+<div class="badge">Demo redesign · Departure Board</div>
+
+<script>
+(function () {
+  var d = document, root = d.documentElement;
+  root.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!('animate' in Element.prototype)) reduce = true;
+
+  /* ---------- split-flap engine ---------- */
+  var WHEEL = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789€.,:-/&+'!?%@";
+  var L = WHEEL.length, NB = ' ';
+  var active = [], running = false;
+
+  function mk(tag, cls) { var e = d.createElement(tag); if (cls) e.className = cls; return e; }
+  function vis(ch) { return ch === ' ' ? NB : ch; }
+
+  function cell() {
+    var c = mk('span', 'c'), t = mk('span', 'h t'), b = mk('span', 'h b'),
+        f = mk('span', 'f'), ff = mk('span', 'h t'), fb = mk('span', 'h b bk');
+    var it = mk('i'), ib = mk('i'), iff = mk('i'), ifb = mk('i');
+    it.textContent = ib.textContent = iff.textContent = ifb.textContent = NB;
+    t.appendChild(it); b.appendChild(ib); ff.appendChild(iff); fb.appendChild(ifb);
+    f.appendChild(ff); f.appendChild(fb);
+    c.appendChild(t); c.appendChild(b); c.appendChild(f);
+    return { el: c, top: it, bot: ib, ff: iff, fb: ifb, flap: f, cur: ' ', path: null, i: 0, due: 0, anim: null, on: false };
+  }
+
+  function build(el) {
+    if (el._cells) return;
+    var raw = (el.getAttribute('data-text') || el.textContent).replace(/\s+/g, ' ').trim();
+    var pad = +el.getAttribute('data-pad') || 0;
+    var sr = mk('span', 'sr'), box = mk('span', 'fl'), cells = [];
+    sr.textContent = raw;
+    box.setAttribute('aria-hidden', 'true');
+    if (pad) {
+      for (var k = 0; k < Math.max(pad, raw.length); k++) { var c = cell(); cells.push(c); box.appendChild(c.el); }
+    } else {
+      var words = raw.split(' ');
+      words.forEach(function (w, wi) {
+        var ws = mk('span', 'w');
+        for (var k = 0; k < w.length; k++) { var c = cell(); cells.push(c); ws.appendChild(c.el); }
+        if (wi < words.length - 1) { var s = cell(); cells.push(s); ws.appendChild(s.el); }
+        box.appendChild(ws);
+      });
+    }
+    el.textContent = '';
+    el.appendChild(sr); el.appendChild(box);
+    el._cells = cells; el._text = raw;
+    /* the board is never blank: every cell rests on its glyph until it gets flapped */
+    var up = raw.toUpperCase();
+    cells.forEach(function (c, k) { setNow(c, up.charAt(k) || ' '); });
+    el.classList.add('built');
+  }
+
+  function setNow(c, ch) {
+    if (c.anim) { c.anim.cancel(); c.anim = null; }
+    c.path = null; c.cur = ch;
+    c.top.textContent = c.bot.textContent = c.ff.textContent = c.fb.textContent = vis(ch);
+  }
+
+  function pathTo(from, to, spin) {
+    var ti = WHEEL.indexOf(to), fi = WHEEL.indexOf(from), p = [], n, k;
+    if (ti < 0) {
+      n = 5 + (Math.random() * 6 | 0);
+      var base = Math.random() * L | 0;
+      for (k = 0; k < n; k++) p.push(WHEEL.charAt((base + k) % L));
+      p.push(to);
+      return p;
+    }
+    var dist = fi < 0 ? 12 : (ti - fi + L) % L;
+    if (dist === 0) dist = spin ? 5 + (Math.random() * 6 | 0) : 0;
+    n = Math.min(dist, 9 + (Math.random() * 5 | 0));
+    for (k = n - 1; k >= 0; k--) p.push(WHEEL.charAt((ti - k + L * 2) % L));
+    return p;
+  }
+
+  function flap(el, text, opt) {
+    build(el);
+    opt = opt || {};
+    var s = (text == null ? el._text : text).toUpperCase();
+    var cells = el._cells, now = performance.now(), delay = opt.delay || 0;
+    for (var k = 0; k < cells.length; k++) {
+      var c = cells[k], ch = s.charAt(k) || ' ';
+      if (reduce) { setNow(c, ch); continue; }
+      if (ch === c.cur && !opt.spin && !c.path) continue;
+      c.path = pathTo(c.cur, ch, opt.spin);
+      c.i = 0;
+      c.due = now + delay + Math.random() * 200;
+      if (!c.on) { c.on = true; active.push(c); }
+    }
+    if (active.length && !running) { running = true; requestAnimationFrame(tick); }
+  }
+
+  function tick(now) {
+    var keep = [];
+    for (var k = 0; k < active.length; k++) {
+      var c = active[k];
+      if (!c.path) { c.on = false; continue; }
+      if (now >= c.due) {
+        if (c.anim) { c.anim.cancel(); c.anim = null; c.bot.textContent = c.ff.textContent = vis(c.cur); }
+        if (c.i >= c.path.length) { c.path = null; c.on = false; continue; }
+        var nx = c.path[c.i++], v = vis(nx);
+        c.top.textContent = v; c.fb.textContent = v;
+        c.anim = c.flap.animate(
+          [{ transform: 'rotateX(0deg)' }, { transform: 'rotateX(-180deg)' }],
+          { duration: 60, easing: 'cubic-bezier(.55,0,.9,.55)', fill: 'forwards' }
+        );
+        c.cur = nx; c.due = now + 62;
+        clack();
+      }
+      keep.push(c);
+    }
+    active = keep;
+    if (active.length) requestAnimationFrame(tick); else running = false;
+  }
+
+  /* ---------- clack: WebAudio noise bursts, muted by default ---------- */
+  var ac = null, noise = null, soundOn = false, lastClack = 0;
+  function clack() {
+    if (!soundOn || !ac) return;
+    var t = ac.currentTime;
+    if (t - lastClack < 0.024) return;
+    lastClack = t;
+    var src = ac.createBufferSource(), bp = ac.createBiquadFilter(), g = ac.createGain();
+    src.buffer = noise;
+    bp.type = 'bandpass'; bp.frequency.value = 1700 + Math.random() * 2200; bp.Q.value = 1.4;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.14 + Math.random() * 0.08, t + 0.002);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.03);
+    src.connect(bp); bp.connect(g); g.connect(ac.destination);
+    src.start(t); src.stop(t + 0.04);
+  }
+  var sndBtn = d.querySelector('[data-sound]');
+  if (sndBtn) sndBtn.addEventListener('click', function () {
+    soundOn = !soundOn;
+    sndBtn.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+    if (soundOn && !ac) {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) {
+        ac = new AC();
+        noise = ac.createBuffer(1, Math.floor(ac.sampleRate * 0.04), ac.sampleRate);
+        var data = noise.getChannelData(0);
+        for (var i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 3);
+      }
+    }
+    if (ac && ac.state === 'suspended') ac.resume();
+    if (soundOn) {
+      var first = d.querySelector('[data-board]');
+      if (first) first.querySelectorAll('[data-flap]').forEach(function (el) { flap(el, null, { spin: true }); });
+    }
+  });
+
+  /* ---------- clock in the hero time column ---------- */
+  function hhmm() { var n = new Date(); return ('0' + n.getHours()).slice(-2) + ':' + ('0' + n.getMinutes()).slice(-2); }
+  var clock = d.querySelector('[data-clock]');
+  if (clock) {
+    clock.setAttribute('data-text', hhmm());
+    setInterval(function () { var t = hhmm(); if (clock._text !== t) { clock._text = t; flap(clock, t); } }, 5000);
+  }
+
+  /* ---------- build boards, flap rows as they enter view ---------- */
+  var groups = [].slice.call(d.querySelectorAll('[data-board]'));
+  groups.forEach(function (g) { g.querySelectorAll('[data-flap]').forEach(build); });
+
+  function fire(g, delay) {
+    if (g.classList.contains('sign')) { g.classList.add('in'); return; }
+    if (g.classList.contains('gone')) return;
+    g.querySelectorAll('[data-flap]').forEach(function (el) { flap(el, null, { delay: delay, spin: true }); });
+  }
+  var signs = [].slice.call(d.querySelectorAll('.sign'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      var n = 0;
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        fire(e.target, (n++) * 90);
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.01 });
+    groups.concat(signs).forEach(function (g) { io.observe(g); });
+  } else {
+    groups.forEach(function (g) { fire(g, 0); });
+  }
+
+  /* ---------- catalog: platform filter re-flaps the board ---------- */
+  var chips = [].slice.call(d.querySelectorAll('[data-filter]'));
+  var rows = [].slice.call(d.querySelectorAll('[data-row]'));
+  var shown = d.querySelector('[data-shown]');
+  function fold(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim(); }
+  function stem(s) { s = fold(s); return s.length > 4 ? s.replace(/(en|es|s|e)$/, '') : s; }
+  function matches(row, f) {
+    if (!f) return true;
+    var fs = stem(f), t = stem(row.getAttribute('data-tag')), n = fold(row.getAttribute('data-name'));
+    if (!fs) return true;
+    return (t && (t.indexOf(fs) > -1 || fs.indexOf(t) > -1)) || n.indexOf(fs) > -1;
+  }
+  function count(n) { if (shown) flap(shown, ('   ' + n).slice(-3)); }
+  if (shown) { shown.setAttribute('data-text', ('   ' + rows.length).slice(-3)); build(shown); count(rows.length); }
+
+  function apply(f) {
+    var m = rows.map(function (r) { return matches(r, f); });
+    if (!m.some(Boolean)) m = rows.map(function () { return true; });
+    var visible = 0;
+    rows.forEach(function (r, i) {
+      clearTimeout(r._t);
+      var flaps = [].slice.call(r.querySelectorAll('[data-flap]'));
+      if (m[i]) {
+        visible++;
+        if (r.classList.contains('gone')) {
+          r.classList.remove('gone'); r.removeAttribute('aria-hidden');
+          r._t = setTimeout(function () { flaps.forEach(function (el) { flap(el, null); }); }, reduce ? 0 : 280);
+        } else {
+          flaps.forEach(function (el) { flap(el, null, { spin: true }); });
+        }
+      } else {
+        flaps.forEach(function (el) { flap(el, el.hasAttribute('data-pad') ? 'Vertrokken' : ''); });
+        r._t = setTimeout(function () { r.classList.add('gone'); r.setAttribute('aria-hidden', 'true'); }, reduce ? 0 : 1350);
+      }
+    });
+    count(visible);
+  }
+  chips.forEach(function (ch) {
+    ch.addEventListener('click', function () {
+      chips.forEach(function (o) { o.classList.toggle('is-on', o === ch); o.setAttribute('aria-pressed', o === ch ? 'true' : 'false'); });
+      apply(ch.getAttribute('data-filter'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

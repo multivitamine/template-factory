@@ -1,0 +1,9 @@
+{
+  "id": "departure-board",
+  "name": "Departure Board",
+  "scheme": "dark",
+  "sectors": ["retail", "tech", "b2b", "sports"],
+  "mood": ["nocturnal", "mechanical", "loud", "industrial"],
+  "needsProductImages": true,
+  "notes": "Primary drives the status lamp, platform circles, highlighted title row, ticker and final-call band (always paired with on-primary and a lightened ring so near-black survives); accent is mixed toward cream for the status column so dark accents stay readable on the black board."
+}

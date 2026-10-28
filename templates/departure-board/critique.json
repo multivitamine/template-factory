@@ -1,0 +1,30 @@
+{
+  "scoreBefore": 6,
+  "scores": {
+    "creativity": 8,
+    "typography": 7,
+    "layoutRhythm": 6,
+    "polish": 4,
+    "brandColourRobustness": 6,
+    "mobile": 5,
+    "genericTemplateFeel": 7
+  },
+  "issues": [
+    "Departures board (the core product section) renders as empty grey placeholder bars on desktop, mobile and the stress brand: split-flap cells are built blank and only get glyphs once an IntersectionObserver fires, so a full-page render shows a dead board",
+    "Hero destination was captured mid-cycle as gibberish ('LAJE A NIDE2 / JNJ KHE CIJQ', time 'UX8OU'): flap paths of up to 20 steps keep the brand promise unreadable for ~1.5s",
+    "Status lamps use raw --c-accent; with a dark or grey brand accent (BOHLT) the 'Op voorraad' dot reads as a dead grey pixel instead of a lit lamp",
+    "Products without photos (Fredimare stress) fall back to a striped 'FM' slab that looks like a broken image, and departure thumbnails become white boxes with a stray arrow",
+    "Story lightbox renders solid black because the image is lazy-loaded below the fold",
+    "Mobile: three boarding passes stack as screen-tall tickets, about 1.5 viewports of scroll before reaching the platforms",
+    "No opening-hours data in the contract, so the information desk can only list address, phone and email rows"
+  ],
+  "fixed": [
+    "Split-flap engine now seeds every cell with its target glyph at build time, so the board is never blank; entering view triggers a spin that cycles through the wheel and lands back on the glyph (random 0-200ms start per cell, 60ms flap steps retained), in both template and catalog",
+    "Shortened flap cycles (5-13 steps) so the hero promise and filtered rows settle in under a second while still visibly clacking through the character set",
+    "Status lamps now use the accent-on-cream ink (--a-ink) with a matching glow, so In stock / Last few / Delayed stay lit for any brand accent",
+    "Missing product photos become one giant split-flap tile carrying the brand initials on the board housing with a primary-colour wash; missing departure thumbs become mini flap tiles",
+    "Story image is no longer lazy-loaded, so the 'Reclame' lightbox is never black",
+    "Mobile boarding passes become a horizontal swipe strip at 78vw with shorter photo crops, matching the concourse behaviour"
+  ],
+  "scoreAfterEstimate": 7.5
+}
