@@ -1,0 +1,22 @@
+{
+  "scoreBefore": 6,
+  "issues": [
+    "Creativity 7: the self-stitching canvas, woven bands, embroidery hoops and the footer showing the back of the embroidery all fit the brief well. The execution is what holds it back.",
+    "Typography 5: the stitched hero headline is sampled too coarsely (about fs/9.5) for Yeseva One's hairlines, so 'Een levenslange herinnering' and 'Jouw favoriete' break up into blotchy glyphs. Once sewn, the guide text turns fully transparent, so nothing helps the eye read the letters.",
+    "The stitched 'BB 2026' mark and the stitched initials on the cards use the high-contrast serif at 3–4px cells and become illegible ('BI 2026', a mangled 'B').",
+    "Layout 5: when the story image fails to load, a 520px hoop is left empty in both brands. It's the biggest dead area on the homepage.",
+    "With 2 products, the cards on the homepage and catalog sit hard left and leave an empty right half. The catalog looks unfinished.",
+    "Polish: the signature-block monogram only starts on IntersectionObserver, so full-page captures and fast scrollers see a grey ghost 'BB' that never gets stitched.",
+    "Brand robustness 7: the red Kartstore thread carries through well. Mobile 6: it holds together, but the hero stitching is mushy and the empty hoop is huge.",
+    "Generic-template feel: low. The concept is strong, but the broken spots make it look unfinished."
+  ],
+  "fixed": [
+    "Finer hero stitch grid (fs/12.5, still capped at the 10px grid) so the X-stitched headline reads as letters on both brands and on mobile.",
+    "Added a printed-pattern ghost under the finished stitches, like the blue transfer ink in a real cross-stitch kit (accent at 11%), so the headline stays legible after sewing.",
+    "Switched the stitched year mark and the card initials to Mulish 800 with tracking, which samples cleanly into crisp pixel letters.",
+    "Every hoop (hero and story) now has a fallback underneath: a linen ground with an inner running-stitch ring, the stitched folk heart and an '✕ BB · 2026 ✕' sampler caption. A missing or broken image now gives a small embroidered vignette instead of an empty void.",
+    "1–3 product grids are centred and wider. With 1–2 cards they're pinned at a playful tilt (−1.2° / +1.4°), like samplers tacked to a board, on both the homepage and the catalog.",
+    "View-triggered stitchers (signature monogram, initials, fallback initials) also start on a 4.5s timer, so they always end up sewn."
+  ],
+  "scoreAfterEstimate": 7.3
+}

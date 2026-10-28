@@ -1,0 +1,9 @@
+{
+  "id": "cross-stitch-loom",
+  "name": "Cross-Stitch Loom",
+  "scheme": "light",
+  "sectors": ["kids", "makers", "lifestyle", "retail"],
+  "mood": ["handmade", "warm", "playful", "folk", "tactile"],
+  "needsProductImages": true,
+  "notes": "Primary is the main embroidery thread (stitched headline, card cross-stitches, ribbons, motif bands) mixed toward the text colour for legibility; accent is the second thread in the folk motifs, skeins and underlines on fixed off-white linen."
+}
