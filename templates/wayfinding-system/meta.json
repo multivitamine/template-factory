@@ -1,0 +1,9 @@
+{
+  "id": "wayfinding-system",
+  "name": "Wayfinding System",
+  "scheme": "light",
+  "sectors": ["hospitality", "services", "b2b", "travel"],
+  "mood": ["severe", "bold", "legible", "architectural"],
+  "needsProductImages": true,
+  "notes": "Primary fills every sign panel, tile header and zone circle with on-primary type; accent is used only for the 'you are here' pin, tags and the dashed route line, with black or white text on it picked by JS for contrast. The dark directory board and grey wall stay the template's own."
+}

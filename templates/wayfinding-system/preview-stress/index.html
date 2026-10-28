@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOHLT · Aanzetten en wegrijden, zo simpel is het</title>
+<meta name="description" content="Stoere, minimalistische e-bikes met opvallende details, gemaakt voor jong en oud. Aanzetten en wegrijden: meer hoef je niet te weten.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;600;700;800;900&family=Overpass+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#e6e7e5;
+  --c-surface:#f7f7f5;
+  --c-text:#111315;
+  --c-muted:#565b60;
+  --c-line:#c2c5c3;
+  --c-primary:#00704a;
+  --c-on-primary:#ffffff;
+  --c-accent:#ffc20e;
+  --c-on-accent:#111315;
+  --board:var(--c-text);
+  --on-board:#f7f7f5;
+  --f-sign:'Overpass','Helvetica Neue',Helvetica,sans-serif;
+  --f-mono:'Overpass Mono',ui-monospace,Menlo,monospace;
+  --g:clamp(16px,3vw,40px);
+  --gap:12px;
+  --r:6px;
+  --max:1440px;
+  --zone-pad:clamp(64px,9vw,136px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 17px/1.55 var(--f-sign);overflow-x:clip;counter-reset:zone;-webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(90deg,color-mix(in srgb,var(--c-line) 38%,transparent) 1px,transparent 1px);background-size:calc(100% / 12) 100%}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+.mono{font-family:var(--f-mono);font-weight:600}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--g)}
+:focus-visible{outline:3px solid var(--c-accent);outline-offset:3px}
+
+/* ---------- arrows ---------- */
+.arrow{display:inline-grid;place-items:center;flex:none;aspect-ratio:1;line-height:0}
+.arrow svg{width:100%;height:100%;fill:currentColor;transform:rotate(90deg);transform-origin:50% 50%;will-change:transform}
+
+/* ---------- directory board (header) ---------- */
+.board{position:sticky;top:0;z-index:50;background:var(--board);color:var(--on-board);border-bottom:4px solid var(--c-primary)}
+.board-in{display:flex;align-items:stretch;min-height:76px}
+.board-logo{flex:none;display:flex;align-items:center;padding:12px 24px 12px 0;margin-right:0;border-right:1px solid color-mix(in srgb,var(--on-board) 16%,transparent);text-decoration:none}
+.logo-plate{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 14px;background:var(--c-surface);color:var(--c-text);border-radius:4px;max-width:240px}
+.logo-plate img{max-height:32px;max-width:170px;width:auto;height:auto;object-fit:contain}
+.logo-plate img.is-light{filter:brightness(0)}
+.logo-txt{display:inline-flex;align-items:center;gap:10px;font:900 16px/1.1 var(--f-sign);letter-spacing:-.01em;min-width:0}
+.logo-txt b{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);font:900 12px/1 var(--f-sign)}
+.logo-txt span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dir{flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+.dir::-webkit-scrollbar{display:none}
+.dir-list{display:flex;list-style:none;margin:0;padding:0;height:100%;counter-reset:dir}
+.dir-list li{flex:1 1 0;min-width:156px;counter-increment:dir;border-right:1px solid color-mix(in srgb,var(--on-board) 16%,transparent)}
+.dir-item{display:grid;grid-template-columns:30px minmax(0,1fr) 26px;grid-template-rows:auto auto;column-gap:12px;row-gap:3px;align-content:center;align-items:center;height:100%;padding:12px 16px;color:var(--on-board);text-decoration:none;transition:background .25s var(--ease)}
+.dir-letter{grid-row:1/3;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);box-shadow:0 0 0 2px var(--on-board);font:900 15px/1 var(--f-sign);padding-top:2px;transition:background .25s,color .25s}
+.dir-letter:empty::before{content:counter(dir,upper-alpha)}
+.dir-label{font:800 14px/1.12 var(--f-sign);letter-spacing:.01em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+.dir-time{display:inline-flex;align-items:center;gap:6px;font:600 11px/1 var(--f-mono);letter-spacing:.06em;color:color-mix(in srgb,var(--on-board) 60%,transparent)}
+.dir-time::before{content:"";width:8px;height:8px;border:1.5px solid currentColor;border-radius:50%}
+.dir-item .arrow{grid-column:3;grid-row:1/3;width:26px}
+.dir-item:hover,.dir-item.is-on{background:color-mix(in srgb,var(--on-board) 9%,transparent)}
+.dir-item.is-on .dir-letter{background:var(--c-accent);color:var(--c-on-accent)}
+
+/* route overlay */
+.route{position:fixed;inset:0;width:100%;height:100%;z-index:60;pointer-events:none;opacity:0;transition:opacity .25s}
+.route.on{opacity:1}
+.route polyline{fill:none;stroke-linejoin:miter;stroke-linecap:square}
+.route-base{stroke:var(--board);stroke-width:8}
+.route-dash{stroke:var(--c-accent);stroke-width:3.5;stroke-dasharray:10 8;animation:march .7s linear infinite}
+.route-ring{fill:none;stroke:var(--c-accent);stroke-width:4}
+.route-ring2{fill:none;stroke:var(--board);stroke-width:9}
+.route-tip{fill:var(--c-accent);stroke:var(--board);stroke-width:3}
+@keyframes march{to{stroke-dashoffset:-18}}
+
+/* ---------- sign panels ---------- */
+.zone{counter-increment:zone;padding-top:var(--zone-pad);scroll-margin-top:90px}
+.sign,.hero-sign{position:relative;background:var(--c-primary);color:var(--c-on-primary);border-radius:var(--r);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-primary) 72%,#000)}
+.sign::before,.sign::after,.hero-sign::before,.hero-sign::after{content:"";position:absolute;top:10px;width:7px;height:7px;border-radius:50%;background:color-mix(in srgb,var(--c-on-primary) 32%,transparent)}
+.sign::before,.hero-sign::before{left:10px}
+.sign::after,.hero-sign::after{right:10px}
+.sign{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto auto;align-items:center;gap:clamp(14px,2vw,28px);padding:clamp(18px,2.4vw,32px) clamp(20px,2.8vw,40px)}
+.sign-mark{grid-column:1;display:grid;place-items:center;width:clamp(54px,6vw,86px);aspect-ratio:1;border-radius:50%;background:var(--c-on-primary);color:var(--c-primary);font:900 clamp(1.6rem,3.3vw,2.8rem)/1 var(--f-sign);padding-top:.12em;transition:background .3s,color .3s,box-shadow .3s}
+.sign-mark::before{content:counter(zone,upper-alpha)}
+.zone.is-target .sign-mark{background:var(--c-accent);color:var(--c-on-accent);box-shadow:0 0 0 4px var(--c-on-primary)}
+.picto{grid-column:2;width:clamp(40px,4.2vw,62px);height:auto;fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:square;stroke-linejoin:miter;padding-left:clamp(14px,2vw,28px);box-sizing:content-box;border-left:2px solid color-mix(in srgb,var(--c-on-primary) 30%,transparent)}
+.sign-title{grid-column:3;font-weight:900;font-size:clamp(1.65rem,4vw,4rem);line-height:.98;letter-spacing:-.022em;overflow-wrap:break-word;hyphens:auto;text-wrap:balance;padding-top:.08em}
+.sign-meta{grid-column:4;font:600 13px/1.25 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;text-align:right;color:color-mix(in srgb,var(--c-on-primary) 85%,var(--c-primary));max-width:22ch}
+.sign .arrow{grid-column:5;width:clamp(46px,5.6vw,84px)}
+.wall{padding-top:clamp(28px,4vw,56px)}
+
+/* ---------- hero ---------- */
+.hero{padding-top:var(--gap)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:var(--gap);min-height:calc(100svh - 96px)}
+.hero-sign{padding:clamp(22px,3.2vw,52px);display:flex;flex-direction:column;justify-content:space-between;gap:clamp(28px,4vw,56px);overflow:hidden}
+.hs-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding-bottom:16px;border-bottom:2px solid color-mix(in srgb,var(--c-on-primary) 28%,transparent);font:600 13px/1.35 var(--f-mono);letter-spacing:.12em;text-transform:uppercase}
+.hs-top .hs-code{flex:none;opacity:.8}
+.hs-main{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3vw,48px);align-items:center}
+.arrow--xl{width:clamp(88px,13vw,212px)}
+.hs-title{font-weight:900;font-size:clamp(2.6rem,6.4vw,7.2rem);line-height:.92;letter-spacing:-.03em;overflow-wrap:break-word;hyphens:auto;text-wrap:balance}
+.hs-title .ln{display:block}
+.hs-title .ln-accent{font-weight:300;letter-spacing:-.02em}
+.hs-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px 40px;align-items:flex-end}
+.hs-foot .hs-text{flex:1 1 34ch}
+.hs-text{max-width:52ch;font-size:clamp(16px,1.25vw,19px);line-height:1.5;color:color-mix(in srgb,var(--c-on-primary) 90%,var(--c-primary))}
+.hs-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero-wall{position:relative;margin:0;border-radius:var(--r);overflow:hidden;background:var(--c-surface);min-height:320px}
+.plate{position:absolute;left:12px;bottom:12px;max-width:calc(100% - 24px);display:flex;align-items:center;gap:12px;padding:11px 14px;background:var(--c-surface);color:var(--c-text);border-radius:4px;font-weight:700;font-size:14px;line-height:1.3}
+.plate .mono{flex:none;padding:5px 7px 3px;border-radius:3px;background:var(--c-text);color:var(--c-surface);font-size:11px;letter-spacing:.08em}
+
+/* entrance */
+@keyframes signIn{from{clip-path:inset(0 100% 0 0 round var(--r))}to{clip-path:inset(0 0 0 0 round var(--r))}}
+@keyframes rise{from{opacity:0;transform:translateY(.35em)}to{opacity:1;transform:none}}
+@keyframes wallIn{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:none}}
+.hero-sign{animation:signIn 1.1s var(--ease) both}
+.hs-title .ln{animation:rise .9s var(--ease) both;animation-delay:.45s}
+.hs-title .ln-accent{animation-delay:.6s}
+.hero-wall .frame-fill{animation:wallIn 1.4s var(--ease) both;animation-delay:.25s}
+
+/* buttons */
+.yah{display:inline-flex;align-items:center;gap:14px;padding:8px 24px 8px 8px;border-radius:999px;background:var(--c-on-primary);color:var(--c-primary);font:900 clamp(16px,1.3vw,19px)/1 var(--f-sign);letter-spacing:.01em;text-decoration:none;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.yah:hover{transform:translateY(-3px);box-shadow:0 10px 0 -4px color-mix(in srgb,var(--c-text) 28%,transparent)}
+.yah-pin{position:relative;flex:none;width:42px;height:42px;border-radius:50%;background:var(--c-accent);border:3px solid currentColor}
+.yah-pin::before{content:"";position:absolute;inset:0;margin:auto;width:10px;height:10px;border-radius:50%;background:var(--c-on-accent)}
+.yah-pin::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid var(--c-accent);animation:pulse 2.2s var(--ease) infinite}
+.yah-label{padding-top:2px}
+.yah--wall{background:var(--c-primary);color:var(--c-on-primary)}
+@keyframes pulse{from{transform:scale(1);opacity:.9}to{transform:scale(1.95);opacity:0}}
+.btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:4px 22px 0;border:2px solid currentColor;border-radius:999px;color:var(--c-on-primary);font:800 15px/1 var(--f-sign);letter-spacing:.02em;text-decoration:none;transition:background .25s,color .25s}
+.btn-ghost:hover{background:var(--c-on-primary);color:var(--c-primary)}
+
+/* ---------- image frames ---------- */
+.frame{position:relative;overflow:hidden;background:color-mix(in srgb,var(--c-primary) 10%,var(--c-surface))}
+.frame-fill,.frame img,.frame .ph{position:absolute;inset:0;width:100%;height:100%}
+.frame img{object-fit:cover;transition:transform .9s var(--ease)}
+.ph{display:grid;place-items:center;background:color-mix(in srgb,var(--c-primary) 14%,var(--c-surface));color:color-mix(in srgb,var(--c-primary) 55%,var(--c-surface))}
+.ph svg{width:34%;max-width:120px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:square}
+.ph b{position:absolute;right:10px;bottom:10px;font:600 12px/1 var(--f-mono);letter-spacing:.1em;color:var(--c-primary)}
+
+/* ---------- categories ---------- */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:var(--gap);margin:0 0 clamp(28px,4vw,48px);padding:0;list-style:none;counter-reset:cat}
+.cat{counter-increment:cat}
+.cat a{display:grid;grid-template-columns:72px minmax(0,1fr) auto;align-items:center;gap:16px;padding:10px 18px 10px 10px;background:var(--board);color:var(--on-board);border-radius:var(--r);text-decoration:none;transition:background .3s var(--ease),color .3s var(--ease)}
+.cat .frame{width:72px;height:72px;border-radius:4px}
+.cat-txt{min-width:0}
+.cat-code{display:block;font:600 11px/1 var(--f-mono);letter-spacing:.12em;opacity:.65;margin-bottom:6px}
+.cat-code::before{content:counter(zone,upper-alpha) "." counter(cat)}
+.cat-name{font:900 clamp(1.05rem,1.4vw,1.3rem)/1.1 var(--f-sign);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:break-word;hyphens:auto}
+.cat-go{width:22px;height:22px;fill:currentColor;transition:transform .35s var(--ease)}
+.cat a:hover{background:var(--c-primary);color:var(--c-on-primary)}
+.cat a:hover .cat-go{transform:translateX(5px)}
+
+/* ---------- product tiles ---------- */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin:0;padding:0;list-style:none;counter-reset:tile}
+.tile{counter-increment:tile;min-width:0}
+.tiles--home .tile:not(.tile--exit):nth-child(n+9){display:none}
+.tile--exit a{position:relative;justify-content:space-between;gap:24px;min-height:260px;padding:clamp(18px,2vw,28px);background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-primary) 72%,#000);
+  background-image:repeating-linear-gradient(-45deg,transparent 0 22px,color-mix(in srgb,var(--c-on-primary) 7%,transparent) 22px 24px)}
+.tile--exit a::before,.tile--exit a::after{content:"";position:absolute;top:10px;width:7px;height:7px;border-radius:50%;background:color-mix(in srgb,var(--c-on-primary) 32%,transparent)}
+.tile--exit a::before{left:10px}.tile--exit a::after{right:10px}
+.exit-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-top:6px}
+.exit-code{display:inline-block;padding:6px 9px 4px;border:2px solid currentColor;border-radius:3px;font-size:12px;letter-spacing:.1em}
+.exit-picto{width:clamp(44px,4vw,60px);fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:square;stroke-linejoin:miter}
+.exit-title{font:900 clamp(1.6rem,2.8vw,2.9rem)/.98 var(--f-sign);letter-spacing:-.025em;text-wrap:balance;overflow-wrap:break-word;hyphens:auto}
+.exit-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;border-top:2px solid color-mix(in srgb,var(--c-on-primary) 35%,transparent)}
+.exit-foot .mono{font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.exit-arrow{flex:none;width:clamp(44px,4.4vw,64px);fill:currentColor;transition:transform .45s var(--ease)}
+.tile--exit a:hover{transform:translateY(-4px);box-shadow:0 0 0 3px var(--c-text),0 14px 0 -6px color-mix(in srgb,var(--c-text) 20%,transparent)}
+.tile--exit a:hover .exit-arrow{transform:translateX(10px)}
+.tile--exit[data-span] a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;min-height:0;gap:clamp(16px,3vw,40px)}
+.tile--exit[data-span] .exit-top{padding-top:0}
+.tile--exit[data-span] .exit-foot{border-top:0;padding-top:0}
+.tile a{display:flex;flex-direction:column;height:100%;background:var(--c-surface);border-radius:var(--r);overflow:hidden;color:var(--c-text);text-decoration:none;box-shadow:0 0 0 1px var(--c-line);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.tile a:hover{transform:translateY(-4px);box-shadow:0 0 0 2px var(--c-text),0 14px 0 -6px color-mix(in srgb,var(--c-text) 20%,transparent)}
+.tile a:hover img{transform:scale(1.04)}
+.tile-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;background:var(--c-primary);color:var(--c-on-primary);font:600 12px/1 var(--f-mono);letter-spacing:.1em}
+.tile-code{display:inline-flex;align-items:center;gap:8px}
+.tile-code::before{content:counter(zone,upper-alpha);display:grid;place-items:center;width:22px;height:22px;padding-top:2px;border-radius:50%;background:var(--c-on-primary);color:var(--c-primary);font:900 11px/1 var(--f-sign)}
+.tile-code::after{content:counter(tile,decimal-leading-zero)}
+.tile-lvl:empty{display:none}
+.tile-lvl{padding:4px 6px 3px;border:1.5px solid currentColor;border-radius:3px;font-size:11px}
+.tile .frame{aspect-ratio:4/3}
+.tile-tag{position:absolute;left:10px;top:10px;z-index:1;max-width:calc(100% - 20px);padding:6px 8px 4px;background:var(--c-accent);color:var(--c-on-accent);border-radius:3px;font:600 11px/1.1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile-name{flex:1;margin:0;padding:16px 16px 18px;font-weight:800;font-size:clamp(1.02rem,1.2vw,1.18rem);line-height:1.22;letter-spacing:-.005em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tile-strip{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px 12px 16px;border-top:2px solid var(--c-text)}
+.strip-l{min-width:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 8px;font-family:var(--f-mono);font-weight:600}
+.price{font-size:17px;letter-spacing:-.01em}
+.old{font-size:13px;color:var(--c-muted);text-decoration:line-through}
+.strip-tag{font:600 12px/1.25 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--c-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.go{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--c-text);color:var(--c-surface);transition:transform .4s var(--ease),background .3s,color .3s}
+.go svg{width:16px;height:16px;fill:currentColor}
+.tile a:hover .go{background:var(--c-accent);color:var(--c-on-accent);transform:rotate(-45deg)}
+.go-row{display:flex;align-items:center;gap:18px;margin-top:var(--gap);padding:16px 18px 16px 22px;background:var(--board);color:var(--on-board);border-radius:var(--r);text-decoration:none;transition:background .3s var(--ease),color .3s var(--ease)}
+.go-row b{flex:1;min-width:0;font:900 clamp(1.1rem,2vw,1.6rem)/1.1 var(--f-sign);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-top:2px}
+.go-row .mono{font-size:13px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.go-row svg{flex:none;width:30px;height:30px;fill:currentColor;transition:transform .35s var(--ease)}
+.go-row:hover{background:var(--c-primary);color:var(--c-on-primary)}
+.go-row:hover svg{transform:translateX(6px)}
+
+/* ---------- usps + stats ---------- */
+.usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:var(--gap);margin:0;padding:0;list-style:none;counter-reset:usp}
+.usp{counter-increment:usp;display:flex;flex-direction:column;gap:14px;padding:clamp(20px,2.4vw,30px);background:var(--c-surface);border-radius:var(--r);box-shadow:0 0 0 1px var(--c-line)}
+.usp-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:2px solid var(--c-text)}
+.usp-code{font:600 13px/1 var(--f-mono);letter-spacing:.1em}
+.usp-code::before{content:counter(zone,upper-alpha) "." counter(usp)}
+.usp-shape{width:34px;height:34px;background:var(--c-primary)}
+.usp:nth-child(4n+1) .usp-shape{border-radius:50%}
+.usp:nth-child(4n+3) .usp-shape{clip-path:polygon(50% 4%,100% 96%,0 96%)}
+.usp:nth-child(4n+4) .usp-shape{transform:rotate(45deg) scale(.78)}
+.usp h3{font-weight:800;font-size:clamp(1.15rem,1.5vw,1.4rem);line-height:1.15;letter-spacing:-.01em}
+.usp p{color:var(--c-muted);font-size:15.5px;line-height:1.55}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:clamp(20px,3vw,40px);margin:clamp(48px,6vw,88px) 0 0;padding:0;list-style:none}
+.stat{position:relative;padding-top:24px;border-top:3px solid var(--c-text);min-width:0}
+.stat::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:repeating-linear-gradient(90deg,var(--c-text) 0 1.5px,transparent 1.5px 14px)}
+.stat-v{display:block;font:600 clamp(2rem,3.8vw,3.4rem)/1 var(--f-mono);letter-spacing:-.04em;overflow-wrap:anywhere}
+.stat-l{display:block;margin-top:10px;font:700 12px/1.35 var(--f-sign);letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted)}
+
+/* ---------- story + gallery ---------- */
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,88px);align-items:center}
+.story .frame{aspect-ratio:4/5;max-height:720px;border-radius:var(--r)}
+.story .plate{left:12px;bottom:12px}
+.story-txt{display:flex;flex-direction:column;gap:clamp(18px,2vw,28px);max-width:600px}
+.story-txt h3{font-weight:900;font-size:clamp(2rem,4.2vw,3.8rem);line-height:1;letter-spacing:-.025em;text-wrap:balance;overflow-wrap:break-word;hyphens:auto}
+.story-txt p{font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:color-mix(in srgb,var(--c-text) 82%,var(--c-bg))}
+.story-rule{width:96px;height:10px;background:var(--c-primary)}
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(140px,16vw,236px);gap:var(--gap);counter-reset:gal;margin-top:clamp(40px,6vw,88px)}
+.gal-i{counter-increment:gal;position:relative;margin:0;border-radius:var(--r);overflow:hidden;background:var(--c-surface)}
+.gal-i img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.gal-i:hover img{transform:scale(1.05)}
+.gal-i::after{content:counter(zone,upper-alpha) "-" counter(gal,decimal-leading-zero);position:absolute;left:8px;top:8px;padding:5px 7px 3px;border-radius:3px;background:var(--c-text);color:var(--c-surface);font:600 11px/1 var(--f-mono);letter-spacing:.08em}
+.gal-i:nth-child(n+9){display:none}
+.gal:not(:has(> :nth-child(5))){grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);grid-template-columns:none;grid-auto-rows:clamp(180px,22vw,320px)}
+.gal:has(> :nth-child(5)) .gal-i:first-child{grid-column:span 2;grid-row:span 2}
+.gal-i:nth-child(6):last-child{grid-column:span 4}
+.gal-i:nth-child(7):last-child{grid-column:span 3}
+.gal-i:nth-child(8){grid-column:span 2}
+
+/* ---------- quote plaque ---------- */
+.plaque{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,56px);margin-top:var(--zone-pad);padding:clamp(28px,5vw,72px);background:var(--board);color:var(--on-board);border-radius:var(--r)}
+.plaque::before,.plaque::after{content:"";position:absolute;top:12px;width:7px;height:7px;border-radius:50%;background:color-mix(in srgb,var(--on-board) 30%,transparent)}
+.plaque::before{left:12px}.plaque::after{right:12px}
+.q-mark{display:grid;place-items:center;width:clamp(56px,7vw,96px);aspect-ratio:1;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);box-shadow:0 0 0 2px var(--on-board)}
+.q-mark svg{width:46%;fill:currentColor}
+.plaque blockquote{margin:0;font-weight:700;font-size:clamp(1.3rem,2.4vw,2.2rem);line-height:1.24;letter-spacing:-.012em;max-width:38ch}
+.q-author{display:block;margin-top:22px;font:600 13px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--on-board) 65%,transparent)}
+
+/* ---------- cta + contact ---------- */
+.cta-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--gap)}
+.cta-box{display:flex;flex-direction:column;justify-content:space-between;gap:32px;padding:clamp(24px,4vw,56px);background:var(--c-surface);border-radius:var(--r);box-shadow:0 0 0 1px var(--c-line)}
+.cta-box p{font-size:clamp(17px,1.5vw,22px);line-height:1.45;max-width:42ch}
+.contact-list{display:grid;gap:var(--gap);align-content:start;margin:0;padding:0;list-style:none}
+.c-row{display:grid;grid-template-columns:56px minmax(0,1fr);align-items:center;gap:16px;padding:12px 18px 12px 12px;background:var(--board);color:var(--on-board);border-radius:var(--r);text-decoration:none;transition:background .3s var(--ease),color .3s var(--ease)}
+a.c-row:hover{background:var(--c-primary);color:var(--c-on-primary)}
+.c-ico{display:grid;place-items:center;width:56px;height:56px;border-radius:4px;background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--on-board) 20%,transparent)}
+.c-ico svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:square}
+.c-val{font:600 clamp(15px,1.3vw,18px)/1.35 var(--f-mono);overflow-wrap:anywhere}
+
+/* ---------- footer ---------- */
+.foot{margin-top:var(--zone-pad);background:var(--board);color:var(--on-board);border-top:4px solid var(--c-primary);padding:clamp(40px,6vw,80px) 0 28px;overflow:hidden}
+.foot-top{display:flex;flex-wrap:wrap;align-items:center;gap:20px 32px;padding-bottom:32px;border-bottom:1px solid color-mix(in srgb,var(--on-board) 16%,transparent)}
+.foot-top .logo-plate{text-decoration:none}
+.foot-tag{font-weight:700;font-size:clamp(1rem,1.4vw,1.25rem);max-width:46ch}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px clamp(32px,5vw,80px);padding:32px 0}
+.foot-contact{list-style:none;margin:0;padding:0;display:grid;gap:10px;font:600 15px/1.45 var(--f-mono);align-content:start}
+.foot-contact a{text-decoration:none}
+.foot-contact a:hover{text-decoration:underline}
+.foot-links{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0 24px;counter-reset:fl;align-content:start}
+.foot-links li{counter-increment:fl;border-top:1px solid color-mix(in srgb,var(--on-board) 16%,transparent)}
+.foot-links a{display:flex;align-items:center;gap:12px;padding:12px 6px;font-weight:700;text-decoration:none;transition:background .25s,color .25s,padding .3s var(--ease)}
+.foot-links a::before{content:counter(fl,decimal-leading-zero);font:600 11px/1 var(--f-mono);opacity:.55}
+.foot-links a:hover{background:var(--c-primary);color:var(--c-on-primary);padding-left:12px}
+.foot-mark{font-weight:900;font-size:clamp(3rem,12vw,12rem);line-height:.86;letter-spacing:-.04em;color:color-mix(in srgb,var(--on-board) 9%,transparent);overflow-wrap:anywhere;margin:12px 0 28px;user-select:none}
+.foot-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--on-board) 60%,transparent);padding-left:clamp(0px,14vw,240px)}
+
+.badge{position:fixed;left:12px;bottom:12px;z-index:80;display:inline-flex;align-items:center;gap:8px;padding:8px 12px 6px;background:var(--c-text);color:var(--c-surface);border-radius:999px;font:600 11px/1 var(--f-mono);letter-spacing:.06em;box-shadow:0 0 0 1px color-mix(in srgb,var(--c-surface) 30%,transparent)}
+.badge i{width:8px;height:8px;margin-top:-2px;border-radius:50%;background:var(--c-primary);box-shadow:0 0 0 1.5px var(--c-surface)}
+
+/* ---------- reveal (JS only) ---------- */
+.rv .sign{clip-path:inset(0 100% 0 0 round var(--r));transition:clip-path 1s var(--ease)}
+.rv .sign.in{clip-path:inset(0 0 0 0 round var(--r))}
+.rv .up{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv .up.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;min-height:0}
+  .hero-wall{min-height:0;aspect-ratio:16/10}
+  .hs-foot{grid-template-columns:1fr}
+  .story,.cta-grid{grid-template-columns:1fr}
+  .story .frame{aspect-ratio:4/3}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media (max-width:820px){
+  .board{position:relative}
+  .board-in{flex-wrap:wrap}
+  .board-logo{width:100%;padding:12px 0;border-right:0;border-bottom:1px solid color-mix(in srgb,var(--on-board) 16%,transparent)}
+  .dir{flex:1 1 100%;margin-inline:calc(var(--g) * -1);padding-inline:calc(var(--g) - 16px)}
+  .dir-list li{min-width:160px;flex:0 0 auto}
+  .dir-list li:last-child{border-right:0}
+  .dir-item{min-height:64px}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gal,.gal:not(:has(> :nth-child(5))){grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-columns:auto;grid-auto-rows:clamp(140px,38vw,260px)}
+  .gal .gal-i,.gal:has(> :nth-child(5)) .gal-i:first-child{grid-column:auto;grid-row:auto}
+  .gal .gal-i:first-child{grid-column:span 2}
+  .gal .gal-i:nth-child(even):last-child,.gal .gal-i:nth-child(8){grid-column:span 2}
+}
+@media (max-width:720px){
+  .sign{grid-template-columns:auto minmax(0,1fr) auto;row-gap:12px}
+  .picto{display:none}
+  .sign-mark{grid-row:1}
+  .sign-title{grid-column:2;grid-row:1}
+  .sign .arrow{grid-column:3;grid-row:1}
+  .sign-meta{grid-column:1/-1;grid-row:2;text-align:left;max-width:none}
+  .plaque{grid-template-columns:1fr}
+  .foot-base{padding-left:0}
+}
+@media (max-width:600px){
+  .hs-main{grid-template-columns:1fr}
+  .arrow--xl{width:76px}
+  .hs-top{flex-direction:column;gap:6px}
+}
+@media (max-width:520px){
+  .tiles{grid-template-columns:1fr}
+  .badge{font-size:10px;padding:7px 10px 5px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#FEED36;--c-on-primary:#111111;--c-accent:#35352D}</style></head>
+<body>
+
+<header class="board">
+  <div class="wrap board-in">
+    <a class="board-logo" href="template.html" aria-label="BOHLT">
+      <span class="logo-plate">
+        <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-bohlt.svg" alt="BOHLT" class="is-light">
+        
+      </span>
+    </a>
+    <nav class="dir" aria-label="BOHLT">
+      <ol class="dir-list">
+        <li><a class="dir-item" href="catalog.html"><span class="dir-letter" aria-hidden="true"></span><span class="dir-label">Vouwfietsen</span><span class="dir-time" aria-hidden="true">–:––</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span></a></li><li><a class="dir-item" href="catalog.html"><span class="dir-letter" aria-hidden="true"></span><span class="dir-label">Fatbikes</span><span class="dir-time" aria-hidden="true">–:––</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span></a></li><li><a class="dir-item" href="catalog.html"><span class="dir-letter" aria-hidden="true"></span><span class="dir-label">Elektrische fietsen</span><span class="dir-time" aria-hidden="true">–:––</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span></a></li><li><a class="dir-item" href="catalog.html"><span class="dir-letter" aria-hidden="true"></span><span class="dir-label">Accessoires</span><span class="dir-time" aria-hidden="true">–:––</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span></a></li><li><a class="dir-item" href="#"><span class="dir-letter" aria-hidden="true"></span><span class="dir-label">Winkel vinden</span><span class="dir-time" aria-hidden="true">–:––</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span></a></li><li><a class="dir-item" href="#"><span class="dir-letter" aria-hidden="true"></span><span class="dir-label">Contact</span><span class="dir-time" aria-hidden="true">–:––</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span></a></li>
+      </ol>
+    </nav>
+  </div>
+</header>
+
+<svg class="route" aria-hidden="true">
+  <polyline class="route-base" points=""/>
+  <polyline class="route-dash" points=""/>
+  <circle class="route-ring2" r="0" cx="-99" cy="-99"/>
+  <circle class="route-ring" r="0" cx="-99" cy="-99"/>
+  <polygon class="route-tip" points=""/>
+</svg>
+
+<main>
+  <!-- ===== HERO: one huge directional sign ===== -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-sign">
+        <div class="hs-top">
+          <span>Electrify your style</span>
+          <span class="hs-code">BO · L0</span>
+        </div>
+        <div class="hs-main">
+          <span class="arrow arrow--xl" data-swing aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span>
+          <h1 class="hs-title"><span class="ln">Take a ride,</span> <span class="ln ln-accent">own the city</span></h1>
+        </div>
+        <div class="hs-foot">
+          <p class="hs-text">Stoere, minimalistische e-bikes met opvallende details, gemaakt voor jong en oud. Aanzetten en wegrijden: meer hoef je niet te weten.</p>
+          <div class="hs-actions">
+            <a class="yah" href="catalog.html"><span class="yah-pin" aria-hidden="true"></span><span class="yah-label">Bekijk onze producten</span></a>
+            <a class="btn-ghost" href="catalog.html">Gratis proefrit maken</a>
+          </div>
+        </div>
+      </div>
+      <figure class="hero-wall frame">
+        <div class="frame-fill">
+          <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-electrify-your-style-homepage.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Take a ride,">
+          
+        </div>
+        <figcaption class="plate"><span class="mono">L0</span>Aanzetten en wegrijden, zo simpel is het</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== ZONE: products ===== -->
+  <section class="zone" id="zone-shop" data-key="products">
+    <div class="wrap">
+      <div class="sign">
+        <span class="sign-mark" aria-hidden="true"></span>
+        <svg class="picto" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="16" width="32" height="26"/><path d="M17 16v-4a7 7 0 0 1 14 0v4"/></svg>
+        <h2 class="sign-title">Elektrische fietsen en meer</h2>
+        <span class="sign-meta">3 producten</span>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span>
+      </div>
+      <div class="wall">
+        <ul class="cats up">
+          <li class="cat"><a href="catalog.html">
+            <span class="frame"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;afbeelding_product_categorie_04.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1103" alt="Elektrische fatbikes" loading="lazy"></span>
+            <span class="cat-txt"><span class="cat-code"></span><span class="cat-name">Elektrische fatbikes</span></span>
+            <svg class="cat-go" viewBox="0 0 100 100" aria-hidden="true"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg>
+          </a></li><li class="cat"><a href="catalog.html">
+            <span class="frame"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-city-bikes-3-copy.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1298" alt="Elektrische citybikes" loading="lazy"></span>
+            <span class="cat-txt"><span class="cat-code"></span><span class="cat-name">Elektrische citybikes</span></span>
+            <svg class="cat-go" viewBox="0 0 100 100" aria-hidden="true"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg>
+          </a></li><li class="cat"><a href="catalog.html">
+            <span class="frame"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;afbeelding_product_categorie_vouwfiets.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1103" alt="Elektrische vouwfietsen" loading="lazy"></span>
+            <span class="cat-txt"><span class="cat-code"></span><span class="cat-name">Elektrische vouwfietsen</span></span>
+            <svg class="cat-go" viewBox="0 0 100 100" aria-hidden="true"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg>
+          </a></li><li class="cat"><a href="catalog.html">
+            <span class="frame"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-accessoires-2-copy.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1296" alt="Accessoires" loading="lazy"></span>
+            <span class="cat-txt"><span class="cat-code"></span><span class="cat-name">Accessoires</span></span>
+            <svg class="cat-go" viewBox="0 0 100 100" aria-hidden="true"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg>
+          </a></li>
+        </ul>
+        <ul class="tiles tiles--home">
+          <li class="tile up"><a href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-fattwenty">
+            <span class="tile-head"><span class="tile-code"></span><span class="tile-lvl"></span></span>
+            <span class="frame"><span class="tile-tag">Fatbike</span><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;d9abac0cab16e12de10314861d949fd69f6aeb54.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT Fattwenty" loading="lazy"></span>
+            <h3 class="tile-name">BOHLT Fattwenty</h3>
+            <span class="tile-strip">
+              <span class="strip-l"><span class="price">€ 1.499,00</span></span>
+              <span class="go" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span>
+            </span>
+          </a></li>
+          <li class="tile up"><a href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-rebel">
+            <span class="tile-head"><span class="tile-code"></span><span class="tile-lvl"></span></span>
+            <span class="frame"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;fdbff358fe50671702b6ff4f09fe397f718e2fa8.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT Rebel" loading="lazy"></span>
+            <h3 class="tile-name">BOHLT Rebel</h3>
+            <span class="tile-strip">
+              <span class="strip-l"><span class="price">€ 1.899,00</span></span>
+              <span class="go" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span>
+            </span>
+          </a></li>
+          <li class="tile up"><a href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-x200-or">
+            <span class="tile-head"><span class="tile-code"></span><span class="tile-lvl"></span></span>
+            <span class="frame"><span class="tile-tag">Vouwfiets</span><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;092b39b1a1df91b0d990eda9c1041fdd9da73d8b.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT X200 OR" loading="lazy"></span>
+            <h3 class="tile-name">BOHLT X200 OR</h3>
+            <span class="tile-strip">
+              <span class="strip-l"><span class="price">€ 1.699,00</span></span>
+              <span class="go" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span>
+            </span>
+          </a></li>
+          <li class="tile tile--exit up"><a href="catalog.html">
+            <span class="exit-top"><span class="exit-code mono">L1 → L2</span><svg class="exit-picto" viewBox="0 0 48 48" aria-hidden="true"><path d="M5 41h9v-9h9v-9h9v-9h11"/><path d="M31 5h12v12"/><path d="M43 5L29 19"/></svg></span>
+            <b class="exit-title">Elektrische fietsen en meer</b>
+            <span class="exit-foot"><span class="mono">3 producten</span><svg class="exit-arrow" viewBox="0 0 100 100" aria-hidden="true"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ZONE: usps ===== -->
+  <section class="zone" id="zone-info" data-key="info">
+    <div class="wrap">
+      <div class="sign">
+        <span class="sign-mark" aria-hidden="true"></span>
+        <svg class="picto" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19"/><path d="M24 21v13"/><path d="M24 13v2"/></svg>
+        <h2 class="sign-title">Aanzetten en wegrijden, zo simpel is het</h2>
+        <span class="sign-meta">BOHLT</span>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span>
+      </div>
+      <div class="wall">
+        <ul class="usps">
+          <li class="usp up"><span class="usp-top"><span class="usp-code"></span><span class="usp-shape" aria-hidden="true"></span></span><h3>Gratis proefrit</h3><p>Voel zelf hoe makkelijk elektrisch rijden is en vraag een gratis proefrit aan.</p></li><li class="usp up"><span class="usp-top"><span class="usp-code"></span><span class="usp-shape" aria-hidden="true"></span></span><h3>Dealers in meerdere landen</h3><p>Via ons dealernetwerk vind je BOHLT ook in jouw buurt, in Nederland, België, Duitsland en Frankrijk.</p></li><li class="usp up"><span class="usp-top"><span class="usp-code"></span><span class="usp-shape" aria-hidden="true"></span></span><h3>Geschikt voor jong en oud</h3><p>Toegankelijke, robuuste e-mobility met één gemeenschappelijk idee: eenvoud.</p></li><li class="usp up"><span class="usp-top"><span class="usp-code"></span><span class="usp-shape" aria-hidden="true"></span></span><h3>Gates Belt Drive, 100% legaal</h3><p>Onze elektrische fatbikes rijden met een Gates Belt Drive en voldoen aan de wet.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <ul class="stats">
+      <li class="stat up"><span class="stat-v">117</span><span class="stat-l">Dealers</span></li><li class="stat up"><span class="stat-v">7</span><span class="stat-l">Ster-Dealers</span></li>
+    </ul>
+  </div>
+
+  <!-- ===== ZONE: story ===== -->
+  <section class="zone" id="zone-story" data-key="story">
+    <div class="wrap">
+      <div class="sign">
+        <span class="sign-mark" aria-hidden="true"></span>
+        <svg class="picto" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 18L24 7l18 11z"/><path d="M11 22v15M19 22v15M29 22v15M37 22v15M6 41h36"/></svg>
+        <h2 class="sign-title">Over BOHLT</h2>
+        <span class="sign-meta"></span>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span>
+      </div>
+      <div class="wall story">
+        <figure class="frame up" style="margin:0">
+          <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt_main_image-_05.jpg?cropX&#x3D;0&amp;cropY&#x3D;178&amp;cropW&#x3D;1275&amp;cropH&#x3D;519" alt="Rijden van A naar B, weer écht leuk" loading="lazy">
+          
+        </figure>
+        <div class="story-txt up">
+          <span class="story-rule" aria-hidden="true"></span>
+          <h3>Rijden van A naar B, weer écht leuk</h3>
+          <p>BOHLT ontwerpt e-mobility die tot de verbeelding spreekt: minimalistisch van vorm, met opvallende details en een stoere uitstraling. Van elektrische vouwfietsen en steps tot citybikes: wij zorgen dat iedereen snel en zonder gedoe op zijn bestemming komt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="gal">
+      <figure class="gal-i up"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;ls3_7942-klein.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="BOHLT" loading="lazy"></figure><figure class="gal-i up"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-proefrit-aanvragen.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="BOHLT" loading="lazy"></figure>
+    </div>
+  </div>
+
+
+  <!-- ===== ZONE: contact ===== -->
+  <section class="zone" id="zone-contact" data-key="contact">
+    <div class="wrap">
+      <div class="sign">
+        <span class="sign-mark" aria-hidden="true"></span>
+        <svg class="picto" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 43S11 30 11 20a13 13 0 0 1 26 0c0 10-13 23-13 23z"/><circle cx="24" cy="20" r="4.5"/></svg>
+        <h2 class="sign-title">Ervaar het zelf</h2>
+        <span class="sign-meta">010 304 11 00</span>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M8 38h44V14l42 36-42 36V62H8z"/></svg></span>
+      </div>
+      <div class="wall cta-grid">
+        <div class="cta-box up">
+          <p>Benieuwd hoe BOHLT rijdt? Vraag een gratis proefrit aan of zoek een dealer bij jou in de buurt.</p>
+          <div><a class="yah yah--wall" href="#"><span class="yah-pin" aria-hidden="true"></span><span class="yah-label">Proefrit aanvragen</span></a></div>
+        </div>
+        <ul class="contact-list up">
+          <li><span class="c-row"><span class="c-ico"><svg viewBox="0 0 48 48"><path d="M24 43S11 30 11 20a13 13 0 0 1 26 0c0 10-13 23-13 23z"/><circle cx="24" cy="20" r="4.5"/></svg></span><span class="c-val">Vareseweg 44, 3047 AV Rotterdam</span></span></li>
+          <li><a class="c-row" href="tel:010 304 11 00"><span class="c-ico"><svg viewBox="0 0 48 48"><rect x="15" y="5" width="18" height="38" rx="2"/><path d="M21 37h6"/></svg></span><span class="c-val">010 304 11 00</span></a></li>
+          <li><a class="c-row" href="mailto:info@bohlt.nl"><span class="c-ico"><svg viewBox="0 0 48 48"><rect x="6" y="11" width="36" height="26"/><path d="M6 13l18 14 18-14"/></svg></span><span class="c-val">info@bohlt.nl</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="logo-plate" href="template.html">
+        <img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-bohlt.svg" alt="BOHLT" class="is-light" loading="lazy">
+        
+      </a>
+      <p class="foot-tag">Aanzetten en wegrijden, zo simpel is het</p>
+    </div>
+    <div class="foot-grid">
+      <ul class="foot-contact">
+        <li>Vareseweg 44, 3047 AV Rotterdam</li>
+        <li><a href="tel:010 304 11 00">010 304 11 00</a></li>
+        <li><a href="mailto:info@bohlt.nl">info@bohlt.nl</a></li>
+      </ul>
+      <ol class="foot-links">
+        <li><a href="#">Winkel vinden</a></li><li><a href="#">Dealer worden</a></li><li><a href="#">Levertijden</a></li><li><a href="#">Retouren</a></li><li><a href="#">Garantie</a></li><li><a href="#">Klantenservice</a></li><li><a href="#">Algemene voorwaarden</a></li><li><a href="#">Privacy statement</a></li>
+      </ol>
+    </div>
+    <div class="foot-mark" aria-hidden="true">BOHLT</div>
+    <div class="foot-base mono"><span>© 2026 BOHLT</span><span>BO · L0</span></div>
+  </div>
+</footer>
+
+<div class="badge"><i></i>Demo redesign · Wayfinding System</div>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement, W=window;
+  var reduce=W.matchMedia&&W.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* contrast for accent: pick black or white, whichever reads better */
+  function rgb(v){var e=d.createElement('i');e.style.color=v;e.style.display='none';d.body.appendChild(e);var c=getComputedStyle(e).color;e.remove();var m=c.match(/[\d.]+/g);if(!m)return null;var n=m.slice(0,3).map(Number);if(/color\(/.test(c))n=n.map(function(x){return x*255});return n}
+  function lum(c){return c.map(function(x){x/=255;return x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4)}).reduce(function(a,x,i){return a+x*[.2126,.7152,.0722][i]},0)}
+  function onC(v,p){try{var c=rgb('var('+v+')');if(c){var L=lum(c);root.style.setProperty(p,(L+.05)/.05>1.05/(L+.05)?'#111315':'#ffffff')}}catch(e){}}
+  onC('--c-accent','--c-on-accent'); onC('--c-primary','--c-on-primary');
+
+  /* zones + directory mapping */
+  var zones=[].slice.call(d.querySelectorAll('.zone'));
+  zones.forEach(function(z,i){z.letter=String.fromCharCode(65+i);z.anchor=z.querySelector('.sign-mark')||z});
+  var board=d.querySelector('.board'), boardAnchor=d.querySelector('.board-logo')||board;
+  var shop=d.querySelector('.zone[data-key="products"]');
+  var free=zones.filter(function(z){return z!==shop}), fi=0;
+  var items=[].slice.call(d.querySelectorAll('.dir-item'));
+  items.forEach(function(a){
+    var h=a.getAttribute('href')||'', z=null;
+    if(/catalog\.html/.test(h)&&shop) z=shop;
+    else if(free.length){z=free[Math.min(fi,free.length-1)];fi++}
+    else z=shop||null;
+    a.zone=z;
+    if(z) a.querySelector('.dir-letter').textContent=z.letter;
+  });
+
+  /* arrows: atan2 toward target, critically damped spring */
+  var hovered=null;
+  var arrows=[].slice.call(d.querySelectorAll('.arrow')).map(function(el){
+    var o={el:el,svg:el.querySelector('svg'),a:el.hasAttribute('data-swing')&&!reduce?-90:90,v:0};
+    var di=el.closest('.dir-item');
+    if(di){o.def=function(){return di.zone&&di.zone.anchor}}
+    else{var z=el.closest('.zone'),nx=zones[zones.indexOf(z)+1];o.def=function(){return nx?nx.anchor:boardAnchor}}
+    return o;
+  });
+  var K=120, C=2*Math.sqrt(K), last=performance.now(), frame=0;
+  function tick(t){
+    var dt=Math.min(Math.max((t-last)/1000,0),1/30); last=t; frame++;
+    var vh=W.innerHeight;
+    for(var i=0;i<arrows.length;i++){
+      var o=arrows[i], r=o.el.getBoundingClientRect();
+      if(!r.width||r.bottom<-60||r.top>vh+60) continue;
+      var tg=hovered?hovered.zone.anchor:o.def(); if(!tg) continue;
+      var tr=tg.getBoundingClientRect();
+      var dx=tr.left+tr.width/2-(r.left+r.width/2), dy=tr.top+tr.height/2-(r.top+r.height/2);
+      if(Math.abs(dx)+Math.abs(dy)<4) continue;
+      var goal=Math.atan2(dy,dx)*180/Math.PI, diff=((goal-o.a)%360+540)%360-180;
+      if(reduce){o.a+=diff;o.v=0}else{o.v+=(K*diff-C*o.v)*dt;o.a+=o.v*dt}
+      o.svg.style.transform='rotate('+o.a.toFixed(2)+'deg)';
+    }
+    if(frame%8===1) times();
+    if(hovered) route();
+    W.requestAnimationFrame(tick);
+  }
+
+  /* walking time estimates */
+  function times(){
+    items.forEach(function(a){
+      if(!a.zone) return;
+      var r=a.getBoundingClientRect(), tr=a.zone.anchor.getBoundingClientRect();
+      var s=Math.round(Math.hypot(tr.left-r.left,tr.top-r.bottom)/42/1.3), m=Math.floor(s/60); s%=60;
+      var t=a.querySelector('.dir-time'), txt=m+':'+(s<10?'0':'')+s;
+      if(t.textContent!==txt) t.textContent=txt;
+    });
+  }
+
+  /* dashed right-angle route from board to sign */
+  var svg=d.querySelector('.route'), pb=svg.querySelector('.route-base'), pd=svg.querySelector('.route-dash'),
+      r1=svg.querySelector('.route-ring'), r2=svg.querySelector('.route-ring2'), tip=svg.querySelector('.route-tip');
+  function route(){
+    var lr=hovered.querySelector('.dir-letter').getBoundingClientRect(), tr=hovered.zone.anchor.getBoundingClientRect();
+    var bb=board.getBoundingClientRect().bottom, vh=W.innerHeight;
+    var x0=lr.left+lr.width/2, y0=lr.bottom+4, ym=Math.max(bb+22,y0+22);
+    var x1=tr.left+tr.width/2, y1=tr.top+tr.height/2, rad=tr.width/2+8, mode=0;
+    if(y1>vh-16){y1=vh-16;mode=1}else if(y1-rad<ym+10){y1=ym;mode=-1}
+    var yEnd=mode===0?y1-rad:y1;
+    var pts=x0+','+y0+' '+x0+','+ym+' '+x1+','+ym+' '+x1+','+yEnd;
+    pb.setAttribute('points',pts); pd.setAttribute('points',pts);
+    if(mode===0){
+      [r1,r2].forEach(function(c){c.setAttribute('cx',x1);c.setAttribute('cy',y1);c.setAttribute('r',rad)});
+      tip.setAttribute('points','');
+    }else{
+      [r1,r2].forEach(function(c){c.setAttribute('r',0)});
+      var s=mode===1?1:-1;
+      tip.setAttribute('points',(x1-11)+','+(y1-s*12)+' '+(x1+11)+','+(y1-s*12)+' '+x1+','+(y1+s*6));
+    }
+  }
+  function setHover(a){
+    hovered=a&&a.zone?a:null;
+    items.forEach(function(i){i.classList.toggle('is-on',i===a)});
+    zones.forEach(function(z){z.classList.toggle('is-target',!!hovered&&z===hovered.zone)});
+    if(hovered){var sg=hovered.zone.querySelector('.sign');if(sg)sg.classList.add('in');route();svg.classList.add('on')}
+    else svg.classList.remove('on');
+  }
+  items.forEach(function(a){
+    a.addEventListener('mouseenter',function(){setHover(a)});
+    a.addEventListener('focus',function(){setHover(a)});
+    a.addEventListener('blur',function(){setHover(null)});
+  });
+  var dir=d.querySelector('.dir'); if(dir) dir.addEventListener('mouseleave',function(){setHover(null)});
+
+  /* level codes per grid row */
+  function levels(){
+    [].forEach.call(d.querySelectorAll('.tiles'),function(g){
+      var tops=[], ex=g.querySelector('.tile--exit');
+      if(ex){
+        /* exit sign fills the rest of the last row so the module grid never has a hole */
+        var cols=getComputedStyle(g).gridTemplateColumns.split(' ').length,
+            n=[].filter.call(g.querySelectorAll('.tile:not(.tile--exit)'),function(t){return getComputedStyle(t).display!=='none'}).length,
+            span=cols-(n%cols);
+        ex.style.gridColumn='span '+span;
+        if(span>1&&span*2>=cols) ex.setAttribute('data-span','');else ex.removeAttribute('data-span');
+      }
+      [].forEach.call(g.querySelectorAll('.tile:not(.tile--exit)'),function(t){
+        if(!t.offsetParent) return;
+        var y=t.offsetTop, i=tops.indexOf(y); if(i<0){tops.push(y);i=tops.length-1}
+        var s=t.querySelector('.tile-lvl'); if(s) s.textContent='L'+(i+1);
+      });
+    });
+  }
+  levels(); W.addEventListener('resize',levels); W.addEventListener('load',levels);
+
+  /* visual-only filters */
+  [].forEach.call(d.querySelectorAll('.flt'),function(b,i,all){
+    b.addEventListener('click',function(){[].forEach.call(all,function(x){x.classList.toggle('is-on',x===b);x.setAttribute('aria-pressed',x===b)})});
+  });
+
+  /* reveal */
+  if(!reduce&&'IntersectionObserver' in W){
+    root.classList.add('rv');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px'});
+    [].forEach.call(d.querySelectorAll('.sign,.up'),function(el){io.observe(el)});
+    /* safety: never leave content hidden (print, full-page capture, fast jumps) */
+    W.setTimeout(function(){[].forEach.call(d.querySelectorAll('.sign,.up'),function(el){el.classList.add('in')})},1800);
+  }
+
+  W.requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{
+  "id": "wayfinding-system",
+  "name": "Wayfinding System",
+  "sectors": [
+    "hospitality",
+    "services",
+    "b2b",
+    "travel"
+  ],
+  "sample": "hotelnavarra",
+  "stress": "bohlt",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793227499551
+    },
+    {
+      "step": "Rendering",
+      "at": 1793228216383
+    },
+    {
+      "step": "Critique",
+      "at": 1793228228866
+    },
+    {
+      "step": "Final render",
+      "at": 1793228328664
+    },
+    {
+      "step": "Done",
+      "at": 1793228341124
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793226497260,
+  "startedAt": 1793227499551,
+  "finishedAt": 1793228341124,
+  "model": "opus",
+  "costUsd": 3.0896964000000002,
+  "meta": {
+    "id": "wayfinding-system",
+    "name": "Wayfinding System",
+    "scheme": "light",
+    "sectors": [
+      "hospitality",
+      "services",
+      "b2b",
+      "travel"
+    ],
+    "mood": [
+      "severe",
+      "bold",
+      "legible",
+      "architectural"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary fills every sign panel, tile header and zone circle with on-primary type; accent is used only for the 'you are here' pin, tags and the dashed route line, with black or white text on it picked by JS for contrast. The dark directory board and grey wall stay the template's own."
+  },
+  "score": {
+    "scoreBefore": 5,
+    "issues": [
+      "Creativity 7 / typography 7 / layout 4 / polish 4 / brand robustness 6 / mobile 3 / generic-ness 6",
+      "Catastrophic: everything below the first two sign panels (USPs, stats, story, gallery, quote, contact) stays invisible – the IntersectionObserver reveal never fires for off-screen content, leaving ~2/3 of the homepage as empty grey wall on desktop, mobile and the BOHLT stress test",
+      "Mobile: the directory board – the header concept itself – collapses to a zero-width strip beside the logo (flex:1 with min-width:0 never wraps), so only a sliver of zone A is visible",
+      "Product grid breaks its own 'strict modular grid' promise: 3 products in a 4-column grid leave a gaping hole, and a separate flat black go-row underneath feels like a generic 'see all' button",
+      "BOHLT stress: hero body copy squeezed into a ~12ch column next to the buttons; directory labels and category names truncated to 'Elektrisc…', 'Vouwfiet…', 'Elektrische fat…' – illegible signage is a contradiction",
+      "Only the accent had a computed contrast colour; --c-on-primary was trusted blindly, despite the brief demanding computed white/black on the brand colour"
+    ],
+    "fixed": [
+      "Reveal now has a safety net: every .sign/.up is forced visible after 1.8s, so no section can ever stay blank (both pages)",
+      "Mobile directory board: .dir takes a full row (flex-basis 100%) and scrolls horizontally with all zones visible (both pages)",
+      "Replaced the go-row with an in-grid 'level change' exit sign tile (L1 → L2 code, stair pictogram, hatched sign panel, sliding arrow) that JS-spans the remaining columns of the last row – the module grid is always complete; it turns into a horizontal sign when it spans half a row or more",
+      "Hero foot switched to a wrapping flex layout so body copy keeps a readable measure; directory labels and category names wrap to two lines instead of truncating",
+      "--c-on-primary is now computed (white or black via WCAG luminance) like --c-on-accent, on both pages"
+    ],
+    "scoreAfterEstimate": 7.3
+  },
+  "version": 1793228341124
+}
