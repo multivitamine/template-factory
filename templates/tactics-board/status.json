@@ -1,0 +1,83 @@
+{
+  "id": "tactics-board",
+  "name": "Tactics Board",
+  "sectors": [
+    "sports",
+    "retail",
+    "services",
+    "b2b"
+  ],
+  "sample": "spaansen",
+  "stress": "droogijs365",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793278282280
+    },
+    {
+      "step": "Rendering",
+      "at": 1793279113354
+    },
+    {
+      "step": "Critique",
+      "at": 1793279126232
+    },
+    {
+      "step": "Final render",
+      "at": 1793279210291
+    },
+    {
+      "step": "Done",
+      "at": 1793279222584
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793278282279,
+  "startedAt": 1793278282280,
+  "finishedAt": 1793279222584,
+  "model": "opus",
+  "costUsd": 3.5888826,
+  "meta": {
+    "id": "tactics-board",
+    "name": "Tactics Board",
+    "scheme": "light",
+    "sectors": [
+      "sports",
+      "retail",
+      "services",
+      "b2b"
+    ],
+    "mood": [
+      "loud",
+      "hands-on",
+      "energetic",
+      "playful",
+      "tactile"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary drives the magnets (CTA, counters, filters), gaffer tape and the darkened marker ink (lasso, arrows, rings); accent only tints small details so any palette stays legible on the white board."
+  },
+  "score": {
+    "scoreBefore": 6.6,
+    "issues": [
+      "Marker tray was position:sticky inside the frame, so in every viewport and full-page shot it floated mid-board over the pinned hero photo and counters (desktop, mobile and catalog)",
+      "Category names were chopped letter-by-letter ('FARMACEUTISC H', 'VOEDSELINDUS TRIE') by overflow-wrap:anywhere next to the 'bekijk' note",
+      "Marker tool button read as a generic pill with a red blob, not a dry-erase marker; disabled Vergelijk button looked washed-out pink",
+      "Marker ghosting texture on the board was nearly invisible (4.5% opacity), so the board read as flat white",
+      "Gallery grid left a lone orphan photo in an otherwise empty row with 6 images (stress brand); on mobile the snaps were a single narrow column",
+      "Hero headline is clean Teko with no erased-marker history, so it doesn't feel like it was written on a used whiteboard"
+    ],
+    "fixed": [
+      "Tray is now a static marker ledge at the bottom of the frame in both template.html and catalog.html: no more overlap with hero content",
+      "Category meta is a grid: number + name with hyphens:auto/balance, 'bekijk →' moves to its own line, so long Dutch compounds break properly",
+      "Marker tool restyled as a real marker (primary end cap, white barrel, grey band, primary cap and tip); disabled compare keeps its colour at reduced saturation",
+      "Board ghost strokes raised to 7.5% opacity, and the hero title has faint offset ghost copies like erased marker",
+      "Gallery switched to centred flex-wrap (an odd last photo looks pinned on purpose) with a 2-up layout on mobile"
+    ],
+    "scoreAfterEstimate": 7.3
+  },
+  "version": 1793279222584
+}

@@ -1,0 +1,9 @@
+{
+  "id": "tactics-board",
+  "name": "Tactics Board",
+  "scheme": "light",
+  "sectors": ["sports", "retail", "services", "b2b"],
+  "mood": ["loud", "hands-on", "energetic", "playful", "tactile"],
+  "needsProductImages": true,
+  "notes": "Primary drives the magnets (CTA, counters, filters), gaffer tape and the darkened marker ink (lasso, arrows, rings); accent only tints small details so any palette stays legible on the white board."
+}
