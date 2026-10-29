@@ -1,0 +1,82 @@
+{
+  "id": "liquid-pane",
+  "name": "Liquid Pane",
+  "sectors": [
+    "tech",
+    "services",
+    "lifestyle",
+    "horeca"
+  ],
+  "sample": "teleqare",
+  "stress": "brinkscoffeeroasters",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793299880626
+    },
+    {
+      "step": "Rendering",
+      "at": 1793300669875
+    },
+    {
+      "step": "Critique",
+      "at": 1793300681570
+    },
+    {
+      "step": "Final render",
+      "at": 1793300762030
+    },
+    {
+      "step": "Done",
+      "at": 1793300773639
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793299880623,
+  "startedAt": 1793299880626,
+  "finishedAt": 1793300773639,
+  "model": "opus",
+  "costUsd": 3.5518326,
+  "meta": {
+    "id": "liquid-pane",
+    "name": "Liquid Pane",
+    "scheme": "light",
+    "sectors": [
+      "tech",
+      "services",
+      "lifestyle",
+      "horeca"
+    ],
+    "mood": [
+      "airy",
+      "frosted",
+      "calm",
+      "premium"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary and accent are mixed heavily with white into a drifting pastel mesh behind frosted glass; solid primary is used only for CTAs, add buttons, the cart and active filters, and a primary darkened toward the text colour is used for accent type."
+  },
+  "score": {
+    "scoreBefore": 4.8,
+    "issues": [
+      "Homepage is ~70% empty: every .rv section (featured products, categories, USPs, story, CTA) uses a view()-timeline reveal starting at opacity 0, so in full-page captures/uncommon viewports they never appear — only the non-.rv gallery rail shows, floating alone in a void",
+      "The pastel mesh atmosphere stops after the first viewport (fixed canvas + fixed body gradient), leaving a flat grey page below the hero — kills the 'airy pastel atmosphere' art direction",
+      "Hero glass panel too tall on desktop: a large dead gap between headline and lead",
+      "Orb drag has no affordance: nothing tells the user which surfaces accept the orb until hovering exactly over one",
+      "Drag hint is plain grey text, not part of the glass language",
+      "Placeholder wells (TQ initials) are acceptable but generic; catalog itself is strong"
+    ],
+    "fixed": [
+      "Reveal animation is now transform-only (translate + scale), so content is never invisible regardless of timeline support or capture method",
+      "Replaced fixed body gradients on both pages with a scroll-attached 1800px repeating pastel mesh tile built from primary/accent tints, so the atmosphere runs the full page length for any brand",
+      "Tightened hero min-height (80vh/780 → 72vh/700) to remove the dead gap",
+      "While the orb is dragged, all product slabs become breathing glass drop zones (rim glow + halo on the add button); the hovered target still lifts to scale 1.04",
+      "Drag hint is now a frosted glass pill matching the UI system"
+    ],
+    "scoreAfterEstimate": 7.3
+  },
+  "version": 1793300773639
+}

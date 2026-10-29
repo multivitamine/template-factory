@@ -1,0 +1,9 @@
+{
+  "id": "liquid-pane",
+  "name": "Liquid Pane",
+  "scheme": "light",
+  "sectors": ["tech", "services", "lifestyle", "horeca"],
+  "mood": ["airy", "frosted", "calm", "premium"],
+  "needsProductImages": true,
+  "notes": "Primary and accent are mixed heavily with white into a drifting pastel mesh behind frosted glass; solid primary is used only for CTAs, add buttons, the cart and active filters, and a primary darkened toward the text colour is used for accent type."
+}

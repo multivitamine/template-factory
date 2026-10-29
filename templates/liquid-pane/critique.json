@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 4.8,
+  "issues": [
+    "Homepage is ~70% empty: every .rv section (featured products, categories, USPs, story, CTA) uses a view()-timeline reveal starting at opacity 0, so in full-page captures/uncommon viewports they never appear — only the non-.rv gallery rail shows, floating alone in a void",
+    "The pastel mesh atmosphere stops after the first viewport (fixed canvas + fixed body gradient), leaving a flat grey page below the hero — kills the 'airy pastel atmosphere' art direction",
+    "Hero glass panel too tall on desktop: a large dead gap between headline and lead",
+    "Orb drag has no affordance: nothing tells the user which surfaces accept the orb until hovering exactly over one",
+    "Drag hint is plain grey text, not part of the glass language",
+    "Placeholder wells (TQ initials) are acceptable but generic; catalog itself is strong"
+  ],
+  "fixed": [
+    "Reveal animation is now transform-only (translate + scale), so content is never invisible regardless of timeline support or capture method",
+    "Replaced fixed body gradients on both pages with a scroll-attached 1800px repeating pastel mesh tile built from primary/accent tints, so the atmosphere runs the full page length for any brand",
+    "Tightened hero min-height (80vh/780 → 72vh/700) to remove the dead gap",
+    "While the orb is dragged, all product slabs become breathing glass drop zones (rim glow + halo on the add button); the hovered target still lifts to scale 1.04",
+    "Drag hint is now a frosted glass pill matching the UI system"
+  ],
+  "scoreAfterEstimate": 7.3
+}

@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Products · TeleQare</title>
+<meta name="description" content="Browse cases, screen protection, audio and more from leading accessory brands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;500;600&family=Parkinsans:wght@500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#f3f5fa; --c-surface:#ffffff; --c-text:#12141c; --c-muted:#5a6072; --c-line:#dde1ec;
+  --c-primary:#5b5ff0; --c-on-primary:#ffffff; --c-accent:#7fdccf;
+  --ink:color-mix(in srgb, var(--c-primary) 66%, var(--c-text));
+  --tint:color-mix(in srgb, var(--c-primary) 12%, #fff);
+  --gx:clamp(16px, 4vw, 56px); --r:28px; --r-in:20px; --r-xl:36px; --orb:132px;
+  --ease:cubic-bezier(.22,1,.36,1); --spring:cubic-bezier(.34,1.56,.64,1);
+  --fd:'Parkinsans', 'Avenir Next', sans-serif; --fb:'Afacad', 'Helvetica Neue', sans-serif;
+  --glass:linear-gradient(180deg, rgba(255,255,255,.66), rgba(255,255,255,.4));
+  --edge:inset 0 0 0 1px rgba(255,255,255,.72), inset 0 1px 0 #fff;
+  --shadow:0 1px 2px rgba(16,18,40,.04), 0 30px 60px -32px color-mix(in srgb, var(--c-primary) 50%, rgba(16,18,40,.55));
+}
+*,*::before,*::after{box-sizing:border-box}
+/* scroll-attached atmosphere tile: the pastel mesh continues down the whole page even where the fixed canvas isn't painted */
+html{-webkit-text-size-adjust:100%;scroll-padding-top:96px;background:var(--c-bg)}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--c-text);font:400 1.0625rem/1.55 var(--fb);-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(40% 30% at 10% 12%, color-mix(in srgb, var(--c-primary) 30%, #fff), transparent 70%),
+    radial-gradient(38% 32% at 90% 30%, color-mix(in srgb, var(--c-accent) 50%, #fff), transparent 70%),
+    radial-gradient(45% 30% at 30% 62%, color-mix(in srgb, var(--c-accent) 34%, #fff), transparent 70%),
+    radial-gradient(42% 34% at 78% 88%, color-mix(in srgb, var(--c-primary) 22%, #fff), transparent 70%),
+    var(--c-bg);
+  background-size:100% 1800px;background-repeat:repeat-y}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:12px}
+.wrap{width:min(100% - 2 * var(--gx), 1360px);margin-inline:auto}
+#mesh{position:fixed;inset:0;width:100vw;height:100vh;z-index:-1;opacity:0;transition:opacity 1.2s var(--ease);pointer-events:none}
+#mesh.on{opacity:1}
+.fx{position:absolute;width:0;height:0;overflow:hidden}
+
+/* glass */
+.glass{position:relative;background:var(--glass);-webkit-backdrop-filter:blur(24px) saturate(1.6);backdrop-filter:blur(24px) saturate(1.6);border-radius:var(--r);box-shadow:var(--edge), var(--shadow)}
+.glass::before,.slab::before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg, transparent, #fff 50%, transparent);pointer-events:none;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;margin:0;font:500 .82rem/1.2 var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted)}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--c-primary);box-shadow:0 0 0 4px color-mix(in srgb, var(--c-primary) 18%, transparent)}
+.h2{margin:0;font:800 clamp(2rem, 4.2vw, 3.7rem)/1 var(--fd);letter-spacing:-.04em;text-wrap:balance}
+.lead{margin:0;color:var(--c-muted);font-size:clamp(1.05rem, 1.3vw, 1.2rem);max-width:56ch}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:6px 8px 6px 24px;border:0;border-radius:999px;font:600 1rem/1.1 var(--fd);letter-spacing:-.01em;transition:transform .45s var(--ease), box-shadow .45s var(--ease), background .3s}
+.btn-primary{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 0 0 1px rgba(255,255,255,.12), 0 16px 32px -14px color-mix(in srgb, var(--c-primary) 85%, transparent)}
+.btn-primary .ico{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:color-mix(in srgb, var(--c-on-primary) 16%, transparent);transition:transform .45s var(--ease)}
+.btn-primary:hover .ico{transform:translateX(3px) rotate(-45deg)}
+.btn-ghost{padding-right:24px;background:rgba(255,255,255,.58);box-shadow:var(--edge), 0 10px 24px -16px rgba(16,18,40,.3)}
+.btn-ghost:hover{background:rgba(255,255,255,.85)}
+.ico svg,.icon-btn svg{width:18px;height:18px}
+
+/* nav */
+.nav-wrap{position:fixed;top:14px;left:0;right:0;z-index:50;display:flex;justify-content:center;pointer-events:none}
+.nav{pointer-events:auto;width:min(100% - 24px, 1180px);display:flex;align-items:center;gap:16px;padding:8px 8px 8px 18px;border-radius:999px;transition:padding .5s var(--ease), width .6s var(--ease)}
+.nav.scrolled{width:min(100% - 24px, 1040px)}
+.logo{display:flex;align-items:center;gap:10px;min-width:0;flex:0 1 auto;font:800 1.08rem/1 var(--fd);letter-spacing:-.03em}
+.logo img{height:32px;width:auto;max-width:150px;object-fit:contain}
+.logo--light img{filter:brightness(0)}
+.logo .mono{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);font-size:.78rem;letter-spacing:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+.logo .word{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:22ch}
+.nav-links{display:flex;gap:2px;margin-inline:auto}
+.nav-links a{padding:9px 14px;border-radius:999px;font-weight:500;color:color-mix(in srgb, var(--c-text) 82%, transparent);transition:background .3s, color .3s}
+.nav-links a:hover{background:rgba(255,255,255,.75);color:var(--c-text)}
+.nav-end{display:flex;align-items:center;gap:6px;margin-left:auto}
+.nav-links + .nav-end{margin-left:0}
+.icon-btn,.cart-btn{position:relative;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.6);box-shadow:var(--edge);transition:background .3s, transform .4s var(--ease)}
+.icon-btn:hover,.cart-btn:hover{background:#fff;transform:translateY(-1px)}
+.cart-btn{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.cart-btn:hover{background:var(--c-primary)}
+.cart-btn svg{width:19px;height:19px}
+.cart-count{position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;padding:0 5px;border-radius:99px;display:grid;place-items:center;background:#fff;color:var(--c-text);font:600 .72rem/1 var(--fd);box-shadow:0 2px 8px rgba(16,18,40,.18);scale:0;transition:scale .4s var(--spring)}
+.cart-count.has{scale:1}
+.cart-count.bump{animation:bump .6s var(--spring)}
+@keyframes bump{40%{scale:1.6}}
+.menu{display:none;position:relative}
+.menu summary{list-style:none;display:grid;place-content:center;gap:5px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.6);box-shadow:var(--edge);cursor:pointer}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary span{display:block;width:18px;height:2px;border-radius:2px;background:var(--c-text);transition:transform .35s var(--ease)}
+.menu[open] summary span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu[open] summary span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.menu-panel{position:absolute;right:0;top:calc(100% + 10px);width:min(78vw, 280px);padding:10px;display:grid;gap:2px;border-radius:24px;background:rgba(255,255,255,.92);box-shadow:var(--edge), var(--shadow)}
+.menu-panel a{padding:12px 14px;border-radius:14px;font:600 1.05rem var(--fd)}
+.menu-panel a:hover{background:var(--tint)}
+
+/* sections */
+.sec{padding-block:clamp(44px, 7vw, 104px)}
+.field{width:min(100%, 300px);height:48px;padding:0 18px 0 44px;border:0;border-radius:999px;font:inherit;color:var(--c-text);background:rgba(255,255,255,.62) no-repeat 16px 50% / 18px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235a6072' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E");box-shadow:var(--edge), 0 10px 24px -18px rgba(16,18,40,.35);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);transition:box-shadow .3s, background-color .3s}
+.field:focus{outline:0;background-color:rgba(255,255,255,.9);box-shadow:var(--edge), 0 0 0 3px color-mix(in srgb, var(--c-primary) 30%, transparent)}
+
+/* product slabs */
+.slab{position:relative;display:flex;flex-direction:column;gap:12px;padding:10px 10px 14px;border-radius:var(--r);
+  background:radial-gradient(260px circle at var(--mx, 50%) var(--my, -60%), rgba(255,255,255,.8), transparent 62%), var(--glass);
+  -webkit-backdrop-filter:blur(24px) saturate(1.6);backdrop-filter:blur(24px) saturate(1.6);box-shadow:var(--edge), var(--shadow);
+  transition:transform .55s var(--ease), box-shadow .55s var(--ease)}
+.slab:hover{transform:translateY(-5px)}
+.well{position:relative;display:block;aspect-ratio:1;border-radius:var(--r-in);overflow:hidden;background:radial-gradient(120% 90% at 50% 112%, color-mix(in srgb, var(--c-primary) 17%, #fff), #fff 64%);box-shadow:inset 0 0 0 1px rgba(16,18,40,.05)}
+.well img{width:100%;height:100%;object-fit:contain;padding:10%;mix-blend-mode:multiply;transition:transform .9s var(--ease)}
+.slab:hover .well img{transform:scale(1.07)}
+.well-ph{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(70% 70% at 30% 25%, color-mix(in srgb, var(--c-accent) 45%, #fff), transparent 70%), radial-gradient(80% 80% at 80% 90%, color-mix(in srgb, var(--c-primary) 26%, #fff), #fff)}
+.well-ph .ph-orb{position:absolute;width:52%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 32% 26%, #fff, rgba(255,255,255,.15) 45%, color-mix(in srgb, var(--c-primary) 22%, transparent));box-shadow:inset 0 0 0 1px rgba(255,255,255,.9), 0 20px 40px -18px color-mix(in srgb, var(--c-primary) 60%, transparent)}
+.well-ph b{position:relative;font:800 clamp(1.3rem, 3vw, 2.2rem)/1 var(--fd);letter-spacing:-.04em;color:var(--ink);opacity:.55}
+.tag{position:absolute;left:10px;top:10px;max-width:calc(100% - 20px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:5px 10px;border-radius:99px;background:rgba(255,255,255,.88);box-shadow:0 0 0 1px rgba(16,18,40,.06);font:600 .68rem/1.1 var(--fd);letter-spacing:.06em;text-transform:uppercase;color:var(--c-muted)}
+.slab-name{margin:0;padding:0 6px;font:500 1.02rem/1.25 var(--fb);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
+.slab-name a:hover{color:var(--ink)}
+.slab-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding:0 2px 0 6px}
+.price{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;min-width:0}
+.price b{font:800 1.14rem/1.1 var(--fd);letter-spacing:-.02em}
+.price s{color:var(--c-muted);font-size:.9rem}
+.price .ask{font-size:.88rem;line-height:1.2;color:var(--c-muted)}
+.add{flex:none;display:grid;place-items:center;width:42px;height:42px;border:0;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 10px 20px -10px color-mix(in srgb, var(--c-primary) 90%, transparent);transition:transform .45s var(--spring), scale .45s var(--spring), box-shadow .4s}
+.add svg{width:18px;height:18px}
+.add:hover{transform:rotate(90deg)}
+.add.done{animation:pop .6s var(--spring)}
+@keyframes pop{30%{scale:.78}70%{scale:1.18}}
+
+/* catalog */
+.cat-hero{padding:104px 0 0}
+.cat-title{display:grid;grid-template-columns:minmax(0, 1fr) auto;align-items:end;gap:24px 40px;padding:clamp(28px, 4.4vw, 64px);border-radius:var(--r-xl);overflow:hidden}
+.cat-title > div{display:grid;gap:18px}
+.cat-title h1{margin:0;font:800 clamp(2.8rem, 7.4vw, 7.4rem)/.9 var(--fd);letter-spacing:-.055em;overflow-wrap:break-word;background:linear-gradient(100deg, var(--c-text) 30%, var(--ink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.count-chip{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:var(--c-primary);color:var(--c-on-primary);font:600 1rem/1 var(--fd);white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 16px 32px -16px color-mix(in srgb, var(--c-primary) 85%, transparent)}
+.count-chip::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.8}
+.cat-body{display:grid;grid-template-columns:280px minmax(0, 1fr);gap:20px;align-items:start;padding-block:20px clamp(48px, 7vw, 96px)}
+.sheet{position:sticky;top:96px;display:grid;gap:18px;padding:22px;border-radius:var(--r)}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font:800 1.3rem/1 var(--fd);letter-spacing:-.02em}
+.sheet-head svg{width:20px;height:20px;color:var(--c-muted)}
+.grip{display:none}
+.sheet-body{display:grid;gap:16px}
+.sheet .field{width:100%}
+.chips{display:grid;gap:6px}
+.chip{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:12px 16px;border:0;border-radius:16px;text-align:left;background:rgba(255,255,255,.45);box-shadow:var(--edge);font:500 1rem/1.2 var(--fb);transition:background .35s var(--ease), color .35s, transform .45s var(--spring)}
+.chip::after{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--c-line);transition:background .3s, scale .45s var(--spring)}
+.chip:hover{background:rgba(255,255,255,.85);transform:translateX(3px)}
+.chip[aria-pressed="true"]{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 12px 24px -14px color-mix(in srgb, var(--c-primary) 85%, transparent)}
+.chip[aria-pressed="true"]::after{background:var(--c-on-primary);scale:1.3}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 220px), 1fr));gap:clamp(10px, 1.4vw, 18px);align-content:start}
+.cgrid .slab{animation:card .6s var(--ease) both}
+.cgrid .slab:nth-child(4n+2){animation-delay:.05s}
+.cgrid .slab:nth-child(4n+3){animation-delay:.1s}
+.cgrid .slab:nth-child(4n+4){animation-delay:.15s}
+@keyframes card{from{opacity:0;translate:0 26px;scale:.97}}
+.shop-empty{grid-column:1 / -1}
+.empty{display:grid;gap:18px;justify-items:start;padding:clamp(28px, 4vw, 56px);border-radius:var(--r-xl)}
+.sheet-scrim{position:fixed;inset:0;z-index:58;background:rgba(16,18,40,.14);opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.cartbar{position:fixed;left:50%;bottom:16px;z-index:55;display:flex;align-items:center;gap:12px;width:min(calc(100% - 24px), 460px);padding:8px;border-radius:999px;opacity:0;transform:translate(-50%, 140%);transition:transform .65s var(--spring), opacity .4s var(--ease)}
+.cartbar.show{opacity:1;transform:translate(-50%, 0)}
+.cb-thumb{flex:none;width:48px;height:48px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 32% 28%, #fff, color-mix(in srgb, var(--c-primary) 22%, #fff))}
+.cb-thumb img{width:100%;height:100%;object-fit:contain;padding:6px;mix-blend-mode:multiply}
+.cb-text{flex:1;min-width:0;display:grid;line-height:1.2}
+.cb-count{font:600 1rem var(--fd)}
+.cb-total{color:var(--c-muted);font-size:.92rem}
+.cb-total:empty{display:none}
+.cartbar .btn{min-height:48px;padding-right:22px}
+
+/* footer */
+.foot{padding:clamp(40px, 6vw, 80px) 0 16px}
+.foot-in{padding:clamp(24px, 4vw, 52px) clamp(24px, 4vw, 52px) 22px;border-radius:40px;overflow:hidden}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+.foot-top h4{margin:0 0 12px;font:500 .78rem/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted)}
+.foot-top p{margin:0;max-width:34ch;font:600 1.2rem/1.3 var(--fd);letter-spacing:-.02em}
+.foot-contact{display:grid;gap:4px;margin-top:16px;color:var(--c-muted)}
+.foot-contact a:hover{color:var(--c-text)}
+.foot-links{display:grid;gap:6px;align-content:start}
+.foot-links a{width:fit-content;color:color-mix(in srgb, var(--c-text) 80%, transparent);transition:color .3s, transform .4s var(--ease)}
+.foot-links a:hover{color:var(--ink);transform:translateX(4px)}
+.foot-word{margin:clamp(28px, 5vw, 64px) 0 0;font:800 clamp(3rem, 12.5vw, 12.5rem)/.85 var(--fd);letter-spacing:-.06em;overflow-wrap:anywhere;
+  background:linear-gradient(100deg, var(--ink) 0%, color-mix(in srgb, var(--c-accent) 45%, var(--ink)) 40%, #fff 50%, color-mix(in srgb, var(--c-accent) 45%, var(--ink)) 60%, var(--ink) 100%) 0 0 / 250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;transition:background-position 1.6s var(--ease)}
+.foot-in:hover .foot-word{background-position:100% 0}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.8);color:var(--c-muted);font-size:.92rem}
+.foot-bottom a:hover{color:var(--c-text)}
+
+/* badge, toast, drawer */
+.badge{position:fixed;left:12px;bottom:12px;z-index:40;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:var(--edge), 0 6px 18px -10px rgba(16,18,40,.35);font:500 .75rem/1.2 var(--fb);color:var(--c-muted)}
+.toast{position:fixed;top:84px;left:50%;z-index:70;display:flex;align-items:center;gap:10px;max-width:min(92vw, 440px);padding:12px 18px;border-radius:999px;opacity:0;transform:translate(-50%, -16px) scale(.96);transition:opacity .4s var(--ease), transform .5s var(--spring);pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%, 0)}
+.toast b{font:600 .95rem var(--fd);white-space:nowrap}
+.toast-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--c-muted)}
+.toast-dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--c-primary);box-shadow:0 0 0 4px color-mix(in srgb, var(--c-primary) 22%, transparent)}
+.scrim{position:fixed;inset:0;z-index:75;background:rgba(16,18,40,.16);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.cart-open .scrim{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:10px;right:10px;bottom:10px;z-index:80;width:min(420px, calc(100% - 20px));display:flex;flex-direction:column;border-radius:32px;background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.74));transform:translateX(calc(100% + 24px));transition:transform .6s var(--ease);visibility:hidden}
+.cart-open .drawer{transform:none;visibility:visible}
+.drawer header{display:flex;align-items:center;justify-content:space-between;padding:22px 18px 14px 26px}
+.drawer h2{margin:0;font:800 1.6rem/1 var(--fd);letter-spacing:-.03em}
+.cart-list{flex:1;overflow:auto;margin:0;padding:4px 14px;list-style:none;display:grid;align-content:start;gap:8px}
+.ci{display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:12px;padding:8px;border-radius:20px;background:rgba(255,255,255,.7);box-shadow:var(--edge);animation:ci .5s var(--ease)}
+@keyframes ci{from{opacity:0;translate:16px 0}}
+.ci-thumb{width:60px;height:60px;border-radius:14px;overflow:hidden;background:radial-gradient(circle at 32% 28%, #fff, color-mix(in srgb, var(--c-primary) 22%, #fff))}
+.ci-thumb img{width:100%;height:100%;object-fit:contain;padding:5px;mix-blend-mode:multiply}
+.ci-text{display:grid;gap:2px;min-width:0}
+.ci-text b{font:500 .95rem/1.2 var(--fb);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ci-text small{color:var(--c-muted);font:600 .85rem var(--fd)}
+.ci-qty{display:flex;align-items:center;gap:2px;padding:3px;border-radius:99px;background:var(--tint)}
+.ci-qty button{width:28px;height:28px;border:0;border-radius:50%;background:#fff;font:600 1rem/1 var(--fd)}
+.ci-qty output{min-width:22px;text-align:center;font:600 .9rem var(--fd)}
+.cart-empty{margin:0;padding:8px 26px;color:var(--c-muted)}
+.cart-empty[hidden]{display:none}
+.drawer footer{display:grid;gap:14px;padding:18px 18px 20px;border-top:1px solid rgba(16,18,40,.06)}
+.cart-total{display:flex;justify-content:space-between;align-items:baseline;padding:0 8px}
+.cart-total strong{font:800 1.4rem var(--fd);letter-spacing:-.02em}
+.cart-total[hidden]{display:none}
+.drawer footer .btn{justify-content:space-between}
+
+@media (prefers-reduced-motion: no-preference){
+  .cat-title{animation:rise 1s var(--ease) both}
+  @keyframes rise{from{opacity:0;translate:0 28px}}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition-duration:.01ms !important}
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .nav-links{display:none}
+  .menu{display:block}
+  .cat-hero{padding-top:88px}
+  .cat-title{grid-template-columns:1fr}
+  .count-chip{justify-self:start}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .foot-top > :first-child{grid-column:1 / -1}
+}
+@media (max-width: 860px){
+  .cat-body{grid-template-columns:1fr}
+  .sheet{position:static}
+  .js .sheet{position:fixed;left:8px;right:8px;top:auto;bottom:0;z-index:60;display:flex;flex-direction:column;gap:0;max-height:74vh;padding:0 18px;border-radius:28px 28px 0 0;background:linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.72));transform:translateY(calc(100% - 68px));transition:transform .55s var(--ease)}
+  .js .sheet.open{transform:none}
+  .js .sheet-head{flex:none;position:relative;height:68px;padding-top:10px;cursor:grab;touch-action:none;user-select:none}
+  .js .grip{display:block;position:absolute;left:50%;top:9px;width:42px;height:5px;margin-left:-21px;border-radius:9px;background:rgba(16,18,40,.18)}
+  .js .sheet-head svg{transition:transform .5s var(--ease)}
+  .js .sheet.open .sheet-head svg{transform:rotate(180deg)}
+  .js .sheet-body{overflow:auto;padding-bottom:22px}
+  .js .chips{display:flex;flex-wrap:wrap}
+  .js .chip{width:auto;border-radius:999px;padding:11px 16px}
+  .js .chip::after{display:none}
+  .js .chip:hover{transform:none}
+  .sheet-open .sheet-scrim{opacity:1;pointer-events:auto}
+  .js .cgrid{padding-bottom:110px}
+  .js .badge{bottom:78px}
+  .js .cartbar{bottom:110px}
+  .js .foot{padding-bottom:84px}
+}
+@media (max-width: 560px){
+  .cgrid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+  .slab{padding:7px 7px 12px;gap:10px;border-radius:24px}
+  .well{border-radius:18px}
+  .slab-name{font-size:.94rem;padding:0 4px}
+  .slab-row{padding-left:4px}
+  .add{width:36px;height:36px}
+  .price b{font-size:1rem}
+  .price .ask{font-size:.78rem}
+  .tag{display:none}
+  .logo .word{max-width:13ch}
+  .cartbar .btn{padding-left:18px}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#994A91;--c-on-primary:#ffffff;--c-accent:#D4E3E6}</style></head>
+<body id="top">
+<canvas id="mesh" aria-hidden="true"></canvas>
+
+<header class="nav-wrap">
+  <nav class="nav glass" aria-label="TeleQare">
+    <a class="logo " href="template.html"><span class="mono">TQ</span><span class="word">TeleQare</span></a>
+    <div class="nav-links"><a href="catalog.html">Products</a><a href="#">Brands</a><a href="#">Devices</a><a href="#">About us</a><a href="#">Contact</a></div>
+    <div class="nav-end">
+      <a class="icon-btn" href="#filters" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
+      <button class="cart-btn" type="button" data-cart-open aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="cart-count">0</span></button>
+      <details class="menu"><summary aria-label="Menu"><span></span><span></span></summary><div class="menu-panel"><a href="catalog.html">Products</a><a href="#">Brands</a><a href="#">Devices</a><a href="#">About us</a><a href="#">Contact</a></div></details>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="cat-hero">
+    <div class="wrap">
+      <div class="cat-title glass">
+        <div>
+          <p class="eyebrow"><i></i>TeleQare</p>
+          <h1>Products</h1>
+          <p class="lead">Browse cases, screen protection, audio and more from leading accessory brands.</p>
+        </div>
+        <span class="count-chip"><b>1693 products</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap cat-body">
+    <aside class="sheet glass" id="filters">
+      <div class="sheet-head"><span class="grip"></span><span data-i18n="filters">Filters</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M7 12h10M10 17h4"/></svg></div>
+      <div class="sheet-body">
+        <input class="field" type="search" data-shop-search data-i18n-ph="search" placeholder="Zoeken">
+        <div class="chips"><button class="chip" type="button" aria-pressed="true" data-i18n="all">Alles</button><button data-shop-filter="Protection cases" class="chip" type="button">Protection cases</button><button data-shop-filter="Screen protection" class="chip" type="button">Screen protection</button><button data-shop-filter="Audio" class="chip" type="button">Audio</button></div>
+      </div>
+    </aside>
+    <div class="cgrid">
+      <article data-shop-item="0" class="slab" data-name="Pitaka Suite Moonrise iPhone Duo, 1001 Nights" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1806fs.png?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1806fs.png?width&#x3D;360" alt="Pitaka Suite Moonrise iPhone Duo, 1001 Nights" loading="lazy"><span class="tag">KI1806FS</span></a>
+        <h3 class="slab-name"><a href="#">Pitaka Suite Moonrise iPhone Duo, 1001 Nights</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="1" class="slab" data-name="Pitaka Suite Sunet iPhone Duo, California Dream" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1805fs.png?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1805fs.png?width&#x3D;360" alt="Pitaka Suite Sunet iPhone Duo, California Dream" loading="lazy"><span class="tag">KI1805FS</span></a>
+        <h3 class="slab-name"><a href="#">Pitaka Suite Sunet iPhone Duo, California Dream</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="2" class="slab" data-name="Pitaka Suite Classic Twill iPhone Duo, Black Grey" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1804fs.png?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1804fs.png?width&#x3D;360" alt="Pitaka Suite Classic Twill iPhone Duo, Black Grey" loading="lazy"><span class="tag">KI1804FS</span></a>
+        <h3 class="slab-name"><a href="#">Pitaka Suite Classic Twill iPhone Duo, Black Grey</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="3" class="slab" data-name="ScreenArmor Lens Shield iPhone Duo, silver" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-sil.jpg?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-sil.jpg?width&#x3D;360" alt="ScreenArmor Lens Shield iPhone Duo, silver" loading="lazy"><span class="tag">SA-LS-IP26F-SIL</span></a>
+        <h3 class="slab-name"><a href="#">ScreenArmor Lens Shield iPhone Duo, silver</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="4" class="slab" data-name="ScreenArmor Lens Shield iPhone Duo, blue" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-blu.jpg?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-blu.jpg?width&#x3D;360" alt="ScreenArmor Lens Shield iPhone Duo, blue" loading="lazy"><span class="tag">SA-LS-IP26F-BLU</span></a>
+        <h3 class="slab-name"><a href="#">ScreenArmor Lens Shield iPhone Duo, blue</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="5" class="slab" data-name="ScreenArmor Guard Glass iPhone Duo" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-gg-ip26f.jpg?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-gg-ip26f.jpg?width&#x3D;360" alt="ScreenArmor Guard Glass iPhone Duo" loading="lazy"><span class="tag">SA-GG-IP26F</span></a>
+        <h3 class="slab-name"><a href="#">ScreenArmor Guard Glass iPhone Duo</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="6" class="slab" data-name="ScreenArmor Full Cover Glass iPhone Duo" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-fc-ip26f.jpg?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-fc-ip26f.jpg?width&#x3D;360" alt="ScreenArmor Full Cover Glass iPhone Duo" loading="lazy"><span class="tag">SA-FC-IP26F</span></a>
+        <h3 class="slab-name"><a href="#">ScreenArmor Full Cover Glass iPhone Duo</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="7" class="slab" data-name="Pitaka Moonrise Case iPhone Duo, 1001 Nights" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1803f.png?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1803f.png?width&#x3D;360" alt="Pitaka Moonrise Case iPhone Duo, 1001 Nights" loading="lazy"><span class="tag">KI1803F</span></a>
+        <h3 class="slab-name"><a href="#">Pitaka Moonrise Case iPhone Duo, 1001 Nights</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="8" class="slab" data-name="Pitaka Sunset Edge Case iPhone Duo, California Dream" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1802f.png?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1802f.png?width&#x3D;360" alt="Pitaka Sunset Edge Case iPhone Duo, California Dream" loading="lazy"><span class="tag">KI1802F</span></a>
+        <h3 class="slab-name"><a href="#">Pitaka Sunset Edge Case iPhone Duo, California Dream</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="9" class="slab" data-name="Pitaka Twill Edge Case iPhone Duo, Black Grey" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1801f.png?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1801f.png?width&#x3D;360" alt="Pitaka Twill Edge Case iPhone Duo, Black Grey" loading="lazy"><span class="tag">KI1801F</span></a>
+        <h3 class="slab-name"><a href="#">Pitaka Twill Edge Case iPhone Duo, Black Grey</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="10" class="slab" data-name="FIXED Opus for Samsung Galaxy A18, black" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;fixop3-1729-bk.jpg?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;fixop3-1729-bk.jpg?width&#x3D;360" alt="FIXED Opus for Samsung Galaxy A18, black" loading="lazy"><span class="tag">FIXOP3-1729-BK</span></a>
+        <h3 class="slab-name"><a href="#">FIXED Opus for Samsung Galaxy A18, black</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="11" class="slab" data-name="Laut Flexi Protect iPhone Duo, Black" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffptbk.jpg?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffptbk.jpg?width&#x3D;360" alt="Laut Flexi Protect iPhone Duo, Black" loading="lazy"><span class="tag">LIP26FFPTBK</span></a>
+        <h3 class="slab-name"><a href="#">Laut Flexi Protect iPhone Duo, Black</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="12" class="slab" data-name="Laut Fizz Crystal iPhone Duo, Crystal" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffcc.jpg?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffcc.jpg?width&#x3D;360" alt="Laut Fizz Crystal iPhone Duo, Crystal" loading="lazy"><span class="tag">LIP26FFCC</span></a>
+        <h3 class="slab-name"><a href="#">Laut Fizz Crystal iPhone Duo, Crystal</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="13" class="slab" data-name="Laut Crystal Fluro iPhone Duo, Crystal" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfc.jpg?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfc.jpg?width&#x3D;360" alt="Laut Crystal Fluro iPhone Duo, Crystal" loading="lazy"><span class="tag">LIP26FCFC</span></a>
+        <h3 class="slab-name"><a href="#">Laut Crystal Fluro iPhone Duo, Crystal</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="14" class="slab" data-name="Laut Crystal Fluro iPhone Duo, Midnight" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfbk.jpg?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfbk.jpg?width&#x3D;360" alt="Laut Crystal Fluro iPhone Duo, Midnight" loading="lazy"><span class="tag">LIP26FCFBK</span></a>
+        <h3 class="slab-name"><a href="#">Laut Crystal Fluro iPhone Duo, Midnight</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="15" class="slab" data-name="Divoom Astrotoo 20W Desktop Speaker, green" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;groen10.png?width&#x3D;360">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;groen10.png?width&#x3D;360" alt="Divoom Astrotoo 20W Desktop Speaker, green" loading="lazy"><span class="tag">90100058298</span></a>
+        <h3 class="slab-name"><a href="#">Divoom Astrotoo 20W Desktop Speaker, green</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="16" class="slab" data-name="Divoom Astrotoo 20W Desktop Speaker, pink" data-price="" data-img="">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><span class="well-ph"><span class="ph-orb"></span><b>TQ</b></span><span class="tag">90100058297</span></a>
+        <h3 class="slab-name"><a href="#">Divoom Astrotoo 20W Desktop Speaker, pink</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="17" class="slab" data-name="Divoom Astrotoo 20W Desktop Speaker, white" data-price="" data-img="">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><span class="well-ph"><span class="ph-orb"></span><b>TQ</b></span><span class="tag">90100058296</span></a>
+        <h3 class="slab-name"><a href="#">Divoom Astrotoo 20W Desktop Speaker, white</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="18" class="slab" data-name="Urbanista Biarritz Portable Speaker, green" data-price="" data-img="">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><span class="well-ph"><span class="ph-orb"></span><b>TQ</b></span><span class="tag">UB9975</span></a>
+        <h3 class="slab-name"><a href="#">Urbanista Biarritz Portable Speaker, green</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="19" class="slab" data-name="Urbanista Biarritz Portable Speaker, sand" data-price="" data-img="">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><span class="well-ph"><span class="ph-orb"></span><b>TQ</b></span><span class="tag">UB9978</span></a>
+        <h3 class="slab-name"><a href="#">Urbanista Biarritz Portable Speaker, sand</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="20" class="slab" data-name="Urbanista Biarritz Portable Speaker, black" data-price="" data-img="">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><span class="well-ph"><span class="ph-orb"></span><b>TQ</b></span><span class="tag">UB9994</span></a>
+        <h3 class="slab-name"><a href="#">Urbanista Biarritz Portable Speaker, black</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="21" class="slab" data-name="Urbanista Shibuya Wireless Headphone, white" data-price="" data-img="">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><span class="well-ph"><span class="ph-orb"></span><b>TQ</b></span><span class="tag">UB9910</span></a>
+        <h3 class="slab-name"><a href="#">Urbanista Shibuya Wireless Headphone, white</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="22" class="slab" data-name="Urbanista Shibuya Wireless Headphone, black" data-price="" data-img="">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><span class="well-ph"><span class="ph-orb"></span><b>TQ</b></span><span class="tag">UB9925</span></a>
+        <h3 class="slab-name"><a href="#">Urbanista Shibuya Wireless Headphone, black</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article><article data-shop-item="23" class="slab" data-name="Urbanista Porto In-Ear, storm blue" data-price="" data-img="">
+        <a class="well" href="#" tabindex="-1" aria-hidden="true"><span class="well-ph"><span class="ph-orb"></span><b>TQ</b></span><span class="tag">1040264</span></a>
+        <h3 class="slab-name"><a href="#">Urbanista Porto In-Ear, storm blue</a></h3>
+        <div class="slab-row"><div class="price"><span class="ask" data-i18n="ask">—</span></div><button class="add" type="button" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap foot-in glass">
+    <div class="foot-top">
+      <div>
+        <h4>TeleQare</h4><p>Mobile accessories, sourced and delivered</p>
+        <div class="foot-contact"><span>Florijnweg 21e, 6883 JN Velp, The Netherlands</span><a href="tel:+31 (0)26 760 00 64">+31 (0)26 760 00 64</a></div>
+      </div>
+      <nav class="foot-links"><a href="catalog.html">Products</a><a href="#">Brands</a><a href="#">Devices</a><a href="#">About us</a><a href="#">Contact</a></nav>
+      <nav class="foot-links"><a href="#">News</a><a href="#">About us</a><a href="#">Terms &amp; Conditions (NL)</a><a href="#">Cookie policy</a><a href="#">Privacy policy</a><a href="#">Newsletter</a></nav>
+    </div>
+    <p class="foot-word" aria-hidden="true">TeleQare</p>
+    <div class="foot-bottom"><span>© 2026 TeleQare</span><a href="#top">↑</a></div>
+  </div>
+</footer>
+
+<div class="sheet-scrim"></div>
+<div class="cartbar glass" aria-live="polite"><span class="cb-thumb"></span><span class="cb-text"><b class="cb-count"></b><span class="cb-total"></span></span><button class="btn btn-primary" type="button" data-cart-open><span data-i18n="view">Bekijk</span></button></div>
+<div class="badge">Demo redesign · Liquid Pane</div>
+<div class="toast glass" role="status" aria-live="polite"><span class="toast-dot"></span><b data-i18n="added">Toegevoegd</b><span class="toast-name"></span></div>
+<div class="scrim" data-cart-close></div>
+<aside class="drawer glass" aria-hidden="true">
+  <header><h2 data-i18n="cart">Winkelmand</h2><button class="icon-btn" type="button" data-cart-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
+  <p class="cart-empty" data-i18n="empty"></p>
+  <ul class="cart-list"></ul>
+  <footer><div class="cart-total"><span data-i18n="total">Totaal</span><strong></strong></div><a class="btn btn-primary" href="#contact" data-cart-close><span data-i18n="checkout">Afrekenen</span><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></footer>
+</aside>
+
+<script>
+(() => {
+  const d = document, root = d.documentElement;
+  root.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(pointer: fine)').matches;
+  const lang = (root.lang || 'nl').slice(0, 2).toLowerCase();
+  const DICT = {
+    nl: { cart: 'Winkelmand', empty: 'Je winkelmand is nog leeg.', total: 'Totaal', checkout: 'Afrekenen', added: 'Toegevoegd', all: 'Alles', ask: 'Prijs op aanvraag', hint: 'Sleep de bol op een product', filters: 'Filters', search: 'Zoek in de collectie', view: 'Bekijk', items: (n) => n === 1 ? '1 artikel' : n + ' artikelen' },
+    en: { cart: 'Cart', empty: 'Your cart is empty.', total: 'Total', checkout: 'Checkout', added: 'Added', all: 'All', ask: 'Price on request', hint: 'Drag the orb onto a product', filters: 'Filters', search: 'Search the collection', view: 'View cart', items: (n) => n === 1 ? '1 item' : n + ' items' },
+    de: { cart: 'Warenkorb', empty: 'Dein Warenkorb ist leer.', total: 'Summe', checkout: 'Zur Kasse', added: 'Hinzugefügt', all: 'Alle', ask: 'Preis auf Anfrage', hint: 'Zieh die Kugel auf ein Produkt', filters: 'Filter', search: 'Sortiment durchsuchen', view: 'Ansehen', items: (n) => n === 1 ? '1 Artikel' : n + ' Artikel' },
+    fr: { cart: 'Panier', empty: 'Votre panier est vide.', total: 'Total', checkout: 'Commander', added: 'Ajouté', all: 'Tout', ask: 'Prix sur demande', hint: 'Glissez la bulle sur un produit', filters: 'Filtres', search: 'Rechercher', view: 'Voir', items: (n) => n + ' article' + (n === 1 ? '' : 's') }
+  };
+  const T = DICT[lang] || DICT.nl;
+  d.querySelectorAll('[data-i18n]').forEach((el) => { const v = T[el.dataset.i18n]; if (typeof v === 'string') el.textContent = v; });
+  d.querySelectorAll('[data-i18n-ph]').forEach((el) => { const v = T[el.dataset.i18nPh]; if (v) { el.placeholder = v; el.setAttribute('aria-label', v); } });
+
+  const nav = d.querySelector('.nav');
+  const onScroll = () => nav && nav.classList.toggle('scrolled', scrollY > 24);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Mesh: 5 soft brand-coloured points on Lissajous paths, drawn at 1/8 resolution and upscaled by the browser.
+  const cv = d.getElementById('mesh');
+  if (cv && cv.getContext) {
+    const probe = d.createElement('i'); probe.style.cssText = 'position:absolute;width:0;height:0;visibility:hidden';
+    d.body.appendChild(probe);
+    const rgb = (v) => { probe.style.color = `var(${v})`; const m = getComputedStyle(probe).color.match(/[\d.]+/g); return m && m.length >= 3 ? m.slice(0, 3).map(Number) : null; };
+    const P = rgb('--c-primary'), A = rgb('--c-accent'); probe.remove();
+    const ctx = cv.getContext('2d');
+    if (P && A && ctx) {
+      const W = [255, 255, 255], mix = (a, b, p) => a.map((v, i) => Math.round(v * p + b[i] * (1 - p)));
+      const cols = [mix(P, W, .34), mix(A, W, .62), mix(P, W, .2), mix(A, W, .4), mix(mix(P, A, .5), W, .3)];
+      const pts = cols.map((c, i) => ({ c: c.join(','), cx: [.16, .84, .5, .28, .76][i], cy: [.18, .24, .86, .62, .66][i], fx: .5 + i * .17, fy: .38 + ((i * 7) % 5) * .12, ph: i * 1.7, ox: 0, oy: 0, vx: 0, vy: 0 }));
+      let w = 0, h = 0, mx = -1e4, my = -1e4, t = Math.random() * 60, last = 0;
+      const size = () => { w = cv.width = Math.ceil(innerWidth / 8); h = cv.height = Math.ceil(innerHeight / 8); };
+      const draw = () => {
+        ctx.fillStyle = '#f4f6fb'; ctx.fillRect(0, 0, w, h);
+        const R = Math.max(w, h) * .6;
+        for (const p of pts) {
+          const bx = w * (p.cx + .16 * Math.sin(t * p.fx + p.ph)), by = h * (p.cy + .18 * Math.sin(t * p.fy + p.ph * 1.3));
+          if (!reduce) {
+            // Gravity well: within 300 css px, a spring pulls the point toward the pointer.
+            const dx = mx - bx, dy = my - by, near = Math.hypot(dx, dy) * 8 < 300;
+            p.vx = (p.vx + ((near ? dx * .6 : 0) - p.ox) * .03) * .88; p.vy = (p.vy + ((near ? dy * .6 : 0) - p.oy) * .03) * .88;
+            p.ox += p.vx; p.oy += p.vy;
+          }
+          const x = bx + p.ox, y = by + p.oy, g = ctx.createRadialGradient(x, y, 0, x, y, R);
+          g.addColorStop(0, `rgba(${p.c},.95)`); g.addColorStop(.5, `rgba(${p.c},.38)`); g.addColorStop(1, `rgba(${p.c},0)`);
+          ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+        }
+      };
+      size(); draw(); cv.classList.add('on');
+      addEventListener('resize', () => { size(); draw(); });
+      if (!reduce) {
+        addEventListener('pointermove', (e) => { mx = e.clientX / 8; my = e.clientY / 8; }, { passive: true });
+        d.addEventListener('pointerleave', () => { mx = my = -1e4; });
+        const loop = (now) => { if (now - last > 33) { t += Math.min(now - last, 100) * .00016; last = now; draw(); } requestAnimationFrame(loop); };
+        requestAnimationFrame(loop);
+      }
+    }
+  }
+
+  // Cart (localStorage)
+  const KEY = 'liquid-pane-cart';
+  let cart = []; try { cart = JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {} };
+  const num = (s) => { if (!s) return null; let v = String(s).replace(/[^\d,.]/g, ''); v = /,\d{1,2}$/.test(v) ? v.replace(/\./g, '').replace(',', '.') : v.replace(/,/g, ''); const n = parseFloat(v); return isNaN(n) ? null : n; };
+  let money; try { money = new Intl.NumberFormat(root.lang || 'nl', { style: 'currency', currency: 'EUR' }); } catch (e) { money = new Intl.NumberFormat('nl', { style: 'currency', currency: 'EUR' }); }
+  const list = d.querySelector('.cart-list'), emptyEl = d.querySelector('.cart-empty'), totalRow = d.querySelector('.cart-total'), bar = d.querySelector('.cartbar');
+  const el = (tag, cls, text) => { const e = d.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  function renderCart(bump) {
+    const n = cart.reduce((s, i) => s + i.qty, 0);
+    d.querySelectorAll('.cart-count').forEach((c) => { c.textContent = n; c.classList.toggle('has', n > 0); if (bump) { c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); } });
+    let total = 0, priced = false;
+    if (list) {
+      list.textContent = '';
+      cart.forEach((it, i) => {
+        const v = num(it.price); if (v != null) { total += v * it.qty; priced = true; }
+        const li = el('li', 'ci'); li.dataset.i = i;
+        const th = el('span', 'ci-thumb'); if (it.img) { const im = new Image(); im.src = it.img; im.alt = ''; th.append(im); }
+        const tx = el('span', 'ci-text'); tx.append(el('b', '', it.name), el('small', '', it.price || T.ask));
+        const q = el('span', 'ci-qty'), minus = el('button', '', '−'), plus = el('button', '', '+');
+        minus.type = plus.type = 'button'; minus.dataset.op = 'dec'; plus.dataset.op = 'inc';
+        q.append(minus, el('output', '', it.qty), plus); li.append(th, tx, q); list.append(li);
+      });
+    }
+    if (emptyEl) emptyEl.hidden = n > 0;
+    if (totalRow) { totalRow.hidden = !priced; totalRow.querySelector('strong').textContent = priced ? money.format(total) : ''; }
+    if (bar) {
+      bar.classList.toggle('show', n > 0);
+      bar.querySelector('.cb-count').textContent = T.items(n);
+      bar.querySelector('.cb-total').textContent = priced ? money.format(total) : '';
+      const th = bar.querySelector('.cb-thumb'), lastIt = cart[cart.length - 1]; th.textContent = '';
+      if (lastIt && lastIt.img) { const im = new Image(); im.src = lastIt.img; im.alt = ''; th.append(im); }
+    }
+  }
+  const toastEl = d.querySelector('.toast'); let tt;
+  const toast = (name) => { if (!toastEl) return; toastEl.querySelector('.toast-name').textContent = name; toastEl.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('show'), 2400); };
+  function add(slab, b) {
+    const name = slab.dataset.name || '', hit = cart.find((i) => i.name === name);
+    if (hit) hit.qty++; else cart.push({ name, price: slab.dataset.price || '', img: slab.dataset.img || '', qty: 1 });
+    save(); renderCart(true); toast(name);
+    if (b) { b.classList.remove('done'); void b.offsetWidth; b.classList.add('done'); }
+  }
+  const drawer = d.querySelector('.drawer');
+  const openCart = (o) => { root.classList.toggle('cart-open', o); if (drawer) drawer.setAttribute('aria-hidden', String(!o)); if (o && drawer) setTimeout(() => drawer.querySelector('.icon-btn').focus(), 50); };
+  d.addEventListener('click', (e) => {
+    const t = e.target;
+    const a = t.closest('.add'); if (a) { const s = a.closest('.slab'); if (s) { e.preventDefault(); add(s, a); } return; }
+    if (t.closest('[data-cart-open]')) { e.preventDefault(); openCart(true); return; }
+    if (t.closest('[data-cart-close]')) { openCart(false); return; }
+    const q = t.closest('.ci-qty button');
+    if (q) { const i = +q.closest('.ci').dataset.i; if (!cart[i]) return; cart[i].qty += q.dataset.op === 'inc' ? 1 : -1; if (cart[i].qty <= 0) cart.splice(i, 1); save(); renderCart(); }
+  });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') openCart(false); });
+  addEventListener('storage', (e) => { if (e.key === KEY) { try { cart = JSON.parse(e.newValue) || []; } catch (x) { cart = []; } renderCart(); } });
+  renderCart();
+
+  // Catalog: filter panel becomes a draggable bottom sheet on small screens.
+  const sheet = d.querySelector('.sheet'), head = sheet && sheet.querySelector('.sheet-head');
+  if (sheet && head) {
+    const mq = matchMedia('(max-width: 860px)'); let sg = null;
+    head.setAttribute('role', 'button'); head.tabIndex = 0; head.setAttribute('aria-expanded', 'false');
+    const closedY = () => sheet.offsetHeight - head.offsetHeight;
+    const setOpen = (o) => { sheet.classList.toggle('open', o); root.classList.toggle('sheet-open', o); head.setAttribute('aria-expanded', String(o)); sheet.style.transition = ''; sheet.style.transform = ''; };
+    head.addEventListener('pointerdown', (e) => { if (!mq.matches) return; sg = { y: e.clientY, base: sheet.classList.contains('open') ? 0 : closedY(), t: 0, moved: false }; head.setPointerCapture(e.pointerId); });
+    head.addEventListener('pointermove', (e) => {
+      if (!sg) return; const dy = e.clientY - sg.y;
+      if (!sg.moved && Math.abs(dy) < 5) return;
+      sg.moved = true; sheet.style.transition = 'none';
+      sg.t = Math.min(closedY(), Math.max(0, sg.base + dy)); sheet.style.transform = `translateY(${sg.t}px)`;
+    });
+    const up = () => { if (!sg) return; const s = sg; sg = null; setOpen(s.moved ? s.t < closedY() * .6 : !sheet.classList.contains('open')); };
+    head.addEventListener('pointerup', up); head.addEventListener('pointercancel', up);
+    head.addEventListener('keydown', (e) => { if (mq.matches && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); setOpen(!sheet.classList.contains('open')); } });
+    sheet.addEventListener('pointerup', (e) => { if (mq.matches && e.target.closest('.chip')) setTimeout(() => setOpen(false), 260); });
+    const sc = d.querySelector('.sheet-scrim'); if (sc) sc.addEventListener('click', () => setOpen(false));
+    addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  }
+
+  // Cursor-aware touches: magnetic CTAs and a specular highlight that follows the pointer over slabs.
+  if (fine && !reduce) {
+    d.querySelectorAll('.magnet').forEach((m) => {
+      m.addEventListener('pointermove', (e) => { const b = m.getBoundingClientRect(); m.style.transform = `translate(${(e.clientX - b.left - b.width / 2) * .2}px, ${(e.clientY - b.top - b.height / 2) * .3}px)`; });
+      m.addEventListener('pointerleave', () => { m.style.transform = ''; });
+    });
+    d.addEventListener('pointermove', (e) => {
+      const s = e.target.closest && e.target.closest('.slab'); if (!s) return;
+      const b = s.getBoundingClientRect(); s.style.setProperty('--mx', (e.clientX - b.left) + 'px'); s.style.setProperty('--my', (e.clientY - b.top) + 'px');
+    }, { passive: true });
+  }
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"catalog","lang":"en","count":"1693 products","products":[{"name":"Pitaka Suite Moonrise iPhone Duo, 1001 Nights","tag":"KI1806FS","category":"Protection cases"},{"name":"Pitaka Suite Sunet iPhone Duo, California Dream","tag":"KI1805FS","category":"Protection cases"},{"name":"Pitaka Suite Classic Twill iPhone Duo, Black Grey","tag":"KI1804FS","category":"Protection cases"},{"name":"ScreenArmor Lens Shield iPhone Duo, silver","tag":"SA-LS-IP26F-SIL","category":"Screen protection"},{"name":"ScreenArmor Lens Shield iPhone Duo, blue","tag":"SA-LS-IP26F-BLU","category":"Screen protection"},{"name":"ScreenArmor Guard Glass iPhone Duo","tag":"SA-GG-IP26F","category":"Screen protection"},{"name":"ScreenArmor Full Cover Glass iPhone Duo","tag":"SA-FC-IP26F","category":"Screen protection"},{"name":"Pitaka Moonrise Case iPhone Duo, 1001 Nights","tag":"KI1803F","category":"Protection cases"},{"name":"Pitaka Sunset Edge Case iPhone Duo, California Dream","tag":"KI1802F","category":"Protection cases"},{"name":"Pitaka Twill Edge Case iPhone Duo, Black Grey","tag":"KI1801F","category":"Protection cases"},{"name":"FIXED Opus for Samsung Galaxy A18, black","tag":"FIXOP3-1729-BK","category":"Protection cases"},{"name":"Laut Flexi Protect iPhone Duo, Black","tag":"LIP26FFPTBK","category":"Protection cases"},{"name":"Laut Fizz Crystal iPhone Duo, Crystal","tag":"LIP26FFCC","category":"Protection cases"},{"name":"Laut Crystal Fluro iPhone Duo, Crystal","tag":"LIP26FCFC","category":"Protection cases"},{"name":"Laut Crystal Fluro iPhone Duo, Midnight","tag":"LIP26FCFBK","category":"Protection cases"},{"name":"Divoom Astrotoo 20W Desktop Speaker, green","tag":"90100058298","category":"Audio"},{"name":"Divoom Astrotoo 20W Desktop Speaker, pink","tag":"90100058297","category":"Audio"},{"name":"Divoom Astrotoo 20W Desktop Speaker, white","tag":"90100058296","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, green","tag":"UB9975","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, sand","tag":"UB9978","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, black","tag":"UB9994","category":"Audio"},{"name":"Urbanista Shibuya Wireless Headphone, white","tag":"UB9910","category":"Audio"},{"name":"Urbanista Shibuya Wireless Headphone, black","tag":"UB9925","category":"Audio"},{"name":"Urbanista Porto In-Ear, storm blue","tag":"1040264","category":"Audio"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>
