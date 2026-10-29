@@ -1,0 +1,3 @@
+{ "id": "canal-fleet-night", "name": "Canal Fleet", "scheme": "dark", "sectors": ["hospitality","luxury","food","travel"],
+  "mood": ["hushed", "glamorous", "nocturnal", "art deco"], "needsProductImages": true,
+  "notes": "Night sky, water and brass are template-owned; the brand primary (warmed toward lamp light) only fills lanterns, CTAs and the dashed route line, and the accent tints the moon's glow." }

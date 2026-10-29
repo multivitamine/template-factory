@@ -1,0 +1,18 @@
+{
+  "scoreBefore": 6.8,
+  "issues": [
+    "Hero brand name sits directly on the brightest rows of lit amber windows: gold letters on gold squares, the wordmark breaks up into noise (home and catalog, both brands)",
+    "Boat cards 2–4 render with an empty grey cabin because images were lazy-loaded, so half the fleet looks broken; there is no designed fallback behind a missing or slow image",
+    "Fleet heading used nav[0].label, so Brinks shows 'HOME' as the product section title",
+    "The Galley repeated catalog.title, which is the same as the fleet heading once that is fixed",
+    "The 'Tonight's Route' cartouche only repeated the ticket's mooring info, so it is a dead duplicate instead of a chart legend for the route",
+    "Fixed demo badge overlaps the hero copy in full-page captures (a capture artefact, left alone)"
+  ],
+  "fixed": [
+    "Added a canal-mist gradient layer between the skyline and the brandmark, sized from the measured --mark-h, on both pages: the facades still glow above, and the capitals now read crisply over a misty quay",
+    "Fleet, embarkation arch/porthole and register images now load eagerly with async decoding; the boat cabin gets a lantern-glow plus shimmer-line ground, so a missing image still looks intentional",
+    "Fleet heading now uses catalog.title, falling back to 'De vloot van vanavond', and The Galley is titled 'Het volledige register'",
+    "The cartouche gained an itinerary legend (I Embarkation · II The Fleet · III The Galley · IV Harbour Office) with anchor links and lamp-coloured roman numerals from a CSS counter, so the numbering stays in step with optional sections"
+  ],
+  "scoreAfterEstimate": 7.6
+}

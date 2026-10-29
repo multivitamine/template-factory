@@ -1,0 +1,21 @@
+You are the harshest juror at Awwwards and the creative developer who must fix the problems. Work automatically.
+
+The template "Canal Fleet" in this directory (`template.html`, `catalog.html`) was rendered with real content.
+Art direction it must deliver: The page is one long canal at night, seen from water level. A fixed horizontal waterline runs across the viewport at about 58% height. Above it is the quay, a deep blue-black sky (template-owned) with a row of narrow gabled canal-house silhouettes drawn in SVG, their windows lit in warm lantern amber. Below it everything is mirrored as a reflection: a flipped and blurred copy of the brand name and facades, broken up by an SVG feTurbulence ripple filter and fine horizontal shimmer lines. The hero puts the brand name above the waterline in tall Art Deco capitals, with its reflection wobbling underneath and a small brass-framed ticket that holds the tagline and the primary CTA ('Board tonight' / 'Bestel nu'). Below the hero, the page becomes 'Tonight's Route': a single dashed brass route line meanders down the page like a canal on a chart. Each section is a numbered mooring along it (I Embarkation = about, II The Fleet = products, III The Galley = categories/catalog teaser, IV Harbour Office = contact). Each mooring is marked by a CSS lantern on a bollard. Products are presented as moored boats: long rounded-hull cards with an Art Deco sunburst fan engraved in thin gold lines at the bow. Each card shows a berth plaque with the name, a short description, the price as a 'fare', and a reflection strip under the card that repeats the name upside-down at 15% opacity. The catalog page is the full harbour register: a quayside list of berths with filter chips styled as brass mooring tags, and every row has a waterline divider with a subtle ripple. Textures include faint chevron Art Deco borders, fine gold hairlines, grain on the night sky, and a single moon whose glow takes --c-accent. The brand primary only fills lanterns, CTAs and the route line, so any colour reads as 'lamp light on dark water'. The mood is hushed, glamorous and slow, like a skipper's lantern gliding past sleeping houses.
+Signature interaction: 'Tonight's Mooring': the route changes every night. On load, JS seeds a small PRNG with today's date (YYYYMMDD). The seed shuffles the order of 6 preset canal-bend control points, which regenerates the SVG path `d` of the dashed route line running down the page, and picks tonight's mooring name and fake coordinates (e.g. 'Ligplaats 4 · 52.366°N 4.889°E') shown in the hero ticket. A small CSS boat with a glowing --c-primary lantern rides the path. Its position is set with path.getPointAtLength(scrollProgress * totalLength) on scroll (rAF-throttled) and it rotates to the path tangent. When it passes a mooring marker, that section's lantern 'lights' (class toggle: the glow box-shadow animates on), and the reflection beneath the nearest product card ripples once by animating the feTurbulence baseFrequency for 600ms. Without JS, a static default path and all lanterns lit are rendered, and all content stays visible. With prefers-reduced-motion, the boat jumps between moorings instead of gliding and the ripples are disabled.
+
+Screenshots (look at ALL of them with the Read tool):
+- `shots/home-desktop.jpg`: homepage with Banks Mansion content + brand colours
+- `shots/home-mobile.jpg`: same, 390px wide
+- `shots/home-stress.jpg`: homepage with a DIFFERENT brand (Brinks Coffee Roasters) and its colours: must still look great
+- `shots/catalog-desktop.jpg`: catalog page
+
+
+# Do this
+1. Judge it honestly (1–10) on: creativity/originality, typography, layout & rhythm, polish, brand-colour robustness,
+   mobile, and whether it still looks like a generic template.
+2. Pick the 3–6 changes with the biggest impact (broken or empty areas, awkward image crops, weak hero, low contrast,
+   boring sections, mobile breakage, a signature interaction that's missing) and fix them by editing the files.
+   Push the creativity UP, never down. Keep the Mustache contract intact.
+3. Write `critique.json`: `{ "scoreBefore": n, "issues": ["…"], "fixed": ["…"], "scoreAfterEstimate": n }`
+Reply `DONE` when finished.
