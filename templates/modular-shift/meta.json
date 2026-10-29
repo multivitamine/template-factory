@@ -1,0 +1,3 @@
+{ "id": "modular-shift", "name": "Modular Shift", "scheme": "light", "sectors": ["sports", "retail", "wholesale", "b2b"],
+  "mood": ["cold", "exact", "technical", "catalogued"], "needsProductImages": true,
+  "notes": "Grey/black/white system on a visible 12-col hairline grid; --c-primary only marks live state (active filter, add buttons, cart count, crosshair, progress), --c-accent is a tiny eyebrow marker." }

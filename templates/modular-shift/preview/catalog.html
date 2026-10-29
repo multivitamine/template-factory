@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alle merken en producten · Aiki-Budo Sport</title>
+<meta name="description" content="Ontdek bokshandschoenen, protectie en trainingsmateriaal van RONIN, MUAY, Hayabusa, Twins en meer.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gantari:wght@400;500;600&family=Inconsolata:wdth,wght@75..100,400..700&family=Pathway+Extreme:opsz,wdth,wght@8..12,75..100,600..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#EEF0F1; --c-surface:#FFFFFF; --c-text:#0D0F11; --c-muted:#697077; --c-line:#C6CBCF;
+  --c-primary:#2F4BFF; --c-on-primary:#FFFFFF; --c-accent:#0D0F11;
+  --f-d:'Pathway Extreme','Arial Narrow',sans-serif; --f-m:'Inconsolata',ui-monospace,monospace; --f-b:'Gantari','Helvetica Neue',sans-serif;
+  --gut:clamp(14px,2.4vw,36px); --max:1520px; --hh:64px; --pad:clamp(14px,1.4vw,22px);
+  --gl:color-mix(in srgb,var(--c-line) 70%,transparent);
+  --e:cubic-bezier(.2,.8,.2,1); --e2:cubic-bezier(.7,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html{background:var(--c-bg);color:var(--c-text);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font:400 1rem/1.5 var(--f-b);overflow-x:clip;min-height:100vh}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer;padding:0}
+:focus-visible{outline:2px solid var(--c-primary);outline-offset:2px}
+.wrap{width:min(100% - 2*var(--gut),var(--max));margin-inline:auto}
+.lab{font-family:var(--f-m);font-weight:500;font-stretch:80%;font-size:.74rem;line-height:1.25;letter-spacing:.09em;text-transform:uppercase}
+.mut{color:var(--c-muted)}
+.disp{font-family:var(--f-d);font-weight:800;font-variation-settings:"opsz" 12;letter-spacing:-.035em;line-height:.94}
+.num{font-family:var(--f-d);font-weight:800;font-stretch:75%;font-variation-settings:"opsz" 12;letter-spacing:-.02em;line-height:.86;font-variant-numeric:tabular-nums}
+.ico{width:1em;height:1em;flex:none}
+
+/* the visible 12-column hairline grid everything snaps to */
+.cols{position:fixed;inset:0;pointer-events:none;z-index:0}
+.cols .wrap{height:100%;display:grid;grid-template-columns:repeat(12,1fr);border-left:1px solid var(--gl)}
+.cols i{border-right:1px solid var(--gl);transform-origin:top}
+html.js .cols i{animation:draw 1.2s var(--e2) both;animation-delay:calc(var(--i)*45ms)}
+@keyframes draw{from{transform:scaleY(0)}}
+main,.hdr,.ftr{position:relative;z-index:1}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--c-bg) 86%,transparent);backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--c-line)}
+.hdr-g{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:var(--hh);border-left:1px solid var(--c-line)}
+.hdr-c{display:flex;align-items:center;padding-inline:var(--pad);border-right:1px solid var(--c-line);min-width:0}
+.logo{grid-column:span 3;gap:10px}
+.logo img{max-height:30px;max-width:min(170px,100%);width:auto;object-fit:contain}
+.logo.is-light img{filter:brightness(0)}
+.mark{flex:none;width:32px;height:32px;display:grid;place-items:center;background:var(--c-text);color:var(--c-bg);font:800 .78rem/1 var(--f-d);letter-spacing:.02em}
+.logo-n{font:700 1.02rem/1.1 var(--f-d);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{grid-column:span 6;gap:clamp(14px,2vw,30px);overflow-x:auto;scrollbar-width:none;counter-reset:n}
+.nav::-webkit-scrollbar{display:none}
+.nav a{counter-increment:n;position:relative;display:flex;align-items:baseline;gap:6px;white-space:nowrap;font-weight:500;padding:6px 0}
+.nav-i::before{content:counter(n,decimal-leading-zero)}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--c-text);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--e)}
+.nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.tools{grid-column:span 3;justify-content:flex-end;gap:10px}
+.cart{flex:none;display:inline-flex;align-items:center;gap:10px;height:36px;padding:0 5px 0 12px;border:1px solid var(--c-text);transition:background .3s,color .3s}
+.cart:hover{background:var(--c-text);color:var(--c-bg)}
+.cart-n{min-width:26px;height:26px;padding:0 6px;display:grid;place-items:center;background:var(--c-primary);color:var(--c-on-primary);font:600 .82rem/1 var(--f-m)}
+.cart-n.bump{animation:bump .55s var(--e)}
+@keyframes bump{30%{transform:scale(1.35)}60%{transform:scale(.92)}}
+
+/* shared cell system */
+.grid12{display:grid;grid-template-columns:repeat(12,1fr);border-left:1px solid var(--c-line);border-top:1px solid var(--c-line)}
+.cell{position:relative;min-width:0;padding:var(--pad);background:var(--c-bg);border-right:1px solid var(--c-line);border-bottom:1px solid var(--c-line)}
+.cell[data-k]::after{content:attr(data-k);position:absolute;right:8px;bottom:6px;font:500 .62rem/1 var(--f-m);font-stretch:80%;letter-spacing:.1em;color:var(--c-muted);opacity:.7}
+.eyebrow{display:flex;align-items:center;gap:10px}
+.sq{width:8px;height:8px;background:var(--c-accent);flex:none;outline:1px solid var(--c-text);outline-offset:2px}
+.link{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;border-bottom:1px solid currentColor;padding-bottom:3px;transition:gap .4s var(--e)}
+.link:hover{gap:16px}
+.tick{position:absolute;width:12px;height:12px;border:0 solid var(--c-text);z-index:1}
+.tick.tl{left:8px;top:8px;border-left-width:1px;border-top-width:1px}
+.tick.br{right:8px;bottom:8px;border-right-width:1px;border-bottom-width:1px}
+
+/* buttons */
+.btn-p{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:46px;padding:0 18px;background:var(--c-primary);color:var(--c-on-primary);
+  font:600 .8rem/1 var(--f-m);font-stretch:80%;letter-spacing:.09em;text-transform:uppercase;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-text) 14%,transparent);transition:filter .3s,box-shadow .3s}
+.btn-p:hover{filter:brightness(.92) saturate(1.1)}
+.btn-p .ico{transition:transform .45s var(--e)}
+.btn-p:hover .ico{transform:rotate(90deg)}
+
+/* catalogue head */
+.c-head{margin-top:clamp(14px,1.8vw,26px)}
+.ch-t{grid-column:span 8;display:flex;flex-direction:column;justify-content:space-between;gap:36px;min-height:clamp(250px,26vw,380px)}
+.ch-t h1{font-size:clamp(2.6rem,1rem + 4.4vw,6rem);max-width:15ch;overflow-wrap:break-word;hyphens:auto}
+.ch-t p{max-width:60ch;color:color-mix(in srgb,var(--c-text) 80%,var(--c-bg))}
+.ch-n{grid-column:span 4;display:flex;flex-direction:column;justify-content:space-between;gap:22px;background:var(--c-surface)}
+.cnt-raw{font-size:clamp(2.2rem,4vw,4rem)}
+.cnt.is-live .cnt-raw{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cnt:not(.is-live) .odo-w{display:none}
+.odo-w{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.odo{display:flex;font-size:clamp(5rem,10vw,10.5rem);line-height:1}
+.od{display:block;height:1em;overflow:hidden}
+.od-r{display:flex;flex-direction:column;transition:transform .62s cubic-bezier(.3,1.3,.4,1)}
+.od-r i{font-style:normal;display:block;height:1em;line-height:1}
+.odo-w .lab{padding-bottom:.9em}
+
+/* toolbar: filters, search, sort, density */
+.tbar{position:sticky;top:var(--hh);z-index:40;margin-top:-1px}
+.tbar .grid12{background:var(--c-bg)}
+.tb{display:flex;align-items:center;gap:10px;padding:10px 12px}
+.tb-f{grid-column:span 5}
+.tb-s{grid-column:span 3}
+.tb-o{grid-column:span 3}
+.tb-d{grid-column:span 1;justify-content:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{height:32px;padding:0 12px;border:1px solid var(--c-line);background:var(--c-surface);font:500 .74rem/1 var(--f-m);font-stretch:80%;letter-spacing:.09em;text-transform:uppercase;transition:border-color .25s,background .25s,color .25s}
+.chip:hover{border-color:var(--c-text)}
+.chip[aria-pressed="true"]{background:var(--c-primary);border-color:var(--c-primary);color:var(--c-on-primary)}
+.srch{flex:1;min-width:0;display:flex;align-items:center;gap:8px;height:34px;padding:0 10px;background:var(--c-surface);border:1px solid var(--c-line);transition:border-color .3s}
+.srch:focus-within{border-color:var(--c-text)}
+.srch input{border:0;background:none;outline:0;width:100%;min-width:0;font-size:.92rem}
+.seg{display:flex;flex-wrap:wrap;gap:2px}
+.sb{height:32px;padding:0 9px;border:1px solid transparent;font:500 .74rem/1 var(--f-m);font-stretch:80%;letter-spacing:.09em;text-transform:uppercase;transition:background .25s,color .25s,border-color .25s}
+.sb:hover{border-color:var(--c-line)}
+.sb[aria-pressed="true"]{background:var(--c-text);color:var(--c-bg)}
+.dn{width:30px;height:30px;display:grid;place-items:center;border:1px solid transparent}
+.dn span{width:16px;height:12px;background:repeating-linear-gradient(90deg,currentColor 0 calc(100% / var(--n) - 1.5px),transparent 0 calc(100% / var(--n)))}
+.dn:hover{border-color:var(--c-line)}
+.dn[aria-pressed="true"]{background:var(--c-text);color:var(--c-bg)}
+.shop-empty{font-family:var(--f-m);text-transform:uppercase;letter-spacing:.09em;font-size:.8rem;border:1px solid var(--c-line);border-top:0;background:var(--c-bg)}
+
+/* product tiles (rank-packing grid) */
+.pwrap{container-type:inline-size}
+.pgrid{--c:4;--ar:.84;--lab:6.1rem;position:relative;display:grid;grid-template-columns:repeat(var(--c),minmax(0,1fr));grid-auto-flow:dense;
+  grid-auto-rows:340px;grid-auto-rows:calc((100cqw - 1px)/var(--c)*var(--ar) + var(--lab));border-left:1px solid var(--c-line);border-top:1px solid var(--c-line);counter-reset:t}
+.cat{border-top:0}
+.tile{position:relative;z-index:1;display:block;overflow:hidden;counter-increment:t;background:var(--c-bg);border-right:1px solid var(--c-line);border-bottom:1px solid var(--c-line);transform-origin:0 0;transition:background-color .35s}
+.tile:hover{background:var(--c-surface)}
+.tile.r1,.cat:not(.js-rank) > .tile:nth-child(1){grid-column:span 2;grid-row:span 2}
+.tile.r2,.cat:not(.js-rank) > .tile:nth-child(2),.cat:not(.js-rank) > .tile:nth-child(3){grid-column:span 2}
+.t-in{position:absolute;inset:0;display:flex;flex-direction:column;transform-origin:0 0}
+.t-data{display:flex;align-items:center;gap:10px;height:34px;flex:none;padding:0 12px;color:var(--c-muted);white-space:nowrap}
+.t-idx{color:var(--c-text);font-weight:700}
+.t-idx::before{content:counter(t,decimal-leading-zero)}
+.t-cat{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.t-price{color:var(--c-text);font-weight:700;display:flex;gap:6px}
+.t-price s{color:var(--c-muted);font-weight:500}
+.t-media{position:relative;flex:1;min-height:0;margin:0 10px;background:#fff;outline:1px solid color-mix(in srgb,var(--c-line) 60%,transparent);outline-offset:-1px;overflow:hidden}
+.t-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:10%;transition:transform .8s var(--e)}
+.tile:hover .t-media img{transform:scale(1.06)}
+.t-media .tick{width:9px;height:9px;opacity:.45}
+.t-tag{position:absolute;right:8px;top:8px;z-index:2;background:var(--c-text);color:var(--c-bg);padding:3px 6px}
+.noimg{position:absolute;inset:0;display:grid;place-items:center;color:var(--c-muted);background:repeating-linear-gradient(135deg,transparent 0 11px,var(--c-bg) 11px 12px)}
+.t-foot{flex:none;display:flex;align-items:flex-end;gap:10px;min-height:calc(var(--lab) - 34px);padding:10px 10px 12px 12px}
+.t-name{flex:1;min-width:0;font-weight:500;font-size:.92rem;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;align-self:center}
+.t-name:hover{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.t-add{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:38px;min-width:38px;padding:0 11px;background:var(--c-primary);color:var(--c-on-primary);
+  font:600 .74rem/1 var(--f-m);font-stretch:80%;letter-spacing:.09em;text-transform:uppercase;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-text) 14%,transparent)}
+.t-add .ico{transition:transform .45s var(--e)}
+.t-add:hover .ico{transform:rotate(90deg)}
+.t-add.is-added .ico{transform:rotate(180deg)}
+.t-add-l{display:none}
+.tile.r1 .t-name{font:700 clamp(1.1rem,1.7vw,1.7rem)/1.1 var(--f-d);letter-spacing:-.015em}
+.tile.r1 .t-add-l,.tile.r2 .t-add-l{display:inline}
+.tile.r1 .t-media img{padding:12%}
+.ghost{position:absolute!important;z-index:0;pointer-events:none;counter-increment:none}
+/* end-of-index cell: closes the last row so the packed grid never shows a hole */
+.t-end{display:none;position:relative;flex-direction:column;justify-content:space-between;gap:12px;padding:12px;border-right:1px solid var(--c-line);border-bottom:1px solid var(--c-line);color:var(--c-muted);
+  background:repeating-linear-gradient(135deg,transparent 0 11px,color-mix(in srgb,var(--c-line) 55%,transparent) 11px 12px)}
+.t-end.is-on{display:flex}
+.t-end b{font:800 clamp(1.4rem,2.2vw,2.2rem)/1 var(--f-d);font-stretch:75%;letter-spacing:-.02em;color:var(--c-text)}
+.t-end .lab:last-child{color:var(--c-text);background:var(--c-bg);align-self:flex-start;padding:3px 6px}
+/* rank legend: a schematic of how the grid packs */
+.rk{display:grid;grid-template-columns:repeat(6,14px);grid-auto-rows:10px;gap:2px;grid-auto-flow:dense}
+.rk i{background:var(--c-line)}
+.rk i:nth-child(1){grid-column:span 2;grid-row:span 2;background:var(--c-text)}
+.rk i:nth-child(2),.rk i:nth-child(3){grid-column:span 2;background:var(--c-muted)}
+.rk-w{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* sections, cta band */
+.sec{padding-top:clamp(64px,9vw,136px)}
+.cta{background:var(--c-text);color:var(--c-bg);display:grid;grid-template-columns:repeat(12,1fr);align-items:end;gap:28px 0;padding:clamp(28px,5vw,72px) 0}
+.cta h2{grid-column:2 / span 6;font-size:clamp(2.1rem,1rem + 3.4vw,4.8rem)}
+.cta-r{grid-column:9 / span 3;display:grid;gap:22px;justify-items:start}
+.cta-r p{color:color-mix(in srgb,var(--c-bg) 72%,var(--c-text))}
+.cta .btn-p{box-shadow:0 0 0 1px color-mix(in srgb,var(--c-bg) 35%,transparent)}
+
+/* footer */
+.ftr{margin-top:clamp(64px,9vw,136px);background:var(--c-text);color:var(--c-bg);overflow:hidden}
+.ftr .cols{position:absolute}
+.ftr .cols .wrap{border-color:color-mix(in srgb,var(--c-bg) 10%,transparent)}
+.ftr .cols i{border-color:color-mix(in srgb,var(--c-bg) 10%,transparent);animation:none}
+.f-grid{position:relative;display:grid;grid-template-columns:repeat(12,1fr);padding-top:clamp(40px,5vw,72px);row-gap:36px}
+.f-c{grid-column:span 3;padding-right:20px;display:grid;gap:12px;align-content:start}
+.f-c .lab{color:color-mix(in srgb,var(--c-bg) 55%,var(--c-text))}
+.f-c a:hover{text-decoration:underline;text-underline-offset:4px}
+.f-brand{grid-column:span 3}
+.f-brand .logo-n{font-size:1.3rem;white-space:normal}
+.f-brand .mark{background:var(--c-bg);color:var(--c-text)}
+.f-brand img{max-height:36px;max-width:180px;width:auto;object-fit:contain}
+.f-brand.is-dark img{filter:brightness(0) invert(1)}
+.f-links{grid-column:span 6;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;align-content:start}
+.f-links .lab:first-child{grid-column:1/-1;margin-bottom:6px}
+.f-big{position:relative;padding-top:clamp(36px,6vw,96px);line-height:.8}
+.f-big span{display:inline-block;white-space:nowrap;font-size:120px;font-stretch:75%;letter-spacing:-.045em;line-height:.8}
+html:not(.js) .f-big span{white-space:normal;font-size:clamp(3rem,11vw,10rem)}
+.caret{display:inline-block;width:.09em;height:.62em;margin-left:.05em;background:var(--c-primary);animation:blink 1.1s steps(1) infinite;vertical-align:baseline}
+@keyframes blink{50%{opacity:0}}
+.f-bot{position:relative;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px 0 28px;border-top:1px solid color-mix(in srgb,var(--c-bg) 18%,transparent);margin-top:clamp(18px,2vw,30px);color:color-mix(in srgb,var(--c-bg) 60%,var(--c-text))}
+.f-bot a:hover{color:var(--c-bg)}
+
+/* cart drawer, toast, badge */
+.scrim{position:fixed;inset:0;z-index:80;background:color-mix(in srgb,var(--c-text) 30%,transparent);opacity:0;pointer-events:none;transition:opacity .4s}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(430px,100%);display:flex;flex-direction:column;background:var(--c-surface);border-left:1px solid var(--c-text);transform:translateX(102%);transition:transform .6s var(--e)}
+body.cart-open .drawer{transform:none}
+body.cart-open .scrim{opacity:1;pointer-events:auto}
+.d-head{display:flex;justify-content:space-between;align-items:center;height:var(--hh);padding:0 var(--pad);border-bottom:1px solid var(--c-line)}
+.d-list{list-style:none;padding:0;flex:1;overflow:auto}
+.d-it{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:12px var(--pad);border-bottom:1px solid var(--c-line)}
+.d-img{width:64px;height:64px;background:#fff;outline:1px solid var(--c-line);outline-offset:-1px}
+.d-img img{width:100%;height:100%;object-fit:contain;padding:6px}
+.d-t{display:grid;gap:4px;min-width:0}
+.d-t b{font-weight:500;font-size:.92rem;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.d-x{width:30px;height:30px;border:1px solid var(--c-line)}
+.d-x:hover{border-color:var(--c-text)}
+.d-empty{display:none;padding:28px var(--pad);color:var(--c-muted)}
+.drawer.is-empty .d-empty{display:block}
+.d-foot{display:grid;gap:14px;padding:var(--pad);border-top:1px solid var(--c-text)}
+.d-sum{display:flex;justify-content:space-between;align-items:baseline}
+.d-sum b{font:800 2rem/1 var(--f-d);font-stretch:75%}
+.toast{position:fixed;right:clamp(12px,2vw,24px);bottom:clamp(12px,2vw,24px);z-index:70;width:min(340px,calc(100% - 24px));display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center;
+  padding:14px 16px;background:var(--c-text);color:var(--c-bg);transform:translateY(calc(100% + 40px));visibility:hidden;transition:transform .55s var(--e),visibility 0s .55s}
+.toast.is-on{transform:none;visibility:visible;transition:transform .55s var(--e)}
+.toast .ok{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:color-mix(in srgb,var(--c-bg) 65%,var(--c-text))}
+.toast .ok i{width:8px;height:8px;background:var(--c-primary);outline:1px solid var(--c-bg)}
+.toast b{font-weight:500;font-size:.9rem;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toast button{border-bottom:1px solid currentColor}
+.fly{position:fixed;z-index:95;width:10px;height:10px;background:var(--c-primary);outline:1px solid var(--c-surface);pointer-events:none}
+.badge{position:fixed;left:12px;bottom:12px;z-index:60;padding:6px 9px;background:var(--c-surface);border:1px solid var(--c-line);color:var(--c-muted)}
+
+/* head entrance */
+html.js .c-head > .cell > *{animation:rise .9s var(--e) both;animation-delay:calc(var(--d,0)*80ms + 120ms)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+
+/* tablet: 6 columns */
+@media (max-width:1099px){
+  .cols .wrap,.hdr-g,.grid12,.f-grid,.cta{grid-template-columns:repeat(6,1fr)}
+  .cols i:nth-child(n+7){display:none}
+  :root{--hh:60px}
+  .hdr-g{grid-template-rows:var(--hh) 44px}
+  .logo{grid-column:span 3}.tools{grid-column:span 3}
+  .nav{grid-column:1/-1;grid-row:2;border-top:1px solid var(--c-line)}
+  .ch-t{grid-column:1/-1;min-height:0}.ch-n{grid-column:1/-1}
+  .tbar{position:relative;top:auto}
+  .tb-f{grid-column:1/-1}.tb-s{grid-column:span 2}.tb-o{grid-column:span 3}.tb-d{grid-column:span 1}
+  .cta h2{grid-column:1/-1;padding-inline:var(--pad)}.cta-r{grid-column:1/-1;padding-inline:var(--pad)}
+  .f-brand,.f-c{grid-column:span 3}.f-links{grid-column:1/-1}
+}
+/* mobile: 4 columns */
+@media (max-width:640px){
+  .cols .wrap,.hdr-g,.grid12,.f-grid,.cta{grid-template-columns:repeat(4,1fr)}
+  .cols i:nth-child(n+5){display:none}
+  .logo{grid-column:span 2}.tools{grid-column:span 2}
+  .cart .lab{display:none}
+  .tb-s,.tb-o{grid-column:1/-1}.tb-d{display:none}
+  .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:-2px -12px;padding:2px 12px}
+  .chip{flex:none}
+  .pgrid{--c:2;--lab:6.6rem}
+  .tile.r2 .t-add-l{display:none}
+  .f-brand,.f-c{grid-column:1/-1}.f-links{grid-template-columns:1fr}
+  .t-data .t-code{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#E63329;--c-on-primary:#ffffff;--c-accent:#1B161C}</style></head>
+<body id="top" data-brand="Aiki-Budo Sport">
+<div class="cols" aria-hidden="true"><div class="wrap"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i></div></div>
+
+<header class="hdr">
+  <div class="wrap hdr-g">
+    <a class="hdr-c logo is-light" href="index.html" aria-label="Aiki-Budo Sport">
+      <img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-aiki-budo.svg" alt="Aiki-Budo Sport">
+      
+    </a>
+    <nav class="hdr-c nav" aria-label="Menu"><a href="catalog.html"><span class="lab mut nav-i"></span>Webshop</a><a href="catalog.html"><span class="lab mut nav-i"></span>Merken</a><a href="#"><span class="lab mut nav-i"></span>Sporten</a><a href="#"><span class="lab mut nav-i"></span>Over ons</a><a href="#"><span class="lab mut nav-i"></span>Contact</a></nav>
+    <div class="hdr-c tools">
+      <button class="cart" type="button" data-cart-open aria-label="Winkelwagen"><span class="lab">Winkelwagen</span><span class="cart-n" data-cart-n>0</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="wrap">
+    <div class="grid12 c-head">
+      <div class="cell ch-t" data-k="A1:H1" style="--d:0">
+        <p class="lab eyebrow"><i class="sq"></i><a href="index.html">Aiki-Budo Sport</a> / Catalogus</p>
+        <div style="display:grid;gap:22px">
+          <h1 class="disp">Alle merken en producten</h1>
+          <p>Ontdek bokshandschoenen, protectie en trainingsmateriaal van RONIN, MUAY, Hayabusa, Twins en meer.</p>
+        </div>
+      </div>
+      <div class="cell ch-n" data-k="I1:L1" style="--d:1">
+        <div class="rk-w"><span class="lab mut">Resultaat — live</span><span class="rk" aria-hidden="true" title="R1 2×2 · R2–3 2×1 · R4+ 1×1"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+        <p class="cnt" data-cnt><span class="cnt-raw num" data-count>21 producten</span><span class="odo-w"><span class="odo num" data-odo></span><span class="lab" data-odo-l></span></span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tbar">
+    <div class="wrap grid12" style="border-top:0">
+      <div class="cell tb tb-f">
+        <div class="chips" role="group" aria-label="Filter">
+          <button class="chip" type="button" aria-pressed="true">Alle</button>
+          <button data-shop-filter="Bokshandschoenen" class="chip" type="button" aria-pressed="false">Bokshandschoenen</button><button data-shop-filter="Pads &amp; mitts" class="chip" type="button" aria-pressed="false">Pads &amp; mitts</button><button data-shop-filter="Boksschoenen" class="chip" type="button" aria-pressed="false">Boksschoenen</button><button data-shop-filter="Accessoires" class="chip" type="button" aria-pressed="false">Accessoires</button>
+        </div>
+      </div>
+      <div class="cell tb tb-s">
+        <label class="srch"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg><input type="search" data-shop-search placeholder="Zoek in producten" aria-label="Zoek in producten"></label>
+      </div>
+      <div class="cell tb tb-o">
+        <span class="lab mut">Sort</span>
+        <div class="seg" role="group" aria-label="Sorteren">
+          <button class="sb" type="button" data-sort="def" aria-pressed="true">Index</button>
+          <button class="sb" type="button" data-sort="price" aria-pressed="false">Prijs <span data-dir>↑</span></button>
+          <button class="sb" type="button" data-sort="name" aria-pressed="false">Naam</button>
+          <button class="sb" type="button" data-sort="new" aria-pressed="false">Nieuw</button>
+        </div>
+      </div>
+      <div class="cell tb tb-d" role="group" aria-label="Raster">
+        <button class="dn" type="button" data-dens="2" aria-pressed="false" aria-label="2 kolommen"><span style="--n:2"></span></button>
+        <button class="dn" type="button" data-dens="4" aria-pressed="true" aria-label="4 kolommen"><span style="--n:4"></span></button>
+        <button class="dn" type="button" data-dens="6" aria-pressed="false" aria-label="6 kolommen"><span style="--n:6"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap pwrap">
+    <div class="pgrid cat" data-flip>
+      <article data-shop-item="0" class="tile" data-prod data-price="€ 27,50" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-puzzelmat-zwart-grijs-2.77e40e.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Accessoires</span><span class="t-price">€ 27,50</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-puzzelmat-zwart-grijs-2.77e40e.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Ronin Karate puzzelmat 100x100x2cm - Zwart&#x2F;Grijs" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Ronin Karate puzzelmat 100x100x2cm - Zwart&#x2F;Grijs</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="1" class="tile" data-prod data-price="€ 119,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;msgvl-dl-01pair.07c529.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 119,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;msgvl-dl-01pair.07c529.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Muay Dark Line Bokshandschoen Original - Zwart" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Muay Dark Line Bokshandschoen Original - Zwart</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="2" class="tile" data-prod data-price="€ 129,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-bokshandschoen-premium-amsterdam-zwart-rood-3.50d223.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 129,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-bokshandschoen-premium-amsterdam-zwart-rood-3.50d223.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Muay A&#39;damXXX Bokshandschoen Premium - Zwart&#x2F;Rood" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Muay A&#39;damXXX Bokshandschoen Premium - Zwart&#x2F;Rood</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="3" class="tile" data-prod data-price="€ 136,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-legacy-bokshandschoen-rood-2-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 136,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-legacy-bokshandschoen-rood-2-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Muay Legacy Bokshandschoen - wijnrood&#x2F;zwart" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Muay Legacy Bokshandschoen - wijnrood&#x2F;zwart</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="4" class="tile" data-prod data-price="€ 67,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-challenger-beige-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 67,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-challenger-beige-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Ronin Bokshandschoen Challenger - zwart&#x2F;beige" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Ronin Bokshandschoen Challenger - zwart&#x2F;beige</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="5" class="tile" data-prod data-price="€ 67,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-challenger-blauw-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 67,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-challenger-blauw-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Ronin Bokshandschoen Challenger - zwart&#x2F;blauw" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Ronin Bokshandschoen Challenger - zwart&#x2F;blauw</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="6" class="tile" data-prod data-price="€ 229,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;hayabusa-t3-lx-crimson-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 229,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;hayabusa-t3-lx-crimson-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Hayabusa Bokshandschoen T3 LX - Crimson" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Hayabusa Bokshandschoen T3 LX - Crimson</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="7" class="tile" data-prod data-price="€ 179,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;hayabusa-t3-charcoal-lime-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 179,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;hayabusa-t3-charcoal-lime-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Hayabusa Bokshandschoen T3 - Charcoal&#x2F;Lime" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Hayabusa Bokshandschoen T3 - Charcoal&#x2F;Lime</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="8" class="tile" data-prod data-price="€ 89,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-fighter-grijs-1.d9fa0c.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 89,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-fighter-grijs-1.d9fa0c.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Ronin Fighter Bokshandschoen - Grijs&#x2F;Zwart" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Ronin Fighter Bokshandschoen - Grijs&#x2F;Zwart</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="9" class="tile" data-prod data-price="€ 99,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-jab-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 99,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-jab-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Ronin Bokshandschoen Jab - zwart" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Ronin Bokshandschoen Jab - zwart</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="10" class="tile" data-prod data-price="€ 26,50" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-tiger-line-bokshandschoen-rood-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 26,50</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-tiger-line-bokshandschoen-rood-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Ronin Bokshandschoenen Kids Tiger-Line - zwart&#x2F;rood" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Ronin Bokshandschoenen Kids Tiger-Line - zwart&#x2F;rood</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="11" class="tile" data-prod data-price="€ 38,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-punching-wit.aedf68.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 38,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-punching-wit.aedf68.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Ronin Punching Bokshandschoen - Zwart&#x2F;Wit" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Ronin Punching Bokshandschoen - Zwart&#x2F;Wit</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="12" class="tile" data-prod data-price="€ 189,95" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;twins-bokshandschoen-zwart-1.c641f6.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 189,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;twins-bokshandschoen-zwart-1.c641f6.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Twins BGVL3 Bokshandschoen - Zwart" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Twins BGVL3 Bokshandschoen - Zwart</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="13" class="tile" data-prod data-price="€ 109,94" data-tag="" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;bhs-power-350-wit-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Bokshandschoenen</span><span class="t-price">€ 109,94</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;bhs-power-350-wit-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Adidas BHS Power 350 Training gloves wit" loading="lazy"></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Adidas BHS Power 350 Training gloves wit</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="14" class="tile" data-prod data-price="€ 225,00" data-tag="Nieuw" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-curved-focus-mitt-1.png?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Pads &amp; mitts</span><span class="t-price">€ 225,00</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-curved-focus-mitt-1.png?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Muay Curved Coaching Mitt Lang met Hand per paar - zwart&#x2F;grijs" loading="lazy"><span class="t-tag lab">Nieuw</span></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Muay Curved Coaching Mitt Lang met Hand per paar - zwart&#x2F;grijs</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="15" class="tile" data-prod data-price="€ 274,95" data-tag="Nieuw" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-arm-striking-pad-1.png?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Pads &amp; mitts</span><span class="t-price">€ 274,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-arm-striking-pad-1.png?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Muay Arm Striking Pad Leer per paar - zwart&#x2F;grijs" loading="lazy"><span class="t-tag lab">Nieuw</span></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Muay Arm Striking Pad Leer per paar - zwart&#x2F;grijs</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="16" class="tile" data-prod data-price="€ 124,90" data-tag="Nieuw" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-machomai-3-zwart-5.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Boksschoenen</span><span class="t-price">€ 124,90</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-machomai-3-zwart-5.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Nike Machomai 3.0 Boksschoen - zwart&#x2F;wit" loading="lazy"><span class="t-tag lab">Nieuw</span></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Nike Machomai 3.0 Boksschoen - zwart&#x2F;wit</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="17" class="tile" data-prod data-price="€ 219,95" data-tag="Nieuw" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-hyper-ko-30-zwart-wit-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Boksschoenen</span><span class="t-price">€ 219,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-hyper-ko-30-zwart-wit-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Nike Hyper K.O. 3.0 - zwart&#x2F;wit" loading="lazy"><span class="t-tag lab">Nieuw</span></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Nike Hyper K.O. 3.0 - zwart&#x2F;wit</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="18" class="tile" data-prod data-price="€ 219,95" data-tag="Nieuw" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-hyper-ko-30-se-bright-crimson-alu-black-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Boksschoenen</span><span class="t-price">€ 219,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-hyper-ko-30-se-bright-crimson-alu-black-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Nike Hyper K.O. 3.0 - crimson&#x2F;grijs&#x2F;zwart" loading="lazy"><span class="t-tag lab">Nieuw</span></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Nike Hyper K.O. 3.0 - crimson&#x2F;grijs&#x2F;zwart</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article><article data-shop-item="19" class="tile" data-prod data-price="€ 299,95" data-tag="Nieuw" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;fairtex-calf-kick-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="t-in">
+          <div class="t-data lab"><span class="t-idx"></span><span class="t-code" data-code></span><span class="t-cat">Accessoires</span><span class="t-price">€ 299,95</span></div>
+          <a class="t-media" href="#"><i class="tick tl"></i><i class="tick br"></i><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;fairtex-calf-kick-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Fairtex Calf Kick Beschermers" loading="lazy"><span class="t-tag lab">Nieuw</span></a>
+          <div class="t-foot"><a class="t-name" href="#" data-name>Fairtex Calf Kick Beschermers</a><button class="t-add" type="button" data-add data-mag aria-label="In winkelwagen"><span class="t-add-l">Voeg toe</span><svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2v12M2 8h12"/></svg></button></div>
+        </div>
+      </article>
+      <div class="t-end" data-end aria-hidden="true"><span class="lab">EOF — Einde index</span><b data-end-n></b><span class="lab">Pack · dense</span></div>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <div class="cta">
+      <h2 class="disp">Kom je er niet uit? Wij helpen je graag.</h2>
+      <div class="cta-r">
+        <p>Neem contact op voor advies van specialisten met meer dan 40 jaar ervaring, of bestel direct online.</p>
+        <a class="btn-p" href="catalog.html" data-mag>Bekijk de webshop <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="cols" aria-hidden="true"><div class="wrap"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div class="wrap f-grid">
+    <div class="f-c f-brand ">
+      <img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-aiki-budo.svg" alt="Aiki-Budo Sport" loading="lazy">
+      
+      <span class="logo-n">Aiki-Budo Sport</span>
+      <span class="lab">Dé vechtsportspecialist sinds 1979</span>
+    </div>
+    <div class="f-c">
+      <span class="lab">Contact</span>
+      <span>Dennenlaan 28, 1161 CR Zwanenburg</span>
+      <a href="tel:020-6136764">020-6136764</a>
+      <a href="mailto:info@aiki-budo.nl">info@aiki-budo.nl</a>
+    </div>
+    <nav class="f-links" aria-label="Footer">
+      <span class="lab" style="color:color-mix(in srgb,var(--c-bg) 55%,var(--c-text))">Index</span>
+      <a href="catalog.html">Webshop</a><a href="catalog.html">Merken</a><a href="#">Sporten</a><a href="#">Over ons</a><a href="#">Contact</a>
+      <a href="#">Contact</a><a href="#">Nieuws</a><a href="#">Sportscholen</a><a href="#">Vacatures</a><a href="#">Algemene voorwaarden</a><a href="#">Betaal- en verzendinformatie</a><a href="#">Retourinformatie</a><a href="#">Privacy- en cookieverklaring</a>
+    </nav>
+  </div>
+  <div class="wrap f-big"><span class="disp" data-fit>Aiki-Budo Sport<i class="caret"></i></span></div>
+  <div class="wrap f-bot lab"><span>© 2026 Aiki-Budo Sport</span><span>12 col · 1px · AB</span><a href="#top">Terug naar boven ↑</a></div>
+</footer>
+
+<div class="scrim" data-cart-close></div>
+<aside class="drawer is-empty" data-drawer aria-label="Winkelwagen">
+  <div class="d-head"><span class="lab">Winkelwagen · <span data-cart-n>0</span></span><button class="lab link" type="button" data-cart-close>Sluiten ×</button></div>
+  <ol class="d-list" data-cart-list></ol>
+  <p class="d-empty lab">Je winkelwagen is nog leeg.</p>
+  <div class="d-foot"><div class="d-sum"><span class="lab mut">Subtotaal</span><b data-cart-sum>€ 0,00</b></div><a class="btn-p" href="catalog.html">Verder winkelen</a></div>
+</aside>
+<div class="toast" data-toast role="status" aria-live="polite"><span class="ok lab"><i></i>Toegevoegd aan winkelwagen</span><b data-toast-name></b><button class="lab" type="button" data-cart-open>Bekijk</button></div>
+<div class="badge lab">Demo redesign · Modular Shift</div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const pad = (n, l = 2) => String(n).padStart(l, '0');
+  const money = (s) => { let t = String(s || '').replace(/[^\d,.]/g, ''); t = /,\d{1,2}$/.test(t) ? t.replace(/\./g, '').replace(',', '.') : t.replace(/,/g, ''); return parseFloat(t) || 0; };
+  const eur = (n) => n.toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' });
+
+  // Catalogue codes: a short, stable code derived from the product name.
+  const code = (s) => { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+    const w = s.replace(/[^\p{L}\p{N} ]/gu, ' ').split(/\s+/).filter(Boolean);
+    return (w.slice(0, 3).map((x) => x[0]).join('').toUpperCase() || 'X') + '-' + pad(h % 1000, 3); };
+  $$('[data-prod]').forEach((p) => { const n = $('[data-name]', p), c = $('[data-code]', p); if (n && c) c.textContent = code(n.textContent.trim()); });
+
+  /* ---------- cart: count bump, flying marker, toast, drawer ---------- */
+  const KEY = 'ms-cart:' + (document.body.dataset.brand || '');
+  let cart = []; try { cart = JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) {}
+  const drawer = $('[data-drawer]'), list = $('[data-cart-list]');
+  const paint = () => {
+    $$('[data-cart-n]').forEach((e) => (e.textContent = cart.reduce((a, b) => a + b.q, 0)));
+    if (list) list.replaceChildren(...cart.map((it, i) => {
+      const li = document.createElement('li'); li.className = 'd-it';
+      const f = document.createElement('span'); f.className = 'd-img';
+      if (it.img) { const im = new Image(); im.src = it.img; im.alt = ''; f.append(im); }
+      const t = document.createElement('span'); t.className = 'd-t';
+      const nm = document.createElement('b'); nm.textContent = it.name;
+      const pr = document.createElement('span'); pr.className = 'lab mut'; pr.textContent = it.q + ' × ' + (it.price || '—');
+      t.append(nm, pr);
+      const x = document.createElement('button'); x.type = 'button'; x.className = 'd-x'; x.textContent = '×'; x.setAttribute('aria-label', 'Verwijder');
+      x.onclick = () => { cart.splice(i, 1); save(); };
+      li.append(f, t, x); return li;
+    }));
+    const sum = $('[data-cart-sum]'); if (sum) sum.textContent = eur(cart.reduce((a, b) => a + money(b.price) * b.q, 0));
+    drawer && drawer.classList.toggle('is-empty', !cart.length);
+  };
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {} paint(); };
+  const bump = () => $$('.cart-n').forEach((n) => { n.classList.remove('bump'); void n.offsetWidth; n.classList.add('bump'); });
+  const fly = (b) => {
+    const to = $('.cart-n'); if (!to || RM) return bump();
+    const a = b.getBoundingClientRect(), z = to.getBoundingClientRect();
+    const d = document.createElement('i'); d.className = 'fly';
+    d.style.left = a.left + a.width / 2 - 5 + 'px'; d.style.top = a.top + a.height / 2 - 5 + 'px';
+    document.body.append(d);
+    const dx = z.left + z.width / 2 - (a.left + a.width / 2), dy = z.top + z.height / 2 - (a.top + a.height / 2);
+    d.animate([{ transform: 'none' }, { transform: `translate(${dx * .5}px,${dy - 40}px) rotate(90deg)`, offset: .55 }, { transform: `translate(${dx}px,${dy}px) rotate(180deg) scale(.6)` }],
+      { duration: 640, easing: 'cubic-bezier(.6,0,.25,1)' }).onfinish = () => { d.remove(); bump(); };
+  };
+  const toastEl = $('[data-toast]'); let tt = 0;
+  const toast = (name) => { if (!toastEl) return; $('[data-toast-name]', toastEl).textContent = name; toastEl.classList.add('is-on'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('is-on'), 2800); };
+  const openCart = (on) => { document.body.classList.toggle('cart-open', on); if (drawer) drawer.inert = !on; if (on) toastEl && toastEl.classList.remove('is-on'); };
+  if (drawer) drawer.inert = true;
+  document.addEventListener('click', (e) => {
+    const add = e.target.closest('[data-add]');
+    if (add) {
+      e.preventDefault();
+      const p = add.closest('[data-prod]'); if (!p) return;
+      const name = ($('[data-name]', p) || {}).textContent?.trim() || '';
+      const it = cart.find((x) => x.name === name);
+      if (it) it.q++; else cart.push({ name, price: p.dataset.price || '', img: p.dataset.img || '', q: 1 });
+      save(); fly(add); toast(name);
+      add.classList.add('is-added'); setTimeout(() => add.classList.remove('is-added'), 900);
+      return;
+    }
+    if (e.target.closest('[data-cart-open]')) openCart(true);
+    else if (e.target.closest('[data-cart-close]')) openCart(false);
+  });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') openCart(false); });
+  paint();
+
+  /* ---------- magnetic quick-add: within 60px the button leans up to 8px toward the pointer ---------- */
+  if (FINE && !RM) {
+    let px = -1e4, py = -1e4, raf = 0;
+    const tick = () => {
+      raf = 0; let moving = false;
+      for (const b of $$('[data-mag]')) {
+        const r = b.getBoundingClientRect(); if (!r.width) continue;
+        const ox = b._x || 0, oy = b._y || 0;
+        const cx = r.left + r.width / 2 - ox, cy = r.top + r.height / 2 - oy;
+        const dx = px - cx, dy = py - cy;
+        const d = Math.hypot(Math.max(Math.abs(dx) - r.width / 2, 0), Math.max(Math.abs(dy) - r.height / 2, 0));
+        let tx = 0, ty = 0;
+        if (d < 60) { const k = (1 - d / 60), l = Math.hypot(dx, dy) || 1; tx = dx / l * 8 * k; ty = dy / l * 8 * k; }
+        const nx = ox + (tx - ox) * .2, ny = oy + (ty - oy) * .2;
+        if (Math.abs(nx - ox) > .05 || Math.abs(ny - oy) > .05) moving = true;
+        b._x = nx; b._y = ny; b.style.translate = `${nx.toFixed(2)}px ${ny.toFixed(2)}px`;
+      }
+      if (moving) raf = requestAnimationFrame(tick);
+    };
+    addEventListener('pointermove', (e) => { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+    document.addEventListener('pointerleave', () => { px = py = -1e4; if (!raf) raf = requestAnimationFrame(tick); });
+  }
+
+  /* ---------- rank-packing FLIP grid (catalogue) ---------- */
+  const grid = $('[data-flip]');
+  let odo = () => {};
+  if (grid) {
+    const tiles = $$('.tile', grid); tiles.forEach((t, i) => (t._i = i));
+    const shown = () => [...grid.children].filter((t) => t.classList.contains('tile') && !t.classList.contains('ghost') && getComputedStyle(t).display !== 'none');
+    const end = $('[data-end]', grid), endN = $('[data-end-n]', grid);
+    // rank spans, then the end cell closes whatever the last row leaves open
+    const rank = () => {
+      grid.classList.add('js-rank'); const vis = shown();
+      vis.forEach((t, r) => { t.classList.toggle('r1', r === 0); t.classList.toggle('r2', r === 1 || r === 2); });
+      if (!end) return;
+      const c = Math.min(want, cap()), n = vis.length;
+      const used = n ? Math.min(4, c * 2) + Math.min(c, 2) * Math.min(2, Math.max(0, n - 1)) + Math.max(0, n - 3) : 0, rem = used % c;
+      grid.append(end); end.classList.toggle('is-on', !!rem); end.style.gridColumn = 'span ' + (c - rem);
+      if (endN) endN.textContent = pad(n) + ' / ' + pad(tiles.length);
+    };
+    let want = 4;
+    const cap = () => (innerWidth <= 640 ? 2 : innerWidth <= 1099 ? 4 : 6);
+    const setCols = () => grid.style.setProperty('--c', Math.min(want, cap()));
+    // spring-like ease with a small overshoot; sampled into keyframes so the inner counter-scale is exact
+    const ease = (t) => 1 + 2.25 * Math.pow(t - 1, 3) + 1.25 * Math.pow(t - 1, 2);
+    const snap = () => {
+      $$('.ghost', grid).forEach((g) => g.remove());
+      const g = grid.getBoundingClientRect(), m = new Map();
+      for (const t of shown()) m.set(t, t.getBoundingClientRect());
+      tiles.forEach((t) => { t.getAnimations().forEach((a) => a.cancel()); t.firstElementChild.getAnimations().forEach((a) => a.cancel()); });
+      return { g, m };
+    };
+    const play = (F) => {
+      setCols(); rank();
+      const vis = shown(); odo(vis.length);
+      if (!F || RM) return;
+      if (end && end.classList.contains('is-on')) end.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 420, delay: 260, easing: 'ease-out', fill: 'backwards' });
+      let k = 0;
+      for (const t of vis) {
+        const L = t.getBoundingClientRect(), f = F.m.get(t);
+        if (!f) { t.animate([{ opacity: 0, transform: 'scale(.9)' }, { opacity: 1, transform: 'none' }], { duration: 520, delay: k++ * 30, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' }); continue; }
+        const dx = f.left - L.left, dy = f.top - L.top, sx = f.width / L.width, sy = f.height / L.height;
+        if (Math.abs(dx) < .5 && Math.abs(dy) < .5 && Math.abs(sx - 1) < .005 && Math.abs(sy - 1) < .005) continue;
+        const o = [], n = [];
+        for (let i = 0; i <= 24; i++) {
+          const p = ease(i / 24), X = sx + (1 - sx) * p, Y = sy + (1 - sy) * p;
+          o.push({ transform: `translate(${dx * (1 - p)}px,${dy * (1 - p)}px) scale(${X},${Y})` });
+          n.push({ transform: `scale(${1 / X},${1 / Y})` });
+        }
+        t.animate(o, { duration: 520 }); t.firstElementChild.animate(n, { duration: 520 });
+      }
+      F.m.forEach((f, t) => {
+        if (vis.includes(t)) return;
+        const g = t.cloneNode(true);
+        g.removeAttribute('data-shop-item'); g.removeAttribute('style'); g.setAttribute('aria-hidden', 'true'); g.classList.remove('r1', 'r2'); g.classList.add('ghost');
+        Object.assign(g.style, { left: f.left - F.g.left - 1 + 'px', top: f.top - F.g.top - 1 + 'px', width: f.width + 'px', height: f.height + 'px' });
+        grid.append(g);
+        g.animate([{ opacity: 1 }, { opacity: 0, transform: 'scale(.96)' }], { duration: 340, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' }).onfinish = () => g.remove();
+      });
+    };
+    // Filters and search are handled by the injected shop script; these capture listeners run first,
+    // record every tile's rect, and let the re-composition play on the next frame.
+    let pending = null;
+    const pre = () => { if (pending) return; pending = snap(); requestAnimationFrame(() => { const f = pending; pending = null; play(f); }); };
+    addEventListener('click', (e) => { if (e.target.closest('[data-shop-filter], .chips .chip')) pre(); }, true);
+    addEventListener('input', (e) => { if (e.target.matches && e.target.matches('[data-shop-search]')) pre(); }, true);
+
+    const nm = (t) => (($('[data-name]', t) || {}).textContent || '').trim();
+    const pv = (t) => money(t.dataset.price) || null;
+    let dir = 1;
+    const by = {
+      def: (a, b) => a._i - b._i,
+      price: (a, b) => { const x = pv(a), y = pv(b); return x == null || y == null ? (x == null) - (y == null) || a._i - b._i : dir * (x - y) || a._i - b._i; },
+      name: (a, b) => nm(a).localeCompare(nm(b), 'nl', { sensitivity: 'base' }) || a._i - b._i,
+      new: (a, b) => (!!b.dataset.tag - !!a.dataset.tag) || a._i - b._i,
+    };
+    $$('[data-sort]').forEach((b) => b.addEventListener('click', () => {
+      const k = b.dataset.sort;
+      if (k === 'price') dir = b.getAttribute('aria-pressed') === 'true' ? -dir : 1;
+      const F = snap();
+      $$('[data-sort]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      const de = $('[data-dir]'); if (de) de.textContent = dir > 0 ? '↑' : '↓';
+      tiles.slice().sort(by[k]).forEach((t) => grid.append(t));
+      play(F);
+    }));
+    $$('[data-dens]').forEach((b) => b.addEventListener('click', () => {
+      const F = snap(); want = +b.dataset.dens;
+      $$('[data-dens]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      play(F);
+    }));
+    addEventListener('resize', setCols, { passive: true });
+
+    // Result count as an odometer; the original text stays (hidden) so the shop script can keep updating it.
+    const raw = $('[data-count]'), odoEl = $('[data-odo]'), odoL = $('[data-odo-l]'), box = $('[data-cnt]');
+    if (odoEl && box) {
+      odo = (n) => {
+        const s = pad(n);
+        let cs = $$('.od', odoEl);
+        if (cs.length !== s.length) {
+          odoEl.replaceChildren(...[...s].map(() => { const d = document.createElement('span'); d.className = 'od';
+            const r = document.createElement('span'); r.className = 'od-r'; r.innerHTML = '<i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i>'; d.append(r); return d; }));
+          cs = $$('.od', odoEl); void odoEl.offsetWidth;
+        }
+        [...s].forEach((ch, i) => { const r = cs[i].firstChild; r.style.transitionDelay = (s.length - 1 - i) * 45 + 'ms'; r.style.transform = `translateY(${-ch * 10}%)`; });
+      };
+    }
+    addEventListener('DOMContentLoaded', () => {
+      if (odoEl && box) { if (odoL) odoL.textContent = raw ? raw.textContent.replace(/\d+/, '').replace(/^\s*·\s*/, '').trim() : ''; box.classList.add('is-live'); }
+      setCols(); rank(); odo(shown().length);
+    });
+  }
+
+  // Homepage grid: same rank classes (type scale, add label) on whichever tiles are showing.
+  $$('.pgrid.home').forEach((g) => [...g.children].filter((t) => getComputedStyle(t).display !== 'none')
+    .forEach((t, r) => { t.classList.toggle('r1', r === 0); t.classList.toggle('r2', r === 1 || r === 2); }));
+
+  /* ---------- footer: brand name fitted to the full width ---------- */
+  const fit = () => $$('[data-fit]').forEach((el) => {
+    el.style.fontSize = '120px';
+    const w = el.parentElement.clientWidth, s = el.getBoundingClientRect().width;
+    if (s) el.style.fontSize = Math.min(120 * w / s * .985, 340) + 'px';
+  });
+  fit(); (document.fonts && document.fonts.ready || Promise.resolve()).then(fit);
+  let rt = 0; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit, 120); }, { passive: true });
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"catalog","lang":"nl","count":"21 producten","products":[{"name":"Ronin Karate puzzelmat 100x100x2cm - Zwart/Grijs","tag":"","category":"Accessoires"},{"name":"Muay Dark Line Bokshandschoen Original - Zwart","tag":"","category":"Bokshandschoenen"},{"name":"Muay A'damXXX Bokshandschoen Premium - Zwart/Rood","tag":"","category":"Bokshandschoenen"},{"name":"Muay Legacy Bokshandschoen - wijnrood/zwart","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Bokshandschoen Challenger - zwart/beige","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Bokshandschoen Challenger - zwart/blauw","tag":"","category":"Bokshandschoenen"},{"name":"Hayabusa Bokshandschoen T3 LX - Crimson","tag":"","category":"Bokshandschoenen"},{"name":"Hayabusa Bokshandschoen T3 - Charcoal/Lime","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Fighter Bokshandschoen - Grijs/Zwart","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Bokshandschoen Jab - zwart","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Bokshandschoenen Kids Tiger-Line - zwart/rood","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Punching Bokshandschoen - Zwart/Wit","tag":"","category":"Bokshandschoenen"},{"name":"Twins BGVL3 Bokshandschoen - Zwart","tag":"","category":"Bokshandschoenen"},{"name":"Adidas BHS Power 350 Training gloves wit","tag":"","category":"Bokshandschoenen"},{"name":"Muay Curved Coaching Mitt Lang met Hand per paar - zwart/grijs","tag":"Nieuw","category":"Pads & mitts"},{"name":"Muay Arm Striking Pad Leer per paar - zwart/grijs","tag":"Nieuw","category":"Pads & mitts"},{"name":"Nike Machomai 3.0 Boksschoen - zwart/wit","tag":"Nieuw","category":"Boksschoenen"},{"name":"Nike Hyper K.O. 3.0 - zwart/wit","tag":"Nieuw","category":"Boksschoenen"},{"name":"Nike Hyper K.O. 3.0 - crimson/grijs/zwart","tag":"Nieuw","category":"Boksschoenen"},{"name":"Fairtex Calf Kick Beschermers","tag":"Nieuw","category":"Accessoires"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

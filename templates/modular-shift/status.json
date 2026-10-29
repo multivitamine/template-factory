@@ -1,0 +1,82 @@
+{
+  "id": "modular-shift",
+  "name": "Modular Shift",
+  "sectors": [
+    "sports",
+    "retail",
+    "wholesale",
+    "b2b"
+  ],
+  "sample": "aiki-budo",
+  "stress": "droogijs365",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793300581496
+    },
+    {
+      "step": "Rendering",
+      "at": 1793301519108
+    },
+    {
+      "step": "Critique",
+      "at": 1793301531946
+    },
+    {
+      "step": "Final render",
+      "at": 1793301659209
+    },
+    {
+      "step": "Done",
+      "at": 1793301671992
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793299880623,
+  "startedAt": 1793300581496,
+  "finishedAt": 1793301671992,
+  "model": "opus",
+  "costUsd": 4.2371518,
+  "meta": {
+    "id": "modular-shift",
+    "name": "Modular Shift",
+    "scheme": "light",
+    "sectors": [
+      "sports",
+      "retail",
+      "wholesale",
+      "b2b"
+    ],
+    "mood": [
+      "cold",
+      "exact",
+      "technical",
+      "catalogued"
+    ],
+    "needsProductImages": true,
+    "notes": "Grey/black/white system on a visible 12-col hairline grid; --c-primary only marks live state (active filter, add buttons, cart count, crosshair, progress), --c-accent is a tiny eyebrow marker."
+  },
+  "score": {
+    "scoreBefore": 6.6,
+    "issues": [
+      "The cart toast ('Toegevoegd aan winkelwagen' with an empty name) is visible on every page in captures and overlaps the hero, the USP strip and the catalog grid. It is only translated off-screen, not hidden.",
+      "The rank-packed grids leave a hole in the last row whenever the count doesn't divide evenly (stress homepage: an empty cell next to the 1×1 tiles; catalog: tile 20 alone with 3 empty columns). The 'every element snaps' promise breaks right where the eye lands.",
+      "Mobile category tiles render as solid black slabs. They are lazy images on a var(--c-text) field, and with min-width:auto plus long words ('Protectie/bescherming') they can't shrink, so each one takes a full-width row of black.",
+      "Mobile hero: the price and the 'In winkelwagen' button fight for one row inside the featured cell.",
+      "The catalog count cell is a big empty white box with no technical detail to explain the signature packing logic.",
+      "Typography and the hairline system are strong. Brand colour is used only for live state, as briefed, and survives both the red and blue palettes."
+    ],
+    "fixed": [
+      "The toast is now visibility:hidden until it is active, with a delayed visibility transition so the slide-out still plays. Fixed in both template.html and catalog.html.",
+      "Added an 'EOF — end of index' terminal cell (hatched hairline field, mono caps, count) that JS sizes from the rank arithmetic to span exactly the columns the last row leaves open. On the homepage it links to the catalog. On the catalog it is recomputed on every sort, filter and density change and fades in on the FLIP timeline.",
+      "Category tiles: min-width:0 and hyphenating titles, so mobile shows two per row. The media field is now white with a hairline outline instead of black, images load eagerly, square crops on mobile, and the fallback initials are dark on a hatch.",
+      "Mobile featured product: the price is stacked above a full-width add button.",
+      "Catalog count cell: added a live-styled rank legend schematic (2×2 / 2×1 / 1×1 packing in black, grey and line tones) beside the 'Resultaat — live' label."
+    ],
+    "scoreAfterEstimate": 7.4
+  },
+  "version": 1793301671992
+}
