@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 5.6,
+  "issues": [
+    "Broken: on the desktop homepage (both brands) everything below the USP/story titles was blank (USPs, story text and image, stats, CTA copy, contact, footer) because reveal-on-scroll kept .rv elements at opacity 0 until an IntersectionObserver fired. On mobile the CTA band was an empty blue slab with an orphaned button.",
+    "The same reveal mechanism hid product cards in the catalog whenever the observer did not fire.",
+    "A brand with few products (BOHLT, 3) left half of the strict 6-up row empty, so the giant-type/small-goods tension turned into a hole.",
+    "The categories section label repeated the products title word for word ('Onze droogijsproducten' twice in a row).",
+    "Dead air: about 150px of section padding stacked on the hero-sub bottom padding pushed the first products far below the fold.",
+    "Scores: creativity 7, typography 8, layout 5 (holes), polish 4 (blank sections), brand-colour robustness 7, mobile 6, generic-ness 7 (not generic)."
+  ],
+  "fixed": [
+    "Rewrote the reveal in both template.html and catalog.html: content is visible by default. Only elements that genuinely scroll in from the bottom edge play a keyframe fade-up, and nothing animates after a viewport resize, so captures and no-observer cases always show content.",
+    "Card pop/filter replay now clears the reveal animation class so the two animations don't fight.",
+    "Added a closing 'shop all' tile that spans the rest of the last product row (or becomes a full-width black strip when the row is full). Its variable display word swells from wght 200 to 950 on hover, and the tile turns --c-primary.",
+    "Categories section now has its own label ('N categorieën' plus the brand name) instead of duplicating the products title.",
+    "Tightened the gap between the hero and the first product section so the 6-up row of small objects sits right under the giant wordmark."
+  ],
+  "scoreAfterEstimate": 7.4
+}

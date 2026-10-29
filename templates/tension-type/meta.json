@@ -1,0 +1,3 @@
+{ "id": "tension-type", "name": "Tension Type", "scheme": "light", "sectors": ["industrial","tech","b2b","retail"],
+  "mood": ["loud", "disciplined", "typographic", "precise"], "needsProductImages": true,
+  "notes": "Stark white/black/grey; --c-primary is the single electric accent: proximity bulge tint on fitted words, CTA band, buttons, cart badge, duotone image wash and tile hover tint." }
