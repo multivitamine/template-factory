@@ -1,0 +1,64 @@
+{
+  "id": "counter-columns",
+  "name": "Counter Columns",
+  "sectors": [
+    "retail",
+    "kids",
+    "culture",
+    "lifestyle"
+  ],
+  "sample": "spaansen",
+  "stress": "kartstoreinternational",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793303478977
+    },
+    {
+      "step": "Rendering",
+      "at": 1793303838033
+    },
+    {
+      "step": "Critique",
+      "at": 1793303849037
+    },
+    {
+      "step": "Final render",
+      "at": 1793303931150
+    },
+    {
+      "step": "Done",
+      "at": 1793303942923
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793302018690,
+  "startedAt": 1793303478977,
+  "finishedAt": 1793303942923,
+  "model": "opus",
+  "costUsd": 2.0138026,
+  "meta": {
+    "id": "counter-columns",
+    "name": "Counter Columns",
+    "scheme": "light",
+    "sectors": [
+      "retail",
+      "kids",
+      "culture",
+      "lifestyle"
+    ],
+    "mood": [
+      "rhythmic",
+      "editorial",
+      "bold",
+      "lively"
+    ],
+    "needsProductImages": true,
+    "notes": "Sand ground and black rules stay fixed; primary fills CTAs, quick-add, cart count, active filters and the CTA band, accent only marks tags and a headline underline tint."
+  },
+  "score": null,
+  "version": 1793303942923
+}

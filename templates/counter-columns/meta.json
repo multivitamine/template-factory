@@ -1,0 +1,3 @@
+{ "id": "counter-columns", "name": "Counter Columns", "scheme": "light", "sectors": ["retail","kids","culture","lifestyle"],
+  "mood": ["rhythmic", "editorial", "bold", "lively"], "needsProductImages": true,
+  "notes": "Sand ground and black rules stay fixed; primary fills CTAs, quick-add, cart count, active filters and the CTA band, accent only marks tags and a headline underline tint." }
