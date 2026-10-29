@@ -209,6 +209,10 @@ a{color:inherit}
 .shape .stamp{left:auto;right:14px;top:14px}
 .shape__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
 .shape__name{font:650 clamp(1rem,1.5vw,1.35rem)/1.1 var(--f-d);font-stretch:118%;overflow-wrap:break-word;hyphens:auto;min-width:0}
+/* narrow tiles: condense the face (Anybody has a width axis) and scale with the tile, never break a word */
+.slot{container-type:inline-size}
+.shape__name{overflow-wrap:normal;hyphens:manual}
+@container (max-width:220px){.shape__name{font-size:min(clamp(1rem,1.5vw,1.35rem),10cqi);font-stretch:82%}}
 .shape__name::after{content:" →";color:var(--pri);display:inline-block;transition:transform .35s var(--ease)}
 .slot:hover .shape__name::after{transform:translateX(4px)}
 .shape__img{flex:none;width:54px;height:54px;border-radius:50%;overflow:hidden;background:#e8eef0;border:1px solid var(--glass-edge);display:grid;place-items:center}
