@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TeleQare · Mobile accessories, sourced and delivered</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wdth,wght@62.5..100,300..500&family=Piazzolla:ital,opsz,wght@0,8..30,200..400;1,8..30,200..400&display=swap" rel="stylesheet">
+<style>
+/* Depth of a raised surface: 1 = raised, 0 = pressed in. Registered so the press animates. */
+@property --d { syntax: '<number>'; inherits: false; initial-value: 1; }
+/* Elevation multiplier for hover lift. */
+@property --e { syntax: '<number>'; inherits: false; initial-value: 1; }
+:root{
+  --c-bg:#F4F3F0; --c-surface:#F7F6F3; --c-text:#24211D; --c-muted:#7B756C; --c-line:#E1DED8;
+  --c-primary:#A9502F; --c-on-primary:#fff; --c-accent:#34404A;
+  --ink-primary:color-mix(in oklab, var(--c-primary) 74%, var(--c-text));
+  --pad-bg:color-mix(in srgb, var(--c-bg) 93%, #8a8070);
+  --shade:78 68 56;
+  /* Light model, fixed top-left until JS takes over */
+  --sx:.55; --sy:.8; --sl:16px; --bl:28px; --sa:.15; --hl:.9; --ang:145deg; --lx:18%; --ly:0%;
+  --serif:'Piazzolla', Georgia, 'Times New Roman', serif;
+  --sans:'Noto Sans Display', 'Helvetica Neue', Helvetica, sans-serif;
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --r-slab:32px; --r-tile:22px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:300 14px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@supports (overflow:clip){body{overflow-x:clip}}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink-primary);outline-offset:3px}
+.wrap{width:min(1320px,100%);margin-inline:auto;padding-inline:clamp(16px,4vw,48px)}
+.sec{padding-block:clamp(56px,9vw,128px)}
+.label{font:500 11px/1.35 var(--sans);font-stretch:87.5%;text-transform:uppercase;letter-spacing:.16em;color:var(--c-muted)}
+.display{margin:0;font-family:var(--serif);font-weight:200;font-variation-settings:'opsz' 30;font-size:clamp(2.7rem,6.6vw,6.6rem);line-height:.97;letter-spacing:-.028em;text-wrap:balance;overflow-wrap:break-word;
+  text-shadow:calc(var(--sx)*-1px) calc(var(--sy)*-1px) 0 rgb(255 255 255/.9)}
+.display em{display:block;font-style:italic;font-weight:200}
+.h2{margin:0;font-family:var(--serif);font-weight:200;font-variation-settings:'opsz' 30;font-size:clamp(2rem,4.2vw,3.8rem);line-height:1.02;letter-spacing:-.022em;text-wrap:balance;overflow-wrap:break-word}
+.sub{font:italic 400 clamp(1.05rem,1.45vw,1.3rem)/1.4 var(--serif);color:var(--c-muted)}
+.muted{color:var(--c-muted)}
+.price{font:500 12px/1 var(--sans);font-stretch:87.5%;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-primary);white-space:nowrap}
+.price s{margin-left:8px;color:var(--c-muted);font-weight:300}
+.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* Embossed type: same colour as the page, only visible through its light and shadow */
+.emb{color:color-mix(in srgb, var(--c-bg) 95%, #000);
+  text-shadow:calc(var(--sx)*-1px) calc(var(--sy)*-1px) 0 #fff, calc(var(--sx)*1.3px) calc(var(--sy)*1.3px) 2px rgb(var(--shade)/.34)}
+
+/* ---------- Raised surface: contact shadow, long light-driven shadow, edge highlight; inverts when pressed ---------- */
+.rl{--d:1;--e:1;
+  background:linear-gradient(var(--ang), rgb(255 255 255/calc(var(--hl)*.6)) 0%, rgb(255 255 255/0) 46%, rgb(var(--shade)/.05) 100%), var(--c-surface);
+  box-shadow:
+    0 calc(1px*var(--d)) calc(2px*var(--d)) rgb(var(--shade)/calc(.13*var(--d))),
+    calc(var(--sx)*var(--sl)*var(--e)*var(--d)) calc(var(--sy)*var(--sl)*var(--e)*var(--d)) calc(var(--bl)*var(--e)*var(--d)) rgb(var(--shade)/calc(var(--sa)*var(--d))),
+    inset calc(var(--sx)*1.5px) calc(var(--sy)*1.5px) 1px rgb(255 255 255/calc(var(--hl)*var(--d))),
+    inset calc(var(--sx)*-1px) calc(var(--sy)*-1px) 1px rgb(var(--shade)/calc(.07*var(--d))),
+    inset calc(var(--sx)*6px*(1 - var(--d))) calc(var(--sy)*6px*(1 - var(--d))) calc(12px*(1 - var(--d))) rgb(var(--shade)/calc(.22*(1 - var(--d)))),
+    inset calc(var(--sx)*-3px*(1 - var(--d))) calc(var(--sy)*-3px*(1 - var(--d))) calc(6px*(1 - var(--d))) rgb(255 255 255/calc(.85*(1 - var(--d))));
+  transition:--d .12s var(--ease), --e .5s var(--ease), transform .5s var(--ease)}
+.btn:active,.add:active,.cart:active,.cat:active{--d:0;transform:translateY(1px)}
+.glow{isolation:isolate}
+.glow::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;
+  background:radial-gradient(900px circle at var(--lx) var(--ly), rgb(255 255 255/.8), rgb(255 255 255/0) 62%)}
+/* Recessed pad: the inset sits on top of the photo via ::after so the image looks set into the surface */
+.pad{position:relative;display:block;overflow:hidden;border-radius:12px;
+  background:radial-gradient(120% 95% at calc(50% - var(--sx)*35%) calc(50% - var(--sy)*35%), color-mix(in srgb, var(--c-bg) 60%, #fff), var(--pad-bg))}
+.pad::after{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;pointer-events:none;
+  box-shadow:inset calc(var(--sx)*5px) calc(var(--sy)*5px) 11px rgb(var(--shade)/.22), inset calc(var(--sx)*-2px) calc(var(--sy)*-2px) 3px rgb(255 255 255/.85), inset 0 0 0 1px rgb(var(--shade)/.05)}
+.pad img{position:absolute;inset:9%;width:82%;height:82%;object-fit:contain;mix-blend-mode:multiply;border-radius:6px;transition:transform .9s var(--ease)}
+.pad.cover img{inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:normal;border-radius:0}
+.pad-fb{position:absolute;inset:0;display:grid;place-items:center;font:200 clamp(2.4rem,5vw,4.4rem)/1 var(--serif)}
+
+/* ---------- Buttons ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 26px;border:0;border-radius:999px;cursor:pointer;
+  font:500 12px/1.2 var(--sans);font-stretch:87.5%;letter-spacing:.14em;text-transform:uppercase;color:var(--c-text);text-align:left}
+.btn svg{width:16px;height:16px;flex:none;transition:transform .5s var(--ease)}
+.btn:hover{--e:1.35}
+.btn:hover svg{transform:translateX(4px)}
+.btn-primary{color:var(--c-on-primary);
+  background:linear-gradient(var(--ang), rgb(255 255 255/calc(var(--hl)*.3)) 0%, rgb(255 255 255/0) 48%, rgb(0 0 0/.1) 100%), var(--c-primary)}
+.add{flex:none;width:42px;height:42px;border:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--c-text)}
+.add svg{width:16px;height:16px}
+.add .ck{display:none}
+.add.is-added{--d:0;color:var(--ink-primary)}
+.add.is-added .pl{display:none}
+.add.is-added .ck{display:block}
+.add:hover{--e:1.5}
+/* Tile add-to-cart: a raised pill with a label, so a tile without a price still reads as a buy row */
+.add-pill{width:auto;height:44px;display:inline-flex;align-items:center;gap:10px;padding:0 18px 0 15px;border-radius:999px;
+  font:500 11px/1 var(--sans);font-stretch:87.5%;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:--d .12s var(--ease), --e .5s var(--ease), transform .5s var(--ease), color .3s}
+.add-pill:hover{color:var(--ink-primary)}
+.add-pill.is-added .ck{color:var(--c-primary)}
+.price:empty{display:none}
+.tile-buy:has(.price:empty){justify-content:flex-start}
+
+/* ---------- Header ---------- */
+.top{position:sticky;top:12px;z-index:50;margin-top:12px}
+.bar{display:flex;align-items:center;gap:clamp(10px,2vw,28px);min-height:64px;padding:8px 8px 8px 18px;border-radius:999px}
+.logo{display:flex;align-items:center;gap:10px;min-width:0;flex:0 1 auto}
+.logo img{max-height:34px;max-width:min(160px,40vw);width:auto;object-fit:contain}
+.logo.is-light img{filter:brightness(0)}
+.mono{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:400 14px/1 var(--serif);background:var(--pad-bg);
+  box-shadow:inset calc(var(--sx)*2px) calc(var(--sy)*2px) 4px rgb(var(--shade)/.22), inset calc(var(--sx)*-1px) calc(var(--sy)*-1px) 1px #fff}
+.wm{font:400 18px/1.1 var(--serif);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:22ch}
+.nav{display:flex;gap:2px;margin-inline:auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{padding:10px 14px;border-radius:999px;white-space:nowrap;font:500 11px/1 var(--sans);font-stretch:87.5%;letter-spacing:.15em;text-transform:uppercase;color:var(--c-muted);transition:color .3s, box-shadow .3s var(--ease)}
+.nav a:hover{color:var(--c-text);box-shadow:inset calc(var(--sx)*2px) calc(var(--sy)*2px) 5px rgb(var(--shade)/.16), inset calc(var(--sx)*-1px) calc(var(--sy)*-1px) 1px #fff}
+.cart{flex:none;display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 6px 0 16px;border-radius:999px;
+  font:500 11px/1 var(--sans);font-stretch:87.5%;letter-spacing:.15em;text-transform:uppercase}
+.cart svg{width:18px;height:18px}
+.cart:hover{--e:1.4}
+.cart-n{min-width:36px;height:36px;padding:0 8px;border-radius:999px;display:grid;place-items:center;font:500 12px/1 var(--sans);letter-spacing:0;color:var(--c-muted);background:var(--pad-bg);
+  box-shadow:inset calc(var(--sx)*2px) calc(var(--sy)*2px) 4px rgb(var(--shade)/.2), inset calc(var(--sx)*-1px) calc(var(--sy)*-1px) 1px #fff;transition:background .4s, color .4s}
+.cart.has .cart-n{background:var(--c-primary);color:var(--c-on-primary);box-shadow:0 2px 6px rgb(var(--shade)/.25), inset 0 1px 0 rgb(255 255 255/.3)}
+.cart-n.bump{animation:bump .55s var(--ease)}
+@keyframes bump{0%{transform:scale(1)}35%{transform:scale(1.3)}100%{transform:scale(1)}}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:clamp(20px,3vw,36px)}
+.slab{position:relative;border-radius:var(--r-slab)}
+.hero-slab{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr);gap:clamp(28px,4vw,64px);padding:clamp(22px,4.5vw,64px);min-height:min(80vh,780px)}
+.hero-copy{display:flex;flex-direction:column;justify-content:space-between;gap:32px;min-width:0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c-primary);box-shadow:0 0 0 3px color-mix(in srgb, var(--c-primary) 18%, transparent)}
+.lede{margin:0 0 30px;max-width:40ch;font-size:clamp(15px,1.25vw,17px);line-height:1.6;color:color-mix(in srgb, var(--c-text) 72%, var(--c-muted));display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-obj{display:flex;flex-direction:column;justify-content:flex-end;gap:20px;min-width:0}
+.pad-hero{aspect-ratio:1/1;border-radius:20px}
+.pad-hero:hover img{transform:scale(1.04)}
+.hero-meta{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.hero-meta > div{min-width:0;display:flex;flex-direction:column;gap:8px}
+.hero-meta .nm{font:italic 400 clamp(1.1rem,1.6vw,1.4rem)/1.2 var(--serif)}
+.big-price{font:200 clamp(2rem,3.4vw,3rem)/1 var(--serif);font-variation-settings:'opsz' 30;letter-spacing:-.02em;color:var(--ink-primary)}
+.big-price s{font-size:.45em;color:var(--c-muted);margin-left:8px}
+
+/* ---------- USPs ---------- */
+.usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px 0;counter-reset:u;margin-top:clamp(44px,6vw,84px)}
+.usp{counter-increment:u;padding:4px clamp(16px,2vw,30px);border-left:1px solid var(--c-line);box-shadow:inset 1px 0 0 #fff}
+.usp::before{content:counter(u,decimal-leading-zero);display:block;margin-bottom:14px;font:200 2.8rem/1 var(--serif);font-variation-settings:'opsz' 30;
+  color:color-mix(in srgb, var(--c-bg) 95%, #000);text-shadow:calc(var(--sx)*-1px) calc(var(--sy)*-1px) 0 #fff, calc(var(--sx)*1.3px) calc(var(--sy)*1.3px) 2px rgb(var(--shade)/.34)}
+.usp h3{margin:0 0 6px;font:400 1.15rem/1.25 var(--serif)}
+.usp p{margin:0;color:color-mix(in srgb, var(--c-text) 55%, var(--c-muted));display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+
+/* ---------- Products ---------- */
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px;margin-bottom:clamp(26px,3.4vw,44px)}
+.sec-head > div{max-width:720px}
+.sec-head .intro{margin:14px 0 0;max-width:48ch;color:var(--c-muted)}
+.cats{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:clamp(28px,4vw,52px)}
+.cat{display:inline-flex;align-items:center;gap:12px;padding:6px 20px 6px 6px;border-radius:999px;max-width:100%;
+  font:500 11px/1.2 var(--sans);font-stretch:87.5%;letter-spacing:.14em;text-transform:uppercase}
+.cat:hover{--e:1.5}
+.cat > span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cat .pad{flex:none;width:44px;height:44px;border-radius:50%}
+.cat .pad-fb{font-size:1.1rem}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4vw,34px)}
+.home-grid > .tile:nth-child(n+7){display:none}
+.tile{position:relative;display:flex;flex-direction:column;padding:clamp(8px,1vw,12px);border-radius:var(--r-tile)}
+.tile:hover{--e:1.4;transform:translateY(-3px)}
+.tile .pad{aspect-ratio:1/1;border-radius:calc(var(--r-tile) - 10px)}
+.tile:hover .pad img{transform:scale(1.05)}
+.tag{position:absolute;z-index:3;top:10px;left:10px;max-width:calc(100% - 20px);padding:6px 11px;border-radius:999px;background:var(--c-surface);
+  font:500 10px/1 var(--sans);font-stretch:87.5%;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  box-shadow:0 1px 2px rgb(var(--shade)/.16), calc(var(--sx)*4px) calc(var(--sy)*4px) 10px rgb(var(--shade)/.14), inset 0 1px 0 #fff}
+.tile-info{display:flex;flex:1;flex-direction:column;gap:12px;padding:16px 8px 4px}
+.tile-name{font:400 clamp(1rem,1.25vw,1.14rem)/1.28 var(--serif);min-height:2.56em}
+.tile-name:hover{color:var(--ink-primary)}
+.tile-buy{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}
+
+/* ---------- Panorama ---------- */
+.pano .pad{aspect-ratio:21/9;border-radius:28px}
+.pano figure{margin:0}
+.pano figcaption{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 32px;margin-top:20px}
+.pano .sub{margin:0;font-size:clamp(1.2rem,2.2vw,1.9rem);font-weight:200;color:var(--c-text)}
+
+/* ---------- Story / stats ---------- */
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,96px);align-items:center}
+.story.no-img{grid-template-columns:minmax(0,1fr);max-width:820px}
+.story-fr{padding:12px;border-radius:28px}
+.story-fr .pad{aspect-ratio:4/5;border-radius:18px}
+.story-txt p.body{margin:24px 0 0;max-width:52ch;font-size:15px;color:var(--c-muted)}
+.story-txt .label{display:block;margin-bottom:18px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;border-top:1px solid var(--c-line);box-shadow:inset 0 1px 0 #fff}
+.stat{padding-top:28px}
+.stat b{display:block;margin-bottom:12px;font:200 clamp(3.2rem,7vw,6.4rem)/.92 var(--serif);font-variation-settings:'opsz' 30;letter-spacing:-.035em;overflow-wrap:anywhere;
+  text-shadow:calc(var(--sx)*-1px) calc(var(--sy)*-1px) 0 #fff}
+.stat span{display:block;max-width:26ch}
+
+/* ---------- Gallery ---------- */
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,18vw,270px);grid-auto-flow:dense;gap:clamp(14px,2vw,28px)}
+.gfr{padding:8px;border-radius:20px;display:flex}
+.gfr:nth-child(5n+1){grid-column:span 2;grid-row:span 2}
+.gfr:nth-child(5n+4){grid-column:span 2}
+.gfr .pad{flex:1;border-radius:13px}
+.gfr:hover{--e:1.35}
+.gfr:hover .pad img{transform:scale(1.04)}
+
+/* ---------- Quote / CTA ---------- */
+.quote{position:relative;max-width:1040px;padding-top:clamp(40px,6vw,80px)}
+.quote::before{content:"\201C";position:absolute;top:-.12em;left:-.04em;font:200 clamp(9rem,18vw,16rem)/1 var(--serif);
+  color:color-mix(in srgb, var(--c-bg) 95%, #000);text-shadow:calc(var(--sx)*-1px) calc(var(--sy)*-1px) 0 #fff, calc(var(--sx)*1.5px) calc(var(--sy)*1.5px) 2px rgb(var(--shade)/.3)}
+.quote blockquote{position:relative;margin:0;font:italic 200 clamp(1.7rem,3.8vw,3.3rem)/1.16 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+.quote cite{display:block;margin-top:26px;font-style:normal}
+.cta{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px 64px;align-items:end;padding:clamp(26px,5vw,72px)}
+.cta p{margin:0 0 26px;color:var(--c-muted);max-width:44ch;font-size:15px}
+
+/* ---------- Footer ---------- */
+footer{margin-top:clamp(64px,10vw,140px);padding-bottom:28px}
+.f-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:32px;padding-top:38px;border-top:1px solid var(--c-line);box-shadow:inset 0 1px 0 #fff}
+.f-grid h4{margin:0 0 16px}
+.f-grid ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.f-grid a{transition:color .3s}
+.f-grid a:hover{color:var(--ink-primary)}
+.f-contact{font:400 clamp(1.05rem,1.4vw,1.25rem)/1.5 var(--serif);display:grid;gap:6px;font-style:normal}
+.giant{margin:clamp(40px,7vw,96px) 0 clamp(18px,3vw,32px);font:300 clamp(3.2rem,12vw,12rem)/.9 var(--serif);font-variation-settings:'opsz' 30;letter-spacing:-.04em;overflow-wrap:anywhere;
+  color:var(--c-bg);text-shadow:calc(var(--sx)*-1.5px) calc(var(--sy)*-1.5px) 1px rgb(255 255 255/.95), calc(var(--sx)*1.5px) calc(var(--sy)*1.5px) 2px rgb(var(--shade)/.3), calc(var(--sx)*var(--sl)*.6) calc(var(--sy)*var(--sl)*.6) calc(var(--bl)*.5) rgb(var(--shade)/calc(var(--sa)*.9))}
+.f-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
+
+/* ---------- Badge / toast ---------- */
+.badge{position:fixed;left:14px;bottom:14px;z-index:60;padding:8px 14px;border-radius:999px;font:500 10px/1 var(--sans);font-stretch:87.5%;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted)}
+.toast{position:fixed;right:16px;bottom:16px;z-index:70;display:flex;align-items:center;gap:14px;max-width:min(380px,calc(100vw - 32px));padding:8px 20px 8px 8px;border-radius:999px;
+  opacity:0;visibility:hidden;transform:translateY(calc(100% + 40px));transition:transform .6s var(--ease), opacity .4s, visibility 0s .6s, --d .12s var(--ease), --e .5s var(--ease)}
+.toast.on{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.toast .dot{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--c-primary);color:var(--c-on-primary)}
+.toast .dot svg{width:16px;height:16px}
+.toast > div{min-width:0;display:grid;gap:3px}
+.toast .tn{font:italic 400 1rem/1.2 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .hero-slab,.story,.cta,.f-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-slab{min-height:0}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gfr:nth-child(5n+1){grid-column:span 2;grid-row:span 1}
+  .pano .pad{aspect-ratio:4/3}
+}
+@media (max-width:860px){
+  .bar{flex-wrap:wrap;border-radius:28px;padding:8px 8px 6px 14px}
+  .nav{order:3;flex-basis:100%;margin:0 -4px;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+  .cart{margin-left:auto}
+  .cart-l{display:none}
+}
+@media (max-width:520px){
+  .grid{gap:12px}
+  .tile{padding:7px;border-radius:18px}
+  .tile .pad{border-radius:12px}
+  .tile-info{padding:12px 4px 2px;gap:10px}
+  .add{width:36px;height:36px}
+  .add-pill{width:36px;padding:0;justify-content:center}
+  .add-pill .add-l{display:none}
+  .tile-buy:has(.price:empty) .add-pill{width:100%;height:40px;gap:8px;letter-spacing:.08em;font-size:10px}
+  .tile-buy:has(.price:empty) .add-l{display:inline;overflow:hidden;text-overflow:ellipsis}
+  .lede{font-size:15px}
+  .tag{top:7px;left:7px;padding:5px 8px;font-size:9px}
+  .btn{min-height:48px;padding:0 20px}
+  .toast{bottom:58px}
+  .usp{border-left:0;box-shadow:none;padding-inline:0;border-top:1px solid var(--c-line)}
+  .usp::before{margin-top:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  .rl,.btn svg,.pad img,.toast{transition-duration:.01ms}
+  .cart-n.bump{animation:none}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#994A91;--c-on-primary:#ffffff;--c-accent:#D4E3E6}</style></head>
+<body>
+
+<header class="top wrap">
+  <div class="bar rl" data-fixed>
+    <a class="logo " href="./" aria-label="TeleQare">
+      
+      <span class="mono">TQ</span><span class="wm">TeleQare</span>
+    </a>
+    <nav class="nav"><a href="catalog.html">Products</a><a href="#">Brands</a><a href="#">Devices</a><a href="#">About us</a><a href="#">Contact</a></nav>
+    <a class="cart rl" href="catalog.html" aria-label="Cart" data-i-al="cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span class="cart-l" data-i="cart">Cart</span><b class="cart-n">0</b>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="slab hero-slab rl glow">
+      <div class="hero-copy">
+        <div><p class="label eyebrow" style="margin:0">Mobile accessories wholesale</p></div>
+        <h1 class="display">Everything your customers <em>plug, charge and protect with.</em></h1>
+        <div>
+          <p class="lede">TeleQare connects manufacturers with retailers, from cases and chargers to audio and power banks. Distribution, private label and sourcing, all from one partner.</p>
+          <div class="actions">
+            <a class="btn btn-primary rl" href="catalog.html">Browse products<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn rl" href="catalog.html">Contact us</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-obj">
+        <a class="pad pad-hero" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1806fs.png?width&#x3D;360" alt="Pitaka Suite Moonrise iPhone Duo, 1001 Nights">
+          <span class="tag">KI1806FS</span>
+        </a>
+        <div class="hero-meta" data-name="Pitaka Suite Moonrise iPhone Duo, 1001 Nights">
+          <div>
+            <a class="nm clamp2" href="#">Pitaka Suite Moonrise iPhone Duo, 1001 Nights</a>
+            
+          </div>
+          <button class="add rl" type="button" aria-label="Add to cart" data-i-al="add">
+            <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="usps rl-t">
+      <div class="usp"><h3>Wide range, high quality</h3><p>Over 1,693 products covering cases, cables, chargers, audio and more.</p></div><div class="usp"><h3>Competitive pricing</h3><p>Strong value for money, so your margins stay healthy.</p></div><div class="usp"><h3>Custom branding</h3><p>Private label gives you exclusive products no other retailer can offer.</p></div><div class="usp"><h3>Fast shipping and logistics</h3><p>Logistics solutions built to keep your supply chain moving.</p></div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="shop">
+    <div class="sec-head">
+      <div>
+        <p class="label" style="margin:0 0 14px">1693 products</p>
+        <h2 class="h2">Products</h2>
+        <p class="intro">Browse cases, screen protection, audio and more from leading accessory brands.</p>
+      </div>
+      <a class="btn rl" href="catalog.html">Browse products<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="cats">
+      <a class="cat rl" href="catalog.html"><span class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;audio.jpg?width&#x3D;150" alt="" loading="lazy"></span><span>Audio</span></a><a class="cat rl" href="catalog.html"><span class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;cable.jpg?width&#x3D;150" alt="" loading="lazy"></span><span>Cables</span></a><a class="cat rl" href="catalog.html"><span class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;charger.jpg?width&#x3D;150" alt="" loading="lazy"></span><span>Chargers</span></a><a class="cat rl" href="catalog.html"><span class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;cleanning.jpg?width&#x3D;150" alt="" loading="lazy"></span><span>Cleaning</span></a><a class="cat rl" href="catalog.html"><span class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;holder.jpg?width&#x3D;150" alt="" loading="lazy"></span><span>Holders</span></a><a class="cat rl" href="catalog.html"><span class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;powerbank.jpg?width&#x3D;150" alt="" loading="lazy"></span><span>Powerbanks</span></a>
+    </div>
+    <div class="grid home-grid">
+      <article data-shop-item="0" class="tile rl" data-name="Pitaka Suite Moonrise iPhone Duo, 1001 Nights" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1806fs.png?width&#x3D;360" alt="Pitaka Suite Moonrise iPhone Duo, 1001 Nights" loading="lazy">
+          <span class="tag">KI1806FS</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Pitaka Suite Moonrise iPhone Duo, 1001 Nights</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="1" class="tile rl" data-name="Pitaka Suite Sunet iPhone Duo, California Dream" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1805fs.png?width&#x3D;360" alt="Pitaka Suite Sunet iPhone Duo, California Dream" loading="lazy">
+          <span class="tag">KI1805FS</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Pitaka Suite Sunet iPhone Duo, California Dream</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="2" class="tile rl" data-name="Pitaka Suite Classic Twill iPhone Duo, Black Grey" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1804fs.png?width&#x3D;360" alt="Pitaka Suite Classic Twill iPhone Duo, Black Grey" loading="lazy">
+          <span class="tag">KI1804FS</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Pitaka Suite Classic Twill iPhone Duo, Black Grey</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="3" class="tile rl" data-name="ScreenArmor Lens Shield iPhone Duo, silver" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-sil.jpg?width&#x3D;360" alt="ScreenArmor Lens Shield iPhone Duo, silver" loading="lazy">
+          <span class="tag">SA-LS-IP26F-SIL</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">ScreenArmor Lens Shield iPhone Duo, silver</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="4" class="tile rl" data-name="ScreenArmor Lens Shield iPhone Duo, blue" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-blu.jpg?width&#x3D;360" alt="ScreenArmor Lens Shield iPhone Duo, blue" loading="lazy">
+          <span class="tag">SA-LS-IP26F-BLU</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">ScreenArmor Lens Shield iPhone Duo, blue</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="5" class="tile rl" data-name="ScreenArmor Guard Glass iPhone Duo" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-gg-ip26f.jpg?width&#x3D;360" alt="ScreenArmor Guard Glass iPhone Duo" loading="lazy">
+          <span class="tag">SA-GG-IP26F</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">ScreenArmor Guard Glass iPhone Duo</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="6" class="tile rl" data-name="ScreenArmor Full Cover Glass iPhone Duo" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-fc-ip26f.jpg?width&#x3D;360" alt="ScreenArmor Full Cover Glass iPhone Duo" loading="lazy">
+          <span class="tag">SA-FC-IP26F</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">ScreenArmor Full Cover Glass iPhone Duo</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="7" class="tile rl" data-name="Pitaka Moonrise Case iPhone Duo, 1001 Nights" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1803f.png?width&#x3D;360" alt="Pitaka Moonrise Case iPhone Duo, 1001 Nights" loading="lazy">
+          <span class="tag">KI1803F</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Pitaka Moonrise Case iPhone Duo, 1001 Nights</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="8" class="tile rl" data-name="Pitaka Sunset Edge Case iPhone Duo, California Dream" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1802f.png?width&#x3D;360" alt="Pitaka Sunset Edge Case iPhone Duo, California Dream" loading="lazy">
+          <span class="tag">KI1802F</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Pitaka Sunset Edge Case iPhone Duo, California Dream</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="9" class="tile rl" data-name="Pitaka Twill Edge Case iPhone Duo, Black Grey" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1801f.png?width&#x3D;360" alt="Pitaka Twill Edge Case iPhone Duo, Black Grey" loading="lazy">
+          <span class="tag">KI1801F</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Pitaka Twill Edge Case iPhone Duo, Black Grey</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="10" class="tile rl" data-name="FIXED Opus for Samsung Galaxy A18, black" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;fixop3-1729-bk.jpg?width&#x3D;360" alt="FIXED Opus for Samsung Galaxy A18, black" loading="lazy">
+          <span class="tag">FIXOP3-1729-BK</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">FIXED Opus for Samsung Galaxy A18, black</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="11" class="tile rl" data-name="Laut Flexi Protect iPhone Duo, Black" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffptbk.jpg?width&#x3D;360" alt="Laut Flexi Protect iPhone Duo, Black" loading="lazy">
+          <span class="tag">LIP26FFPTBK</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Laut Flexi Protect iPhone Duo, Black</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="12" class="tile rl" data-name="Laut Fizz Crystal iPhone Duo, Crystal" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffcc.jpg?width&#x3D;360" alt="Laut Fizz Crystal iPhone Duo, Crystal" loading="lazy">
+          <span class="tag">LIP26FFCC</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Laut Fizz Crystal iPhone Duo, Crystal</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="13" class="tile rl" data-name="Laut Crystal Fluro iPhone Duo, Crystal" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfc.jpg?width&#x3D;360" alt="Laut Crystal Fluro iPhone Duo, Crystal" loading="lazy">
+          <span class="tag">LIP26FCFC</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Laut Crystal Fluro iPhone Duo, Crystal</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="14" class="tile rl" data-name="Laut Crystal Fluro iPhone Duo, Midnight" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfbk.jpg?width&#x3D;360" alt="Laut Crystal Fluro iPhone Duo, Midnight" loading="lazy">
+          <span class="tag">LIP26FCFBK</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Laut Crystal Fluro iPhone Duo, Midnight</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="15" class="tile rl" data-name="Divoom Astrotoo 20W Desktop Speaker, green" data-price="">
+        <a class="pad" href="#">
+          <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;groen10.png?width&#x3D;360" alt="Divoom Astrotoo 20W Desktop Speaker, green" loading="lazy">
+          <span class="tag">90100058298</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Divoom Astrotoo 20W Desktop Speaker, green</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="16" class="tile rl" data-name="Divoom Astrotoo 20W Desktop Speaker, pink" data-price="">
+        <a class="pad" href="#">
+          <span class="pad-fb emb">TQ</span>
+          <span class="tag">90100058297</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Divoom Astrotoo 20W Desktop Speaker, pink</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="17" class="tile rl" data-name="Divoom Astrotoo 20W Desktop Speaker, white" data-price="">
+        <a class="pad" href="#">
+          <span class="pad-fb emb">TQ</span>
+          <span class="tag">90100058296</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Divoom Astrotoo 20W Desktop Speaker, white</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="18" class="tile rl" data-name="Urbanista Biarritz Portable Speaker, green" data-price="">
+        <a class="pad" href="#">
+          <span class="pad-fb emb">TQ</span>
+          <span class="tag">UB9975</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Urbanista Biarritz Portable Speaker, green</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="19" class="tile rl" data-name="Urbanista Biarritz Portable Speaker, sand" data-price="">
+        <a class="pad" href="#">
+          <span class="pad-fb emb">TQ</span>
+          <span class="tag">UB9978</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Urbanista Biarritz Portable Speaker, sand</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="20" class="tile rl" data-name="Urbanista Biarritz Portable Speaker, black" data-price="">
+        <a class="pad" href="#">
+          <span class="pad-fb emb">TQ</span>
+          <span class="tag">UB9994</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Urbanista Biarritz Portable Speaker, black</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="21" class="tile rl" data-name="Urbanista Shibuya Wireless Headphone, white" data-price="">
+        <a class="pad" href="#">
+          <span class="pad-fb emb">TQ</span>
+          <span class="tag">UB9910</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Urbanista Shibuya Wireless Headphone, white</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="22" class="tile rl" data-name="Urbanista Shibuya Wireless Headphone, black" data-price="">
+        <a class="pad" href="#">
+          <span class="pad-fb emb">TQ</span>
+          <span class="tag">UB9925</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Urbanista Shibuya Wireless Headphone, black</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article data-shop-item="23" class="tile rl" data-name="Urbanista Porto In-Ear, storm blue" data-price="">
+        <a class="pad" href="#">
+          <span class="pad-fb emb">TQ</span>
+          <span class="tag">1040264</span>
+        </a>
+        <div class="tile-info">
+          <a class="tile-name clamp2" href="#">Urbanista Porto In-Ear, storm blue</a>
+          <div class="tile-buy">
+            <span class="price"></span>
+            <button class="add add-pill rl" type="button" aria-label="Add to cart" data-i-al="add">
+              <svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+              <span class="add-l" data-i="add">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="pano wrap">
+    <figure>
+      <div class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;header-1.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="Everything your customers" loading="lazy"></div>
+      <figcaption><span class="label">TeleQare</span><p class="sub">Mobile accessories, sourced and delivered</p></figcaption>
+    </figure>
+  </section>
+
+  <section class="sec wrap">
+    <div class="story ">
+      <div class="story-fr rl"><div class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;home-4.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1000" alt="The link between manufacturers and retailers" loading="lazy"></div></div>
+      <div class="story-txt">
+        <span class="label">Distribution, private label, sourcing</span>
+        <h2 class="h2">The link between manufacturers and retailers</h2>
+        <p class="body">With new smartphone models launching constantly, demand for cases, chargers, screen protectors, earbuds and power banks keeps growing. TeleQare gets those products to a wide audience, and supports you with private label, full-range sourcing and compliance expertise.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-bottom:clamp(56px,9vw,128px)">
+    <div class="stats rl-t">
+      <div class="stat"><b>1,693</b><span class="label">products in the range</span></div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-bottom:clamp(56px,9vw,128px)">
+    <div class="gal">
+      <div class="gfr rl"><div class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;header-2.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;3356&amp;cropH&#x3D;1406&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></div></div><div class="gfr rl"><div class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;mhbts347blk-1.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;1500&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1500" alt="" loading="lazy"></div></div><div class="gfr rl"><div class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;iphone-16-pro-pro-max-black-2.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></div></div><div class="gfr rl"><div class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;mhhead2ua17wwht.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1506" alt="" loading="lazy"></div></div><div class="gfr rl"><div class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;mhcabmscusbcblk-1.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1500" alt="" loading="lazy"></div></div><div class="gfr rl"><div class="pad cover"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;powerbank.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></div></div>
+    </div>
+  </section>
+
+
+  <section class="wrap">
+    <div class="slab cta rl glow">
+      <h2 class="h2">Let&#39;s stock your shelves</h2>
+      <div>
+        <p>Tell us what you need, from ready-made ranges to your own private label, and we will take care of sourcing, compliance and delivery.</p>
+        <a class="btn btn-primary rl" href="#">Get in touch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="f-grid">
+    <div>
+      <h4 class="label">TeleQare</h4>
+      <address class="f-contact">
+        <span>Florijnweg 21e, 6883 JN Velp, The Netherlands</span>
+        <a href="tel:+31 (0)26 760 00 64">+31 (0)26 760 00 64</a>
+        
+      </address>
+    </div>
+    <div>
+      <h4 class="label">Menu</h4>
+      <ul><li><a href="catalog.html">Products</a></li><li><a href="#">Brands</a></li><li><a href="#">Devices</a></li><li><a href="#">About us</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+    <div>
+      <h4 class="label">Info</h4>
+      <ul><li><a href="#">News</a></li><li><a href="#">About us</a></li><li><a href="#">Terms &amp; Conditions (NL)</a></li><li><a href="#">Cookie policy</a></li><li><a href="#">Privacy policy</a></li><li><a href="#">Newsletter</a></li></ul>
+    </div>
+  </div>
+  <p class="giant rl-t" aria-hidden="true">TeleQare</p>
+  <div class="f-bot label"><span>© 2026 TeleQare</span><span>Mobile accessories, sourced and delivered</span></div>
+</footer>
+
+<div class="badge rl" data-fixed>Demo redesign · Raking Light</div>
+<div class="toast rl" data-fixed role="status" aria-live="polite">
+  <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+  <div><span class="tn"></span><span class="label" data-i="added">Added to your cart</span></div>
+</div>
+
+<script>
+(() => {
+  const D = document, H = D.documentElement;
+  H.classList.add('js');
+  // UI strings that are not content: translated by page language, English in the markup.
+  const L10 = {
+    nl: { add: 'In winkelwagen', added: 'Toegevoegd aan je winkelwagen', cart: 'Winkelwagen', all: 'Alles', search: 'Zoeken', def: 'Aanbevolen', az: 'Naam A–Z', lo: 'Prijs oplopend', hi: 'Prijs aflopend' },
+    de: { add: 'In den Warenkorb', added: 'Zum Warenkorb hinzugefügt', cart: 'Warenkorb', all: 'Alle', search: 'Suchen', def: 'Empfohlen', az: 'Name A–Z', lo: 'Preis aufsteigend', hi: 'Preis absteigend' },
+    fr: { add: 'Ajouter au panier', added: 'Ajouté au panier', cart: 'Panier', all: 'Tout', search: 'Rechercher', def: 'Sélection', az: 'Nom A–Z', lo: 'Prix croissant', hi: 'Prix décroissant' }
+  }[(H.lang || '').slice(0, 2).toLowerCase()];
+  if (L10) {
+    D.querySelectorAll('[data-i]').forEach(e => { const v = L10[e.dataset.i]; if (v) e.textContent = v; });
+    D.querySelectorAll('[data-i-ph]').forEach(e => { const v = L10[e.dataset.iPh]; if (v) e.placeholder = v; });
+    D.querySelectorAll('[data-i-al]').forEach(e => { const v = L10[e.dataset.iAl]; if (v) e.setAttribute('aria-label', v); });
+  }
+
+  // Cart: count bump + toast, shared between pages through localStorage.
+  let n = 0; try { n = +localStorage.getItem('rl-cart') || 0; } catch (e) {}
+  const nEls = D.querySelectorAll('.cart-n'), toast = D.querySelector('.toast'), tName = toast && toast.querySelector('.tn');
+  let tt;
+  const paint = () => nEls.forEach(e => { e.textContent = n; e.closest('.cart')?.classList.toggle('has', n > 0); });
+  paint();
+  D.addEventListener('click', e => {
+    const b = e.target.closest('.add'); if (!b) return;
+    e.preventDefault(); n++;
+    try { localStorage.setItem('rl-cart', n); } catch (e) {}
+    paint();
+    nEls.forEach(x => { x.classList.remove('bump'); void x.offsetWidth; x.classList.add('bump'); });
+    b.classList.add('is-added'); clearTimeout(b._t); b._t = setTimeout(() => b.classList.remove('is-added'), 1100);
+    if (toast) { tName.textContent = b.closest('[data-name]')?.dataset.name || ''; toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('on'), 2600); }
+  });
+
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let remeasure = () => {};
+
+  // Raking light: one light L follows the pointer; every raised element in view gets its shadow vector from it.
+  if (!RM) {
+    const els = [...D.querySelectorAll('.rl, .rl-t')];
+    let R = [];
+    const measure = () => {
+      const y = scrollY;
+      R = els.map(e => {
+        const r = e.getBoundingClientRect(), fx = !!e.closest('[data-fixed]'), o = fx ? 0 : y;
+        return { e, fx, l: r.left, w: r.width, cx: r.left + r.width / 2, cy: r.top + r.height / 2 + o, t: r.top + o, b: r.bottom + o, g: e.classList.contains('glow') };
+      });
+    };
+    remeasure = measure;
+    measure();
+    addEventListener('resize', measure, { passive: true });
+    addEventListener('load', measure);
+    D.fonts && D.fonts.ready.then(measure);
+    if ('ResizeObserver' in window) new ResizeObserver(() => measure()).observe(D.body);
+    let ms = 0;
+    addEventListener('scroll', () => { const now = performance.now(); if (now - ms > 400) { ms = now; setTimeout(measure, 80); } }, { passive: true });
+
+    let Lx = innerWidth * .22, Ly = innerHeight * .12, Tx = Lx, Ty = Ly, live = false, last = 0, lastY = scrollY, h = 0;
+    addEventListener('pointermove', e => { Tx = e.clientX; Ty = e.clientY; live = true; last = performance.now(); }, { passive: true });
+    H.addEventListener('mouseleave', () => { live = false; });
+    const loop = now => {
+      // Idle: the light drifts on a slow ellipse.
+      if (!live || now - last > 5000) { const s = now * .00022; Tx = innerWidth * (.5 + .38 * Math.cos(s)); Ty = innerHeight * (.3 + .28 * Math.sin(s * 1.4)); }
+      Lx += (Tx - Lx) * .08; Ly += (Ty - Ly) * .08;
+      // Scroll velocity lowers the light, so shadows stretch while scrolling.
+      const y = scrollY, v = Math.abs(y - lastY); lastY = y;
+      const ht = Math.min(1, v / 36); h += (ht - h) * (ht > h ? .3 : .04);
+      const VH = innerHeight, low = 1 + h * 1.5;
+      for (const r of R) {
+        if (!r.w) continue;
+        const o = r.fx ? 0 : y, top = r.t - o;
+        if (r.b - o < -120 || top > VH + 120) continue;
+        const dx = r.cx - Lx, dy = r.cy - o - Ly, d = Math.hypot(dx, dy) || 1;
+        // Directly under the light the shadow shrinks to nothing instead of flipping.
+        const k = Math.min(1, d / 240) / d, sx = dx * k, sy = dy * k;
+        const sl = Math.min(48, (5 + d * .03) * low), bl = Math.min(60, sl * 1.2 + 10);
+        const sa = Math.max(.06, .21 - d / 6500) * (1 + h * .3), hl = .45 + .55 * Math.max(0, 1 - d / 1600);
+        const s = r.e.style;
+        s.setProperty('--sx', sx.toFixed(3)); s.setProperty('--sy', sy.toFixed(3));
+        s.setProperty('--sl', sl.toFixed(1) + 'px'); s.setProperty('--bl', bl.toFixed(1) + 'px');
+        s.setProperty('--sa', sa.toFixed(3)); s.setProperty('--hl', hl.toFixed(3));
+        s.setProperty('--ang', (Math.atan2(sx, -sy) * 57.2958).toFixed(1) + 'deg');
+        if (r.g) { s.setProperty('--lx', (Lx - r.l).toFixed(0) + 'px'); s.setProperty('--ly', (Ly - top).toFixed(0) + 'px'); }
+      }
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"en","count":"1693 products","products":[{"name":"Pitaka Suite Moonrise iPhone Duo, 1001 Nights","tag":"KI1806FS","category":"Protection cases"},{"name":"Pitaka Suite Sunet iPhone Duo, California Dream","tag":"KI1805FS","category":"Protection cases"},{"name":"Pitaka Suite Classic Twill iPhone Duo, Black Grey","tag":"KI1804FS","category":"Protection cases"},{"name":"ScreenArmor Lens Shield iPhone Duo, silver","tag":"SA-LS-IP26F-SIL","category":"Screen protection"},{"name":"ScreenArmor Lens Shield iPhone Duo, blue","tag":"SA-LS-IP26F-BLU","category":"Screen protection"},{"name":"ScreenArmor Guard Glass iPhone Duo","tag":"SA-GG-IP26F","category":"Screen protection"},{"name":"ScreenArmor Full Cover Glass iPhone Duo","tag":"SA-FC-IP26F","category":"Screen protection"},{"name":"Pitaka Moonrise Case iPhone Duo, 1001 Nights","tag":"KI1803F","category":"Protection cases"},{"name":"Pitaka Sunset Edge Case iPhone Duo, California Dream","tag":"KI1802F","category":"Protection cases"},{"name":"Pitaka Twill Edge Case iPhone Duo, Black Grey","tag":"KI1801F","category":"Protection cases"},{"name":"FIXED Opus for Samsung Galaxy A18, black","tag":"FIXOP3-1729-BK","category":"Protection cases"},{"name":"Laut Flexi Protect iPhone Duo, Black","tag":"LIP26FFPTBK","category":"Protection cases"},{"name":"Laut Fizz Crystal iPhone Duo, Crystal","tag":"LIP26FFCC","category":"Protection cases"},{"name":"Laut Crystal Fluro iPhone Duo, Crystal","tag":"LIP26FCFC","category":"Protection cases"},{"name":"Laut Crystal Fluro iPhone Duo, Midnight","tag":"LIP26FCFBK","category":"Protection cases"},{"name":"Divoom Astrotoo 20W Desktop Speaker, green","tag":"90100058298","category":"Audio"},{"name":"Divoom Astrotoo 20W Desktop Speaker, pink","tag":"90100058297","category":"Audio"},{"name":"Divoom Astrotoo 20W Desktop Speaker, white","tag":"90100058296","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, green","tag":"UB9975","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, sand","tag":"UB9978","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, black","tag":"UB9994","category":"Audio"},{"name":"Urbanista Shibuya Wireless Headphone, white","tag":"UB9910","category":"Audio"},{"name":"Urbanista Shibuya Wireless Headphone, black","tag":"UB9925","category":"Audio"},{"name":"Urbanista Porto In-Ear, storm blue","tag":"1040264","category":"Audio"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

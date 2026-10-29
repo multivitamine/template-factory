@@ -1,0 +1,3 @@
+{ "id": "raking-light", "name": "Raking Light", "scheme": "light", "sectors": ["luxury", "lifestyle", "makers", "travel"],
+  "mood": ["tactile", "quiet", "porcelain", "premium"], "needsProductImages": true,
+  "notes": "Porcelain-white relief owns the mood; --c-primary appears only on prices (mixed toward ink for contrast), the cart count, primary buttons and pressed/active states." }

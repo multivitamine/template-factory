@@ -1,0 +1,83 @@
+{
+  "id": "raking-light",
+  "name": "Raking Light",
+  "sectors": [
+    "luxury",
+    "lifestyle",
+    "makers",
+    "travel"
+  ],
+  "sample": "nacrasailing",
+  "stress": "teleqare",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793301710855
+    },
+    {
+      "step": "Rendering",
+      "at": 1793302289302
+    },
+    {
+      "step": "Critique",
+      "at": 1793302301975
+    },
+    {
+      "step": "Final render",
+      "at": 1793302393750
+    },
+    {
+      "step": "Done",
+      "at": 1793302406375
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793300837847,
+  "startedAt": 1793301710855,
+  "finishedAt": 1793302406375,
+  "model": "opus",
+  "costUsd": 2.8554983999999997,
+  "meta": {
+    "id": "raking-light",
+    "name": "Raking Light",
+    "scheme": "light",
+    "sectors": [
+      "luxury",
+      "lifestyle",
+      "makers",
+      "travel"
+    ],
+    "mood": [
+      "tactile",
+      "quiet",
+      "porcelain",
+      "premium"
+    ],
+    "needsProductImages": true,
+    "notes": "Porcelain-white relief owns the mood; --c-primary appears only on prices (mixed toward ink for contrast), the cart count, primary buttons and pressed/active states."
+  },
+  "score": {
+    "scoreBefore": 6.8,
+    "issues": [
+      "Creativity 7: the raking-light relief model is fully implemented and gives a real tactile identity, but the static shots read as tasteful neumorphism.",
+      "Typography 7: thin Piazzolla display is elegant. The hero lede and USP copy are tiny, low-contrast muted grey and almost disappear.",
+      "Layout 7: calm 3-column tile grid. Without prices every tile's buy row is an empty left side with a lonely 42px '+' circle, so the bottom third of each tile looks unfinished.",
+      "Polish 6: the 'Added to your cart' toast with an empty name shows up permanently in the full-page shots (hidden only by translateY, which fails when the viewport is tall).",
+      "Brand robustness 8: TeleQare's purple and Nacra's orange both sit well because colour is limited to the CTA, cart and eyebrow dot.",
+      "Mobile 7: the nav row is clipped mid-word ('CO') with no hint that it scrolls, and the price-less tiles have the same empty buy row.",
+      "Generic-ness: moderate. The relief light keeps it from being a stock template, but the empty tile footers make it look like a placeholder grid."
+    ],
+    "fixed": [
+      "Tile add-to-cart is now a raised, labelled pill ('In winkelwagen', localized). With a price it sits right of the price. Without one, the empty price is collapsed and the pill anchors the row. On mobile it becomes a full-width pressed-in-on-click pill when there is no price, or stays an icon next to the price. Same on home and catalog.",
+      "Toast is also hidden with opacity/visibility, so it never leaks into the page or into screenshots when idle. The slide-in is kept.",
+      "Mobile nav gets a soft right-edge fade mask so the horizontal scroll reads as intentional instead of clipped text.",
+      "Hero lede is larger (15–17px), with tighter measure and much higher contrast. USP body copy also gets more contrast, so the quiet palette stays readable.",
+      "Added state on the pill tints the check in --c-primary and hover tints the label, keeping colour limited to active states as the brief asks."
+    ],
+    "scoreAfterEstimate": 7.5
+  },
+  "version": 1793302406375
+}
