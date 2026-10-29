@@ -1,0 +1,3 @@
+{ "id": "open-canvas", "name": "Open Canvas", "scheme": "dark", "sectors": ["retail", "wholesale", "lifestyle", "makers"],
+  "mood": ["calm", "gallery-like", "dark", "explorative"], "needsProductImages": true,
+  "notes": "Charcoal gallery wall stays fixed; --c-primary is reserved for the dock CTA, active filter chips, quick-add hover and the cart (with a light hairline so near-black brands still read); --c-accent only marks small dots and USP icons." }

@@ -1,0 +1,82 @@
+{
+  "id": "open-canvas",
+  "name": "Open Canvas",
+  "sectors": [
+    "retail",
+    "wholesale",
+    "lifestyle",
+    "makers"
+  ],
+  "sample": "spaansen",
+  "stress": "birthbear",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793299880624
+    },
+    {
+      "step": "Rendering",
+      "at": 1793300913234
+    },
+    {
+      "step": "Critique",
+      "at": 1793300926125
+    },
+    {
+      "step": "Final render",
+      "at": 1793301006790
+    },
+    {
+      "step": "Done",
+      "at": 1793301019068
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793299880623,
+  "startedAt": 1793299880624,
+  "finishedAt": 1793301019068,
+  "model": "opus",
+  "costUsd": 4.405044,
+  "meta": {
+    "id": "open-canvas",
+    "name": "Open Canvas",
+    "scheme": "dark",
+    "sectors": [
+      "retail",
+      "wholesale",
+      "lifestyle",
+      "makers"
+    ],
+    "mood": [
+      "calm",
+      "gallery-like",
+      "dark",
+      "explorative"
+    ],
+    "needsProductImages": true,
+    "notes": "Charcoal gallery wall stays fixed; --c-primary is reserved for the dock CTA, active filter chips, quick-add hover and the cart (with a light hairline so near-black brands still read); --c-accent only marks small dots and USP icons."
+  },
+  "score": {
+    "scoreBefore": 6.6,
+    "issues": [
+      "Stats band: giant extended numerals overflow their columns ('3000+' collides with '3', '5500 g' wraps to two lines) on both brands",
+      "Catalog H1 breaks mid-word ('assortime / nt') because the 7.6vw extended display size exceeds its grid column",
+      "Bestseller row: landscape product photos float as small stamps in tall 4/5 frames with 9% mat, so the section reads empty",
+      "Products without an image (Birth Bear gift card) render as a flat grey box with faint initials, which looks like a broken image",
+      "Canvas hero ends abruptly at its edges and against the scrolling section; it lacks the gallery depth the art direction asks for",
+      "Creativity 7, typography 6.5, layout 6.5, polish 6, brand robustness 7.5, mobile 6.5, generic-ness 7 (signature canvas is genuinely present)"
+    ],
+    "fixed": [
+      "Stats numerals now size to their own cell via container queries (min(6rem,24cqi)), with a normal-width axis and nowrap, so no value can bleed or wrap",
+      "Catalog H1 resized to fit its column (clamp 2.4–6.4rem, 11vw on mobile) and set to hyphenate instead of hard-breaking",
+      "Bestseller frames are square with a 6% mat, so mixed landscape photos fill the curated wall",
+      "Missing-image placeholder redesigned as an inset gallery mount (hairline border, cross-hatch, dashed inner frame) on both pages",
+      "Added a radial gallery vignette and bottom fade over the canvas so the wall dissolves into charcoal, focuses the headline card and flows into the section below"
+    ],
+    "scoreAfterEstimate": 7.3
+  },
+  "version": 1793301019068
+}

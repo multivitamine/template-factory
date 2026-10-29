@@ -753,5 +753,157 @@
     "focus": "ecommerce",
     "generated": true,
     "generatedAt": "2026-10-29T18:51:20.621Z"
+  },
+  {
+    "id": "slit-velocity",
+    "name": "Slit Velocity",
+    "sectors": [
+      "sports",
+      "retail",
+      "tech",
+      "lifestyle"
+    ],
+    "sample": "kartstoreinternational",
+    "stress": "brinkscoffeeroasters",
+    "brief": "A near-black field (#0A0B0C) with cool grey hairlines, where --c-primary is the only live colour: prices on hover, the cart count, the active filter and the scroll meter. The hero is a full-bleed featured product set inside a tall portrait frame on the right, against a towering condensed headline on the left that runs the full viewport height, with a single shop CTA and a live speed readout underneath. Homepage products sit in a tight 4-column grid of uniform 4:5 frames on a #141618 surface; each photo is contained with 8% padding and a soft vignette, so mixed backgrounds read as studio shots, with a mono name/price strip beneath and a quick-add square that fills with the primary on hover. The catalog keeps the grid with a slim sticky filter bar of uppercase category words, a sort toggle and a density switch (3/4/6 columns), plus a thin progress line in --c-primary along the top edge. Motion is all about momentum: at rest everything is crisp and still, at speed the page liquefies, and the mood is cold, fast and technical.",
+    "type": "Display: 'Alumni Sans' 800–900 (and italic) at extreme sizes, condensed and tightly leaded, for the hero headline, section words and big index numbers; data, prices and labels 'Anonymous Pro' 700 uppercase with tracking; body 'Epilogue' 400 at 14–15px.",
+    "signature": "Slit-scan scroll smear. Every product image (and the hero image) is drawn into a canvas the size of its frame as 32 horizontal strips. Each strip i has its own offset spring (stiffness 140 + i·4, damping 22) that targets the current scroll velocity (px/frame, clamped to ±60, measured from rAF-sampled scrollY). The strip is drawn with drawImage at y + offset_i, and the source rect is stretched vertically by 1 + |v|·0.004. Because the strips settle at slightly different rates, images stretch and tear into a slit-scan streak during fast scrolls and snap back crisply when the page stops. Hovering a frame applies the same effect horizontally from pointer velocity (the strips become vertical columns). A thin red-shift on the strip edges is drawn at 2px with globalCompositeOperation 'lighter' in --c-primary at 25% alpha, scaled by speed. A mono speed readout in the hero ('V 0.00') shows the smoothed velocity. Only canvases in view are updated (IntersectionObserver), and a canvas stops redrawing once all springs are within 0.1px of rest. Real <img> elements stay underneath for no-JS and SEO; under prefers-reduced-motion the canvases are never created.",
+    "source": "Dark monochrome performance commerce with one electric accent and velocity-driven image distortion",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:07:17.846Z"
+  },
+  {
+    "id": "rack-focus",
+    "name": "Rack Focus",
+    "sectors": [
+      "hospitality",
+      "luxury",
+      "lifestyle",
+      "food"
+    ],
+    "sample": "hotelnavarra",
+    "stress": "kartstoreinternational",
+    "brief": "A warm, deep espresso ground (#15110E) with soft ivory type and generous negative space, where depth comes from focus rather than from colour. The hero is a large centred product or brand image in a 3:2 frame with a hairline border and a headline split around it: a thin wide word above and a single heavy word below, with the shop CTA as a quiet underlined link plus a filled primary button. Homepage products run as a single vertical column of wide editorial rows (image left at 5:4 with a matte #201A16 surround so any photo looks framed, name, short line, price and add-to-cart right), and only the row on the reading line is fully sharp. The catalog switches to a 3-column grid with the same focus logic applied by the pointer instead of scroll, plus a sticky filter rail whose active category sits in focus while the others stay softly defocused. Motion is slow and cinematic, with long easings and no bounce, and a faint film-grain canvas at 3% opacity keeps the blacks rich.",
+    "type": "Display: 'Kalnia' using its width and weight axes: 200 expanded for wide, whispered headline words and 600 condensed for the single heavy word, never mid-weight; body 'Commissioner' 300/500 at 14px with letterspaced caps for prices and nav.",
+    "signature": "Scroll-linked depth of field with rack-focus pulls. A fixed 'focal plane' sits at 42% of the viewport height. On every rAF tick after scroll, each element with data-focus measures its centre distance d to the focal plane (one getBoundingClientRect per element, batched), and gets filter: blur(min(d/90, 6)px), opacity 1 − min(d/1400, 0.45) and scale 1 − min(d/4000, 0.03). These are written as CSS variables, with values smoothed by lerp 0.12 so focus 'breathes' after scroll stops. Text inside rows uses a lighter blur curve (half strength) so it remains legible. Clicking a row's 'Kijk' link, or pressing F on a focused row, performs a rack-focus pull: the page smoothly scrolls that row onto the focal plane over 900ms (cubic-bezier(.65,0,.35,1)) while its blur briefly overshoots to 0 and every other row goes to maximum blur, then the depth curve resumes. In the catalog, the focal point follows the pointer (radial distance instead of vertical), and keyboard focus pins the focal point to the focused card. Hidden elements are skipped. Without JS everything is sharp, and under prefers-reduced-motion blur is disabled and focus is shown with opacity only.",
+    "source": "Cinematic quiet-luxury commerce built on depth of field and a single reading line",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:07:17.846Z"
+  },
+  {
+    "id": "counterform",
+    "name": "Counterform",
+    "sectors": [
+      "retail",
+      "lifestyle",
+      "culture",
+      "makers"
+    ],
+    "sample": "banksmansion",
+    "stress": "nacrasailing",
+    "brief": "A stark paper-white page (#FAFAF8) with black type, a single --c-primary used for the cart, active states and the scroll-zoom rim, and nothing decorative beyond type and product photography. The hero is the brand name set enormous across the viewport in a wide geometric display face, with the featured product image visible only through the letter counters and bowls (the inside of the O, A, B, R), plus a shop CTA pinned bottom-right. Scrolling zooms into one counter until the product image fills the screen, which is where the products begin. Homepage products sit on a strict 3-column grid of square tiles with a pale #EFEEEA mat around contained photos, oversized prices and a quick add that slides up from the tile base. The catalog keeps the grid and uses large wide category words as filters, with the active word's counters filled with that category's first product image. The mood is loud but disciplined: pure contrast, sharp corners and fast crisp transitions.",
+    "type": "Display: 'Krona One' at very large sizes, set in caps with tight line height so its open counters become windows; body 'Readex Pro' 300/500 at 14–16px, with 500 uppercase at 11px for labels and prices.",
+    "signature": "Zoom through the counter. The hero headline is an inline SVG: the brand name as <text> inside a <mask> (white rect plus black glyphs), laid over an <image> of the featured product, so the image shows only inside the counters and gaps. After fonts load, JS finds the largest enclosed counter by rasterising the text to an offscreen canvas at 1/4 size, flood-filling from the edges, and taking the bounding box of the largest unreached region; its centre becomes the zoom origin (with a fallback to the visual centre of the first glyph with a bowl). A pinned section of 220vh (GSAP ScrollTrigger, scrub 0.7) scales the masked SVG group from 1 to about 40 around that origin, so the counter grows until the product fills the viewport, while a 2px ring in --c-primary traces the counter edge and thins out. In the last 20% the featured product's name, price and add-to-cart fade in over the full-bleed image, and the section unpins into the product grid. Catalog filter words reuse the mask at small scale: hovering a word drops a different product image into its counters with a 300ms vertical slide. Without JS or under prefers-reduced-motion the headline renders with the image already inside its counters and the featured product follows as a normal section.",
+    "source": "Black-and-white typographic commerce where giant letterforms act as image masks",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:07:17.846Z"
+  },
+  {
+    "id": "tumble-tags",
+    "name": "Tumble Tags",
+    "sectors": [
+      "kids",
+      "sports",
+      "retail",
+      "lifestyle"
+    ],
+    "sample": "birthbear",
+    "stress": "droogijs365",
+    "brief": "A bright off-white ground (#FFFCF6) with chunky rounded shapes in tints of --c-primary and --c-accent made with color-mix in oklch, so any brand colour turns into a cheerful palette with the full colour reserved for buttons. The hero is a wide stage where category tags and a few featured product capsules (rounded pills with a circular product thumbnail, name and price) drop in from above, pile up on the floor and can be thrown around, next to a big headline and a shop CTA. Homepage products sit in a 4-column grid of rounded cards (28px radius) with photos contained on a pastel tint pad so mixed backgrounds look deliberate, chunky prices and a round + button. The catalog reuses the physics as its filter: a short tray at the top where category tags lie, and dragging a tag into the 'filter' bowl area (or clicking it) applies it. The mood is loud, warm and friendly, with satisfying weight and no clutter.",
+    "type": "Display: 'Fredoka' 600–700 at its widest width (wdth 125) for headlines, tags and prices; body 'Livvic' 400/600 at 15px.",
+    "signature": "Throwable physics tags. A hand-written fixed-timestep (120Hz) 2D solver simulates every tag as a capsule (a segment with a radius) with position, velocity, angle and angular velocity. Gravity is 2400px/s², restitution 0.35, friction 0.6, and capsule-capsule and capsule-wall contacts are resolved with 6 position-correction iterations per step. The tags are real DOM <a>/<button> elements, positioned each frame with transform: translate(x,y) rotate(θ). On load they drop in with a 60ms stagger from random x positions above the stage. Pointer down on a tag attaches a spring joint to the grab point (stiffness 900, damping 40) so the tag swings naturally while dragged, and on release it keeps the pointer's velocity from the last 60ms, so you can toss it across the stage. A pointerup with less than 6px of travel counts as a click and follows the link. Moving the pointer quickly through the pile nudges nearby tags with an impulse proportional to pointer speed. In the catalog, dropping a tag inside the filter bowl applies that category (the grid updates with a soft fade), and throwing it out removes the filter. Keyboard users tab through the tags as normal links and buttons. The simulation sleeps when every body's speed stays under 2px/s for 500ms or when the stage is off-screen. Without JS or under prefers-reduced-motion, tags sit in a neat wrapped row.",
+    "source": "Playful bold commerce with real 2D physics on category and product tags",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:07:17.846Z"
+  },
+  {
+    "id": "swipe-edit",
+    "name": "Swipe Edit",
+    "sectors": [
+      "retail",
+      "lifestyle",
+      "food",
+      "kids"
+    ],
+    "sample": "bohlt",
+    "stress": "aiki-budo",
+    "brief": "A soft, light pebble ground (#F2F1EE) with large rounded white surfaces, gentle shadows and the brand colour used for the add-to-cart, the shortlist count and progress dots. The hero pairs a headline and shop CTA with a stack of 5 product cards (tall 3:4 cards, photo contained on a tinted pad, name, price and a small add button), and the top card can be swiped. Swiping right shortlists, swiping left skips, and the deck becomes a quick, tactile way to browse the featured range. Below the deck, homepage products continue in a 2–4 column grid of rounded cards, plus USP chips and a contact block. The catalog has a deck/grid toggle: grid by default with pill filters and sort, or 'Swipe through' mode that turns the filtered result into a deck. The mood is calm, friendly and modern, with springy but restrained motion.",
+    "type": "Display: 'Fustat' 800 for headlines, prices and the shortlist count, tight tracking; body 'SUSE' 400/600 at 14–15px for labels and text.",
+    "signature": "Throwable product deck with a shortlist tray. Cards are absolutely stacked: card k behind the top sits at scale 1 − k·0.04 and translateY(k·10px). Dragging the top card moves it 1:1 with the pointer and rotates it by x·0.06deg around a point 120% below its centre. Two labels ('Bewaar' on the right, 'Volgende' on the left) fade in by |x|/120. On release, if |x| > 35% of the card width or the horizontal velocity (from the last 80ms) exceeds 0.6px/ms, the card is thrown off-screen along its velocity vector with a little extra spin (WAAPI, 420ms), and the remaining cards spring forward one slot (stiffness 220, damping 24). Otherwise it springs back to the centre. A right throw adds the product to a shortlist tray docked at the bottom edge: a 40px circular thumbnail flies into the tray, which shows a count and expands into a row of thumbnails with 'add all to cart'. A 'Terug' button undoes the last throw by flying the card back. Arrow Left/Right and two visible buttons perform the same actions, and the top card is a real link to the product. The shortlist and cart are stored in localStorage. Without JS or under prefers-reduced-motion, the deck renders as a horizontal scroll-snap row of cards with normal buttons.",
+    "source": "Soft modern mobile-first commerce with a throwable product deck and a shortlist tray",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:07:17.846Z"
+  },
+  {
+    "id": "raking-light",
+    "name": "Raking Light",
+    "sectors": [
+      "luxury",
+      "lifestyle",
+      "makers",
+      "travel"
+    ],
+    "sample": "nacrasailing",
+    "stress": "teleqare",
+    "brief": "A matte porcelain-white page (#F4F3F0) where every surface is slightly raised: cards, buttons and the nav are subtly embossed panels, and the only colour is --c-primary on prices, the cart and active states. The hero is a large raised slab holding the headline in a thin, large serif and a contained featured product photo on a recessed pad, with a primary shop button, and the whole page is lit from the pointer like light sweeping across a relief. Homepage products sit on a calm 3-column grid of raised square tiles with photos recessed into a soft inset pad (so any background becomes part of the relief), with name, price and add-to-cart below. The catalog uses the same tiles with a raised segmented filter control and a sort select, and the active segment is pressed in. The mood is quiet, tactile and premium, with very little motion besides the light.",
+    "type": "Display: 'Piazzolla' 200 at high optical size for headlines and large numerals, with 400 italic for subtitles; body 'Noto Sans Display' 300/500 at 14px, with wdth 87.5 uppercase for labels and prices.",
+    "signature": "Pointer-driven raking light. A single light position L follows the pointer with lerp 0.08 (idling on a slow elliptical drift when the pointer leaves), and its height h is mapped from vertical scroll velocity so the light lowers and shadows lengthen while scrolling. Each frame, for every raised element in view (cached rects, refreshed on scroll/resize), JS computes the normalised vector from L to the element's centre and its distance, and writes --sx, --sy, --sl and --hl. CSS uses them for three stacked box-shadows: a tight contact shadow, a long soft shadow offset along the vector (length grows with distance up to 48px, blur up to 60px, alpha falling with distance) and an inset highlight on the edge facing the light. A linear-gradient sheen across the surface is rotated to face the light (angle from Math.atan2). Pressed controls invert the model (inset shadows), and pressing a button animates its depth from raised to pressed in 120ms. Product photo pads are recessed, so their inset shadow shifts opposite to the tile's shadow, giving the photos real depth. Without JS a fixed top-left light is used, and under prefers-reduced-motion the light stays fixed and only hover states change.",
+    "source": "Sculptural porcelain minimalism with pointer-driven light and long soft shadows",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:07:17.846Z"
+  },
+  {
+    "id": "signal-index",
+    "name": "Signal Index",
+    "sectors": [
+      "wholesale",
+      "b2b",
+      "industrial",
+      "food"
+    ],
+    "sample": "droogijs365",
+    "stress": "fredimare",
+    "brief": "A cool off-white page (#F5F6F7) set on a strict 12-column grid of ultra-thin hairlines, monochrome except for --c-primary, which marks selected data, active filters and the cart. The hero is a clean typographic statement with key figures (assortment size, delivery time, minimum order) as large tabular numbers, next to the featured product in a square frame with data-like labels (SKU-style index, category code, price per unit). Homepage products run as a dense table-like grid where every card has a small product photo contained on a #ECEEF0 pad, a mono index, name, price and a tiny bar showing where that price sits in the range, with a quick add. The catalog leads with a full-width price histogram that you brush to filter, plus category toggles, sort and a list/grid density switch, and a live result counter. The mood is cold, precise and trustworthy, made for buyers who compare.",
+    "type": "Display: 'Tektur' using its width axis (wdth 75, wght 800) for headlines and wdth 100, wght 500 for big tabular figures; data and labels 'Cousine' 400/700 uppercase at 11px; body 'Mukta' 400/600 at 14px.",
+    "signature": "Brushable price histogram that filters the catalog. On load, JS buckets all product prices into 24 bins and draws an SVG histogram (one rect per bin, height by count, hairline baseline, mono min/max axis labels). Pointer drag across the histogram creates a brush: a translucent --c-primary band with two draggable handles (keyboard: focus a handle and use arrow keys for one bin or Shift+arrow for five). While brushing, bars inside the band fill with the primary and bars outside fade to 25%, and every product card outside the range collapses: its height animates to 0 via a grid-template-rows 1fr→0fr transition with opacity, so the grid tightens without reflow jumps. The result counter tweens numerically. Hovering a bar highlights the products in that bin (outline in --c-primary) and hovering a product lights its bin and moves a tick on the axis to its exact price. The brush range is combined with the category toggles (the histogram redraws to that category's distribution with a 300ms bar-height transition) and is stored in the URL as ?min=&max= so links keep the selection. Without JS, the histogram is a static figure and all products are listed; under prefers-reduced-motion, cards hide and show instantly.",
+    "source": "Monochrome data-design commerce with brushable price histograms and sparkline product labels",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:07:17.846Z"
+  },
+  {
+    "id": "phrase-shop",
+    "name": "Phrase Shop",
+    "sectors": [
+      "food",
+      "retail",
+      "makers",
+      "services"
+    ],
+    "sample": "spaansen",
+    "stress": "kartstoreinternational",
+    "brief": "A warm cream page (#F6F0E6) with deep ink-brown type, large serif headlines and calm editorial spacing, where --c-primary marks the changeable words, the cart and buttons. The hero is one large sentence that doubles as the shop's entrance, for example 'Ik zoek [alles] voor [iedereen] onder [€ 50]', with each bracketed word underlined and interactive, followed by a shop CTA that reads the sentence's result count ('Bekijk 24 producten'). Homepage products sit in an asymmetric 2+3 editorial grid with the first product large, photos contained on a soft tinted pad with a thin rule frame, serif names, italic prices and a quick add. The catalog repeats the sentence as its sticky header and the grid updates as words change, with a matching count and a gentle crossfade. The mood is warm, literate and inviting, like being helped by a good shop assistant.",
+    "type": "Display: 'Brygada 1918' 500 at large sizes for the sentence and headlines, with italic for the changeable words and prices; body 'Hind' 400/500 at 15px for labels, cards and text.",
+    "signature": "Rolling-word sentence filter. Each changeable word in the sentence is a button that opens an inline vertical roller in place: a column of options (the categories, audience words and price thresholds derived from the content) rendered in the same display italic, clipped to one line with a soft fade mask above and below. Wheel, vertical drag (with momentum and friction 0.92) or arrow keys roll the column, and it snaps to the nearest option with a spring (stiffness 260, damping 28). Neighbouring options tilt slightly away with rotateX and fade by distance, so it feels like a precise picker, not a dropdown. As the word changes, the surrounding sentence reflows smoothly: the width of the word slot animates between the measured widths of old and new word (FLIP on the slot), so the line never jumps. Each settled choice updates the filter state; the CTA count rolls to the new number and the product grid crossfades with a 40ms stagger. Enter or click outside closes the roller. The sentence state is written to the URL so it can be shared. Without JS each word is a native <select> styled as underlined text, and under prefers-reduced-motion the roller snaps without rotation or momentum.",
+    "source": "Warm editorial commerce driven by a typographic sentence-based filter",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:07:17.846Z"
   }
 ]
