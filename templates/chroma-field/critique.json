@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 6.3,
+  "issues": [
+    "Product photos used mix-blend-mode:multiply on a dark saturated pad, so every product image sank into a muddy blue/brown smear (the Droogijs pellets became unreadable, the Brinks bags were nearly black) and killed the 'crisp cut-out' brief",
+    "Category images were grayscale+multiply on the pad, which crushed them to near-black duotones with no tonal range",
+    "With fewer than four categories (Brinks has one) the band showed a single lonely tile and three empty columns",
+    "On mobile the category names broke mid-word ('Farmaceutisc / h', 'Voedselindus / trie') because of overflow-wrap:anywhere at 26px",
+    "In static views the page reads as one flat colour: the five derived OKLab tones that make the signature interaction were invisible unless you scroll, so it looked closer to a generic one-colour template",
+    "Hero has a slightly loose gap between headline and the media row on desktop (left as is)"
+  ],
+  "fixed": [
+    "Product images now stay true-colour as crisp cut-outs on the field-derived pad, with a hard offset drop-shadow (follows PNG alpha) that grows on hover: graphic, no muddy blend (home and catalog)",
+    "Category images use mix-blend-mode:luminosity with a contrast lift, giving a real duotone in the live field colour that keeps the full tonal range; hover reveals the original photo",
+    "Category band adapts to 1/2/3 items with :has() (1 becomes a 21:8 banner, 2 and 3 fill the row on desktop)",
+    "Mobile category names get a smaller clamp and hyphenation instead of breaking at arbitrary letters",
+    "Every band head now carries a hard-edged tone chip filled by JS with that band's own derived tone and its OKLCH values (T0 Primary … T4 Near-ink), so the colour system is visible and graphic even in a still frame, on both pages"
+  ],
+  "scoreAfterEstimate": 7.4
+}

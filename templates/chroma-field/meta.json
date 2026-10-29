@@ -1,0 +1,9 @@
+{
+  "id": "chroma-field",
+  "name": "Chroma Field",
+  "scheme": "light",
+  "sectors": ["retail", "lifestyle", "food", "sports"],
+  "mood": ["loud", "graphic", "confident", "saturated"],
+  "needsProductImages": true,
+  "notes": "The brand primary is the page itself: JS derives five OKLab tones from --c-primary and interpolates them per band on scroll, flipping ink black/white by luminance; product pads are the live field darkened, accent marks dots and sale strikes."
+}

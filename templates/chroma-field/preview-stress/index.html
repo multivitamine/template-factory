@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brinks Coffee Roasters · Easy to love, recognized by most.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#f1ede4; --c-surface:#e4ded1; --c-text:#0d0d0f; --c-muted:#57534c; --c-line:rgba(13,13,15,.16);
+  --c-primary:#ff5a1f; --c-on-primary:#0d0d0f; --c-accent:#2b2bff;
+  /* the live colour field: JS rewrites these on <body> every scroll frame */
+  --field:var(--c-primary); --ink:var(--c-on-primary); --pad:color-mix(in oklab,var(--c-primary) 90%,#000);
+  --gut:clamp(16px,3.2vw,48px); --hdr-h:68px;
+  --ease:cubic-bezier(.2,.8,.2,1); --ease-io:cubic-bezier(.65,0,.35,1);
+  --f-d:'Darker Grotesque',Impact,sans-serif; --f-b:'Inter',Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;-webkit-text-size-adjust:100%}
+body{margin:0;font:400 15px/1.55 var(--f-b);background:var(--field);color:var(--ink);overflow-x:clip;-webkit-font-smoothing:antialiased}
+.rm body{transition:background-color .2s var(--ease),color .2s var(--ease)}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.lbl{font:600 11px/1.3 var(--f-b);text-transform:uppercase;letter-spacing:.16em;margin:0}
+.muted{color:color-mix(in srgb,currentColor 70%,transparent)}
+
+/* No-JS: every band paints its own static tone */
+html:not(.js) .band{background:var(--field);color:var(--ink);--pad:color-mix(in oklab,var(--field) 90%,#000)}
+html:not(.js) .band[data-tone="1"]{--field:color-mix(in oklab,var(--c-primary) 60%,#000);--ink:#f6f3ec}
+html:not(.js) .band[data-tone="2"]{--field:color-mix(in oklab,var(--c-primary) 28%,#fff);--ink:#0d0d0f}
+html:not(.js) .band[data-tone="3"]{--field:color-mix(in oklch,var(--c-primary) 72%,var(--c-accent))}
+html:not(.js) .band[data-tone="4"]{--field:color-mix(in oklab,var(--c-primary) 12%,#0d0d0f);--ink:#f6f3ec}
+.band{position:relative;overflow-x:clip}
+
+/* Header */
+.hdr{position:sticky;top:0;z-index:40;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;padding:14px var(--gut);background:var(--field);color:var(--ink)}
+.js .hdr{background:color-mix(in srgb,var(--field) 84%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}
+.logo{display:flex;align-items:center;text-decoration:none;min-width:0}
+.logo img{max-height:30px;max-width:150px;width:auto;filter:var(--logo-f,none);transition:filter .2s}
+.logo span{font:900 28px/.9 var(--f-d);letter-spacing:-.02em;white-space:nowrap}
+.nav{display:flex;justify-content:center;gap:clamp(16px,2.4vw,36px)}
+.nav a{font:600 11px/1 var(--f-b);text-transform:uppercase;letter-spacing:.14em;text-decoration:none;padding:8px 0;white-space:nowrap;
+  background:linear-gradient(currentColor,currentColor) 0 100%/0 1.5px no-repeat;transition:background-size .45s var(--ease)}
+.nav a:hover{background-size:100% 1.5px}
+.cart{position:relative;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 6px 0 14px;border:1.5px solid currentColor;border-radius:999px;text-decoration:none;font:600 11px/1 var(--f-b);text-transform:uppercase;letter-spacing:.14em;transition:transform .3s var(--ease)}
+.cart-n{display:grid;place-items:center;min-width:28px;height:28px;padding:0 6px;border-radius:999px;background:var(--ink);color:var(--field);font:600 12px/1 var(--f-b);letter-spacing:0}
+.cart-n.bump{animation:bump .55s var(--ease)}
+@keyframes bump{40%{transform:scale(1.5) rotate(-8deg)}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 26px;border:1.5px solid var(--ink);border-radius:999px;background:var(--ink);color:var(--field);
+  font:600 12px/1 var(--f-b);text-transform:uppercase;letter-spacing:.14em;text-decoration:none;cursor:pointer;transition:transform .35s var(--ease),background-color .3s,color .3s}
+.btn svg{transition:transform .45s var(--ease)}
+.btn:hover svg{transform:translateX(5px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--field)}
+
+/* Display type */
+.display{font:900 clamp(48px,11vw,190px)/.82 var(--f-d);letter-spacing:-.03em;margin:0;text-wrap:balance;overflow-wrap:break-word;hyphens:auto}
+.display .w300{display:block;font-weight:300}
+.band-head{padding:clamp(64px,10vw,150px) var(--gut) clamp(20px,3vw,40px)}
+.mega{display:inline-block;font:900 clamp(64px,14vw,220px)/.82 var(--f-d);letter-spacing:-.03em;margin:0;padding:.04em 0 .12em;white-space:nowrap;will-change:transform}
+html:not(.js) .mega,.rm .mega{white-space:normal;overflow-wrap:anywhere;text-wrap:balance}
+.band-meta{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 var(--gut) clamp(20px,2.4vw,32px);padding-top:14px;border-top:1.5px solid currentColor}
+.band-meta a{text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.band-meta a:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* Hero */
+.hero{min-height:calc(100svh - var(--hdr-h));display:flex;flex-direction:column;gap:clamp(24px,4vw,56px);padding:clamp(24px,4vw,56px) var(--gut) clamp(56px,8vw,120px)}
+.hero-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.hero-top .lbl:first-child::before{content:"";display:inline-block;width:9px;height:9px;margin-right:10px;border-radius:50%;background:var(--c-accent);box-shadow:0 0 0 1.5px currentColor;vertical-align:1px}
+.hero-foot{margin-top:auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,64px);align-items:end}
+.hero-copy p{max-width:44ch;margin:0 0 28px;font-size:clamp(15px,1.2vw,17px)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.hero-media{position:relative}
+.hero-img{margin:0;aspect-ratio:16/10;background:var(--pad);overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.4s var(--ease)}
+.hero-media:hover .hero-img img{transform:scale(1)}
+.pick{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;padding:8px;background:var(--c-bg);color:var(--c-text);width:min(380px,100%)}
+.hero-media:has(.hero-img) .pick{position:absolute;left:clamp(-48px,-3vw,-16px);bottom:clamp(-40px,-3vw,-20px);box-shadow:0 30px 60px -20px rgba(0,0,0,.35)}
+.pick .well{aspect-ratio:1}
+.pick-body{display:flex;flex-direction:column;justify-content:space-between;gap:8px;padding:4px 0}
+.pick-row{display:flex;align-items:end;justify-content:space-between;gap:10px}
+.js:not(.rm) .hero .display>span{animation:rise 1.1s var(--ease) both .25s}
+.js:not(.rm) .hero .display>.w300{animation-delay:.38s}
+.js:not(.rm) .hero-foot,.js:not(.rm) .hero-top{animation:fade 1s var(--ease) both .55s}
+@keyframes rise{from{opacity:0;transform:translateY(.35em)}}
+@keyframes fade{from{opacity:0;transform:translateY(16px)}}
+.flood{position:fixed;inset:0;z-index:100;pointer-events:none;animation:flood .95s var(--ease-io) .08s forwards}
+@keyframes flood{to{clip-path:inset(0 0 100% 0)}}
+
+/* Product tiles: ink / bone frames, field-derived pad behind every image */
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);padding:0 var(--gut)}
+.tile{display:flex;flex-direction:column;padding:8px;background:var(--c-text);color:var(--c-bg)}
+.tile:nth-child(even){background:var(--c-bg);color:var(--c-text)}
+.well{position:relative;display:block;aspect-ratio:4/5;background:var(--pad);overflow:hidden;isolation:isolate;text-decoration:none}
+/* photos stay true-colour as crisp cut-outs; a hard offset shadow (follows PNG alpha) pins them to the pad */
+.well img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:11%;filter:drop-shadow(10px 10px 0 color-mix(in srgb,var(--pad) 55%,#000));
+  transform:translate(calc(var(--mx,0)*9px),calc(var(--my,0)*9px)) scale(var(--s,1));transition:transform .8s var(--ease),filter .6s var(--ease)}
+.tile:hover .well img{filter:drop-shadow(16px 16px 0 color-mix(in srgb,var(--pad) 40%,#000))}
+.tile:hover .well img,.pick:hover .well img{--s:1.07}
+.noimg{position:absolute;inset:0;display:grid;place-items:center;font:900 clamp(56px,8vw,128px)/.8 var(--f-d);letter-spacing:-.04em;color:color-mix(in srgb,var(--ink) 30%,transparent)}
+.pick .noimg{font-size:44px}
+.tag{position:absolute;top:8px;left:8px;z-index:1;padding:6px 8px;background:var(--ink);color:var(--field);font:600 10px/1 var(--f-b);text-transform:uppercase;letter-spacing:.14em}
+.strip{display:flex;align-items:flex-end;gap:10px;padding:14px 2px 2px 6px;flex:1}
+.strip-txt{flex:1;min-width:0}
+.t-name{margin:0 0 8px;font:500 14px/1.3 var(--f-b);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
+.t-name a{text-decoration:none}
+.t-price{margin:0;font:600 11px/1.2 var(--f-b);text-transform:uppercase;letter-spacing:.12em}
+.t-price s{margin-left:6px;opacity:.55;text-decoration-color:var(--c-accent);text-decoration-thickness:2px}
+.add{flex:none;display:grid;place-items:center;width:44px;height:44px;padding:0;border:1.5px solid currentColor;background:transparent;cursor:pointer;
+  transition:background-color .25s,color .25s,border-color .25s,transform .3s var(--ease)}
+.add:hover,.add.ok{background:var(--field);color:var(--ink);border-color:var(--field)}
+.add .i-ok,.add.ok .i-plus{display:none}
+.add.ok .i-ok{display:block;animation:rise .4s var(--ease)}
+
+/* Categories */
+.cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);padding:0 var(--gut);counter-reset:c}
+.cat:nth-child(n+5){display:none}
+.cat a{display:block;text-decoration:none;counter-increment:c}
+.cat-img{position:relative;aspect-ratio:3/4;background:var(--pad);overflow:hidden;isolation:isolate}
+/* luminosity blend = a duotone in the live field colour that keeps the photo's full tonal range */
+.cat-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.2) brightness(1.08);mix-blend-mode:luminosity;transform:scale(1.02);transition:transform .9s var(--ease),filter .5s}
+.cat a:hover .cat-img img{filter:none;mix-blend-mode:normal;transform:scale(1.08)}
+/* fewer than four categories: widen instead of leaving a hole in the band */
+.cats:has(>.cat:only-child){grid-template-columns:minmax(0,1fr)}
+.cats:has(>.cat:only-child) .cat-img{aspect-ratio:21/8}
+@media (min-width:761px){
+  .cats:has(>.cat:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cats:has(>.cat:nth-child(2):last-child) .cat-img{aspect-ratio:4/3}
+  .cats:has(>.cat:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+/* tone chip: each band names its own derived OKLCH tone (filled in by JS) */
+.band-head[data-sw]::before{content:attr(data-sw);display:block;width:max-content;max-width:100%;margin:0 0 clamp(14px,1.6vw,22px);padding:7px 10px 7px 32px;border:1.5px solid currentColor;
+  background:linear-gradient(var(--tone),var(--tone)) 9px 50%/14px 14px no-repeat,linear-gradient(currentColor,currentColor) 7px 50%/18px 18px no-repeat;font:600 10px/1.2 var(--f-b);text-transform:uppercase;letter-spacing:.16em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.band-head[data-sw]{--tone:var(--field)}
+.cat-img .noimg{font-size:clamp(80px,10vw,160px)}
+.cat-img::after{content:counter(c,decimal-leading-zero);position:absolute;top:10px;right:12px;font:600 11px/1 var(--f-b);letter-spacing:.14em;padding:6px 8px;background:var(--ink);color:var(--field)}
+.cat-name{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:14px 0 0;padding-top:12px;border-top:1.5px solid currentColor;font:900 clamp(26px,2.8vw,42px)/.9 var(--f-d);letter-spacing:-.02em;overflow-wrap:anywhere}
+.cat-name svg{flex:none;margin-top:4px;transition:transform .45s var(--ease)}
+.cat a:hover .cat-name svg{transform:rotate(45deg)}
+
+/* USPs with oversized numerals */
+.usps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:0 var(--gut);counter-reset:u}
+.usp{counter-increment:u;padding:18px clamp(12px,2vw,32px) 0 0;border-top:1.5px solid currentColor}
+.usp+.usp{padding-left:clamp(12px,1.4vw,20px);border-left:1px solid color-mix(in srgb,currentColor 30%,transparent)}
+.usp::before{content:counter(u,decimal-leading-zero);display:block;font:300 clamp(110px,14vw,230px)/.76 var(--f-d);letter-spacing:-.05em;margin:0 0 22px -.04em}
+.usp h3{margin:0 0 10px}
+.usp p{margin:0;max-width:34ch}
+
+/* Story + stats */
+.story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,64px);padding:0 var(--gut);align-items:start}
+.story-img{margin:0;aspect-ratio:4/5;background:var(--pad);overflow:hidden;isolation:isolate}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-txt p.big{font:300 clamp(26px,2.6vw,40px)/1.08 var(--f-d);letter-spacing:-.01em;margin:16px 0 0;max-width:30ch;font-weight:900}
+.story-txt .lede{margin:24px 0 0;max-width:52ch}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin:clamp(32px,4vw,56px) 0 0}
+.stat{padding:14px 16px 0 0;border-top:1.5px solid currentColor}
+.stat b{display:block;font:900 clamp(64px,7vw,120px)/.8 var(--f-d);letter-spacing:-.04em}
+.stat span{display:block;margin-top:10px}
+
+/* Contact + footer */
+.contact{display:grid;grid-template-columns:minmax(0,5fr) repeat(2,minmax(0,3fr));gap:clamp(24px,4vw,64px);padding:0 var(--gut) clamp(56px,7vw,100px)}
+.contact p{margin:0}
+.contact .ctxt{max-width:44ch;margin-bottom:26px}
+.contact dl{margin:0}
+.contact dd{margin:6px 0 22px;font:900 clamp(24px,2.2vw,34px)/1 var(--f-d);letter-spacing:-.01em;overflow-wrap:anywhere}
+.contact dd a{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 2px no-repeat;transition:background-size .45s var(--ease)}
+.contact dd a:hover{background-size:100% 2px}
+.foot{padding:0 var(--gut) 24px}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px 28px;padding:18px 0;border-top:1.5px solid currentColor}
+.foot-links a{text-decoration:none}
+.foot-links a:hover{text-decoration:underline;text-underline-offset:4px}
+.fit-box{overflow:hidden}
+.fit{display:block;font:900 clamp(64px,17vw,300px)/.8 var(--f-d);letter-spacing:-.04em;padding:.02em 0 .12em;overflow-wrap:anywhere}
+.js .fit{display:inline-block;white-space:nowrap}
+.foot-base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:14px;border-top:1px solid color-mix(in srgb,currentColor 30%,transparent)}
+
+/* Badge + toast */
+.badge{position:fixed;left:12px;bottom:12px;z-index:60;padding:7px 10px;background:var(--ink);color:var(--field);font:600 10px/1 var(--f-b);text-transform:uppercase;letter-spacing:.14em}
+.toast{position:fixed;right:16px;bottom:16px;z-index:70;display:flex;align-items:center;gap:12px;max-width:min(360px,calc(100vw - 32px));padding:12px 18px 12px 12px;background:var(--ink);color:var(--field);
+  transform:translateY(calc(100% + 24px));transition:transform .55s var(--ease)}
+.toast.on{transform:none}
+.toast-n{display:grid;place-items:center;width:34px;height:34px;flex:none;border:1.5px solid currentColor;border-radius:50%}
+.toast b{display:block;font:500 14px/1.3 var(--f-b);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toast small{display:block;font:600 10px/1.4 var(--f-b);text-transform:uppercase;letter-spacing:.14em;opacity:.7}
+
+@media (max-width:1000px){
+  .grid,.cats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .usps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
+  .usp:nth-child(odd){padding-left:0;border-left:0}
+  .hero-foot,.story,.contact{grid-template-columns:minmax(0,1fr)}
+  .hero-media:has(.hero-img) .pick{left:auto;right:12px;bottom:-28px;width:min(340px,calc(100% - 24px))}
+  .hero-media{margin-bottom:28px}
+}
+@media (max-width:760px){
+  .hdr{grid-template-columns:minmax(0,1fr) auto;row-gap:6px;padding-block:10px 4px}
+  .nav{grid-column:1/-1;order:3;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gut)*-1);padding:0 var(--gut)}
+  .nav::-webkit-scrollbar{display:none}
+  .cart-l{display:none}
+  .cart{padding-left:10px}
+}
+@media (max-width:560px){
+  .usps{grid-template-columns:minmax(0,1fr)}
+  .usp{padding-left:0!important;border-left:0!important}
+  .cat-name{font-size:clamp(20px,5.6vw,26px);overflow-wrap:normal;hyphens:auto;word-break:normal}
+  .cat-name span{min-width:0}
+  .tile{padding:6px}
+  .strip{flex-direction:column;align-items:stretch;gap:10px;padding:10px 2px 2px}
+  .add{width:100%;height:38px}
+  .t-name{font-size:13px}
+  .btn{height:50px;padding:0 20px}
+  .pick{grid-template-columns:84px minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.rm body{transition-duration:.2s!important}}
+</style>
+<style id="brand-tokens">:root{--c-primary:#5A402E;--c-on-primary:#ffffff;--c-accent:#B37756}</style></head>
+<body data-page="home">
+
+<header class="hdr">
+  <a class="logo is-light" href="template.html" aria-label="Brinks Coffee Roasters"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-brinks-b2c.svg" alt="Brinks Coffee Roasters"></a>
+  <nav class="nav" aria-label="Hoofdmenu"><a href="#">Home</a><a href="catalog.html">Shop</a><a href="#">Over ons</a><a href="#">Contact</a><a href="#">Account aanmaken</a></nav>
+  <a class="cart" href="catalog.html" aria-label="Winkelmand"><span class="cart-l">Mand</span><span class="cart-n">0</span></a>
+</header>
+
+<main>
+<section class="band hero" data-tone="0">
+  <div class="hero-top">
+    <p class="lbl">Specialty coffee als norm</p>
+    <p class="lbl muted">Easy to love, recognized by most.</p>
+  </div>
+  <h1 class="display"><span>Koffie waar mensen</span> <span class="w300">voor terugkomen</span></h1>
+  <div class="hero-foot">
+    <div class="hero-copy">
+      <p>Geen bittere, verwarrende of te complexe koffie meer. Brinks brandt verfijnde blends vol smaak en balans, met heldere uitleg erbij.</p>
+      <div class="ctas">
+        <a class="btn" href="catalog.html">Bekijk ons assortiment <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        <a class="btn ghost" href="#contact">Bestel zakelijk</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <figure class="hero-img"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;media&#x2F;brinkscoffeeroasters_-26-verkleind.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1754" alt="Brinks Coffee Roasters"></figure>
+      <article class="pick">
+        <a class="well" href="#"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2179.png?width&#x3D;360" alt="Brinks Specialty koffiebonen proefpakket 2-pack" loading="lazy"></a>
+        <div class="pick-body">
+          <p class="lbl muted">Proefpakket</p>
+          <h3 class="t-name"><a href="#">Brinks Specialty koffiebonen proefpakket 2-pack</a></h3>
+          <div class="pick-row">
+            <p class="t-price"><b>€ 34,00</b></p>
+            <button class="add" type="button" data-name="Brinks Specialty koffiebonen proefpakket 2-pack" aria-label="In winkelmand: Brinks Specialty koffiebonen proefpakket 2-pack"><svg class="i-plus" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><svg class="i-ok" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" data-tone="2">
+  <div class="band-head"><h2 class="mega drift">Koffie</h2></div>
+  <div class="band-meta">
+    <p class="lbl">Ontdek onze premium en specialty koffies, proefpakketten en cups, allemaal met een smaak die je makkelijk waardeert.</p>
+    <a class="lbl" href="catalog.html">13 producten <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+  </div>
+  <div class="grid">
+    <article class="tile">
+      <a class="well" href="#"><span class="tag">Proefpakket</span><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2179.png?width&#x3D;360" alt="Brinks Specialty koffiebonen proefpakket 2-pack" loading="lazy"></a>
+      <div class="strip">
+        <div class="strip-txt">
+          <h3 class="t-name"><a href="#">Brinks Specialty koffiebonen proefpakket 2-pack</a></h3>
+          <p class="t-price"><b>€ 34,00</b></p>
+        </div>
+        <button class="add" type="button" data-name="Brinks Specialty koffiebonen proefpakket 2-pack" aria-label="In winkelmand: Brinks Specialty koffiebonen proefpakket 2-pack"><svg class="i-plus" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><svg class="i-ok" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
+      </div>
+    </article>
+    <article class="tile">
+      <a class="well" href="#"><span class="tag">Proefpakket</span><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2180.png?width&#x3D;360" alt="Brinks koffiebonen proefpakket black collection 3-pack" loading="lazy"></a>
+      <div class="strip">
+        <div class="strip-txt">
+          <h3 class="t-name"><a href="#">Brinks koffiebonen proefpakket black collection 3-pack</a></h3>
+          <p class="t-price"><b>€ 47,00</b></p>
+        </div>
+        <button class="add" type="button" data-name="Brinks koffiebonen proefpakket black collection 3-pack" aria-label="In winkelmand: Brinks koffiebonen proefpakket black collection 3-pack"><svg class="i-plus" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><svg class="i-ok" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
+      </div>
+    </article>
+    <article class="tile">
+      <a class="well" href="#"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2128.png?width&#x3D;360" alt="Brasil Black Diamond 500 gram" loading="lazy"></a>
+      <div class="strip">
+        <div class="strip-txt">
+          <h3 class="t-name"><a href="#">Brasil Black Diamond 500 gram</a></h3>
+          <p class="t-price"><b>€ 15,75</b></p>
+        </div>
+        <button class="add" type="button" data-name="Brasil Black Diamond 500 gram" aria-label="In winkelmand: Brasil Black Diamond 500 gram"><svg class="i-plus" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><svg class="i-ok" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
+      </div>
+    </article>
+    <article class="tile">
+      <a class="well" href="#"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2265.png?width&#x3D;360" alt="Chocolate Berry 250 gram" loading="lazy"></a>
+      <div class="strip">
+        <div class="strip-txt">
+          <h3 class="t-name"><a href="#">Chocolate Berry 250 gram</a></h3>
+          <p class="t-price"><b>€ 9,95</b></p>
+        </div>
+        <button class="add" type="button" data-name="Chocolate Berry 250 gram" aria-label="In winkelmand: Chocolate Berry 250 gram"><svg class="i-plus" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><svg class="i-ok" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="band" data-tone="3">
+  <div class="band-head"><h2 class="mega drift">Easy to love, recognized by most.</h2></div>
+  <div class="cats">
+    <div class="cat"><a href="catalog.html">
+      <div class="cat-img"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;categories&#x2F;premium-koffie.png?width&#x3D;150" alt="Premium koffie" loading="lazy"></div>
+      <h3 class="cat-name"><span>Premium koffie</span><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 18L18 4M7 4h11v11" fill="none" stroke="currentColor" stroke-width="2"/></svg></h3>
+    </a></div>
+  </div>
+</section>
+
+<section class="band" data-tone="1">
+  <div class="band-head"><h2 class="mega drift">Brinks Coffee Roasters</h2></div>
+  <div class="usps">
+    <div class="usp"><h3 class="lbl">Duidelijke smaken</h3><p class="muted">Gebalanceerde smaken voor een breed publiek: easy to love, hard to forget.</p></div><div class="usp"><h3 class="lbl">Heldere uitleg en begeleiding</h3><p class="muted">Een betrokken team van professionals tilt jouw koffie-ervaring naar een hoger niveau.</p></div><div class="usp"><h3 class="lbl">Alles onder één dak</h3><p class="muted">Van bonen tot machines en barista-trainingen: wij regelen het.</p></div><div class="usp"><h3 class="lbl">Samen groeien</h3><p class="muted">Geen losse orders, maar duurzame partnerships die jouw business versterken.</p></div>
+  </div>
+</section>
+
+<section class="band" data-tone="2">
+  <div class="band-head"><h2 class="mega drift">Koffie met karakter, niet met kapsones</h2></div>
+  <div class="story">
+    <figure class="story-img"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;media&#x2F;brinkscoffeeroasters_-58-verkleind.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1754" alt="Koffie met karakter, niet met kapsones" loading="lazy"></figure>
+    <div class="story-txt">
+      <p class="lbl">Onze missie</p>
+      <p class="lede">Wij vechten tegen een onoverzichtelijke en oneerlijke koffiewereld. Bij Brinks geloven we dat goede koffie voor iedereen een glimlach moet bezorgen: een easy-to-love smaakprofiel, eerlijk verhandeld in een transparante keten.</p>
+      <div class="stats"><div class="stat"><b>1000+</b><span class="lbl muted">klanten gingen je voor</span></div><div class="stat"><b>10+</b><span class="lbl muted">jaar ervaring</span></div></div>
+      
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="band" data-tone="4" id="contact">
+  <div class="band-head"><h2 class="mega drift">Klaar om indruk te maken met jouw koffie?</h2></div>
+  <div class="contact">
+    <div>
+      <p class="ctxt">Laat ons je helpen koffie simpeler, lekkerder en indrukwekkender te maken, voor horeca, kantoor, retail of thuis.</p>
+      <a class="btn" href="#">Neem contact op <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </div>
+    <dl>
+      <dt class="lbl muted">Adres</dt><dd>Veldweg 26, 5321 JE Hedel</dd>
+    </dl>
+    <dl>
+      <dt class="lbl muted">Telefoon</dt><dd><a href="tel:+31 073-7200721">+31 073-7200721</a></dd>
+      <dt class="lbl muted">E-mail</dt><dd><a href="mailto:hallo@brinkscoffeeroasters.nl">hallo@brinkscoffeeroasters.nl</a></dd>
+    </dl>
+  </div>
+  <div class="foot">
+    <nav class="foot-links lbl" aria-label="Footer"><a href="catalog.html">Koffie</a><a href="#">Thee</a><a href="#">Accessoires</a><a href="#">Barista tools</a><a href="#">Onderhoudsproducten</a><a href="#">Zakelijk</a><a href="#">Cookieverklaring</a><a href="#">Privacyverklaring</a><a href="#">Algemene voorwaarden</a></nav>
+    <div class="fit-box"><span class="fit">Brinks Coffee Roasters</span></div>
+    <div class="foot-base lbl muted"><span>© 2026 Brinks Coffee Roasters</span><span>Easy to love, recognized by most.</span></div>
+  </div>
+</footer>
+
+<div class="badge">Demo redesign · Chroma Field</div>
+<div class="toast" role="status" aria-live="polite"><span class="toast-n"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><span><b class="toast-t"></b><small>Toegevoegd aan je mand</small></span></div>
+
+<script>
+(() => {
+  const d = document, R = d.documentElement, B = d.body;
+  const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  R.classList.add('js'); if (rm) R.classList.add('rm');
+  const cl = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const hdr = d.querySelector('.hdr');
+  const setH = () => R.style.setProperty('--hdr-h', hdr.offsetHeight + 'px');
+  setH();
+
+  // sRGB <-> OKLab (Björn Ottosson's matrices)
+  const lin = c => c <= .04045 ? c / 12.92 : ((c + .055) / 1.055) ** 2.4;
+  const gam = c => c <= .0031308 ? 12.92 * c : 1.055 * c ** (1 / 2.4) - .055;
+  const toLab = ([r, g, b]) => {
+    r = lin(r); g = lin(g); b = lin(b);
+    const l = Math.cbrt(.4122214708 * r + .5363325363 * g + .0514459929 * b);
+    const m = Math.cbrt(.2119034982 * r + .6806995451 * g + .1073969566 * b);
+    const s = Math.cbrt(.0883024619 * r + .2817188376 * g + .6299787005 * b);
+    return { L: .2104542553 * l + .793617785 * m - .0040720468 * s, a: 1.9779984951 * l - 2.428592205 * m + .4505937099 * s, b: .0259040371 * l + .7827717662 * m - .808675766 * s };
+  };
+  const toLin = ({ L, a, b }) => {
+    const l = (L + .3963377774 * a + .2158037573 * b) ** 3, m = (L - .1055613458 * a - .0638541728 * b) ** 3, s = (L - .0894841775 * a - 1.291485548 * b) ** 3;
+    return [4.0767416621 * l - 3.3077115913 * m + .2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - .3413193965 * s, -.0041960863 * l - .7034186147 * m + 1.707614701 * s];
+  };
+  const inGamut = c => toLin(c).every(v => v > -1e-4 && v < 1 + 1e-4);
+  const lch = (L, C, h) => ({ L, a: C * Math.cos(h), b: C * Math.sin(h) });
+  // Keep L and hue, shrink chroma until the colour fits in sRGB
+  const fit = (L, C, h) => {
+    L = cl(L); if (inGamut(lch(L, C, h))) return lch(L, C, h);
+    let lo = 0, hi = C;
+    for (let i = 0; i < 22; i++) { const m = (lo + hi) / 2; inGamut(lch(L, m, h)) ? lo = m : hi = m; }
+    return lch(L, lo, h);
+  };
+  const rgb = c => toLin(c).map(v => Math.round(gam(cl(v)) * 255));
+  const css = ([r, g, b]) => `rgb(${r},${g},${b})`;
+  const Y = ([r, g, b]) => .2126 * lin(r / 255) + .7152 * lin(g / 255) + .0722 * lin(b / 255);
+  const mix = (p, q, t) => ({ L: p.L + (q.L - p.L) * t, a: p.a + (q.a - p.a) * t, b: p.b + (q.b - p.b) * t });
+
+  // Read the injected brand primary through a probe so any CSS colour syntax resolves to numbers
+  const probe = d.createElement('i'); probe.style.color = 'var(--c-primary)'; B.appendChild(probe);
+  const raw = getComputedStyle(probe).color; probe.remove();
+  const n = (raw.match(/-?\d*\.?\d+(e-?\d+)?/g) || [0, 0, 0]).map(Number);
+  const P = toLab(/^color\(/.test(raw) ? n.slice(0, 3) : n.slice(0, 3).map(v => v / 255));
+  const C = Math.hypot(P.a, P.b), H = Math.atan2(P.b, P.a);
+  const T = [P, fit(Math.max(.12, P.L - .2), C, H), fit(Math.min(.96, P.L + .3), C * .35, H), fit(P.L, C, H + 40 * Math.PI / 180), fit(.18, Math.min(C * .4, .05), H)];
+  const DARK = [13, 13, 15], LIGHT = [246, 243, 236];
+
+  const bands = [...d.querySelectorAll('[data-tone]')];
+  const tone = el => T[+el.dataset.tone || 0];
+  // Label every band with the tone it will flood the page with
+  const NAMES = ['Primary', 'Deep', 'Pale', 'Sibling +40°', 'Near-ink'];
+  bands.forEach(b => {
+    const h = b.querySelector(':scope>.band-head'); if (!h) return;
+    const k = +b.dataset.tone || 0, c = T[k], deg = (Math.atan2(c.b, c.a) * 180 / Math.PI + 360) % 360;
+    h.style.setProperty('--tone', css(rgb(c)));
+    h.dataset.sw = `T${k} · ${NAMES[k]} · oklch(${c.L.toFixed(2)} ${Math.hypot(c.a, c.b).toFixed(3)} ${deg.toFixed(0)})`;
+  });
+  let last = '';
+  // at(t) gives the field colour along the current segment; ink crossfades across 0.15 of t around the 0.42 luminance line
+  function paint(at, t) {
+    const c = at(t), rc = rgb(c);
+    const y = Y(rc), y1 = Y(rgb(at(cl(t - .075)))), y2 = Y(rgb(at(cl(t + .075))));
+    const s = cl((y - .42) / Math.max(Math.abs(y2 - y1), 1e-4) + .5);
+    const ink = LIGHT.map((v, i) => Math.round(v + (DARK[i] - v) * s));
+    const key = rc + '|' + ink; if (key === last) return; last = key;
+    const st = B.style;
+    st.setProperty('--field', css(rc));
+    st.setProperty('--pad', css(rgb({ ...c, L: c.L - .08 })));
+    st.setProperty('--ink', css(ink));
+    st.setProperty('--logo-f', s > .5 ? 'brightness(0)' : 'brightness(0) invert(1)');
+  }
+
+  const drifts = [...d.querySelectorAll('.drift')];
+  const measure = () => drifts.forEach(el => {
+    const p = el.parentElement, cs = getComputedStyle(p);
+    el._over = el.offsetWidth - (p.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight));
+  });
+  let ticking = false;
+  function frame() {
+    ticking = false;
+    const vh = innerHeight, mid = vh / 2, tops = bands.map(b => b.getBoundingClientRect().top);
+    let i = 0; while (i < bands.length - 1 && tops[i + 1] <= mid) i++;
+    if (rm || i === bands.length - 1) { const c = tone(bands[i]); paint(() => c, 0); }
+    else {
+      const a = tone(bands[i]), b = tone(bands[i + 1]);
+      // hold the band's tone, then blend during the last stretch before the next band's top crosses 50%
+      const win = Math.min(vh * .55, (tops[i + 1] - tops[i]) * .6);
+      const p = cl((mid - (tops[i + 1] - win)) / win);
+      paint(t => mix(a, b, t), p * p * (3 - 2 * p));
+    }
+    if (!rm) for (const el of drifts) {
+      const r = el.parentElement.getBoundingClientRect();
+      const p = cl((vh - r.top) / (vh * .95)), e = 1 - (1 - p) ** 2;
+      el.style.transform = `translate3d(${((1 - e) * innerWidth * .08 - e * Math.max(0, el._over || 0)).toFixed(1)}px,0,0)`;
+    }
+  }
+  const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+
+  // Footer wordmark fills the width exactly
+  const fitEl = d.querySelector('.fit');
+  const fitFoot = () => {
+    if (!fitEl) return;
+    fitEl.style.fontSize = '100px';
+    const w = fitEl.offsetWidth, box = fitEl.parentElement.clientWidth;
+    fitEl.style.fontSize = Math.min(420, Math.max(40, 100 * box / w * .985)) + 'px';
+  };
+  const relayout = () => { setH(); fitFoot(); measure(); req(); };
+  measure(); fitFoot(); frame();
+  addEventListener('scroll', req, { passive: true });
+  addEventListener('resize', relayout);
+  addEventListener('load', relayout);
+  d.fonts && d.fonts.ready.then(relayout);
+
+  if (!rm && B.dataset.page === 'home') {
+    const f = d.createElement('div'); f.className = 'flood'; f.style.background = css(rgb(T[4]));
+    B.appendChild(f); f.addEventListener('animationend', () => f.remove());
+  }
+
+  // Cart: count bump + toast
+  let count = 0; try { count = +sessionStorage.getItem('cf-cart') || 0; } catch (e) {}
+  const nEls = d.querySelectorAll('.cart-n'), toast = d.querySelector('.toast');
+  const show = () => nEls.forEach(e => e.textContent = count);
+  show();
+  let tt;
+  d.addEventListener('click', e => {
+    const b = e.target.closest('.add'); if (!b) return;
+    e.preventDefault();
+    count++; try { sessionStorage.setItem('cf-cart', count); } catch (er) {}
+    show();
+    nEls.forEach(el => { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); });
+    b.classList.add('ok'); setTimeout(() => b.classList.remove('ok'), 1400);
+    toast.querySelector('.toast-t').textContent = b.dataset.name || '';
+    toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('on'), 2600);
+  });
+
+  // Magnetic controls + cursor-aware product images (fine pointers only)
+  if (!rm && matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    d.querySelectorAll('.btn,.cart,.add').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        el.style.transform = `translate(${((e.clientX - r.left - r.width / 2) * .22).toFixed(1)}px,${((e.clientY - r.top - r.height / 2) * .3).toFixed(1)}px)`;
+      });
+      el.addEventListener('pointerleave', () => el.style.transform = '');
+    });
+    d.querySelectorAll('.well').forEach(w => {
+      w.addEventListener('pointermove', e => {
+        const r = w.getBoundingClientRect();
+        w.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 2 - 1).toFixed(3));
+        w.style.setProperty('--my', ((e.clientY - r.top) / r.height * 2 - 1).toFixed(3));
+      });
+      w.addEventListener('pointerleave', () => { w.style.setProperty('--mx', 0); w.style.setProperty('--my', 0); });
+    });
+  }
+
+  // Catalog: sort by re-appending (no hiding, so it never fights the shop script) and animate whatever becomes visible
+  const grid = d.querySelector('[data-grid]');
+  if (grid) {
+    const tiles = [...grid.children].filter(el => el.classList.contains('tile'));
+    const num = s => { const m = String(s || '').replace(/\.(?=\d{3})/g, '').replace(',', '.').match(/\d+(\.\d+)?/); return m ? parseFloat(m[0]) : Infinity; };
+    const sel = d.querySelector('.sort select');
+    sel && sel.addEventListener('change', () => {
+      const v = sel.value, list = [...tiles];
+      if (v === 'up') list.sort((a, b) => num(a.dataset.price) - num(b.dataset.price));
+      if (v === 'down') list.sort((a, b) => (num(b.dataset.price) === Infinity ? -1 : num(b.dataset.price)) - (num(a.dataset.price) === Infinity ? -1 : num(a.dataset.price)));
+      if (v === 'az') list.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
+      list.forEach(el => grid.appendChild(el));
+    });
+    const anims = new WeakMap();
+    let pend = 0;
+    const play = () => {
+      pend = 0; if (rm) return;
+      let k = 0;
+      tiles.forEach(el => {
+        if (el.style.display === 'none') return;
+        anims.get(el)?.cancel();
+        anims.set(el, el.animate([{ opacity: 0, transform: 'translateY(22px) scale(.97)' }, { opacity: 1, transform: 'none' }],
+          { duration: 560, delay: Math.min(k++, 12) * 35, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' }));
+      });
+      req();
+    };
+    new MutationObserver(ms => {
+      if (!pend && ms.some(m => m.type === 'childList' || m.target.parentElement === grid && m.target.classList.contains('tile'))) pend = requestAnimationFrame(play);
+    }).observe(grid, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+  }
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"nl","count":"13 producten","products":[{"name":"Brinks Specialty koffiebonen proefpakket 2-pack","tag":"Proefpakket","category":"Proefpakketten"},{"name":"Brinks koffiebonen proefpakket black collection 3-pack","tag":"Proefpakket","category":"Proefpakketten"},{"name":"Brasil Black Diamond 500 gram","tag":"","category":"Koffiebonen"},{"name":"Chocolate Berry 250 gram","tag":"","category":"Koffiebonen"},{"name":"Guatemala Adventure 500 gram","tag":"","category":"Koffiebonen"},{"name":"PC Blend 500 gram","tag":"","category":"Koffiebonen"},{"name":"Supreme Black 500 gram","tag":"","category":"Koffiebonen"},{"name":"Sweet Combo 500 gram","tag":"","category":"Koffiebonen"},{"name":"Decaf Peru Swiss Water 500gr (espresso maling)","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Decaf Peru Swiss Water 500gr bonen","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Decafe cups doos 20 cups","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Cafferati espresso dispenser doos 80 cups","tag":"Cups","category":"Cups"},{"name":"Cafferati lungo dispenser doos 80 cups","tag":"Cups","category":"Cups"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>
