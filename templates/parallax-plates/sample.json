@@ -1,0 +1,307 @@
+{
+  "brand": {
+    "name": "Nacra Sailing",
+    "tagline": "Empowering sailors since 1975",
+    "logo": null,
+    "logoIsLight": false,
+    "initials": "NS",
+    "lang": "en",
+    "colors": {
+      "primary": "#FF8652",
+      "accent": "#333333"
+    }
+  },
+  "nav": [
+    {
+      "label": "Store",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Leisure",
+      "href": "#"
+    },
+    {
+      "label": "Racing",
+      "href": "#"
+    },
+    {
+      "label": "Olympic",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Out now",
+    "title": "The New Nacra",
+    "titleAccent": "450 MK²",
+    "text": "Easy handling, ultimate cruising. Meet the latest addition to the Nacra Leisure range, built for any adventure and every sailor.",
+    "cta": "Shop the store",
+    "ctaHref": "catalog.html",
+    "cta2": "Discover the 450 MK²",
+    "image": "https://nacrasailing.com/media/nacramoretonisland-7408937_1000.jpg?cropX=0&cropY=142&cropW=2000&cropH=1191&quality=90&width=1920"
+  },
+  "usps": [
+    {
+      "title": "Since 1975",
+      "text": "Nearly five decades of catamaran building, from beach cats to racing machines."
+    },
+    {
+      "title": "Olympic pedigree",
+      "text": "The Nacra 17 is the Olympic mixed multihull class, so you sail what the best sail."
+    },
+    {
+      "title": "Hand-crafted sails",
+      "text": "Designed and made by Performance Sails, Nacra's own sail loft."
+    },
+    {
+      "title": "Everything for your boat",
+      "text": "Parts, rigging, hardware, covers and more, available straight from the webshop."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Boats",
+      "image": "https://nacrasailing.com/content/categories/boats.jpg?width=150",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Sails",
+      "image": "https://nacrasailing.com/content/categories/sails.jpg?width=150",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Spars",
+      "image": "https://nacrasailing.com/content/categories/spars-and-rigging.jpg?width=150",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Rigging",
+      "image": "https://nacrasailing.com/content/categories/f16.jpg?width=150",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Hardware",
+      "image": "https://nacrasailing.com/content/categories/hardware-1.jpg?width=150",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Used & Demo",
+      "image": "https://nacrasailing.com/content/categories/used-boats-1.jpg?width=150",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Nacra Inter 20 MK²",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/nacra-inter-20-mk2-render-small.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "New",
+      "href": "https://nacrasailing.com/nacra-racing/nacra-inter-20-mk2",
+      "category": "Leisure"
+    },
+    {
+      "name": "Nacra 450 MK²",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/450-mk2-render-xs.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "New",
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-450-mk2",
+      "category": "Racing"
+    },
+    {
+      "name": "Nacra 500 MK² School",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/nacra-500-mk2-school-render-v3.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Leisure",
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2",
+      "category": "Leisure"
+    },
+    {
+      "name": "Nacra 500 MK² Sport",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/n500-mk2-sport.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Leisure",
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2",
+      "category": "Leisure"
+    },
+    {
+      "name": "Nacra 570 MK² School",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/nacra-570-mk2-school-render.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Leisure",
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-570-mk2",
+      "category": "Leisure"
+    },
+    {
+      "name": "Nacra 570 MK² Sport",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/n570-mk2-sport.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Leisure",
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-570-mk2",
+      "category": "Leisure"
+    },
+    {
+      "name": "Nacra 15",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/nacra-15-render-small.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Racing",
+      "href": "https://nacrasailing.com/nacra-racing/nacra-15",
+      "category": "Racing"
+    },
+    {
+      "name": "Nacra F16",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/f16.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Racing",
+      "href": "https://nacrasailing.com/nacra-racing/nacra-f16",
+      "category": "Racing"
+    },
+    {
+      "name": "Nacra 17",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/nacra-17-render-small.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Olympic",
+      "href": "https://nacrasailing.com/nacra-olympic/nacra-17",
+      "category": "Olympic"
+    },
+    {
+      "name": "Nacra F18 Evolution",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/f18-evo.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Racing",
+      "href": "https://nacrasailing.com/nacra-racing/nacra-f18-evolution",
+      "category": "Racing"
+    },
+    {
+      "name": "Nacra F20 Carbon",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/f20.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Racing",
+      "href": "https://nacrasailing.com/nacra-racing/nacra-f20-carbon",
+      "category": "Racing"
+    }
+  ],
+  "story": {
+    "eyebrow": "Our story",
+    "title": "Built in The Hague, sailed worldwide",
+    "text": "Since 1975 Nacra has built catamarans for every kind of sailor, from relaxed cruising to Olympic racing. Our home is Scheveningen, The Hague, and our boats, sails and parts reach sailors everywhere through the webshop and our dealer network.",
+    "image": "https://nacrasailing.com/media/240804_paris24_sb4_7999.jpg?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1200"
+  },
+  "stats": [
+    {
+      "value": "1975",
+      "label": "Building catamarans since"
+    },
+    {
+      "value": "27",
+      "label": "Price regions: 26 EU countries plus Outside EU"
+    }
+  ],
+  "gallery": [
+    "https://nacrasailing.com/media/nacra_inter20_laurensmorel_l6a_7043_optimized_1000.jpg?cropX=0&cropY=364&cropW=2264&cropH=1142&quality=90&width=1920",
+    "https://nacrasailing.com/media/nacramoretonisland-7409028_1000.jpg?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1920",
+    "https://nacrasailing.com/media/54109528256_59b44a4f8f_o.jpg?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1920",
+    "https://nacrasailing.com/media/10-low-res-vertical.png?cropX=0&cropY=222&cropW=960&cropH=873&quality=90&width=960"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Find your Nacra, from relaxation to racing",
+    "text": "Browse boats, sails and parts in the webshop, or locate your nearest Nacra partner.",
+    "label": "Visit the store",
+    "href": "catalog.html"
+  },
+  "contact": {
+    "address": "Hellingweg 108-116, 2583 DX, The Hague (The Netherlands)",
+    "phone": "+31 (0) 70 338 2900",
+    "email": ""
+  },
+  "footerLinks": [
+    {
+      "label": "Our Story",
+      "href": "#"
+    },
+    {
+      "label": "Nacra Partners locator",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    },
+    {
+      "label": "General Terms",
+      "href": "#"
+    },
+    {
+      "label": "Terms & Conditions Charters",
+      "href": "#"
+    },
+    {
+      "label": "Privacy & Cookie-Policy",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Nacra Webshop",
+    "intro": "Boats, sails, spars, rigging and hardware, everything to keep your Nacra on the water.",
+    "filters": [
+      "Racing",
+      "Leisure",
+      "Olympic"
+    ],
+    "count": "13 categories"
+  },
+  "featured": [
+    {
+      "name": "Nacra Inter 20 MK²",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/nacra-inter-20-mk2-render-small.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "New",
+      "href": "https://nacrasailing.com/nacra-racing/nacra-inter-20-mk2",
+      "category": "Leisure"
+    },
+    {
+      "name": "Nacra 450 MK²",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/450-mk2-render-xs.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "New",
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-450-mk2",
+      "category": "Racing"
+    },
+    {
+      "name": "Nacra 500 MK² School",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/nacra-500-mk2-school-render-v3.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Leisure",
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2",
+      "category": "Leisure"
+    },
+    {
+      "name": "Nacra 500 MK² Sport",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://nacrasailing.com/media/n500-mk2-sport.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
+      "tag": "Leisure",
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2",
+      "category": "Leisure"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

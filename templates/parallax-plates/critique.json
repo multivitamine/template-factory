@@ -1,0 +1,17 @@
+{
+  "scoreBefore": 5.6,
+  "issues": [
+    "Scroll reveal only relied on IntersectionObserver per element: the whole 'Shop by category' section, story/gallery/quote/CTA and 4 of 6 mobile product cards stayed at opacity 0 (huge empty deep/pale blocks, catalog CTA missing)",
+    "'Added to your cart' toast sat permanently visible just under the fold (only translated, never hidden), overlapping USPs on desktop and the hero card on mobile",
+    "Product cards: name/price chip was a tall white slab almost the same colour as the white image pad, with a big empty gap between name and price; the four layers did not read as separate plates when flat",
+    "Price typography was a tiny grey mono line, no energy for an athletic shop",
+    "Scores: creativity 7, typography 6.5, layout & rhythm 5 (empty sections), polish 4.5, brand robustness 7.5, mobile 4.5, generic-ness 6.5"
+  ],
+  "fixed": [
+    "Reveal now sweeps on IO, scroll and resize, revealing every .rv element at or above the viewport bottom, so fast scrolls and screenshots never leave sections hidden; transitions shortened (both pages)",
+    "Toast is hidden with opacity/visibility until an item is added (both pages)",
+    "Chip redesigned as a dark brand slab (--deep) with a primary tab mark, overlapping the lower edge of the image pad: image, chip and add button now visibly stack as separate layers even without tilt",
+    "Price set in Kanit 800 italic in a light primary tint; strike and 'on request' tuned for the dark chip; hero featured card keeps its light-card colours"
+  ],
+  "scoreAfterEstimate": 7.2
+}

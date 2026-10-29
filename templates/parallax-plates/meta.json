@@ -1,0 +1,3 @@
+{ "id": "parallax-plates", "name": "Parallax Plates", "scheme": "light", "sectors": ["sports","travel","retail","lifestyle"],
+  "mood": ["athletic", "crisp", "tactile", "layered depth"], "needsProductImages": true,
+  "notes": "Primary drives a duotone rhythm (deep sections at 28% primary in black, pale at 10% primary in white), tinted card plates, the hero backing plate, add buttons and the CTA plate; accent is only used for focus rings." }

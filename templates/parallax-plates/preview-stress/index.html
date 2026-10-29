@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aiki-Budo Sport · Dé vechtsportspecialist sinds 1979</title>
+<meta name="description" content="Van bokshandschoenen en judopakken tot dojo-materiaal: bij Aiki-Budo Sport vind je alles om je vechtsport op topniveau te beoefenen. Met ruim 40 jaar ervaring helpen we je graag verder.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,300;1,800&family=Mada:wght@400;600;700&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#f4f3f0; --c-surface:#ffffff; --c-text:#121317; --c-muted:#5c5f67; --c-line:rgba(18,19,23,.14);
+  --c-primary:#ff4f1f; --c-on-primary:#ffffff; --c-accent:#1b2cff;
+  --deep:color-mix(in oklch, var(--c-primary) 28%, black);
+  --pale:color-mix(in oklch, var(--c-primary) 10%, white);
+  --padbg:color-mix(in oklch, var(--c-primary) 5%, white);
+  --chipbg:color-mix(in oklch, var(--c-primary) 3%, white);
+  --f-d:'Kanit', 'Arial Narrow', sans-serif; --f-b:'Mada', 'Segoe UI', sans-serif; --f-m:'Source Code Pro', ui-monospace, monospace;
+  --r-s:8px; --r-m:16px; --r-l:26px; --r-xl:36px;
+  --ease:cubic-bezier(.22,1,.36,1); --ease-o:cubic-bezier(.34,1.56,.64,1);
+  --pad:clamp(18px, 4.2vw, 64px); --sec:clamp(80px, 11vw, 160px); --max:1440px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{margin:0; background:var(--pale); color:var(--c-text); font:400 15px/1.6 var(--f-b); overflow-x:hidden; -webkit-font-smoothing:antialiased}
+img{display:block; max-width:100%}
+a{color:inherit; text-decoration:none}
+button,select,input{font:inherit; color:inherit}
+button{cursor:pointer; border:0; background:none; padding:0}
+:focus-visible{outline:2px solid var(--c-accent); outline-offset:3px}
+.wrap{width:100%; max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
+
+/* Planes: every section is either deep or pale; local vars follow the plane */
+.deep{background:var(--deep); color:var(--fg);
+  --fg:color-mix(in oklch, var(--c-primary) 6%, white); --mute:color-mix(in srgb, var(--fg) 64%, transparent);
+  --hair:color-mix(in srgb, var(--fg) 16%, transparent); --plate:color-mix(in oklch, var(--c-primary) 40%, #0b0b0d);
+  --plate2:color-mix(in oklch, var(--c-primary) 55%, #0b0b0d); --ink:color-mix(in oklch, var(--c-primary) 55%, white)}
+.pale{background:var(--pale); color:var(--fg);
+  --fg:var(--c-text); --mute:var(--c-muted); --hair:var(--c-line);
+  --plate:color-mix(in oklch, var(--c-primary) 22%, white); --plate2:color-mix(in oklch, var(--c-primary) 36%, white);
+  --ink:color-mix(in oklch, var(--c-primary) 72%, black)}
+
+/* Type */
+.eyebrow{display:inline-flex; align-items:center; gap:10px; font:500 12px/1 var(--f-m); letter-spacing:.14em; text-transform:uppercase; color:var(--mute); margin:0 0 22px}
+.eyebrow::before{content:""; width:18px; height:10px; border-radius:3px; background:var(--c-primary); box-shadow:5px -4px 0 0 var(--ink); transform:skewX(-14deg)}
+.hx{font-family:var(--f-d); font-weight:800; font-style:italic; text-transform:uppercase; line-height:.88; letter-spacing:-.005em; margin:0; overflow-wrap:break-word; hyphens:auto}
+.hx .t2{display:block; font-weight:300; color:var(--ink); font-size:.66em; line-height:1; margin-top:.12em; letter-spacing:0}
+.h2{font-size:clamp(2.2rem, 5.4vw, 4.9rem)}
+.lede{font-size:clamp(15px, 1.2vw, 17px); color:var(--mute); max-width:34rem; margin:0}
+.mono{font:500 12px/1.4 var(--f-m); letter-spacing:.04em}
+
+/* Buttons: layered, tactile */
+.btns{display:flex; flex-wrap:wrap; gap:12px}
+.btn{position:relative; display:inline-flex; align-items:center; gap:.7em; height:54px; padding:0 26px; border-radius:999px; font:600 15px/1 var(--f-b); white-space:nowrap; transition:background .35s var(--ease), box-shadow .35s var(--ease), color .35s var(--ease); will-change:translate}
+.btn svg{width:16px; height:16px; transition:transform .45s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn:active{scale:.98}
+.btn-p{background:var(--c-primary); color:var(--c-on-primary); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--fg) 22%, transparent), 0 16px 30px -16px color-mix(in oklch, var(--c-primary) 60%, black), 0 4px 0 -1px color-mix(in oklch, var(--c-primary) 55%, black)}
+.btn-p:hover{background:color-mix(in oklch, var(--c-primary) 88%, white)}
+.btn-g{color:var(--fg); box-shadow:inset 0 0 0 1px var(--hair)}
+.btn-g:hover{background:color-mix(in srgb, var(--fg) 8%, transparent); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--fg) 40%, transparent)}
+
+/* Header */
+.hd{position:fixed; z-index:50; top:12px; left:0; right:0; padding:0 clamp(10px, 2vw, 24px); pointer-events:none}
+.hd-in{pointer-events:auto; max-width:calc(var(--max) - 2 * var(--pad) + 40px); margin:0 auto; display:flex; align-items:center; gap:18px; height:60px; padding:0 8px 0 10px; border-radius:999px;
+  background:color-mix(in srgb, var(--deep) 80%, transparent); -webkit-backdrop-filter:blur(16px) saturate(1.3); backdrop-filter:blur(16px) saturate(1.3); color:color-mix(in oklch, var(--c-primary) 6%, white);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.09), 0 18px 40px -24px rgba(0,0,0,.6); transition:transform .5s var(--ease)}
+.hd.is-up .hd-in{transform:translateY(-90px)}
+.logo{display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 14px 0 6px; border-radius:999px; min-width:0}
+.logo img{height:28px; width:auto; max-width:150px; object-fit:contain}
+.logo.has-img:not(.is-light){background:var(--chipbg); padding:0 16px}
+.logo-mk{flex:none; display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:var(--c-primary); color:var(--c-on-primary); font:800 italic 13px/1 var(--f-d)}
+.logo-nm{font:800 italic 17px/1 var(--f-d); text-transform:uppercase; letter-spacing:.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:42vw}
+.nav{display:flex; gap:2px; margin-left:auto}
+.nav a{position:relative; padding:9px 14px; border-radius:999px; font:600 14px/1 var(--f-b); opacity:.86; transition:background .3s var(--ease), opacity .3s}
+.nav a:hover{opacity:1; background:rgba(255,255,255,.1)}
+.cart-btn{position:relative; flex:none; display:inline-flex; align-items:center; gap:8px; height:44px; padding:0 16px 0 14px; border-radius:999px; background:var(--c-primary); color:var(--c-on-primary); font:600 14px/1 var(--f-b)}
+.cart-btn svg{width:18px; height:18px}
+.cart-n{min-width:22px; height:22px; padding:0 6px; border-radius:999px; display:grid; place-items:center; background:var(--c-on-primary); color:var(--c-primary); font:500 11px/1 var(--f-m)}
+.cart-btn.bump{animation:bump .6s var(--ease-o)}
+@keyframes bump{0%{scale:1}30%{scale:1.14}100%{scale:1}}
+.menu-btn{display:none; width:44px; height:44px; border-radius:50%; place-items:center; box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.menu-btn i{display:block; width:16px; height:2px; background:currentColor; box-shadow:0 5px 0 currentColor, 0 -5px 0 currentColor; border-radius:2px}
+@media (max-width:860px){
+  .menu-btn{display:grid; margin-left:auto}
+  .cart-lb{display:none}
+  .cart-btn{padding:0 10px 0 12px}
+  .nav{position:absolute; top:68px; left:0; right:0; margin:0; flex-direction:column; padding:10px; border-radius:var(--r-l); background:color-mix(in srgb, var(--deep) 94%, transparent); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); box-shadow:inset 0 0 0 1px rgba(255,255,255,.09);
+    opacity:0; visibility:hidden; transform:translateY(-8px); transition:opacity .3s var(--ease), transform .3s var(--ease), visibility .3s}
+  .nav a{padding:14px 16px; font-size:17px}
+  .hd.open .nav{opacity:1; visibility:visible; transform:none}
+  html:not(.js) .nav{position:static; opacity:1; visibility:visible; transform:none; flex-direction:row; overflow-x:auto; background:none; box-shadow:none; padding:0}
+  html:not(.js) .hd-in{height:auto; flex-wrap:wrap; border-radius:var(--r-l); padding:8px}
+}
+
+/* Hero: one overlapping stack */
+.hero{position:relative; padding:clamp(110px, 14vh, 150px) 0 0; overflow:hidden; isolation:isolate}
+.hero::before{content:""; position:absolute; inset:auto -10% -40% 30%; height:90%; background:radial-gradient(closest-side, color-mix(in oklch, var(--c-primary) 34%, transparent), transparent); z-index:-1; opacity:.55}
+.hero-in{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); align-items:center; column-gap:clamp(12px, 2vw, 28px)}
+.hero-copy{grid-column:1 / 8; grid-row:1; position:relative; z-index:4; padding-bottom:40px}
+.hero-copy .hx{font-size:clamp(2.7rem, 6.5vw, 7.1rem); text-shadow:0 2px 30px color-mix(in srgb, var(--deep) 50%, transparent)}
+.hero-copy .lede{margin:28px 0 34px; max-width:27rem}
+.stack{grid-column:6 / 13; grid-row:1; position:relative; height:min(78vh, 700px); min-height:520px; transform-style:preserve-3d; --mx:0; --my:0;
+  transform:perspective(1300px) rotateX(calc(var(--my) * -5deg)) rotateY(calc(var(--mx) * 7deg))}
+.sl{position:absolute; transform:translate3d(calc(var(--mx) * var(--d, 0) * 1px), calc(var(--my) * var(--d, 0) * 1px), var(--z, 0px)) rotate(var(--r, 0deg))}
+.fan{position:absolute; inset:0; transform-style:preserve-3d; list-style:none; margin:0; padding:0}
+.fan .sl{top:3%; right:0; width:min(31%, 230px); aspect-ratio:3/4; border-radius:var(--r-l); background:var(--plate); overflow:hidden; transform-origin:0% 100%; box-shadow:0 30px 50px -30px rgba(0,0,0,.7), inset 0 0 0 1px var(--hair); --z:-90px; --d:10}
+.fan .sl:nth-child(1){--r:18deg; right:8%; z-index:3}
+.fan .sl:nth-child(2){--r:9deg; right:4%; top:6%; --z:-110px; --d:7; z-index:2; background:var(--plate2)}
+.fan .sl:nth-child(3){--r:0deg; right:0; top:9%; --z:-130px; --d:4; z-index:1}
+.fan .sl:nth-child(n+4){display:none}
+.fan a{position:absolute; inset:0}
+.fan img{width:100%; height:100%; object-fit:cover; opacity:.82; transition:opacity .4s, scale .6s var(--ease)}
+.fan a:hover img{opacity:1; scale:1.05}
+.fan .sl span{position:absolute; left:10px; right:10px; bottom:10px; padding:7px 10px; border-radius:var(--r-s); background:color-mix(in srgb, var(--deep) 78%, transparent); font:500 11px/1.2 var(--f-m); text-transform:uppercase; letter-spacing:.08em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.photo{left:10%; top:6%; width:62%; aspect-ratio:4/5; max-height:88%; --d:22; --z:0px; z-index:5}
+.photo::before{content:""; position:absolute; inset:0; border-radius:var(--r-xl); background:var(--c-primary); transform:translate(-22px, 22px) rotate(-3deg); box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.photo-in{position:relative; height:100%; border-radius:var(--r-xl); overflow:hidden; background:var(--plate); box-shadow:0 40px 80px -40px rgba(0,0,0,.8), inset 0 0 0 1px var(--hair)}
+.photo-in img{width:100%; height:100%; object-fit:cover}
+.photo-in::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--deep) 55%, transparent))}
+.photo-fb{position:absolute; inset:0; display:grid; place-items:center; background:repeating-linear-gradient(-58deg, transparent 0 18px, color-mix(in srgb, var(--fg) 7%, transparent) 18px 19px), var(--plate2); font:800 italic clamp(5rem, 14vw, 12rem)/1 var(--f-d); color:color-mix(in srgb, var(--fg) 22%, transparent)}
+.feat{right:0; bottom:4%; width:min(42%, 300px); --d:40; --z:80px; z-index:8}
+.fi{display:none; position:relative; padding:12px; border-radius:var(--r-l); background:var(--chipbg); color:var(--c-text); box-shadow:0 40px 60px -30px rgba(0,0,0,.75), 0 0 0 1px rgba(0,0,0,.04)}
+.fi:first-child{display:block}
+html.js .fi{display:block; position:absolute; left:0; right:0; bottom:0; opacity:0; visibility:hidden; transform:translateY(16px) rotate(2deg); transition:opacity .6s var(--ease), transform .7s var(--ease), visibility .6s}
+html.js .fi.on{position:relative; opacity:1; visibility:visible; transform:none}
+.fi-pad{aspect-ratio:5/4; border-radius:var(--r-m); background:var(--padbg); display:grid; place-items:center; overflow:hidden}
+.fi-pad img{width:100%; height:100%; object-fit:contain; padding:8%; mix-blend-mode:multiply}
+.fi-pad b{font:800 italic 3rem/1 var(--f-d); color:color-mix(in oklch, var(--c-primary) 50%, white)}
+.fi-row{display:flex; align-items:flex-end; gap:10px; padding:12px 4px 2px}
+.fi-tx{flex:1; min-width:0}
+.fi-nm{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font:600 15px/1.25 var(--f-b)}
+.fi-tag{position:absolute; top:22px; left:22px; padding:5px 8px; border-radius:6px; background:var(--deep); color:#fff; font:500 10px/1 var(--f-m); text-transform:uppercase; letter-spacing:.1em}
+.feat-ctl{position:absolute; right:12px; top:-44px; display:none; align-items:center; gap:10px; height:34px; padding:0 6px 0 14px; border-radius:999px; background:color-mix(in srgb, var(--deep) 80%, transparent); color:var(--fg); box-shadow:inset 0 0 0 1px var(--hair); font:500 11px/1 var(--f-m); letter-spacing:.1em}
+.feat-ctl b{font:800 italic 15px/1 var(--f-d)}
+.feat-ctl button{width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:var(--fg); color:var(--deep)}
+.feat-ctl svg{width:12px; height:12px}
+html.js .feat.multi .feat-ctl{display:inline-flex}
+.usps{grid-column:1 / -1; display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); margin-top:clamp(40px, 6vw, 80px); border-top:1px solid var(--hair); counter-reset:u}
+.usp{padding:26px 24px 34px 0; counter-increment:u; position:relative}
+.usp + .usp{padding-left:24px; border-left:1px solid var(--hair)}
+.usp::before{content:counter(u, decimal-leading-zero); display:block; font:800 italic 28px/1 var(--f-d); color:var(--ink); margin-bottom:14px}
+.usp h3{margin:0 0 6px; font:600 16px/1.3 var(--f-b)}
+.usp p{margin:0; color:var(--mute); font-size:14px; line-height:1.55}
+@media (max-width:980px){
+  .hero-copy{grid-column:1 / -1; padding-bottom:10px}
+  .stack{grid-column:1 / -1; grid-row:2; height:clamp(430px, 112vw, 600px); min-height:0; margin-top:20px}
+  .photo{left:0; width:70%; top:8%}
+  .feat{width:min(54%, 280px); bottom:2%}
+  .fan .sl{width:36%}
+  .usps{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .usp:nth-child(3){padding-left:0; border-left:0}
+  .usp:nth-child(n+3){border-top:1px solid var(--hair)}
+}
+@media (max-width:520px){
+  .usps{grid-template-columns:1fr}
+  .usp, .usp + .usp{padding:22px 0; border-left:0}
+  .usp + .usp{border-top:1px solid var(--hair)}
+  .feat{width:60%}
+  .fi-pad{aspect-ratio:4/3}
+}
+
+/* Section heads */
+.sec{padding:var(--sec) 0}
+.sec-hd{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px 40px; margin-bottom:clamp(36px, 5vw, 70px)}
+.sec-hd .hx{max-width:14ch}
+.sec-tools{display:flex; flex-wrap:wrap; align-items:center; gap:10px}
+.tilt-tg{display:none; align-items:center; gap:8px; height:44px; padding:0 16px; border-radius:999px; box-shadow:inset 0 0 0 1px var(--hair); font:500 12px/1 var(--f-m); text-transform:uppercase; letter-spacing:.1em}
+.tilt-tg::before{content:""; width:14px; height:20px; border-radius:4px; box-shadow:inset 0 0 0 1.5px currentColor; transform:rotate(-14deg); transition:transform .5s var(--ease-o)}
+.tilt-tg[aria-pressed="true"]{background:var(--c-primary); color:var(--c-on-primary); box-shadow:none}
+.tilt-tg[aria-pressed="true"]::before{transform:rotate(14deg)}
+html.gyro-ok .tilt-tg{display:inline-flex}
+
+/* Plate cards: four layers on separate depths */
+.card{position:relative; min-width:0}
+.plate{position:relative; aspect-ratio:3/4.15; border-radius:var(--r-l); --gx:50%; --gy:50%; --go:0; transition:box-shadow .5s var(--ease)}
+.ly{position:absolute}
+.ly-back{inset:0; border-radius:var(--r-l); overflow:hidden; background:repeating-linear-gradient(-58deg, transparent 0 16px, color-mix(in srgb, var(--fg) 6%, transparent) 16px 17px), var(--plate); box-shadow:inset 0 0 0 1px var(--hair)}
+.ly-back::after, .ly-pad::after{content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at var(--gx) var(--gy), rgba(255,255,255,.95), rgba(255,255,255,0) 58%); mix-blend-mode:soft-light; opacity:var(--go)}
+.ly-pad{left:12px; right:12px; top:12px; bottom:31%; border-radius:var(--r-m); background:var(--padbg); overflow:hidden; display:grid; place-items:center; box-shadow:0 22px 34px -22px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.8)}
+.ly-pad img{width:100%; height:100%; object-fit:contain; padding:9%; mix-blend-mode:multiply; transition:scale .7s var(--ease)}
+.pad-fb{font:800 italic clamp(3rem, 6vw, 5rem)/1 var(--f-d); color:color-mix(in oklch, var(--c-primary) 45%, white)}
+.ly-tag{top:24px; left:24px; max-width:calc(100% - 48px); padding:6px 9px; border-radius:6px; background:var(--deep); color:#fff; font:500 10px/1 var(--f-m); text-transform:uppercase; letter-spacing:.1em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; box-shadow:0 8px 16px -8px rgba(0,0,0,.6)}
+/* Chip is a dark brand slab that overlaps the image pad's lower edge, so the layers read as stacked even when flat */
+.ly-pad{bottom:64px}
+.ly-chip{left:12px; right:80px; bottom:12px; padding:13px 15px 12px; border-radius:var(--r-m); background:var(--deep); color:color-mix(in oklch, var(--c-primary) 6%, white); display:flex; flex-direction:column; gap:8px; box-shadow:0 22px 30px -14px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08)}
+.ly-chip::before{content:""; position:absolute; left:15px; top:0; width:26px; height:3px; border-radius:0 0 3px 3px; background:var(--c-primary)}
+.nm{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font:600 15px/1.25 var(--f-b)}
+.nm::after{content:""; position:absolute; inset:0}
+.pr{display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 8px; font:500 12px/1.2 var(--f-m)}
+.pr b{font:800 italic 19px/1 var(--f-d); letter-spacing:.01em; color:color-mix(in oklch, var(--c-primary) 45%, white)}
+.pr s{color:rgba(255,255,255,.5)}
+.pr .ask{color:rgba(255,255,255,.62); text-transform:uppercase; letter-spacing:.06em; font-size:11px}
+.fi .pr b{color:var(--c-text)} .fi .pr s, .fi .pr .ask{color:var(--c-muted)}
+.ly-add{right:12px; bottom:12px; width:58px; height:58px; border-radius:50%; display:grid; place-items:center; background:var(--c-primary); color:var(--c-on-primary); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--c-on-primary) 22%, transparent), 0 16px 26px -12px rgba(0,0,0,.6); transition:background .3s, scale .4s var(--ease-o)}
+.ly-add svg, .fi .ly-add svg{width:20px; height:20px; transition:transform .5s var(--ease-o)}
+.ly-add:hover{scale:1.08}
+.ly-add:hover svg{transform:rotate(90deg)}
+.ly-add.ok{background:var(--c-text); color:#fff}
+.fi .ly-add{position:relative; right:auto; bottom:auto; flex:none; width:50px; height:50px}
+.card:hover .plate{box-shadow:0 40px 60px -34px rgba(0,0,0,.55)}
+.card:hover .ly-pad img{scale:1.05}
+html.tilt .plate{transform-style:preserve-3d; will-change:transform}
+html.tilt .ly-back{transform:translateZ(0)}
+html.tilt .ly-pad{transform:translateZ(40px)}
+html.tilt .ly-tag{transform:translateZ(55px)}
+html.tilt .ly-chip{transform:translateZ(70px)}
+html.tilt .ly-add{transform:translateZ(90px)}
+html.tilt .card:hover .plate{box-shadow:none}
+
+/* Home: staggered three columns, middle column dropped 80px */
+.grid-st{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:clamp(18px, 2.4vw, 34px); padding-bottom:80px}
+.grid-st > .card:nth-child(3n+2){translate:0 80px}
+.grid-st > .card:nth-child(n+7){display:none}
+@media (max-width:900px){
+  .grid-st{grid-template-columns:repeat(2, minmax(0,1fr)); padding-bottom:60px}
+  .grid-st > .card:nth-child(3n+2){translate:none}
+  .grid-st > .card:nth-child(2n){translate:0 60px}
+}
+@media (max-width:520px){
+  .grid-st{grid-template-columns:1fr; padding-bottom:0}
+  .grid-st > .card:nth-child(2n){translate:none}
+  .grid-st .plate{aspect-ratio:4/4.5}
+}
+.more{display:flex; justify-content:center; margin-top:clamp(40px, 6vw, 80px)}
+
+/* Categories: big index rows with a cursor-following plate */
+.cats{list-style:none; margin:0; padding:0; border-top:1px solid var(--hair); counter-reset:c}
+.cat{counter-increment:c; border-bottom:1px solid var(--hair)}
+.cat a{position:relative; display:grid; grid-template-columns:70px 1fr auto; align-items:center; gap:20px; padding:clamp(16px, 2.2vw, 26px) 6px; isolation:isolate}
+.cat a::before{content:""; position:absolute; inset:4px -10px; border-radius:var(--r-m); background:var(--plate); z-index:-1; transform:scaleY(.4); opacity:0; transition:transform .5s var(--ease), opacity .4s var(--ease)}
+.cat a:hover::before{transform:none; opacity:1}
+.cat-no{font:500 12px/1 var(--f-m); color:var(--mute); letter-spacing:.1em}
+.cat-no::before{content:counter(c, decimal-leading-zero)}
+.cat-nm{font:800 italic clamp(1.9rem, 5.2vw, 4.6rem)/.95 var(--f-d); text-transform:uppercase; transition:transform .55s var(--ease), color .3s; overflow-wrap:anywhere}
+.cat a:hover .cat-nm{transform:translateX(18px); color:var(--ink)}
+.cat-th{width:64px; height:64px; border-radius:14px; overflow:hidden; background:var(--plate2); flex:none}
+.cat-th img{width:100%; height:100%; object-fit:cover}
+.cat-ar{width:48px; height:48px; border-radius:50%; display:grid; place-items:center; box-shadow:inset 0 0 0 1px var(--hair); transition:background .3s, color .3s, transform .5s var(--ease)}
+.cat-ar svg{width:16px; height:16px}
+.cat a:hover .cat-ar{background:var(--c-primary); color:var(--c-on-primary); box-shadow:none; transform:rotate(-45deg)}
+.cat-side{display:flex; align-items:center; gap:16px}
+.peek{position:fixed; left:0; top:0; z-index:30; width:200px; aspect-ratio:3/4; border-radius:var(--r-l); overflow:hidden; pointer-events:none; opacity:0; background:var(--plate2); box-shadow:0 40px 60px -30px rgba(0,0,0,.7); transition:opacity .35s var(--ease)}
+.peek img{width:100%; height:100%; object-fit:cover}
+.peek.on{opacity:1}
+@media (hover:hover) and (pointer:fine){ html.js .cat-th{display:none} }
+@media (max-width:600px){ .cat a{grid-template-columns:34px 1fr auto; gap:12px} .cat-ar{display:none} .cat-th{width:52px; height:52px} }
+
+/* Story */
+.story{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(40px, 7vw, 120px); align-items:center}
+.st-img{position:relative; aspect-ratio:4/5; max-width:540px; isolation:isolate}
+.st-img::before, .st-img::after{content:""; position:absolute; inset:0; border-radius:var(--r-xl)}
+.st-img::before{background:var(--plate2); transform:translate(28px, 28px) rotate(3deg)}
+.st-img::after{background:var(--c-primary); transform:translate(-18px, -18px) rotate(-4deg) scale(.9); z-index:-1}
+.st-img .in{position:relative; z-index:1; height:100%; border-radius:var(--r-xl); overflow:hidden; background:var(--plate); box-shadow:0 40px 70px -40px rgba(0,0,0,.6)}
+.st-img img{width:100%; height:115%; object-fit:cover; will-change:transform}
+.story .hx{font-size:clamp(2rem, 4.4vw, 4rem); margin-bottom:26px}
+.story p.tx{margin:0; font-size:clamp(15px, 1.2vw, 17px); color:var(--mute); max-width:36rem}
+.stats{display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:0; margin-top:clamp(36px, 5vw, 60px); border-top:1px solid var(--hair)}
+.stat{padding:24px 20px 0 0}
+.stat b{display:block; font:800 italic clamp(2.8rem, 6vw, 5.4rem)/.9 var(--f-d); color:var(--ink); letter-spacing:-.01em}
+.stat span{display:block; margin-top:10px; font:500 12px/1.4 var(--f-m); color:var(--mute); letter-spacing:.04em; max-width:22ch}
+@media (max-width:860px){ .story{grid-template-columns:1fr} .st-img{max-width:440px; width:86%; margin:0 auto 20px} }
+
+/* Gallery */
+.gal-line{font-size:clamp(2rem, 6.2vw, 6rem); max-width:18ch; margin-bottom:clamp(40px, 6vw, 80px)}
+.gal-line .hl{color:var(--ink)}
+.gal{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:clamp(12px, 2vw, 26px); align-items:start}
+.g-it{margin:0; border-radius:var(--r-l); overflow:hidden; aspect-ratio:3/4; background:var(--plate); box-shadow:0 30px 50px -30px rgba(0,0,0,.7); will-change:transform}
+.g-it:nth-child(even){margin-top:80px; aspect-ratio:4/5}
+.g-it:nth-child(n+9){display:none}
+.g-it img{width:100%; height:100%; object-fit:cover; transition:scale .8s var(--ease)}
+.g-it:hover img{scale:1.05}
+@media (max-width:760px){ .gal{grid-template-columns:repeat(2, minmax(0,1fr))} .g-it:nth-child(even){margin-top:40px} }
+
+/* Quote */
+.quote{max-width:1100px}
+.quote blockquote{margin:0; font:300 italic clamp(1.8rem, 4.2vw, 3.8rem)/1.08 var(--f-d); text-transform:uppercase}
+.quote blockquote::before{content:"“"; display:block; font:800 italic 7rem/.6 var(--f-d); color:var(--c-primary); margin-bottom:10px}
+.quote cite{display:block; margin-top:28px; font:500 12px/1 var(--f-m); font-style:normal; letter-spacing:.14em; text-transform:uppercase; color:var(--mute)}
+
+/* CTA: the primary plate, stacked */
+.cta-wrap{position:relative; padding:20px 0; isolation:isolate}
+.cta-wrap::before, .cta-wrap::after{content:""; position:absolute; left:4%; right:4%; top:20px; bottom:20px; border-radius:var(--r-xl); background:var(--plate)}
+.cta-wrap::before{transform:translateY(22px) scale(.97)}
+.cta-wrap::after{transform:translateY(42px) scale(.93); opacity:.6; z-index:-1}
+.cta{position:relative; z-index:1; border-radius:var(--r-xl); background:var(--c-primary); color:var(--c-on-primary); padding:clamp(40px, 7vw, 100px) clamp(24px, 6vw, 90px); display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:30px 60px; align-items:end; overflow:hidden; box-shadow:0 50px 80px -50px rgba(0,0,0,.6)}
+.cta::before{content:""; position:absolute; right:-8%; top:-30%; width:55%; aspect-ratio:1; border-radius:50%; background:radial-gradient(closest-side, color-mix(in srgb, var(--c-on-primary) 18%, transparent), transparent); pointer-events:none}
+.cta .hx{font-size:clamp(2.2rem, 5.6vw, 5.4rem)}
+.cta p{margin:0 0 26px; opacity:.85; font-size:16px; max-width:30rem}
+.cta .btn{background:var(--c-on-primary); color:var(--c-primary)}
+.cta .btn:hover{background:color-mix(in srgb, var(--c-on-primary) 86%, var(--c-primary))}
+@media (max-width:760px){ .cta{grid-template-columns:1fr} }
+
+/* Footer */
+.ft{padding:clamp(70px, 9vw, 120px) 0 30px; overflow:hidden}
+.ft-grid{display:grid; grid-template-columns:minmax(0,1.4fr) repeat(2, minmax(0,1fr)); gap:40px; padding-bottom:clamp(40px, 6vw, 70px); border-bottom:1px solid var(--hair)}
+.ft h4{margin:0 0 18px; font:500 11px/1 var(--f-m); letter-spacing:.16em; text-transform:uppercase; color:var(--mute)}
+.ft-lead{font:300 italic clamp(1.5rem, 2.6vw, 2.3rem)/1.05 var(--f-d); text-transform:uppercase; margin:0 0 24px; max-width:20ch}
+.ft address{font-style:normal; display:grid; gap:6px; color:var(--mute)}
+.ft address a{color:var(--fg); border-bottom:1px solid var(--hair); justify-self:start; transition:border-color .3s}
+.ft address a:hover{border-color:var(--fg)}
+.ft ul{list-style:none; margin:0; padding:0; display:grid; gap:9px}
+.ft ul a{opacity:.82; transition:opacity .3s, padding .4s var(--ease)}
+.ft ul a:hover{opacity:1; padding-left:6px}
+.ft-mark{position:relative; margin:clamp(30px, 5vw, 60px) 0 10px; font:800 italic clamp(3rem, 13vw, 13rem)/.82 var(--f-d); text-transform:uppercase; white-space:nowrap; user-select:none; --fx:100%}
+.ft-mark .o{display:inline-block}
+.ft-mark .o{color:transparent; -webkit-text-stroke:1.5px color-mix(in srgb, var(--fg) 30%, transparent)}
+.ft-mark .f{position:absolute; inset:0; color:var(--c-primary); clip-path:inset(0 calc(100% - var(--fx)) 0 0)}
+html.js .ft-mark .f{transition:clip-path .9s var(--ease)}
+.ft-base{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; padding-top:20px; border-top:1px solid var(--hair); font:500 11px/1.4 var(--f-m); color:var(--mute); letter-spacing:.06em}
+@media (max-width:760px){ .ft-grid{grid-template-columns:1fr 1fr} .ft-grid > :first-child{grid-column:1 / -1} .ft-mark{white-space:normal; overflow-wrap:anywhere} }
+
+/* Badge, toast, drawer */
+.badge{position:fixed; left:12px; bottom:12px; z-index:60; padding:7px 11px; border-radius:999px; background:color-mix(in srgb, var(--deep) 88%, transparent); color:#fff; font:500 10px/1 var(--f-m); letter-spacing:.06em; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.toast{position:fixed; right:16px; bottom:16px; z-index:70; display:flex; align-items:center; gap:12px; max-width:min(360px, calc(100vw - 32px)); padding:10px 16px 10px 10px; border-radius:var(--r-m); background:var(--c-text); color:#fff; box-shadow:0 30px 50px -20px rgba(0,0,0,.6);
+  transform:translateY(calc(100% + 30px)); opacity:0; visibility:hidden; transition:transform .6s var(--ease), opacity .4s, visibility .6s}
+.toast.on{transform:none; opacity:1; visibility:visible}
+.toast i{flex:none; width:36px; height:36px; border-radius:10px; display:grid; place-items:center; background:var(--c-primary); color:var(--c-on-primary); font-style:normal}
+.toast i svg{width:16px; height:16px}
+.toast p{margin:0; font-size:14px; line-height:1.3; min-width:0}
+.toast small{display:block; font:500 10px/1.4 var(--f-m); letter-spacing:.1em; text-transform:uppercase; opacity:.6}
+.toast b{display:block; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.scrim{position:fixed; inset:0; z-index:80; background:rgba(0,0,0,.4); opacity:0; visibility:hidden; transition:opacity .4s var(--ease), visibility .4s}
+.drawer{position:fixed; top:10px; right:10px; bottom:10px; z-index:81; width:min(420px, calc(100vw - 20px)); border-radius:var(--r-l); display:flex; flex-direction:column; transform:translateX(calc(100% + 20px)); transition:transform .6s var(--ease); box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+.cart-open .scrim{opacity:1; visibility:visible}
+.cart-open .drawer{transform:none}
+.dr-hd{display:flex; align-items:center; justify-content:space-between; padding:22px 22px 18px; border-bottom:1px solid var(--hair)}
+.dr-hd .hx{font-size:2rem}
+.dr-x{width:42px; height:42px; border-radius:50%; display:grid; place-items:center; box-shadow:inset 0 0 0 1px var(--hair)}
+.dr-x svg{width:14px; height:14px}
+.dr-list{flex:1; overflow:auto; list-style:none; margin:0; padding:10px 14px}
+.dr-list li{display:grid; grid-template-columns:60px 1fr auto; gap:14px; align-items:center; padding:10px 8px; border-bottom:1px solid var(--hair); animation:inn .5s var(--ease)}
+@keyframes inn{from{opacity:0; transform:translateX(20px)}}
+.dr-im{width:60px; height:60px; border-radius:12px; background:var(--padbg); overflow:hidden}
+.dr-im img{width:100%; height:100%; object-fit:contain; padding:6px; mix-blend-mode:multiply}
+.dr-list .n{font-weight:600; line-height:1.25; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.dr-list .p{font:500 12px/1.4 var(--f-m); color:var(--mute)}
+.dr-rm{width:30px; height:30px; border-radius:50%; display:grid; place-items:center; color:var(--mute); box-shadow:inset 0 0 0 1px var(--hair)}
+.dr-rm svg{width:10px; height:10px}
+.dr-empty{padding:30px 22px; color:var(--mute)}
+.dr-ft{padding:18px 22px 22px; border-top:1px solid var(--hair); display:grid; gap:14px}
+.dr-sum{display:flex; justify-content:space-between; font:500 12px/1 var(--f-m); letter-spacing:.08em; text-transform:uppercase}
+.dr-sum b{font:800 italic 22px/1 var(--f-d)}
+.dr-ft .btn{justify-content:center}
+.fly{position:fixed; z-index:90; pointer-events:none; border-radius:14px; background:var(--padbg); overflow:hidden; box-shadow:0 20px 40px -10px rgba(0,0,0,.5)}
+.fly img{width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply}
+
+/* Reveal (animates from visible-safe state only with JS) */
+html.js .rv{opacity:0; transform:translateY(34px); transition:opacity .7s var(--ease), transform .8s var(--ease); transition-delay:var(--dl, 0s)}
+html.js .rv.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
+  html.js .rv{opacity:1; transform:none}
+  .stack{transform:none}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#E63329;--c-on-primary:#ffffff;--c-accent:#1B161C}</style></head>
+<body>
+<header class="hd" id="hd">
+  <div class="hd-in">
+    <a class="logo has-img is-light" href="./" aria-label="Aiki-Budo Sport">
+      <img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-aiki-budo.svg" alt="Aiki-Budo Sport">
+      
+    </a>
+    <nav class="nav" id="nav" aria-label="Menu">
+      <a href="catalog.html">Webshop</a><a href="catalog.html">Merken</a><a href="#">Sporten</a><a href="#">Over ons</a><a href="#">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav" data-menu><i></i></button>
+    <button class="cart-btn" type="button" data-cart-open aria-label="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cart-lb" data-t="cart">Mand</span><span class="cart-n" data-cart-n>0</span>
+    </button>
+  </div>
+</header>
+
+<main>
+<section class="hero deep" id="top">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow">Vechtsportwinkel sinds 1979</p>
+      <h1 class="hx">Fight the power. <span class="t2">Kies de juiste uitrusting.</span></h1>
+      <p class="lede">Van bokshandschoenen en judopakken tot dojo-materiaal: bij Aiki-Budo Sport vind je alles om je vechtsport op topniveau te beoefenen. Met ruim 40 jaar ervaring helpen we je graag verder.</p>
+      <div class="btns">
+        <a class="btn btn-p mag" href="catalog.html">Naar de webshop<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <a class="btn btn-g mag" href="#story">Bekijk de merken</a>
+      </div>
+    </div>
+
+    <div class="stack" id="stack" aria-label="Aiki-Budo Sport">
+      <ul class="fan">
+        <li class="sl"><a href="catalog.html"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;bokshandschoenen-categorie.jpg?&#x3D;" alt="" loading="lazy"><span>Bokshandschoenen</span></a></li><li class="sl"><a href="catalog.html"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;targets-categorie-optie-2-s.jpg?&#x3D;" alt="" loading="lazy"><span>Protectie&#x2F;bescherming</span></a></li><li class="sl"><a href="catalog.html"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;oefenwapens-categorie-s.jpg?&#x3D;" alt="" loading="lazy"><span>Oefenwapens</span></a></li><li class="sl"><a href="catalog.html"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;kleding-s.jpg?&#x3D;" alt="" loading="lazy"><span>Kleding</span></a></li><li class="sl"><a href="catalog.html"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;schoenen-categorie-s.jpg?&#x3D;" alt="" loading="lazy"><span>Schoenen</span></a></li><li class="sl"><a href="catalog.html"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;dsc00274.jpg?&#x3D;" alt="" loading="lazy"><span>Dojo materiaal</span></a></li>
+      </ul>
+      <div class="sl photo">
+        <div class="photo-in">
+          <img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;dsc00300.jpg?&#x3D;" alt="Fight the power." fetchpriority="high">
+          
+        </div>
+      </div>
+      <div class="sl feat" id="feat">
+        <div class="feat-ctl"><span><b data-feat-i>01</b> / <span data-feat-n>01</span></span><button type="button" data-feat-next aria-label="Next"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button></div>
+        <div class="fi" data-name="Ronin Karate puzzelmat 100x100x2cm - Zwart&#x2F;Grijs" data-price="€ 27,50" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-puzzelmat-zwart-grijs-2.77e40e.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+          <a class="fi-pad" href="#"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-puzzelmat-zwart-grijs-2.77e40e.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Ronin Karate puzzelmat 100x100x2cm - Zwart&#x2F;Grijs" loading="lazy"></a>
+          
+          <div class="fi-row">
+            <div class="fi-tx">
+              <a class="fi-nm" href="#">Ronin Karate puzzelmat 100x100x2cm - Zwart&#x2F;Grijs</a>
+              <div class="pr"><b>€ 27,50</b></div>
+            </div>
+            <button class="ly-add" type="button" data-add aria-label="+ Ronin Karate puzzelmat 100x100x2cm - Zwart&#x2F;Grijs"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+          </div>
+        </div>
+        <div class="fi" data-name="Muay Dark Line Bokshandschoen Original - Zwart" data-price="€ 119,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;msgvl-dl-01pair.07c529.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+          <a class="fi-pad" href="#"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;msgvl-dl-01pair.07c529.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Muay Dark Line Bokshandschoen Original - Zwart" loading="lazy"></a>
+          
+          <div class="fi-row">
+            <div class="fi-tx">
+              <a class="fi-nm" href="#">Muay Dark Line Bokshandschoen Original - Zwart</a>
+              <div class="pr"><b>€ 119,95</b></div>
+            </div>
+            <button class="ly-add" type="button" data-add aria-label="+ Muay Dark Line Bokshandschoen Original - Zwart"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+          </div>
+        </div>
+        <div class="fi" data-name="Muay A&#39;damXXX Bokshandschoen Premium - Zwart&#x2F;Rood" data-price="€ 129,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-bokshandschoen-premium-amsterdam-zwart-rood-3.50d223.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+          <a class="fi-pad" href="#"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-bokshandschoen-premium-amsterdam-zwart-rood-3.50d223.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Muay A&#39;damXXX Bokshandschoen Premium - Zwart&#x2F;Rood" loading="lazy"></a>
+          
+          <div class="fi-row">
+            <div class="fi-tx">
+              <a class="fi-nm" href="#">Muay A&#39;damXXX Bokshandschoen Premium - Zwart&#x2F;Rood</a>
+              <div class="pr"><b>€ 129,95</b></div>
+            </div>
+            <button class="ly-add" type="button" data-add aria-label="+ Muay A&#39;damXXX Bokshandschoen Premium - Zwart&#x2F;Rood"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+          </div>
+        </div>
+        <div class="fi" data-name="Muay Legacy Bokshandschoen - wijnrood&#x2F;zwart" data-price="€ 136,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-legacy-bokshandschoen-rood-2-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+          <a class="fi-pad" href="#"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-legacy-bokshandschoen-rood-2-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="Muay Legacy Bokshandschoen - wijnrood&#x2F;zwart" loading="lazy"></a>
+          
+          <div class="fi-row">
+            <div class="fi-tx">
+              <a class="fi-nm" href="#">Muay Legacy Bokshandschoen - wijnrood&#x2F;zwart</a>
+              <div class="pr"><b>€ 136,95</b></div>
+            </div>
+            <button class="ly-add" type="button" data-add aria-label="+ Muay Legacy Bokshandschoen - wijnrood&#x2F;zwart"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="usps">
+      <div class="usp rv"><h3>Vandaag besteld, vandaag verstuurd</h3><p>Op werkdagen besteld voor 16.00 uur gaat dezelfde dag nog op transport.</p></div><div class="usp rv"><h3>Gratis verzending vanaf € 100</h3><p>Bestel je uitrusting zonder extra verzendkosten zodra je boven de 100 euro uitkomt.</p></div><div class="usp rv"><h3>Meer dan 3000 artikelen</h3><p>Van bitjes en boksschoenen tot mats en oefenwapens: alles voor jouw sport op één plek.</p></div><div class="usp rv"><h3>Persoonlijk advies</h3><p>Twijfel je over de juiste spullen? Ons team met ruim 40 jaar ervaring denkt graag met je mee.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec pale" id="shop">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <p class="eyebrow" data-t="picks">Uitgelicht</p>
+        <h2 class="hx h2">Alle merken en producten</h2>
+      </div>
+      <div class="sec-tools">
+        <button class="tilt-tg" type="button" aria-pressed="false" data-gyro data-t="tilt">Kantel</button>
+        <a class="btn btn-g mag" href="catalog.html"><span data-t="allp">Alle producten</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+    <div class="grid-st">
+      <article data-shop-item="0" class="card rv" data-name="Ronin Karate puzzelmat 100x100x2cm - Zwart&#x2F;Grijs" data-price="€ 27,50" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-puzzelmat-zwart-grijs-2.77e40e.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-puzzelmat-zwart-grijs-2.77e40e.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Ronin Karate puzzelmat 100x100x2cm - Zwart&#x2F;Grijs</a>
+            <div class="pr"><b>€ 27,50</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Ronin Karate puzzelmat 100x100x2cm - Zwart&#x2F;Grijs"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="1" class="card rv" data-name="Muay Dark Line Bokshandschoen Original - Zwart" data-price="€ 119,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;msgvl-dl-01pair.07c529.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;msgvl-dl-01pair.07c529.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Muay Dark Line Bokshandschoen Original - Zwart</a>
+            <div class="pr"><b>€ 119,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Muay Dark Line Bokshandschoen Original - Zwart"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="2" class="card rv" data-name="Muay A&#39;damXXX Bokshandschoen Premium - Zwart&#x2F;Rood" data-price="€ 129,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-bokshandschoen-premium-amsterdam-zwart-rood-3.50d223.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-bokshandschoen-premium-amsterdam-zwart-rood-3.50d223.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Muay A&#39;damXXX Bokshandschoen Premium - Zwart&#x2F;Rood</a>
+            <div class="pr"><b>€ 129,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Muay A&#39;damXXX Bokshandschoen Premium - Zwart&#x2F;Rood"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="3" class="card rv" data-name="Muay Legacy Bokshandschoen - wijnrood&#x2F;zwart" data-price="€ 136,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-legacy-bokshandschoen-rood-2-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-legacy-bokshandschoen-rood-2-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Muay Legacy Bokshandschoen - wijnrood&#x2F;zwart</a>
+            <div class="pr"><b>€ 136,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Muay Legacy Bokshandschoen - wijnrood&#x2F;zwart"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="4" class="card rv" data-name="Ronin Bokshandschoen Challenger - zwart&#x2F;beige" data-price="€ 67,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-challenger-beige-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-challenger-beige-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Ronin Bokshandschoen Challenger - zwart&#x2F;beige</a>
+            <div class="pr"><b>€ 67,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Ronin Bokshandschoen Challenger - zwart&#x2F;beige"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="5" class="card rv" data-name="Ronin Bokshandschoen Challenger - zwart&#x2F;blauw" data-price="€ 67,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-challenger-blauw-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-challenger-blauw-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Ronin Bokshandschoen Challenger - zwart&#x2F;blauw</a>
+            <div class="pr"><b>€ 67,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Ronin Bokshandschoen Challenger - zwart&#x2F;blauw"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="6" class="card rv" data-name="Hayabusa Bokshandschoen T3 LX - Crimson" data-price="€ 229,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;hayabusa-t3-lx-crimson-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;hayabusa-t3-lx-crimson-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Hayabusa Bokshandschoen T3 LX - Crimson</a>
+            <div class="pr"><b>€ 229,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Hayabusa Bokshandschoen T3 LX - Crimson"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="7" class="card rv" data-name="Hayabusa Bokshandschoen T3 - Charcoal&#x2F;Lime" data-price="€ 179,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;hayabusa-t3-charcoal-lime-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;hayabusa-t3-charcoal-lime-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Hayabusa Bokshandschoen T3 - Charcoal&#x2F;Lime</a>
+            <div class="pr"><b>€ 179,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Hayabusa Bokshandschoen T3 - Charcoal&#x2F;Lime"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="8" class="card rv" data-name="Ronin Fighter Bokshandschoen - Grijs&#x2F;Zwart" data-price="€ 89,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-fighter-grijs-1.d9fa0c.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-fighter-grijs-1.d9fa0c.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Ronin Fighter Bokshandschoen - Grijs&#x2F;Zwart</a>
+            <div class="pr"><b>€ 89,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Ronin Fighter Bokshandschoen - Grijs&#x2F;Zwart"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="9" class="card rv" data-name="Ronin Bokshandschoen Jab - zwart" data-price="€ 99,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-jab-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-bhs-jab-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Ronin Bokshandschoen Jab - zwart</a>
+            <div class="pr"><b>€ 99,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Ronin Bokshandschoen Jab - zwart"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="10" class="card rv" data-name="Ronin Bokshandschoenen Kids Tiger-Line - zwart&#x2F;rood" data-price="€ 26,50" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-tiger-line-bokshandschoen-rood-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-tiger-line-bokshandschoen-rood-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Ronin Bokshandschoenen Kids Tiger-Line - zwart&#x2F;rood</a>
+            <div class="pr"><b>€ 26,50</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Ronin Bokshandschoenen Kids Tiger-Line - zwart&#x2F;rood"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="11" class="card rv" data-name="Ronin Punching Bokshandschoen - Zwart&#x2F;Wit" data-price="€ 38,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-punching-wit.aedf68.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;ronin-punching-wit.aedf68.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Ronin Punching Bokshandschoen - Zwart&#x2F;Wit</a>
+            <div class="pr"><b>€ 38,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Ronin Punching Bokshandschoen - Zwart&#x2F;Wit"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="12" class="card rv" data-name="Twins BGVL3 Bokshandschoen - Zwart" data-price="€ 189,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;twins-bokshandschoen-zwart-1.c641f6.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;twins-bokshandschoen-zwart-1.c641f6.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Twins BGVL3 Bokshandschoen - Zwart</a>
+            <div class="pr"><b>€ 189,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Twins BGVL3 Bokshandschoen - Zwart"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="13" class="card rv" data-name="Adidas BHS Power 350 Training gloves wit" data-price="€ 109,94" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;bhs-power-350-wit-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;bhs-power-350-wit-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Adidas BHS Power 350 Training gloves wit</a>
+            <div class="pr"><b>€ 109,94</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Adidas BHS Power 350 Training gloves wit"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="14" class="card rv" data-name="Muay Curved Coaching Mitt Lang met Hand per paar - zwart&#x2F;grijs" data-price="€ 225,00" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-curved-focus-mitt-1.png?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-curved-focus-mitt-1.png?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          <span class="ly ly-tag">Nieuw</span>
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Muay Curved Coaching Mitt Lang met Hand per paar - zwart&#x2F;grijs</a>
+            <div class="pr"><b>€ 225,00</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Muay Curved Coaching Mitt Lang met Hand per paar - zwart&#x2F;grijs"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="15" class="card rv" data-name="Muay Arm Striking Pad Leer per paar - zwart&#x2F;grijs" data-price="€ 274,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-arm-striking-pad-1.png?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;muay-arm-striking-pad-1.png?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          <span class="ly ly-tag">Nieuw</span>
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Muay Arm Striking Pad Leer per paar - zwart&#x2F;grijs</a>
+            <div class="pr"><b>€ 274,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Muay Arm Striking Pad Leer per paar - zwart&#x2F;grijs"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="16" class="card rv" data-name="Nike Machomai 3.0 Boksschoen - zwart&#x2F;wit" data-price="€ 124,90" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-machomai-3-zwart-5.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-machomai-3-zwart-5.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          <span class="ly ly-tag">Nieuw</span>
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Nike Machomai 3.0 Boksschoen - zwart&#x2F;wit</a>
+            <div class="pr"><b>€ 124,90</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Nike Machomai 3.0 Boksschoen - zwart&#x2F;wit"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="17" class="card rv" data-name="Nike Hyper K.O. 3.0 - zwart&#x2F;wit" data-price="€ 219,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-hyper-ko-30-zwart-wit-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-hyper-ko-30-zwart-wit-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          <span class="ly ly-tag">Nieuw</span>
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Nike Hyper K.O. 3.0 - zwart&#x2F;wit</a>
+            <div class="pr"><b>€ 219,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Nike Hyper K.O. 3.0 - zwart&#x2F;wit"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="18" class="card rv" data-name="Nike Hyper K.O. 3.0 - crimson&#x2F;grijs&#x2F;zwart" data-price="€ 219,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-hyper-ko-30-se-bright-crimson-alu-black-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;nike-hyper-ko-30-se-bright-crimson-alu-black-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          <span class="ly ly-tag">Nieuw</span>
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Nike Hyper K.O. 3.0 - crimson&#x2F;grijs&#x2F;zwart</a>
+            <div class="pr"><b>€ 219,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Nike Hyper K.O. 3.0 - crimson&#x2F;grijs&#x2F;zwart"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="19" class="card rv" data-name="Fairtex Calf Kick Beschermers" data-price="€ 299,95" data-img="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;fairtex-calf-kick-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white">
+        <div class="plate" data-tilt>
+          <div class="ly ly-back"></div>
+          <a class="ly ly-pad" href="#" tabindex="-1" aria-hidden="true"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;content&#x2F;products&#x2F;fairtex-calf-kick-1.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="" loading="lazy"></a>
+          <span class="ly ly-tag">Nieuw</span>
+          <div class="ly ly-chip">
+            <a class="nm" href="#">Fairtex Calf Kick Beschermers</a>
+            <div class="pr"><b>€ 299,95</b></div>
+          </div>
+          <button class="ly ly-add" type="button" data-add aria-label="+ Fairtex Calf Kick Beschermers"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec deep" id="cats">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <p class="eyebrow" data-t="cats">Categorieën</p>
+        <h2 class="hx h2"><span data-t="browse">Shop per</span> <span class="t2" data-t="browse2">categorie</span></h2>
+      </div>
+    </div>
+    <ul class="cats">
+      <li class="cat rv"><a href="catalog.html" data-peek="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;bokshandschoenen-categorie.jpg?&#x3D;">
+        <span class="cat-no"></span>
+        <span class="cat-nm">Bokshandschoenen</span>
+        <span class="cat-side"><span class="cat-th"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;bokshandschoenen-categorie.jpg?&#x3D;" alt="" loading="lazy"></span><span class="cat-ar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span>
+      </a></li>
+      <li class="cat rv"><a href="catalog.html" data-peek="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;targets-categorie-optie-2-s.jpg?&#x3D;">
+        <span class="cat-no"></span>
+        <span class="cat-nm">Protectie&#x2F;bescherming</span>
+        <span class="cat-side"><span class="cat-th"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;targets-categorie-optie-2-s.jpg?&#x3D;" alt="" loading="lazy"></span><span class="cat-ar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span>
+      </a></li>
+      <li class="cat rv"><a href="catalog.html" data-peek="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;oefenwapens-categorie-s.jpg?&#x3D;">
+        <span class="cat-no"></span>
+        <span class="cat-nm">Oefenwapens</span>
+        <span class="cat-side"><span class="cat-th"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;oefenwapens-categorie-s.jpg?&#x3D;" alt="" loading="lazy"></span><span class="cat-ar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span>
+      </a></li>
+      <li class="cat rv"><a href="catalog.html" data-peek="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;kleding-s.jpg?&#x3D;">
+        <span class="cat-no"></span>
+        <span class="cat-nm">Kleding</span>
+        <span class="cat-side"><span class="cat-th"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;kleding-s.jpg?&#x3D;" alt="" loading="lazy"></span><span class="cat-ar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span>
+      </a></li>
+      <li class="cat rv"><a href="catalog.html" data-peek="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;schoenen-categorie-s.jpg?&#x3D;">
+        <span class="cat-no"></span>
+        <span class="cat-nm">Schoenen</span>
+        <span class="cat-side"><span class="cat-th"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;schoenen-categorie-s.jpg?&#x3D;" alt="" loading="lazy"></span><span class="cat-ar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span>
+      </a></li>
+      <li class="cat rv"><a href="catalog.html" data-peek="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;dsc00274.jpg?&#x3D;">
+        <span class="cat-no"></span>
+        <span class="cat-nm">Dojo materiaal</span>
+        <span class="cat-side"><span class="cat-th"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;dsc00274.jpg?&#x3D;" alt="" loading="lazy"></span><span class="cat-ar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span>
+      </a></li>
+    </ul>
+  </div>
+  <div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
+</section>
+
+<section class="sec pale" id="story">
+  <div class="wrap story">
+    <div class="st-img rv"><div class="in"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;merken.jpg?cropX&#x3D;0&amp;cropY&#x3D;23&amp;cropW&#x3D;1262&amp;cropH&#x3D;808" alt="Eigen merken, topmerken, één adres" loading="lazy" data-par="0.12"></div></div>
+    <div class="st-tx">
+      <p class="eyebrow">Onze merken</p>
+      <h2 class="hx rv">Eigen merken, topmerken, één adres</h2>
+      <p class="tx rv">Naast gerenommeerde namen als Hayabusa, Nike, Fairtex en Twins ontwikkelt Aiki-Budo Sport ook zelf: RONIN en MUAY. Zo combineren we vakkennis uit de praktijk met uitrusting waar je op kunt vertrouwen.</p>
+      <div class="stats">
+        <div class="stat rv"><b>1979</b><span>Opgericht</span></div><div class="stat rv"><b>40+</b><span>Jaar ervaring</span></div><div class="stat rv"><b>3000+</b><span>Vechtsportartikelen</span></div><div class="stat rv"><b>16:00</b><span>Besteld &#x3D; dezelfde dag verstuurd</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec deep" id="gallery">
+  <div class="wrap">
+    <p class="hx gal-line rv">Dé vechtsportspecialist sinds 1979</p>
+    <div class="gal">
+      <figure class="g-it" data-par="-0.06"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;merken-ronin.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure class="g-it" data-par="-0.06"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;merken-muay.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure class="g-it" data-par="-0.06"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;plyo-box-soft-3-26cf37.jpeg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure class="g-it" data-par="-0.06"><img src="https:&#x2F;&#x2F;www.aiki-budo.nl&#x2F;media&#x2F;dsc00274.jpg?&#x3D;" alt="" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec pale" id="cta">
+  <div class="wrap">
+    <div class="cta-wrap rv">
+      <div class="cta" data-tilt="3">
+        <h2 class="hx">Kom je er niet uit? Wij helpen je graag.</h2>
+        <div>
+          <p>Neem contact op voor advies van specialisten met meer dan 40 jaar ervaring, of bestel direct online.</p>
+          <a class="btn mag" href="catalog.html">Bekijk de webshop<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ft deep" id="contact">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <p class="ft-lead">Dé vechtsportspecialist sinds 1979</p>
+        <address>
+          <span>Dennenlaan 28, 1161 CR Zwanenburg</span>
+          <a href="tel:020-6136764">020-6136764</a>
+          <a href="mailto:info@aiki-budo.nl">info@aiki-budo.nl</a>
+        </address>
+      </div>
+      <div><h4>Menu</h4><ul><li><a href="catalog.html">Webshop</a></li><li><a href="catalog.html">Merken</a></li><li><a href="#">Sporten</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Info</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Nieuws</a></li><li><a href="#">Sportscholen</a></li><li><a href="#">Vacatures</a></li><li><a href="#">Algemene voorwaarden</a></li><li><a href="#">Betaal- en verzendinformatie</a></li><li><a href="#">Retourinformatie</a></li><li><a href="#">Privacy- en cookieverklaring</a></li></ul></div>
+    </div>
+    <div class="ft-mark" id="mark" aria-hidden="true"><span class="o">Aiki-Budo Sport</span><span class="f">Aiki-Budo Sport</span></div>
+    <div class="ft-base"><span>© 2026 Aiki-Budo Sport</span><a href="#top" data-t="top">Terug naar boven ↑</a></div>
+  </div>
+</footer>
+
+<div class="badge">Demo redesign · Parallax Plates</div>
+<div class="toast" id="toast" role="status" aria-live="polite"><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 8.5l3 3 7-7"/></svg></i><p><small data-t="added">Toegevoegd aan je mand</small><b data-toast-nm></b></p></div>
+<div class="scrim" data-cart-close></div>
+<aside class="drawer deep" id="drawer" aria-label="Cart" aria-hidden="true">
+  <div class="dr-hd"><h2 class="hx" data-t="cart">Mand</h2><button class="dr-x" type="button" data-cart-close aria-label="Close"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 2l10 10M12 2 2 12"/></svg></button></div>
+  <ul class="dr-list" data-cart-list></ul>
+  <p class="dr-empty" data-cart-empty data-t="empty">Je mand is nog leeg.</p>
+  <div class="dr-ft"><div class="dr-sum"><span data-t="total">Totaal</span><b data-cart-sum>—</b></div><a class="btn btn-p" href="catalog.html" data-t="checkout">Verder winkelen</a></div>
+</aside>
+
+<script>
+(() => {
+  const H = document.documentElement;
+  H.classList.add("js");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!reduced) H.classList.add("tilt");
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  // UI strings follow brand.lang (content itself comes from the template data)
+  const L = {
+    nl: { cart: "Mand", ask: "Prijs op aanvraag", tilt: "Kantel", picks: "Uitgelicht", coll: "Collectie", allp: "Alle producten", cats: "Categorieën", browse: "Shop per", browse2: "categorie", top: "Terug naar boven ↑", added: "Toegevoegd aan je mand", empty: "Je mand is nog leeg.", total: "Totaal", checkout: "Verder winkelen", all: "Alles", sort: "Sorteer", rec: "Aanbevolen", plh: "Prijs oplopend", phl: "Prijs aflopend", az: "Naam A–Z", search: "Zoek producten…" },
+    en: { cart: "Cart", ask: "Price on request", tilt: "Tilt", picks: "Featured", coll: "Collection", allp: "All products", cats: "Categories", browse: "Shop by", browse2: "category", top: "Back to top ↑", added: "Added to your cart", empty: "Your cart is empty.", total: "Total", checkout: "Keep shopping", all: "All", sort: "Sort", rec: "Recommended", plh: "Price low–high", phl: "Price high–low", az: "Name A–Z", search: "Search products…" },
+    de: { cart: "Warenkorb", ask: "Preis auf Anfrage", tilt: "Kippen", picks: "Empfohlen", coll: "Kollektion", allp: "Alle Produkte", cats: "Kategorien", browse: "Shop nach", browse2: "Kategorie", top: "Nach oben ↑", added: "In den Warenkorb gelegt", empty: "Dein Warenkorb ist leer.", total: "Summe", checkout: "Weiter einkaufen", all: "Alle", sort: "Sortieren", rec: "Empfohlen", plh: "Preis aufsteigend", phl: "Preis absteigend", az: "Name A–Z", search: "Produkte suchen…" },
+  };
+  const lang = (H.lang || "nl").slice(0, 2).toLowerCase(), T = L[lang] || (lang === "nl" ? L.nl : L.en);
+  if (T !== L.nl) {
+    $$("[data-t]").forEach((el) => { const v = T[el.dataset.t]; if (v) el.textContent = v; });
+    $$("[data-t-ph]").forEach((el) => { const v = T[el.dataset.tPh]; if (v) { el.placeholder = v; el.setAttribute("aria-label", v); } });
+  }
+
+  // Header: hide on scroll down, show on scroll up; mobile menu
+  const hd = $("#hd"); let lastY = scrollY;
+  addEventListener("scroll", () => { const y = scrollY; hd.classList.toggle("is-up", y > 300 && y > lastY && !hd.classList.contains("open")); lastY = y; }, { passive: true });
+  const mb = $("[data-menu]");
+  mb?.addEventListener("click", () => { const o = hd.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
+
+  // Reveal
+  // Sweep reveals everything at or above the viewport bottom, so fast jumps never leave a section hidden
+  const rvs = $$(".rv");
+  if ("IntersectionObserver" in window && !reduced) {
+    const sweep = () => { const lim = innerHeight * 0.96; for (const el of rvs) if (!el.classList.contains("in") && el.getBoundingClientRect().top < lim) el.classList.add("in"); };
+    const io = new IntersectionObserver(sweep, { rootMargin: "0px 0px -4% 0px" });
+    rvs.forEach((el) => { const sib = [...el.parentElement.children].filter((c) => c.classList.contains("rv")); el.style.setProperty("--dl", (Math.max(0, sib.indexOf(el)) % 4) * 0.07 + "s"); io.observe(el); });
+    addEventListener("scroll", sweep, { passive: true }); addEventListener("resize", sweep); sweep();
+  } else rvs.forEach((el) => el.classList.add("in"));
+
+  // Springs (stiffness 170, damping 20): slightly underdamped, so release overshoots a touch
+  const K = 170, C = 20, live = new Set(); let raf = 0, last = 0;
+  const S = (v = 0) => ({ x: v, v: 0, t: v });
+  const step = (s, dt) => { const a = -K * (s.x - s.t) - C * s.v; s.v += a * dt; s.x += s.v * dt; return Math.abs(s.v) > 0.004 || Math.abs(s.x - s.t) > 0.004; };
+  const frame = (now) => {
+    const dt = Math.min(0.033, (now - last) / 1000 || 0.016); last = now;
+    for (const o of live) if (!o.tick(dt)) live.delete(o);
+    raf = live.size ? requestAnimationFrame(frame) : 0;
+  };
+  const wake = (o) => { live.add(o); if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); } };
+  const clamp = (v, a = 1) => Math.max(-a, Math.min(a, v));
+
+  // Plate tilt: rotateY ±max, rotateX ∓0.8·max, glare opposite the pointer
+  const plates = [];
+  function plate(el) {
+    const max = Number(el.dataset.tilt) || 10;
+    const o = { el, max, rx: S(), ry: S(), gx: S(50), gy: S(50), go: S(0) };
+    o.tick = (dt) => {
+      let a = false; for (const s of [o.rx, o.ry, o.gx, o.gy, o.go]) a = step(s, dt) || a;
+      el.style.transform = `perspective(900px) rotateX(${o.rx.x.toFixed(3)}deg) rotateY(${o.ry.x.toFixed(3)}deg)`;
+      el.style.setProperty("--gx", o.gx.x.toFixed(2) + "%"); el.style.setProperty("--gy", o.gy.x.toFixed(2) + "%"); el.style.setProperty("--go", Math.max(0, o.go.x).toFixed(3));
+      return a;
+    };
+    o.aim = (nx, ny, m = max) => { o.ry.t = nx * m; o.rx.t = -ny * m * 0.8; o.gx.t = 50 - nx * 55; o.gy.t = 50 - ny * 55; o.go.t = 0.25 + Math.min(1, Math.hypot(nx, ny)) * 0.75; wake(o); };
+    o.rest = () => { o.rx.t = o.ry.t = 0; o.gx.t = o.gy.t = 50; o.go.t = 0; wake(o); };
+    if (fine) {
+      el.addEventListener("pointermove", (e) => { if (gyro) return; const r = el.getBoundingClientRect(); o.aim(clamp(((e.clientX - r.left) / r.width) * 2 - 1), clamp(((e.clientY - r.top) / r.height) * 2 - 1)); });
+      el.addEventListener("pointerleave", () => { if (!gyro) o.rest(); });
+    }
+    plates.push(o); return o;
+  }
+  if (!reduced) $$("[data-tilt]").forEach(plate);
+  const seen = new Set();
+  if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => es.forEach((e) => { const o = plates.find((p) => p.el === e.target); if (o) e.isIntersecting ? seen.add(o) : seen.delete(o); })); plates.forEach((p) => io.observe(p.el)); }
+
+  // Hero stack: tilts with the pointer across the viewport; deeper plates travel less (--d per layer)
+  const stack = $("#stack");
+  const hero = stack && !reduced ? { mx: S(), my: S() } : null;
+  if (hero) {
+    hero.tick = (dt) => { const a = step(hero.mx, dt) | step(hero.my, dt); stack.style.setProperty("--mx", hero.mx.x.toFixed(4)); stack.style.setProperty("--my", hero.my.x.toFixed(4)); return a; };
+    if (fine) {
+      addEventListener("pointermove", (e) => { if (gyro || scrollY > innerHeight) return; hero.mx.t = (e.clientX / innerWidth) * 2 - 1; hero.my.t = (e.clientY / innerHeight) * 2 - 1; wake(hero); }, { passive: true });
+      document.addEventListener("pointerleave", () => { hero.mx.t = hero.my.t = 0; wake(hero); });
+    }
+  }
+
+  // Kantel: device orientation drives every visible plate and the hero stack, clamped to ±8°
+  let gyro = false, base = null;
+  const gbtn = $$("[data-gyro]");
+  if (!reduced && "DeviceOrientationEvent" in window && matchMedia("(hover: none)").matches) H.classList.add("gyro-ok");
+  const onOri = (e) => {
+    if (e.beta == null) return;
+    base ??= e.beta;
+    const nx = clamp((e.gamma || 0) / 30), ny = clamp((e.beta - base) / 30);
+    for (const o of seen) o.aim(nx, ny, 8);
+    if (hero) { hero.mx.t = nx; hero.my.t = ny; wake(hero); }
+  };
+  gbtn.forEach((b) => b.addEventListener("click", async () => {
+    if (gyro) { gyro = false; base = null; removeEventListener("deviceorientation", onOri); plates.forEach((o) => o.rest()); if (hero) { hero.mx.t = hero.my.t = 0; wake(hero); } gbtn.forEach((x) => x.setAttribute("aria-pressed", "false")); return; }
+    try { if (typeof DeviceOrientationEvent.requestPermission === "function" && (await DeviceOrientationEvent.requestPermission()) !== "granted") return; } catch { return; }
+    gyro = true; addEventListener("deviceorientation", onOri); gbtn.forEach((x) => x.setAttribute("aria-pressed", "true"));
+  }));
+
+  // Featured products cycle on the front plate of the hero stack
+  const feat = $("#feat"), fis = feat ? $$(".fi", feat) : [];
+  if (fis.length) {
+    let i = 0, timer = 0; const pad = (n) => String(n).padStart(2, "0");
+    const show = (n) => { i = (n + fis.length) % fis.length; fis.forEach((f, k) => f.classList.toggle("on", k === i)); const ix = $("[data-feat-i]", feat); if (ix) ix.textContent = pad(i + 1); };
+    const n = $("[data-feat-n]", feat); if (n) n.textContent = pad(fis.length);
+    show(0);
+    if (fis.length > 1) {
+      feat.classList.add("multi");
+      $("[data-feat-next]", feat)?.addEventListener("click", () => { show(i + 1); restart(); });
+      const restart = () => { clearInterval(timer); if (!reduced) timer = setInterval(() => show(i + 1), 4600); };
+      feat.addEventListener("pointerenter", () => clearInterval(timer)); feat.addEventListener("pointerleave", restart);
+      restart();
+    }
+  }
+
+  // Magnetic buttons
+  if (fine && !reduced) $$(".mag").forEach((b) => {
+    b.addEventListener("pointermove", (e) => { const r = b.getBoundingClientRect(); b.style.transition = "translate .15s ease-out"; b.style.translate = `${(e.clientX - r.left - r.width / 2) * 0.22}px ${(e.clientY - r.top - r.height / 2) * 0.3}px`; });
+    b.addEventListener("pointerleave", () => { b.style.transition = "translate .6s cubic-bezier(.34,1.56,.64,1)"; b.style.translate = "0 0"; });
+  });
+
+  // Category peek: an image plate follows the cursor over the index rows
+  const peek = $("#peek");
+  if (peek && fine && !reduced) {
+    const pimg = $("img", peek), p = { x: S(), y: S(), r: S() };
+    p.tick = (dt) => { const a = step(p.x, dt) | step(p.y, dt) | step(p.r, dt); peek.style.transform = `translate3d(${p.x.x - 100}px, ${p.y.x - 140}px, 0) rotate(${p.r.x}deg)`; return a; };
+    $$("[data-peek]").forEach((a) => {
+      a.addEventListener("pointerenter", (e) => { if (!a.dataset.peek) return; pimg.src = a.dataset.peek; if (!peek.classList.contains("on")) { p.x.x = p.x.t = e.clientX + 60; p.y.x = p.y.t = e.clientY; } peek.classList.add("on"); });
+      a.addEventListener("pointermove", (e) => { const nx = e.clientX + 140; p.r.t = clamp((nx - p.x.x) / 30, 12); p.x.t = nx; p.y.t = e.clientY; wake(p); });
+      a.addEventListener("pointerleave", () => { peek.classList.remove("on"); p.r.t = 0; });
+    });
+  }
+
+  // Scroll parallax for story image and gallery plates
+  const par = reduced ? [] : $$("[data-par]");
+  if (par.length) {
+    let tick = false;
+    const run = () => { tick = false; for (const el of par) { const r = el.getBoundingClientRect(); if (r.bottom < -100 || r.top > innerHeight + 100) continue; const c = (r.top + r.height / 2 - innerHeight / 2); el.style.transform = `translate3d(0, ${(c * Number(el.dataset.par)).toFixed(1)}px, 0)`; } };
+    addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true }); run();
+  }
+
+  // Footer wordmark: fit to width, fill follows the pointer
+  const mark = $("#mark");
+  if (mark) {
+    const fit = () => { if (innerWidth <= 760) { mark.style.fontSize = ""; return; } mark.style.fontSize = "100px"; const w = mark.querySelector(".o").getBoundingClientRect().width || 1; mark.style.fontSize = Math.min(260, Math.max(40, (mark.clientWidth / w) * 100 * 0.98)) + "px"; };
+    document.fonts?.ready.then(fit); fit(); addEventListener("resize", fit);
+    if (fine && !reduced) {
+      mark.style.setProperty("--fx", "18%");
+      const ft = mark.closest("footer");
+      ft.addEventListener("pointermove", (e) => { const r = mark.getBoundingClientRect(); mark.style.setProperty("--fx", Math.max(0, Math.min(100, ((e.clientX - r.left) / r.width) * 100)) + "%"); });
+      ft.addEventListener("pointerleave", () => mark.style.setProperty("--fx", "18%"));
+    }
+  }
+
+  // Cart: count bump, image flies to the cart, toast and drawer (kept for the session)
+  const KEY = "pp-cart:" + location.pathname.replace(/[^/]*$/, "");
+  let cart = []; try { cart = JSON.parse(sessionStorage.getItem(KEY) || "[]"); } catch {}
+  const num = (p) => { const m = String(p || "").replace(/[^\d,.]/g, ""); if (!m) return NaN; const s = /,\d{1,2}$/.test(m) ? m.replace(/\./g, "").replace(",", ".") : m.replace(/,/g, ""); return parseFloat(s); };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const cbtn = $(".cart-btn"), cn = $("[data-cart-n]"), list = $("[data-cart-list]"), empty = $("[data-cart-empty]"), sum = $("[data-cart-sum]");
+  function paint() {
+    cn.textContent = cart.length;
+    list.innerHTML = cart.map((it, k) => `<li><span class="dr-im">${it.img ? `<img src="${esc(it.img)}" alt="">` : ""}</span><span><span class="n">${esc(it.name)}</span><span class="p">${esc(it.price || T.ask)}</span></span><button class="dr-rm" type="button" data-rm="${k}" aria-label="×"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l8 8M9 1 1 9"/></svg></button></li>`).join("");
+    empty.hidden = cart.length > 0;
+    const tot = cart.reduce((a, it) => a + (num(it.price) || 0), 0);
+    sum.textContent = tot ? "€ " + tot.toLocaleString("nl-NL", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "—";
+    try { sessionStorage.setItem(KEY, JSON.stringify(cart)); } catch {}
+  }
+  paint();
+  const toast = $("#toast"); let tt = 0;
+  document.addEventListener("click", (e) => {
+    const add = e.target.closest("[data-add]");
+    if (add) {
+      e.preventDefault();
+      const host = add.closest("[data-name]"); const it = { name: host.dataset.name, price: host.dataset.price, img: host.dataset.img };
+      cart.push(it); paint();
+      const src = host.querySelector("img");
+      if (src && !reduced) {
+        const a = src.getBoundingClientRect(), b = cbtn.getBoundingClientRect(), f = document.createElement("div");
+        f.className = "fly"; f.style.cssText = `left:${a.left}px;top:${a.top}px;width:${a.width}px;height:${a.height}px`; f.innerHTML = `<img src="${esc(src.currentSrc || src.src)}" alt="">`; document.body.appendChild(f);
+        const dx = b.left + b.width / 2 - (a.left + a.width / 2), dy = b.top + b.height / 2 - (a.top + a.height / 2);
+        f.animate([{ transform: "translate(0,0) scale(1)", opacity: 1 }, { transform: `translate(${dx * 0.5}px, ${dy * 0.5 - 60}px) scale(.5) rotate(-8deg)`, opacity: 1, offset: 0.55 }, { transform: `translate(${dx}px, ${dy}px) scale(.08)`, opacity: 0.4 }], { duration: 760, easing: "cubic-bezier(.5,0,.3,1)" }).onfinish = () => f.remove();
+        setTimeout(() => { cbtn.classList.remove("bump"); void cbtn.offsetWidth; cbtn.classList.add("bump"); }, 700);
+      } else { cbtn.classList.remove("bump"); void cbtn.offsetWidth; cbtn.classList.add("bump"); }
+      add.classList.add("ok"); add.querySelector("svg").innerHTML = '<path d="M4.5 10.5l3.5 3.5 7.5-8"/>';
+      setTimeout(() => { add.classList.remove("ok"); add.querySelector("svg").innerHTML = '<path d="M10 4v12M4 10h12"/>'; }, 1400);
+      $("[data-toast-nm]").textContent = it.name; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove("on"), 2600);
+      return;
+    }
+    const rm = e.target.closest("[data-rm]");
+    if (rm) { cart.splice(Number(rm.dataset.rm), 1); paint(); return; }
+    if (e.target.closest("[data-cart-open]")) { document.body.classList.add("cart-open"); $("#drawer").setAttribute("aria-hidden", "false"); return; }
+    if (e.target.closest("[data-cart-close]")) { document.body.classList.remove("cart-open"); $("#drawer").setAttribute("aria-hidden", "true"); }
+  });
+  addEventListener("keydown", (e) => { if (e.key === "Escape") document.body.classList.remove("cart-open"); });
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"nl","count":"21 producten","products":[{"name":"Ronin Karate puzzelmat 100x100x2cm - Zwart/Grijs","tag":"","category":"Accessoires"},{"name":"Muay Dark Line Bokshandschoen Original - Zwart","tag":"","category":"Bokshandschoenen"},{"name":"Muay A'damXXX Bokshandschoen Premium - Zwart/Rood","tag":"","category":"Bokshandschoenen"},{"name":"Muay Legacy Bokshandschoen - wijnrood/zwart","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Bokshandschoen Challenger - zwart/beige","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Bokshandschoen Challenger - zwart/blauw","tag":"","category":"Bokshandschoenen"},{"name":"Hayabusa Bokshandschoen T3 LX - Crimson","tag":"","category":"Bokshandschoenen"},{"name":"Hayabusa Bokshandschoen T3 - Charcoal/Lime","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Fighter Bokshandschoen - Grijs/Zwart","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Bokshandschoen Jab - zwart","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Bokshandschoenen Kids Tiger-Line - zwart/rood","tag":"","category":"Bokshandschoenen"},{"name":"Ronin Punching Bokshandschoen - Zwart/Wit","tag":"","category":"Bokshandschoenen"},{"name":"Twins BGVL3 Bokshandschoen - Zwart","tag":"","category":"Bokshandschoenen"},{"name":"Adidas BHS Power 350 Training gloves wit","tag":"","category":"Bokshandschoenen"},{"name":"Muay Curved Coaching Mitt Lang met Hand per paar - zwart/grijs","tag":"Nieuw","category":"Pads & mitts"},{"name":"Muay Arm Striking Pad Leer per paar - zwart/grijs","tag":"Nieuw","category":"Pads & mitts"},{"name":"Nike Machomai 3.0 Boksschoen - zwart/wit","tag":"Nieuw","category":"Boksschoenen"},{"name":"Nike Hyper K.O. 3.0 - zwart/wit","tag":"Nieuw","category":"Boksschoenen"},{"name":"Nike Hyper K.O. 3.0 - crimson/grijs/zwart","tag":"Nieuw","category":"Boksschoenen"},{"name":"Fairtex Calf Kick Beschermers","tag":"Nieuw","category":"Accessoires"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{
+  "id": "parallax-plates",
+  "name": "Parallax Plates",
+  "sectors": [
+    "sports",
+    "travel",
+    "retail",
+    "lifestyle"
+  ],
+  "sample": "nacrasailing",
+  "stress": "aiki-budo",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793303091381
+    },
+    {
+      "step": "Rendering",
+      "at": 1793303787450
+    },
+    {
+      "step": "Critique",
+      "at": 1793303800595
+    },
+    {
+      "step": "Final render",
+      "at": 1793303930411
+    },
+    {
+      "step": "Done",
+      "at": 1793303943718
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793302018690,
+  "startedAt": 1793303091381,
+  "finishedAt": 1793303943718,
+  "model": "opus",
+  "costUsd": 3.3744037999999996,
+  "meta": {
+    "id": "parallax-plates",
+    "name": "Parallax Plates",
+    "scheme": "light",
+    "sectors": [
+      "sports",
+      "travel",
+      "retail",
+      "lifestyle"
+    ],
+    "mood": [
+      "athletic",
+      "crisp",
+      "tactile",
+      "layered depth"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary drives a duotone rhythm (deep sections at 28% primary in black, pale at 10% primary in white), tinted card plates, the hero backing plate, add buttons and the CTA plate; accent is only used for focus rings."
+  },
+  "score": {
+    "scoreBefore": 5.6,
+    "issues": [
+      "Scroll reveal only relied on IntersectionObserver per element: the whole 'Shop by category' section, story/gallery/quote/CTA and 4 of 6 mobile product cards stayed at opacity 0 (huge empty deep/pale blocks, catalog CTA missing)",
+      "'Added to your cart' toast sat permanently visible just under the fold (only translated, never hidden), overlapping USPs on desktop and the hero card on mobile",
+      "Product cards: name/price chip was a tall white slab almost the same colour as the white image pad, with a big empty gap between name and price; the four layers did not read as separate plates when flat",
+      "Price typography was a tiny grey mono line, no energy for an athletic shop",
+      "Scores: creativity 7, typography 6.5, layout & rhythm 5 (empty sections), polish 4.5, brand robustness 7.5, mobile 4.5, generic-ness 6.5"
+    ],
+    "fixed": [
+      "Reveal now sweeps on IO, scroll and resize, revealing every .rv element at or above the viewport bottom, so fast scrolls and screenshots never leave sections hidden; transitions shortened (both pages)",
+      "Toast is hidden with opacity/visibility until an item is added (both pages)",
+      "Chip redesigned as a dark brand slab (--deep) with a primary tab mark, overlapping the lower edge of the image pad: image, chip and add button now visibly stack as separate layers even without tilt",
+      "Price set in Kanit 800 italic in a light primary tint; strike and 'on request' tuned for the dark chip; hero featured card keeps its light-card colours"
+    ],
+    "scoreAfterEstimate": 7.2
+  },
+  "version": 1793303943718
+}
