@@ -1,0 +1,3 @@
+{ "id": "mosaic-resolve", "name": "Mosaic Resolve", "scheme": "dark", "sectors": ["retail","lifestyle","makers","culture"],
+  "mood": ["moody", "cinematic", "fashion-forward", "image-led"], "needsProductImages": true,
+  "notes": "Primary fills CTAs, the add-to-cart tab, cart count, active filter chip and the full CTA band, and tints the product-tile backdrops and fallback mosaics. Accent shows up in fallback mosaics and button hovers. Olive-grey and bone stay fixed." }

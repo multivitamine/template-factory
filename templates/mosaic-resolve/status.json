@@ -1,0 +1,64 @@
+{
+  "id": "mosaic-resolve",
+  "name": "Mosaic Resolve",
+  "sectors": [
+    "retail",
+    "lifestyle",
+    "makers",
+    "culture"
+  ],
+  "sample": "bohlt",
+  "stress": "droogijs365",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793303232550
+    },
+    {
+      "step": "Rendering",
+      "at": 1793303842548
+    },
+    {
+      "step": "Critique",
+      "at": 1793303855748
+    },
+    {
+      "step": "Final render",
+      "at": 1793303941701
+    },
+    {
+      "step": "Done",
+      "at": 1793303953819
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793302018690,
+  "startedAt": 1793303232550,
+  "finishedAt": 1793303953819,
+  "model": "opus",
+  "costUsd": 2.8492873999999997,
+  "meta": {
+    "id": "mosaic-resolve",
+    "name": "Mosaic Resolve",
+    "scheme": "dark",
+    "sectors": [
+      "retail",
+      "lifestyle",
+      "makers",
+      "culture"
+    ],
+    "mood": [
+      "moody",
+      "cinematic",
+      "fashion-forward",
+      "image-led"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary fills CTAs, the add-to-cart tab, cart count, active filter chip and the full CTA band, and tints the product-tile backdrops and fallback mosaics. Accent shows up in fallback mosaics and button hovers. Olive-grey and bone stay fixed."
+  },
+  "score": null,
+  "version": 1793303953819
+}

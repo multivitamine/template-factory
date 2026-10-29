@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Droogijs365 · Droogijs op maat, altijd bereikbaar</title>
+<meta name="description" content="Van 3 mm pellets tot 5 kilo blokken: Droogijs365 maakt en levert droogijs voor elke toepassing, met focus op kwaliteit en ontzorging van begin tot eind. Wij zijn altijd bereikbaar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600&family=Libre+Baskerville:ital@0;1&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#383B34; --c-surface:#2F312B; --c-text:#ECE6D8; --c-muted:#ABA796; --c-line:rgba(236,230,216,.18);
+  --c-primary:#CDB27A; --c-on-primary:#1C1D19; --c-accent:#8A6E4F;
+  --c-deep:#222420;
+  --hi:color-mix(in srgb,var(--c-primary) 45%,var(--c-text));
+  --tile:color-mix(in srgb,var(--c-primary) 10%,#DDD7C9);
+  --ff-d:'Syncopate','Arial Black',sans-serif; --ff-s:'Libre Baskerville',Georgia,serif; --ff-b:'Cabin','Helvetica Neue',sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1); --ease-io:cubic-bezier(.65,0,.35,1);
+  --pad:clamp(16px,4vw,56px); --hd:68px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 15px/1.6 var(--ff-b);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+::selection{background:var(--c-primary);color:var(--c-on-primary)}
+:focus-visible{outline:1px solid var(--hi);outline-offset:3px}
+.lbl{font:700 10.5px/1.2 var(--ff-d);letter-spacing:.3em;text-transform:uppercase}
+.serif{font-family:var(--ff-s);font-style:italic;font-weight:400}
+
+/* header */
+.hd{position:fixed;inset:0 0 auto;z-index:60;height:var(--hd);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;padding:0 var(--pad);transition:background .6s var(--ease),border-color .6s var(--ease);border-bottom:1px solid transparent}
+.hd::before{content:"";position:absolute;inset:0 0 -40px;background:linear-gradient(180deg,rgba(18,19,16,.55),transparent);pointer-events:none;transition:opacity .6s var(--ease);z-index:-1}
+.hd.solid{background:color-mix(in srgb,var(--c-deep) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-color:var(--c-line)}
+.hd.solid::before{opacity:0}
+.wm{display:flex;align-items:center;min-width:0;max-width:200px}
+.wm span{font:700 13px/1 var(--ff-d);letter-spacing:.42em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wm img{max-height:28px;max-width:160px;width:auto;object-fit:contain}
+.hd:not(.logo-light) .wm img,.ft:not(.logo-light) .wm img{filter:brightness(0) invert(.93)}
+.nav{display:flex;justify-content:center;gap:clamp(18px,2.2vw,34px);min-width:0}
+.nav a{font:700 10px/1 var(--ff-d);letter-spacing:.26em;text-transform:uppercase;white-space:nowrap;padding:8px 0;opacity:.82;background:linear-gradient(var(--hi),var(--hi)) left bottom/0 1px no-repeat;transition:opacity .3s,background-size .5s var(--ease)}
+.nav a:hover{opacity:1;background-size:100% 1px}
+.tools{display:flex;align-items:center;gap:10px;justify-self:end}
+.srch{position:relative;display:flex;align-items:center}
+.srch input{width:150px;height:38px;padding:0 34px 0 14px;background:rgba(236,230,216,.06);border:1px solid var(--c-line);border-radius:0;font-size:13px;transition:width .5s var(--ease),border-color .3s,background .3s}
+.srch input::placeholder{color:var(--c-muted)}
+.srch input:focus{width:220px;outline:0;border-color:var(--hi);background:rgba(236,230,216,.1)}
+.srch svg{position:absolute;right:12px;width:14px;height:14px;pointer-events:none;opacity:.7}
+.cart-btn{display:flex;align-items:center;gap:10px;height:38px;padding:0 6px 0 14px;border:1px solid var(--c-line);transition:border-color .3s,background .3s}
+.cart-btn:hover{border-color:var(--hi);background:rgba(236,230,216,.06)}
+.cc{display:grid;place-items:center;min-width:26px;height:26px;padding:0 6px;background:var(--c-primary);color:var(--c-on-primary);font:700 10px/1 var(--ff-d);letter-spacing:.05em}
+.cc.bump{animation:bump .6s var(--ease)}
+@keyframes bump{0%{transform:scale(1)}30%{transform:scale(1.45) rotate(-8deg)}100%{transform:scale(1)}}
+.menu-btn{display:none;width:38px;height:38px;border:1px solid var(--c-line);position:relative}
+.menu-btn i{position:absolute;left:11px;right:11px;height:1px;background:currentColor;transition:transform .4s var(--ease)}
+.menu-btn i:first-child{top:15px}.menu-btn i:last-child{top:22px}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.mnav{position:fixed;inset:0;z-index:55;background:var(--c-deep);padding:calc(var(--hd) + 32px) var(--pad) 40px;display:flex;flex-direction:column;gap:6px;opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+.mnav.open{opacity:1;visibility:visible}
+.mnav a{font:italic 400 clamp(30px,8vw,48px)/1.25 var(--ff-s);border-bottom:1px solid var(--c-line);padding:8px 0}
+@media (max-width:1180px){.nav{display:none}.menu-btn{display:block}.hd{grid-template-columns:1fr auto}}
+@media (max-width:640px){.srch{display:none}.cart-btn .lbl{display:none}.cart-btn{padding:0 6px}}
+
+/* buttons */
+.btn{--bg:var(--c-primary);--fg:var(--c-on-primary);position:relative;display:inline-flex;align-items:center;gap:14px;height:52px;padding:0 22px 0 26px;background:var(--bg);color:var(--fg);font:700 10.5px/1 var(--ff-d);letter-spacing:.24em;text-transform:uppercase;overflow:hidden;isolation:isolate;transition:transform .5s var(--ease)}
+.btn::after{content:"";position:absolute;inset:0;background:var(--c-text);transform:translateY(101%);transition:transform .55s var(--ease);z-index:-1}
+.btn:hover::after{transform:none}
+.btn:hover{color:var(--c-deep)}
+.btn svg{width:16px;height:16px;transition:transform .5s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn.ghost{--bg:transparent;--fg:var(--c-text);box-shadow:inset 0 0 0 1px rgba(236,230,216,.45)}
+
+/* mosaic frames */
+.mz{position:relative;overflow:hidden}
+.mz>canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.mz.mz-on>img{opacity:0}
+.mz:not(.mz-on)>canvas{visibility:hidden}
+.mz-err>img{display:none}
+
+/* hero */
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;background:var(--c-deep)}
+.hero-pin{position:relative;height:100%;overflow:hidden}
+.hero-media{position:absolute;inset:0;transform:scale(calc(1 + var(--p,0) * .06));transform-origin:30% 80%}
+.hero-media>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-media>img~img{display:none}
+.hero-fb{position:absolute;inset:0;background:
+  repeating-conic-gradient(from 0deg,color-mix(in srgb,var(--c-primary) 30%,var(--c-deep)) 0 25%,color-mix(in srgb,var(--c-accent) 35%,var(--c-deep)) 0 50%) 0 0/96px 96px}
+.hero-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(16,17,14,.35) 0%,transparent 26%,transparent 42%,rgba(16,17,14,.82) 100%),linear-gradient(90deg,rgba(16,17,14,.55),transparent 60%);opacity:calc(.85 + var(--p,0) * .4)}
+.hero-copy{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(28px,7vh,72px);max-width:min(64rem,calc(100% - 2 * var(--pad)));transform:translate3d(0,calc(var(--p,0) * -9vh),0)}
+.eb{display:flex;align-items:center;gap:12px;margin:0 0 22px;color:var(--c-text)}
+.eb i{width:10px;height:10px;background:var(--c-primary);box-shadow:12px 0 0 color-mix(in srgb,var(--c-primary) 50%,transparent),24px 0 0 color-mix(in srgb,var(--c-primary) 22%,transparent);margin-right:26px}
+.h1{margin:0;font:italic 400 clamp(44px,7.6vw,128px)/.98 var(--ff-s);letter-spacing:-.025em;text-wrap:balance;max-width:14ch}
+.h1.long{font-size:clamp(36px,5vw,84px);max-width:19ch}
+.h1 .acc{display:block;color:var(--hi);padding-left:clamp(0px,6vw,110px)}
+.hero-act{display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px 40px;margin-top:clamp(22px,4vh,40px);opacity:calc(1 - var(--p,0) * 1.6)}
+.hero-text{margin:0;max-width:34rem;color:color-mix(in srgb,var(--c-text) 82%,transparent);font-size:16px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.hero-top{position:absolute;top:calc(var(--hd) + 18px);right:var(--pad);display:flex;gap:24px;color:color-mix(in srgb,var(--c-text) 70%,transparent)}
+.ro{font-variant-numeric:tabular-nums}
+.cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:color-mix(in srgb,var(--c-text) 60%,transparent);font-size:9px;opacity:calc(1 - var(--p,0) * 4)}
+.cue::after{content:"";width:1px;height:38px;background:linear-gradient(var(--c-text),transparent);animation:cue 2.2s var(--ease-io) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.look{position:absolute;right:var(--pad);bottom:clamp(28px,7vh,72px);width:320px;padding:18px 18px 8px;background:color-mix(in srgb,var(--c-deep) 62%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid var(--c-line);opacity:calc(1 - var(--p,0) * 1.5)}
+.look>.lbl{margin:0 0 6px;font-size:9.5px;color:var(--c-muted);display:flex;justify-content:space-between}
+.look-i{display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--c-line)}
+.look-i:first-of-type{border-top:0}
+.look-i:nth-of-type(n+4){display:none}
+.look-t{width:56px;height:56px;background:var(--tile);overflow:hidden}
+.look-t img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.look-n{font-size:13px;font-weight:500;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.look-p{font-size:12px;color:var(--c-muted);margin-top:2px}
+.look-a{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--c-line);transition:background .3s,color .3s,border-color .3s}
+.look-a:hover{background:var(--c-primary);color:var(--c-on-primary);border-color:var(--c-primary)}
+.look-a svg{width:14px;height:14px}
+@media (max-width:1100px){.look{display:none}}
+@media (max-width:640px){.hero-top{display:none}.hero-text{font-size:15px}.btn{height:48px;padding:0 18px 0 20px}}
+
+/* bands */
+.band{padding:clamp(72px,10vw,150px) var(--pad);position:relative}
+.band.alt{background:var(--c-surface)}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-bottom:18px;margin-bottom:clamp(28px,4vw,52px);border-bottom:1px solid var(--c-line)}
+.sh .lbl{color:var(--c-muted);margin:0 0 14px}
+.sh h2{margin:0;font:italic 400 clamp(32px,4.6vw,72px)/1.02 var(--ff-s);letter-spacing:-.02em;max-width:18ch;text-wrap:balance}
+.more{display:inline-flex;align-items:center;gap:12px;padding:10px 0;color:var(--c-text)}
+.more b{font-weight:500;font-family:var(--ff-b);letter-spacing:0;text-transform:none;font-size:13px;color:var(--c-muted)}
+.more svg{width:16px;height:16px;transition:transform .5s var(--ease)}
+.more:hover svg{transform:translateX(5px)}
+
+/* usps */
+.usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-bottom:1px solid var(--c-line);background:var(--c-bg)}
+.usp{padding:clamp(28px,3.4vw,44px) var(--pad);border-left:1px solid var(--c-line);counter-increment:u}
+.usp:first-child{border-left:0}
+.usp::before{content:counter(u,decimal-leading-zero);display:block;font:700 10px/1 var(--ff-d);letter-spacing:.3em;color:var(--hi);margin-bottom:22px}
+.usp h3{margin:0 0 8px;font-size:16px;font-weight:500;line-height:1.35}
+.usp p{margin:0;color:var(--c-muted);font-size:14px;line-height:1.55}
+.usps{counter-reset:u}
+
+/* product grid */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(36px,4vw,64px) 2px}
+.home .grid>.card:nth-child(n+7){display:none}
+.card{position:relative;display:flex;flex-direction:column;min-width:0}
+.tw{position:relative}
+.tile{display:block;aspect-ratio:1/1;background:var(--tile)}
+.tile>img,.tile>canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;transition:transform 1.1s var(--ease)}
+.card:hover .tile>img,.card:hover .tile>canvas{transform:scale(1.035)}
+/* no-image fallback: a frozen coarse mosaic in the template's own olive tones */
+.fbk{position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px;font:italic 400 clamp(20px,2.2vw,30px)/1.1 var(--ff-s);color:var(--c-text);
+  background:linear-gradient(180deg,transparent 40%,rgba(16,17,14,.5)),repeating-conic-gradient(color-mix(in srgb,var(--c-primary) 14%,var(--c-surface)) 0 25%,var(--c-deep) 0 50%) 0 0/48px 48px}
+.tile:has(>img:not([style*="none"])) .fbk{visibility:hidden}
+.tag{position:absolute;top:12px;left:12px;z-index:2;padding:7px 9px;background:var(--c-deep);color:var(--c-text);font-size:9px;letter-spacing:.26em}
+.add{position:absolute;right:0;bottom:0;z-index:3;display:flex;align-items:center;height:46px;padding:0 15px;gap:0;background:var(--c-primary);color:var(--c-on-primary);font:700 9.5px/1 var(--ff-d);letter-spacing:.22em;text-transform:uppercase;transition:gap .5s var(--ease),transform .5s var(--ease),opacity .4s}
+.add span{max-width:0;overflow:hidden;white-space:nowrap;transition:max-width .5s var(--ease)}
+.add svg{width:16px;height:16px;flex:none;transition:transform .5s var(--ease)}
+.add:hover{gap:12px}.add:hover span{max-width:140px}
+.add.ok svg{transform:rotate(45deg)}
+@media (hover:hover) and (pointer:fine){.add{opacity:0;transform:translateY(10px)}.card:hover .add,.add:focus-visible{opacity:1;transform:none}}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline;margin-top:14px;padding:12px clamp(10px,1.4vw,20px) 0 0;border-top:1px solid color-mix(in srgb,var(--c-text) 45%,transparent)}
+.nm{font-weight:500;font-size:15px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .3s}
+.nm:hover{color:var(--hi)}
+.pr{font-weight:500;font-size:14px;white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.pr s{display:block;color:var(--c-muted);font-weight:400;font-size:12px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home .grid>.card:nth-child(n+5){display:none}}
+@media (max-width:520px){.row{grid-template-columns:1fr;gap:4px}.pr{text-align:left}.pr s{display:inline;margin-right:6px}.nm{font-size:14px}}
+
+/* categories */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(max(220px,calc(25% - 2px)),1fr));gap:2px}
+.cat{position:relative;display:block;aspect-ratio:3/4.4;overflow:hidden;background:var(--c-deep);isolation:isolate}
+.cat>img,.cat>canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.cat:hover>img,.cat:hover>canvas{transform:scale(1.05)}
+.cat .cfb{position:absolute;inset:0;background:repeating-conic-gradient(color-mix(in srgb,var(--c-primary) 34%,var(--c-deep)) 0 25%,color-mix(in srgb,var(--c-accent) 30%,var(--c-deep)) 0 50%) 0 0/72px 72px}
+.cat::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(16,17,14,.15),rgba(16,17,14,.55));transition:opacity .6s var(--ease)}
+.cat:hover::after{opacity:.55}
+.cat-n{position:absolute;z-index:2;left:0;right:0;top:50%;transform:translateY(-50%);padding:0 20px;text-align:center;font:italic 400 clamp(26px,2.8vw,44px)/1.05 var(--ff-s);letter-spacing:-.01em;text-shadow:0 2px 30px rgba(0,0,0,.35);overflow-wrap:break-word;hyphens:auto}
+.cat-i{position:absolute;z-index:2;left:18px;right:18px;bottom:18px;display:flex;justify-content:space-between;font-size:9.5px;opacity:.85}
+.cat-i i{font-style:normal;transition:transform .5s var(--ease)}
+@media (max-width:640px){.cats{grid-template-columns:1fr 1fr}.cat{aspect-ratio:3/4}.cat-n{font-size:clamp(19px,5.6vw,26px);padding:0 10px}.cat-i{left:12px;right:12px;bottom:12px}}
+.cat:hover .cat-i i{transform:translateX(5px)}
+
+/* story */
+.story{display:grid;gap:clamp(36px,6vw,110px);align-items:center}
+.story:has(.st-media){grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.st-media{aspect-ratio:4/5;background:var(--c-deep)}
+.st-media>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.st-copy .lbl{color:var(--c-muted);margin:0 0 22px}
+.st-copy h2{margin:0 0 26px;font:italic 400 clamp(32px,4.4vw,66px)/1.04 var(--ff-s);letter-spacing:-.02em;text-wrap:balance}
+.st-copy p{margin:0;max-width:36rem;color:color-mix(in srgb,var(--c-text) 80%,transparent);font-size:16px;line-height:1.7}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));margin-top:48px;border-top:1px solid var(--c-line)}
+.stat{padding:22px 18px 0 0}
+.stat b{display:block;font:italic 400 clamp(36px,4vw,58px)/1 var(--ff-s);color:var(--hi)}
+.stat span{display:block;margin-top:10px;font-size:9.5px;color:var(--c-muted)}
+@media (max-width:820px){.story:has(.st-media){grid-template-columns:1fr}}
+
+/* gallery */
+.gal{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(220px,26vw,400px);gap:2px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--pad));padding:0 var(--pad)}
+.gal::-webkit-scrollbar{display:none}
+.gal figure{margin:0;aspect-ratio:4/5;scroll-snap-align:start;background:var(--c-deep)}
+.gal figure>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* quote */
+.quote{max-width:62rem}
+.quote blockquote{margin:0;font:italic 400 clamp(26px,3.4vw,50px)/1.25 var(--ff-s);letter-spacing:-.01em;text-wrap:pretty}
+.quote blockquote::before{content:"\201C";display:block;font-size:2.2em;line-height:.6;color:var(--hi);margin-bottom:12px}
+.quote cite{display:block;margin-top:28px;font-style:normal;color:var(--c-muted)}
+
+/* cta */
+.cta{background:var(--c-primary);color:var(--c-on-primary);display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(32px,6vw,90px);align-items:end;overflow:hidden}
+.cta h2{margin:0;font:italic 400 clamp(40px,6.6vw,108px)/.98 var(--ff-s);letter-spacing:-.03em;text-wrap:balance}
+.cta p{margin:0 0 30px;font-size:16px;max-width:30rem;opacity:.82}
+.cta .btn{--bg:var(--c-on-primary);--fg:var(--c-primary)}
+.cta .btn::after{background:var(--c-accent)}
+.cta .btn:hover{color:var(--c-on-primary)}
+.tiles{position:absolute;right:0;top:0;display:grid;grid-template-columns:repeat(6,clamp(22px,3.4vw,48px));pointer-events:none;opacity:.9}
+.tiles span{aspect-ratio:1;background:var(--c-on-primary);opacity:var(--o,.1);animation:tw 4.8s var(--ease-io) infinite;animation-delay:calc(var(--d,0) * -1s)}
+@keyframes tw{0%,100%{opacity:var(--o,.1)}50%{opacity:calc(var(--o,.1) * .2)}}
+@media (max-width:820px){.cta{grid-template-columns:1fr}.tiles{opacity:.45}}
+
+/* footer */
+.ft{background:var(--c-deep);padding:clamp(64px,8vw,110px) var(--pad) 0;overflow:hidden}
+.ft-g{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid var(--c-line)}
+.ft-g h4{margin:0 0 18px;color:var(--c-muted);font-size:9.5px}
+.ft-g p{margin:0;font-size:15px;line-height:1.8}
+.ft-g a{transition:color .3s}
+.ft-g a:hover{color:var(--hi)}
+.ft-tag{font:italic 400 clamp(22px,2.4vw,32px)/1.25 var(--ff-s);max-width:22ch;margin:22px 0 0}
+.ft-links{columns:2;column-gap:24px}
+.ft-links a{display:block;font-size:14px;line-height:2;color:color-mix(in srgb,var(--c-text) 80%,transparent)}
+.fw-w{padding:clamp(24px,4vw,48px) 0 0;overflow:hidden}
+.fw{display:block;font:700 clamp(36px,11vw,190px)/.9 var(--ff-d);letter-spacing:.06em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--c-text) 40%,transparent);overflow-wrap:anywhere;transition:color .8s var(--ease)}
+.js .fw{white-space:nowrap;overflow-wrap:normal}
+.fw-w:hover .fw{color:color-mix(in srgb,var(--c-primary) 70%,transparent)}
+.ft-b{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:22px 0 72px;color:var(--c-muted);font-size:9.5px}
+@media (max-width:820px){.ft-g{grid-template-columns:1fr}}
+
+/* badge, cart, toast */
+.badge{position:fixed;left:14px;bottom:14px;z-index:70;padding:8px 11px;background:color-mix(in srgb,var(--c-deep) 90%,transparent);border:1px solid var(--c-line);color:var(--c-muted);font-size:8.5px;letter-spacing:.22em;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(14,15,12,.55);opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:81;width:min(420px,100vw);background:var(--c-deep);border-left:1px solid var(--c-line);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .7s var(--ease)}
+.cart-open .scrim{opacity:1;visibility:visible}
+.cart-open .drawer{transform:none}
+.dr-h{display:flex;justify-content:space-between;align-items:center;height:var(--hd);padding:0 24px;border-bottom:1px solid var(--c-line)}
+.dr-x{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--c-line)}
+.dr-x svg{width:14px;height:14px}
+.dr-l{flex:1;overflow:auto;padding:8px 24px}
+.dr-e{padding:48px 0;font:italic 400 22px/1.3 var(--ff-s);color:var(--c-muted)}
+.ci{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--c-line);animation:ciin .6s var(--ease)}
+@keyframes ciin{from{opacity:0;transform:translateX(20px)}}
+.ci-t{width:64px;height:64px;background:var(--tile);overflow:hidden}
+.ci-t img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.ci-n{font-size:14px;font-weight:500;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ci-p{font-size:13px;color:var(--c-muted);margin-top:4px}
+.ci-q{display:flex;align-items:center;border:1px solid var(--c-line)}
+.ci-q button{width:28px;height:30px}
+.ci-q span{min-width:20px;text-align:center;font-size:13px}
+.dr-f{padding:20px 24px 28px;border-top:1px solid var(--c-line)}
+.dr-t{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+.dr-t b{font:italic 400 28px/1 var(--ff-s)}
+.dr-f .btn{width:100%;justify-content:space-between}
+.toast{position:fixed;right:var(--pad);bottom:18px;z-index:75;display:flex;align-items:center;gap:14px;padding:10px 18px 10px 10px;background:var(--c-text);color:var(--c-deep);transform:translateY(140%);visibility:hidden;transition:transform .6s var(--ease),visibility .6s;max-width:min(380px,calc(100vw - 32px))}
+.toast.show{transform:none;visibility:visible}
+.toast i{width:40px;height:40px;flex:none;background:var(--c-primary);display:grid;place-items:center;color:var(--c-on-primary)}
+.toast i svg{width:16px;height:16px}
+.toast span{font-size:13px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toast b{display:block;font:700 9px/1.4 var(--ff-d);letter-spacing:.24em;text-transform:uppercase}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.hero-media,.hero-copy{transform:none!important}}
+</style>
+<style id="brand-tokens">:root{--c-primary:#113BFB;--c-on-primary:#ffffff;--c-accent:#00051A}</style></head>
+<body class="home" data-brand="Droogijs365">
+
+<header class="hd logo-light" data-hd>
+  <a class="wm" href="template.html" aria-label="Droogijs365"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-droogijs365.svg" alt="Droogijs365"></a>
+  <nav class="nav" aria-label="Hoofdmenu"><a href="#">Over ons</a><a href="#">Toepassingen</a><a href="catalog.html">Producten</a><a href="#">Containers</a><a href="#">Contact</a></nav>
+  <div class="tools">
+    <form class="srch" action="catalog.html" role="search"><input type="search" name="q" data-shop-search placeholder="Zoek" aria-label="Zoek producten"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="5"/><path d="m11 11 4 4"/></svg></form>
+    <button class="cart-btn" type="button" data-cart-open aria-label="Winkelwagen"><span class="lbl">Tas</span><b class="cc" data-cc>0</b></button>
+    <button class="menu-btn" type="button" data-menu aria-expanded="false" aria-label="Menu"><i></i><i></i></button>
+  </div>
+</header>
+<div class="mnav" data-mnav><a href="#">Over ons</a><a href="#">Toepassingen</a><a href="catalog.html">Producten</a><a href="#">Containers</a><a href="#">Contact</a></div>
+
+<main>
+<section class="hero" data-hero>
+  <div class="hero-pin">
+    <div class="hero-media mz" data-hero-media>
+      <div class="hero-fb" aria-hidden="true"></div>
+      <img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;heroslide.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="Droogijs van de producent," fetchpriority="high" onerror="this.style.display='none'">
+      
+    </div>
+    <div class="hero-shade"></div>
+    <div class="hero-top lbl"><span class="ro" data-ro>Cel 01 px</span><span>© 2026</span></div>
+    <div class="hero-copy">
+      <p class="lbl eb"><i></i>Producent van droogijs</p>
+      <h1 class="h1"><span>Droogijs van de producent,</span> <span class="acc">snel en betrouwbaar geleverd</span></h1>
+      <div class="hero-act">
+        <p class="hero-text">Van 3 mm pellets tot 5 kilo blokken: Droogijs365 maakt en levert droogijs voor elke toepassing, met focus op kwaliteit en ontzorging van begin tot eind. Wij zijn altijd bereikbaar.</p>
+        <div class="btns">
+          <a class="btn mag" href="catalog.html">Bekijk producten<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a>
+          <a class="btn ghost mag" href="#cta">Offerte opvragen</a>
+        </div>
+      </div>
+    </div>
+    <aside class="look" aria-label="Uitgelicht">
+      <p class="lbl"><span>Shop de look</span><span>6 producten</span></p>
+      <div class="look-i">
+        <a class="look-t" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+        <div><a class="look-n" href="#">Droogijs pellets 3 mm</a></div>
+        <button class="look-a" type="button" data-add data-name="Droogijs pellets 3 mm" data-price="" data-img="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" aria-label="Voeg Droogijs pellets 3 mm toe"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2v12M2 8h12"/></svg></button>
+      </div><div class="look-i">
+        <a class="look-t" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+        <div><a class="look-n" href="#">Droogijs pellets 10 mm</a></div>
+        <button class="look-a" type="button" data-add data-name="Droogijs pellets 10 mm" data-price="" data-img="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" aria-label="Voeg Droogijs pellets 10 mm toe"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2v12M2 8h12"/></svg></button>
+      </div><div class="look-i">
+        <a class="look-t" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="" loading="lazy" onerror="this.style.display='none'"></a>
+        <div><a class="look-n" href="#">Droogijs pellets 16 mm</a></div>
+        <button class="look-a" type="button" data-add data-name="Droogijs pellets 16 mm" data-price="" data-img="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" aria-label="Voeg Droogijs pellets 16 mm toe"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2v12M2 8h12"/></svg></button>
+      </div><div class="look-i">
+        <a class="look-t" href="#" tabindex="-1"></a>
+        <div><a class="look-n" href="#">Droogijsschijven 500 gram</a></div>
+        <button class="look-a" type="button" data-add data-name="Droogijsschijven 500 gram" data-price="" data-img="" aria-label="Voeg Droogijsschijven 500 gram toe"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2v12M2 8h12"/></svg></button>
+      </div>
+    </aside>
+    <div class="cue lbl" aria-hidden="true">Scroll</div>
+  </div>
+</section>
+
+<section class="usps" aria-label="Voordelen"><div class="usp"><h3>Altijd bereikbaar</h3><p>Je kunt dag en nacht op ons rekenen, ook als het snel moet.</p></div><div class="usp"><h3>Eigen productie</h3><p>Wij produceren zelf droogijs, dus kwaliteit en levering houden we in eigen hand.</p></div><div class="usp"><h3>Voor elke branche</h3><p>Zes toepassingsgebieden, van medisch en farmaceutisch tot horeca en evenementen.</p></div><div class="usp"><h3>Ontzorging van A tot Z</h3><p>Van advies en product tot levering: wij regelen het hele traject voor je.</p></div></section>
+
+<section class="band" id="shop">
+  <div class="sh">
+    <div><p class="lbl">Collectie</p><h2>Onze droogijsproducten</h2></div>
+    <a class="more lbl" href="catalog.html">Bekijk alles <b>6 producten</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a>
+  </div>
+  <div class="grid">
+    <article data-shop-item="0" class="card">
+      <div class="tw">
+        <a class="tile mz" href="#" aria-label="Droogijs pellets 3 mm"><span class="fbk" aria-hidden="true">Droogijs pellets 3 mm</span><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="Droogijs pellets 3 mm" loading="lazy" onerror="this.style.display='none'"></a>
+        <span class="tag lbl">Pellets</span>
+        <button class="add" type="button" data-add data-name="Droogijs pellets 3 mm" data-price="" data-img="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" aria-label="Voeg Droogijs pellets 3 mm toe aan winkelwagen"><span>Voeg toe</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/></svg></button>
+      </div>
+      <div class="row"><a class="nm" href="#">Droogijs pellets 3 mm</a><span class="pr"></span></div>
+    </article><article data-shop-item="1" class="card">
+      <div class="tw">
+        <a class="tile mz" href="#" aria-label="Droogijs pellets 10 mm"><span class="fbk" aria-hidden="true">Droogijs pellets 10 mm</span><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="Droogijs pellets 10 mm" loading="lazy" onerror="this.style.display='none'"></a>
+        <span class="tag lbl">Pellets</span>
+        <button class="add" type="button" data-add data-name="Droogijs pellets 10 mm" data-price="" data-img="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" aria-label="Voeg Droogijs pellets 10 mm toe aan winkelwagen"><span>Voeg toe</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/></svg></button>
+      </div>
+      <div class="row"><a class="nm" href="#">Droogijs pellets 10 mm</a><span class="pr"></span></div>
+    </article><article data-shop-item="2" class="card">
+      <div class="tw">
+        <a class="tile mz" href="#" aria-label="Droogijs pellets 16 mm"><span class="fbk" aria-hidden="true">Droogijs pellets 16 mm</span><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="Droogijs pellets 16 mm" loading="lazy" onerror="this.style.display='none'"></a>
+        <span class="tag lbl">Pellets</span>
+        <button class="add" type="button" data-add data-name="Droogijs pellets 16 mm" data-price="" data-img="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" aria-label="Voeg Droogijs pellets 16 mm toe aan winkelwagen"><span>Voeg toe</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/></svg></button>
+      </div>
+      <div class="row"><a class="nm" href="#">Droogijs pellets 16 mm</a><span class="pr"></span></div>
+    </article><article data-shop-item="3" class="card">
+      <div class="tw">
+        <a class="tile mz" href="#" aria-label="Droogijsschijven 500 gram"><span class="fbk" aria-hidden="true">Droogijsschijven 500 gram</span></a>
+        <span class="tag lbl">Schijven</span>
+        <button class="add" type="button" data-add data-name="Droogijsschijven 500 gram" data-price="" data-img="" aria-label="Voeg Droogijsschijven 500 gram toe aan winkelwagen"><span>Voeg toe</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/></svg></button>
+      </div>
+      <div class="row"><a class="nm" href="#">Droogijsschijven 500 gram</a><span class="pr"></span></div>
+    </article><article data-shop-item="4" class="card">
+      <div class="tw">
+        <a class="tile mz" href="#" aria-label="Droogijsschijven 700 gram"><span class="fbk" aria-hidden="true">Droogijsschijven 700 gram</span></a>
+        <span class="tag lbl">Schijven</span>
+        <button class="add" type="button" data-add data-name="Droogijsschijven 700 gram" data-price="" data-img="" aria-label="Voeg Droogijsschijven 700 gram toe aan winkelwagen"><span>Voeg toe</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/></svg></button>
+      </div>
+      <div class="row"><a class="nm" href="#">Droogijsschijven 700 gram</a><span class="pr"></span></div>
+    </article><article data-shop-item="5" class="card">
+      <div class="tw">
+        <a class="tile mz" href="#" aria-label="Droogijsblok 5 kilo"><span class="fbk" aria-hidden="true">Droogijsblok 5 kilo</span></a>
+        <span class="tag lbl">Blokken</span>
+        <button class="add" type="button" data-add data-name="Droogijsblok 5 kilo" data-price="" data-img="" aria-label="Voeg Droogijsblok 5 kilo toe aan winkelwagen"><span>Voeg toe</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/></svg></button>
+      </div>
+      <div class="row"><a class="nm" href="#">Droogijsblok 5 kilo</a><span class="pr"></span></div>
+    </article>
+  </div>
+</section>
+
+<section class="band alt" id="categorieen">
+  <div class="sh"><div><p class="lbl">Categorieën</p></div><a class="more lbl" href="catalog.html">Alle producten<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a></div>
+  <div class="cats">
+    <a class="cat mz" href="catalog.html"><span class="cfb" aria-hidden="true"></span><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;medisch-en-farmaceutisch.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;443" alt="" loading="lazy" onerror="this.style.display='none'"><span class="cat-n">Medisch &amp; Farmaceutisch</span><span class="cat-i lbl"><span>Shop</span><i>→</i></span></a><a class="cat mz" href="catalog.html"><span class="cfb" aria-hidden="true"></span><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;voedselindustrie.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;443" alt="" loading="lazy" onerror="this.style.display='none'"><span class="cat-n">Voedselindustrie</span><span class="cat-i lbl"><span>Shop</span><i>→</i></span></a><a class="cat mz" href="catalog.html"><span class="cfb" aria-hidden="true"></span><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;transport.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;443" alt="" loading="lazy" onerror="this.style.display='none'"><span class="cat-n">Transport</span><span class="cat-i lbl"><span>Shop</span><i>→</i></span></a><a class="cat mz" href="catalog.html"><span class="cfb" aria-hidden="true"></span><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;industrieel-reinigen.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;380" alt="" loading="lazy" onerror="this.style.display='none'"><span class="cat-n">Industrieel reinigen</span><span class="cat-i lbl"><span>Shop</span><i>→</i></span></a><a class="cat mz" href="catalog.html"><span class="cfb" aria-hidden="true"></span><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;evenementenindustrie.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;380" alt="" loading="lazy" onerror="this.style.display='none'"><span class="cat-n">Evenementenindustrie</span><span class="cat-i lbl"><span>Shop</span><i>→</i></span></a><a class="cat mz" href="catalog.html"><span class="cfb" aria-hidden="true"></span><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;horeca-slide.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;379" alt="" loading="lazy" onerror="this.style.display='none'"><span class="cat-n">Horeca</span><span class="cat-i lbl"><span>Shop</span><i>→</i></span></a>
+  </div>
+</section>
+
+<section class="band" id="verhaal">
+  <div class="story">
+    <div class="st-media mz"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="" loading="lazy" onerror="this.style.display='none'"></div>
+    <div class="st-copy">
+      <p class="lbl">Over Droogijs365</p>
+      <h2>Jouw partner in droogijsoplossingen</h2>
+      <p>Droogijs365 is producent en partner voor bedrijven die op droogijs rekenen. Kwaliteit, professionaliteit en klanttevredenheid staan voorop, en we zijn altijd bereikbaar. Benieuwd wat wij voor jou kunnen betekenen? Neem contact met ons op.</p>
+      <div class="stats"><div class="stat"><b>6</b><span class="lbl">toepassingsgebieden</span></div><div class="stat"><b>3</b><span class="lbl">pelletformaten</span></div><div class="stat"><b>3</b><span class="lbl">soorten schijven en blokken</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" aria-label="Galerij" style="padding-top:clamp(48px,6vw,90px);padding-bottom:clamp(48px,6vw,90px)">
+  <div class="gal"><figure class="mz"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;medisch-en-farmaceutisch.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;443" alt="" loading="lazy" onerror="this.style.display='none'"></figure><figure class="mz"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;voedselindustrie.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;443" alt="" loading="lazy" onerror="this.style.display='none'"></figure><figure class="mz"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;transport.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;443" alt="" loading="lazy" onerror="this.style.display='none'"></figure><figure class="mz"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;industrieel-reinigen.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;380" alt="" loading="lazy" onerror="this.style.display='none'"></figure><figure class="mz"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;evenementenindustrie.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;380" alt="" loading="lazy" onerror="this.style.display='none'"></figure><figure class="mz"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;horeca-slide.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;379" alt="" loading="lazy" onerror="this.style.display='none'"></figure></div>
+</section>
+
+
+
+<section class="band cta" id="cta">
+  <div class="tiles" aria-hidden="true"><span style="--o:.14;--d:0"></span><span style="--o:.06;--d:1.2"></span><span style="--o:.22;--d:2.1"></span><span style="--o:0;--d:0"></span><span style="--o:.1;--d:3"></span><span style="--o:.3;--d:.6"></span><span style="--o:0"></span><span style="--o:.12;--d:2.6"></span><span style="--o:.05;--d:.3"></span><span style="--o:.18;--d:3.6"></span><span style="--o:.08;--d:1.5"></span><span style="--o:.2;--d:4"></span><span style="--o:0"></span><span style="--o:0"></span><span style="--o:.1;--d:2.2"></span><span style="--o:.04;--d:.9"></span><span style="--o:.16;--d:3.1"></span><span style="--o:.07;--d:1.8"></span><span style="--o:0"></span><span style="--o:0"></span><span style="--o:0"></span><span style="--o:.06;--d:2.8"></span><span style="--o:0"></span><span style="--o:.12;--d:.4"></span></div>
+  <h2>Droogijs nodig? Vraag direct een offerte aan</h2>
+  <div><p>Vertel ons wat je nodig hebt en wij denken met je mee. Bel 0294 300 010 of stuur een bericht.</p><a class="btn mag" href="#">Offerte opvragen<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a></div>
+</section>
+</main>
+
+<footer class="ft logo-light" id="contact">
+  <div class="ft-g">
+    <div>
+      <a class="wm" href="template.html"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-droogijs365.svg" alt="Droogijs365"></a>
+      <p class="ft-tag">Droogijs op maat, altijd bereikbaar</p>
+    </div>
+    <div>
+      <h4 class="lbl">Contact</h4>
+      <p>Droogijs365 B.V., Tokyostraat 6, 1175 RB Lijnden</p>
+      <p><a href="tel:0294 300 010">0294 300 010</a></p>
+      <p><a href="mailto:info@droogijs365.nl">info@droogijs365.nl</a></p>
+    </div>
+    <div>
+      <h4 class="lbl">Service</h4>
+      <div class="ft-links"><a href="#">Over ons</a><a href="#">Toepassingen</a><a href="catalog.html">Producten</a><a href="#">Wat is droogijs?</a><a href="#">Duurzaamheid</a><a href="#">Algemene voorwaarden</a><a href="#">Privacyverklaring</a><a href="#">Cookieverklaring</a></div>
+    </div>
+  </div>
+  <div class="fw-w"><span class="fw" data-fit>Droogijs365</span></div>
+  <div class="ft-b lbl"><span>© 2026 Droogijs365</span><a href="#top" data-top>Terug naar boven ↑</a></div>
+</footer>
+
+<div class="badge lbl">Demo redesign · Mosaic Resolve</div>
+
+<div class="scrim" data-cart-close></div>
+<aside class="drawer" aria-label="Winkelwagen" data-drawer>
+  <div class="dr-h"><span class="lbl">Winkelwagen <span data-cc-t>(0)</span></span><button class="dr-x" type="button" data-cart-close aria-label="Sluiten"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 2 12 12M14 2 2 14"/></svg></button></div>
+  <div class="dr-l" data-cart-list><p class="dr-e">Je winkelwagen is nog leeg.</p></div>
+  <div class="dr-f"><div class="dr-t"><span class="lbl">Totaal</span><b data-cart-total>€ 0,00</b></div><a class="btn" href="#">Afrekenen<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a></div>
+</aside>
+<div class="toast" data-toast role="status" aria-live="polite"><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m2 8 4 4 8-8"/></svg></i><span><b>Toegevoegd</b><span data-toast-t></span></span></div>
+
+<script>
+(() => {
+  const d = document, root = d.documentElement;
+  root.classList.add('js');
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const HOVER = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const SEQ = [48, 24, 12, 6, 3, 1];
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const frame = () => new Promise((r) => requestAnimationFrame(() => r()));
+
+  /* header + menu */
+  const hd = d.querySelector('[data-hd]');
+  const isCat = d.body.classList.contains('pg-cat');
+  const solid = () => hd.classList.toggle('solid', isCat || scrollY > innerHeight * 0.85);
+  solid(); addEventListener('scroll', solid, { passive: true });
+  const mb = d.querySelector('[data-menu]'), mn = d.querySelector('[data-mnav]');
+  mb?.addEventListener('click', () => { const o = mn.classList.toggle('open'); mb.setAttribute('aria-expanded', o); });
+  mn?.addEventListener('click', (e) => { if (e.target.closest('a')) { mn.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); } });
+
+  /* mosaic engine: downscale with smoothing (each cell averages its region), upscale without. Never reads pixels, so CORS is fine. */
+  class Mz {
+    constructor(f, img, dprMax = 2) {
+      this.f = f; this.img = img; this.dprMax = dprMax; this.lv = 48; this.tok = 0; this.cache = new Map();
+      this.c = d.createElement('canvas'); this.c.setAttribute('aria-hidden', 'true'); this.x = this.c.getContext('2d');
+      f.appendChild(this.c);
+      const ok = () => { if (!img.naturalWidth) return fail(); this.ready = true; this.show(); this.onready && this.onready(); };
+      const fail = () => { this.c.remove(); f.classList.add('mz-err'); this.dead = true; };
+      if (img.complete && img.naturalWidth) ok();
+      else { img.addEventListener('load', ok, { once: true }); img.addEventListener('error', fail, { once: true }); }
+    }
+    fit() {
+      const r = this.f.getBoundingClientRect(), w = r.width, h = r.height;
+      if (!w || !h) return false;
+      const dpr = Math.min(devicePixelRatio || 1, this.dprMax);
+      if (w === this.w && h === this.h && dpr === this.dpr) return true;
+      Object.assign(this, { w, h, dpr }); this.cache.clear();
+      this.c.width = Math.round(w * dpr); this.c.height = Math.round(h * dpr);
+      const iw = this.img.naturalWidth, ih = this.img.naturalHeight, fr = w / h;
+      // object-fit: cover crop in source pixels
+      this.crop = iw / ih > fr ? [(iw - ih * fr) / 2, 0, ih * fr, ih] : [0, (ih - iw / fr) / 2, iw, iw / fr];
+      return true;
+    }
+    show() { if (this.ready && this.fit()) { this.draw(this.lv); this.f.classList.add('mz-on'); return true; } return false; }
+    small(s) {
+      let sc = this.cache.get(s);
+      if (sc) return sc;
+      sc = d.createElement('canvas'); sc.width = Math.max(1, Math.ceil(this.w / s)); sc.height = Math.max(1, Math.ceil(this.h / s));
+      const x = sc.getContext('2d'); x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
+      x.drawImage(this.img, ...this.crop, 0, 0, this.w / s, this.h / s);
+      this.cache.set(s, sc); return sc;
+    }
+    paint(s) {
+      const X = this.x;
+      if (s <= 1) { X.imageSmoothingEnabled = true; X.imageSmoothingQuality = 'high'; X.drawImage(this.img, ...this.crop, 0, 0, this.c.width, this.c.height); return; }
+      const sc = this.small(s), k = s * this.dpr;
+      X.imageSmoothingEnabled = false; X.drawImage(sc, 0, 0, sc.width, sc.height, 0, 0, sc.width * k, sc.height * k);
+    }
+    draw(s) { if (!this.w) return; this.x.clearRect(0, 0, this.c.width, this.c.height); this.paint(s); this.lv = s; }
+    async play(seq, iv, delay = 0) {
+      const t = ++this.tok;
+      if (delay) await sleep(delay);
+      for (let i = 0; i < seq.length; i++) {
+        if (t !== this.tok) return false;
+        this.draw(seq[i]);
+        if (i < seq.length - 1) await sleep(iv);
+      }
+      return true;
+    }
+  }
+
+  const all = [];
+  let slot = 0;
+  const reveal = (m) => {
+    if (m.done || m.dead) return;
+    m.done = true;
+    const now = performance.now(), delay = Math.max(0, slot - now);
+    slot = now + delay + 70;
+    m.play(SEQ, 80, delay);
+  };
+  const io = !RM && 'IntersectionObserver' in window ? new IntersectionObserver((es) => {
+    for (const e of es) if (e.isIntersecting) { const m = e.target._mz; io.unobserve(e.target); m.want = true; if (m.ready) reveal(m); }
+  }, { threshold: 0.3 }) : null;
+  if (io) d.querySelectorAll('.mz').forEach((f) => {
+    if (f.hasAttribute('data-hero-media')) return;
+    const img = f.querySelector('img');
+    if (!img) return;
+    const m = new Mz(f, img);
+    m.onready = () => { if (m.want) reveal(m); };
+    f._mz = m; all.push(m); io.observe(f);
+  });
+  // Cards revealed by the shop script (search) were display:none when we sized them.
+  addEventListener('scroll', () => { for (const m of all) if (m.ready && !m.f.classList.contains('mz-on') && m.f.offsetParent) m.show(); }, { passive: true });
+
+  /* hero: scroll-scrubbed cell size, intro wave, hover resolve wave */
+  const hero = d.querySelector('[data-hero]'), hm = d.querySelector('[data-hero-media]'), ro = d.querySelector('[data-ro]');
+  let H = null, wave = null, raf = 0, base = 1, lastEnd = 0;
+  const prog = () => Math.min(1, Math.max(0, scrollY / innerHeight));
+  const heroFrame = (now) => {
+    raf = 0;
+    if (!H || !H.w) return;
+    base = Math.max(1, Math.round(1 + 39 * prog()));
+    if (!wave) { if (H.lv !== base) H.draw(base); return; }
+    const X = H.x, k = H.dpr, t = now - wave.t0, V = wave.v, cx = wave.x * k, cy = wave.y * k, TAU = Math.PI * 2;
+    X.clearRect(0, 0, H.c.width, H.c.height);
+    H.paint(wave.intro ? 48 : base);
+    for (let i = 0; i < SEQ.length - 1; i++) {
+      const ro2 = (t - i * 80) * V, ri = Math.max(0, (t - (i + 1) * 80) * V);
+      if (ro2 <= 0 || ri > wave.max) continue;
+      const s = Math.max(SEQ[i], base);
+      X.save(); X.beginPath(); X.arc(cx, cy, ro2 * k, 0, TAU);
+      if (ri > 0) { X.moveTo(cx + ri * k, cy); X.arc(cx, cy, ri * k, 0, TAU, true); }
+      X.clip(); H.paint(s); X.restore();
+    }
+    const rc = (t - (SEQ.length - 1) * 80) * V;
+    if (wave.intro && rc > 0) { X.save(); X.beginPath(); X.arc(cx, cy, rc * k, 0, TAU); X.clip(); H.paint(base); X.restore(); }
+    H.lv = -1;
+    if (rc > wave.max) { wave = null; lastEnd = now; H.draw(base); return; }
+    raf = requestAnimationFrame(heroFrame);
+  };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(heroFrame); };
+  const startWave = (x, y, intro) => {
+    const w = H.w, h = H.h;
+    wave = { x, y, intro, v: intro ? 2.4 : 1.5, t0: performance.now(), max: Math.hypot(Math.max(x, w - x), Math.max(y, h - y)) + 10 };
+    kick();
+  };
+  if (hm && hm.querySelector('img') && !RM) {
+    H = new Mz(hm, hm.querySelector('img'), 1.5);
+    const go = () => startWave(H.w * 0.12, H.h * 0.82, true);
+    if (H.ready) go(); else H.onready = go;
+    if (HOVER) hero.querySelector('.hero-pin').addEventListener('pointermove', (e) => {
+      if (!H.ready || wave || base > 3 || performance.now() - lastEnd < 300 || e.target.closest('a,button,.look,.hero-copy')) return;
+      const r = hm.getBoundingClientRect(), c = 48;
+      // start from the centre of the pointer's cell
+      startWave((Math.floor((e.clientX - r.left) / c) + 0.5) * c, (Math.floor((e.clientY - r.top) / c) + 0.5) * c, false);
+    });
+  }
+  if (hero) {
+    const onScroll = () => {
+      const p = prog();
+      hero.style.setProperty('--p', RM ? 0 : p.toFixed(4));
+      if (ro) ro.textContent = 'Cel ' + String(Math.max(1, Math.round(1 + 39 * p))).padStart(2, '0') + ' px';
+      kick();
+    };
+    onScroll(); addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  let rt;
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => {
+    for (const m of all) if (m.ready && m.f.offsetParent && m.fit()) m.draw(m.lv);
+    if (H && H.ready && H.fit()) { H.lv = -1; kick(); }
+    fitWord();
+  }, 150); });
+
+  /* catalog: category / sort change happens inside the mosaic */
+  const grid = d.querySelector('.cgrid');
+  const inView = (el) => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight && r.width > 0; };
+  let busy = false;
+  const swapInMosaic = async (swap) => {
+    if (RM || !io || busy) { swap(); return; }
+    busy = true;
+    const vis = all.filter((m) => m.ready && grid.contains(m.f) && m.f.classList.contains('mz-on') && inView(m.f));
+    await Promise.all(vis.map((m) => m.play([3, 6, 12, 24, 32].filter((s) => s > m.lv), 45)));
+    swap();
+    await frame();
+    let i = 0;
+    for (const m of all) {
+      if (!grid.contains(m.f) || !m.f.offsetParent || !m.ready) continue;
+      m.lv = 32; m.show(); m.done = true; io.unobserve(m.f);
+      if (inView(m.f)) m.play([24, 12, 6, 3, 1], 80, 120 + i++ * 40);
+      else { m.done = false; m.lv = 48; m.draw(48); io.observe(m.f); }
+    }
+    busy = false;
+  };
+  if (grid) {
+    const cur = d.querySelector('[data-cur]');
+    let passing = false;
+    // Registered before the injected shop script, so we can hold its click until the tiles are coarse.
+    addEventListener('click', (e) => {
+      if (passing) return;
+      const b = e.target.closest('.chips button');
+      if (!b || !d.getElementById('shop-data')) return;
+      e.preventDefault(); e.stopImmediatePropagation();
+      swapInMosaic(() => {
+        passing = true; b.click(); passing = false;
+        if (cur) { const on = d.querySelector('.chips [data-shop-filter][aria-pressed="true"]'); cur.textContent = on ? on.textContent.trim() : ''; cur.classList.toggle('on', !!on); }
+      });
+    }, true);
+    const sel = d.querySelector('[data-sort]');
+    const cards = [...grid.children].filter((c) => c.classList.contains('card'));
+    const num = (p) => { let s = String(p || '').replace(/[^\d,.]/g, ''); if (!s) return null; s = /,\d{1,2}$/.test(s) ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, ''); return parseFloat(s); };
+    sel?.addEventListener('change', () => swapInMosaic(() => {
+      const v = sel.value, key = (c) => c.querySelector('[data-price]')?.dataset.price;
+      const sorted = cards.map((c, i) => ({ c, i, p: num(key(c)), n: (c.querySelector('.nm')?.textContent || '').trim() }));
+      if (v === 'asc' || v === 'desc') sorted.sort((a, b) => (a.p == null) - (b.p == null) || (v === 'asc' ? a.p - b.p : b.p - a.p) || a.i - b.i);
+      else if (v === 'name') sorted.sort((a, b) => a.n.localeCompare(b.n, 'nl'));
+      sorted.forEach((o, k) => { o.c.style.order = v === 'rel' ? '' : k; });
+    }));
+  }
+
+  /* cart */
+  const KEY = 'mz-cart:' + (d.body.dataset.brand || '');
+  let cart = [];
+  try { cart = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) {}
+  const money = (p) => { let s = String(p || '').replace(/[^\d,.]/g, ''); if (!s) return 0; s = /,\d{1,2}$/.test(s) ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, ''); return parseFloat(s) || 0; };
+  const fmt = (n) => new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(n);
+  const esc = (s) => String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const list = d.querySelector('[data-cart-list]'), tot = d.querySelector('[data-cart-total]');
+  const renderCart = () => {
+    const n = cart.reduce((a, it) => a + it.q, 0);
+    d.querySelectorAll('[data-cc]').forEach((el) => { el.textContent = n; });
+    d.querySelectorAll('[data-cc-t]').forEach((el) => { el.textContent = '(' + n + ')'; });
+    tot.textContent = fmt(cart.reduce((a, it) => a + money(it.p) * it.q, 0));
+    list.innerHTML = cart.length ? cart.map((it, i) => `<div class="ci"><div class="ci-t">${it.i ? `<img src="${esc(it.i)}" alt="">` : ''}</div><div><div class="ci-n">${esc(it.n)}</div>${it.p ? `<div class="ci-p">${esc(it.p)}</div>` : ''}</div><div class="ci-q"><button type="button" data-q="${i}" data-d="-1" aria-label="Minder">−</button><span>${it.q}</span><button type="button" data-q="${i}" data-d="1" aria-label="Meer">+</button></div></div>`).join('') : '<p class="dr-e">Je winkelwagen is nog leeg.</p>';
+    try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {}
+  };
+  renderCart();
+  const toast = d.querySelector('[data-toast]'), toastT = d.querySelector('[data-toast-t]');
+  let tt;
+  const openCart = (o) => d.body.classList.toggle('cart-open', o);
+  d.addEventListener('click', (e) => {
+    const a = e.target.closest('[data-add]');
+    if (a) {
+      e.preventDefault();
+      const it = { n: a.dataset.name, p: a.dataset.price, i: a.dataset.img };
+      const ex = cart.find((x) => x.n === it.n);
+      ex ? ex.q++ : cart.push({ ...it, q: 1 });
+      renderCart();
+      d.querySelectorAll('[data-cc]').forEach((el) => { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); });
+      a.classList.add('ok'); setTimeout(() => a.classList.remove('ok'), 900);
+      toastT.textContent = it.n; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), 2400);
+      const m = a.closest('.card')?.querySelector('.mz')?._mz;
+      if (m && m.ready && m.f.classList.contains('mz-on')) m.play([6, 12, 24, 12, 6, 3, 1], 55);
+      return;
+    }
+    const q = e.target.closest('[data-q]');
+    if (q) { const it = cart[+q.dataset.q]; it.q += +q.dataset.d; if (it.q < 1) cart.splice(+q.dataset.q, 1); renderCart(); return; }
+    if (e.target.closest('[data-cart-open]')) { openCart(true); return; }
+    if (e.target.closest('[data-cart-close]')) openCart(false);
+  });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') openCart(false); });
+
+  /* magnetic buttons */
+  if (HOVER && !RM) d.querySelectorAll('.mag').forEach((b) => {
+    b.addEventListener('pointermove', (e) => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.18}px,${(e.clientY - r.top - r.height / 2) * 0.3}px)`; });
+    b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+  });
+
+  /* footer wordmark fills the width */
+  const fw = d.querySelector('[data-fit]');
+  function fitWord() {
+    if (!fw) return;
+    fw.style.fontSize = '';
+    const max = fw.parentElement.clientWidth, w = fw.scrollWidth;
+    if (w > max) fw.style.fontSize = (parseFloat(getComputedStyle(fw).fontSize) * max / w * 0.98) + 'px';
+  }
+  fitWord(); d.fonts?.ready.then(fitWord);
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"nl","count":"6 producten","products":[{"name":"Droogijs pellets 3 mm","tag":"Pellets","category":"Pellets"},{"name":"Droogijs pellets 10 mm","tag":"Pellets","category":"Pellets"},{"name":"Droogijs pellets 16 mm","tag":"Pellets","category":"Pellets"},{"name":"Droogijsschijven 500 gram","tag":"Schijven","category":"Schijven"},{"name":"Droogijsschijven 700 gram","tag":"Schijven","category":"Schijven"},{"name":"Droogijsblok 5 kilo","tag":"Blokken","category":"Blokken"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>
