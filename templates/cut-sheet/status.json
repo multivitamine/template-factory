@@ -1,0 +1,81 @@
+{
+  "id": "cut-sheet",
+  "name": "Cut Sheet",
+  "sectors": [
+    "wholesale",
+    "tech",
+    "b2b",
+    "retail"
+  ],
+  "sample": "teleqare",
+  "stress": "brinkscoffeeroasters",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793281372549
+    },
+    {
+      "step": "Rendering",
+      "at": 1793282160325
+    },
+    {
+      "step": "Critique",
+      "at": 1793282174703
+    },
+    {
+      "step": "Final render",
+      "at": 1793282262363
+    },
+    {
+      "step": "Done",
+      "at": 1793282276741
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793281372549,
+  "startedAt": 1793281372549,
+  "finishedAt": 1793282276741,
+  "model": "opus",
+  "costUsd": 3.4382627999999995,
+  "meta": {
+    "id": "cut-sheet",
+    "name": "Cut Sheet",
+    "scheme": "dark",
+    "sectors": [
+      "wholesale",
+      "tech",
+      "b2b",
+      "retail"
+    ],
+    "mood": [
+      "precise",
+      "clean-room",
+      "technical",
+      "cool glass"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary drives the cutting head, cut lines, stamps, buttons and live-map glow (lifted toward white via color-mix so navy/near-black stay visible on graphite); accent tints eyebrows and tags."
+  },
+  "score": {
+    "scoreBefore": 6.7,
+    "issues": [
+      "Offcuts gallery renders as a row of blank white cards: lazy images inside the horizontal scroller never load in stills, and the #e8eef0 fallback looks like broken content",
+      "Nest plan collapses with a short category list: Brinks has 1 category, so one small shape sits on a huge empty glass sheet",
+      "Story 'screen' for TeleQare shows an empty hatch: the transparent PNG has dark content on a dark plate, so it's invisible",
+      "Hero machine display sits at DEPTH 0.00 / TORQUE 0.0 between cuts, so the 'QR-set readouts' look dead in every screenshot",
+      "Library strip with a single stat leaves the right side empty (minor)",
+      "Typography is strong (Anybody wide + Kode Mono) and the cut-out signature works; layout rhythm drops off after the products"
+    ],
+    "fixed": [
+      "Offcuts turned into numbered glass plates (OFC-01…): eager-loaded, object-fit contain on a light sheen plate, so product PNGs and photos both read and nothing shows as a blank card",
+      "Added 'uncut stock' ghost shapes to the nest plan: ghost k mirrors slot k's footprint and only appears when that category is missing (CSS :has), so 1–4 categories still fill the sheet as a believable nesting plan, with responsive spans",
+      "Screen images get a light glass backing and load eagerly in the story, so transparent PNGs become visible",
+      "Hero readouts hold the set values (0.33 mm / 2.4 Nm) between cuts instead of resetting to zero"
+    ],
+    "scoreAfterEstimate": 7.4
+  },
+  "version": 1793282276741
+}

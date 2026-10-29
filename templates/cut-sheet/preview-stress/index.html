@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brinks Coffee Roasters · Easy to love, recognized by most.</title>
+<meta name="description" content="Geen bittere, verwarrende of te complexe koffie meer. Brinks brandt verfijnde blends vol smaak en balans, met heldere uitleg erbij.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,300..900&family=Kode+Mono:wght@400..700&family=Onest:wght@300..700&display=swap" rel="stylesheet">
+<script>/* tiles start "uncut" only when motion is allowed; reverted below if GSAP fails */
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('cutjs');</script>
+<style>
+:root{
+  --c-bg:#191d20; --c-surface:#22282c; --c-text:#e4ecee; --c-muted:#8a979d; --c-line:#343d42;
+  --c-primary:#ff5b23; --c-on-primary:#111111; --c-accent:#7fdccf;
+  --glass-edge:rgba(165,222,218,.36); --glass-soft:rgba(165,222,218,.16);
+  /* primary lifted towards white so navy / near-black brands still read on graphite */
+  --pri:color-mix(in srgb, var(--c-primary) 62%, #ffffff);
+  --pri-glow:color-mix(in srgb, var(--c-primary) 55%, transparent);
+  --acc:color-mix(in srgb, var(--c-accent) 55%, var(--c-text));
+  --f-d:'Anybody','Onest',sans-serif; --f-m:'Kode Mono',ui-monospace,monospace; --f-b:'Onest',sans-serif;
+  --wrap:1320px; --gut:clamp(16px,3vw,40px); --ease:cubic-bezier(.2,.7,.1,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;overflow-x:hidden;background-color:var(--c-bg);color:var(--c-text);font:400 16px/1.55 var(--f-b);counter-reset:sec;
+  background-image:radial-gradient(1100px 700px at 75% -10%,rgba(140,205,205,.08),transparent 60%),
+    linear-gradient(rgba(255,255,255,.026) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.026) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:auto,19px 19px,19px 19px,95px 95px,95px 95px}
+img{max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--f-m)}
+
+/* ---------- glass ---------- */
+.sheet{position:relative;padding:clamp(20px,3.4vw,48px);
+  background:linear-gradient(115deg,rgba(255,255,255,0) 28%,rgba(255,255,255,.065) 40%,rgba(255,255,255,0) 50%,rgba(255,255,255,.035) 66%,rgba(255,255,255,0) 74%),
+    linear-gradient(180deg,rgba(196,234,230,.095),rgba(160,212,216,.045));
+  box-shadow:inset 0 0 0 1px var(--glass-edge),inset 0 0 60px rgba(140,212,206,.06);
+  clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px)}
+.sheet::before{content:"";position:absolute;inset:0;pointer-events:none;
+  --d:linear-gradient(to bottom right,transparent calc(50% - .6px),var(--glass-edge) 50%,transparent calc(50% + .6px));
+  background:linear-gradient(to bottom right,transparent calc(50% - .6px),var(--glass-edge) 50%,transparent calc(50% + .6px)) left top/12px 12px no-repeat,
+    linear-gradient(to bottom left,transparent calc(50% - .6px),var(--glass-edge) 50%,transparent calc(50% + .6px)) right top/12px 12px no-repeat,
+    linear-gradient(to top right,transparent calc(50% - .6px),var(--glass-edge) 50%,transparent calc(50% + .6px)) left bottom/12px 12px no-repeat,
+    linear-gradient(to bottom right,transparent calc(50% - .6px),var(--glass-edge) 50%,transparent calc(50% + .6px)) right bottom/12px 12px no-repeat}
+.hatch{background:repeating-linear-gradient(135deg,rgba(165,222,218,.11) 0 1px,transparent 1px 9px),linear-gradient(160deg,#263034,#1c2326)}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--c-bg) 84%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--c-line)}
+.top__in{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);height:66px;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.logo__plate{background:#e8eef0;border-radius:6px;padding:6px 10px;display:flex;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.logo__plate img{height:28px;max-width:150px;object-fit:contain;display:block}
+.is-light .logo__plate img{filter:brightness(0)}
+.logo__ini{flex:none;width:34px;height:34px;display:grid;place-items:center;background:var(--c-primary);color:var(--c-on-primary);font:700 12px var(--f-m);border-radius:8px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-primary) 55%,#fff)}
+.logo__name{font:720 18px/1 var(--f-d);font-stretch:128%;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(40vw,300px)}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a,.menu__panel a{font:500 12px var(--f-m);text-transform:uppercase;letter-spacing:.07em;color:var(--c-muted);text-decoration:none;padding:9px 11px;border-radius:6px;transition:color .25s,background .25s}
+.nav a:hover{color:var(--c-text);background:rgba(255,255,255,.05)}
+.menu{display:none;margin-left:auto;position:relative}
+.menu summary{list-style:none;cursor:pointer;width:42px;height:42px;border:1px solid var(--c-line);border-radius:8px;display:grid;place-items:center}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary span,.menu summary span::before,.menu summary span::after{display:block;width:16px;height:1.5px;background:var(--c-text);position:relative}
+.menu summary span::before,.menu summary span::after{content:"";position:absolute;left:0}
+.menu summary span::before{top:-5px}.menu summary span::after{top:5px}
+.menu__panel{position:absolute;right:0;top:50px;min-width:220px;display:flex;flex-direction:column;padding:8px;background:#11151700;background:#121618;border:1px solid var(--c-line);border-radius:10px;box-shadow:0 20px 40px -10px #000}
+.menu__panel a{color:var(--c-text);padding:12px}
+
+/* ---------- buttons ---------- */
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:8px;font:600 12.5px var(--f-m);letter-spacing:.07em;text-transform:uppercase;text-decoration:none;transition:transform .35s var(--ease),background .3s,box-shadow .3s,border-color .3s}
+.btn span{transition:transform .35s var(--ease)}
+.btn:hover span{transform:translateX(4px)}
+.btn--pri{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-primary) 55%,#fff),0 12px 26px -14px var(--pri-glow)}
+.btn--pri:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-primary) 40%,#fff),0 18px 30px -14px var(--pri-glow)}
+.btn--ghost{color:var(--c-text);border:1px solid var(--glass-edge);background:rgba(255,255,255,.03)}
+.btn--ghost:hover{background:rgba(165,222,218,.09);border-color:rgba(165,222,218,.6)}
+.btn--sm{min-height:38px;padding:0 14px;font-size:11px}
+.top__cta{flex:none}
+
+/* ---------- gantry + heads ---------- */
+.gantry{position:absolute;left:0;right:0;top:0;height:0;z-index:5;pointer-events:none;transform:translateY(22px)}
+.gantry__rail{position:absolute;left:0;right:0;top:-3px;height:6px;background:linear-gradient(#3d474c,#252c30);border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(0,0,0,.5);opacity:.62}
+.gantry__rail::after{content:"";position:absolute;left:0;right:0;top:1px;height:2px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.32) 0 1px,transparent 1px 19px)}
+.gantry::before,.gantry::after{content:"";position:absolute;top:-11px;width:30px;height:22px;background:linear-gradient(#3a4348,#232a2e);border:1px solid #4d585e;border-radius:3px}
+.gantry::before{left:6px}.gantry::after{right:6px}
+.gantry-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;overflow:visible}
+.gantry-svg path,.cutline path{fill:none;stroke:var(--pri);stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 3px var(--pri-glow))}
+.head{position:absolute;left:-1px;top:-1px;width:20px;height:20px;margin:-10px 0 0 -10px;pointer-events:none;z-index:6;opacity:0}
+.head::before{content:"";position:absolute;inset:0;background:linear-gradient(var(--pri),var(--pri)) center/1.5px 100% no-repeat,linear-gradient(var(--pri),var(--pri)) center/100% 1.5px no-repeat}
+.head::after{content:"";position:absolute;inset:5px;border:1.5px solid var(--pri);border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.35),0 0 12px var(--pri)}
+.head--big{left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px}
+.head--big .car{position:absolute;left:-12px;right:-12px;top:9px;bottom:9px;border:1.5px solid var(--pri);border-radius:3px;background:color-mix(in srgb,var(--c-primary) 22%,rgba(10,13,15,.6))}
+.head--big::after{inset:10px;background:var(--c-primary)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:clamp(44px,6vw,84px) 0 clamp(36px,5vw,64px)}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:stretch}
+.hero__sheet{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);grid-template-areas:"eye ghost" "title title" "copy screen";gap:28px 38px;align-content:space-between}
+.eyebrow{grid-area:eye;align-self:start;font:500 11.5px/1.4 var(--f-m);letter-spacing:.13em;text-transform:uppercase;color:var(--acc);display:flex;gap:12px;align-items:center;margin:0}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor;flex:none}
+.ghosts{grid-area:ghost;justify-self:end;display:flex;gap:12px;align-items:flex-end}
+.ghost{position:relative;border:1px dashed var(--glass-edge);background:linear-gradient(160deg,rgba(200,240,236,.08),rgba(200,240,236,.02));display:grid;place-items:center;font:500 8px var(--f-m);letter-spacing:.1em;color:var(--c-muted)}
+.ghost--phone{width:44px;height:86px;border-radius:12px}
+.ghost--watch{width:46px;height:56px;border-radius:15px}
+.ghost--tab{width:112px;height:76px;border-radius:10px}
+.h1{grid-area:title;margin:0;font-family:var(--f-d);font-weight:760;font-stretch:134%;font-size:clamp(2rem,4.8vw,4.7rem);line-height:.95;letter-spacing:-.025em;text-wrap:balance;overflow-wrap:break-word;hyphens:auto}
+.h1 em{font-style:normal;display:block;font-weight:380;font-stretch:118%;color:var(--pri);margin-top:.08em}
+.hero__copy{grid-area:copy;align-self:end;display:flex;flex-direction:column;gap:24px}
+.hero__copy p{margin:0;color:color-mix(in srgb,var(--c-text) 80%,var(--c-muted));font-size:clamp(1rem,1.15vw,1.1rem);max-width:46ch}
+.screen{grid-area:screen;align-self:end;position:relative;border:1px dashed var(--glass-edge);border-radius:24px;padding:9px}
+.screen__img{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden}
+.screen__img img{width:100%;height:100%;object-fit:cover;display:block;background:linear-gradient(160deg,#e6edef,#cdd8db)}
+.screen__ini{position:absolute;inset:0;display:grid;place-items:center;font:800 clamp(3rem,7vw,6rem)/1 var(--f-d);font-stretch:150%;color:transparent;-webkit-text-stroke:1px var(--glass-edge)}
+.screen__tag{position:absolute;left:20px;bottom:20px;font:500 10px var(--f-m);letter-spacing:.1em;background:rgba(10,13,15,.78);color:var(--c-text);padding:4px 7px;border-radius:4px}
+.sheet__meta{position:absolute;left:clamp(20px,3.4vw,48px);bottom:12px;font:500 9px var(--f-m);letter-spacing:.16em;color:var(--c-muted);opacity:.7}
+
+.display{background:linear-gradient(180deg,#101416,#0b0e10);border:1px solid #2b3338;border-radius:14px;padding:18px;font-family:var(--f-m);display:flex;flex-direction:column;gap:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 24px 40px -26px #000}
+.display__hd{display:flex;justify-content:space-between;gap:10px;font-size:10px;letter-spacing:.14em;color:var(--c-muted);border-bottom:1px dashed #2b3338;padding-bottom:10px}
+.display dl{margin:0;display:grid}
+.ro{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid #1c2226}
+.ro dt{font-size:10px;letter-spacing:.14em;color:var(--c-muted)}
+.ro dd{margin:0;font-size:19px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ro dd b{font-weight:500;color:var(--pri)}
+.ro dd small{font-size:10.5px;color:var(--c-muted);margin-left:4px}
+.display__job{font-size:10.5px;line-height:1.55;color:var(--c-muted);letter-spacing:.04em}
+.display__job b{color:var(--c-text);font-weight:500}
+.display__foot{display:flex;gap:14px;align-items:flex-end;justify-content:space-between;margin-top:auto}
+.qr{flex:none;width:82px;height:82px;padding:6px;background:#e8eef0;border-radius:6px}
+.qr svg{display:block;width:100%;height:100%}
+.status{font-size:10.5px;letter-spacing:.14em;display:flex;align-items:center;gap:8px;color:var(--c-muted)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 8px var(--acc);transition:background .2s,box-shadow .2s}
+.status .s-cut{display:none}
+.is-cutting .status i{background:var(--pri);box-shadow:0 0 12px var(--pri)}
+.is-cutting .status .s-cut{display:inline}.is-cutting .status .s-rdy{display:none}
+
+/* ---------- params (usps) ---------- */
+.params{margin-top:20px}
+.params__in{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));counter-reset:prm;border:1px solid var(--c-line);border-radius:14px;background:color-mix(in srgb,var(--c-surface) 70%,transparent);overflow:hidden}
+.param{counter-increment:prm;padding:22px 24px 24px;border-left:1px solid var(--c-line);margin-left:-1px}
+.param__no{font:500 10px var(--f-m);letter-spacing:.14em;color:var(--pri)}
+.param__no::after{content:"-" counter(prm,decimal-leading-zero)}
+.param h3{margin:10px 0 6px;font:660 1.06rem/1.2 var(--f-d);font-stretch:112%}
+.param p{margin:0;color:var(--c-muted);font-size:.93rem}
+
+/* ---------- sections ---------- */
+.sec{padding-top:clamp(64px,8vw,116px)}
+.sec-hd{counter-increment:sec;display:flex;align-items:center;gap:14px;font:500 11px var(--f-m);letter-spacing:.15em;text-transform:uppercase;color:var(--c-muted);margin-bottom:24px}
+.sec-hd b{color:var(--pri);font-weight:600}
+.sec-hd b::before{content:counter(sec,decimal-leading-zero) " /"}
+.sec-hd i{flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--c-line) 0 6px,transparent 6px 11px)}
+.h2{font-family:var(--f-d);font-weight:720;font-stretch:128%;font-size:clamp(1.7rem,3.5vw,3.1rem);line-height:1;letter-spacing:-.02em;margin:0;text-wrap:balance;overflow-wrap:break-word;hyphens:auto}
+.row-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.more{font:500 12px var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--pri);text-decoration:none;display:inline-flex;gap:10px;align-items:center;padding-bottom:4px;border-bottom:1px dashed currentColor}
+.more:hover{color:var(--c-text)}
+
+/* ---------- cut tiles (shared by products + nest shapes) ---------- */
+.slot{position:relative;counter-increment:tile;border-radius:var(--r,12px)}
+.slot::before{content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(4,7,9,.6);box-shadow:inset 0 4px 10px rgba(0,0,0,.75),inset 0 0 0 1px rgba(0,0,0,.55);transition:opacity .4s}
+.pane{position:relative;display:flex;flex-direction:column;height:100%;color:inherit;text-decoration:none;border-radius:var(--r,12px);border:1px solid var(--glass-edge);padding:10px;
+  background:linear-gradient(115deg,rgba(255,255,255,0) 32%,rgba(255,255,255,.06) 44%,rgba(255,255,255,0) 54%),linear-gradient(180deg,#2a3337,#222a2d);
+  transform:translateY(-4px);box-shadow:0 16px 28px -14px rgba(0,0,0,.8),0 2px 0 rgba(0,0,0,.35);
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .3s}
+.slot:hover .pane{transform:translateY(-8px);border-color:color-mix(in srgb,var(--pri) 60%,var(--glass-edge));box-shadow:0 26px 40px -16px rgba(0,0,0,.85),0 0 0 1px var(--pri-glow)}
+.pane:focus-visible{outline:2px solid var(--pri);outline-offset:3px}
+.cutline{position:absolute;left:-1px;top:-1px;width:calc(100% + 2px);height:calc(100% + 2px);overflow:visible;pointer-events:none;z-index:3}
+.is-cut .cutline path{stroke-dashoffset:0;stroke-opacity:.55;transition:stroke-opacity .6s}
+.slot:hover .cutline path{stroke-opacity:1}
+.stamp{position:absolute;z-index:4;top:16px;left:16px;font:700 10px/1 var(--f-m);letter-spacing:.06em;background:var(--c-primary);color:var(--c-on-primary);padding:4px 7px;border-radius:3px;transform:rotate(-4deg);box-shadow:0 0 0 1px color-mix(in srgb,var(--c-primary) 50%,#fff);transition:opacity .25s,transform .45s cubic-bezier(.3,1.7,.5,1)}
+.stamp .n::before{content:counter(tile,decimal-leading-zero)}
+.cutjs .slot:not(.is-cut)::before{opacity:0}
+.cutjs .slot:not(.is-cut) .pane{transform:none;box-shadow:none;border-style:dashed;border-color:var(--glass-soft)}
+.cutjs .slot:not(.is-cut) .stamp{opacity:0;transform:scale(1.7) rotate(-10deg)}
+
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;counter-reset:tile}
+.win{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:linear-gradient(160deg,#eef3f4,#dce5e7)}
+.win img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:9%;mix-blend-mode:multiply;transition:transform .7s var(--ease)}
+.slot:hover .win img{transform:scale(1.05)}
+.win--none{display:grid;place-items:center;background:repeating-linear-gradient(135deg,rgba(165,222,218,.12) 0 1px,transparent 1px 9px),linear-gradient(160deg,#263034,#1b2225)}
+.win--none b{font:800 clamp(1.6rem,3vw,2.4rem)/1 var(--f-d);font-stretch:150%;color:transparent;-webkit-text-stroke:1px var(--glass-edge)}
+.readout{position:absolute;z-index:4;top:16px;right:16px;font:500 9.5px/1 var(--f-m);letter-spacing:.04em;background:rgba(10,13,15,.8);color:#cfe4e2;padding:5px 7px;border-radius:4px;font-variant-numeric:tabular-nums}
+.readout b{font-weight:500;color:var(--pri)}
+.spec{display:flex;gap:8px;align-items:center;font:500 10.5px var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--c-muted);padding:12px 2px 9px;border-bottom:1px dashed var(--c-line)}
+.spec .idx{color:var(--pri)}
+.spec .idx::before{content:"#" counter(tile,decimal-leading-zero)}
+.spec .cat{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.spec .pr{color:var(--c-text);font-size:12px;white-space:nowrap;margin-left:auto}
+.spec .pr s{color:var(--c-muted);margin-right:6px;font-size:10.5px}
+.pname{font:600 15px/1.32 var(--f-b);margin:10px 2px 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.64em}
+.ptag{align-self:flex-start;font:600 9.5px var(--f-m);letter-spacing:.09em;text-transform:uppercase;padding:3px 6px;border:1px solid var(--c-line);border-radius:4px;color:var(--acc);margin:auto 2px 4px;max-width:calc(100% - 26px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.score{position:absolute;right:8px;bottom:8px;width:11px;height:11px;border-right:1px solid var(--glass-edge);border-bottom:1px solid var(--glass-edge)}
+.score::after{content:"";position:absolute;right:3px;bottom:3px;width:5px;height:1px;background:var(--pri);transform:rotate(-45deg)}
+
+/* ---------- nest plan (categories) ---------- */
+.nest{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:150px;grid-auto-flow:dense;gap:16px;counter-reset:tile;padding:clamp(14px,2vw,26px)}
+.nest .slot:nth-child(6n+1){grid-column:span 3;grid-row:span 2;--r:28px}
+.nest .slot:nth-child(6n+2){grid-column:span 5;--r:18px}
+.nest .slot:nth-child(6n+3){grid-column:span 4;grid-row:span 2;--r:14px}
+.nest .slot:nth-child(6n+4){grid-column:span 3;--r:10px}
+.nest .slot:nth-child(6n+5){grid-column:span 2;--r:24px}
+.nest .slot:nth-child(6n+6){grid-column:span 12;--r:12px}
+.shape{padding:16px 16px 14px;justify-content:space-between;background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.07) 44%,rgba(255,255,255,0) 56%),linear-gradient(180deg,#2b3539,#222a2e)}
+.pn{font:800 clamp(1.5rem,2.4vw,2.2rem)/1 var(--f-d);font-stretch:58%;letter-spacing:.02em;align-self:flex-start;
+  background:linear-gradient(var(--pri) 45%,transparent 45% 54%,var(--pri) 54%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pn i::before{content:counter(tile,decimal-leading-zero)}
+.shape .stamp{left:auto;right:14px;top:14px}
+.shape__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.shape__name{font:650 clamp(1rem,1.5vw,1.35rem)/1.1 var(--f-d);font-stretch:118%;overflow-wrap:break-word;hyphens:auto;min-width:0}
+.shape__name::after{content:" →";color:var(--pri);display:inline-block;transition:transform .35s var(--ease)}
+.slot:hover .shape__name::after{transform:translateX(4px)}
+.shape__img{flex:none;width:54px;height:54px;border-radius:50%;overflow:hidden;background:#e8eef0;border:1px solid var(--glass-edge);display:grid;place-items:center}
+.shape__img img{width:100%;height:100%;object-fit:cover;display:block}
+.shape__img b{font:700 12px var(--f-m);color:#1b2225}
+.nest .slot:nth-child(6n+1) .shape__img,.nest .slot:nth-child(6n+3) .shape__img{width:84px;height:84px}
+/* uncut stock: ghost k mirrors the footprint of slot k and only shows when that slot is missing, so a short category list still fills the sheet */
+.stock{position:relative;border:1px dashed var(--glass-soft);border-radius:var(--r,12px);padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between;
+  font:500 9.5px var(--f-m);letter-spacing:.14em;color:color-mix(in srgb,var(--c-muted) 75%,transparent);
+  background:repeating-linear-gradient(135deg,rgba(165,222,218,.06) 0 1px,transparent 1px 10px)}
+.stock::after{content:"";position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px;opacity:.5;
+  background:linear-gradient(var(--glass-edge),var(--glass-edge)) center/1px 100% no-repeat,linear-gradient(var(--glass-edge),var(--glass-edge)) center/100% 1px no-repeat}
+.stock b{font-weight:500;color:color-mix(in srgb,var(--pri) 55%,var(--c-muted))}
+.nest .stock:nth-of-type(1){display:none}
+.nest .stock:nth-of-type(2){grid-column:span 5;--r:18px}
+.nest .stock:nth-of-type(3){grid-column:span 4;grid-row:span 2;--r:14px}
+.nest .stock:nth-of-type(4){grid-column:span 3;--r:10px}
+.nest .stock:nth-of-type(5){grid-column:span 2;--r:24px}
+.nest:has(>.slot:nth-of-type(2)) .stock:nth-of-type(2),.nest:has(>.slot:nth-of-type(3)) .stock:nth-of-type(3),
+.nest:has(>.slot:nth-of-type(4)) .stock:nth-of-type(4),.nest:has(>.slot:nth-of-type(5)) .stock:nth-of-type(5){display:none}
+
+/* ---------- library ---------- */
+.lib{margin-top:clamp(64px,8vw,116px);border-top:1px solid var(--c-line);border-bottom:1px solid var(--c-line);background:color-mix(in srgb,var(--c-bg) 60%,#000 40%);position:relative;overflow:hidden}
+.lib__in{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,60px);align-items:center;padding-top:clamp(32px,4vw,52px);padding-bottom:clamp(32px,4vw,52px)}
+.lib__lbl{font:500 11px/1.6 var(--f-m);letter-spacing:.15em;color:var(--c-muted);text-transform:uppercase;border-left:2px solid var(--pri);padding-left:14px}
+.lib__lbl b{display:block;color:var(--c-text);font-weight:500}
+.lib__stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px 32px}
+.stat__v{display:block;font:780 clamp(2.4rem,5vw,5rem)/.95 var(--f-d);font-stretch:142%;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.lib__stats:has(.stat:nth-child(3)) .stat__v{font-size:clamp(2rem,3.4vw,3.3rem)}
+.stat__l{display:block;margin-top:8px;font:500 11px var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--c-muted)}
+.lib__strip{height:40px;border-top:1px dashed var(--c-line);animation:lib 40s linear infinite;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='40'%3E%3Cg fill='none' stroke='%23a5ded8' stroke-opacity='.32'%3E%3Crect x='6.5' y='6.5' width='15' height='27' rx='4'/%3E%3Crect x='30.5' y='10.5' width='32' height='21' rx='3'/%3E%3Crect x='71.5' y='6.5' width='12' height='12' rx='3'/%3E%3Crect x='71.5' y='22.5' width='12' height='12' rx='6'/%3E%3Crect x='92.5' y='8.5' width='30' height='19' rx='2'/%3E%3C/g%3E%3C/svg%3E") repeat-x 0 0}
+@keyframes lib{to{background-position:-1300px 0}}
+
+/* ---------- story ---------- */
+.story{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(24px,4vw,60px);align-items:center}
+.story .screen{grid-area:auto;border-radius:30px;padding:10px}
+.story .screen__img{aspect-ratio:5/4;border-radius:21px}
+.story__txt{display:flex;flex-direction:column;gap:18px}
+.story__txt p{margin:0;color:color-mix(in srgb,var(--c-text) 78%,var(--c-muted));max-width:58ch}
+.kicker{font:500 11px var(--f-m);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0}
+
+/* ---------- offcuts (gallery) ---------- */
+.offcuts{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px max(var(--gut),calc((100vw - var(--wrap))/2 + var(--gut))) 18px;scrollbar-width:thin;scrollbar-color:var(--c-line) transparent}
+.offcut{flex:none;margin:0;scroll-snap-align:start;border:1px solid var(--glass-edge);padding:7px;border-radius:24px;background:rgba(165,222,218,.05)}
+/* light glass plate + contain: cut-out PNGs and photos both read, an unloaded image shows the plate, not a blank card */
+.offcut{position:relative;counter-increment:off}
+.offcuts{counter-reset:off}
+.offcut::after{content:"OFC-" counter(off,decimal-leading-zero);position:absolute;left:18px;bottom:16px;font:500 9.5px var(--f-m);letter-spacing:.12em;background:rgba(10,13,15,.8);color:#cfe4e2;padding:4px 7px;border-radius:4px}
+.offcut img{display:block;width:100%;height:100%;object-fit:contain;padding:6%;border-radius:17px;
+  background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.55) 44%,rgba(255,255,255,0) 56%),linear-gradient(160deg,#eef3f4,#d6e0e3)}
+.offcut:nth-child(3n+1){width:clamp(240px,30vw,380px);aspect-ratio:4/3}
+.offcut:nth-child(3n+2){width:clamp(170px,19vw,240px);aspect-ratio:3/4;border-radius:34px}
+.offcut:nth-child(3n+2) img{border-radius:27px}
+.offcut:nth-child(3n){width:clamp(210px,24vw,300px);aspect-ratio:1;border-radius:14px}
+.offcut:nth-child(3n) img{border-radius:8px}
+
+/* ---------- quote + cta ---------- */
+.quote{margin:0;padding:clamp(28px,4vw,56px);border-left:2px solid var(--pri);background:color-mix(in srgb,var(--c-surface) 75%,transparent);border-radius:0 14px 14px 0}
+.quote p{margin:0;font:420 clamp(1.3rem,2.4vw,2.1rem)/1.25 var(--f-d);font-stretch:108%;text-wrap:balance}
+.quote cite{display:block;margin-top:18px;font:500 11px var(--f-m);letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--c-muted)}
+.ctash{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px 48px;align-items:end;padding:clamp(28px,5vw,72px)}
+.ctash .h2{font-size:clamp(1.9rem,4.4vw,4rem);font-stretch:140%}
+.ctash p{margin:16px 0 0;color:color-mix(in srgb,var(--c-text) 78%,var(--c-muted));max-width:56ch}
+.ctash::after{content:"";position:absolute;right:clamp(28px,5vw,72px);top:22px;width:110px;height:56px;border:1px dashed var(--glass-edge);border-radius:10px;pointer-events:none}
+
+/* ---------- live map + plate ---------- */
+.live{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:20px;align-items:stretch}
+.map{padding:18px;display:flex;flex-direction:column;gap:12px}
+.map__hd{display:flex;justify-content:space-between;font:500 10px var(--f-m);letter-spacing:.15em;color:var(--c-muted)}
+.map__hd span:last-child{display:flex;gap:8px;align-items:center}
+.map__hd span:last-child::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pri);box-shadow:0 0 8px var(--pri)}
+.map__box{position:relative}
+.map svg{display:block;width:100%;height:auto}
+.map .glow rect{fill:var(--pri)}
+.map .ring{fill:none;stroke:var(--pri);stroke-width:1;transform-box:fill-box;transform-origin:center;animation:ring 2.6s ease-out infinite}
+@keyframes ring{from{transform:scale(.3);opacity:1}to{transform:scale(3.2);opacity:0}}
+.map__pin{position:absolute;left:31%;top:53.3%;transform:translate(18px,-50%);font:500 10px var(--f-m);letter-spacing:.08em;background:rgba(10,13,15,.85);border:1px solid var(--pri);color:var(--c-text);padding:4px 8px;border-radius:4px;max-width:45%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plate{position:relative;border-radius:12px;padding:clamp(26px,3vw,38px);display:flex;flex-direction:column;gap:22px;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px),linear-gradient(160deg,#3a4247,#262c30 58%,#30373c);
+  border:1px solid #4a555b;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(0,0,0,.5),0 26px 40px -26px #000}
+.plate::before{content:"";position:absolute;inset:10px;pointer-events:none;
+  background:radial-gradient(circle,#78858b 0 2px,#15191b 2.6px 3.6px,transparent 4.2px) left top/10px 10px no-repeat,
+    radial-gradient(circle,#78858b 0 2px,#15191b 2.6px 3.6px,transparent 4.2px) right top/10px 10px no-repeat,
+    radial-gradient(circle,#78858b 0 2px,#15191b 2.6px 3.6px,transparent 4.2px) left bottom/10px 10px no-repeat,
+    radial-gradient(circle,#78858b 0 2px,#15191b 2.6px 3.6px,transparent 4.2px) right bottom/10px 10px no-repeat}
+.plate__hd{font:700 1.3rem/1.1 var(--f-d);font-stretch:130%;text-shadow:0 -1px 0 rgba(0,0,0,.6)}
+.plate dl{margin:0;display:grid;gap:16px}
+.plate dt{font:500 10px var(--f-m);letter-spacing:.16em;color:#9aa7ad;text-shadow:0 1px 0 rgba(255,255,255,.06),0 -1px 0 rgba(0,0,0,.6)}
+.plate dd{margin:4px 0 0;font-size:1.02rem;overflow-wrap:anywhere}
+.plate dd a{text-decoration:none;border-bottom:1px dashed var(--pri)}
+.plate dd a:hover{color:var(--pri)}
+.plate .btn{align-self:flex-start;margin-top:auto}
+
+/* ---------- footer ---------- */
+.foot{margin-top:clamp(64px,9vw,124px);border-top:1px solid var(--c-line);background:color-mix(in srgb,var(--c-bg) 70%,#000)}
+.foot__big{font:800 clamp(2.4rem,9vw,8.4rem)/.9 var(--f-d);font-stretch:150%;letter-spacing:-.035em;color:transparent;-webkit-text-stroke:1px var(--glass-edge);overflow-wrap:anywhere;padding:clamp(36px,5vw,64px) 0 24px;margin:0}
+.foot__cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;padding:28px 0 40px;border-top:1px dashed var(--c-line)}
+.foot h4{margin:0 0 12px;font:500 10px var(--f-m);letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot a{text-decoration:none;color:color-mix(in srgb,var(--c-text) 85%,var(--c-muted));font-size:.94rem}
+.foot a:hover{color:var(--pri)}
+.foot p{margin:0 0 6px;font-size:.94rem;color:color-mix(in srgb,var(--c-text) 85%,var(--c-muted))}
+.foot__base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 0 64px;border-top:1px solid var(--c-line);font:500 10.5px var(--f-m);letter-spacing:.1em;color:var(--c-muted);text-transform:uppercase}
+.badge{position:fixed;left:12px;bottom:12px;z-index:60;display:flex;gap:8px;align-items:center;font:500 10.5px var(--f-m);letter-spacing:.05em;padding:6px 10px;border-radius:6px;background:rgba(12,15,17,.86);border:1px solid var(--c-line);color:var(--c-muted);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--pri)}
+
+/* ---------- catalog page ---------- */
+.cat-head{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"t c" "i c" "tb tb";gap:18px 40px;align-items:end}
+.cat-head .h1{grid-area:t;font-size:clamp(2.2rem,5.4vw,5rem)}
+.cat-head__intro{grid-area:i;margin:0;color:color-mix(in srgb,var(--c-text) 78%,var(--c-muted));max-width:58ch}
+.countbox{grid-area:c;border:1px dashed var(--glass-edge);border-radius:16px;padding:16px 22px;min-width:200px;font-family:var(--f-m)}
+.countbox small{display:block;font-size:10px;letter-spacing:.15em;color:var(--c-muted)}
+.countbox b{display:block;margin-top:6px;font:760 clamp(1.4rem,2.4vw,2rem)/1 var(--f-d);font-stretch:130%;white-space:nowrap}
+.toolbar{grid-area:tb;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:space-between;padding-top:18px;border-top:1px dashed var(--c-line)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 11.5px var(--f-m);letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-radius:7px;background:rgba(255,255,255,.02);border:1px solid var(--c-line);color:var(--c-muted);cursor:pointer;transition:color .25s,border-color .25s,background .25s}
+.chip:hover{color:var(--c-text);border-color:var(--glass-edge)}
+.chip[aria-pressed="true"]{background:var(--c-primary);color:var(--c-on-primary);border-color:color-mix(in srgb,var(--c-primary) 55%,#fff)}
+.search{display:flex;align-items:center;gap:10px;border:1px dashed var(--glass-edge);border-radius:10px;padding:0 14px;height:44px;width:min(100%,320px)}
+.search span{font:500 10px var(--f-m);letter-spacing:.14em;color:var(--pri);flex:none}
+.search input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--c-text);font:500 13px var(--f-m)}
+.search:focus-within{border-style:solid;border-color:var(--pri)}
+.grid--all{margin-top:30px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .hero__grid{grid-template-columns:1fr}
+  .display dl{grid-template-columns:1fr 1fr;column-gap:24px}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .nest{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .nest .slot:nth-child(n){grid-column:span 3;grid-row:span 1}
+  .nest .slot:nth-child(6n+1),.nest .slot:nth-child(6n+3){grid-row:span 2}
+  .nest .slot:nth-child(6n+6){grid-column:span 6}
+  .nest .stock:nth-of-type(n){grid-column:span 3;grid-row:span 1}
+  .nest .stock:nth-of-type(3){grid-row:span 2}
+}
+@media (max-width:900px){
+  .nav,.top__cta{display:none}
+  .menu{display:block}
+  .live,.story{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .ctash{grid-template-columns:1fr}
+  .ctash::after{display:none}
+}
+@media (max-width:760px){
+  .hero__sheet{grid-template-columns:1fr;grid-template-areas:"eye" "title" "copy" "screen"}
+  .ghosts{display:none}
+  .h1{font-stretch:112%}
+  .lib__in{grid-template-columns:1fr}
+  .cat-head{grid-template-columns:1fr;grid-template-areas:"t" "i" "c" "tb"}
+  .countbox{justify-self:start}
+  .search{width:100%}
+}
+@media (max-width:560px){
+  .nest{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:130px;gap:10px}
+  .nest .slot:nth-child(n){grid-column:span 1}
+  .nest .slot:nth-child(6n+6){grid-column:span 2}
+  .nest .stock:nth-of-type(n){grid-column:span 1}
+  .nest .stock:nth-of-type(n+4){display:none}
+  .readout{display:none}
+  .grid{gap:10px}
+  .pane{padding:7px}
+  .stamp{top:12px;left:12px;font-size:9px}
+  .pname{font-size:13.5px}
+  .spec{font-size:9.5px;flex-wrap:wrap;row-gap:4px}
+  .spec .cat{display:none}
+  .display dl{grid-template-columns:1fr}
+  .shape__img,.nest .slot:nth-child(6n+1) .shape__img,.nest .slot:nth-child(6n+3) .shape__img{width:44px;height:44px}
+  .map__pin{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#5A402E;--c-on-primary:#ffffff;--c-accent:#B37756}</style></head>
+<body>
+
+<header class="top">
+  <div class="top__in">
+    <a class="logo is-light" href="index.html" aria-label="Brinks Coffee Roasters">
+      <span class="logo__plate"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-brinks-b2c.svg" alt="Brinks Coffee Roasters"></span>
+      
+    </a>
+    <nav class="nav" aria-label="Main"><a href="#">Home</a><a href="catalog.html">Shop</a><a href="#">Over ons</a><a href="#">Contact</a><a href="#">Account aanmaken</a></nav>
+    <a class="btn btn--pri btn--sm top__cta" href="catalog.html">Bekijk ons assortiment <span>→</span></a>
+    <details class="menu"><summary aria-label="Menu"><span></span></summary>
+      <nav class="menu__panel"><a href="#">Home</a><a href="catalog.html">Shop</a><a href="#">Over ons</a><a href="#">Contact</a><a href="#">Account aanmaken</a></nav>
+    </details>
+  </div>
+</header>
+
+<main>
+<section class="hero" data-gantry>
+  <div class="gantry" aria-hidden="true"><div class="gantry__rail"></div></div>
+  <svg class="gantry-svg" aria-hidden="true"></svg>
+  <i class="head head--big" aria-hidden="true"><span class="car"></span></i>
+
+  <div class="wrap hero__grid">
+    <div class="sheet hero__sheet">
+      <p class="eyebrow">Specialty coffee als norm</p>
+      <div class="ghosts" aria-hidden="true">
+        <span class="ghost ghost--tab" data-hero-cut>S-03</span>
+        <span class="ghost ghost--phone" data-hero-cut>S-02</span>
+        <span class="ghost ghost--watch" data-hero-cut>S-01</span>
+      </div>
+      <h1 class="h1">Koffie waar mensen <em>voor terugkomen</em></h1>
+      <div class="hero__copy">
+        <p>Geen bittere, verwarrende of te complexe koffie meer. Brinks brandt verfijnde blends vol smaak en balans, met heldere uitleg erbij.</p>
+        <div class="btns">
+          <a class="btn btn--pri" href="catalog.html">Bekijk ons assortiment <span>→</span></a>
+          <a class="btn btn--ghost" href="#contact">Bestel zakelijk</a>
+        </div>
+      </div>
+      <div class="screen" data-hero-cut>
+        <div class="screen__img hatch">
+          <img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;media&#x2F;brinkscoffeeroasters_-26-verkleind.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1754" alt="Brinks Coffee Roasters">
+          
+          <span class="screen__tag">S-00 · BC</span>
+        </div>
+      </div>
+      <span class="sheet__meta" aria-hidden="true">SHEET 2026/01 · 6MM TOUGHENED</span>
+    </div>
+
+    <aside class="display" aria-hidden="true">
+      <div class="display__hd"><span>CNC · BC</span><span>2026</span></div>
+      <dl>
+        <div class="ro"><dt>DESIGN #</dt><dd>BC-2026</dd></div>
+        <div class="ro"><dt>DEPTH</dt><dd><b data-hd>0.33</b><small>mm</small></dd></div>
+        <div class="ro"><dt>TORQUE</dt><dd><b data-ht>2.4</b><small>Nm</small></dd></div>
+        <div class="ro"><dt>SHEETS CUT</dt><dd><b data-hs>0001</b></dd></div>
+      </dl>
+      <div class="display__job">JOB ▸ <b>Easy to love, recognized by most.</b></div>
+      <div class="display__foot">
+        <div class="status"><i></i><span class="s-rdy">READY</span><span class="s-cut">CUTTING</span></div>
+        <div class="qr"><svg viewBox="0 0 21 21" shape-rendering="crispEdges"><g fill="#0e1214"><path fill-rule="evenodd" d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM14 0h7v7h-7zM15 1v5h5V1zM16 2h3v3h-3zM0 14h7v7H0zM1 15v5h5v-5zM2 16h3v3H2z"/><path d="M8 0h1v1h-1zM10 0h1v1h-1zM12 0h1v1h-1zM9 1h1v1h-1zM11 1h1v1h-1zM8 2h1v1h-1zM9 2h1v1h-1zM12 2h1v1h-1zM10 3h1v1h-1zM11 3h1v1h-1zM8 4h1v1h-1zM12 4h1v1h-1zM9 5h1v1h-1zM10 5h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM6 8h1v1h-1zM9 8h1v1h-1zM11 8h1v1h-1zM13 8h1v1h-1zM15 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM1 9h1v1h-1zM4 9h1v1h-1zM8 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM14 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM0 10h1v1h-1zM3 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM9 10h1v1h-1zM11 10h1v1h-1zM13 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM2 11h1v1h-1zM4 11h1v1h-1zM7 11h1v1h-1zM8 11h1v1h-1zM12 11h1v1h-1zM15 11h1v1h-1zM17 11h1v1h-1zM19 11h1v1h-1zM0 12h1v1h-1zM1 12h1v1h-1zM5 12h1v1h-1zM9 12h1v1h-1zM10 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1zM18 12h1v1h-1zM20 12h1v1h-1zM9 13h1v1h-1zM11 13h1v1h-1zM14 13h1v1h-1zM16 13h1v1h-1zM19 13h1v1h-1zM8 14h1v1h-1zM12 14h1v1h-1zM13 14h1v1h-1zM17 14h1v1h-1zM20 14h1v1h-1zM10 15h1v1h-1zM11 15h1v1h-1zM15 15h1v1h-1zM18 15h1v1h-1zM19 15h1v1h-1zM8 16h1v1h-1zM9 16h1v1h-1zM13 16h1v1h-1zM16 16h1v1h-1zM20 16h1v1h-1zM11 17h1v1h-1zM12 17h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1zM18 17h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM15 18h1v1h-1zM19 18h1v1h-1zM20 18h1v1h-1zM9 19h1v1h-1zM12 19h1v1h-1zM13 19h1v1h-1zM16 19h1v1h-1zM18 19h1v1h-1zM8 20h1v1h-1zM11 20h1v1h-1zM14 20h1v1h-1zM17 20h1v1h-1zM20 20h1v1h-1z"/></g></svg></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="wrap params">
+    <div class="params__in">
+      <div class="param"><span class="param__no">PRM</span><h3>Duidelijke smaken</h3><p>Gebalanceerde smaken voor een breed publiek: easy to love, hard to forget.</p></div><div class="param"><span class="param__no">PRM</span><h3>Heldere uitleg en begeleiding</h3><p>Een betrokken team van professionals tilt jouw koffie-ervaring naar een hoger niveau.</p></div><div class="param"><span class="param__no">PRM</span><h3>Alles onder één dak</h3><p>Van bonen tot machines en barista-trainingen: wij regelen het.</p></div><div class="param"><span class="param__no">PRM</span><h3>Samen groeien</h3><p>Geen losse orders, maar duurzame partnerships die jouw business versterken.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap">
+  <div class="sec-hd"><b></b><span>NEST PLAN · BC</span><i></i></div>
+  <div class="sheet nest">
+    <div class="slot">
+      <a class="pane shape" href="catalog.html">
+        <span class="pn">P-<i></i></span>
+        <span class="stamp">CUT ✓ #<i class="n"></i></span>
+        <span class="shape__foot">
+          <span class="shape__name">Premium koffie</span>
+          <span class="shape__img"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;categories&#x2F;premium-koffie.png?width&#x3D;150" alt="" loading="lazy"></span>
+        </span>
+      </a>
+    </div>
+    <span class="stock" aria-hidden="true"></span><span class="stock" aria-hidden="true"><b>S-02</b>UNCUT STOCK</span><span class="stock" aria-hidden="true"><b>S-03</b>UNCUT STOCK</span><span class="stock" aria-hidden="true"><b>S-04</b>UNCUT STOCK</span><span class="stock" aria-hidden="true"><b>S-05</b>RESERVED</span>
+  </div>
+</section>
+
+<section class="sec wrap">
+  <div class="sec-hd"><b></b><span>CUT LIST</span><i></i></div>
+  <div class="row-hd">
+    <h2 class="h2">Koffie</h2>
+    <a class="more" href="catalog.html">13 producten <span>→</span></a>
+  </div>
+  <div class="grid">
+    <article class="slot">
+      <a class="pane" href="#">
+        <div class="win">
+          <img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2179.png?width&#x3D;360" alt="Brinks Specialty koffiebonen proefpakket 2-pack" loading="lazy">
+        </div>
+        <span class="stamp">CUT ✓ #<i class="n"></i></span>
+        <span class="readout">D <b data-v="0.33">0.33</b> · T <b data-v="2.4">2.4</b></span>
+        <div class="spec"><span class="idx"></span><span class="cat">Proefpakketten</span><span class="pr">€ 34,00</span></div>
+        <h3 class="pname">Brinks Specialty koffiebonen proefpakket 2-pack</h3>
+        <span class="ptag">Proefpakket</span>
+        <span class="score" aria-hidden="true"></span>
+      </a>
+    </article><article class="slot">
+      <a class="pane" href="#">
+        <div class="win">
+          <img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2180.png?width&#x3D;360" alt="Brinks koffiebonen proefpakket black collection 3-pack" loading="lazy">
+        </div>
+        <span class="stamp">CUT ✓ #<i class="n"></i></span>
+        <span class="readout">D <b data-v="0.33">0.33</b> · T <b data-v="2.4">2.4</b></span>
+        <div class="spec"><span class="idx"></span><span class="cat">Proefpakketten</span><span class="pr">€ 47,00</span></div>
+        <h3 class="pname">Brinks koffiebonen proefpakket black collection 3-pack</h3>
+        <span class="ptag">Proefpakket</span>
+        <span class="score" aria-hidden="true"></span>
+      </a>
+    </article><article class="slot">
+      <a class="pane" href="#">
+        <div class="win">
+          <img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2128.png?width&#x3D;360" alt="Brasil Black Diamond 500 gram" loading="lazy">
+        </div>
+        <span class="stamp">CUT ✓ #<i class="n"></i></span>
+        <span class="readout">D <b data-v="0.33">0.33</b> · T <b data-v="2.4">2.4</b></span>
+        <div class="spec"><span class="idx"></span><span class="cat">Koffiebonen</span><span class="pr">€ 15,75</span></div>
+        <h3 class="pname">Brasil Black Diamond 500 gram</h3>
+        
+        <span class="score" aria-hidden="true"></span>
+      </a>
+    </article><article class="slot">
+      <a class="pane" href="#">
+        <div class="win">
+          <img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2265.png?width&#x3D;360" alt="Chocolate Berry 250 gram" loading="lazy">
+        </div>
+        <span class="stamp">CUT ✓ #<i class="n"></i></span>
+        <span class="readout">D <b data-v="0.33">0.33</b> · T <b data-v="2.4">2.4</b></span>
+        <div class="spec"><span class="idx"></span><span class="cat">Koffiebonen</span><span class="pr">€ 9,95</span></div>
+        <h3 class="pname">Chocolate Berry 250 gram</h3>
+        
+        <span class="score" aria-hidden="true"></span>
+      </a>
+    </article>
+  </div>
+</section>
+
+<section class="lib">
+  <div class="wrap lib__in">
+    <div class="lib__lbl">LIB · BC<b>Brinks Coffee Roasters</b></div>
+    <div class="lib__stats">
+      <div class="stat"><span class="stat__v" data-count>1000+</span><span class="stat__l">klanten gingen je voor</span></div><div class="stat"><span class="stat__v" data-count>10+</span><span class="stat__l">jaar ervaring</span></div>
+      
+    </div>
+  </div>
+  <div class="lib__strip" aria-hidden="true"></div>
+</section>
+
+<section class="sec wrap">
+  <div class="sec-hd"><b></b><span>Onze missie</span><i></i></div>
+  <div class="story">
+    <div class="screen">
+      <div class="screen__img hatch">
+        <img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;media&#x2F;brinkscoffeeroasters_-58-verkleind.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1754" alt="">
+        
+        <span class="screen__tag">S-04 · 2026</span>
+      </div>
+    </div>
+    <div class="story__txt">
+      <p class="kicker">Onze missie</p>
+      <h2 class="h2">Koffie met karakter, niet met kapsones</h2>
+      <p>Wij vechten tegen een onoverzichtelijke en oneerlijke koffiewereld. Bij Brinks geloven we dat goede koffie voor iedereen een glimlach moet bezorgen: een easy-to-love smaakprofiel, eerlijk verhandeld in een transparante keten.</p>
+      <div class="btns"><a class="btn btn--ghost" href="#contact">Bestel zakelijk <span>→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap"><div class="sec-hd"><b></b><span>OFFCUTS</span><i></i></div></div>
+  <div class="offcuts"><figure class="offcut"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;media&#x2F;kantoor-e7a41318fd7c1958fe062d1eb398a16cb74e9cb42b440e85818ce04830728fe5-1.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;940" alt=""></figure><figure class="offcut"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;media&#x2F;ontwerp-zonder-titel-20.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;250" alt=""></figure></div>
+</section>
+
+
+<section class="sec wrap">
+  <div class="sheet ctash">
+    <div><h2 class="h2">Klaar om indruk te maken met jouw koffie?</h2><p>Laat ons je helpen koffie simpeler, lekkerder en indrukwekkender te maken, voor horeca, kantoor, retail of thuis.</p></div>
+    <a class="btn btn--pri" href="#">Neem contact op <span>→</span></a>
+  </div>
+</section>
+
+<section class="sec wrap" id="contact">
+  <div class="sec-hd"><b></b><span>LIVE MAP</span><i></i></div>
+  <div class="live">
+    <div class="sheet map">
+      <div class="map__hd"><span>EU · GRID 7MM</span><span>BC ONLINE</span></div>
+      <div class="map__box">
+        <svg viewBox="0 0 400 360" aria-hidden="true">
+          <defs><pattern id="dm" width="7" height="7" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="5" height="5" rx="1" fill="rgba(180,228,224,.26)"/></pattern></defs>
+          <g fill="url(#dm)">
+            <path d="M8,281L68,277L70,252L44,233L68,218L92,208L112,199L116,184L148,175L148,146L164,146L164,170L192,175L232,170L248,146L272,121L320,116L400,97L400,243L344,252L320,257L308,276L304,296L288,303L272,306L264,330L256,344L248,325L236,296L208,276L190,256L178,258L188,275L208,292L228,308L216,305L208,330L205,310L194,303L178,293L162,276L151,268L128,280L106,280L106,291L84,306L76,325L64,341L36,349L24,337L8,340L4,320L10,291Z"/>
+            <path d="M128,136L120,116L120,97L160,78L192,44L240,21L280,10L328,19L320,48L328,87L304,107L280,114L256,113L252,97L280,68L272,58L248,63L220,92L228,116L212,146L192,160L180,155L168,128L160,126L144,136Z"/>
+            <path d="M36,213L92,204L94,186L80,179L68,160L64,140L56,130L40,130L32,146L40,165L56,175L44,182L44,194L56,200Z"/>
+            <path d="M32,192L32,175L20,162L0,175L0,194L16,198Z"/>
+            <path d="M180,330L205,328L200,342Z"/><path d="M148,301L158,301L157,320L147,320Z"/><path d="M155,281L156,296L149,291Z"/>
+          </g>
+          <g class="glow" style="filter:drop-shadow(0 0 3px var(--pri))">
+            <rect x="120" y="190" width="5" height="5" rx="1"/>
+            <rect x="113" y="190" width="5" height="5" rx="1" opacity=".6"/><rect x="127" y="190" width="5" height="5" rx="1" opacity=".6"/>
+            <rect x="120" y="183" width="5" height="5" rx="1" opacity=".6"/><rect x="120" y="197" width="5" height="5" rx="1" opacity=".6"/>
+            <rect x="113" y="183" width="5" height="5" rx="1" opacity=".3"/><rect x="127" y="183" width="5" height="5" rx="1" opacity=".3"/>
+            <rect x="113" y="197" width="5" height="5" rx="1" opacity=".3"/><rect x="127" y="197" width="5" height="5" rx="1" opacity=".3"/>
+            <rect x="134" y="190" width="5" height="5" rx="1" opacity=".15"/><rect x="120" y="176" width="5" height="5" rx="1" opacity=".15"/>
+          </g>
+          <circle class="ring" cx="122.5" cy="192.5" r="8"/>
+        </svg>
+        <span class="map__pin">Brinks Coffee Roasters</span>
+      </div>
+    </div>
+    <div class="plate">
+      <div class="plate__hd">Brinks Coffee Roasters</div>
+      <dl>
+        <div><dt>ADDR</dt><dd>Veldweg 26, 5321 JE Hedel</dd></div>
+        <div><dt>TEL</dt><dd><a href="tel:+31 073-7200721">+31 073-7200721</a></dd></div>
+        <div><dt>MAIL</dt><dd><a href="mailto:hallo@brinkscoffeeroasters.nl">hallo@brinkscoffeeroasters.nl</a></dd></div>
+      </dl>
+      <a class="btn btn--pri" href="#">Neem contact op <span>→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot__big" aria-hidden="true">Brinks Coffee Roasters</p>
+    <div class="foot__cols">
+      <div><h4>BC · NAV</h4><ul><li><a href="#">Home</a></li><li><a href="catalog.html">Shop</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li><li><a href="#">Account aanmaken</a></li></ul></div>
+      <div><h4>INFO</h4><ul><li><a href="catalog.html">Koffie</a></li><li><a href="#">Thee</a></li><li><a href="#">Accessoires</a></li><li><a href="#">Barista tools</a></li><li><a href="#">Onderhoudsproducten</a></li><li><a href="#">Zakelijk</a></li><li><a href="#">Cookieverklaring</a></li><li><a href="#">Privacyverklaring</a></li><li><a href="#">Algemene voorwaarden</a></li></ul></div>
+      <div><h4>PLATE</h4><p>Veldweg 26, 5321 JE Hedel</p><p><a href="tel:+31 073-7200721">+31 073-7200721</a></p><p><a href="mailto:hallo@brinkscoffeeroasters.nl">hallo@brinkscoffeeroasters.nl</a></p></div>
+    </div>
+    <div class="foot__base"><span>© 2026 Brinks Coffee Roasters</span><span>Easy to love, recognized by most.</span></div>
+  </div>
+</footer>
+
+<div class="badge"><i></i>Demo redesign · Cut Sheet</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+<script>
+(()=>{
+  const root=document.documentElement, G=window.gsap;
+  const ok=root.classList.contains('cutjs') && G && window.MotionPathPlugin && 'IntersectionObserver' in window && 'ResizeObserver' in window;
+  if(!ok){root.classList.remove('cutjs');return}
+  G.registerPlugin(MotionPathPlugin);
+  const NS='http://www.w3.org/2000/svg', f=n=>Math.round(n*10)/10;
+  // rounded rect, clockwise from the top-left tangent point, so head and dash start together
+  const rr=(x,y,w,h,r)=>{x=f(x);y=f(y);w=f(w);h=f(h);r=f(r);return `M${x+r},${y}H${f(x+w-r)}A${r},${r} 0 0 1 ${f(x+w)},${f(y+r)}V${f(y+h-r)}A${r},${r} 0 0 1 ${f(x+w-r)},${f(y+h)}H${f(x+r)}A${r},${r} 0 0 1 ${x},${f(y+h-r)}V${f(y+r)}A${r},${r} 0 0 1 ${f(x+r)},${y}Z`};
+  const radius=(el,w,h)=>Math.min(parseFloat(getComputedStyle(el).borderTopLeftRadius)||0,w/2,h/2);
+
+  /* ---- tiles: cut-out reveal ---- */
+  const slots=[...document.querySelectorAll('.slot')];
+  const measure=s=>{const c=s._c,w=c.p.offsetWidth,h=c.p.offsetHeight;if(!w||!h)return;
+    c.svg.setAttribute('viewBox',`0 0 ${w} ${h}`);c.d=rr(.8,.8,w-1.6,h-1.6,Math.max(0,radius(c.p,w,h)-.8));c.path.setAttribute('d',c.d)};
+  const cut=(s,speed)=>{const c=s._c;if(!c.d)measure(s);if(!c.d)return;
+    const first=!s.classList.contains('is-cut'),dur=.9/speed,ease='power1.inOut';
+    c.tl&&c.tl.kill();c.busy=true;
+    const tl=c.tl=G.timeline({onComplete:()=>{c.busy=false}});
+    tl.set(c.head,{opacity:1})
+      .fromTo(c.path,{strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease},0)
+      .to(c.head,{motionPath:{path:c.d},duration:dur,ease},0)
+      .to(c.head,{opacity:0,duration:.2},dur);
+    if(first){
+      const b=s.querySelectorAll('.readout b');
+      if(b.length===2){const o={d:0,t:0};tl.to(o,{d:+b[0].dataset.v,t:+b[1].dataset.v,duration:dur,ease:'power2.out',
+        onUpdate:()=>{b[0].textContent=o.d.toFixed(2);b[1].textContent=o.t.toFixed(1)}},0)}
+      tl.call(()=>s.classList.add('is-cut'),null,dur);
+    }};
+  const ro=new ResizeObserver(es=>es.forEach(e=>measure(e.target.closest('.slot'))));
+  slots.forEach(s=>{const p=s.querySelector('.pane');if(!p)return;
+    const svg=document.createElementNS(NS,'svg'),path=document.createElementNS(NS,'path'),head=document.createElement('i');
+    svg.setAttribute('class','cutline');svg.setAttribute('aria-hidden','true');path.setAttribute('pathLength','1');svg.appendChild(path);
+    head.className='head';p.append(svg,head);s._c={p,svg,path,head};ro.observe(p);
+    p.addEventListener('mouseenter',()=>{if(s.classList.contains('is-cut')&&!s._c.busy)cut(s,2)});
+  });
+  const io=new IntersectionObserver(es=>{let k=0;es.forEach(e=>{if(!e.isIntersecting)return;const s=e.target;io.unobserve(s);G.delayedCall(k++*.09,()=>cut(s,1))})},{threshold:.4});
+  slots.forEach(s=>s._c&&io.observe(s));
+
+  /* ---- gantry: the head traces the nested screens, the rail follows its y ---- */
+  document.querySelectorAll('[data-gantry]').forEach(sec=>{
+    const targets=[...sec.querySelectorAll('[data-hero-cut]')],svg=sec.querySelector('.gantry-svg'),head=sec.querySelector('.head--big'),rail=sec.querySelector('.gantry');
+    if(!targets.length||!svg||!head)return;
+    const disp=document.querySelector('.display'),dEl=document.querySelector('[data-hd]'),tEl=document.querySelector('[data-ht]'),sEl=document.querySelector('[data-hs]');
+    let tl,sheets=1,frame=0,lastW=0,visible=true;
+    const sync=()=>{rail.style.transform=`translateY(${G.getProperty(head,'y')}px)`};
+    const tick=p=>{if(frame++%5)return;const j=p>.15?Math.random()-.5:0;
+      if(dEl)dEl.textContent=(Math.min(1,p*6)*.33+j*.008).toFixed(2);if(tEl)tEl.textContent=(Math.min(1,p*5)*2.4+j*.12).toFixed(1)};
+    // hold the set values between cuts; a display reading 0.00 looks broken in stills
+    const idle=()=>{disp&&disp.classList.remove('is-cutting');if(dEl)dEl.textContent='0.33';if(tEl)tEl.textContent='2.4'};
+    const build=()=>{
+      lastW=sec.offsetWidth;tl&&tl.kill();svg.innerHTML='';
+      svg.setAttribute('viewBox',`0 0 ${sec.offsetWidth} ${sec.offsetHeight}`);
+      const hb=sec.getBoundingClientRect();
+      const segs=targets.filter(t=>t.offsetWidth).map(t=>{const b=t.getBoundingClientRect(),r=radius(t,b.width,b.height),x=b.left-hb.left,y=b.top-hb.top;
+        const p=document.createElementNS(NS,'path');p.setAttribute('pathLength','1');const d=rr(x,y,b.width,b.height,r);p.setAttribute('d',d);svg.appendChild(p);
+        return {p,d,x:f(x+r),y:f(y),dur:G.utils.clamp(1,3.2,(b.width+b.height)/360)}});
+      if(!segs.length)return;
+      const last=segs[segs.length-1];G.set(head,{x:last.x,y:last.y,opacity:1});sync();
+      tl=G.timeline({repeat:-1,repeatDelay:.3,paused:!visible});
+      segs.forEach(s=>{
+        tl.to(head,{x:s.x,y:s.y,duration:.75,ease:'power2.inOut',onUpdate:sync})
+          .call(()=>disp&&disp.classList.add('is-cutting'))
+          .to(s.p,{strokeDashoffset:0,duration:s.dur,ease:'none'})
+          .to(head,{motionPath:{path:s.d},duration:s.dur,ease:'none',onUpdate(){sync();tick(this.progress())}},'<')
+          .call(idle);
+      });
+      const all=svg.querySelectorAll('path');
+      tl.call(()=>{sheets++;if(sEl)sEl.textContent=String(sheets).padStart(4,'0')})
+        .to(all,{opacity:0,duration:.8,delay:1.6}).set(all,{strokeDashoffset:1,opacity:1});
+    };
+    new IntersectionObserver(([e])=>{visible=e.isIntersecting;tl&&(visible?tl.play():tl.pause())}).observe(sec);
+    let rt;addEventListener('resize',()=>{if(sec.offsetWidth===lastW)return;clearTimeout(rt);rt=setTimeout(build,250)});
+    (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(build,120));
+  });
+
+  /* ---- library count-up, keeps the original number format ---- */
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){cio.unobserve(e.target);e.target._run&&e.target._run()}}),{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const m=el.textContent.trim().match(/^(\D*?)(\d[\d.,]*\d|\d)(.*)$/);if(!m)return;
+    let n=m[2],sep='',dec=0,dch='.';
+    if(/^\d{1,3}([.,]\d{3})+$/.test(n)){sep=n.match(/[.,]/)[0];n=n.split(sep).join('')}
+    else if(/[.,]/.test(n)){dch=n.match(/[.,]/)[0];dec=n.split(dch)[1].length;n=n.replace(dch,'.')}
+    const v=parseFloat(n);if(!isFinite(v)||(!sep&&!dec&&v>=1800&&v<=2100))return;
+    const fmt=x=>{let s=dec?x.toFixed(dec).replace('.',dch):String(Math.round(x));if(sep)s=s.replace(/\B(?=(\d{3})+(?!\d))/g,sep);return m[1]+s+m[3]};
+    el._run=()=>{const o={x:0};G.to(o,{x:v,duration:1.8,ease:'power3.out',onUpdate:()=>{el.textContent=fmt(o.x)}})};
+    cio.observe(el);
+  });
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"nl","count":"13 producten","products":[{"name":"Brinks Specialty koffiebonen proefpakket 2-pack","tag":"Proefpakket","category":"Proefpakketten"},{"name":"Brinks koffiebonen proefpakket black collection 3-pack","tag":"Proefpakket","category":"Proefpakketten"},{"name":"Brasil Black Diamond 500 gram","tag":"","category":"Koffiebonen"},{"name":"Chocolate Berry 250 gram","tag":"","category":"Koffiebonen"},{"name":"Guatemala Adventure 500 gram","tag":"","category":"Koffiebonen"},{"name":"PC Blend 500 gram","tag":"","category":"Koffiebonen"},{"name":"Supreme Black 500 gram","tag":"","category":"Koffiebonen"},{"name":"Sweet Combo 500 gram","tag":"","category":"Koffiebonen"},{"name":"Decaf Peru Swiss Water 500gr (espresso maling)","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Decaf Peru Swiss Water 500gr bonen","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Decafe cups doos 20 cups","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Cafferati espresso dispenser doos 80 cups","tag":"Cups","category":"Cups"},{"name":"Cafferati lungo dispenser doos 80 cups","tag":"Cups","category":"Cups"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

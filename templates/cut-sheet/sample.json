@@ -1,0 +1,422 @@
+{
+  "brand": {
+    "name": "TeleQare",
+    "tagline": "Mobile accessories, sourced and delivered",
+    "logo": null,
+    "logoIsLight": false,
+    "initials": "TQ",
+    "lang": "en",
+    "colors": {
+      "primary": "#994A91",
+      "accent": "#D4E3E6"
+    }
+  },
+  "nav": [
+    {
+      "label": "Products",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Brands",
+      "href": "#"
+    },
+    {
+      "label": "Devices",
+      "href": "#"
+    },
+    {
+      "label": "About us",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Mobile accessories wholesale",
+    "title": "Everything your customers",
+    "titleAccent": "plug, charge and protect with.",
+    "text": "TeleQare connects manufacturers with retailers, from cases and chargers to audio and power banks. Distribution, private label and sourcing, all from one partner.",
+    "cta": "Browse products",
+    "ctaHref": "catalog.html",
+    "cta2": "Contact us",
+    "image": "https://teleqare.com/media/header-1.jpg?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1920"
+  },
+  "usps": [
+    {
+      "title": "Wide range, high quality",
+      "text": "Over 1,693 products covering cases, cables, chargers, audio and more."
+    },
+    {
+      "title": "Competitive pricing",
+      "text": "Strong value for money, so your margins stay healthy."
+    },
+    {
+      "title": "Custom branding",
+      "text": "Private label gives you exclusive products no other retailer can offer."
+    },
+    {
+      "title": "Fast shipping and logistics",
+      "text": "Logistics solutions built to keep your supply chain moving."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Audio",
+      "image": "https://teleqare.com/content/categories/audio.jpg?width=150",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Cables",
+      "image": "https://teleqare.com/content/categories/cable.jpg?width=150",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Chargers",
+      "image": "https://teleqare.com/content/categories/charger.jpg?width=150",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Cleaning",
+      "image": "https://teleqare.com/content/categories/cleanning.jpg?width=150",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Holders",
+      "image": "https://teleqare.com/content/categories/holder.jpg?width=150",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Powerbanks",
+      "image": "https://teleqare.com/content/categories/powerbank.jpg?width=150",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Pitaka Suite Moonrise iPhone Duo, 1001 Nights",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/ki1806fs.png?width=360",
+      "tag": "KI1806FS",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Pitaka Suite Sunet iPhone Duo, California Dream",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/ki1805fs.png?width=360",
+      "tag": "KI1805FS",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Pitaka Suite Classic Twill iPhone Duo, Black Grey",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/ki1804fs.png?width=360",
+      "tag": "KI1804FS",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "ScreenArmor Lens Shield iPhone Duo, silver",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/sa-ls-ip26f-sil.jpg?width=360",
+      "tag": "SA-LS-IP26F-SIL",
+      "href": "#",
+      "category": "Screen protection"
+    },
+    {
+      "name": "ScreenArmor Lens Shield iPhone Duo, blue",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/sa-ls-ip26f-blu.jpg?width=360",
+      "tag": "SA-LS-IP26F-BLU",
+      "href": "#",
+      "category": "Screen protection"
+    },
+    {
+      "name": "ScreenArmor Guard Glass iPhone Duo",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/sa-gg-ip26f.jpg?width=360",
+      "tag": "SA-GG-IP26F",
+      "href": "#",
+      "category": "Screen protection"
+    },
+    {
+      "name": "ScreenArmor Full Cover Glass iPhone Duo",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/sa-fc-ip26f.jpg?width=360",
+      "tag": "SA-FC-IP26F",
+      "href": "#",
+      "category": "Screen protection"
+    },
+    {
+      "name": "Pitaka Moonrise Case iPhone Duo, 1001 Nights",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/ki1803f.png?width=360",
+      "tag": "KI1803F",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Pitaka Sunset Edge Case iPhone Duo, California Dream",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/ki1802f.png?width=360",
+      "tag": "KI1802F",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Pitaka Twill Edge Case iPhone Duo, Black Grey",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/ki1801f.png?width=360",
+      "tag": "KI1801F",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "FIXED Opus for Samsung Galaxy A18, black",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/fixop3-1729-bk.jpg?width=360",
+      "tag": "FIXOP3-1729-BK",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Laut Flexi Protect iPhone Duo, Black",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/lip26ffptbk.jpg?width=360",
+      "tag": "LIP26FFPTBK",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Laut Fizz Crystal iPhone Duo, Crystal",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/lip26ffcc.jpg?width=360",
+      "tag": "LIP26FFCC",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Laut Crystal Fluro iPhone Duo, Crystal",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/lip26fcfc.jpg?width=360",
+      "tag": "LIP26FCFC",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Laut Crystal Fluro iPhone Duo, Midnight",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/lip26fcfbk.jpg?width=360",
+      "tag": "LIP26FCFBK",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Divoom Astrotoo 20W Desktop Speaker, green",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/groen10.png?width=360",
+      "tag": "90100058298",
+      "href": "#",
+      "category": "Audio"
+    },
+    {
+      "name": "Divoom Astrotoo 20W Desktop Speaker, pink",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "90100058297",
+      "href": "#",
+      "category": "Audio"
+    },
+    {
+      "name": "Divoom Astrotoo 20W Desktop Speaker, white",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "90100058296",
+      "href": "#",
+      "category": "Audio"
+    },
+    {
+      "name": "Urbanista Biarritz Portable Speaker, green",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "UB9975",
+      "href": "#",
+      "category": "Audio"
+    },
+    {
+      "name": "Urbanista Biarritz Portable Speaker, sand",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "UB9978",
+      "href": "#",
+      "category": "Audio"
+    },
+    {
+      "name": "Urbanista Biarritz Portable Speaker, black",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "UB9994",
+      "href": "#",
+      "category": "Audio"
+    },
+    {
+      "name": "Urbanista Shibuya Wireless Headphone, white",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "UB9910",
+      "href": "#",
+      "category": "Audio"
+    },
+    {
+      "name": "Urbanista Shibuya Wireless Headphone, black",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "UB9925",
+      "href": "#",
+      "category": "Audio"
+    },
+    {
+      "name": "Urbanista Porto In-Ear, storm blue",
+      "price": null,
+      "oldPrice": null,
+      "image": null,
+      "tag": "1040264",
+      "href": "#",
+      "category": "Audio"
+    }
+  ],
+  "story": {
+    "eyebrow": "Distribution, private label, sourcing",
+    "title": "The link between manufacturers and retailers",
+    "text": "With new smartphone models launching constantly, demand for cases, chargers, screen protectors, earbuds and power banks keeps growing. TeleQare gets those products to a wide audience, and supports you with private label, full-range sourcing and compliance expertise.",
+    "image": "https://teleqare.com/media/home-4.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1000"
+  },
+  "stats": [
+    {
+      "value": "1,693",
+      "label": "products in the range"
+    }
+  ],
+  "gallery": [
+    "https://teleqare.com/media/header-2.jpg?cropX=0&cropY=0&cropW=3356&cropH=1406&quality=90&width=1920",
+    "https://teleqare.com/media/mhbts347blk-1.png?cropX=0&cropY=0&cropW=1500&cropH=0&quality=90&width=1500",
+    "https://teleqare.com/media/iphone-16-pro-pro-max-black-2.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1920",
+    "https://teleqare.com/media/mhhead2ua17wwht.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1506",
+    "https://teleqare.com/media/mhcabmscusbcblk-1.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1500",
+    "https://teleqare.com/media/powerbank.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=1920"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Let's stock your shelves",
+    "text": "Tell us what you need, from ready-made ranges to your own private label, and we will take care of sourcing, compliance and delivery.",
+    "label": "Get in touch",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Florijnweg 21e, 6883 JN Velp, The Netherlands",
+    "phone": "+31 (0)26 760 00 64",
+    "email": ""
+  },
+  "footerLinks": [
+    {
+      "label": "News",
+      "href": "#"
+    },
+    {
+      "label": "About us",
+      "href": "#"
+    },
+    {
+      "label": "Terms & Conditions (NL)",
+      "href": "#"
+    },
+    {
+      "label": "Cookie policy",
+      "href": "#"
+    },
+    {
+      "label": "Privacy policy",
+      "href": "#"
+    },
+    {
+      "label": "Newsletter",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Products",
+    "intro": "Browse cases, screen protection, audio and more from leading accessory brands.",
+    "filters": [
+      "Protection cases",
+      "Screen protection",
+      "Audio"
+    ],
+    "count": "1693 products"
+  },
+  "featured": [
+    {
+      "name": "Pitaka Suite Moonrise iPhone Duo, 1001 Nights",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/ki1806fs.png?width=360",
+      "tag": "KI1806FS",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Pitaka Suite Sunet iPhone Duo, California Dream",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/ki1805fs.png?width=360",
+      "tag": "KI1805FS",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "Pitaka Suite Classic Twill iPhone Duo, Black Grey",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/ki1804fs.png?width=360",
+      "tag": "KI1804FS",
+      "href": "#",
+      "category": "Protection cases"
+    },
+    {
+      "name": "ScreenArmor Lens Shield iPhone Duo, silver",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://teleqare.com/content/products/sa-ls-ip26f-sil.jpg?width=360",
+      "tag": "SA-LS-IP26F-SIL",
+      "href": "#",
+      "category": "Screen protection"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

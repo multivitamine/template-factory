@@ -1,0 +1,3 @@
+{ "id": "cut-sheet", "name": "Cut Sheet", "scheme": "dark", "sectors": ["wholesale","tech","b2b","retail"],
+  "mood": ["precise", "clean-room", "technical", "cool glass"], "needsProductImages": true,
+  "notes": "Primary drives the cutting head, cut lines, stamps, buttons and live-map glow (lifted toward white via color-mix so navy/near-black stay visible on graphite); accent tints eyebrows and tags." }
