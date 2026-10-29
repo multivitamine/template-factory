@@ -1,0 +1,9 @@
+{
+  "id": "soft-spring",
+  "name": "Soft Spring",
+  "scheme": "light",
+  "sectors": ["kids", "food", "lifestyle", "retail"],
+  "mood": ["warm", "rounded", "playful", "pastel", "bouncy"],
+  "needsProductImages": true,
+  "notes": "Primary is mixed 14% into white (oklch) for every pastel block and image well; the full primary is kept for buttons, the '+' quick-add, the filter blob and the cart pill; accent tints alternate wells and the hero sticker."
+}

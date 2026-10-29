@@ -1,0 +1,20 @@
+{
+  "scoreBefore": 5.4,
+  "issues": [
+    "JS crash in the hero carousel: `$('[data-tag]')` matched the first .slide (which also carries data-tag) instead of the price tag, so `[data-tag-name]` was null and the rest of the script (cart, squash, fly, buybar) never initialised",
+    "`html{scroll-behavior:smooth}` turned every programmatic scrollTo into an interrupted smooth scroll, so scroll-reveal never fired below the fold: products (mobile), gallery, quote, CTA and footer area rendered as an empty cream void",
+    "CTA band: the decorative .balls wrapper was a grid child, pushing the headline to column 2 and stretching the button into a giant bar on row 2",
+    "Brand robustness: hero headline highlight and rotating sticker used raw --c-accent; with a dark/grey accent (Drumland) the highlight went muddy grey and the sticker became an unreadable black disc",
+    "Product wells read as flat tinted boxes; mixed photos lacked the 'object on a plate' feel promised by the direction",
+    "Catalog toolbar: sort pill wrapped under the search field, leaving a ragged right column"
+  ],
+  "fixed": [
+    "Price tag is now selected by .price-tag; carousel, cart, squash-and-stretch, bezier fly, jelly pill and mobile buybar all initialise again",
+    "Removed global smooth scrolling (both pages) so reveals trigger reliably while scrolling",
+    ".balls is absolutely positioned behind the CTA band, restoring the text | button layout on home and catalog",
+    "Headline highlight uses the primary-derived --tint-deep; sticker uses a 38% accent tint with a soft halo, legible for any accent",
+    "Added a soft surface 'plate' disc (with halo, springs on hover) inside every card well on both pages",
+    "Catalog tools stay on one line (search + sort pill) aligned right on desktop, wrap on small screens"
+  ],
+  "scoreAfterEstimate": 7.3
+}

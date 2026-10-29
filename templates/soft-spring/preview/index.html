@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Birth Bear · Het unieke kraamcadeau, op ware grootte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;800;900&family=Kumbh+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#FBF5EC; --c-surface:#FFFDF9; --c-text:#2B211B; --c-muted:#7B6D62; --c-line:#ECDFCF;
+  --c-primary:#F0705A; --c-on-primary:#FFFFFF; --c-accent:#8CCBA8;
+  --tint:color-mix(in oklch, var(--c-primary) 14%, white);
+  --tint-2:color-mix(in oklch, var(--c-accent) 20%, white);
+  --tint-3:color-mix(in oklch, color-mix(in oklch, var(--c-primary) 50%, var(--c-accent)) 12%, var(--c-bg));
+  --tint-deep:color-mix(in oklch, var(--c-primary) 26%, white);
+  --ink:color-mix(in oklch, var(--c-primary) 52%, var(--c-text));
+  --r-block:32px; --r-big:48px; --r-pill:999px;
+  --s1:.5rem; --s2:.75rem; --s3:1rem; --s4:1.5rem; --s5:2rem; --s6:3rem; --s7:4.5rem; --s8:7rem;
+  --spring:cubic-bezier(.34,1.56,.64,1); --soft:cubic-bezier(.22,1,.36,1);
+  --display:'Gabarito', 'Trebuchet MS', sans-serif; --body:'Kumbh Sans', 'Segoe UI', sans-serif;
+  --wrap:min(1320px, 100% - 2.5rem);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 1rem/1.6 var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;padding:0}
+h1,h2,h3,p{margin:0}
+.wrap{width:var(--wrap);margin-inline:auto}
+:focus-visible{outline:3px solid var(--c-primary);outline-offset:3px;border-radius:12px}
+
+/* ---------- shared atoms ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:.5em;font:700 .78rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--c-surface);padding:.65em 1em .6em;border-radius:var(--r-pill);box-shadow:0 0 0 1px var(--c-line) inset}
+.eyebrow::before{content:"";width:.6em;height:.6em;border-radius:50%;background:var(--c-primary)}
+.btn{--h:3.4rem;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:var(--h);padding:0 1.6em;border-radius:var(--r-pill);font:800 1.05rem/1 var(--display);letter-spacing:-.005em;transition:transform .5s var(--spring),box-shadow .3s var(--soft),background-color .3s}
+.btn-primary{background:var(--c-primary);color:var(--c-on-primary);box-shadow:0 10px 24px -12px color-mix(in srgb,var(--c-primary) 80%,transparent)}
+.btn-primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 30px -14px color-mix(in srgb,var(--c-primary) 85%,transparent)}
+.btn-primary:active{transform:scale(1.06,.9)}
+.btn-ghost{background:var(--c-surface);box-shadow:0 0 0 1.5px var(--c-line) inset}
+.btn-ghost:hover{transform:translateY(-3px);box-shadow:0 0 0 1.5px var(--c-text) inset}
+.btn .arr{display:inline-grid;place-items:center;width:1.7em;height:1.7em;margin-right:-.9em;border-radius:50%;background:color-mix(in srgb,var(--c-on-primary) 18%,transparent);transition:transform .5s var(--spring)}
+.btn:hover .arr{transform:translateX(3px) rotate(-8deg)}
+.sec{padding-block:var(--s7)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--s4);margin-bottom:var(--s5)}
+.h2{font:900 clamp(2.1rem,4.6vw,4rem)/.95 var(--display);letter-spacing:-.03em;text-wrap:balance;max-width:16ch}
+.lead{color:var(--c-muted);font-size:clamp(1rem,1.2vw,1.12rem);max-width:52ch}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:50;padding:.75rem 0}
+.hdr-bar{display:flex;align-items:center;gap:var(--s3);padding:.5rem .5rem .5rem 1.25rem;border-radius:var(--r-pill);background:color-mix(in srgb,var(--c-surface) 86%,transparent);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 0 0 1px var(--c-line),0 12px 30px -22px rgba(60,40,20,.4)}
+.logo{display:flex;align-items:center;min-width:0;flex:0 1 auto;margin-right:auto}
+.logo img{height:34px;width:auto;max-width:170px;object-fit:contain}
+.logo--light img{filter:brightness(0)}
+.logo span{font:900 1.35rem/1 var(--display);letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}
+.nav a{display:block;padding:.65rem 1rem;border-radius:var(--r-pill);font:600 .95rem/1 var(--body);white-space:nowrap;transition:background-color .25s,transform .45s var(--spring)}
+.nav a:hover{background:var(--tint);transform:translateY(-2px)}
+.cart-pill{position:relative;display:inline-flex;align-items:center;gap:.6rem;height:3rem;padding:0 .45rem 0 1.1rem;border-radius:var(--r-pill);background:var(--c-primary);color:var(--c-on-primary);font:800 1rem/1 var(--display);will-change:transform;flex:none}
+.cart-pill svg{width:20px;height:20px}
+.cart-count{position:relative;display:inline-block;min-width:2.1rem;height:2.1rem;border-radius:50%;background:var(--c-on-primary);color:var(--c-primary);overflow:hidden;text-align:center}
+.cart-count span{position:absolute;inset:0;display:grid;place-items:center;font:900 .95rem/1 var(--display)}
+.menu-btn{display:none;width:3rem;height:3rem;border-radius:50%;background:var(--tint);place-items:center;flex:none}
+.menu-btn i{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;box-shadow:0 -6px 0 currentColor,0 6px 0 currentColor;transition:transform .3s}
+@media (max-width:1080px){
+  .nav-wrap{position:absolute;left:1.25rem;right:1.25rem;top:calc(100% - .25rem);padding:.75rem;border-radius:var(--r-block);background:var(--c-surface);box-shadow:0 0 0 1px var(--c-line),0 30px 50px -30px rgba(60,40,20,.45);transform-origin:top center;transform:scale(.92) translateY(-10px);opacity:0;visibility:hidden;transition:transform .5s var(--spring),opacity .2s,visibility 0s .5s}
+  .nav{flex-direction:column}
+  .nav a{padding:1rem 1.1rem;font:800 1.3rem/1 var(--display)}
+  .menu-btn{display:grid}
+  .hdr.open .nav-wrap{transform:none;opacity:1;visibility:visible;transition:transform .5s var(--spring),opacity .2s}
+  .cart-pill .cart-label{display:none}
+  .cart-pill{padding-left:.9rem}
+}
+.no-js .nav-wrap{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;padding:0;background:none}
+
+/* ---------- hero ---------- */
+.hero{padding-top:.5rem}
+.capsule{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:var(--s5);align-items:center;padding:clamp(1.5rem,4.5vw,4.5rem);border-radius:var(--r-big);background:var(--tint);overflow:hidden;isolation:isolate}
+.capsule::before,.capsule::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
+.capsule::before{width:46vw;height:46vw;max-width:640px;max-height:640px;right:-12%;top:-30%;background:radial-gradient(circle,color-mix(in oklch,var(--c-accent) 26%,white) 0 60%,transparent 61%)}
+.capsule::after{width:220px;height:220px;left:-60px;bottom:-90px;background:color-mix(in oklch,var(--c-primary) 22%,white)}
+.hero-copy{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:var(--s4)}
+.h1{font:900 clamp(2.5rem,5.6vw,5.4rem)/.93 var(--display);letter-spacing:-.035em;text-wrap:balance;max-width:14ch}
+.h1 .acc{color:var(--ink)}
+.h1 .acc .w{background:linear-gradient(transparent 62%,var(--tint-deep) 62% 92%,transparent 92%);padding-inline:.04em}
+.h1 .w{display:inline-block;transform-origin:50% 100%;white-space:pre}
+.hero-text{max-width:46ch;font-size:clamp(1rem,1.25vw,1.15rem);color:color-mix(in oklch,var(--c-text) 78%,var(--c-primary))}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero-side{position:relative;z-index:1;width:100%;max-width:560px;justify-self:center}
+.hero-stage{position:relative;aspect-ratio:1;width:100%}
+.plate{position:absolute;inset:7%;border-radius:50%;background:var(--c-surface);box-shadow:0 40px 60px -40px rgba(80,50,30,.45),0 0 0 14px color-mix(in srgb,var(--c-surface) 45%,transparent)}
+.slides{position:absolute;inset:7%;border-radius:50%;overflow:hidden}
+.slide{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .6s var(--soft),transform .8s var(--spring)}
+.slide:not(:first-child){opacity:0;transform:scale(.85) rotate(-6deg);pointer-events:none}
+.js .slide{opacity:0;transform:scale(.85) rotate(-6deg);pointer-events:none}
+.js .slide.on{opacity:1;transform:none;pointer-events:auto}
+.slide-img{width:72%;height:72%;display:grid;place-items:center}
+.slide-img img{max-width:100%;max-height:100%;object-fit:contain;border-radius:28px;mix-blend-mode:multiply}
+.slide-img.cover{width:100%;height:100%}
+.slide-img.cover img{width:100%;height:100%;object-fit:cover;border-radius:0;mix-blend-mode:normal}
+.mono{display:grid;place-items:center;width:62%;aspect-ratio:1.45;border-radius:28px;background:var(--c-primary);color:var(--c-on-primary);font:900 clamp(2.5rem,7vw,5rem)/1 var(--display);letter-spacing:-.04em;transform:rotate(-8deg);box-shadow:0 30px 40px -24px color-mix(in srgb,var(--c-primary) 70%,transparent)}
+.mono.round{border-radius:50%;aspect-ratio:1;transform:none}
+.price-tag{position:absolute;left:50%;bottom:4%;z-index:3;display:flex;align-items:center;gap:.75rem;max-width:min(92%,380px);padding:.5rem .5rem .5rem 1.25rem;border-radius:var(--r-pill);background:var(--c-surface);box-shadow:0 0 0 1px var(--c-line),0 20px 30px -20px rgba(70,40,20,.5);transform:translateX(-50%)}
+.price-tag .pt-txt{min-width:0;display:flex;flex-direction:column;line-height:1.15}
+.price-tag .pt-name{font:800 1rem/1.15 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.price-tag .pt-price{font:600 .85rem/1.2 var(--body);color:var(--c-muted)}
+.price-tag .pt-price b{font:900 1rem var(--display);color:var(--c-text)}
+.price-tag .pt-price s{margin-left:.35em}
+.dots{position:absolute;top:6%;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:6px}
+.dots button{width:10px;height:10px;border-radius:var(--r-pill);background:color-mix(in srgb,var(--c-text) 20%,transparent);transition:width .5s var(--spring),background-color .3s}
+.dots button.on{width:28px;background:var(--c-primary)}
+.floaters{position:absolute;inset:0;list-style:none;margin:0;padding:0;pointer-events:none}
+.floaters li{position:absolute;z-index:4;pointer-events:auto;animation:bob 5.5s ease-in-out infinite alternate}
+.floaters a{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem .55rem .55rem;border-radius:var(--r-pill);background:var(--c-surface);font:800 .95rem/1 var(--display);white-space:nowrap;box-shadow:0 0 0 1px var(--c-line),0 14px 24px -16px rgba(70,40,20,.45);transition:transform .5s var(--spring),background-color .25s}
+.floaters a:hover{transform:scale(1.08) rotate(-3deg);background:var(--tint-2)}
+.floaters .fd{width:1.9rem;height:1.9rem;border-radius:50%;background:var(--tint-2);overflow:hidden;flex:none;display:grid;place-items:center}
+.floaters .fd img{width:100%;height:100%;object-fit:cover}
+.floaters .fd::after{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--c-accent)}
+.floaters .fd:has(img)::after{display:none}
+.floaters li:nth-child(1){top:6%;left:-4%;animation-duration:5.2s}
+.floaters li:nth-child(2){top:18%;right:-6%;animation-duration:6.4s;animation-delay:-2s}
+.floaters li:nth-child(3){top:46%;left:-12%;animation-duration:5.8s;animation-delay:-1s}
+.floaters li:nth-child(4){top:58%;right:-10%;animation-duration:7s;animation-delay:-3s}
+.floaters li:nth-child(5){top:-3%;right:24%;animation-duration:6s;animation-delay:-4s}
+.floaters li:nth-child(6){bottom:16%;right:-12%;animation-duration:6.8s;animation-delay:-2.5s}
+.floaters li:nth-child(n+7){display:none}
+.floaters li:nth-child(even) a{rotate:3deg}
+.floaters li:nth-child(odd) a{rotate:-2deg}
+@keyframes bob{from{translate:0 -9px}to{translate:0 9px}}
+.sticker{position:absolute;z-index:5;left:1%;bottom:14%;width:clamp(96px,9vw,128px);aspect-ratio:1;border-radius:50%;background:color-mix(in oklch,var(--c-accent) 38%,white);color:var(--c-text);display:grid;place-items:center;box-shadow:0 0 0 6px color-mix(in srgb,var(--c-surface) 60%,transparent),0 16px 30px -18px rgba(60,40,20,.5)}
+.sticker svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 18s linear infinite}
+.sticker text{font:800 10.5px var(--display);letter-spacing:.06em;text-transform:uppercase;fill:currentColor}
+.sticker b{font:900 1.4rem/1 var(--display);letter-spacing:-.03em}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:900px){
+  .capsule{grid-template-columns:1fr;border-radius:var(--r-block)}
+  .hero-side{max-width:440px;margin-top:var(--s3)}
+  .floaters{position:static;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:var(--s4)}
+  .floaters li{position:static;animation-duration:4s}
+  .sticker{left:auto;right:-2%;bottom:auto;top:-2%;width:92px}
+}
+
+/* ---------- plus button & cards ---------- */
+.plus{position:relative;display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);flex:none;transition:transform .55s var(--spring),box-shadow .3s;box-shadow:0 10px 20px -10px color-mix(in srgb,var(--c-primary) 85%,transparent);touch-action:manipulation}
+.plus svg{width:22px;height:22px;transition:transform .55s var(--spring)}
+.plus:hover{transform:scale(1.08)}
+.plus:hover svg{transform:rotate(90deg)}
+.plus.squash{transform:scale(1.1,.85);transition:transform .12s ease-out}
+.plus.added svg{transform:rotate(180deg) scale(.9)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:clamp(1rem,2vw,1.75rem)}
+.grid:not(:has(> :nth-child(3))){grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),380px))}
+.home-grid > :nth-child(n+9){display:none}
+.card{position:relative;display:flex;flex-direction:column;border-radius:var(--r-block);transition:scale .55s var(--spring);-webkit-tap-highlight-color:transparent}
+body .card.press{scale:.97;transition:scale .14s ease-out}
+.card-well{position:relative;display:grid;place-items:center;aspect-ratio:1/1.04;border-radius:var(--r-block);background:var(--tint);overflow:hidden;isolation:isolate}
+.card:nth-child(3n+2) .card-well{background:var(--tint-2)}
+.card:nth-child(3n) .card-well{background:var(--tint-3)}
+.card-well::before{content:"";position:absolute;z-index:-1;inset:auto 14% 9% 14%;height:11%;border-radius:50%;background:color-mix(in srgb,var(--c-text) 9%,transparent);filter:blur(8px);transition:transform .6s var(--spring)}
+.card-well::after{content:"";position:absolute;z-index:-1;width:80%;aspect-ratio:1;border-radius:50%;background:color-mix(in srgb,var(--c-surface) 62%,transparent);box-shadow:0 0 0 10px color-mix(in srgb,var(--c-surface) 22%,transparent);transition:transform .7s var(--spring)}
+.card:hover .card-well::after{transform:scale(1.06)}
+.card-well img{width:76%;height:76%;object-fit:contain;border-radius:20px;mix-blend-mode:multiply;transition:transform .7s var(--spring)}
+.card:hover .card-well img{transform:translateY(-6px) scale(1.04) rotate(-1.5deg)}
+.card:hover .card-well::before{transform:scaleX(.86)}
+.fallback{display:grid;place-items:center;width:58%;aspect-ratio:1.5;border-radius:20px;background:var(--c-primary);color:var(--c-on-primary);font:900 clamp(1.6rem,3vw,2.4rem)/1 var(--display);letter-spacing:-.03em;transform:rotate(-7deg);box-shadow:0 20px 30px -18px color-mix(in srgb,var(--c-primary) 70%,transparent);transition:transform .7s var(--spring)}
+.card:hover .fallback{transform:rotate(-2deg) scale(1.05)}
+.card-tag{position:absolute;top:1rem;left:1rem;max-width:calc(100% - 2rem);padding:.45em .85em;border-radius:var(--r-pill);background:var(--c-surface);font:800 .78rem/1 var(--display);letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-body{padding:1rem 4.5rem .25rem .5rem;display:flex;flex-direction:column;gap:.3rem}
+.card-name{font:800 1.12rem/1.2 var(--display);letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-name a::after{content:"";position:absolute;inset:0;z-index:1;border-radius:var(--r-block)}
+.card-price{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.card-price b{font:900 1.2rem/1 var(--display)}
+.card-price s{color:var(--c-muted);font-size:.9rem}
+.card:has(.card-price s) .card-price b{color:var(--ink)}
+.card-actions{position:absolute;z-index:2;right:.4rem;bottom:-.2rem}
+
+/* ---------- home sections ---------- */
+.search-pill{position:relative;display:flex;align-items:center;width:min(100%,340px)}
+.search-pill svg{position:absolute;left:1.1rem;width:18px;height:18px;color:var(--c-muted);pointer-events:none}
+.search-pill input{width:100%;height:3.2rem;padding:0 1.2rem 0 2.9rem;border:0;border-radius:var(--r-pill);background:var(--c-surface);box-shadow:0 0 0 1.5px var(--c-line) inset;outline:0;transition:box-shadow .25s}
+.search-pill input:focus{box-shadow:0 0 0 2px var(--c-primary) inset}
+.head-tools{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+.usps{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(.75rem,1.5vw,1.25rem)}
+.usp{grid-column:span 3;position:relative;display:flex;flex-direction:column;gap:.6rem;padding:clamp(1.25rem,2.4vw,2rem);border-radius:var(--r-block);background:var(--c-surface);box-shadow:0 0 0 1px var(--c-line) inset;transition:translate .55s var(--spring),rotate .55s var(--spring)}
+.usp:hover{translate:0 -6px;rotate:-.6deg}
+.usp:nth-child(4n+1){background:var(--tint)}
+.usp:nth-child(4n+3){background:var(--tint-2)}
+.usps:has(> :nth-child(3):last-child) .usp{grid-column:span 4}
+.usp-n{display:grid;place-items:center;width:3rem;height:3rem;border-radius:50%;background:var(--c-surface);font:900 1.15rem/1 var(--display);box-shadow:0 0 0 1px var(--c-line);margin-bottom:.4rem}
+.usp:nth-child(even) .usp-n{background:var(--tint)}
+.usp h3{font:800 1.25rem/1.15 var(--display);letter-spacing:-.01em}
+.usp p{color:var(--c-muted);font-size:.95rem}
+@media (max-width:1000px){.usp,.usps:has(> :nth-child(3):last-child) .usp{grid-column:span 6}}
+@media (max-width:560px){.usp,.usps:has(> :nth-child(3):last-child) .usp{grid-column:span 12}}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:1rem;list-style:none;margin:0;padding:0}
+.cat a{display:flex;flex-direction:column;align-items:center;gap:.8rem;text-align:center}
+.cat-ball{width:100%;max-width:200px;aspect-ratio:1;border-radius:50%;background:var(--tint);display:grid;place-items:center;overflow:hidden;transition:transform .6s var(--spring),border-radius .6s var(--spring)}
+.cat:nth-child(even) .cat-ball{background:var(--tint-2)}
+.cat-ball img{width:100%;height:100%;object-fit:cover}
+.cat-ball b{font:900 2.4rem/1 var(--display);color:var(--ink)}
+.cat a:hover .cat-ball{transform:scale(1.05) rotate(4deg);border-radius:38%}
+.cat span{font:800 1.08rem/1.15 var(--display);padding:.45em 1em;border-radius:var(--r-pill);background:var(--c-surface);box-shadow:0 0 0 1px var(--c-line)}
+.story{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(1.5rem,4vw,4rem);align-items:center}
+.blob{position:relative;aspect-ratio:1/1.05;border-radius:44% 56% 52% 48%/48% 42% 58% 52%;overflow:hidden;background:var(--tint-2);animation:morph 14s ease-in-out infinite alternate}
+.blob img{width:100%;height:100%;object-fit:cover}
+.blob{display:grid;place-items:center}
+@keyframes morph{50%{border-radius:56% 44% 40% 60%/42% 58% 42% 58%}100%{border-radius:40% 60% 58% 42%/58% 46% 54% 42%}}
+.story-copy{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s4)}
+.story-copy p{color:var(--c-muted);font-size:1.08rem;max-width:54ch}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.75rem;width:100%;list-style:none;margin:var(--s2) 0 0;padding:0}
+.stat{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;aspect-ratio:1;max-width:180px;padding:1rem;border-radius:50%;background:var(--c-surface);box-shadow:0 0 0 1px var(--c-line) inset;transition:transform .6s var(--spring)}
+.stat:nth-child(odd){background:var(--tint)}
+.stat:hover{transform:rotate(-8deg) scale(1.05)}
+.stat b{font:900 clamp(1.4rem,2.6vw,2.1rem)/1 var(--display);letter-spacing:-.03em;white-space:nowrap}
+.stat span{font-size:.78rem;line-height:1.25;color:var(--c-muted);margin-top:.35rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+@media (max-width:860px){.story{grid-template-columns:1fr}.blob{max-width:520px;width:100%;justify-self:center}}
+.gallery{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 max(1.25rem,(100% - 1320px)/2) 1rem;scrollbar-width:none;overscroll-behavior-x:contain}
+.gallery::-webkit-scrollbar{display:none}
+.gallery figure{margin:0;flex:none;scroll-snap-align:center;width:clamp(220px,26vw,340px);aspect-ratio:4/5;border-radius:var(--r-block);overflow:hidden;background:var(--tint)}
+.gallery figure:nth-child(3n+2){aspect-ratio:1;border-radius:50%;align-self:center;width:clamp(190px,22vw,290px);background:var(--tint-2)}
+.gallery figure:nth-child(3n){aspect-ratio:3/4;align-self:flex-end}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--soft)}
+.gallery figure:hover img{transform:scale(1.06)}
+.quote{position:relative;padding:clamp(2rem,6vw,5rem) clamp(1.5rem,7vw,7rem);border-radius:var(--r-big);background:var(--tint-2);text-align:center;overflow:hidden}
+.quote-mark{display:grid;place-items:center;width:4.5rem;height:4.5rem;margin:0 auto 1.25rem;border-radius:50%;background:var(--c-surface);font:900 3.6rem/1 var(--display);padding-top:1.4rem;color:var(--ink)}
+.quote blockquote{margin:0;font:800 clamp(1.4rem,3vw,2.5rem)/1.18 var(--display);letter-spacing:-.02em;text-wrap:balance;max-width:30ch;margin-inline:auto}
+.quote cite{display:inline-block;margin-top:1.5rem;font:600 .95rem var(--body);font-style:normal;padding:.5em 1.1em;border-radius:var(--r-pill);background:var(--c-surface)}
+.cta-band{position:relative;display:grid;grid-template-columns:1.3fr auto;gap:var(--s5);align-items:center;padding:clamp(2rem,5vw,4.5rem);border-radius:var(--r-big);background:var(--tint);overflow:hidden;isolation:isolate}
+.cta-band p{color:color-mix(in oklch,var(--c-text) 75%,var(--c-primary));max-width:52ch;margin-top:1rem;font-size:1.08rem}
+.cta-band .balls{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.cta-band .balls i{position:absolute;z-index:-1;border-radius:50%;animation:bob 6s ease-in-out infinite alternate}
+.cta-band .balls i:nth-child(1){width:140px;height:140px;right:22%;top:-50px;background:var(--tint-2)}
+.cta-band .balls i:nth-child(2){width:70px;height:70px;right:6%;bottom:12%;background:var(--c-accent);opacity:.55;animation-delay:-2s}
+.cta-band .balls i:nth-child(3){width:24px;height:24px;right:36%;bottom:18%;background:var(--c-primary);opacity:.6;animation-delay:-4s}
+.cta-band .btn{--h:4rem;font-size:1.2rem}
+@media (max-width:760px){.cta-band{grid-template-columns:1fr;border-radius:var(--r-block)}.quote{border-radius:var(--r-block)}}
+
+/* ---------- footer ---------- */
+.ftr{margin-top:var(--s7);padding:clamp(2.5rem,5vw,4.5rem) 0 2rem;border-radius:var(--r-big) var(--r-big) 0 0;background:var(--c-text);color:var(--c-bg);overflow:hidden}
+.ftr-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:var(--s5)}
+.ftr h4{margin:0 0 1rem;font:800 .8rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--c-bg) 55%,transparent)}
+.ftr ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem}
+.ftr li a{display:inline-block;transition:transform .45s var(--spring),color .2s}
+.ftr li a:hover{transform:translateX(5px);color:color-mix(in oklch,var(--c-primary) 40%,white)}
+.ftr-tag{font:800 clamp(1.3rem,2.2vw,1.8rem)/1.15 var(--display);letter-spacing:-.015em;max-width:20ch;text-wrap:balance}
+.ftr-contact a,.ftr-contact span{overflow-wrap:anywhere}
+.giant{display:block;margin:clamp(2.5rem,6vw,5rem) 0 1rem;font:900 clamp(3.6rem,15vw,15rem)/.82 var(--display);letter-spacing:-.05em;white-space:nowrap;color:color-mix(in oklch,var(--c-primary) 30%,var(--c-bg));user-select:none}
+.giant .ch{display:inline-block;transform-origin:50% 100%;transition:transform .6s var(--spring),color .3s}
+.giant .ch:hover{transform:translateY(-12%) scale(1.08,.94);color:var(--c-primary)}
+.ftr-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:1.25rem;border-top:1px solid color-mix(in srgb,var(--c-bg) 16%,transparent);font-size:.85rem;color:color-mix(in srgb,var(--c-bg) 60%,transparent)}
+.ftr-bot .to-top{padding:.5em 1em;border-radius:var(--r-pill);background:color-mix(in srgb,var(--c-bg) 10%,transparent);transition:background-color .2s}
+.ftr-bot .to-top:hover{background:var(--c-primary);color:var(--c-on-primary)}
+@media (max-width:900px){.ftr-top{grid-template-columns:1fr 1fr}.ftr-top > :first-child{grid-column:1/-1}.ftr{border-radius:var(--r-block) var(--r-block) 0 0}}
+.demo{position:fixed;left:12px;bottom:12px;z-index:40;padding:.45em .9em;border-radius:var(--r-pill);background:color-mix(in srgb,var(--c-surface) 92%,transparent);box-shadow:0 0 0 1px var(--c-line);font:600 .72rem/1.2 var(--body);color:var(--c-muted);backdrop-filter:blur(8px);transition:transform .5s var(--spring)}
+
+/* ---------- drawer, fly, buybar ---------- */
+.scrim{position:fixed;inset:0;z-index:80;background:color-mix(in srgb,var(--c-text) 30%,transparent);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
+.drawer{position:fixed;z-index:90;top:12px;right:12px;bottom:12px;width:min(420px,calc(100vw - 24px));display:flex;flex-direction:column;border-radius:var(--r-block);background:var(--c-surface);box-shadow:0 30px 80px -30px rgba(50,30,15,.5);transform:translateX(calc(100% + 30px)) rotate(4deg);transform-origin:100% 0;visibility:hidden;transition:transform .6s var(--spring),visibility 0s .6s}
+.cart-open .scrim{opacity:1;visibility:visible;transition:opacity .3s}
+.cart-open .drawer{transform:none;visibility:visible;transition:transform .6s var(--spring)}
+.dr-head{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.25rem 1rem 1.5rem}
+.dr-head h3{font:900 1.6rem/1 var(--display);letter-spacing:-.02em}
+.dr-x{width:2.75rem;height:2.75rem;border-radius:50%;background:var(--tint);display:grid;place-items:center;transition:transform .5s var(--spring)}
+.dr-x:hover{transform:rotate(90deg)}
+.dr-list{flex:1;overflow:auto;list-style:none;margin:0;padding:0 1rem}
+.dr-item{display:grid;grid-template-columns:3.5rem 1fr auto;gap:.85rem;align-items:center;padding:.75rem .5rem;border-bottom:1px solid var(--c-line)}
+.dr-th{width:3.5rem;height:3.5rem;border-radius:50%;background:var(--tint) center/cover no-repeat;display:grid;place-items:center;font:900 .9rem var(--display);color:var(--ink)}
+.dr-nm{font:800 .98rem/1.2 var(--display);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dr-pr{font-size:.85rem;color:var(--c-muted)}
+.qty{display:flex;align-items:center;gap:.15rem;padding:.2rem;border-radius:var(--r-pill);background:var(--c-bg)}
+.qty button{width:1.9rem;height:1.9rem;border-radius:50%;font:800 1rem/1 var(--display);transition:background-color .2s,transform .4s var(--spring)}
+.qty button:hover{background:var(--tint);transform:scale(1.1)}
+.qty span{min-width:1.4rem;text-align:center;font:800 .95rem var(--display)}
+.dr-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;text-align:center;color:var(--c-muted)}
+.dr-empty .face{position:relative;width:110px;height:110px;border-radius:50%;background:var(--tint);animation:bob 3s ease-in-out infinite alternate}
+.dr-empty .face::before{content:"";position:absolute;left:30%;top:38%;width:12px;height:12px;border-radius:50%;background:var(--c-text);box-shadow:34px 0 0 var(--c-text)}
+.dr-empty .face::after{content:"";position:absolute;left:34%;top:56%;width:32%;height:16%;border:4px solid var(--c-text);border-top:0;border-radius:0 0 40px 40px}
+.dr-empty b{font:800 1.25rem var(--display);color:var(--c-text)}
+.dr-foot{padding:1rem 1.5rem 1.5rem;border-top:1px solid var(--c-line)}
+.dr-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem;font:800 1.05rem var(--display)}
+.dr-total b{font-size:1.5rem}
+.dr-foot .btn{width:100%}
+.fly{position:fixed;left:0;top:0;z-index:100;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:var(--tint-deep) center/cover no-repeat;box-shadow:0 0 0 3px var(--c-surface),0 10px 20px -6px rgba(50,30,15,.45);pointer-events:none;will-change:transform;display:grid;place-items:center;font:900 1rem var(--display);color:var(--ink)}
+.buybar{position:fixed;left:10px;right:10px;bottom:10px;z-index:60;display:none;align-items:center;gap:.75rem;padding:.5rem .5rem .5rem .6rem;border-radius:var(--r-pill);background:var(--c-surface);box-shadow:0 0 0 1px var(--c-line),0 20px 40px -18px rgba(50,30,15,.5);transform:translateY(140%);transition:transform .6s var(--spring)}
+.buybar .bb-th{width:2.9rem;height:2.9rem;border-radius:50%;background:var(--tint) center/cover no-repeat;flex:none;display:grid;place-items:center;font:900 .85rem var(--display);color:var(--ink)}
+.buybar .bb-t{min-width:0;flex:1;line-height:1.15}
+.buybar .bb-n{font:800 .95rem/1.15 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.buybar .bb-p{font-size:.82rem;color:var(--c-muted)}
+.buybar .plus{width:3rem;height:3rem}
+@media (max-width:760px){.js .buybar{display:flex}.buybar.show{transform:none}body:has(.buybar.show) .demo{transform:translateY(-78px)}}
+
+/* ---------- reveal ---------- */
+.js .rv{opacity:0;transform:translateY(34px) scale(.98);transition:opacity .8s var(--soft),transform 1s var(--spring),translate .55s var(--spring),rotate .55s var(--spring),scale .55s var(--spring)}
+.js .card.rv.press{transition:opacity .8s var(--soft),transform 1s var(--spring),scale .14s ease-out}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#C89173;--c-on-primary:#ffffff;--c-accent:#CCBDB6}</style></head>
+<body class="no-js">
+<script>document.body.classList.replace('no-js','js')</script>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-bar">
+    <a class="logo " href="template.html" aria-label="Birth Bear">
+      <img src="https:&#x2F;&#x2F;www.birthbear.com&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-birthbear.svg" alt="Birth Bear">
+    </a>
+    <nav class="nav-wrap" aria-label="Menu">
+      <ul class="nav"><li><a href="catalog.html">Ontwerp jouw beer</a></li><li><a href="#">Hoe werkt het?</a></li><li><a href="#">Gift cards</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul>
+    </nav>
+    <button class="cart-pill" type="button" data-cart-open aria-label="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.3 10.2a2 2 0 0 1-2 1.8H8.3a2 2 0 0 1-2-1.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cart-label" data-i18n="cart">Mandje</span>
+      <span class="cart-count"><span data-count>0</span></span>
+    </button>
+    <button class="menu-btn" type="button" aria-label="Menu" data-menu><i></i></button>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" id="hero">
+    <div class="capsule">
+      <div class="hero-copy">
+        <span class="eyebrow">Het unieke kraamcadeau</span>
+        <h1 class="h1" data-bounce>Een levenslange herinnering, <span class="acc">zo groot als je kindje bij de geboorte</span></h1>
+        <p class="hero-text">Elke Birth Bear heeft precies de lengte en het gewicht van jouw pasgeboren baby. Persoonlijk geborduurd, met liefde gemaakt in ons atelier.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="catalog.html">Ontwerp jouw beer <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="catalog.html">Hoe werkt het?</a>
+        </div>
+      </div>
+
+      <div class="hero-side">
+      <div class="hero-stage">
+        <div class="plate"></div>
+        <div class="slides" data-slides>
+            <div class="slide" data-name="Birth Bear" data-price="" data-img="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;by-demelza-veldheer-fotografie-birthbear16.jpg?cropX&#x3D;1296&amp;cropY&#x3D;0&amp;cropW&#x3D;3368&amp;cropH&#x3D;4000" data-tag="Op maat gemaakt">
+              <div class="slide-img"><img src="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;by-demelza-veldheer-fotografie-birthbear16.jpg?cropX&#x3D;1296&amp;cropY&#x3D;0&amp;cropW&#x3D;3368&amp;cropH&#x3D;4000" alt="Birth Bear"></div>
+            </div>
+            <div class="slide" data-name="Gift card" data-price="" data-img="" data-tag="Cadeautip">
+              <div class="slide-img"><span class="mono">BB</span></div>
+            </div>
+        </div>
+        <div class="price-tag" data-tag>
+          <div class="pt-txt"><span class="pt-name" data-tag-name>Birth Bear</span><span class="pt-price" data-tag-price>Op maat gemaakt</span></div>
+          <button class="plus" type="button" data-add data-from="slide" aria-label="+"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        </div>
+        <div class="dots" data-dots></div>
+      </div>
+        <ul class="floaters">
+          
+          <li><a data-shop-filter="Birth Bear" href="catalog.html"><span class="fd"></span>Birth Bear</a></li><li><a data-shop-filter="Gift cards" href="catalog.html"><span class="fd"></span>Gift cards</a></li>
+        </ul>
+        <div class="sticker" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><defs><path id="ring" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#ring" textLength="285" lengthAdjust="spacingAndGlyphs">Birth Bear ✿ Birth Bear ✿</textPath></text></svg>
+          <b>BB</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" style="padding-bottom:0">
+    <div class="usps">
+      <article class="usp rv"><span class="usp-n" data-n></span><h3>Exacte lengte en gewicht</h3><p>Jouw beer is net zo lang en zwaar als je kindje op de dag van de geboorte.</p></article><article class="usp rv"><span class="usp-n" data-n></span><h3>Persoonlijk geborduurd</h3><p>Naam en geboortedatum op de poot, in een van zeven garenkleuren, met een velours strik naar keuze.</p></article><article class="usp rv"><span class="usp-n" data-n></span><h3>Officieel geboortecertificaat</h3><p>Elke beer wordt geleverd met een certificaat met de naam, geboortedatum, lengte en gewicht van je baby.</p></article><article class="usp rv"><span class="usp-n" data-n></span><h3>Gratis verzending binnen de EU</h3><p>Met zorg gemaakt door onze coupeuses en bij jou thuis bezorgd, zonder verzendkosten.</p></article>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="shop">
+    <div class="sec-head rv">
+      <div>
+        <span class="eyebrow">2 producten</span>
+        <h2 class="h2" style="margin-top:1rem">Ontwerp jouw Birth Bear</h2>
+      </div>
+      <div class="head-tools">
+        <label class="search-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" data-shop-search placeholder="Zoek producten…" aria-label="Zoek producten" data-i18n-ph="search"></label>
+        <a class="btn btn-ghost" href="catalog.html"><span data-i18n="all">Bekijk alles</span> →</a>
+      </div>
+    </div>
+    <div class="grid home-grid">
+      <article data-shop-item="0" class="card rv" data-name="Birth Bear" data-price="" data-img="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;by-demelza-veldheer-fotografie-birthbear16.jpg?cropX&#x3D;1296&amp;cropY&#x3D;0&amp;cropW&#x3D;3368&amp;cropH&#x3D;4000">
+        <div class="card-well">
+          <img src="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;by-demelza-veldheer-fotografie-birthbear16.jpg?cropX&#x3D;1296&amp;cropY&#x3D;0&amp;cropW&#x3D;3368&amp;cropH&#x3D;4000" alt="Birth Bear" loading="lazy">
+          <span class="card-tag">Op maat gemaakt</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name"><a href="catalog.html">Birth Bear</a></h3>
+          <div class="card-price"></div>
+        </div>
+        <div class="card-actions"><button class="plus" type="button" data-add aria-label="+ Birth Bear"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article>
+      <article data-shop-item="1" class="card rv" data-name="Gift card" data-price="" data-img="">
+        <div class="card-well">
+          <span class="fallback">BB</span>
+          <span class="card-tag">Cadeautip</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name"><a href="#">Gift card</a></h3>
+          <div class="card-price"></div>
+        </div>
+        <div class="card-actions"><button class="plus" type="button" data-add aria-label="+ Gift card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div>
+      </article>
+    </div>
+  </section>
+
+
+  <section class="sec wrap">
+    <div class="story">
+      <div class="blob rv"><img src="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;hoe-wordt-een-birth-bear-gemaakt-1.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;942" alt="Maatwerk, dat zie je nog maar zelden" loading="lazy"></div>
+      <div class="story-copy rv">
+        <span class="eyebrow">Ons atelier</span>
+        <h2 class="h2">Maatwerk, dat zie je nog maar zelden</h2>
+        <p>In ons atelier in het midden van het land maakt een team coupeuses elke Birth Bear op maat voor de ouders. Met veel liefde en aandacht wordt elke beer een klein kunstwerk, een bijzonder cadeau voor jezelf of voor een ander.</p>
+        <ul class="stats"><li class="stat"><b>5500 g</b><span>maximaal gewicht van je beer</span></li><li class="stat"><b>56 cm</b><span>maximale lengte</span></li><li class="stat"><b>7</b><span>kleuren borduurgaren</span></li><li class="stat"><b>4</b><span>stappen naar jouw eigen beer</span></li></ul>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="sec" style="padding-top:0" aria-label="Gallery">
+    <div class="gallery rv"><figure><img src="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;hoe-wordt-een-birth-bear-gemaakt-2.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;632" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;hoe-wordt-een-birth-bear-gemaakt-3.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;628" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;04-green-blue-original.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;628" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;reel1-instagram-bericht-vierkant-your-story-1380-x-1920-px-1980-x-1200-px-3.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1920" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;reel1-instagram-bericht-vierkant-your-story-1380-x-1920-px-10-x-10-cm-4.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;reel1-instagram-bericht-vierkant-your-story-1380-x-1920-px-10-x-10-cm-9.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1181" alt="" loading="lazy"></figure></div>
+  </section>
+
+  <section class="sec wrap" style="padding-top:0">
+    <figure class="quote rv" style="margin:0">
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <blockquote>Hoe gaaf is het om je kinderen later te kunnen laten voelen hoe zwaar en lang ze waren bij de geboorte? Oprecht het meest unieke geboortecadeau wat mij betreft.</blockquote>
+      <figcaption><cite>Justine Pierau</cite></figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap" style="padding-bottom:var(--s5)">
+    <div class="cta-band rv">
+      <div class="balls" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div><h2 class="h2">Ontwerp jouw eigen Birth Bear</h2><p>Voer lengte en gewicht in, kies je kleuren en borduur de naam van je kleine wonder op de poot.</p></div>
+      <a class="btn btn-primary" href="catalog.html">Ontwerp jouw beer <span class="arr">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <div><p class="ftr-tag">Het unieke kraamcadeau, op ware grootte</p></div>
+      <div><h4>Menu</h4><ul><li><a href="catalog.html">Ontwerp jouw beer</a></li><li><a href="#">Hoe werkt het?</a></li><li><a href="#">Gift cards</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4>Info</h4><ul><li><a href="#">Algemene voorwaarden</a></li><li><a href="#">Privacy statement</a></li><li><a href="#">Disclaimer</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li><li><a href="#">Reviews</a></li><li><a href="#">Nieuwsbrief</a></li></ul></div>
+      <div class="ftr-contact"><h4>Contact</h4><ul>
+        
+        
+        
+        <li><a href="catalog.html">Birth Bear →</a></li>
+      </ul></div>
+    </div>
+    <span class="giant" data-giant aria-hidden="true">Birth Bear</span>
+    <div class="ftr-bot"><span>© 2026 Birth Bear</span><a class="to-top" href="#hdr">↑</a></div>
+  </div>
+</footer>
+
+<div class="demo">Demo redesign · Soft Spring</div>
+
+<div class="buybar" data-buybar data-name="Birth Bear" data-price="" data-img="https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;by-demelza-veldheer-fotografie-birthbear16.jpg?cropX&#x3D;1296&amp;cropY&#x3D;0&amp;cropW&#x3D;3368&amp;cropH&#x3D;4000">
+  <span class="bb-th" style="background-image:url('https:&#x2F;&#x2F;www.birthbear.com&#x2F;media&#x2F;by-demelza-veldheer-fotografie-birthbear16.jpg?cropX&#x3D;1296&amp;cropY&#x3D;0&amp;cropW&#x3D;3368&amp;cropH&#x3D;4000')"></span>
+  <div class="bb-t"><div class="bb-n">Birth Bear</div><div class="bb-p">Op maat gemaakt</div></div>
+  <button class="plus" type="button" data-add aria-label="+ Birth Bear"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+
+<div class="scrim" data-cart-close></div>
+<aside class="drawer" aria-label="Cart" data-drawer data-initials="BB">
+  <div class="dr-head"><h3 data-i18n="cart">Mandje</h3><button class="dr-x" type="button" data-cart-close aria-label="×"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <ul class="dr-list" data-list></ul>
+  <div class="dr-empty" data-empty><span class="face"></span><b data-i18n="empty">Je mandje is nog leeg</b><a class="btn btn-ghost" href="catalog.html" data-i18n="shop">Ga shoppen</a></div>
+  <div class="dr-foot" data-foot hidden><div class="dr-total"><span data-i18n="total">Totaal</span><b data-total>–</b></div><a class="btn btn-primary" href="#" data-i18n="checkout">Afrekenen</a></div>
+</aside>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const lang = (document.documentElement.lang || 'nl').slice(0, 2);
+  const L = {
+    en: { cart: 'Cart', empty: 'Your cart is still empty', shop: 'Start shopping', total: 'Total', checkout: 'Checkout', all: 'View all', search: 'Search products…', allf: 'All', sort0: 'Recommended', sort1: 'Price low–high', sort2: 'Price high–low', sort3: 'Name A–Z' },
+    de: { cart: 'Warenkorb', empty: 'Dein Warenkorb ist noch leer', shop: 'Jetzt shoppen', total: 'Summe', checkout: 'Zur Kasse', all: 'Alle ansehen', search: 'Produkte suchen…', allf: 'Alle', sort0: 'Empfohlen', sort1: 'Preis aufsteigend', sort2: 'Preis absteigend', sort3: 'Name A–Z' },
+    fr: { cart: 'Panier', empty: 'Votre panier est vide', shop: 'Découvrir', total: 'Total', checkout: 'Commander', all: 'Tout voir', search: 'Rechercher…', allf: 'Tout', sort0: 'Recommandé', sort1: 'Prix croissant', sort2: 'Prix décroissant', sort3: 'Nom A–Z' }
+  }[lang];
+  if (L) { $$('[data-i18n]').forEach(el => L[el.dataset.i18n] && (el.textContent = L[el.dataset.i18n])); $$('[data-i18n-ph]').forEach(el => L[el.dataset.i18nPh] && (el.placeholder = L[el.dataset.i18nPh])); }
+
+  // menu
+  const hdr = $('#hdr');
+  $('[data-menu]')?.addEventListener('click', () => hdr.classList.toggle('open'));
+  document.addEventListener('click', e => { if (!e.target.closest('#hdr')) hdr.classList.remove('open'); });
+
+  // numbered usp badges
+  $$('[data-n]').forEach((el, i) => el.textContent = String(i + 1).padStart(2, '0'));
+
+  // headline: split words, squash-and-stretch in (content stays visible without JS)
+  const h1 = $('[data-bounce]');
+  if (h1) {
+    const split = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(t => { if (!t) return; if (/^\s+$/.test(t)) frag.append(' '); else { const s = document.createElement('span'); s.className = 'w'; s.textContent = t; frag.append(s); } });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1) split(n);
+    });
+    split(h1);
+    if (!reduce && h1.animate) $$('.w', h1).forEach((w, i) => w.animate([
+      { transform: 'translateY(70%) scale(1.25,.55)', opacity: 0 },
+      { transform: 'translateY(-10%) scale(.92,1.12)', opacity: 1, offset: .55 },
+      { transform: 'translateY(2%) scale(1.04,.96)', offset: .78 },
+      { transform: 'none', opacity: 1 }
+    ], { duration: 900, delay: 120 + i * 55, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' }));
+  }
+
+  // footer giant letters
+  const g = $('[data-giant]');
+  if (g) { const t = g.textContent; g.textContent = ''; [...t].forEach(c => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = c === ' ' ? ' ' : c; g.append(s); });
+    const fit = () => { g.style.fontSize = ''; const w = g.parentElement.clientWidth; if (g.scrollWidth > w) g.style.fontSize = (parseFloat(getComputedStyle(g).fontSize) * w / g.scrollWidth * .98) + 'px'; };
+    fit(); addEventListener('resize', fit); document.fonts?.ready.then(fit); }
+
+  // reveal on scroll
+  // the stagger delay is dropped after the reveal so it doesn't slow down press/hover later
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const el = e.target; el.classList.add('in'); io.unobserve(el); setTimeout(() => el.style.transitionDelay = '', 1300); } }), { rootMargin: '0px 0px -8% 0px' });
+  $$('.rv').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+
+  // hero featured carousel
+  const slides = $$('[data-slides] .slide');
+  if (slides.length) {
+    let cur = 0, timer;
+    // .price-tag, not [data-tag]: slides also carry a data-tag attribute
+    const dots = $('[data-dots]'), tag = $('.price-tag');
+    const show = i => {
+      cur = (i + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle('on', k === cur));
+      dots && [...dots.children].forEach((d, k) => d.classList.toggle('on', k === cur));
+      const s = slides[cur];
+      if (tag && s.dataset.name) {
+        $('[data-tag-name]', tag).textContent = s.dataset.name;
+        const p = $('[data-tag-price]', tag); p.textContent = '';
+        if (s.dataset.price) { const b = document.createElement('b'); b.textContent = s.dataset.price; p.append(b); } else p.textContent = s.dataset.tag || '';
+        tag.dataset.name = s.dataset.name; tag.dataset.price = s.dataset.price; tag.dataset.img = s.dataset.img;
+      }
+    };
+    if (dots && slides.length > 1) slides.forEach((_, k) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', String(k + 1)); b.onclick = () => { show(k); loop(); }; dots.append(b); });
+    const loop = () => { clearInterval(timer); if (!reduce && slides.length > 1) timer = setInterval(() => show(cur + 1), 4200); };
+    show(0); loop();
+    $('.hero-stage')?.addEventListener('pointerenter', () => clearInterval(timer));
+    $('.hero-stage')?.addEventListener('pointerleave', loop);
+  }
+
+  // ---------- cart ----------
+  const KEY = 'soft-spring-cart:' + location.pathname.replace(/[^/]*$/, '');
+  let cart = []; try { cart = JSON.parse(localStorage.getItem(KEY)) || []; } catch {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch {} };
+  const num = p => { if (!p) return null; let s = String(p).replace(/[^\d.,]/g, ''); if (!s) return null; if (/,\d{1,2}$/.test(s)) s = s.replace(/\./g, '').replace(',', '.'); else s = s.replace(/,/g, ''); const n = parseFloat(s); return isNaN(n) ? null : n; };
+  const money = n => new Intl.NumberFormat(lang === 'en' ? 'en-GB' : lang + '-' + lang.toUpperCase(), { style: 'currency', currency: 'EUR' }).format(n);
+  const countEl = $('[data-count]'), pill = $('.cart-pill'), drawer = $('[data-drawer]'), list = $('[data-list]');
+  const total = () => cart.reduce((a, c) => a + c.qty, 0);
+  let shown = total(); countEl.textContent = shown;
+
+  function rollCount() {
+    const n = total(); if (n === shown) return;
+    const box = countEl.parentElement, up = n > shown; shown = n;
+    if (reduce || !box.animate) { countEl.textContent = n; countEl.animate?.([{ opacity: 0 }, { opacity: 1 }], 300); return; }
+    const old = countEl.cloneNode(true); old.removeAttribute('data-count'); box.append(old);
+    countEl.textContent = n;
+    const ease = 'cubic-bezier(.34,1.56,.64,1)';
+    old.animate([{ transform: 'none' }, { transform: `translateY(${up ? -110 : 110}%)` }], { duration: 450, easing: ease }).onfinish = () => old.remove();
+    countEl.animate([{ transform: `translateY(${up ? 110 : -110}%)` }, { transform: 'none' }], { duration: 520, easing: ease });
+  }
+  function jelly() {
+    if (reduce) return;
+    const t0 = performance.now();
+    const step = now => { const t = (now - t0) / 1000; const a = .28 * Math.exp(-5.2 * t) * Math.cos(2 * Math.PI * 3.1 * t);
+      pill.style.transform = `scale(${1 + a}, ${1 - a})`; if (t < 1.1) requestAnimationFrame(step); else pill.style.transform = ''; };
+    requestAnimationFrame(step);
+  }
+  function render() {
+    list.innerHTML = '';
+    cart.forEach((c, i) => {
+      const li = document.createElement('li'); li.className = 'dr-item';
+      const th = document.createElement('span'); th.className = 'dr-th'; if (c.img) th.style.backgroundImage = `url("${c.img.replace(/"/g, '%22')}")`; else th.textContent = drawer.dataset.initials;
+      const tx = document.createElement('div'); const nm = document.createElement('div'); nm.className = 'dr-nm'; nm.textContent = c.name; tx.append(nm);
+      if (c.price) { const pr = document.createElement('div'); pr.className = 'dr-pr'; pr.textContent = c.price; tx.append(pr); }
+      const q = document.createElement('div'); q.className = 'qty';
+      const mk = (s, d) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = s; b.onclick = () => { c.qty += d; if (c.qty <= 0) cart.splice(i, 1); save(); render(); rollCount(); }; return b; };
+      const n = document.createElement('span'); n.textContent = c.qty; q.append(mk('–', -1), n, mk('+', 1));
+      li.append(th, tx, q); list.append(li);
+    });
+    $('[data-empty]').hidden = cart.length > 0; $('[data-empty]').style.display = cart.length ? 'none' : '';
+    $('[data-foot]').hidden = !cart.length;
+    const sum = cart.reduce((a, c) => a + (num(c.price) ?? 0) * c.qty, 0);
+    $('[data-total]').textContent = sum ? money(sum) : '–';
+  }
+  render();
+  const open = on => document.body.classList.toggle('cart-open', on);
+  $$('[data-cart-open]').forEach(b => b.addEventListener('click', () => open(true)));
+  $$('[data-cart-close]').forEach(b => b.addEventListener('click', () => open(false)));
+  addEventListener('keydown', e => e.key === 'Escape' && open(false));
+  $('[data-foot] .btn')?.addEventListener('click', e => e.preventDefault());
+
+  // fly a 56px clone along a quadratic bezier; stretch along the tangent by speed, preserving area
+  function fly(from, img, label, done) {
+    const to = pill.getBoundingClientRect();
+    const p0 = { x: from.left + from.width / 2, y: from.top + from.height / 2 }, p2 = { x: to.left + to.width / 2, y: to.top + to.height / 2 };
+    const p1 = { x: (p0.x + p2.x) / 2, y: (p0.y + p2.y) / 2 - 160 };
+    const el = document.createElement('div'); el.className = 'fly';
+    if (img) el.style.backgroundImage = `url("${img.replace(/"/g, '%22')}")`; else el.textContent = label;
+    document.body.append(el);
+    const D = 760, k = .045, t0 = performance.now(); let prev = p0;
+    const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const step = now => {
+      const r = Math.min(1, (now - t0) / D), t = ease(r), u = 1 - t;
+      const x = u * u * p0.x + 2 * u * t * p1.x + t * t * p2.x, y = u * u * p0.y + 2 * u * t * p1.y + t * t * p2.y;
+      const dx = 2 * u * (p1.x - p0.x) + 2 * t * (p2.x - p1.x), dy = 2 * u * (p1.y - p0.y) + 2 * t * (p2.y - p1.y);
+      const speed = Math.hypot(x - prev.x, y - prev.y); prev = { x, y };
+      const s = Math.min(1.9, 1 + speed * k), size = 1 - .45 * t * t;
+      el.style.transform = `translate(${x}px,${y}px) rotate(${Math.atan2(dy, dx)}rad) scale(${s * size},${size / s})`;
+      if (r < 1) requestAnimationFrame(step); else { el.remove(); done(); }
+    };
+    requestAnimationFrame(step);
+  }
+
+  function add(btn) {
+    const src = btn.closest('[data-name]'); if (!src) return;
+    const name = src.dataset.name, price = src.dataset.price || '', img = src.dataset.img || '';
+    const hit = cart.find(c => c.name === name);
+    hit ? hit.qty++ : cart.push({ name, price, img, qty: 1 }); save(); render();
+    btn.classList.add('added'); setTimeout(() => btn.classList.remove('added'), 600);
+    const well = btn.dataset.from === 'slide' ? $('[data-slides] .slide.on .slide-img') || btn : src.querySelector('.card-well img, .card-well, .bb-th') || btn;
+    if (reduce) { rollCount(); return; }
+    fly(well.getBoundingClientRect(), img, drawer.dataset.initials, () => { rollCount(); jelly(); });
+  }
+  // squash on press, spring back on release
+  document.addEventListener('pointerdown', e => {
+    const b = e.target.closest('[data-add]'); if (b) { b.classList.add('squash'); e.stopPropagation(); return; }
+    const c = e.target.closest('.card'); if (!c || reduce) return;
+    const r = c.getBoundingClientRect(); c.style.transformOrigin = `${e.clientX - r.left}px ${e.clientY - r.top}px`; c.classList.add('press');
+  });
+  const release = () => { $$('.squash').forEach(b => b.classList.remove('squash')); $$('.card.press').forEach(c => c.classList.remove('press')); };
+  ['pointerup', 'pointercancel', 'dragstart'].forEach(t => document.addEventListener(t, release));
+  document.addEventListener('pointerleave', release);
+  document.addEventListener('click', e => { const b = e.target.closest('[data-add]'); if (b) { e.preventDefault(); add(b); } });
+
+  // mobile buy bar once the hero is out of view
+  const bar = $('[data-buybar]'), hero = $('#hero');
+  if (bar && hero) new IntersectionObserver(([e]) => bar.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top < 0)).observe(hero);
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"nl","count":"2 producten","products":[{"name":"Birth Bear","tag":"Op maat gemaakt","category":"Birth Bear"},{"name":"Gift card","tag":"Cadeautip","category":"Gift cards"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>
