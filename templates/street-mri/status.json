@@ -1,0 +1,89 @@
+{
+  "id": "street-mri",
+  "name": "Street MRI",
+  "sectors": [
+    "tech",
+    "services",
+    "b2b",
+    "retail"
+  ],
+  "sample": "twyns",
+  "stress": "terpstrav2",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793287058637
+    },
+    {
+      "step": "Rendering",
+      "at": 1793288114998
+    },
+    {
+      "step": "Critique",
+      "at": 1793288127796
+    },
+    {
+      "step": "Final render",
+      "at": 1793288285745
+    },
+    {
+      "step": "Done",
+      "at": 1793288298743
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793287058636,
+  "startedAt": 1793287058637,
+  "finishedAt": 1793288298743,
+  "model": "opus",
+  "costUsd": 4.751167799999999,
+  "meta": {
+    "id": "street-mri",
+    "name": "Street MRI",
+    "scheme": "dark",
+    "sectors": [
+      "tech",
+      "services",
+      "b2b",
+      "retail"
+    ],
+    "mood": [
+      "clinical",
+      "calm",
+      "exact",
+      "nocturnal"
+    ],
+    "needsProductImages": true,
+    "notes": "Graphite viewer stays fixed; --c-primary (lifted in OKLCH for contrast) is only the annotation colour for markers, findings, severity bars, CTAs and the active sequence, and --c-accent tints the tag chips."
+  },
+  "score": {
+    "scoreBefore": 7.1,
+    "scores": {
+      "creativity": 8.5,
+      "typography": 7.5,
+      "layout": 6.5,
+      "polish": 6,
+      "brandRobustness": 8,
+      "mobile": 7,
+      "genericness": 8
+    },
+    "issues": [
+      "SE 02 gallery rendered as 4–8 pitch-black empty squares (lazy images never loaded); a large dead area mid-page, and 8 images wrapped 7+1 into an orphan row on desktop",
+      "Catalogue intro pane was a huge empty box with the title glued to the bottom; reads as a missing image, not a viewer",
+      "Sinogram strip showed a solid black block for unacquired angles, so the strip looked broken until 180 passes",
+      "Sparse product sets (Twyns: 2 findings) left two thirds of the finding grid empty on home and catalogue",
+      "Fixed demo badge sits over the hero help text at the first viewport (contract-mandated position, left as is)"
+    ],
+    "fixed": [
+      "Gallery rebuilt as a 4-up light box (2-up on mobile) with eager async images, a CSS-generated slice + crosshair + measurement-tick fallback in every tile, COR W/L captions, and a 2-wide closer for a lone trailing image; broken images remove themselves so the generated slice shows",
+      "Catalogue intro now carries a live DICOM study record (patient, modality with live filter state, active sequence, angles) over a hairline measurement grid with a primary glow, plus a reconstruction ruler bound to the scan gauge",
+      "Sinogram reset clears to transparent so the detector-element pattern shows through until each angle is acquired",
+      "1–3 products switch to wide finding cards (slice left, report right, larger names) on home and catalogue grid view; stacked again under 520px"
+    ],
+    "scoreAfterEstimate": 7.8
+  },
+  "version": 1793288298743
+}

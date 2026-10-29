@@ -1,0 +1,9 @@
+{
+  "id": "street-mri",
+  "name": "Street MRI",
+  "scheme": "dark",
+  "sectors": ["tech", "services", "b2b", "retail"],
+  "mood": ["clinical", "calm", "exact", "nocturnal"],
+  "needsProductImages": true,
+  "notes": "Graphite viewer stays fixed; --c-primary (lifted in OKLCH for contrast) is only the annotation colour for markers, findings, severity bars, CTAs and the active sequence, and --c-accent tints the tag chips."
+}
