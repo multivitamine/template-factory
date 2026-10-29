@@ -1,0 +1,439 @@
+{
+  "brand": {
+    "name": "Terpstra Muziek Drumland",
+    "tagline": "Speciaalzaak in blaas- en slaginstrumenten",
+    "logo": null,
+    "logoIsLight": true,
+    "initials": "TM",
+    "lang": "nl",
+    "colors": {
+      "primary": "#A80819",
+      "accent": "#333333"
+    }
+  },
+  "nav": [
+    {
+      "label": "Webshop",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Occasions",
+      "href": "#"
+    },
+    {
+      "label": "Aanbiedingen",
+      "href": "#"
+    },
+    {
+      "label": "Reparatieatelier",
+      "href": "#"
+    },
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Drumland sinds 40+ jaar",
+    "title": "Alles voor de drummer",
+    "titleAccent": "en elke andere muzikant",
+    "text": "Van akoestische drumkits tot Roland V-Drums, van klarinet tot trompet: ontdek het grootste assortiment in Noord-Holland, met deskundig advies in onze showroom in Lijnden.",
+    "cta": "Bekijk de drums",
+    "ctaHref": "catalog.html",
+    "cta2": "Reparatieatelier",
+    "image": "https://www.terpstra-muziek.nl/media/drums_michael_dobrinski_unsplash_01.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  },
+  "usps": [
+    {
+      "title": "Morgen in huis",
+      "text": "Voor 13:00 uur besteld, morgen bij je thuis (*zie voorwaarden)."
+    },
+    {
+      "title": "Demoruimten",
+      "text": "Probeer instrumenten rustig uit in onze demoruimten, met advies van echte specialisten."
+    },
+    {
+      "title": "Eigen reparatieatelier",
+      "text": "Ons reparatieatelier houdt jouw instrument in topconditie."
+    },
+    {
+      "title": "Instrumenten huren",
+      "text": "Huur een drumstel of blaasinstrument en begin direct met spelen."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Blaasinstrumenten",
+      "image": "https://www.terpstra-muziek.nl/media/blaasinstrumenten_v2.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Drums",
+      "image": "https://www.terpstra-muziek.nl/media/drums_michael_dobrinski_unsplash_01.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Percussie",
+      "image": "https://www.terpstra-muziek.nl/media/percussie_640x385.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Concert & Marching",
+      "image": "https://www.terpstra-muziek.nl/media/concert_640x385.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Snaarinstrumenten",
+      "image": "https://www.terpstra-muziek.nl/media/gitaar_640x385.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Toetsen",
+      "image": "https://www.terpstra-muziek.nl/media/piano_640x385.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Ahead AR1622 hoes voor 22\" x 16\" bassdrum",
+      "price": "€ 148,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8189_807008.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/ahead-ar1622-hoes-voor-22-x-16-bass-drum",
+      "category": "Accessoires"
+    },
+    {
+      "name": "Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning",
+      "price": "€ 329,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8189%20spgbbr3_01.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning",
+      "category": "Hardware"
+    },
+    {
+      "name": "Ahead SPG-R-3 Spinal G drumkruk rood",
+      "price": "€ 249,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8189_spgr3.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-r-3-spinal-g-drumkruk-rood",
+      "category": "Hardware"
+    },
+    {
+      "name": "Aquarian AQCC16 Classic Clear drumvel 16\"",
+      "price": "€ 22,90",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8233_aqcc16.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqcc16-classic-clear-drumvel-16",
+      "category": "Drumvellen"
+    },
+    {
+      "name": "Aquarian AQFB20 Full Force I bassdrumvel 20\"",
+      "price": "€ 51,90",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8233_aqfb20.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqfb20-full-force-i-bassdrumvel-20",
+      "category": "Drumvellen"
+    },
+    {
+      "name": "Aquarian AQFOR10 Force Ten drumvel 10\"",
+      "price": "€ 30,50",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8233_aqfor10.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqfor10-force-ten-drumvel-10",
+      "category": "Drumvellen"
+    },
+    {
+      "name": "Aquarian AQREF14 Reflector Black drumvel 14\"",
+      "price": "€ 38,90",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8233_aqref14.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqref14-reflector-black-drumvel-14",
+      "category": "Drumvellen"
+    },
+    {
+      "name": "Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22\"",
+      "price": "€ 56,50",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8233%20aqtcfb22_01.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqtcfb22-texture-coated-full-force-i-bassdrumvel-22",
+      "category": "Drumvellen"
+    },
+    {
+      "name": "ASBA snaredrum 14x6\" Blueberry / Agathe The Blue Rive Gauche",
+      "price": "€ 735,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/7359_rg1406atb.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "Actie",
+      "href": "https://www.terpstra-muziek.nl/product/asba-snaredrum-14x6-blueberry-/-agathe-the-blue-rive-gauche",
+      "category": "Snaredrums"
+    },
+    {
+      "name": "Big Fat Snare Drum 14\" Snare Bourine",
+      "price": "€ 42,90",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/bigfat_14bfsdsb.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/big-fat-snare-drum-14-snare-bourine",
+      "category": "Snaredrums"
+    },
+    {
+      "name": "Big Fat Snare Drum 14\" Steve's Donut",
+      "price": "€ 36,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/1250_bfsd14don.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/big-fat-snare-drum-big-fat-snare-drum-14-steve-s-donut",
+      "category": "Snaredrums"
+    },
+    {
+      "name": "Bone snaredrum aluminium 14\"x6,5\" Nickel Black Hardware",
+      "price": "€ 799,00",
+      "oldPrice": "€ 816,75",
+      "image": "https://www.terpstra-muziek.nl/content/products/7528_sdua1465nb.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "Actie",
+      "href": "https://www.terpstra-muziek.nl/product/bone-snaredrum-aluminium-14-x6-5-nickel-black-hardware",
+      "category": "Snaredrums"
+    },
+    {
+      "name": "Bone snaredrum Carbcutter 14\"x5,5\" Charcoal Smoke",
+      "price": "€ 975,00",
+      "oldPrice": "€ 1.149,00",
+      "image": "https://www.terpstra-muziek.nl/content/products/7528_sdcbc1455csc.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "Actie",
+      "href": "https://www.terpstra-muziek.nl/product/bone-snaredrum-carbcutter-14-x5-5-charcoal-smoke-chrome-hw",
+      "category": "Snaredrums"
+    },
+    {
+      "name": "DS Drum DSX Stage Kit Titanium Sparkle",
+      "price": "€ 499,00",
+      "oldPrice": "€ 699,00",
+      "image": "https://www.terpstra-muziek.nl/content/products/2763_44671.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "OP = OP",
+      "href": "https://www.terpstra-muziek.nl/product/ds-drum-dsx2251tsk-dsx-stage-kit-titanium-sparkle",
+      "category": "Stellen & cymbals"
+    },
+    {
+      "name": "Lite Stix Rock drumsticks U.S. Hickory",
+      "price": "€ 79,00",
+      "oldPrice": "€ 109,00",
+      "image": "https://www.terpstra-muziek.nl/content/products/7166_rock.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "Actie",
+      "href": "https://www.terpstra-muziek.nl/product/lite-stix-rock-drumsticks-u-s-hickory",
+      "category": "Accessoires"
+    },
+    {
+      "name": "Occasion Dixon snaredrum Artisan hout 14x5,5\"",
+      "price": "€ 375,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/3928%20slag4753_01.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "Occasion",
+      "href": "https://www.terpstra-muziek.nl/product/dixon-occasion-snaredrum-artisan-hout-14x5-5",
+      "category": "Snaredrums"
+    },
+    {
+      "name": "Occasion Istanbul Agop Vezir ride 21\"",
+      "price": "€ 365,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/3928%20b0959_01.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "Occasion",
+      "href": "https://www.terpstra-muziek.nl/product/istanbul-agop-occasion-vezir-ride-21",
+      "category": "Stellen & cymbals"
+    },
+    {
+      "name": "Occasion Bach Omega trombone met kwartventiel 2105",
+      "price": "€ 650,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/3928%20b0959_01.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "Occasion",
+      "href": "https://www.terpstra-muziek.nl/product/bach-occasion-omega-trombone-met-kwartventiel-2105",
+      "category": "Overig"
+    },
+    {
+      "name": "DW DWCP5500D hihatstand 3-benig",
+      "price": "€ 419,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8216_dwcp5500d.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "Actie",
+      "href": "https://www.terpstra-muziek.nl/product/dw-dwcp5500d-hihat-stand-3-benig",
+      "category": "Hardware"
+    },
+    {
+      "name": "K&M KM19790 iPad-houder met microfoonstandbevestiging",
+      "price": "€ 51,90",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/1865_1979031655.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "Actie",
+      "href": "https://www.terpstra-muziek.nl/product/k-m-km19790-ipad-houder-met-microfoonstand-bevestiging",
+      "category": "Hardware"
+    },
+    {
+      "name": "BG S41SH Classic harnas vrouw, zwart",
+      "price": "€ 35,03",
+      "oldPrice": "€ 46,70",
+      "image": "https://www.terpstra-muziek.nl/content/products/4470_6010404.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "Actie",
+      "href": "https://www.terpstra-muziek.nl/product/bg-s41sh-classic-harnas-vrouw-kunstst-snaphaak-zwart",
+      "category": "Overig"
+    },
+    {
+      "name": "Gewa 1/8 viool Allegro speelklaar incl. vormkoffer",
+      "price": "€ 199,00",
+      "oldPrice": "€ 447,00",
+      "image": "https://www.terpstra-muziek.nl/content/products/0216_gs4000552111.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "OP = OP",
+      "href": "https://www.terpstra-muziek.nl/product/gewa-1/8-viool-allegro-speelklaar-incl-vormkoffer",
+      "category": "Overig"
+    },
+    {
+      "name": "Stagg kinderhoorn Bb Franse gigbag",
+      "price": "€ 565,00",
+      "oldPrice": "€ 929,00",
+      "image": "https://www.terpstra-muziek.nl/content/products/4100_77fhbjsc.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "OP = OP",
+      "href": "https://www.terpstra-muziek.nl/product/stagg-kinderhoorn-bb-franse-gigbag",
+      "category": "Overig"
+    },
+    {
+      "name": "Ritter RDP2-S/BRD stick bag Black-Red Performance",
+      "price": "€ 8,40",
+      "oldPrice": "€ 12,00",
+      "image": "https://www.terpstra-muziek.nl/content/products/3488_rdp2sbrd.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": "OP = OP",
+      "href": "https://www.terpstra-muziek.nl/product/ritter-rdp2-s/brd-stick-bag-black-red-performance",
+      "category": "Accessoires"
+    }
+  ],
+  "story": {
+    "eyebrow": "Over Terpstra Muziek",
+    "title": "Een thuishaven voor muzikanten, al 40+ jaar",
+    "text": "Terpstra Muziek Drumland in Lijnden is dé specialist in blaas- en slaginstrumenten, met de grootste drumspeciaalzaak van Noord-Holland. Of je nu net begint of al jaren op het podium staat: bij ons vind je het juiste instrument, advies, reparatie en verhuur onder één dak.",
+    "image": "https://www.terpstra-muziek.nl/media/reparatieatelier-bovenheader.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  },
+  "stats": [
+    {
+      "value": "4688",
+      "label": "producten in de categorie Drums"
+    },
+    {
+      "value": "€ 400",
+      "label": "korting op geselecteerde klarinetten"
+    },
+    {
+      "value": "€ 600",
+      "label": "korting op geselecteerde instrumenten"
+    }
+  ],
+  "gallery": [
+    "https://www.terpstra-muziek.nl/media/roland_qa_261128_02.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.terpstra-muziek.nl/media/buffetcrampon_261006.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.terpstra-muziek.nl/media/besson_261006.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.terpstra-muziek.nl/media/dw-banner2603.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.terpstra-muziek.nl/media/yamaha-pro-trumpet.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.terpstra-muziek.nl/media/yamaha_ead50_01.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.terpstra-muziek.nl/media/buffet-crampon_gala_klarinet_01.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.terpstra-muziek.nl/media/audio_midi_fernando_lavin_640x385.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Kom langs in Lijnden",
+    "text": "Proef de klank van je volgende instrument in onze demoruimten, of laat je adviseren door onze specialisten.",
+    "label": "Neem contact op",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Lijnden (Amsterdam / A9)",
+    "phone": "",
+    "email": ""
+  },
+  "footerLinks": [
+    {
+      "label": "Drumstel huren",
+      "href": "#"
+    },
+    {
+      "label": "Blaasinstrument huren",
+      "href": "#"
+    },
+    {
+      "label": "Reparatie",
+      "href": "#"
+    },
+    {
+      "label": "Openingstijden",
+      "href": "#"
+    },
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Drums",
+    "intro": "Van akoestische kits en Roland e-drums tot snaredrums, cymbals, vellen en hardware: alles om jouw set te perfectioneren.",
+    "filters": [
+      "Snaredrums",
+      "Drumvellen",
+      "Hardware",
+      "Accessoires",
+      "Stellen & cymbals",
+      "Overig"
+    ],
+    "count": "4688 producten"
+  },
+  "featured": [
+    {
+      "name": "Ahead AR1622 hoes voor 22\" x 16\" bassdrum",
+      "price": "€ 148,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8189_807008.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/ahead-ar1622-hoes-voor-22-x-16-bass-drum",
+      "category": "Accessoires"
+    },
+    {
+      "name": "Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning",
+      "price": "€ 329,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8189%20spgbbr3_01.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning",
+      "category": "Hardware"
+    },
+    {
+      "name": "Ahead SPG-R-3 Spinal G drumkruk rood",
+      "price": "€ 249,00",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8189_spgr3.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-r-3-spinal-g-drumkruk-rood",
+      "category": "Hardware"
+    },
+    {
+      "name": "Aquarian AQCC16 Classic Clear drumvel 16\"",
+      "price": "€ 22,90",
+      "oldPrice": null,
+      "image": "https://www.terpstra-muziek.nl/content/products/8233_aqcc16.jpg?width=273&height=180&anchor=center&background=white",
+      "tag": null,
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqcc16-classic-clear-drumvel-16",
+      "category": "Drumvellen"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

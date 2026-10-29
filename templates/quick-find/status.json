@@ -1,0 +1,84 @@
+{
+  "id": "quick-find",
+  "name": "Quick Find",
+  "sectors": [
+    "wholesale",
+    "b2b",
+    "industrial",
+    "retail"
+  ],
+  "sample": "terpstrav2",
+  "stress": "spaansen",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793302810035
+    },
+    {
+      "step": "Rendering",
+      "at": 1793303546054
+    },
+    {
+      "step": "Critique",
+      "at": 1793303559820
+    },
+    {
+      "step": "Final render",
+      "at": 1793303639453
+    },
+    {
+      "step": "Done",
+      "at": 1793303651925
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793302018690,
+  "startedAt": 1793302810035,
+  "finishedAt": 1793303651925,
+  "model": "opus",
+  "costUsd": 3.6571942,
+  "meta": {
+    "id": "quick-find",
+    "name": "Quick Find",
+    "scheme": "light",
+    "sectors": [
+      "wholesale",
+      "b2b",
+      "industrial",
+      "retail"
+    ],
+    "mood": [
+      "efficient",
+      "confident",
+      "restrained",
+      "fast"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary fills the 62vh search band, the CTA block, active filters and the palette selection bar; product pads are a 9% primary tint with multiply-blended packshots; on-primary drives all text on the band; accent is left as a quiet default."
+  },
+  "score": {
+    "scoreBefore": 6.5,
+    "issues": [
+      "Catalog: `.cwrap{padding:0 0 …}` wiped the .wrap side padding, so filter chips, product rows and add buttons ran flush against both viewport edges (the 'Alle' chip touched x=0)",
+      "Home list heading doubled up for brands without a catalog title: 'Ons assortiment assortiment'",
+      "Inline catalog search reordered by score, but the ranking stayed invisible. Nothing showed why a row moved to the top, so the signature interaction felt like a plain filter",
+      "Mobile nav was cut off mid-word ('Rep…') with no sign that it scrolls",
+      "Gallery strip cropped its last tile at a hard edge on desktop, which looked like a layout bug rather than a scroller; all tiles were the same size, so the strip had no rhythm",
+      "Mobile stats stacked into three tall single-column blocks of thin numerals, which added a lot of empty scroll",
+      "Scores: creativity 7, typography 7, layout 6.5, polish 5.5 (catalog edge bug), brand robustness 7.5, mobile 6, generic-ness 6.5"
+    ],
+    "fixed": [
+      "Catalog main now keeps .wrap's horizontal padding (only padding-bottom set), so the list and toolbar sit inside the grid again",
+      "Home list heading is now a muted 'Snel gevonden in' kicker above the bold catalog title (fallback 'Ons assortiment'), so no word repeats for any brand",
+      "Catalog inline engine writes each row's live fuzzy score as a small mono readout ('BESTE MATCH · 87 pt'), tinted from --c-primary mixed with text for contrast, in both list and grid views. The FLIP reordering now visibly follows the scorer",
+      "Mobile nav on both pages bleeds to the screen edges and fades out on the right, so it reads as a swipeable rail",
+      "Gallery became a staggered strip (alternating 1:1 / 4:5 / 5:4 tiles) that bleeds off the right edge behind a fade mask, so the cut-off tile reads as intentional",
+      "Mobile stats now sit in a 2-column grid with hairline dividers and tighter numerals; an odd last stat spans the full width"
+    ],
+    "scoreAfterEstimate": 7.4
+  },
+  "version": 1793303651925
+}

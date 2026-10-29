@@ -1,0 +1,3 @@
+{ "id": "quick-find", "name": "Quick Find", "scheme": "light", "sectors": ["wholesale","b2b","industrial","retail"],
+  "mood": ["efficient", "confident", "restrained", "fast"], "needsProductImages": true,
+  "notes": "Primary fills the 62vh search band, the CTA block, active filters and the palette selection bar; product pads are a 9% primary tint with multiply-blended packshots; on-primary drives all text on the band; accent is left as a quiet default." }

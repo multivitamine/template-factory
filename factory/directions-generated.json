@@ -1057,5 +1057,157 @@
     "focus": "ecommerce",
     "generated": true,
     "generatedAt": "2026-10-29T19:26:58.689Z"
+  },
+  {
+    "id": "detent-feed",
+    "name": "Detent Feed",
+    "sectors": [
+      "food",
+      "lifestyle",
+      "retail",
+      "sports"
+    ],
+    "sample": "brinkscoffeeroasters",
+    "stress": "kartstoreinternational",
+    "brief": "The homepage is a single centred feed column, 520px wide on desktop and full width on mobile, set on a cool fog blue-grey ground (#E3E7EB). On desktop it is flanked by two sticky side rails: a large vertical category word on the left, and a live bag summary with free-shipping progress on the right. The hero is the first feed card: a tall 4:5 white card with 28px radius, the featured product image on a padded neutral pad (object-fit contain, so mixed photo backgrounds read as intentional), the headline and a full-width shop button in --c-primary. Products follow as alternating tall cards and 2-up compact cards, each with name, price and a round quick-add button, with USP and contact cards woven in like posts. The catalog keeps the same column with a sticky segmented filter bar and sort control at the top. Motion is restrained and physical: cards ease in once, buttons depress by 1px, and every overlay is a spring-driven sheet, so the site feels like a precise native app rather than a web page.",
+    "type": "Display: 'Prompt' 600 for headlines, prices and the side-rail category word (set vertically with writing-mode), with 300 for large secondary lines; body 'Gothic A1' 400/500 at 14–15px; prices, counts and shipping progress 'B612 Mono' 400 at 12px.",
+    "signature": "Bottom-sheet product detail with drag detents. Tapping a product card opens a sheet from the bottom that has three detents: peek (22% of viewport height: name, price, add button), half (55%: gallery and description) and full (92%: specs and related products). The sheet's y is driven by a spring (stiffness 300, damping 32). Dragging the grab handle or the sheet header moves it 1:1, and past the top or bottom detent movement is rubber-banded (excess × 0.55). On release, JS projects the resting position as y + v·0.2s from the velocity of the last 80ms and springs to the nearest detent to that projection, so a quick flick skips a detent. Dragging below peek with velocity over 0.8px/ms dismisses it. While the sheet rises, the page behind scales from 1 to 0.94, gains a corner radius up to 16px and dims through a scrim, all bound to sheet progress. Scrolling inside the full sheet works normally, but when its inner scrollTop is 0 a downward drag hands control back to the sheet. Opening pushes #p-<index> so Back closes it, Escape closes it, focus is trapped inside and returned to the card on close, and visible buttons switch between detents. In the catalog the filter and sort panel uses the same sheet component. Without JS each card links to its product and the detail content is inline; under prefers-reduced-motion the sheet appears at half with a fade and the page does not scale.",
+    "source": "Native mobile commerce: a single centred product feed with draggable bottom sheets and spring physics, brought to desktop",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:53:48.968Z"
+  },
+  {
+    "id": "prose-index",
+    "name": "Prose Index",
+    "sectors": [
+      "sports",
+      "culture",
+      "makers",
+      "lifestyle"
+    ],
+    "sample": "aiki-budo",
+    "stress": "birthbear",
+    "brief": "The page is a deep ink-plum ground (#211A23) with bone type (#EDE6DA), and the homepage is essentially one enormous justified paragraph. A short sentence about the brand runs straight into a list of every category and product name, separated by thin '/' marks, at clamp(36px, 6vw, 92px) across the full width. Product names are set in bold italic and categories in roman, so the shop reads as one confident piece of prose instead of a grid. The hero is the opening line plus a shop CTA pill in --c-primary. Below it, a calmer section shows the featured products as large framed images with mono prices, followed by USP and contact blocks written as short paragraphs. The catalog repeats the prose index at a smaller size above a two-column list of products, with each image in a uniform 4:5 frame on a slightly lighter plum pad. Motion is all in the text: words glide, lines re-justify and image capsules open, with no decorative effects.",
+    "type": "Display: 'Besley' 400 for roman words and 800 italic for product names, set huge with tight 0.95 line height and hyphenation on; body 'Martel Sans' 400/600 at 15px; prices, counts and category tallies 'Xanh Mono' 400.",
+    "signature": "Inline image capsules with FLIP reflow. Every product name in the paragraph is a link wrapped together with an empty inline-block 'capsule' span (height 0.8em, width 0, border-radius 999px) that holds the product image as an object-fit cover background. On hover or focus the capsule's width springs to 1.8em (stiffness 220, damping 26), which pushes the rest of the line apart and re-wraps the paragraph. Before each width change JS records the bounding rect of every word span (one batched read), applies the change, reads the rects again and animates each word from its old position to its new one with a WAAPI transform over 360ms. Words that move to another line get a short crossfade instead of a long slide, so the paragraph visibly re-justifies itself without jumping. A small mono price fades in as a superscript after the capsule. In the catalog, choosing a category collapses the non-matching product names to a single '·' (via a width spring on the word) and the same FLIP pass reflows the paragraph, while the matching list below filters. Arrow keys move between product names in reading order. Without JS all capsules show at full width with no animation; under prefers-reduced-motion capsules open instantly and the words don't glide.",
+    "source": "Editorial typographic catalogues: the whole product range set as one huge justified paragraph with inline image capsules",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:53:48.968Z"
+  },
+  {
+    "id": "aperture-quilt",
+    "name": "Aperture Quilt",
+    "sectors": [
+      "retail",
+      "lifestyle",
+      "kids",
+      "food"
+    ],
+    "sample": "banksmansion",
+    "stress": "teleqare",
+    "brief": "The homepage is an asymmetric quilt of large flat colour blocks. The blocks are derived from the brand (color-mix(in oklch, var(--c-primary) 55%, black), color-mix(in oklch, var(--c-primary) 22%, black)) plus a fixed bone (#EDE6DA) and a near-black (#141414), so any brand colour becomes a deep, coordinated palette. The hero block holds a huge slab headline at the extremes of its weight range beside the featured product in an arch-shaped aperture, with a bone shop button. Products sit in apertures cut from five shapes (arch, circle, pill, notched square, leaf), one shape per category chosen by a hash of the category name, so the homepage reads like a calm shape system rather than a grid of mismatched photos. The image fills its shape on a tinted pad, so mixed backgrounds and aspect ratios always look deliberate. The catalog is a 4-column grid of apertures on bone with a category bar showing each category's shape as a small icon.",
+    "type": "Display: 'Hepta Slab' used only at weights 100 and 900 (a thin line followed by one heavy word), tight -0.02em tracking; body 'Heebo' 400/500 at 15px; labels and prices 'Heebo' 800 uppercase at 11px with 0.08em tracking.",
+    "signature": "Polygon-morphing apertures. Every shape is pre-sampled in JS into exactly 64 points (clockwise, starting at the top centre, in a 0–1 unit box), so any shape can interpolate into any other. Each frame's clip-path: polygon() is built from the current points, where every point follows its target through a shared spring (stiffness 180, damping 22). Moving a point between shapes therefore produces a smooth organic morph rather than a crossfade. On hover or focus a frame morphs to a rounded rectangle that shows nearly the full photo, and its name and quick-add slide up out of the bottom edge; on leave it springs back to its category shape. On load the hero aperture morphs through circle → leaf → arch in a 1.2s sequence and settles. In the catalog, choosing a category morphs every matching frame to a circle and every non-matching frame to a small 0.2-scale pill at 25% opacity, then removes the non-matches after 400ms, so filtering is visibly a change of shape language. Only frames in view are animated (IntersectionObserver), and the loop sleeps when every spring is within 0.001. Without JS the frames use a static CSS clip-path for each category shape; under prefers-reduced-motion shapes switch instantly.",
+    "source": "Contemporary colour-blocking with a strict shape vocabulary: product photos framed in morphing geometric apertures",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:53:48.968Z"
+  },
+  {
+    "id": "horizon-floor",
+    "name": "Horizon Floor",
+    "sectors": [
+      "tech",
+      "sports",
+      "industrial",
+      "retail"
+    ],
+    "sample": "teleqare",
+    "stress": "fredimare",
+    "brief": "The ground is a deep graphite (#1C1D1F) that fades into a soft warm-grey fog band at the horizon line, about 38% down the hero. One very tall, ultra-condensed brand word stands on that horizon behind the floor. Products are laid out on a 3D floor plane that recedes toward the horizon: a 4-column grid in a perspective(1200px) container, rotateX(58deg), with hairline floor seams. Near tiles are large and far tiles shrink into the fog, so the range reads as a vast, ordered space. The hero copy and a shop CTA in --c-primary sit in the near foreground, with mono spec labels under every tile. The catalog uses the same floor at a gentler tilt (34deg) with a sticky filter bar above it, and on mobile the floor flattens to 18deg with two columns. Mood: quiet, technical, nocturnal, with light only coming from the horizon and the active tile.",
+    "type": "Display: 'Six Caps' at clamp(120px, 28vw, 420px) for the horizon word and section titles, never small; body 'Bai Jamjuree' 300/600 at 14–15px for headlines below 48px, text and buttons; specs, prices and coordinates 'Nova Mono' 400 at 11–12px, uppercase.",
+    "signature": "Stand-up tiles on a scroll-tilted floor. The floor's rotateX is a spring (stiffness 120, damping 20) whose target is a base angle plus scroll velocity × 0.25deg, clamped to +12deg, so fast scrolling tips the floor further away and it settles back when you stop. Scrolling also translates the floor along its own Y axis, so you travel across it toward the horizon. Hovering or focusing a tile makes it 'stand up': each tile has its own spring-driven local rotateX that goes from 0 to −58deg (cancelling the floor tilt) with transform-origin at its bottom edge, plus translateZ(30px), so it rises to face the viewer like a card propped upright, with a soft --c-primary underglow on the floor beneath it. Its name, price and quick-add are readable only while it stands. Clicking a tile stands it fully, scrolls it to the near foreground and opens a detail strip beside it. Arrow keys move the standing tile across the grid. Tiles beyond the fog distance get opacity from depth so the horizon stays soft. Without JS, or under prefers-reduced-motion, the floor is a flat grid with normal hover states and the horizon word stays static.",
+    "source": "Cinematic dark launch pages crossed with spatial UI: the product range laid out on a receding 3D floor",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:53:48.968Z"
+  },
+  {
+    "id": "intent-directory",
+    "name": "Intent Directory",
+    "sectors": [
+      "wholesale",
+      "b2b",
+      "retail",
+      "luxury"
+    ],
+    "sample": "droogijs365",
+    "stress": "nacrasailing",
+    "brief": "A warm mid-tone khaki-olive ground (#9C9A7E) with ivory and near-black type gives the shop a calm, expensive mood without depending on the brand colour, which is used for buttons, the cart and active states. The homepage is a sticky split: the left 40% is a tall directory of every category, set large in a refined serif with item counts, and the right 60% is a preview pane on an ivory surface. The pane shows the hovered category as a composed mini-grid of its products (one large, three small, with prices and quick-add), plus a category-level shop link. Below the directory, a featured product band, USPs as a numbered ivory list and contact close the page. The catalog keeps the directory as a sticky left index with live counts and a sort control, and the right side becomes the full product grid, with all images on uniform ivory pads in 1:1 frames.",
+    "type": "Display: 'Prata' 400 at large sizes for the directory entries and headlines, with generous line height; body 'Raleway' 400/600 at 15px, with 700 uppercase at 11px and 0.14em tracking for labels and prices.",
+    "signature": "Hover-intent directory with a predictive safe triangle. When the pointer leaves a directory entry and moves toward the preview pane, JS checks each pointermove sample against a triangle formed by the last pointer position and the pane's top-left and bottom-left corners. While the pointer stays inside that triangle and is moving toward the pane (dot product of velocity with the pane direction above 0), category changes are suppressed for up to 280ms, so a diagonal move across other entries doesn't switch the preview. This is the same principle as the best mega menus, made visible. When the category does change, the preview pane composes itself: the large tile scales from 0.96 with a clip-path inset reveal, and the three small tiles follow with a 50ms stagger. A thin --c-primary indicator bar slides beside the active entry with a spring on its y and height. The pane's product data is prebuilt from the content, so swaps cost no network time. On touch the first tap previews and the second tap opens the category; keyboard users move through the entries with Up/Down, each focused entry previews, and Right moves focus into the pane. In the catalog the same intent logic powers the sticky index and the grid filters with a crossfade. Without JS the directory is a list of anchor links with every category's products in plain sections; under prefers-reduced-motion previews swap with no stagger.",
+    "source": "Quiet-luxury department-store navigation: a full-height category directory with predictive hover-intent preview panes",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:53:48.968Z"
+  },
+  {
+    "id": "minimap-shop",
+    "name": "Minimap Shop",
+    "sectors": [
+      "industrial",
+      "b2b",
+      "makers",
+      "tech"
+    ],
+    "sample": "bohlt",
+    "stress": "aiki-budo",
+    "brief": "The page is bone (#F1EEE8) with near-black type and a 72px-wide black rail fixed on the right edge, so the structure is an asymmetric two-column layout (main content plus rail). The main column uses bold stacked full-width bands: a hero band with a large headline set in a wide cut and a shop CTA in --c-primary, then category bands, each with a big numeral, a short intro and a horizontal row of products on uniform warm-grey pads with name, price and a square quick-add. USP and contact follow as compact data-style tables. The rail holds a live miniature of the entire page, so the whole store is always visible at a glance. The catalog uses the same rail, with a main grid of 3 columns and a sticky filter and sort header. Motion stays crisp and functional: snappy 160ms transitions and a precise viewport indicator.",
+    "type": "Display: 'Anek Latin' using its width axis, wdth 125 wght 800 for headlines and big band numerals, and wdth 75 wght 500 for dense labels; body 'Arimo' 400/700 at 14–15px; prices, counts and the minimap readout 'Noto Sans Mono' 500 at 11–12px with tabular figures.",
+    "signature": "Live page minimap with a draggable viewport. On load (and after filtering or a debounced resize) JS builds a simplified map of the page inside the rail: one block per section with its band colour, and one tiny thumbnail per product drawn as a scaled-down <img> at its true relative position (y / page height × rail height). Real images are reused, so cross-origin images work. A translucent --c-primary rectangle shows the current viewport; its top and height follow scrollY and innerHeight through a fast spring (stiffness 400, damping 40). Dragging the rectangle scrolls the page proportionally, and clicking anywhere on the map smooth-scrolls there with the rectangle centred. Hovering a product thumbnail in the rail shows a tooltip card to its left with the name, price and an add button, and briefly outlines the real product on the page. Products already in the cart get a small dot on the map. In the catalog, filtering removes non-matching thumbnails from the map with a 200ms collapse, and the map re-lays out to the new page height, so you can see the shape of the results at once. A short mono readout under the map shows the scroll percentage and 'n / total' items in view. On screens under 900px the rail turns into a thin horizontal progress map pinned under the nav. The map is aria-hidden, and a parallel list of skip links offers the same navigation to keyboard and screen-reader users. Without JS the rail is a plain list of section links; under prefers-reduced-motion scrolling jumps instead of easing.",
+    "source": "Digital-native tool interfaces: a live scaled minimap of the whole store as the primary navigation",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:53:48.968Z"
+  },
+  {
+    "id": "pile-spread",
+    "name": "Pile Spread",
+    "sectors": [
+      "retail",
+      "food",
+      "sports",
+      "lifestyle"
+    ],
+    "sample": "spaansen",
+    "stress": "hotelnavarra",
+    "brief": "The hero is a horizontal colour seam: the top 55% is warm black (#171512) with a massive condensed uppercase headline, and the bottom is bone (#ECE7DF). The featured products lie in a loose, overlapping pile right on the seam, each photo on a white pad with a thin border and a slight random rotation, so it reads as an art-directed tabletop composition without imitating any object. A shop CTA in --c-primary sits beside the pile. Scrolling deals the pile out into the homepage product grid on the bone half, each card resolving into a clean tile with name, price and quick-add. Further down, category bands alternate between warm black and bone, and USPs and contact are set as big condensed numerals with short text. The catalog opens with a small pile of that category's products that deals out into the full grid, with filter chips and sort in a sticky bar.",
+    "type": "Display: 'League Gothic' 400 at wdth 100 uppercase for the headline, section titles and big numerals, and at wdth 75 for dense tags; body 'Assistant' 400/600 at 15px; prices and counts 'Lekton' 700 at 12px.",
+    "signature": "Scroll-scrubbed pile-to-grid deal. JS measures every card's final grid rect (Last) and assigns it a pile pose (First): a position near the hero seam, a rotation between −9° and 9°, a scale of 0.7 and a z-order from a seeded hash of the product name. A pinned section of 160vh (GSAP ScrollTrigger, scrub 0.6, or a sticky plus scroll-progress fallback) drives one progress value p, and each card gets its own window p_i = clamp((p − i·0.06) / 0.5, 0, 1), so the cards leave the pile one after another in deal order. Each card's transform is interpolated from its pile pose to identity with an ease-out curve, and its rotation is offset along the way by sin(p_i·π)·4deg, so it travels like it was flicked. The card's shadow deepens mid-flight and settles as it lands. Product info and the quick-add are hidden while the card is in the pile and fade in once p_i reaches 1. Scrolling back up re-stacks the pile. Hovering the pile before scrolling lifts the top card and fans the next three slightly, and clicking 'Deel uit' tweens the progress to 1. In the catalog, changing a filter gathers the visible cards back into a pile at the top (400ms), swaps the products and deals them out again. Without JS, or under prefers-reduced-motion, the cards render directly in the grid and the hero shows a static, lightly rotated arrangement of three featured products.",
+    "source": "Scroll-scrubbed layout transitions: a loose pile of product photos that deals itself out into the shop grid",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:53:48.968Z"
+  },
+  {
+    "id": "jelly-outline",
+    "name": "Jelly Outline",
+    "sectors": [
+      "kids",
+      "food",
+      "retail",
+      "lifestyle"
+    ],
+    "sample": "birthbear",
+    "stress": "terpstrav2",
+    "brief": "A bright, clear sky-blue ground (#BFE3F5) with flat white cards and confident 2.5px near-black outlines gives a cheerful, graphic duotone look in which the brand colour appears only on buttons, prices and the cart. The homepage stacks wide outlined bands: a hero with a big rounded headline, the featured product in a squircle frame and a chunky shop button, then a 3-column product grid of outlined cards whose images sit on soft white pads, then USPs as outlined chips and contact. The outlines are the design system: no shadows and no gradients, just shapes and lines, generous rounded corners and bouncy, precise motion. The catalog is a 4-column grid with outlined filter chips and a sort pill, and the result count bounces when it changes. The mood is playful and modern, but disciplined enough to sell.",
+    "type": "Display: 'Tilt Warp' 400 for headlines, prices and chip labels (its single heavy weight used large and tight); body 'Varela Round' 400 at 15px for labels, cards and text.",
+    "signature": "Soft-body outlines driven by a spring mesh. Each card, chip and button draws its outline as an SVG path over the element instead of a CSS border: the rounded rect is sampled into about 28 control points (more on longer sides), each with position, velocity and a rest position, linked to its rest by a spring (stiffness 260, damping 14) and to its two neighbours by a weaker spring, so a disturbance travels along the edge. The path is rebuilt each frame as a closed Catmull-Rom curve through the points. When the pointer comes within 24px of an edge, points near it are pushed outward or inward along the edge normal by an impulse proportional to the pointer's speed, so the outline visibly dents and wobbles. Pressing a card squeezes all its points 4px inward, and releasing makes the outline jiggle back with a small overshoot. Adding to cart sends a pulse through the cart pill's outline that ripples around the whole shape, while the count rises with a bounce. Filter chips wobble when they toggle, and focus-visible gives the focused element's outline a slow breathing pulse in --c-primary so keyboard focus is obvious. One shared rAF loop runs only for elements in view (IntersectionObserver), and each mesh sleeps once total kinetic energy drops below an epsilon. Without JS, or under prefers-reduced-motion, normal 2.5px CSS borders with border-radius are used and hover states only change colour.",
+    "source": "Playful soft-body UI: flat outlined shapes whose edges are real spring meshes that squish under the pointer",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:53:48.968Z"
   }
 ]
