@@ -33,6 +33,14 @@ Different on all three axes at once:
 1. **Layout concept**: the core spatial idea of the homepage and how products are shown.
 2. **Typographic system**: other font families and another way of using type. Fonts already used: {{fonts}}.
 3. **Signature interaction**: a different mechanism (not "reveal on scroll" with a new name).
+4. **Visual fingerprint**: ground colour + surface treatment + grid/structure must not match an existing one. Each of
+   these is already TAKEN, do not reuse them: "cool off-white with a visible hairline 12-column grid, monochrome plus
+   one accent"; "near-black with soft brand glows"; "warm cream with pastel rounded tints"; "frosted glass over a mesh
+   gradient"; "paper white with tiny type and huge whitespace"; "dark charcoal gallery frames". Explore other grounds
+   (saturated full-brand fields, mid-tones, duotones, colour-blocking, photographic full-bleed, split colour planes),
+   other structures (overlapping layers, asymmetric columns, centred axial, stacked full-width bands, sticky splits).
+Before answering, check each direction against every line of the existing list and against your other directions;
+if two would look alike in a thumbnail, replace one.
 
 # Rules
 - Original: never imitate or reference a specific existing website, brand or studio.
