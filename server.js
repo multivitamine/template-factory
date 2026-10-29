@@ -158,8 +158,9 @@ const server = http.createServer(async (req, res) => {
     if (req.method !== "POST") return json(res, getAutopilot());
     let body = "";
     for await (const c of req) body += c;
-    const { on, model } = JSON.parse(body || "{}");
-    return json(res, setAutopilot(on, config.models.includes(model) ? model : undefined));
+    const { on, model, focus } = JSON.parse(body || "{}");
+    const f = focus === undefined ? undefined : focus === "ecommerce" ? focus : null;
+    return json(res, setAutopilot(on, config.models.includes(model) ? model : undefined, f));
   }
   // ---- New template from your idea ----
   if (p === "/api/factory/samples") return json(res, await listSamples());

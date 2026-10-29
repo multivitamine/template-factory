@@ -28,7 +28,7 @@ anything from it: every visible text and image must come from Mustache tags.
 - Craft: real typographic hierarchy, deliberate spacing scale, consistent radius/border logic, nice hover states,
   smooth easing, nothing janky. Still clearly a usable shop/site: nav, CTA, products and contact easy to find.
 - Must survive ANY brand primary colour (red, navy, pastel, near-black) and messy images.
-
+{{focusNote}}
 # Files to write
 1. `template.html` and `catalog.html` (shared header/footer/styles, duplicated in each file).
 2. `meta.json`:
