@@ -1,0 +1,83 @@
+{
+  "id": "snap-cursor",
+  "name": "Snap Cursor",
+  "sectors": [
+    "luxury",
+    "hospitality",
+    "lifestyle",
+    "culture"
+  ],
+  "sample": "banksmansion",
+  "stress": "teleqare",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793302678390
+    },
+    {
+      "step": "Rendering",
+      "at": 1793303382353
+    },
+    {
+      "step": "Critique",
+      "at": 1793303395187
+    },
+    {
+      "step": "Final render",
+      "at": 1793303466163
+    },
+    {
+      "step": "Done",
+      "at": 1793303478973
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793302018690,
+  "startedAt": 1793302678390,
+  "finishedAt": 1793303478973,
+  "model": "opus",
+  "costUsd": 2.9844254,
+  "meta": {
+    "id": "snap-cursor",
+    "name": "Snap Cursor",
+    "scheme": "dark",
+    "sectors": [
+      "luxury",
+      "hospitality",
+      "lifestyle",
+      "culture"
+    ],
+    "mood": [
+      "nocturnal",
+      "calm",
+      "precise",
+      "tactile"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary fills a full-height right-third plane in header, hero and catalog head and a two-thirds footer block (on-primary text there); on the slate ink it appears only as buttons, the spring cursor and a text-mixed tint so navy or near-black brands stay legible."
+  },
+  "score": {
+    "scoreBefore": 6.6,
+    "issues": [
+      "Story image renders as an empty purple box (loading=lazy never fires in the render), and on mobile the 5th product frame is also empty",
+      "Headings use hyphens:auto, producing ugly breaks such as 'Heerlijk sla-pen' in the collection intro and catalog title",
+      "Hero has a large dead zone between the headline and the lede; the lede is small and low-contrast and the foot row has no structure",
+      "The brand plane only appears in hero and footer; the story section is a plain dark box, so the 'two planes' idea fades mid-page",
+      "Demo badge on the catalog sits on top of the sticky sort column and hides the 'Sorteer' label",
+      "Excessive bottom padding after the offset product list leaves a hollow band before the USPs"
+    ],
+    "fixed": [
+      "Home product and story images load eagerly (decoding=async), so frames are never empty in renders or on fast scroll",
+      "Replaced hyphens:auto with text-wrap:balance on .h2 and the catalog title: clean, balanced serif line breaks",
+      "Hero foot gets a hairline rule with a brand-tinted lead segment and a larger, higher-contrast lede, so the gap reads as composed space",
+      "Story image now sits on an offset --c-primary block (clamped to the viewport on mobile), bringing the brand plane back mid-page",
+      "Catalog badge moved to bottom-right so the left sticky category/sort column is fully readable",
+      "Tightened collection bottom padding for better vertical rhythm"
+    ],
+    "scoreAfterEstimate": 7.4
+  },
+  "version": 1793303478973
+}

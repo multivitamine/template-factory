@@ -1,0 +1,231 @@
+{
+  "brand": {
+    "name": "Banks Mansion",
+    "tagline": "Jouw Amsterdamse thuis aan de Herengracht",
+    "logo": "https://www.banksmansion.nl/dist/images/logos/logo-banksmansion.svg",
+    "logoIsLight": false,
+    "initials": "BM",
+    "lang": "nl",
+    "colors": {
+      "primary": "#DF5435",
+      "accent": "#EEA05F"
+    }
+  },
+  "nav": [
+    {
+      "label": "Kamers",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Special deals",
+      "href": "#"
+    },
+    {
+      "label": "Alles inclusief",
+      "href": "#"
+    },
+    {
+      "label": "Ontdek Amsterdam",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Boutique hotel Amsterdam",
+    "title": "Welkom bij Banks Mansion,",
+    "titleAccent": "je home next door",
+    "text": "Een boutique hotel in de Amsterdamse Gouden Bocht waar alles draait om jou. Ontbijt, drankjes en minibar zijn altijd inbegrepen.",
+    "cta": "Bekijk de kamers",
+    "ctaHref": "catalog.html",
+    "cta2": "Boek direct en ontvang 10% korting",
+    "image": "https://www.banksmansion.nl/media/banks-mansion-hotel-amsterdam-building-v2.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  },
+  "usps": [
+    {
+      "title": "Altijd alles inclusief",
+      "text": "Ontbijtbuffet, drankjes in de Living, kaastrolley en minibar zitten standaard in je verblijf."
+    },
+    {
+      "title": "Aan de Herengracht",
+      "text": "Midden in de Amsterdamse Gouden Bocht, met uitzicht op de gracht vanuit de kamers aan de voorkant."
+    },
+    {
+      "title": "10% korting bij direct boeken",
+      "text": "Boek rechtstreeks bij ons en ontvang minimaal 10% korting."
+    },
+    {
+      "title": "Kies je eigen kussen",
+      "text": "Op elke kamer vind je een Nespresso-machine, regendouche en het kussen van jouw ideale dikte."
+    }
+  ],
+  "categories": [],
+  "products": [
+    {
+      "name": "Comfy Room",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room7_1-double-bed_031.jpg?cropX=131&cropY=632&cropW=864&cropH=988&width=1080",
+      "tag": "25 m²",
+      "href": "https://www.banksmansion.nl/kamers/comfy-room",
+      "category": "Comfy"
+    },
+    {
+      "name": "Comfy Room with Canal View",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room301_2-comfy-canal-view-overzichtfoto-s_178.jpg?cropX=114&cropY=629&cropW=864&cropH=991&width=1080",
+      "tag": "Uitzicht op de gracht",
+      "href": "https://www.banksmansion.nl/kamers/comfy-room-canal-view",
+      "category": "Comfy"
+    },
+    {
+      "name": "Guest Suite",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room12_1-guest-suite-double-overzicht-fotos_106.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "tag": "35 m²",
+      "href": "https://www.banksmansion.nl/kamers",
+      "category": "Suites"
+    },
+    {
+      "name": "Guest Suite with Canal View",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.banksmansion.nl/media/guest-suite-canal-overview-1.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "tag": "40 m²",
+      "href": "https://www.banksmansion.nl/kamers",
+      "category": "Suites"
+    },
+    {
+      "name": "Master Suite with Canal View",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.banksmansion.nl/media/guest-suite-canal-overview-2.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "tag": "75 m²",
+      "href": "https://www.banksmansion.nl/kamers",
+      "category": "Suites"
+    }
+  ],
+  "story": {
+    "eyebrow": "Jouw Amsterdamse familie",
+    "title": "Een hotel dat voelt als thuiskomen",
+    "text": "Banks Mansion is geen gewoon hotel. Zodra je binnenloopt, ontsnap je aan de drukte van de stad en draait alles om jou. Wij zijn jouw Amsterdamse familie, voor zo kort of lang als jij wilt.",
+    "image": "https://www.banksmansion.nl/media/a-different-kind-of-house-v2-0.png?cropX=0&cropY=0&cropW=0&cropH=0"
+  },
+  "stats": [
+    {
+      "value": "10%",
+      "label": "korting bij direct boeken"
+    },
+    {
+      "value": "75 m²",
+      "label": "in onze Master Suite"
+    },
+    {
+      "value": "5",
+      "label": "kamertypes"
+    }
+  ],
+  "gallery": [
+    "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room312_2-wastafel_057.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room106_1-kast_009.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room312_1-bad_068.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room402_1-uitzicht_002.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room107_1-comfy-overzichtfoto-s_098.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.banksmansion.nl/media/cheese-and-wine.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.banksmansion.nl/media/amsterdam.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  ],
+  "quote": {
+    "text": "Geweldige plek om te verblijven! We hebben enorm genoten van ons verblijf in Banks Mansion. Al het personeel was erg vriendelijk en behulpzaam. De kamer was erg schoon en comfortabel.",
+    "author": "Gast van Banks Mansion"
+  },
+  "cta": {
+    "title": "Klaar om thuis te komen?",
+    "text": "Boek direct bij ons en ontvang 10% korting op je verblijf.",
+    "label": "Boek nu",
+    "href": "https://reservations.travelclick.com/6935??hotelid=6935&languageID=10"
+  },
+  "contact": {
+    "address": "Herengracht 519 - 525, 1017 BV Amsterdam",
+    "phone": "+31 (0)20 420 0055",
+    "email": "desk@banksmansion.nl"
+  },
+  "footerLinks": [
+    {
+      "label": "Kamers",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Special deals",
+      "href": "#"
+    },
+    {
+      "label": "Galerij",
+      "href": "#"
+    },
+    {
+      "label": "Ontdek Amsterdam",
+      "href": "#"
+    },
+    {
+      "label": "FAQ",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Heerlijk slapen aan de Herengracht",
+    "intro": "Van gezellige Comfy Room tot ruime Master Suite: alles wat je nodig hebt is inbegrepen.",
+    "filters": [
+      "Comfy",
+      "Suites"
+    ],
+    "count": "5 kamers"
+  },
+  "featured": [
+    {
+      "name": "Comfy Room",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room7_1-double-bed_031.jpg?cropX=131&cropY=632&cropW=864&cropH=988&width=1080",
+      "tag": "25 m²",
+      "href": "https://www.banksmansion.nl/kamers/comfy-room",
+      "category": "Comfy"
+    },
+    {
+      "name": "Comfy Room with Canal View",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room301_2-comfy-canal-view-overzichtfoto-s_178.jpg?cropX=114&cropY=629&cropW=864&cropH=991&width=1080",
+      "tag": "Uitzicht op de gracht",
+      "href": "https://www.banksmansion.nl/kamers/comfy-room-canal-view",
+      "category": "Comfy"
+    },
+    {
+      "name": "Guest Suite",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.banksmansion.nl/media/06-26_banksmansion_hotelrooms_room12_1-guest-suite-double-overzicht-fotos_106.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "tag": "35 m²",
+      "href": "https://www.banksmansion.nl/kamers",
+      "category": "Suites"
+    },
+    {
+      "name": "Guest Suite with Canal View",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.banksmansion.nl/media/guest-suite-canal-overview-1.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "tag": "40 m²",
+      "href": "https://www.banksmansion.nl/kamers",
+      "category": "Suites"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

@@ -1,0 +1,9 @@
+{
+  "id": "snap-cursor",
+  "name": "Snap Cursor",
+  "scheme": "dark",
+  "sectors": ["luxury", "hospitality", "lifestyle", "culture"],
+  "mood": ["nocturnal", "calm", "precise", "tactile"],
+  "needsProductImages": true,
+  "notes": "Primary fills a full-height right-third plane in header, hero and catalog head and a two-thirds footer block (on-primary text there); on the slate ink it appears only as buttons, the spring cursor and a text-mixed tint so navy or near-black brands stay legible."
+}

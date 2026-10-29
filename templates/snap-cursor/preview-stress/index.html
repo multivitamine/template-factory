@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TeleQare · Mobile accessories, sourced and delivered</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Noto+Serif+Display:ital,wght@0,200;0,300;0,600;1,200;1,300;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#1B2130; --c-surface:#232A3B; --c-surface-2:#2A3246; --c-text:#ECE8E1; --c-muted:#9BA1AF; --c-line:rgba(236,232,225,.14);
+  --c-primary:#C9A27A; --c-on-primary:#1B2130; --c-accent:#8FB3C9;
+  --cur:var(--c-primary);
+  /* primary pulled toward the text colour: stays visible on ink even for navy or near-black brands */
+  --c-pink:color-mix(in srgb,var(--c-primary) 70%,var(--c-text));
+  --serif:'Noto Serif Display',Georgia,serif; --sans:'Inclusive Sans',ui-sans-serif,sans-serif;
+  --pad:clamp(20px,4.4vw,72px); --hdr:72px;
+  --ease:cubic-bezier(.22,1,.36,1); --ease-io:cubic-bezier(.65,0,.35,1); --expo:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:var(--hdr)}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 15px/1.6 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:1.5px solid var(--c-text);outline-offset:4px}
+.js-ring :focus-visible{outline:none}
+.has-cursor,.has-cursor *{cursor:none!important}
+.has-cursor input{cursor:text!important}
+::selection{background:var(--c-primary);color:var(--c-on-primary)}
+
+.lbl{font-size:11px;line-height:1.4;letter-spacing:.18em;text-transform:uppercase;color:var(--c-muted)}
+.eyebrow{display:flex;align-items:center;gap:14px}
+.eyebrow i{width:28px;height:1px;background:var(--c-pink);flex:none}
+.h2{font:200 clamp(2.1rem,4.4vw,4.4rem)/1.02 var(--serif);letter-spacing:-.015em;overflow-wrap:break-word;text-wrap:balance}
+.h2 em,.em{font-style:italic;font-weight:600}
+.muted{color:var(--c-muted)}
+
+/* buttons: one pill language everywhere */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 26px;border-radius:999px;
+  background:var(--c-primary);color:var(--c-on-primary);border:1px solid color-mix(in srgb,var(--c-primary) 72%,#fff);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-align:center;line-height:1.3;transition:background-color .4s var(--ease),color .4s var(--ease),border-color .4s}
+.btn svg{width:14px;height:14px;flex:none;transition:transform .5s var(--ease)}
+.btn:hover{background:color-mix(in srgb,var(--c-primary) 86%,#fff)}
+.btn:hover svg{transform:translateX(4px)}
+.btn--ghost{background:transparent;color:var(--c-text);border-color:var(--c-line)}
+.btn--ghost:hover{background:color-mix(in srgb,var(--c-text) 7%,transparent);border-color:color-mix(in srgb,var(--c-text) 40%,transparent)}
+.btn--on{background:var(--c-on-primary);color:var(--c-primary);border-color:var(--c-on-primary)}
+.btn--on:hover{background:transparent;color:var(--c-on-primary)}
+
+/* header: ink 2/3 + brand plane 1/3, the same split as the hero below */
+.hdr{position:sticky;top:0;z-index:60;display:grid;grid-template-columns:minmax(0,1fr) 33.333%;height:var(--hdr);background:var(--c-bg);transition:box-shadow .4s}
+.hdr.is-scrolled{box-shadow:0 1px 0 var(--c-line)}
+.hdr-l{display:flex;align-items:center;gap:clamp(24px,3vw,48px);padding:0 clamp(16px,2vw,32px) 0 var(--pad);min-width:0}
+.hdr-r{display:flex;align-items:center;justify-content:flex-end;gap:clamp(12px,1.6vw,24px);padding:0 var(--pad) 0 28px;background:var(--c-primary);color:var(--c-on-primary)}
+.logo{display:inline-flex;align-items:center;flex:none;padding:6px 0;border-radius:2px;max-width:200px}
+.logo img{max-height:30px;width:auto;max-width:180px;object-fit:contain;filter:brightness(0) invert(1)}
+.logo--light img{filter:none}
+.logo span{font:300 1.3rem/1.1 var(--serif);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:240px;display:block}
+.nav{display:flex;gap:clamp(14px,2vw,30px);min-width:0}
+.nav a{font-size:11px;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;padding:8px 2px;border-radius:2px;color:color-mix(in srgb,var(--c-text) 78%,transparent);transition:color .3s}
+.nav a:hover{color:var(--c-text)}
+.hdr-tel{font-size:11px;letter-spacing:.14em;white-space:nowrap;padding:8px 2px;border-radius:2px}
+.cart-btn{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:8px 6px 8px 14px;border-radius:999px;border:1px solid color-mix(in srgb,var(--c-on-primary) 35%,transparent)}
+.cart-count{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 6px;border-radius:999px;background:var(--c-on-primary);color:var(--c-primary);font-size:11px;letter-spacing:0}
+.cart-count.bump{animation:bump .6s var(--ease)}
+@keyframes bump{0%{transform:scale(1)}30%{transform:scale(1.45)}100%{transform:scale(1)}}
+.menu-btn{display:none;width:40px;height:40px;border-radius:999px;place-content:center;gap:6px}
+.menu-btn span{display:block;width:18px;height:1px;background:currentColor;transition:transform .5s var(--ease)}
+.menu-open .menu-btn span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-open .menu-btn span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.mnav{position:fixed;inset:var(--hdr) 0 0 0;z-index:55;background:var(--c-bg);padding:40px var(--pad);display:flex;flex-direction:column;justify-content:space-between;
+  visibility:hidden;opacity:0;transform:translateY(-12px);transition:opacity .45s var(--ease),transform .6s var(--ease),visibility 0s .6s}
+.menu-open .mnav{visibility:visible;opacity:1;transform:none;transition:opacity .45s var(--ease),transform .6s var(--ease)}
+.mnav nav{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.mnav nav a{font:200 clamp(2rem,9vw,3.4rem)/1.15 var(--serif);padding:2px 4px 2px 0;border-radius:2px}
+.mnav-mail{color:var(--c-muted)}
+html:not(.js) .mnav{display:none}
+@media (max-width:1100px){
+  .nav{display:none}
+  .menu-btn{display:grid}
+  html:not(.js) .mnav{display:flex;position:static;visibility:visible;opacity:1;transform:none;padding:24px var(--pad)}
+}
+@media (max-width:900px){.hdr{grid-template-columns:minmax(0,1fr) auto}.hdr-r{padding-left:16px}}
+@media (max-width:600px){:root{--hdr:64px}.hdr-tel{display:none}.cart-btn{padding-left:12px}}
+
+/* hero: two planes, the featured product sits on the seam */
+.hero{--cw:clamp(250px,23vw,370px);position:relative;display:grid;grid-template-columns:minmax(0,1fr) var(--cw) calc(33.333% - var(--cw) / 2);min-height:calc(100svh - var(--hdr))}
+.hero-plane{position:absolute;top:0;right:0;bottom:0;width:33.333%;background:var(--c-primary);transform-origin:100% 50%;box-shadow:inset 1px 0 0 rgba(255,255,255,.07)}
+.hero-main{position:relative;z-index:1;grid-column:1;display:flex;flex-direction:column;justify-content:space-between;gap:48px;padding:clamp(32px,7vh,88px) clamp(24px,3vw,56px) clamp(32px,6vh,64px) var(--pad)}
+.hero-title{font:200 clamp(2.6rem,min(6.2vw,10.5vh),7.6rem)/.96 var(--serif);letter-spacing:-.025em;margin-top:clamp(20px,3.4vh,40px);overflow-wrap:break-word;hyphens:auto;max-width:12ch}
+.hero-title em{display:block;font-style:italic;font-weight:300;color:var(--c-pink)}
+.hero-foot{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px 40px;padding-top:28px;border-top:1px solid var(--c-line);position:relative}
+/* a hairline that runs from the copy straight into the seam, tying the ink plane to the brand plane */
+.hero-foot::before{content:"";position:absolute;top:-1px;left:0;width:56px;height:1px;background:var(--c-pink)}
+.hero-text{max-width:40ch;font-size:clamp(15px,1.15vw,17px);color:color-mix(in srgb,var(--c-text) 72%,var(--c-bg));display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero-card-wrap{position:relative;z-index:2;grid-column:2;align-self:center;padding:48px 0}
+.hero-side{position:relative;z-index:1;grid-column:3;display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:clamp(32px,7vh,88px) var(--pad) clamp(32px,6vh,64px) clamp(24px,2.4vw,40px);color:var(--c-on-primary)}
+.lbl--on{color:color-mix(in srgb,var(--c-on-primary) 70%,transparent)}
+.hero-tagline{font:italic 300 clamp(1.25rem,1.7vw,1.7rem)/1.2 var(--serif);margin-bottom:22px;overflow-wrap:break-word}
+.link-on{display:inline-flex;gap:10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;line-height:1.5;padding:6px 2px;border-radius:2px;border-bottom:1px solid color-mix(in srgb,var(--c-on-primary) 40%,transparent)}
+.hero-index{font:italic 200 clamp(4rem,7vw,7rem)/.8 var(--serif);color:color-mix(in srgb,var(--c-on-primary) 85%,transparent)}
+
+.hero-card{display:block;background:var(--c-surface-2);padding:14px 14px 18px;border-radius:2px;box-shadow:0 50px 90px -40px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04)}
+.hc-top{display:flex;justify-content:space-between;gap:12px;padding:2px 2px 12px}
+.hc-tag{color:var(--c-text);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hc-name{font:300 clamp(1.3rem,1.7vw,1.65rem)/1.12 var(--serif);margin:16px 2px 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hc-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 2px}
+.hero-card--mono{aspect-ratio:4/5;display:grid;place-items:center;font:italic 200 6rem/1 var(--serif);color:var(--c-pink);padding:0}
+.hero-card--img{padding:14px}
+
+/* frames: every image sits in a fixed 4:5 window on a slate pad */
+.frame{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:color-mix(in srgb,var(--c-primary) 12%,var(--c-surface))}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--expo),filter .8s}
+.ph{position:absolute;inset:0;display:grid;place-items:center;padding:16%;text-align:center;
+  background:repeating-linear-gradient(135deg,transparent 0 14px,color-mix(in srgb,var(--c-pink) 9%,transparent) 14px 15px),color-mix(in srgb,var(--c-primary) 16%,var(--c-surface))}
+.ph span{font:italic 300 clamp(1.1rem,2vw,1.6rem)/1.15 var(--serif);color:var(--c-text);opacity:.8;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+
+.price{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;min-width:0}
+.price em{font:italic 600 1.15rem/1.2 var(--serif);white-space:nowrap}
+.price s{font-size:12px;color:var(--c-muted)}
+.price .ask{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted)}
+.add{display:inline-flex;align-items:center;gap:8px;flex:none;height:38px;padding:0 16px 0 12px;border-radius:999px;border:1px solid var(--c-line);font-size:11px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;transition:background-color .35s var(--ease),color .35s,border-color .35s}
+.add-plus{display:inline-grid;place-items:center;width:18px;height:18px;font-size:15px;letter-spacing:0;transition:transform .5s var(--ease)}
+.add:hover{background:var(--c-primary);color:var(--c-on-primary);border-color:var(--c-primary)}
+.add:hover .add-plus{transform:rotate(90deg)}
+.add.is-added{background:var(--c-primary);color:var(--c-on-primary);border-color:var(--c-primary)}
+.add.is-added .add-plus{transform:rotate(45deg)}
+
+/* product cards */
+.pcard{position:relative;list-style:none}
+.pad{position:relative;display:block;padding:clamp(10px,1.2vw,18px);background:var(--c-surface);border-radius:2px;transition:background-color .6s var(--ease)}
+.pcard:hover .pad{background:color-mix(in srgb,var(--c-primary) 16%,var(--c-surface))}
+.pcard:hover .frame img,.hero-card:hover .frame img{transform:scale(1.045)}
+.ptag{position:absolute;top:calc(clamp(10px,1.2vw,18px) + 12px);left:calc(clamp(10px,1.2vw,18px) + 12px);max-width:calc(100% - 60px);padding:6px 10px;border-radius:999px;background:color-mix(in srgb,var(--c-bg) 82%,transparent);backdrop-filter:blur(6px);
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pmeta{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:start;gap:4px 16px;padding:18px 2px 0}
+.pidx{font:italic 300 13px/2 var(--serif);color:var(--c-muted)}
+.pidx::before{content:counter(p,decimal-leading-zero)}
+.pname{font:300 clamp(1.2rem,1.75vw,1.75rem)/1.12 var(--serif);letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:8px}
+.pname a{transition:color .3s}
+.pname a:hover{color:var(--c-pink)}
+.pmeta .add{align-self:center}
+
+/* collection: sticky intro + offset two-column list */
+.coll{display:grid;grid-template-columns:minmax(0,.4fr) minmax(0,1fr);gap:clamp(32px,6vw,120px);padding:clamp(96px,12vw,180px) var(--pad) clamp(140px,14vw,220px)}
+.coll-sticky{position:sticky;top:calc(var(--hdr) + 48px);display:grid;gap:24px;justify-items:start}
+.coll-sticky .muted{max-width:34ch}
+.plist{margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(20px,4vw,72px);row-gap:clamp(64px,8vw,136px);counter-reset:p}
+.plist>.pcard{counter-increment:p}
+.plist>.pcard:nth-child(even){top:clamp(56px,9vw,170px)}
+.plist>.pcard:nth-child(n+9){display:none}
+
+/* usps */
+.usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:0 var(--pad);border-top:1px solid var(--c-line);padding:0;list-style:none}
+.usp{padding:36px 28px 48px 0;border-right:1px solid var(--c-line);margin-right:28px}
+.usp:last-child{border-right:0;margin-right:0}
+.usp-n{font:italic 300 13px/1 var(--serif);color:var(--c-pink);display:block;margin-bottom:28px}
+.usp h3{font:300 1.45rem/1.15 var(--serif);margin-bottom:12px}
+.usp p{color:var(--c-muted);font-size:14px}
+
+/* story */
+.story{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 clamp(16px,2vw,32px);align-items:center;padding:clamp(96px,12vw,180px) var(--pad)}
+.story-media{grid-column:1/span 5}
+.story-media{position:relative}
+.story-media .pad{padding:clamp(12px,1.5vw,22px);z-index:1}
+/* the brand plane returns as an offset block behind the story image */
+.story-media::before{content:"";position:absolute;top:14%;bottom:-8%;left:38%;right:-18%;background:var(--c-primary)}
+.story-body{grid-column:7/span 6;display:grid;gap:26px;justify-items:start}
+.story-body p.txt{color:var(--c-muted);max-width:52ch}
+.story--noimg .story-body{grid-column:3/span 9}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));width:100%;margin-top:16px;border-top:1px solid var(--c-line)}
+.stat{padding:22px 16px 0 0}
+.stat b{display:block;font:200 clamp(2.2rem,3.6vw,3.6rem)/1 var(--serif);letter-spacing:-.02em;margin-bottom:10px}
+.stat span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted);display:block;max-width:20ch}
+
+/* categories: typographic rows */
+.cats{padding:0 var(--pad) clamp(96px,10vw,160px)}
+.cats-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}
+.cat-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--c-line)}
+.cat-row{display:grid;grid-template-columns:48px minmax(0,1fr) 72px 24px;align-items:center;gap:24px;padding:18px 8px 18px 0;border-bottom:1px solid var(--c-line);border-radius:2px;counter-increment:c}
+.cat-list{counter-reset:c}
+.cat-row::before{content:counter(c,decimal-leading-zero);font:italic 300 13px var(--serif);color:var(--c-muted)}
+.cat-row b{font:200 clamp(1.6rem,3.4vw,3.2rem)/1.05 var(--serif);transition:transform .6s var(--ease),color .3s;overflow-wrap:break-word}
+.cat-row:hover b{transform:translateX(12px);color:var(--c-pink)}
+.cat-thumb{width:72px;aspect-ratio:4/5;position:relative;overflow:hidden;background:color-mix(in srgb,var(--c-primary) 18%,var(--c-surface))}
+.cat-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cat-row svg{width:18px;height:18px;transition:transform .5s var(--ease)}
+.cat-row:hover svg{transform:translateX(4px) rotate(-45deg)}
+
+/* gallery */
+.gal{padding:0 var(--pad) clamp(96px,12vw,180px)}
+.gal-head{margin-bottom:32px}
+.gal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,280px);grid-auto-flow:dense;gap:clamp(8px,1vw,16px);margin:0;padding:0;list-style:none}
+.gal-grid li{position:relative;overflow:hidden;background:var(--c-surface)}
+.gal-grid li:nth-child(n+10){display:none}
+.gal-grid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--expo)}
+.gal-grid li:hover img{transform:scale(1.05)}
+.gal-grid .g-big{grid-column:span 2;grid-row:span 2}
+
+/* quote */
+.quote{padding:clamp(80px,10vw,160px) var(--pad);background:var(--c-surface);position:relative;overflow:hidden}
+.quote blockquote{margin:0 auto;max-width:1100px;position:relative}
+.quote-mark{position:absolute;left:-.08em;top:-.32em;font:italic 600 clamp(8rem,16vw,15rem)/1 var(--serif);color:var(--c-primary);opacity:.55;pointer-events:none}
+.quote p{position:relative;font:italic 200 clamp(1.6rem,3.3vw,3.2rem)/1.2 var(--serif);letter-spacing:-.01em;padding-left:clamp(0px,6vw,96px)}
+.quote footer{margin-top:32px;padding-left:clamp(0px,6vw,96px)}
+
+/* cta */
+.cta{padding:clamp(96px,12vw,200px) var(--pad);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px 64px;align-items:end}
+.cta h2{font:200 clamp(2.6rem,6.6vw,7rem)/.98 var(--serif);letter-spacing:-.025em;max-width:14ch;overflow-wrap:break-word;hyphens:auto}
+.cta-side{display:grid;gap:24px;justify-items:start;max-width:340px}
+.cta .btn{min-height:64px;padding:0 34px}
+
+/* footer: the brand plane returns, now two thirds wide */
+.foot{display:grid;grid-template-columns:33.333% minmax(0,1fr);border-top:1px solid var(--c-line)}
+.foot-l{padding:clamp(48px,6vw,88px) clamp(24px,3vw,48px) 96px var(--pad);display:grid;gap:40px;align-content:start}
+.foot-l address{font-style:normal;display:grid;gap:6px;justify-items:start}
+.foot-l address a,.foot-links a{padding:2px 2px;border-radius:2px;transition:color .3s;overflow-wrap:anywhere}
+.foot-l address a:hover,.foot-links a:hover{color:var(--c-pink)}
+.foot-links{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;justify-items:start}
+.foot-r{background:var(--c-primary);color:var(--c-on-primary);padding:clamp(48px,6vw,88px) var(--pad) 40px;display:flex;flex-direction:column;justify-content:space-between;gap:56px;min-height:clamp(360px,44vw,620px);overflow:hidden}
+.foot-name{font:200 clamp(3.2rem,9.6vw,10.5rem)/.9 var(--serif);letter-spacing:-.035em;overflow-wrap:break-word;hyphens:auto}
+.foot-name em{font-style:italic}
+.foot-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
+.foot-top{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:12px 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--c-on-primary) 40%,transparent)}
+
+/* cart drawer, toast, badge */
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(10,12,18,.5);opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility 0s .5s}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:81;width:min(440px,100%);background:var(--c-surface);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform .7s var(--expo),visibility 0s .7s;box-shadow:-30px 0 80px rgba(0,0,0,.35)}
+.cart-open .scrim{opacity:1;visibility:visible;transition:opacity .5s var(--ease)}
+.cart-open .drawer{transform:none;visibility:visible;transition:transform .7s var(--expo)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--c-line)}
+.drawer-head b{font:200 1.8rem/1 var(--serif)}
+.x{font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:10px 14px;border-radius:999px;border:1px solid var(--c-line)}
+.drawer-list{list-style:none;margin:0;padding:8px 24px;overflow:auto;flex:1}
+.drawer-list li{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--c-line);animation:pop .5s var(--ease)}
+.d-thumb{width:56px;aspect-ratio:4/5;position:relative;overflow:hidden;background:color-mix(in srgb,var(--c-primary) 20%,var(--c-surface-2))}
+.d-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.d-name{font:300 1.05rem/1.2 var(--serif);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.d-meta{font-size:12px;color:var(--c-muted)}
+.d-rm{font-size:18px;width:32px;height:32px;border-radius:999px;color:var(--c-muted)}
+.drawer-empty{padding:40px 24px;color:var(--c-muted);font:italic 300 1.3rem/1.3 var(--serif)}
+.drawer-foot{padding:20px 24px 28px;border-top:1px solid var(--c-line);display:grid;gap:16px}
+.drawer-total{display:flex;justify-content:space-between;align-items:baseline}
+.drawer-total em{font:italic 600 1.4rem var(--serif)}
+.btn--full{width:100%}
+.toast{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:12px;max-width:min(380px,calc(100% - 40px));padding:14px 20px 14px 16px;border-radius:999px;background:var(--c-primary);color:var(--c-on-primary);
+  font-size:13px;box-shadow:0 20px 50px -20px rgba(0,0,0,.6);transform:translateY(140%);opacity:0;transition:transform .6s var(--expo),opacity .4s}
+.toast.show{transform:none;opacity:1}
+.toast-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+.toast span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge{position:fixed;left:14px;bottom:14px;z-index:70;margin:0;padding:7px 12px;border-radius:999px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted);background:color-mix(in srgb,var(--c-bg) 86%,transparent);border:1px solid var(--c-line);backdrop-filter:blur(8px);pointer-events:none}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* the snap cursor */
+.cursor{position:fixed;left:0;top:0;width:14px;height:14px;border-radius:7px;z-index:9999;pointer-events:none;display:grid;place-items:center;
+  background-color:var(--cur);border:1.5px solid var(--cur);mix-blend-mode:difference;opacity:0;transform:translate3d(-100px,-100px,0);
+  transition:opacity .3s,background-color .25s,border-color .25s;will-change:transform,width,height}
+.cursor.is-on{opacity:1}
+.cursor.is-snap{background-color:transparent}
+.cursor.is-view{mix-blend-mode:normal;background-color:var(--c-primary);border-color:color-mix(in srgb,var(--c-primary) 70%,#fff);color:var(--c-on-primary)}
+.cursor-label{display:grid;justify-items:center;gap:2px;line-height:1.1;text-align:center;white-space:nowrap;opacity:0;transform:scale(.5);transition:opacity .2s,transform .4s var(--ease)}
+.cursor-label b{font-weight:400;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+.cursor-label i{font:italic 600 13px/1.1 var(--serif)}
+.cursor-label i:not(:empty)::before{content:"· "}
+.is-view .cursor-label{opacity:1;transform:none}
+
+/* intro + reveals (only when JS is running and motion is allowed) */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .06em .14em;margin:0 -.06em -.14em}
+.w>span{display:inline-block}
+.intro .hero-plane{transition:transform 1.3s var(--expo) .05s}
+.intro .w>span{transition:transform 1.1s var(--expo)}
+.intro .hero-card-wrap{transition:transform 1.4s var(--expo) .45s,opacity .8s var(--ease) .45s}
+.intro .hero-side>*,.intro .hero-foot,.intro .eyebrow{transition:opacity .9s var(--ease) .8s,transform 1s var(--expo) .8s}
+.intro:not(.intro-go) .hero-plane{transform:scaleX(0)}
+.intro:not(.intro-go) .w>span{transform:translateY(108%)}
+.intro:not(.intro-go) .hero-card-wrap{transform:translateY(70px) rotate(2.5deg);opacity:0}
+.intro:not(.intro-go) .hero-side>*,.intro:not(.intro-go) .hero-foot,.intro:not(.intro-go) .eyebrow{opacity:0;transform:translateY(16px)}
+.reveal [data-reveal]{transition:opacity 1s var(--ease) var(--d,0s),transform 1.2s var(--expo) var(--d,0s)}
+.reveal [data-reveal]:not(.in){opacity:0;transform:translateY(36px)}
+
+@media (max-width:1100px){
+  .story-media{grid-column:1/span 6}.story-body{grid-column:7/span 6}
+}
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);min-height:0}
+  .hero-plane{display:none}
+  .hero-main{grid-column:1;padding-right:var(--pad);gap:36px}
+  .hero-title{max-width:none}
+  .hero-card-wrap{grid-column:1;display:flex;justify-content:flex-end;padding:8px var(--pad) 0;background:linear-gradient(to bottom,transparent 50%,var(--c-primary) 50%)}
+  .hero-card{width:min(78%,360px)}
+  .hero-side{grid-column:1;background:var(--c-primary);padding:36px var(--pad) 48px;flex-direction:row-reverse;align-items:flex-end}
+  .hero-index{display:none}
+  .coll{grid-template-columns:minmax(0,1fr);padding-bottom:clamp(120px,24vw,200px)}
+  .coll-sticky{position:static}
+  .story{grid-template-columns:minmax(0,1fr);gap:40px}
+  .story-media,.story-body,.story--noimg .story-body{grid-column:1}
+  .story-media{max-width:520px}
+  .story-media::before{left:30%;right:calc(var(--pad) * -1)}
+  .usp{border-right:0;margin-right:0;border-bottom:1px solid var(--c-line);padding:28px 0 32px}
+  .usps{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}
+  .gal-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(140px,40vw,260px)}
+  .cta{grid-template-columns:minmax(0,1fr)}
+  .foot{grid-template-columns:minmax(0,1fr)}
+  .foot-r{order:-1;min-height:0}
+}
+@media (max-width:560px){
+  .hero-card{width:min(86%,340px)}
+  .hero-side{flex-direction:column;align-items:flex-start}
+  .plist{grid-template-columns:minmax(0,1fr);row-gap:56px}
+  .plist>.pcard:nth-child(even){top:0;margin-left:16%}
+  .plist>.pcard:nth-child(odd){margin-right:16%}
+  .usps{grid-template-columns:minmax(0,1fr)}
+  .cat-row{grid-template-columns:32px minmax(0,1fr) 56px;gap:14px}
+  .cat-row svg{display:none}.cat-thumb{width:56px}
+  .add-t{display:none}.add{padding:0 10px}
+  .quote-mark{font-size:7rem}
+  .badge{font-size:9px;left:10px;bottom:10px}
+  .toast{right:10px;bottom:52px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#994A91;--c-on-primary:#ffffff;--c-accent:#D4E3E6}</style></head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-l">
+    <a class="logo " href="template.html" data-snap aria-label="TeleQare">
+      <span>TeleQare</span>
+    </a>
+    <nav class="nav" aria-label="Hoofdmenu"><a href="catalog.html" data-snap>Products</a><a href="#" data-snap>Brands</a><a href="#" data-snap>Devices</a><a href="#" data-snap>About us</a><a href="#" data-snap>Contact</a></nav>
+  </div>
+  <div class="hdr-r">
+    <a class="hdr-tel" href="tel:+31 (0)26 760 00 64" data-snap>+31 (0)26 760 00 64</a>
+    <button class="cart-btn" type="button" data-cart-open data-snap aria-label="Winkelmand openen">Mandje <span class="cart-count" data-cart-count>0</span></button>
+    <button class="menu-btn" type="button" data-menu data-snap aria-expanded="false" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+<div class="mnav">
+  <nav aria-label="Menu"><a href="catalog.html" data-snap>Products</a><a href="#" data-snap>Brands</a><a href="#" data-snap>Devices</a><a href="#" data-snap>About us</a><a href="#" data-snap>Contact</a></nav>
+  
+</div>
+
+<main>
+<section class="hero">
+  <div class="hero-plane" aria-hidden="true"></div>
+  <div class="hero-main">
+    <div>
+      <p class="lbl eyebrow"><i></i>Mobile accessories wholesale</p>
+      <h1 class="hero-title" data-split>Everything your customers <em>plug, charge and protect with.</em></h1>
+    </div>
+    <div class="hero-foot">
+      <p class="hero-text">TeleQare connects manufacturers with retailers, from cases and chargers to audio and power banks. Distribution, private label and sourcing, all from one partner.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="catalog.html" data-snap>Browse products<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-card-wrap">
+    <article class="hero-card" data-snap>
+      <div class="hc-top"><span class="lbl">Uitgelicht</span><span class="lbl hc-tag">KI1806FS</span></div>
+      <a class="frame" href="#" data-cursor="view" data-price="" aria-label="Pitaka Suite Moonrise iPhone Duo, 1001 Nights">
+        <img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1806fs.png?width&#x3D;360" alt="" fetchpriority="high">
+      </a>
+      <h2 class="hc-name"><a href="#">Pitaka Suite Moonrise iPhone Duo, 1001 Nights</a></h2>
+      <div class="hc-row">
+        <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        <button class="add" type="button" data-add data-name="Pitaka Suite Moonrise iPhone Duo, 1001 Nights" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1806fs.png?width&#x3D;360" data-snap><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </article>
+  </div>
+
+  <aside class="hero-side">
+    <p class="lbl lbl--on">N° 01 — Uitgelicht</p>
+    <div class="hero-index" aria-hidden="true">TQ</div>
+    <div>
+      <p class="hero-tagline">Mobile accessories, sourced and delivered</p>
+      <a class="link-on" href="#" data-snap>Contact us <span aria-hidden="true">→</span></a>
+    </div>
+  </aside>
+</section>
+
+<section class="coll" id="collectie">
+  <div>
+    <div class="coll-sticky" data-reveal>
+      <p class="lbl eyebrow"><i></i>Collectie</p>
+      <h2 class="h2">Products</h2>
+      <p class="muted">Browse cases, screen protection, audio and more from leading accessory brands.</p>
+      <a class="btn btn--ghost" href="catalog.html" data-snap>Alles bekijken · 1693 products<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a>
+    </div>
+  </div>
+  <ul class="plist"><li data-shop-item="0" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Pitaka Suite Moonrise iPhone Duo, 1001 Nights">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1806fs.png?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">KI1806FS</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Pitaka Suite Moonrise iPhone Duo, 1001 Nights</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Pitaka Suite Moonrise iPhone Duo, 1001 Nights" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1806fs.png?width&#x3D;360" data-snap aria-label="Pitaka Suite Moonrise iPhone Duo, 1001 Nights in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="1" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Pitaka Suite Sunet iPhone Duo, California Dream">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1805fs.png?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">KI1805FS</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Pitaka Suite Sunet iPhone Duo, California Dream</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Pitaka Suite Sunet iPhone Duo, California Dream" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1805fs.png?width&#x3D;360" data-snap aria-label="Pitaka Suite Sunet iPhone Duo, California Dream in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="2" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Pitaka Suite Classic Twill iPhone Duo, Black Grey">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1804fs.png?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">KI1804FS</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Pitaka Suite Classic Twill iPhone Duo, Black Grey</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Pitaka Suite Classic Twill iPhone Duo, Black Grey" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1804fs.png?width&#x3D;360" data-snap aria-label="Pitaka Suite Classic Twill iPhone Duo, Black Grey in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="3" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="ScreenArmor Lens Shield iPhone Duo, silver">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-sil.jpg?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">SA-LS-IP26F-SIL</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">ScreenArmor Lens Shield iPhone Duo, silver</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="ScreenArmor Lens Shield iPhone Duo, silver" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-sil.jpg?width&#x3D;360" data-snap aria-label="ScreenArmor Lens Shield iPhone Duo, silver in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="4" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="ScreenArmor Lens Shield iPhone Duo, blue">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-blu.jpg?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">SA-LS-IP26F-BLU</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">ScreenArmor Lens Shield iPhone Duo, blue</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="ScreenArmor Lens Shield iPhone Duo, blue" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-blu.jpg?width&#x3D;360" data-snap aria-label="ScreenArmor Lens Shield iPhone Duo, blue in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="5" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="ScreenArmor Guard Glass iPhone Duo">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-gg-ip26f.jpg?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">SA-GG-IP26F</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">ScreenArmor Guard Glass iPhone Duo</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="ScreenArmor Guard Glass iPhone Duo" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-gg-ip26f.jpg?width&#x3D;360" data-snap aria-label="ScreenArmor Guard Glass iPhone Duo in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="6" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="ScreenArmor Full Cover Glass iPhone Duo">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-fc-ip26f.jpg?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">SA-FC-IP26F</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">ScreenArmor Full Cover Glass iPhone Duo</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="ScreenArmor Full Cover Glass iPhone Duo" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-fc-ip26f.jpg?width&#x3D;360" data-snap aria-label="ScreenArmor Full Cover Glass iPhone Duo in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="7" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Pitaka Moonrise Case iPhone Duo, 1001 Nights">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1803f.png?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">KI1803F</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Pitaka Moonrise Case iPhone Duo, 1001 Nights</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Pitaka Moonrise Case iPhone Duo, 1001 Nights" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1803f.png?width&#x3D;360" data-snap aria-label="Pitaka Moonrise Case iPhone Duo, 1001 Nights in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="8" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Pitaka Sunset Edge Case iPhone Duo, California Dream">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1802f.png?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">KI1802F</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Pitaka Sunset Edge Case iPhone Duo, California Dream</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Pitaka Sunset Edge Case iPhone Duo, California Dream" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1802f.png?width&#x3D;360" data-snap aria-label="Pitaka Sunset Edge Case iPhone Duo, California Dream in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="9" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Pitaka Twill Edge Case iPhone Duo, Black Grey">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1801f.png?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">KI1801F</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Pitaka Twill Edge Case iPhone Duo, Black Grey</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Pitaka Twill Edge Case iPhone Duo, Black Grey" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1801f.png?width&#x3D;360" data-snap aria-label="Pitaka Twill Edge Case iPhone Duo, Black Grey in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="10" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="FIXED Opus for Samsung Galaxy A18, black">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;fixop3-1729-bk.jpg?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">FIXOP3-1729-BK</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">FIXED Opus for Samsung Galaxy A18, black</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="FIXED Opus for Samsung Galaxy A18, black" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;fixop3-1729-bk.jpg?width&#x3D;360" data-snap aria-label="FIXED Opus for Samsung Galaxy A18, black in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="11" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Laut Flexi Protect iPhone Duo, Black">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffptbk.jpg?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">LIP26FFPTBK</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Laut Flexi Protect iPhone Duo, Black</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Laut Flexi Protect iPhone Duo, Black" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffptbk.jpg?width&#x3D;360" data-snap aria-label="Laut Flexi Protect iPhone Duo, Black in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="12" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Laut Fizz Crystal iPhone Duo, Crystal">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffcc.jpg?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">LIP26FFCC</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Laut Fizz Crystal iPhone Duo, Crystal</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Laut Fizz Crystal iPhone Duo, Crystal" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffcc.jpg?width&#x3D;360" data-snap aria-label="Laut Fizz Crystal iPhone Duo, Crystal in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="13" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Laut Crystal Fluro iPhone Duo, Crystal">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfc.jpg?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">LIP26FCFC</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Laut Crystal Fluro iPhone Duo, Crystal</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Laut Crystal Fluro iPhone Duo, Crystal" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfc.jpg?width&#x3D;360" data-snap aria-label="Laut Crystal Fluro iPhone Duo, Crystal in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="14" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Laut Crystal Fluro iPhone Duo, Midnight">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfbk.jpg?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">LIP26FCFBK</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Laut Crystal Fluro iPhone Duo, Midnight</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Laut Crystal Fluro iPhone Duo, Midnight" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfbk.jpg?width&#x3D;360" data-snap aria-label="Laut Crystal Fluro iPhone Duo, Midnight in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="15" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Divoom Astrotoo 20W Desktop Speaker, green">
+        <span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;groen10.png?width&#x3D;360" alt="" decoding="async"></span>
+        <span class="ptag">90100058298</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Divoom Astrotoo 20W Desktop Speaker, green</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Divoom Astrotoo 20W Desktop Speaker, green" data-price="" data-img="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;groen10.png?width&#x3D;360" data-snap aria-label="Divoom Astrotoo 20W Desktop Speaker, green in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="16" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Divoom Astrotoo 20W Desktop Speaker, pink">
+        <span class="frame"><span class="ph"><span>Divoom Astrotoo 20W Desktop Speaker, pink</span></span></span>
+        <span class="ptag">90100058297</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Divoom Astrotoo 20W Desktop Speaker, pink</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Divoom Astrotoo 20W Desktop Speaker, pink" data-price="" data-img="" data-snap aria-label="Divoom Astrotoo 20W Desktop Speaker, pink in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="17" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Divoom Astrotoo 20W Desktop Speaker, white">
+        <span class="frame"><span class="ph"><span>Divoom Astrotoo 20W Desktop Speaker, white</span></span></span>
+        <span class="ptag">90100058296</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Divoom Astrotoo 20W Desktop Speaker, white</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Divoom Astrotoo 20W Desktop Speaker, white" data-price="" data-img="" data-snap aria-label="Divoom Astrotoo 20W Desktop Speaker, white in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="18" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Urbanista Biarritz Portable Speaker, green">
+        <span class="frame"><span class="ph"><span>Urbanista Biarritz Portable Speaker, green</span></span></span>
+        <span class="ptag">UB9975</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Urbanista Biarritz Portable Speaker, green</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Urbanista Biarritz Portable Speaker, green" data-price="" data-img="" data-snap aria-label="Urbanista Biarritz Portable Speaker, green in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="19" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Urbanista Biarritz Portable Speaker, sand">
+        <span class="frame"><span class="ph"><span>Urbanista Biarritz Portable Speaker, sand</span></span></span>
+        <span class="ptag">UB9978</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Urbanista Biarritz Portable Speaker, sand</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Urbanista Biarritz Portable Speaker, sand" data-price="" data-img="" data-snap aria-label="Urbanista Biarritz Portable Speaker, sand in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="20" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Urbanista Biarritz Portable Speaker, black">
+        <span class="frame"><span class="ph"><span>Urbanista Biarritz Portable Speaker, black</span></span></span>
+        <span class="ptag">UB9994</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Urbanista Biarritz Portable Speaker, black</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Urbanista Biarritz Portable Speaker, black" data-price="" data-img="" data-snap aria-label="Urbanista Biarritz Portable Speaker, black in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="21" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Urbanista Shibuya Wireless Headphone, white">
+        <span class="frame"><span class="ph"><span>Urbanista Shibuya Wireless Headphone, white</span></span></span>
+        <span class="ptag">UB9910</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Urbanista Shibuya Wireless Headphone, white</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Urbanista Shibuya Wireless Headphone, white" data-price="" data-img="" data-snap aria-label="Urbanista Shibuya Wireless Headphone, white in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="22" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Urbanista Shibuya Wireless Headphone, black">
+        <span class="frame"><span class="ph"><span>Urbanista Shibuya Wireless Headphone, black</span></span></span>
+        <span class="ptag">UB9925</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Urbanista Shibuya Wireless Headphone, black</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Urbanista Shibuya Wireless Headphone, black" data-price="" data-img="" data-snap aria-label="Urbanista Shibuya Wireless Headphone, black in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li><li data-shop-item="23" class="pcard" data-snap data-reveal>
+      <a class="pad" href="#" data-cursor="view" data-price="" aria-label="Urbanista Porto In-Ear, storm blue">
+        <span class="frame"><span class="ph"><span>Urbanista Porto In-Ear, storm blue</span></span></span>
+        <span class="ptag">1040264</span>
+      </a>
+      <div class="pmeta">
+        <span class="pidx" aria-hidden="true"></span>
+        <div>
+          <h3 class="pname"><a href="#">Urbanista Porto In-Ear, storm blue</a></h3>
+          <p class="price"><span class="ask">Prijs op aanvraag</span></p>
+        </div>
+        <button class="add" type="button" data-add data-name="Urbanista Porto In-Ear, storm blue" data-price="" data-img="" data-snap aria-label="Urbanista Porto In-Ear, storm blue in mandje"><span class="add-plus">+</span><span class="add-t">In mandje</span></button>
+      </div>
+    </li></ul>
+</section>
+
+<ul class="usps"><li class="usp" data-reveal><span class="usp-n">—</span><h3>Wide range, high quality</h3><p>Over 1,693 products covering cases, cables, chargers, audio and more.</p></li><li class="usp" data-reveal><span class="usp-n">—</span><h3>Competitive pricing</h3><p>Strong value for money, so your margins stay healthy.</p></li><li class="usp" data-reveal><span class="usp-n">—</span><h3>Custom branding</h3><p>Private label gives you exclusive products no other retailer can offer.</p></li><li class="usp" data-reveal><span class="usp-n">—</span><h3>Fast shipping and logistics</h3><p>Logistics solutions built to keep your supply chain moving.</p></li></ul>
+
+<section class="story ">
+  <div class="story-media" data-reveal><div class="pad"><span class="frame"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;home-4.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1000" alt="" decoding="async"></span></div></div>
+  <div class="story-body" data-reveal style="--d:.1s">
+    <p class="lbl eyebrow"><i></i>Distribution, private label, sourcing</p>
+    <h2 class="h2">The link between manufacturers and retailers</h2>
+    <p class="txt">With new smartphone models launching constantly, demand for cases, chargers, screen protectors, earbuds and power banks keeps growing. TeleQare gets those products to a wide audience, and supports you with private label, full-range sourcing and compliance expertise.</p>
+    <div class="stats"><div class="stat"><b>1,693</b><span>products in the range</span></div></div>
+  </div>
+</section>
+
+
+<section class="cats">
+  <div class="cats-head"><p class="lbl eyebrow"><i></i>Categorieën</p></div>
+  <ul class="cat-list"><li data-reveal><a class="cat-row" href="catalog.html" data-snap>
+    <b>Audio</b>
+    <span class="cat-thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;audio.jpg?width&#x3D;150" alt="" loading="lazy"></span>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+  </a></li><li data-reveal><a class="cat-row" href="catalog.html" data-snap>
+    <b>Cables</b>
+    <span class="cat-thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;cable.jpg?width&#x3D;150" alt="" loading="lazy"></span>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+  </a></li><li data-reveal><a class="cat-row" href="catalog.html" data-snap>
+    <b>Chargers</b>
+    <span class="cat-thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;charger.jpg?width&#x3D;150" alt="" loading="lazy"></span>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+  </a></li><li data-reveal><a class="cat-row" href="catalog.html" data-snap>
+    <b>Cleaning</b>
+    <span class="cat-thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;cleanning.jpg?width&#x3D;150" alt="" loading="lazy"></span>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+  </a></li><li data-reveal><a class="cat-row" href="catalog.html" data-snap>
+    <b>Holders</b>
+    <span class="cat-thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;holder.jpg?width&#x3D;150" alt="" loading="lazy"></span>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+  </a></li><li data-reveal><a class="cat-row" href="catalog.html" data-snap>
+    <b>Powerbanks</b>
+    <span class="cat-thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;categories&#x2F;powerbank.jpg?width&#x3D;150" alt="" loading="lazy"></span>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+  </a></li></ul>
+</section>
+
+<section class="gal">
+  <div class="gal-head"><p class="lbl eyebrow"><i></i>Impressie</p></div>
+  <ul class="gal-grid">
+    <li class="g-big" data-reveal><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;header-1.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></li>
+    <li data-reveal><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;header-2.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;3356&amp;cropH&#x3D;1406&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></li><li data-reveal><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;mhbts347blk-1.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;1500&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1500" alt="" loading="lazy"></li><li data-reveal><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;iphone-16-pro-pro-max-black-2.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></li><li data-reveal><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;mhhead2ua17wwht.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1506" alt="" loading="lazy"></li><li data-reveal><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;mhcabmscusbcblk-1.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1500" alt="" loading="lazy"></li><li data-reveal><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;media&#x2F;powerbank.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></li>
+  </ul>
+</section>
+
+
+<section class="cta" id="cta">
+  <h2 data-reveal>Let&#39;s stock your shelves</h2>
+  <div class="cta-side" data-reveal style="--d:.12s">
+    <p class="muted">Tell us what you need, from ready-made ranges to your own private label, and we will take care of sourcing, compliance and delivery.</p>
+    <a class="btn" href="#" data-snap>Get in touch<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a>
+  </div>
+</section>
+</main>
+
+<footer class="foot" id="contact">
+  <div class="foot-l">
+    <div>
+      <p class="lbl" style="margin-bottom:14px">Contact</p>
+      <address>
+        <span>Florijnweg 21e, 6883 JN Velp, The Netherlands</span>
+        <a href="tel:+31 (0)26 760 00 64" data-snap>+31 (0)26 760 00 64</a>
+        
+      </address>
+    </div>
+    <div><p class="lbl" style="margin-bottom:14px">Verder</p><ul class="foot-links"><li><a href="#" data-snap>News</a></li><li><a href="#" data-snap>About us</a></li><li><a href="#" data-snap>Terms &amp; Conditions (NL)</a></li><li><a href="#" data-snap>Cookie policy</a></li><li><a href="#" data-snap>Privacy policy</a></li><li><a href="#" data-snap>Newsletter</a></li></ul></div>
+  </div>
+  <div class="foot-r">
+    <p class="lbl lbl--on">Mobile accessories, sourced and delivered</p>
+    <p class="foot-name">TeleQare</p>
+    <div class="foot-bar">
+      <span class="lbl lbl--on">© 2026 TeleQare</span>
+      <a class="foot-top" href="#" data-snap>Terug naar boven <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+<div class="scrim" data-cart-close></div>
+<aside class="drawer" aria-label="Winkelmand">
+  <div class="drawer-head"><b>Je mandje</b><button class="x" type="button" data-cart-close data-snap>Sluiten</button></div>
+  <ul class="drawer-list" data-cart-list></ul>
+  <p class="drawer-empty" data-cart-empty>Nog niets in je mandje.</p>
+  <div class="drawer-foot">
+    <div class="drawer-total" data-cart-total-row><span class="lbl">Totaal</span><em data-cart-total></em></div>
+    <button class="btn btn--full" type="button" data-checkout data-snap>Afrekenen</button>
+  </div>
+</aside>
+<div class="toast" role="status" aria-live="polite"><span class="toast-dot"></span><span data-toast></span></div>
+<p class="badge">Demo redesign · Snap Cursor</p>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  root.classList.add('js');
+  const R = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const bot = navigator.webdriver;
+  const fine = matchMedia('(pointer: fine)').matches;
+  const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  // Near-black brands vanish under a difference blend on ink: swap the cursor to a light tone.
+  const lum = (c) => {
+    let r, g, b; c = c.trim();
+    if (c[0] === '#') { if (c.length === 4) c = '#' + [...c.slice(1)].map((x) => x + x).join(''); [r, g, b] = [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16)); }
+    else { const m = c.match(/[\d.]+/g); if (!m) return .5; [r, g, b] = m.map(Number); }
+    const f = (v) => { v /= 255; return v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; };
+    return .2126 * f(r) + .7152 * f(g) + .0722 * f(b);
+  };
+  if (lum(getComputedStyle(root).getPropertyValue('--c-primary')) < .06) root.style.setProperty('--cur', '#E9E4DA');
+
+  // header + menu
+  const hdr = $('.hdr');
+  const onScroll = () => hdr.classList.toggle('is-scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const menuBtn = $('[data-menu]');
+  const setMenu = (open) => { document.body.classList.toggle('menu-open', open); menuBtn && menuBtn.setAttribute('aria-expanded', open); };
+  menuBtn && menuBtn.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+  $$('.mnav a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+
+  // hero intro: the brand plane sweeps in, words rise, the product lands on the seam
+  const h1 = $('[data-split]');
+  if (h1 && !R && !bot) {
+    const walk = (node) => [...node.childNodes].forEach((n) => {
+      if (n.nodeType === 1) return walk(n);
+      if (n.nodeType !== 3 || !n.textContent.trim()) return;
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach((part) => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) return frag.append(' ');
+        const w = document.createElement('span'), i = document.createElement('span');
+        w.className = 'w'; i.textContent = part; w.append(i); frag.append(w);
+      });
+      n.replaceWith(frag);
+    });
+    walk(h1);
+    $$('.w>span', h1).forEach((s, i) => (s.style.transitionDelay = (.18 + i * .055) + 's'));
+    root.classList.add('intro');
+    requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('intro-go')));
+    setTimeout(() => root.classList.remove('intro', 'intro-go'), 2600);
+  }
+
+  // scroll reveals
+  if (!R && !bot && 'IntersectionObserver' in window) {
+    root.classList.add('reveal');
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    $$('[data-reveal]').forEach((el) => io.observe(el));
+  }
+
+  // cart: drawer + count bump + toast
+  const KEY = 'snap-cursor-cart';
+  let cart = [];
+  try { cart = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) {}
+  const num = (s) => {
+    let t = String(s || '').replace(/[^\d,.]/g, '');
+    if (!t) return NaN;
+    if (t.includes(',')) t = t.replace(/\./g, '').replace(',', '.');
+    else if (/\.\d{3}$/.test(t)) t = t.replace(/\./g, '');
+    return parseFloat(t);
+  };
+  const fmt = (n) => '€ ' + n.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  const esc = (s) => String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const countEl = $('[data-cart-count]'), list = $('[data-cart-list]');
+  const renderCart = () => {
+    const qty = cart.reduce((a, i) => a + i.q, 0);
+    countEl.textContent = qty;
+    list.innerHTML = cart.map((i, k) => `<li><span class="d-thumb">${i.img ? `<img src="${esc(i.img)}" alt="">` : ''}</span>
+      <div><p class="d-name">${esc(i.name)}</p><p class="d-meta">${i.q} × ${esc(i.price || 'op aanvraag')}</p></div>
+      <button class="d-rm" type="button" data-rm="${k}" data-snap aria-label="Verwijder">×</button></li>`).join('');
+    $('[data-cart-empty]').hidden = cart.length > 0;
+    const total = cart.reduce((a, i) => a + (num(i.price) || 0) * i.q, 0);
+    $('[data-cart-total-row]').hidden = !total;
+    $('[data-cart-total]').textContent = total ? fmt(total) : '';
+    try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {}
+  };
+  const toastEl = $('.toast'); let tt;
+  const toast = (msg) => { $('[data-toast]').textContent = msg; toastEl.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('show'), 2600); };
+  const setCart = (open) => document.body.classList.toggle('cart-open', open);
+  document.addEventListener('click', (e) => {
+    const add = e.target.closest('[data-add]');
+    if (add) {
+      e.preventDefault();
+      const d = add.dataset, hit = cart.find((i) => i.name === d.name);
+      hit ? hit.q++ : cart.push({ name: d.name, price: d.price, img: d.img, q: 1 });
+      renderCart();
+      countEl.classList.remove('bump'); void countEl.offsetWidth; countEl.classList.add('bump');
+      add.classList.add('is-added'); setTimeout(() => add.classList.remove('is-added'), 1400);
+      toast('Toegevoegd · ' + d.name);
+      return;
+    }
+    if (e.target.closest('[data-cart-open]')) return setCart(true);
+    if (e.target.closest('[data-cart-close]')) return setCart(false);
+    const rm = e.target.closest('[data-rm]');
+    if (rm) { cart.splice(+rm.dataset.rm, 1); renderCart(); return; }
+    if (e.target.closest('[data-checkout]')) toast('Demo: afrekenen staat uit');
+  });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') { setCart(false); setMenu(false); } });
+  renderCart();
+
+  // Snap cursor: one spring-driven shape that is the pointer, the hover outline and the focus ring.
+  const cur = document.createElement('div');
+  cur.className = 'cursor'; cur.setAttribute('aria-hidden', 'true');
+  cur.innerHTML = '<span class="cursor-label"><b>Bekijk</b><i></i></span>';
+  document.body.append(cur);
+  const priceEl = $('i', cur);
+  root.classList.add('js-ring');
+  if (fine) root.classList.add('has-cursor');
+  const K = 320, C = 30;
+  const sp = {}; ['x', 'y', 'w', 'h', 'r'].forEach((k) => (sp[k] = { v: 0, vel: 0, t: 0 }));
+  sp.w.v = sp.h.v = 14; sp.r.v = 7;
+  let px = -100, py = -100, seen = false, kbd = false, down = false, focusEl = null, wasOn = false, last = performance.now();
+  const mags = new Map();
+  addEventListener('pointermove', (e) => {
+    if (e.pointerType === 'touch') return;
+    px = e.clientX; py = e.clientY; kbd = false;
+    if (!seen) { seen = true; sp.x.v = px; sp.y.v = py; }
+  }, { passive: true });
+  root.addEventListener('mouseleave', () => (seen = false));
+  addEventListener('pointerdown', () => (down = true));
+  addEventListener('pointerup', () => (down = false));
+  addEventListener('keydown', (e) => { if (e.key === 'Tab' || e.key.startsWith('Arrow')) kbd = true; });
+  document.addEventListener('focusin', (e) => (focusEl = e.target));
+  document.addEventListener('focusout', () => (focusEl = null));
+
+  const tick = (now) => {
+    const dt = Math.min(.034, (now - last) / 1000); last = now;
+    let ring = null;
+    if (focusEl && (kbd || !fine) && focusEl.matches(':focus-visible')) ring = focusEl;
+    let mode = 'free', el = null, view = null;
+    if (ring) { mode = 'snap'; el = ring; }
+    else if (fine && seen) {
+      const hit = document.elementFromPoint(px, py);
+      view = hit && hit.closest('[data-cursor="view"]');
+      if (view) mode = 'view';
+      else if ((el = hit && hit.closest('[data-snap]'))) mode = 'snap';
+    }
+    // magnetic pull: the element leans up to 6px toward the hand, the outline follows the shifted rect
+    const magEl = !R && mode === 'snap' && !ring ? el : null;
+    if (magEl && !mags.has(magEl)) mags.set(magEl, { x: 0, y: 0 });
+    for (const [m, o] of mags) {
+      let tx = 0, ty = 0;
+      if (m === magEl) {
+        const r = m.getBoundingClientRect();
+        tx = clamp((px - (r.left - o.x + r.width / 2)) * .18, -6, 6);
+        ty = clamp((py - (r.top - o.y + r.height / 2)) * .18, -6, 6);
+      }
+      const k = Math.min(1, dt * 16);
+      o.x += (tx - o.x) * k; o.y += (ty - o.y) * k;
+      if (m !== magEl && Math.abs(o.x) < .05 && Math.abs(o.y) < .05) { m.style.translate = ''; mags.delete(m); }
+      else m.style.translate = `${o.x.toFixed(2)}px ${o.y.toFixed(2)}px`;
+    }
+    if (mode === 'snap') {
+      const r = el.getBoundingClientRect();
+      if (!r.width && !r.height) mode = 'free';
+      else {
+        const br = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0;
+        sp.x.t = r.left + r.width / 2; sp.y.t = r.top + r.height / 2;
+        sp.w.t = r.width + 12; sp.h.t = r.height + 12;
+        sp.r.t = Math.min(br > 0 ? br + 6 : 3, sp.h.t / 2, sp.w.t / 2);
+      }
+    }
+    if (mode === 'view') {
+      sp.x.t = px; sp.y.t = py; sp.w.t = sp.h.t = 92; sp.r.t = 46;
+      priceEl.textContent = view.dataset.price || '';
+    }
+    if (mode === 'free') { const s = down ? 9 : 14; sp.x.t = px; sp.y.t = py; sp.w.t = sp.h.t = s; sp.r.t = s / 2; }
+    const on = !!ring || (fine && seen);
+    if (R || (on && !wasOn)) for (const k in sp) { sp[k].v = sp[k].t; sp[k].vel = 0; }
+    else for (let i = 0; i < 2; i++) for (const k in sp) {
+      const s = sp[k], h = dt / 2;
+      s.vel += (-K * (s.v - s.t) - C * s.vel) * h; s.v += s.vel * h;
+    }
+    wasOn = on;
+    // free movement: stretch along the heading, squash across it
+    let tr = '';
+    if (mode === 'free' && !R) {
+      const sx = clamp(1 + Math.hypot(sp.x.vel, sp.y.vel) * .002, 1, 1.6);
+      if (sx > 1.01) { const a = Math.atan2(sp.y.vel, sp.x.vel); tr = ` rotate(${a}rad) scale(${sx},${1 / sx}) rotate(${-a}rad)`; }
+    }
+    const w = Math.max(0, sp.w.v), h = Math.max(0, sp.h.v);
+    cur.style.width = w + 'px'; cur.style.height = h + 'px';
+    cur.style.borderRadius = Math.max(0, sp.r.v) + 'px';
+    cur.style.transform = `translate3d(${sp.x.v - w / 2}px,${sp.y.v - h / 2}px,0)${tr}`;
+    cur.className = 'cursor' + (mode === 'snap' ? ' is-snap' : '') + (mode === 'view' ? ' is-view' : '') + (on ? ' is-on' : '');
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"en","count":"1693 products","products":[{"name":"Pitaka Suite Moonrise iPhone Duo, 1001 Nights","tag":"KI1806FS","category":"Protection cases"},{"name":"Pitaka Suite Sunet iPhone Duo, California Dream","tag":"KI1805FS","category":"Protection cases"},{"name":"Pitaka Suite Classic Twill iPhone Duo, Black Grey","tag":"KI1804FS","category":"Protection cases"},{"name":"ScreenArmor Lens Shield iPhone Duo, silver","tag":"SA-LS-IP26F-SIL","category":"Screen protection"},{"name":"ScreenArmor Lens Shield iPhone Duo, blue","tag":"SA-LS-IP26F-BLU","category":"Screen protection"},{"name":"ScreenArmor Guard Glass iPhone Duo","tag":"SA-GG-IP26F","category":"Screen protection"},{"name":"ScreenArmor Full Cover Glass iPhone Duo","tag":"SA-FC-IP26F","category":"Screen protection"},{"name":"Pitaka Moonrise Case iPhone Duo, 1001 Nights","tag":"KI1803F","category":"Protection cases"},{"name":"Pitaka Sunset Edge Case iPhone Duo, California Dream","tag":"KI1802F","category":"Protection cases"},{"name":"Pitaka Twill Edge Case iPhone Duo, Black Grey","tag":"KI1801F","category":"Protection cases"},{"name":"FIXED Opus for Samsung Galaxy A18, black","tag":"FIXOP3-1729-BK","category":"Protection cases"},{"name":"Laut Flexi Protect iPhone Duo, Black","tag":"LIP26FFPTBK","category":"Protection cases"},{"name":"Laut Fizz Crystal iPhone Duo, Crystal","tag":"LIP26FFCC","category":"Protection cases"},{"name":"Laut Crystal Fluro iPhone Duo, Crystal","tag":"LIP26FCFC","category":"Protection cases"},{"name":"Laut Crystal Fluro iPhone Duo, Midnight","tag":"LIP26FCFBK","category":"Protection cases"},{"name":"Divoom Astrotoo 20W Desktop Speaker, green","tag":"90100058298","category":"Audio"},{"name":"Divoom Astrotoo 20W Desktop Speaker, pink","tag":"90100058297","category":"Audio"},{"name":"Divoom Astrotoo 20W Desktop Speaker, white","tag":"90100058296","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, green","tag":"UB9975","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, sand","tag":"UB9978","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, black","tag":"UB9994","category":"Audio"},{"name":"Urbanista Shibuya Wireless Headphone, white","tag":"UB9910","category":"Audio"},{"name":"Urbanista Shibuya Wireless Headphone, black","tag":"UB9925","category":"Audio"},{"name":"Urbanista Porto In-Ear, storm blue","tag":"1040264","category":"Audio"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "scoreBefore": 6.6,
+  "issues": [
+    "Story image renders as an empty purple box (loading=lazy never fires in the render), and on mobile the 5th product frame is also empty",
+    "Headings use hyphens:auto, producing ugly breaks such as 'Heerlijk sla-pen' in the collection intro and catalog title",
+    "Hero has a large dead zone between the headline and the lede; the lede is small and low-contrast and the foot row has no structure",
+    "The brand plane only appears in hero and footer; the story section is a plain dark box, so the 'two planes' idea fades mid-page",
+    "Demo badge on the catalog sits on top of the sticky sort column and hides the 'Sorteer' label",
+    "Excessive bottom padding after the offset product list leaves a hollow band before the USPs"
+  ],
+  "fixed": [
+    "Home product and story images load eagerly (decoding=async), so frames are never empty in renders or on fast scroll",
+    "Replaced hyphens:auto with text-wrap:balance on .h2 and the catalog title: clean, balanced serif line breaks",
+    "Hero foot gets a hairline rule with a brand-tinted lead segment and a larger, higher-contrast lede, so the gap reads as composed space",
+    "Story image now sits on an offset --c-primary block (clamped to the viewport on mobile), bringing the brand plane back mid-page",
+    "Catalog badge moved to bottom-right so the left sticky category/sort column is fully readable",
+    "Tightened collection bottom padding for better vertical rhythm"
+  ],
+  "scoreAfterEstimate": 7.4
+}
