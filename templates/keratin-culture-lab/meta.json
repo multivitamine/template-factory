@@ -1,0 +1,3 @@
+{ "id": "keratin-culture-lab", "name": "Culture Lab", "scheme": "light", "sectors": ["wholesale","b2b","makers","lifestyle"],
+  "mood": ["clinical", "precise", "calm", "alive"], "needsProductImages": true,
+  "notes": "Pale clinical bench stays fixed; only the living Gray-Scott cultures, gauges, swatch strips and buttons take the brand primary (cores) and accent (growth edges), deepened automatically for pastels." }

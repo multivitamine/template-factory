@@ -1,0 +1,83 @@
+{
+  "id": "keratin-culture-lab",
+  "name": "Culture Lab",
+  "sectors": [
+    "wholesale",
+    "b2b",
+    "makers",
+    "lifestyle"
+  ],
+  "sample": "kondorhair",
+  "stress": "brinkscoffeeroasters",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793284631456
+    },
+    {
+      "step": "Rendering",
+      "at": 1793285508236
+    },
+    {
+      "step": "Critique",
+      "at": 1793285524959
+    },
+    {
+      "step": "Final render",
+      "at": 1793285599474
+    },
+    {
+      "step": "Done",
+      "at": 1793285616824
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793284631455,
+  "startedAt": 1793284631456,
+  "finishedAt": 1793285616824,
+  "model": "opus",
+  "costUsd": 3.8413446,
+  "meta": {
+    "id": "keratin-culture-lab",
+    "name": "Culture Lab",
+    "scheme": "light",
+    "sectors": [
+      "wholesale",
+      "b2b",
+      "makers",
+      "lifestyle"
+    ],
+    "mood": [
+      "clinical",
+      "precise",
+      "calm",
+      "alive"
+    ],
+    "needsProductImages": true,
+    "notes": "Pale clinical bench stays fixed; only the living Gray-Scott cultures, gauges, swatch strips and buttons take the brand primary (cores) and accent (growth edges), deepened automatically for pastels."
+  },
+  "score": {
+    "scoreBefore": 6.8,
+    "issues": [
+      "Homepage specimen cards: 7 of 8 dish windows rendered empty white circles because the lazy images never loaded while the simulation was busy, so the section looked broken",
+      "Category plates showed a single static doughnut ring (200 pre-steps from one seed), with no visible spots, worms or maze, so the signature 'every category grows differently' did not come through",
+      "Stress brand with one category: a lone plate on an empty shelf, so the rack looked broken",
+      "Section padding of up to 7rem on both sides left huge dead bands of graph paper between sections",
+      "Protocol section was a generic 4-column USP row with almost no lab character",
+      "Mobile: category plates stacked one per row at near full width, which made a very long, monotonous scroll"
+    ],
+    "fixed": [
+      "Home specimen images now load eagerly (decoding async), so every dish window shows its product",
+      "Plates are seeded three times at hash-derived offsets and pre-grown 1100–1500 iterations, so each shows a real, distinct Gray-Scott pattern on load",
+      "Rack is topped up to 4 plates with JS-generated 'Steriel' spare plates (dashed chip, empty agar), so short category lists still read as a full lab shelf",
+      "Section rhythm tightened to clamp(2.5rem,5vw,4.5rem) on home and catalogue",
+      "Protocol steps get T+00h/24h/48h/72h incubation timestamps in primary, hover surface and a rotating growth dial",
+      "Mobile shelf is a 2-column plate grid"
+    ],
+    "scoreAfterEstimate": 7.6
+  },
+  "version": 1793285616824
+}
