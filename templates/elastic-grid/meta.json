@@ -1,0 +1,3 @@
+{ "id": "elastic-grid", "name": "Elastic Grid", "scheme": "light", "sectors": ["sports", "retail", "b2b", "tech"],
+  "mood": ["precise", "tactile", "industrial", "dense"], "needsProductImages": true,
+  "notes": "Concrete ground and white tiles stay fixed; primary drives CTAs, quick-add, active filters, the cart badge, the headline underline bar and a faint tint on magnified tiles; accent is not needed." }

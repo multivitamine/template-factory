@@ -1,0 +1,81 @@
+{
+  "id": "elastic-grid",
+  "name": "Elastic Grid",
+  "sectors": [
+    "sports",
+    "retail",
+    "b2b",
+    "tech"
+  ],
+  "sample": "kartstoreinternational",
+  "stress": "fredimare",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793302495114
+    },
+    {
+      "step": "Rendering",
+      "at": 1793303218597
+    },
+    {
+      "step": "Critique",
+      "at": 1793303229930
+    },
+    {
+      "step": "Final render",
+      "at": 1793303333115
+    },
+    {
+      "step": "Done",
+      "at": 1793303344230
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793302018690,
+  "startedAt": 1793302495114,
+  "finishedAt": 1793303344230,
+  "model": "opus",
+  "costUsd": 3.402032,
+  "meta": {
+    "id": "elastic-grid",
+    "name": "Elastic Grid",
+    "scheme": "light",
+    "sectors": [
+      "sports",
+      "retail",
+      "b2b",
+      "tech"
+    ],
+    "mood": [
+      "precise",
+      "tactile",
+      "industrial",
+      "dense"
+    ],
+    "needsProductImages": true,
+    "notes": "Concrete ground and white tiles stay fixed; primary drives CTAs, quick-add, active filters, the cart badge, the headline underline bar and a faint tint on magnified tiles; accent is not needed."
+  },
+  "score": {
+    "scoreBefore": 6.4,
+    "issues": [
+      "Stress brand (Fredimare): products without photos render as a wall of identical hatched 'FM' placeholders, so the featured board reads as broken and the product names stay hidden until hover",
+      "Ragged last rows leave holes of bare concrete (Fredimare gallery: 6 images on a 4-column board leave 2 empty cells), which breaks the tight product-wall idea",
+      "Mobile: USP tiles keep a 220px min-height and stats stack at 200px each, so the phone page turns into long, mostly empty white slabs",
+      "Catalog head: a huge white header with a near-empty right tile; the result count, the most useful number on the page, only shows small in the rail",
+      "Static screenshots show no fisheye at rest. The signature only appears on pointer movement and the intro sweep (acceptable by design)",
+      "Typography is solid (League Spartan + Fira Code labels), but the hero is a familiar bento layout, so originality depends on the motion"
+    ],
+    "fixed": [
+      "Products without an image become typographic tiles: the product name set big in League Spartan 800 above a primary-colour bar on a finer hatch, scaling with --open. The duplicate hover name is hidden",
+      "Elastic grid layout now spreads a ragged last row across the full board width (span tracks, spring focal and --open account for spans), plus a no-JS CSS fallback for 4-column boards",
+      "Mobile: USP tiles drop their min-height and stats become a compact 2-up board, with an odd last stat spanning the full width",
+      "Catalog head tightened, and the right tile now carries a huge light-weight result count above the intro with a concrete rule"
+    ],
+    "scoreAfterEstimate": 7.3
+  },
+  "version": 1793303344230
+}

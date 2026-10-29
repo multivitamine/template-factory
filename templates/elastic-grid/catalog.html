@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="{{brand.lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{#hasCatalog}}{{catalog.title}} · {{/hasCatalog}}{{brand.name}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600&family=Fira+Code:wght@500&family=League+Spartan:wght@300;700;800&display=swap" rel="stylesheet">
+<style>
+@property --open { syntax: '<number>'; inherits: true; initial-value: 0; }
+:root {
+  --c-bg: #A9AEB2; --c-surface: #FFFFFF; --c-text: #111315; --c-muted: #62686E; --c-line: #A9AEB2;
+  --c-primary: #FF4B1F; --c-on-primary: #FFFFFF; --c-accent: #1E2BFF;
+  --dark: #141618; --g: 2px; --ease: cubic-bezier(.2, .8, .2, 1);
+  --f-d: 'League Spartan', 'Helvetica Neue', sans-serif; --f-b: 'Asap', 'Helvetica Neue', sans-serif; --f-m: 'Fira Code', ui-monospace, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { overflow-x: clip; -webkit-text-size-adjust: 100%; }
+body { margin: 0; padding: 0 var(--g) var(--g); background: var(--c-bg); color: var(--c-text); font: 400 14px/1.5 var(--f-b); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--c-text); outline-offset: -2px; }
+.mono { font: 500 12px/1.3 var(--f-m); font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.wall { display: grid; gap: var(--g); }
+.tile { position: relative; background: var(--c-surface); overflow: hidden; min-width: 0; min-height: 0; }
+svg { flex: none; }
+
+/* Header: a row of tiles */
+.hd { position: sticky; top: 0; z-index: 50; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--g); padding: var(--g) 0; background: var(--c-bg); }
+.hd .tile { height: 56px; display: flex; align-items: center; }
+.hd-logo { padding: 0 22px; min-width: 150px; max-width: 300px; }
+.hd-logo img { max-height: 28px; max-width: 200px; width: auto; object-fit: contain; }
+.hd-logo.is-dark { background: var(--dark); color: #fff; }
+.wm { font: 800 19px/1 var(--f-d); letter-spacing: -.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-top: 3px; }
+.hd-nav { display: flex; gap: var(--g); overflow-x: auto; scrollbar-width: none; }
+.hd-nav::-webkit-scrollbar { display: none; }
+.hd-nav a { flex: 1 0 auto; justify-content: center; padding: 0 18px; font-weight: 500; font-size: 13.5px; white-space: nowrap; transition: background .25s var(--ease), color .25s var(--ease); }
+.hd-nav a:hover { background: var(--c-primary); color: var(--c-on-primary); }
+.hd-search svg, .r-search svg { width: 16px; height: 16px; }
+.hd-cart { padding: 0 18px; gap: 10px; font: 500 12px var(--f-m); }
+.hd-cart svg { width: 18px; height: 18px; }
+.hd-cart b { min-width: 30px; height: 22px; display: grid; place-items: center; background: var(--c-primary); color: var(--c-on-primary); font: 500 11px var(--f-m); padding: 0 6px; }
+.hd-cart.bump b { animation: bump .55s var(--ease); }
+@keyframes bump { 0% { transform: scale(1); } 35% { transform: scale(1.5); } 100% { transform: scale(1); } }
+@media (max-width: 899px) {
+  .hd { grid-template-columns: minmax(0, 1fr) auto; }
+  .hd-nav { grid-column: 1 / -1; order: 3; }
+  .hd .tile { height: 50px; }
+  .hd-nav a.tile { height: 44px; }
+}
+
+.sl { display: flex; align-items: flex-end; gap: 16px; padding: clamp(30px, 4.5vw, 64px) 4px 10px; font: 500 11.5px/1.2 var(--f-m); text-transform: uppercase; letter-spacing: .06em; color: #24282C; }
+.sl b { font: 300 clamp(34px, 4vw, 58px)/.78 var(--f-d); letter-spacing: -.03em; }
+.sl span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.eb { display: inline-flex; gap: 10px; align-items: center; font: 500 12px/1.3 var(--f-m); text-transform: uppercase; letter-spacing: .05em; color: var(--c-text); }
+.eb i { width: 10px; height: 10px; background: var(--c-primary); flex: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.btn { display: inline-flex; align-items: center; gap: 14px; height: 50px; padding: 0 20px 0 22px; background: var(--c-primary); color: var(--c-on-primary); font: 600 14px/1 var(--f-b); border: 0; cursor: pointer; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); transition: background .25s var(--ease), color .25s var(--ease), transform .4s var(--ease); }
+.btn svg { width: 16px; height: 16px; transition: transform .35s var(--ease); }
+.btn:hover svg { transform: translateX(4px); }
+
+/* Tile kinds */
+.tile--p { background: color-mix(in srgb, var(--c-primary) calc(var(--open) * 7%), #fff); }
+.idx { position: absolute; top: 12px; left: 13px; z-index: 2; font: 500 11px/1 var(--f-m); color: var(--c-muted); font-variant-numeric: tabular-nums; }
+.pad { position: absolute; inset: 38px 14px 54px; display: grid; place-items: center; }
+.pad img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; transform: scale(calc(.94 + .08 * var(--open))); }
+.ph { position: absolute; inset: 0; display: grid; place-items: center; font: 300 clamp(30px, 4vw, 56px)/1 var(--f-d); color: var(--c-muted); letter-spacing: -.02em;
+  background: repeating-linear-gradient(135deg, transparent 0 9px, color-mix(in srgb, var(--c-bg) 45%, transparent) 9px 10px); }
+/* Product without a photo: its name becomes the image, set big on the white pad */
+.ph--n { place-items: end start; padding: 40px 14px calc(44px + max(var(--open), var(--nm)) * 10px); color: var(--c-text);
+  background: repeating-linear-gradient(135deg, transparent 0 11px, color-mix(in srgb, var(--c-bg) 22%, transparent) 11px 12px); }
+.ph--n b { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; font: 800 clamp(19px, .7rem + 1.15vw, 34px)/.96 var(--f-d); letter-spacing: -.02em; text-wrap: balance; overflow-wrap: anywhere; transform: scale(calc(1 + .06 * var(--open))); transform-origin: 0 100%; }
+.ph--n b::before { content: ''; display: block; width: 26px; height: 5px; margin-bottom: 12px; background: var(--c-primary); box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.tile--p:has(.ph--n) .nm { display: none; }
+
+/* Product tile: price always, name + quick add bound to --open */
+.tile--p { counter-increment: p; --nm: 0; }
+.tile--p .idx::before { content: 'P–' counter(p, decimal-leading-zero); }
+.tile--p .lnk { position: absolute; inset: 0; z-index: 1; }
+.tile--p .pad { inset: 34px 12px calc(46px + max(var(--open), var(--nm)) * 34px); }
+.tag { position: absolute; top: 9px; right: 9px; z-index: 2; max-width: calc(100% - 70px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font: 500 10.5px/1 var(--f-m); text-transform: uppercase; letter-spacing: .04em; padding: 5px 7px; background: var(--c-text); color: #fff; opacity: calc(.5 + .5 * var(--open)); }
+.lab { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; padding: 0 54px 13px 13px; }
+.nm { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font: 500 13.5px/1.25 var(--f-b); margin-bottom: 6px; opacity: max(var(--open), var(--nm)); transform: translateY(calc((1 - max(var(--open), var(--nm))) * 8px)); }
+.pr { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; font: 500 12px/1.2 var(--f-m); font-variant-numeric: tabular-nums; }
+.pr s { color: var(--c-muted); }
+.qa { position: absolute; right: 0; bottom: 0; z-index: 3; width: 46px; height: 46px; border: 0; padding: 0; background: var(--c-primary); color: var(--c-on-primary); display: grid; place-items: center; cursor: pointer;
+  opacity: var(--open); transform: scale(calc(.4 + .6 * var(--open))); transform-origin: 100% 100%; pointer-events: none; }
+.qa svg { width: 18px; height: 18px; transition: transform .35s var(--ease); }
+.qa:hover svg { transform: rotate(90deg); }
+.tile.is-open .qa { pointer-events: auto; }
+@media (hover: none) { .tile--p { --nm: 1; } }
+
+/* Boards: even fallback grid; JS (.is-elastic) writes the fr tracks */
+.board { display: grid; gap: var(--g); grid-template-columns: repeat(4, minmax(0, 1fr)); counter-reset: p; }
+.board > .tile { aspect-ratio: 5 / 6; }
+.is-elastic > .tile { aspect-ratio: auto !important; }
+.board:not(.is-elastic) .tile { transition: --open .45s var(--ease); }
+.board:not(.is-elastic) .tile:is(:hover, :focus-within) { --open: 1; }
+.board:not(.is-elastic) .qa { pointer-events: auto; }
+@media (hover: none) { .board:not(.is-elastic) .tile--p { --open: 1; } }
+.tile[data-state=leaving] { opacity: .2; filter: grayscale(1); transition: opacity .3s var(--ease), filter .3s; }
+.board--cat { transition: height .5s var(--ease); }
+@media (max-width: 1099px) { .board { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 699px) { .board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Catalog head + filter rail */
+.chead { display: grid; gap: var(--g); grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+.chead .t { padding: clamp(20px, 2.6vw, 40px); display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: clamp(220px, 21vw, 310px); }
+.chead .cnt { font: 300 clamp(44px, 2rem + 3.4vw, 104px)/.82 var(--f-d); letter-spacing: -.04em; margin-top: auto; }.chead .i p { border-top: 2px solid var(--c-bg); padding-top: 14px; }
+.crumb { color: var(--c-muted); display: flex; gap: 8px; flex-wrap: wrap; }
+.crumb a:hover { color: var(--c-text); }
+.h1c { margin: 0; font: 800 clamp(2.6rem, 1rem + 5vw, 7.2rem)/.86 var(--f-d); letter-spacing: -.03em; overflow-wrap: break-word; text-wrap: balance; }
+.chead .i { padding: clamp(20px, 2.6vw, 40px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+.chead .i p { margin: 0; color: var(--c-muted); font-size: 15px; max-width: 46ch; }
+@media (max-width: 799px) { .chead { grid-template-columns: 1fr; } .chead .t { min-height: 0; } }
+.rail { position: sticky; top: 58px; z-index: 40; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: var(--g); padding: var(--g) 0; background: var(--c-bg); }
+.chips { display: flex; gap: var(--g); overflow-x: auto; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; height: 48px; padding: 0 18px; border: 0; background: #fff; font: 500 13.5px var(--f-b); cursor: pointer; display: inline-flex; align-items: center; gap: 9px; transition: background .25s var(--ease), color .25s var(--ease); }
+.chip::before { content: ''; width: 8px; height: 8px; border: 1.5px solid currentColor; transition: background .2s; }
+.chip[aria-pressed=true] { background: var(--c-primary); color: var(--c-on-primary); }
+.chip[aria-pressed=true]::before { background: currentColor; }
+.chip:hover:not([aria-pressed=true]) { background: color-mix(in srgb, var(--c-primary) 10%, #fff); }
+.r-search { display: flex; align-items: center; gap: 10px; padding: 0 14px; width: clamp(200px, 22vw, 320px); height: 48px; color: var(--c-muted); }
+.r-search input { border: 0; outline: 0; background: none; width: 100%; font-size: 13.5px; color: var(--c-text); }
+.r-count { display: flex; align-items: center; gap: 10px; padding: 0 18px; height: 48px; white-space: nowrap; }
+.r-count span { font: 300 22px/1 var(--f-d); letter-spacing: -.01em; padding-top: 3px; }
+.r-count i { width: 8px; height: 8px; background: var(--c-primary); box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+@media (max-width: 899px) { .rail { position: static; grid-template-columns: minmax(0, 1fr) auto; } .chips { grid-column: 1 / -1; } .r-search { width: auto; } }
+.shop-empty { background: #fff; margin: 0 !important; padding: 48px 20px !important; font: 300 22px/1.2 var(--f-d) !important; }
+.none { padding: clamp(24px, 4vw, 56px); display: grid; gap: 20px; justify-items: start; }
+.h2 { margin: 0; font: 800 clamp(2rem, 1rem + 2.6vw, 3.9rem)/.94 var(--f-d); letter-spacing: -.02em; text-wrap: balance; overflow-wrap: break-word; }
+
+/* USP strip + contact */
+.strip { display: grid; gap: var(--g); grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); counter-reset: u; }
+.usp { padding: clamp(18px, 2vw, 28px); display: flex; flex-direction: column; justify-content: space-between; gap: 30px; min-height: 220px; counter-increment: u; }
+@media (max-width: 599px) { .usp { min-height: 0; gap: 18px; } }
+.usp .n::before { content: counter(u, decimal-leading-zero); }
+.usp .mono { color: var(--c-muted); display: flex; justify-content: space-between; }
+.usp h3 { margin: 0 0 8px; font: 800 clamp(20px, 1.7vw, 26px)/1.02 var(--f-d); letter-spacing: -.02em; }
+.usp p { margin: 0; color: var(--c-muted); max-width: 36ch; }
+.contact { background: var(--dark); color: #fff; counter-increment: none; }
+.contact .mono { color: rgba(255,255,255,.55); }
+.contact p { color: rgba(255,255,255,.75); margin: 0 0 10px; }
+.contact a { display: block; font: 700 17px/1.3 var(--f-d); overflow-wrap: anywhere; padding: 2px 0; transition: color .2s; }
+.contact a:hover { color: color-mix(in srgb, var(--c-primary) 60%, #fff); }
+
+/* Footer */
+.ft { display: grid; gap: var(--g); margin-top: clamp(30px, 4.5vw, 64px); }
+.ft-wm { padding: clamp(18px, 2vw, 32px); background: var(--dark); color: #fff; display: flex; flex-direction: column; gap: clamp(30px, 5vw, 80px); }
+.ft-wm .row { display: flex; justify-content: space-between; gap: 16px; color: rgba(255,255,255,.55); flex-wrap: wrap; }
+.ft-wm .big { font: 800 clamp(3rem, 9.5vw, 12rem)/.84 var(--f-d); letter-spacing: -.045em; overflow-wrap: anywhere; margin: 0; }
+.ft-wm .big i { display: inline-block; width: .17em; height: .17em; margin-left: .04em; background: var(--c-primary); box-shadow: 0 0 0 1px rgba(255,255,255,.25); }
+.ft-grid { display: grid; gap: var(--g); grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.ft-col { padding: 20px; display: flex; flex-direction: column; gap: 4px; min-height: 160px; }
+.ft-col h4 { margin: 0 0 10px; font: 500 11px var(--f-m); text-transform: uppercase; letter-spacing: .06em; color: var(--c-muted); }
+.ft-col a, .ft-col span { font-size: 14px; overflow-wrap: anywhere; }
+.ft-col a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Badge, toast, fly-to-cart */
+.badge { position: fixed; left: 10px; bottom: 10px; z-index: 60; background: var(--dark); color: #fff; font: 500 11px/1 var(--f-m); padding: 8px 10px; letter-spacing: .02em; }
+.toast { position: fixed; right: 10px; bottom: 10px; z-index: 70; display: flex; background: #fff; box-shadow: 0 0 0 2px var(--c-bg), 0 18px 40px -12px rgba(0,0,0,.35); transform: translateY(calc(100% + 24px)); transition: transform .5s var(--ease); max-width: min(360px, calc(100vw - 20px)); }
+.toast.on { transform: none; }
+.toast b { background: var(--c-primary); color: var(--c-on-primary); font: 300 28px/1 var(--f-d); padding: 0 14px; display: grid; place-items: center; }
+.toast div { padding: 11px 14px; display: grid; gap: 3px; min-width: 0; }
+.toast .t1 { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.toast .t2 { color: var(--c-muted); }
+.fly { position: fixed; z-index: 80; object-fit: contain; pointer-events: none; mix-blend-mode: multiply; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+</style>
+</head>
+<body>
+<header class="hd">
+  <a class="tile hd-logo{{#brand.logoIsLight}} is-dark{{/brand.logoIsLight}}" href="index.html" aria-label="{{brand.name}}">
+    {{#brand.logo}}<img src="{{brand.logo}}" alt="{{brand.name}}">{{/brand.logo}}{{^brand.logo}}<span class="wm">{{brand.name}}</span>{{/brand.logo}}
+  </a>
+  <nav class="hd-nav" aria-label="Menu">{{#nav}}<a class="tile" href="{{href}}">{{label}}</a>{{/nav}}</nav>
+  <a class="tile hd-cart" href="catalog.html" aria-label="Winkelmand"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h12l-1 10H4z"/><path d="M6.5 6V4.8a2.5 2.5 0 0 1 5 0V6"/></svg><b data-cart-count>00</b></a>
+</header>
+
+<main class="wall">
+  <section class="chead">
+    <div class="tile t">
+      <span class="crumb mono"><a href="index.html">{{brand.name}}</a><span>/</span><span>{{#hasCatalog}}{{catalog.title}}{{/hasCatalog}}</span></span>
+      <h1 class="h1c">{{#hasCatalog}}{{catalog.title}}{{/hasCatalog}}{{^hasCatalog}}{{brand.name}}{{/hasCatalog}}</h1>
+    </div>
+    <div class="tile i">
+      <span class="eb"><i></i>{{brand.name}}</span>
+      {{#hasCatalog}}<b class="cnt">{{catalog.count}}</b>{{/hasCatalog}}
+      {{#catalog.intro}}<p>{{catalog.intro}}</p>{{/catalog.intro}}{{^catalog.intro}}{{#brand.tagline}}<p>{{brand.tagline}}</p>{{/brand.tagline}}{{/catalog.intro}}
+    </div>
+  </section>
+
+  {{#hasProducts}}
+  <div class="rail">
+    <div class="chips"><button class="chip" type="button" aria-pressed="true">Alle</button>{{#catalog.filters}}<button class="chip" type="button" aria-pressed="false">{{.}}</button>{{/catalog.filters}}</div>
+    <label class="tile r-search"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4.6"/><path d="M10.5 10.5 14 14"/></svg><input type="search" data-shop-search placeholder="Zoek producten…" aria-label="Zoek producten"></label>
+    <div class="tile r-count"><i></i><span>{{catalog.count}}</span></div>
+  </div>
+  <section class="board board--cat" data-board="grid" data-ratio="1.18">
+    {{#products}}<article class="tile tile--p">
+      <a class="lnk" href="{{href}}" aria-label="{{name}}"></a><span class="idx"></span>
+      {{#tag}}<span class="tag">{{tag}}</span>{{/tag}}
+      {{#image}}<span class="pad"><img src="{{image}}" alt="{{name}}" loading="lazy"></span>{{/image}}{{^image}}<span class="ph ph--n"><b>{{name}}</b></span>{{/image}}
+      <div class="lab"><span class="nm">{{name}}</span>{{#price}}<span class="pr">{{price}}{{#oldPrice}}<s>{{oldPrice}}</s>{{/oldPrice}}</span>{{/price}}</div>
+      <button class="qa" type="button" aria-label="+ {{name}}"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article>{{/products}}
+  </section>
+  {{/hasProducts}}
+  {{^hasProducts}}
+  <section class="tile none">
+    {{#cta.title}}<h2 class="h2">{{cta.title}}</h2>{{/cta.title}}
+    {{#cta.text}}<p>{{cta.text}}</p>{{/cta.text}}
+    {{#cta.label}}<a class="btn" href="{{cta.href}}">{{cta.label}}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>{{/cta.label}}
+  </section>
+  {{/hasProducts}}
+
+  {{#usps.length}}
+  <div class="sl"><b>02</b><span>{{brand.name}}</span></div>
+  <section class="strip">
+    {{#usps}}<div class="tile usp"><span class="mono"><span class="n"></span><span>{{brand.initials}}</span></span><div><h3>{{title}}</h3><p>{{text}}</p></div></div>{{/usps}}
+    {{#contact}}<div class="tile usp contact" id="contact"><span class="mono">Contact</span><div>{{#contact.address}}<p>{{contact.address}}</p>{{/contact.address}}{{#contact.phone}}<a href="tel:{{contact.phone}}">{{contact.phone}}</a>{{/contact.phone}}{{#contact.email}}<a href="mailto:{{contact.email}}">{{contact.email}}</a>{{/contact.email}}</div></div>{{/contact}}
+  </section>
+  {{/usps.length}}
+</main>
+
+<footer class="ft">
+  <div class="ft-wm">
+    <div class="row mono"><span>{{#brand.tagline}}{{brand.tagline}}{{/brand.tagline}}</span><span>© {{meta.year}}</span></div>
+    <p class="big">{{brand.name}}<i></i></p>
+  </div>
+  <div class="ft-grid">
+    <div class="tile ft-col"><h4>Menu</h4>{{#nav}}<a href="{{href}}">{{label}}</a>{{/nav}}</div>
+    {{#footerLinks.length}}<div class="tile ft-col"><h4>Info</h4>{{#footerLinks}}<a href="{{href}}">{{label}}</a>{{/footerLinks}}</div>{{/footerLinks.length}}
+    {{#contact}}<div class="tile ft-col"><h4>Contact</h4>{{#contact.address}}<span>{{contact.address}}</span>{{/contact.address}}{{#contact.phone}}<a href="tel:{{contact.phone}}">{{contact.phone}}</a>{{/contact.phone}}{{#contact.email}}<a href="mailto:{{contact.email}}">{{contact.email}}</a>{{/contact.email}}</div>{{/contact}}
+  </div>
+</footer>
+
+<div class="badge">Demo redesign · {{meta.templateName}}</div>
+
+<script>
+(() => {
+  const d = document;
+  d.documentElement.classList.add('js');
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const GAP = 2, K = 210, C = 24, SIG2 = 2 * 0.9 * 0.9;
+  const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+  const sum = (a) => a.reduce((s, x) => s + x, 0);
+  const boards = [];
+
+  // Height a wide (headline) tile needs at its current width.
+  const natural = (t) => {
+    const cs = getComputedStyle(t), kids = [...t.children];
+    return sum(kids.map((k) => k.offsetHeight)) + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + (parseFloat(cs.rowGap) || 0) * Math.max(0, kids.length - 1) + 6;
+  };
+
+  // Fisheye track grid: every column and row is a spring-driven fr weight.
+  function Board(el) {
+    const kind = el.dataset.board, ratio = parseFloat(el.dataset.ratio || '1.2');
+    const b = { el, cols: [], rows: [], place: [], focal: null, raf: 0, last: 0, inside: false, nc: 1, nr: 1 };
+    const track = (base, old, minc) => ({ base, minc, x: old ? old.x : base, v: old ? old.v : 0, t: base });
+
+    b.layout = () => {
+      const W = el.clientWidth, vw = innerWidth;
+      const tiles = [...el.children].filter((t) => t.classList.contains('tile') && getComputedStyle(t).display !== 'none');
+      const desk = kind === 'hero' && vw >= 1000;
+      const nc = kind === 'hero' ? (desk ? 4 : vw >= 700 ? 3 : 2) : vw >= 1100 ? 4 : vw >= 700 ? 3 : 2;
+      const colBase = desk ? [2.2, 1, 1, 1] : Array(nc).fill(1);
+      const place = [];
+      let r = 0, c = 0;
+      for (const t of tiles) {
+        if (!desk && t.hasAttribute('data-wide')) { if (c) { r++; c = 0; } place.push({ t, c: -1, r }); r++; continue; }
+        place.push({ t, c, r, s: 1 });
+        if (++c >= nc) { c = 0; r++; }
+      }
+      const nr = Math.max(1, c ? r + 1 : r);
+      // Ragged last row: its tiles widen to fill the board, so the wall never shows concrete holes.
+      if (kind !== 'hero' && c) {
+        const last = place.filter((p) => p.r === r), k = last.length;
+        let at = 0;
+        last.forEach((p, i) => { p.c = at; p.s = Math.floor(nc / k) + (i < nc % k ? 1 : 0); at += p.s; });
+      }
+      const colW = (W - GAP * (nc - 1)) / sum(colBase);
+      let rowBase = Array(nr).fill(1), H;
+      if (desk) {
+        rowBase = nr > 1 ? [1.5, ...Array(nr - 1).fill(1)] : [1];
+        H = Math.min(Math.max(innerHeight - 150, 520), 820);
+      } else {
+        const unit = colW * ratio;
+        for (const p of place) if (p.c < 0) rowBase[p.r] = Math.max(0.6, natural(p.t) / unit);
+        H = unit * sum(rowBase) + GAP * (nr - 1);
+      }
+      el.style.height = H + 'px';
+      for (const p of place) { p.t.style.gridColumn = p.c < 0 ? '1 / -1' : `${p.c + 1} / span ${p.s}`; p.t.style.gridRow = String(p.r + 1); }
+      b.cols = colBase.map((base, i) => track(base, b.cols.length === nc ? b.cols[i] : null, desk && i === 0));
+      b.rows = rowBase.map((base, i) => track(base, b.rows.length === nr ? b.rows[i] : null, kind === 'hero' && i === 0));
+      b.place = place; b.nc = nc; b.nr = nr;
+      b.aim(); b.write(); b.kick();
+    };
+
+    b.aim = () => {
+      const f = b.focal;
+      const set = (tracks, pos) => tracks.forEach((tr, i) => { tr.t = tr.base + (pos == null ? 0 : 1.6 * Math.exp(-((pos - (i + 0.5)) ** 2) / SIG2)); });
+      set(b.cols, f ? f.u : null); set(b.rows, f ? f.v : null);
+      // Filter squeeze: a track holding only leaving tiles drops to the floor.
+      const floor = (tracks, key) => tracks.forEach((tr, i) => {
+        const own = b.place.filter((p) => p[key] === i);
+        if (own.length && own.every((p) => p.t.dataset.state === 'leaving')) tr.t = 0.15;
+      });
+      floor(b.cols, 'c'); floor(b.rows, 'r');
+    };
+
+    b.write = () => {
+      const tpl = (tr) => `minmax(${tr.minc ? 'min-content' : '0'}, ${Math.max(0.05, tr.x).toFixed(4)}fr)`;
+      el.style.gridTemplateColumns = b.cols.map(tpl).join(' ');
+      el.style.gridTemplateRows = b.rows.map(tpl).join(' ');
+      for (const p of b.place) {
+        const er = b.rows[p.r].x - b.rows[p.r].base;
+        const ex = p.c < 0 ? er : Math.min(Math.max(...b.cols.slice(p.c, p.c + p.s).map((t) => t.x - t.base)), er);
+        const o = p.t.dataset.state === 'leaving' ? 0 : clamp01((1 + ex - 1.4) / 0.8);
+        if (Math.abs((p.o ?? -1) - o) > 0.003) { p.o = o; p.t.style.setProperty('--open', o.toFixed(3)); p.t.classList.toggle('is-open', o > 0.5); }
+      }
+    };
+
+    const tick = (now) => {
+      const dt = Math.min(0.05, (now - b.last) / 1000); b.last = now;
+      const steps = Math.max(1, Math.ceil(dt * 240)), h = dt / steps;
+      let moving = false;
+      for (const tr of [...b.cols, ...b.rows]) {
+        for (let s = 0; s < steps; s++) { tr.v += (K * (tr.t - tr.x) - C * tr.v) * h; tr.x += tr.v * h; }
+        if (Math.abs(tr.t - tr.x) > 1e-3 || Math.abs(tr.v) > 1e-3) moving = true; else { tr.x = tr.t; tr.v = 0; }
+      }
+      b.write();
+      b.raf = moving ? requestAnimationFrame(tick) : 0;
+    };
+    b.kick = () => { if (!b.raf) { b.last = performance.now(); b.raf = requestAnimationFrame(tick); } };
+
+    // Pointer position in rest-layout track units (not the distorted grid, so there is no feedback loop).
+    const units = (tracks, frac) => {
+      const x = frac * sum(tracks.map((t) => t.base));
+      let acc = 0;
+      for (let i = 0; i < tracks.length; i++) {
+        const w = tracks[i].base;
+        if (x <= acc + w || i === tracks.length - 1) return i + clamp01((x - acc) / w);
+        acc += w;
+      }
+      return 0;
+    };
+    b.point = (cx, cy) => {
+      b.lx = cx; b.ly = cy;
+      const r = el.getBoundingClientRect();
+      if (cx < r.left || cx > r.right || cy < r.top || cy > r.bottom) { b.inside = false; return b.release(); }
+      b.focal = { u: units(b.cols, (cx - r.left) / r.width), v: units(b.rows, (cy - r.top) / r.height) };
+      b.aim(); b.kick();
+    };
+    b.focusTile = (t) => {
+      const p = b.place.find((q) => q.t === t);
+      if (!p) return;
+      b.focal = { u: p.c < 0 ? null : p.c + p.s / 2, v: p.r + 0.5 };
+      b.aim(); b.kick();
+    };
+    b.release = () => { b.focal = null; b.aim(); b.kick(); };
+
+    let lastPT = 'mouse';
+    el.addEventListener('pointermove', (e) => { if (e.pointerType === 'touch') return; b.inside = true; b.point(e.clientX, e.clientY); });
+    el.addEventListener('pointerleave', (e) => { if (e.pointerType === 'touch') return; b.inside = false; if (!el.contains(d.activeElement)) b.release(); });
+    el.addEventListener('focusin', (e) => { const t = e.target.closest('.tile'); if (t && !b.inside) b.focusTile(t); });
+    el.addEventListener('focusout', (e) => { if (!el.contains(e.relatedTarget) && !b.inside) b.release(); });
+    el.addEventListener('pointerdown', (e) => {
+      lastPT = e.pointerType;
+      if (e.pointerType !== 'touch') return;
+      const t = e.target.closest('.tile');
+      if (t) { b.tapTile = t; b.tapOpen = t.classList.contains('is-open'); b.focusTile(t); }
+    });
+    // Touch: the first tap on a product magnifies it (and reveals quick add), the second follows the link.
+    el.addEventListener('click', (e) => {
+      if (lastPT !== 'touch') return;
+      const t = e.target.closest('.tile--p');
+      if (t && t === b.tapTile && !b.tapOpen && !e.target.closest('.qa')) e.preventDefault();
+    });
+
+    el.classList.add('is-elastic');
+    boards.push(b);
+    return b;
+  }
+
+  // Catalog: when a filter drops tiles, they fade to 20%, their tracks squeeze, then they are removed (FLIP for the rest).
+  function squeeze(b) {
+    const items = [...b.el.querySelectorAll('.tile')];
+    let timer = 0;
+    const flip = (fn) => {
+      const before = new Map(items.filter((e) => e.dataset.state === 'shown' || e.dataset.state === 'leaving').map((e) => [e, e.getBoundingClientRect()]));
+      fn();
+      for (const e of items) {
+        if (e.dataset.state === 'gone') continue;
+        const a = before.get(e);
+        if (!a) {
+          e.dataset.state = 'shown';
+          e.animate([{ opacity: 0, transform: 'scale(.86)' }, { opacity: 1, transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.2,.8,.2,1)' });
+          continue;
+        }
+        const n = e.getBoundingClientRect(), dx = a.left - n.left, dy = a.top - n.top;
+        if (Math.abs(dx) + Math.abs(dy) > 1) e.animate([{ transform: `translate(${dx}px,${dy}px)` }, { transform: 'none' }], { duration: 520, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      }
+    };
+    const sync = () => {
+      clearTimeout(timer);
+      let leaving = 0;
+      for (const e of items) {
+        const hidden = e.style.display === 'none', s = e.dataset.state;
+        if (hidden && s !== 'gone') { e.style.removeProperty('display'); e.dataset.state = 'leaving'; leaving++; }
+        else if (!hidden && s === 'gone') e.dataset.state = 'entering';
+        else if (!hidden && s === 'leaving') e.dataset.state = 'shown';
+      }
+      flip(() => b.layout());
+      if (leaving) timer = setTimeout(() => flip(() => {
+        for (const e of items) if (e.dataset.state === 'leaving') { e.style.setProperty('display', 'none', 'important'); e.dataset.state = 'gone'; }
+        b.layout();
+      }), 400);
+    };
+    for (const e of items) e.dataset.state = e.style.display === 'none' ? 'gone' : 'shown';
+    onShop = sync;
+  }
+  // Registered now, before the injected shop script (which stops propagation), so these run first;
+  // the timeout lets the shop script apply its filter before the squeeze reads the result.
+  let onShop = null;
+  addEventListener('click', (e) => { if (onShop && e.target.closest && e.target.closest('[data-shop-filter], .chip')) setTimeout(onShop, 0); }, true);
+  addEventListener('input', (e) => { if (onShop && e.target.matches && e.target.matches('input')) setTimeout(onShop, 0); }, true);
+
+  // Intro: one wave rolls across the hero board, then it settles.
+  function sweep(b) {
+    const t0 = performance.now() + 380, dur = 1600;
+    const step = (now) => {
+      if (b.inside) return;
+      const k = clamp01((now - t0) / dur), e = k < 0.5 ? 2 * k * k : 1 - (-2 * k + 2) ** 2 / 2;
+      if (now >= t0) { b.focal = { u: -0.4 + e * (b.nc + 0.8), v: 0.2 + e * (b.nr - 0.4) }; b.aim(); b.kick(); }
+      if (k < 1) requestAnimationFrame(step); else b.release();
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Cart: count bump, image flies to the cart, toast.
+  let n = 0;
+  try { n = +(sessionStorage.getItem('eg-cart') || 0); } catch (e) {}
+  const paint = () => d.querySelectorAll('[data-cart-count]').forEach((c) => { c.textContent = String(n).padStart(2, '0'); });
+  let toastEl, toastT;
+  const toast = (name, price) => {
+    if (!toastEl) {
+      toastEl = d.createElement('div'); toastEl.className = 'toast'; toastEl.setAttribute('role', 'status');
+      toastEl.innerHTML = '<b>+1</b><div><span class="t1"></span><span class="t2 mono"></span></div>';
+      d.body.appendChild(toastEl);
+    }
+    toastEl.querySelector('.t1').textContent = name || '';
+    toastEl.querySelector('.t2').textContent = (price ? price + ' · ' : '') + String(n).padStart(2, '0');
+    requestAnimationFrame(() => toastEl.classList.add('on'));
+    clearTimeout(toastT); toastT = setTimeout(() => toastEl.classList.remove('on'), 2600);
+  };
+  const fly = (img, to) => {
+    if (!img || !to || RM) return;
+    const a = img.getBoundingClientRect(), z = to.getBoundingClientRect();
+    const c = img.cloneNode(); c.className = 'fly'; c.removeAttribute('loading');
+    Object.assign(c.style, { left: a.left + 'px', top: a.top + 'px', width: a.width + 'px', height: a.height + 'px' });
+    d.body.appendChild(c);
+    const dx = z.left + z.width / 2 - (a.left + a.width / 2), dy = z.top + z.height / 2 - (a.top + a.height / 2);
+    c.animate([{ transform: 'none', opacity: 1 }, { transform: `translate(${dx}px,${dy}px) scale(.12)`, opacity: 0.3 }], { duration: 720, easing: 'cubic-bezier(.6,0,.2,1)' }).onfinish = () => c.remove();
+  };
+  d.addEventListener('click', (e) => {
+    const q = e.target.closest && e.target.closest('.qa');
+    if (!q) return;
+    e.preventDefault(); e.stopPropagation();
+    const t = q.closest('.tile');
+    n++;
+    try { sessionStorage.setItem('eg-cart', n); } catch (err) {}
+    paint();
+    const cart = d.querySelector('.hd-cart');
+    if (cart) { cart.classList.remove('bump'); void cart.offsetWidth; cart.classList.add('bump'); }
+    fly(t.querySelector('.pad img'), cart);
+    toast(t.querySelector('.nm')?.textContent, t.querySelector('.pr')?.textContent);
+  });
+
+  // Magnetic buttons (fine pointers only).
+  if (!RM && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    d.querySelectorAll('.mag').forEach((m) => {
+      m.addEventListener('pointermove', (e) => {
+        const r = m.getBoundingClientRect();
+        m.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.18}px,${(e.clientY - r.top - r.height / 2) * 0.28}px)`;
+      });
+      m.addEventListener('pointerleave', () => { m.style.transform = ''; });
+    });
+  }
+
+  const init = () => {
+    paint();
+    if (RM) return;
+    const els = [...d.querySelectorAll('[data-board]')];
+    for (const el of els) {
+      const b = Board(el);
+      if (el.classList.contains('board--cat')) squeeze(b);
+      b.layout();
+      if (el.dataset.board === 'hero') sweep(b);
+    }
+    let q = 0;
+    const relayout = () => { cancelAnimationFrame(q); q = requestAnimationFrame(() => boards.forEach((b) => b.layout())); };
+    addEventListener('resize', relayout);
+    if (d.fonts && d.fonts.ready) d.fonts.ready.then(relayout);
+    addEventListener('scroll', () => boards.forEach((b) => { if (b.inside) b.point(b.lx, b.ly); }), { passive: true });
+  };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+</body>
+</html>

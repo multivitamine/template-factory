@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ons assortiment · Fredimare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600&family=Fira+Code:wght@500&family=League+Spartan:wght@300;700;800&display=swap" rel="stylesheet">
+<style>
+@property --open { syntax: '<number>'; inherits: true; initial-value: 0; }
+:root {
+  --c-bg: #A9AEB2; --c-surface: #FFFFFF; --c-text: #111315; --c-muted: #62686E; --c-line: #A9AEB2;
+  --c-primary: #FF4B1F; --c-on-primary: #FFFFFF; --c-accent: #1E2BFF;
+  --dark: #141618; --g: 2px; --ease: cubic-bezier(.2, .8, .2, 1);
+  --f-d: 'League Spartan', 'Helvetica Neue', sans-serif; --f-b: 'Asap', 'Helvetica Neue', sans-serif; --f-m: 'Fira Code', ui-monospace, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { overflow-x: clip; -webkit-text-size-adjust: 100%; }
+body { margin: 0; padding: 0 var(--g) var(--g); background: var(--c-bg); color: var(--c-text); font: 400 14px/1.5 var(--f-b); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--c-text); outline-offset: -2px; }
+.mono { font: 500 12px/1.3 var(--f-m); font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.wall { display: grid; gap: var(--g); }
+.tile { position: relative; background: var(--c-surface); overflow: hidden; min-width: 0; min-height: 0; }
+svg { flex: none; }
+
+/* Header: a row of tiles */
+.hd { position: sticky; top: 0; z-index: 50; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--g); padding: var(--g) 0; background: var(--c-bg); }
+.hd .tile { height: 56px; display: flex; align-items: center; }
+.hd-logo { padding: 0 22px; min-width: 150px; max-width: 300px; }
+.hd-logo img { max-height: 28px; max-width: 200px; width: auto; object-fit: contain; }
+.hd-logo.is-dark { background: var(--dark); color: #fff; }
+.wm { font: 800 19px/1 var(--f-d); letter-spacing: -.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-top: 3px; }
+.hd-nav { display: flex; gap: var(--g); overflow-x: auto; scrollbar-width: none; }
+.hd-nav::-webkit-scrollbar { display: none; }
+.hd-nav a { flex: 1 0 auto; justify-content: center; padding: 0 18px; font-weight: 500; font-size: 13.5px; white-space: nowrap; transition: background .25s var(--ease), color .25s var(--ease); }
+.hd-nav a:hover { background: var(--c-primary); color: var(--c-on-primary); }
+.hd-search svg, .r-search svg { width: 16px; height: 16px; }
+.hd-cart { padding: 0 18px; gap: 10px; font: 500 12px var(--f-m); }
+.hd-cart svg { width: 18px; height: 18px; }
+.hd-cart b { min-width: 30px; height: 22px; display: grid; place-items: center; background: var(--c-primary); color: var(--c-on-primary); font: 500 11px var(--f-m); padding: 0 6px; }
+.hd-cart.bump b { animation: bump .55s var(--ease); }
+@keyframes bump { 0% { transform: scale(1); } 35% { transform: scale(1.5); } 100% { transform: scale(1); } }
+@media (max-width: 899px) {
+  .hd { grid-template-columns: minmax(0, 1fr) auto; }
+  .hd-nav { grid-column: 1 / -1; order: 3; }
+  .hd .tile { height: 50px; }
+  .hd-nav a.tile { height: 44px; }
+}
+
+.sl { display: flex; align-items: flex-end; gap: 16px; padding: clamp(30px, 4.5vw, 64px) 4px 10px; font: 500 11.5px/1.2 var(--f-m); text-transform: uppercase; letter-spacing: .06em; color: #24282C; }
+.sl b { font: 300 clamp(34px, 4vw, 58px)/.78 var(--f-d); letter-spacing: -.03em; }
+.sl span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.eb { display: inline-flex; gap: 10px; align-items: center; font: 500 12px/1.3 var(--f-m); text-transform: uppercase; letter-spacing: .05em; color: var(--c-text); }
+.eb i { width: 10px; height: 10px; background: var(--c-primary); flex: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.btn { display: inline-flex; align-items: center; gap: 14px; height: 50px; padding: 0 20px 0 22px; background: var(--c-primary); color: var(--c-on-primary); font: 600 14px/1 var(--f-b); border: 0; cursor: pointer; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); transition: background .25s var(--ease), color .25s var(--ease), transform .4s var(--ease); }
+.btn svg { width: 16px; height: 16px; transition: transform .35s var(--ease); }
+.btn:hover svg { transform: translateX(4px); }
+
+/* Tile kinds */
+.tile--p { background: color-mix(in srgb, var(--c-primary) calc(var(--open) * 7%), #fff); }
+.idx { position: absolute; top: 12px; left: 13px; z-index: 2; font: 500 11px/1 var(--f-m); color: var(--c-muted); font-variant-numeric: tabular-nums; }
+.pad { position: absolute; inset: 38px 14px 54px; display: grid; place-items: center; }
+.pad img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; transform: scale(calc(.94 + .08 * var(--open))); }
+.ph { position: absolute; inset: 0; display: grid; place-items: center; font: 300 clamp(30px, 4vw, 56px)/1 var(--f-d); color: var(--c-muted); letter-spacing: -.02em;
+  background: repeating-linear-gradient(135deg, transparent 0 9px, color-mix(in srgb, var(--c-bg) 45%, transparent) 9px 10px); }
+/* Product without a photo: its name becomes the image, set big on the white pad */
+.ph--n { place-items: end start; padding: 40px 14px calc(44px + max(var(--open), var(--nm)) * 10px); color: var(--c-text);
+  background: repeating-linear-gradient(135deg, transparent 0 11px, color-mix(in srgb, var(--c-bg) 22%, transparent) 11px 12px); }
+.ph--n b { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; font: 800 clamp(19px, .7rem + 1.15vw, 34px)/.96 var(--f-d); letter-spacing: -.02em; text-wrap: balance; overflow-wrap: anywhere; transform: scale(calc(1 + .06 * var(--open))); transform-origin: 0 100%; }
+.ph--n b::before { content: ''; display: block; width: 26px; height: 5px; margin-bottom: 12px; background: var(--c-primary); box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.tile--p:has(.ph--n) .nm { display: none; }
+
+/* Product tile: price always, name + quick add bound to --open */
+.tile--p { counter-increment: p; --nm: 0; }
+.tile--p .idx::before { content: 'P–' counter(p, decimal-leading-zero); }
+.tile--p .lnk { position: absolute; inset: 0; z-index: 1; }
+.tile--p .pad { inset: 34px 12px calc(46px + max(var(--open), var(--nm)) * 34px); }
+.tag { position: absolute; top: 9px; right: 9px; z-index: 2; max-width: calc(100% - 70px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font: 500 10.5px/1 var(--f-m); text-transform: uppercase; letter-spacing: .04em; padding: 5px 7px; background: var(--c-text); color: #fff; opacity: calc(.5 + .5 * var(--open)); }
+.lab { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; padding: 0 54px 13px 13px; }
+.nm { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font: 500 13.5px/1.25 var(--f-b); margin-bottom: 6px; opacity: max(var(--open), var(--nm)); transform: translateY(calc((1 - max(var(--open), var(--nm))) * 8px)); }
+.pr { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; font: 500 12px/1.2 var(--f-m); font-variant-numeric: tabular-nums; }
+.pr s { color: var(--c-muted); }
+.qa { position: absolute; right: 0; bottom: 0; z-index: 3; width: 46px; height: 46px; border: 0; padding: 0; background: var(--c-primary); color: var(--c-on-primary); display: grid; place-items: center; cursor: pointer;
+  opacity: var(--open); transform: scale(calc(.4 + .6 * var(--open))); transform-origin: 100% 100%; pointer-events: none; }
+.qa svg { width: 18px; height: 18px; transition: transform .35s var(--ease); }
+.qa:hover svg { transform: rotate(90deg); }
+.tile.is-open .qa { pointer-events: auto; }
+@media (hover: none) { .tile--p { --nm: 1; } }
+
+/* Boards: even fallback grid; JS (.is-elastic) writes the fr tracks */
+.board { display: grid; gap: var(--g); grid-template-columns: repeat(4, minmax(0, 1fr)); counter-reset: p; }
+.board > .tile { aspect-ratio: 5 / 6; }
+.is-elastic > .tile { aspect-ratio: auto !important; }
+.board:not(.is-elastic) .tile { transition: --open .45s var(--ease); }
+.board:not(.is-elastic) .tile:is(:hover, :focus-within) { --open: 1; }
+.board:not(.is-elastic) .qa { pointer-events: auto; }
+@media (hover: none) { .board:not(.is-elastic) .tile--p { --open: 1; } }
+.tile[data-state=leaving] { opacity: .2; filter: grayscale(1); transition: opacity .3s var(--ease), filter .3s; }
+.board--cat { transition: height .5s var(--ease); }
+@media (max-width: 1099px) { .board { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 699px) { .board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Catalog head + filter rail */
+.chead { display: grid; gap: var(--g); grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+.chead .t { padding: clamp(20px, 2.6vw, 40px); display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: clamp(220px, 21vw, 310px); }
+.chead .cnt { font: 300 clamp(44px, 2rem + 3.4vw, 104px)/.82 var(--f-d); letter-spacing: -.04em; margin-top: auto; }.chead .i p { border-top: 2px solid var(--c-bg); padding-top: 14px; }
+.crumb { color: var(--c-muted); display: flex; gap: 8px; flex-wrap: wrap; }
+.crumb a:hover { color: var(--c-text); }
+.h1c { margin: 0; font: 800 clamp(2.6rem, 1rem + 5vw, 7.2rem)/.86 var(--f-d); letter-spacing: -.03em; overflow-wrap: break-word; text-wrap: balance; }
+.chead .i { padding: clamp(20px, 2.6vw, 40px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+.chead .i p { margin: 0; color: var(--c-muted); font-size: 15px; max-width: 46ch; }
+@media (max-width: 799px) { .chead { grid-template-columns: 1fr; } .chead .t { min-height: 0; } }
+.rail { position: sticky; top: 58px; z-index: 40; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: var(--g); padding: var(--g) 0; background: var(--c-bg); }
+.chips { display: flex; gap: var(--g); overflow-x: auto; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; height: 48px; padding: 0 18px; border: 0; background: #fff; font: 500 13.5px var(--f-b); cursor: pointer; display: inline-flex; align-items: center; gap: 9px; transition: background .25s var(--ease), color .25s var(--ease); }
+.chip::before { content: ''; width: 8px; height: 8px; border: 1.5px solid currentColor; transition: background .2s; }
+.chip[aria-pressed=true] { background: var(--c-primary); color: var(--c-on-primary); }
+.chip[aria-pressed=true]::before { background: currentColor; }
+.chip:hover:not([aria-pressed=true]) { background: color-mix(in srgb, var(--c-primary) 10%, #fff); }
+.r-search { display: flex; align-items: center; gap: 10px; padding: 0 14px; width: clamp(200px, 22vw, 320px); height: 48px; color: var(--c-muted); }
+.r-search input { border: 0; outline: 0; background: none; width: 100%; font-size: 13.5px; color: var(--c-text); }
+.r-count { display: flex; align-items: center; gap: 10px; padding: 0 18px; height: 48px; white-space: nowrap; }
+.r-count span { font: 300 22px/1 var(--f-d); letter-spacing: -.01em; padding-top: 3px; }
+.r-count i { width: 8px; height: 8px; background: var(--c-primary); box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+@media (max-width: 899px) { .rail { position: static; grid-template-columns: minmax(0, 1fr) auto; } .chips { grid-column: 1 / -1; } .r-search { width: auto; } }
+.shop-empty { background: #fff; margin: 0 !important; padding: 48px 20px !important; font: 300 22px/1.2 var(--f-d) !important; }
+.none { padding: clamp(24px, 4vw, 56px); display: grid; gap: 20px; justify-items: start; }
+.h2 { margin: 0; font: 800 clamp(2rem, 1rem + 2.6vw, 3.9rem)/.94 var(--f-d); letter-spacing: -.02em; text-wrap: balance; overflow-wrap: break-word; }
+
+/* USP strip + contact */
+.strip { display: grid; gap: var(--g); grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); counter-reset: u; }
+.usp { padding: clamp(18px, 2vw, 28px); display: flex; flex-direction: column; justify-content: space-between; gap: 30px; min-height: 220px; counter-increment: u; }
+@media (max-width: 599px) { .usp { min-height: 0; gap: 18px; } }
+.usp .n::before { content: counter(u, decimal-leading-zero); }
+.usp .mono { color: var(--c-muted); display: flex; justify-content: space-between; }
+.usp h3 { margin: 0 0 8px; font: 800 clamp(20px, 1.7vw, 26px)/1.02 var(--f-d); letter-spacing: -.02em; }
+.usp p { margin: 0; color: var(--c-muted); max-width: 36ch; }
+.contact { background: var(--dark); color: #fff; counter-increment: none; }
+.contact .mono { color: rgba(255,255,255,.55); }
+.contact p { color: rgba(255,255,255,.75); margin: 0 0 10px; }
+.contact a { display: block; font: 700 17px/1.3 var(--f-d); overflow-wrap: anywhere; padding: 2px 0; transition: color .2s; }
+.contact a:hover { color: color-mix(in srgb, var(--c-primary) 60%, #fff); }
+
+/* Footer */
+.ft { display: grid; gap: var(--g); margin-top: clamp(30px, 4.5vw, 64px); }
+.ft-wm { padding: clamp(18px, 2vw, 32px); background: var(--dark); color: #fff; display: flex; flex-direction: column; gap: clamp(30px, 5vw, 80px); }
+.ft-wm .row { display: flex; justify-content: space-between; gap: 16px; color: rgba(255,255,255,.55); flex-wrap: wrap; }
+.ft-wm .big { font: 800 clamp(3rem, 9.5vw, 12rem)/.84 var(--f-d); letter-spacing: -.045em; overflow-wrap: anywhere; margin: 0; }
+.ft-wm .big i { display: inline-block; width: .17em; height: .17em; margin-left: .04em; background: var(--c-primary); box-shadow: 0 0 0 1px rgba(255,255,255,.25); }
+.ft-grid { display: grid; gap: var(--g); grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.ft-col { padding: 20px; display: flex; flex-direction: column; gap: 4px; min-height: 160px; }
+.ft-col h4 { margin: 0 0 10px; font: 500 11px var(--f-m); text-transform: uppercase; letter-spacing: .06em; color: var(--c-muted); }
+.ft-col a, .ft-col span { font-size: 14px; overflow-wrap: anywhere; }
+.ft-col a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Badge, toast, fly-to-cart */
+.badge { position: fixed; left: 10px; bottom: 10px; z-index: 60; background: var(--dark); color: #fff; font: 500 11px/1 var(--f-m); padding: 8px 10px; letter-spacing: .02em; }
+.toast { position: fixed; right: 10px; bottom: 10px; z-index: 70; display: flex; background: #fff; box-shadow: 0 0 0 2px var(--c-bg), 0 18px 40px -12px rgba(0,0,0,.35); transform: translateY(calc(100% + 24px)); transition: transform .5s var(--ease); max-width: min(360px, calc(100vw - 20px)); }
+.toast.on { transform: none; }
+.toast b { background: var(--c-primary); color: var(--c-on-primary); font: 300 28px/1 var(--f-d); padding: 0 14px; display: grid; place-items: center; }
+.toast div { padding: 11px 14px; display: grid; gap: 3px; min-width: 0; }
+.toast .t1 { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.toast .t2 { color: var(--c-muted); }
+.fly { position: fixed; z-index: 80; object-fit: contain; pointer-events: none; mix-blend-mode: multiply; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+</style>
+<style id="brand-tokens">:root{--c-primary:#D4AD62;--c-on-primary:#111111;--c-accent:#1A1A1A}</style></head>
+<body>
+<header class="hd">
+  <a class="tile hd-logo is-dark" href="index.html" aria-label="Fredimare">
+    <span class="wm">Fredimare</span>
+  </a>
+  <nav class="hd-nav" aria-label="Menu"><a class="tile" href="catalog.html">Assortiment</a><a class="tile" href="#">Dagvangst</a><a class="tile" href="#">Balfegó</a><a class="tile" href="#">Ambassadeurs</a><a class="tile" href="#">Over ons</a><a class="tile" href="#">Contact</a></nav>
+  <a class="tile hd-cart" href="catalog.html" aria-label="Winkelmand"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h12l-1 10H4z"/><path d="M6.5 6V4.8a2.5 2.5 0 0 1 5 0V6"/></svg><b data-cart-count>00</b></a>
+</header>
+
+<main class="wall">
+  <section class="chead">
+    <div class="tile t">
+      <span class="crumb mono"><a href="index.html">Fredimare</a><span>/</span><span>Ons assortiment</span></span>
+      <h1 class="h1c">Ons assortiment</h1>
+    </div>
+    <div class="tile i">
+      <span class="eb"><i></i>Fredimare</span>
+      <b class="cnt">182 producten</b>
+      <p>Van Balfegó-tonijn en oesters tot Zeeuwse mosselen en verse vis: kies zakelijk of particulier.</p>
+    </div>
+  </section>
+
+  <div class="rail">
+    <div class="chips"><button class="chip" type="button" aria-pressed="true">Alle</button><button data-shop-filter="Tonijn" class="chip" type="button" aria-pressed="false">Tonijn</button><button data-shop-filter="Oesters" class="chip" type="button" aria-pressed="false">Oesters</button><button data-shop-filter="Mosselen" class="chip" type="button" aria-pressed="false">Mosselen</button><button data-shop-filter="Schelpdieren" class="chip" type="button" aria-pressed="false">Schelpdieren</button><button data-shop-filter="Vis" class="chip" type="button" aria-pressed="false">Vis</button></div>
+    <label class="tile r-search"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4.6"/><path d="M10.5 10.5 14 14"/></svg><input type="search" data-shop-search placeholder="Zoek producten…" aria-label="Zoek producten"></label>
+    <div class="tile r-count"><i></i><span>182 producten</span></div>
+  </div>
+  <section class="board board--cat" data-board="grid" data-ratio="1.18">
+    <article data-shop-item="0" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Balfegó hele tonijn"></a><span class="idx"></span>
+      <span class="tag">Balfegó</span>
+      <span class="ph ph--n"><b>Balfegó hele tonijn</b></span>
+      <div class="lab"><span class="nm">Balfegó hele tonijn</span><span class="pr">€ 35,97</span></div>
+      <button class="qa" type="button" aria-label="+ Balfegó hele tonijn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="1" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Zeeuwse Goudmerk mosselen"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Zeeuwse Goudmerk mosselen</b></span>
+      <div class="lab"><span class="nm">Zeeuwse Goudmerk mosselen</span><span class="pr">€ 9,48</span></div>
+      <button class="qa" type="button" aria-label="+ Zeeuwse Goudmerk mosselen"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="2" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Zeeuwse Jumbo mosselen"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Zeeuwse Jumbo mosselen</b></span>
+      <div class="lab"><span class="nm">Zeeuwse Jumbo mosselen</span><span class="pr">€ 8,45</span></div>
+      <button class="qa" type="button" aria-label="+ Zeeuwse Jumbo mosselen"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="3" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="The Oyster Grand Impériale"></a><span class="idx"></span>
+      <span class="tag">Oesters</span>
+      <span class="ph ph--n"><b>The Oyster Grand Impériale</b></span>
+      <div class="lab"><span class="nm">The Oyster Grand Impériale</span><span class="pr">€ 15,15</span></div>
+      <button class="qa" type="button" aria-label="+ The Oyster Grand Impériale"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="4" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Zeeuwse Imperial mosselen"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Zeeuwse Imperial mosselen</b></span>
+      <div class="lab"><span class="nm">Zeeuwse Imperial mosselen</span><span class="pr">€ 7,41</span></div>
+      <button class="qa" type="button" aria-label="+ Zeeuwse Imperial mosselen"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="5" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Balfegó tonijn loin (geen center)"></a><span class="idx"></span>
+      <span class="tag">Balfegó</span>
+      <span class="ph ph--n"><b>Balfegó tonijn loin (geen center)</b></span>
+      <div class="lab"><span class="nm">Balfegó tonijn loin (geen center)</span><span class="pr">€ 47,96</span></div>
+      <button class="qa" type="button" aria-label="+ Balfegó tonijn loin (geen center)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="6" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="The Oyster Prestige Spéciale"></a><span class="idx"></span>
+      <span class="tag">Oesters</span>
+      <span class="ph ph--n"><b>The Oyster Prestige Spéciale</b></span>
+      <div class="lab"><span class="nm">The Oyster Prestige Spéciale</span><span class="pr">€ 13,30</span></div>
+      <button class="qa" type="button" aria-label="+ The Oyster Prestige Spéciale"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="7" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Alikruik vers"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Alikruik vers</b></span>
+      <div class="lab"><span class="nm">Alikruik vers</span><span class="pr">€ 13,63</span></div>
+      <button class="qa" type="button" aria-label="+ Alikruik vers"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="8" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Zeeuwse Super mosselen"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Zeeuwse Super mosselen</b></span>
+      <div class="lab"><span class="nm">Zeeuwse Super mosselen</span><span class="pr">€ 5,12</span></div>
+      <button class="qa" type="button" aria-label="+ Zeeuwse Super mosselen"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="9" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Zeebaars Corsica"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Zeebaars Corsica</b></span>
+      <div class="lab"><span class="nm">Zeebaars Corsica</span><span class="pr">€ 11,66</span></div>
+      <button class="qa" type="button" aria-label="+ Zeebaars Corsica"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="10" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Dorade Corsica"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Dorade Corsica</b></span>
+      <div class="lab"><span class="nm">Dorade Corsica</span><span class="pr">€ 11,94</span></div>
+      <button class="qa" type="button" aria-label="+ Dorade Corsica"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="11" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Balfegó tonijn buik loin"></a><span class="idx"></span>
+      <span class="tag">Balfegó</span>
+      <span class="ph ph--n"><b>Balfegó tonijn buik loin</b></span>
+      <div class="lab"><span class="nm">Balfegó tonijn buik loin</span><span class="pr">€ 53,41</span></div>
+      <button class="qa" type="button" aria-label="+ Balfegó tonijn buik loin"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="12" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="The Oyster Signature Fines"></a><span class="idx"></span>
+      <span class="tag">Oesters</span>
+      <span class="ph ph--n"><b>The Oyster Signature Fines</b></span>
+      <div class="lab"><span class="nm">The Oyster Signature Fines</span><span class="pr">€ 7,58</span></div>
+      <button class="qa" type="button" aria-label="+ The Oyster Signature Fines"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="13" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Amandes vers"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Amandes vers</b></span>
+      <div class="lab"><span class="nm">Amandes vers</span><span class="pr">€ 6,27</span></div>
+      <button class="qa" type="button" aria-label="+ Amandes vers"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="14" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Zeeuwse Extra mosselen"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Zeeuwse Extra mosselen</b></span>
+      <div class="lab"><span class="nm">Zeeuwse Extra mosselen</span><span class="pr">€ 3,76</span></div>
+      <button class="qa" type="button" aria-label="+ Zeeuwse Extra mosselen"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="15" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Ostra Regal Gold Selection"></a><span class="idx"></span>
+      <span class="tag">Oesters</span>
+      <span class="ph ph--n"><b>Ostra Regal Gold Selection</b></span>
+      <div class="lab"><span class="nm">Ostra Regal Gold Selection</span><span class="pr">€ 29,32</span></div>
+      <button class="qa" type="button" aria-label="+ Ostra Regal Gold Selection"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="16" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Clams vers"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Clams vers</b></span>
+      <div class="lab"><span class="nm">Clams vers</span><span class="pr">€ 15,37</span></div>
+      <button class="qa" type="button" aria-label="+ Clams vers"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="17" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Gerookte zalmsalade"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Gerookte zalmsalade</b></span>
+      <div class="lab"><span class="nm">Gerookte zalmsalade</span><span class="pr">€ 4,25</span></div>
+      <button class="qa" type="button" aria-label="+ Gerookte zalmsalade"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="18" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Balfegó tonijn center loin"></a><span class="idx"></span>
+      <span class="tag">Balfegó</span>
+      <span class="ph ph--n"><b>Balfegó tonijn center loin</b></span>
+      <div class="lab"><span class="nm">Balfegó tonijn center loin</span><span class="pr">€ 53,41</span></div>
+      <button class="qa" type="button" aria-label="+ Balfegó tonijn center loin"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="19" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Ostra Regal"></a><span class="idx"></span>
+      <span class="tag">Oesters</span>
+      <span class="ph ph--n"><b>Ostra Regal</b></span>
+      <div class="lab"><span class="nm">Ostra Regal</span><span class="pr">€ 16,73</span></div>
+      <button class="qa" type="button" aria-label="+ Ostra Regal"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="20" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Sentinelle"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Sentinelle</b></span>
+      <div class="lab"><span class="nm">Sentinelle</span><span class="pr">€ 14,72</span></div>
+      <button class="qa" type="button" aria-label="+ Sentinelle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="21" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Roodbaars heel 700+"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Roodbaars heel 700+</b></span>
+      <div class="lab"><span class="nm">Roodbaars heel 700+</span><span class="pr">€ 10,90</span></div>
+      <button class="qa" type="button" aria-label="+ Roodbaars heel 700+"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="22" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Schelvishaas met vel geschubd lijnvangst"></a><span class="idx"></span>
+      <span class="tag">Lijnvangst</span>
+      <span class="ph ph--n"><b>Schelvishaas met vel geschubd lijnvangst</b></span>
+      <div class="lab"><span class="nm">Schelvishaas met vel geschubd lijnvangst</span><span class="pr">€ 34,88</span></div>
+      <button class="qa" type="button" aria-label="+ Schelvishaas met vel geschubd lijnvangst"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article><article data-shop-item="23" class="tile tile--p">
+      <a class="lnk" href="#" aria-label="Forel"></a><span class="idx"></span>
+      
+      <span class="ph ph--n"><b>Forel</b></span>
+      <div class="lab"><span class="nm">Forel</span><span class="pr">€ 9,81</span></div>
+      <button class="qa" type="button" aria-label="+ Forel"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v12M2 8h12"/></svg></button>
+    </article>
+  </section>
+
+  <div class="sl"><b>02</b><span>Fredimare</span></div>
+  <section class="strip">
+    <div class="tile usp"><span class="mono"><span class="n"></span><span>FM</span></span><div><h3>Gratis levering vanaf €75</h3><p>Gekoeld bezorgd in Nederland en België, voor zakelijke klanten én particulieren.</p></div></div><div class="tile usp"><span class="mono"><span class="n"></span><span>FM</span></span><div><h3>Rechtstreeks van de bron</h3><p>We kopen direct in bij visafslag, vissers en kwekers, zodat de keten kort blijft.</p></div></div><div class="tile usp"><span class="mono"><span class="n"></span><span>FM</span></span><div><h3>Dagverse kwaliteit</h3><p>Veel producten bestellen we pas als jij bestelt, voor maximale versheid.</p></div></div><div class="tile usp"><span class="mono"><span class="n"></span><span>FM</span></span><div><h3>Voor horeca &amp; particulier</h3><p>Zakelijke klanten zien hun eigen prijzen en staffelkortingen na inloggen.</p></div></div>
+    <div class="tile usp contact" id="contact"><span class="mono">Contact</span><div><p>Ambachtsweg 10, 4691 SC Tholen, Nederland</p></div></div>
+  </section>
+</main>
+
+<footer class="ft">
+  <div class="ft-wm">
+    <div class="row mono"><span>Premium vis, schaal- en schelpdieren</span><span>© 2026</span></div>
+    <p class="big">Fredimare<i></i></p>
+  </div>
+  <div class="ft-grid">
+    <div class="tile ft-col"><h4>Menu</h4><a href="catalog.html">Assortiment</a><a href="#">Dagvangst</a><a href="#">Balfegó</a><a href="#">Ambassadeurs</a><a href="#">Over ons</a><a href="#">Contact</a></div>
+    <div class="tile ft-col"><h4>Info</h4><a href="#">Bestellen en bezorgen</a><a href="#">Restaurants &amp; partners</a><a href="#">Algemene voorwaarden</a><a href="#">Privacyverklaring</a><a href="#">Cookieverklaring</a></div>
+    <div class="tile ft-col"><h4>Contact</h4><span>Ambachtsweg 10, 4691 SC Tholen, Nederland</span></div>
+  </div>
+</footer>
+
+<div class="badge">Demo redesign · Elastic Grid</div>
+
+<script>
+(() => {
+  const d = document;
+  d.documentElement.classList.add('js');
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const GAP = 2, K = 210, C = 24, SIG2 = 2 * 0.9 * 0.9;
+  const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+  const sum = (a) => a.reduce((s, x) => s + x, 0);
+  const boards = [];
+
+  // Height a wide (headline) tile needs at its current width.
+  const natural = (t) => {
+    const cs = getComputedStyle(t), kids = [...t.children];
+    return sum(kids.map((k) => k.offsetHeight)) + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + (parseFloat(cs.rowGap) || 0) * Math.max(0, kids.length - 1) + 6;
+  };
+
+  // Fisheye track grid: every column and row is a spring-driven fr weight.
+  function Board(el) {
+    const kind = el.dataset.board, ratio = parseFloat(el.dataset.ratio || '1.2');
+    const b = { el, cols: [], rows: [], place: [], focal: null, raf: 0, last: 0, inside: false, nc: 1, nr: 1 };
+    const track = (base, old, minc) => ({ base, minc, x: old ? old.x : base, v: old ? old.v : 0, t: base });
+
+    b.layout = () => {
+      const W = el.clientWidth, vw = innerWidth;
+      const tiles = [...el.children].filter((t) => t.classList.contains('tile') && getComputedStyle(t).display !== 'none');
+      const desk = kind === 'hero' && vw >= 1000;
+      const nc = kind === 'hero' ? (desk ? 4 : vw >= 700 ? 3 : 2) : vw >= 1100 ? 4 : vw >= 700 ? 3 : 2;
+      const colBase = desk ? [2.2, 1, 1, 1] : Array(nc).fill(1);
+      const place = [];
+      let r = 0, c = 0;
+      for (const t of tiles) {
+        if (!desk && t.hasAttribute('data-wide')) { if (c) { r++; c = 0; } place.push({ t, c: -1, r }); r++; continue; }
+        place.push({ t, c, r, s: 1 });
+        if (++c >= nc) { c = 0; r++; }
+      }
+      const nr = Math.max(1, c ? r + 1 : r);
+      // Ragged last row: its tiles widen to fill the board, so the wall never shows concrete holes.
+      if (kind !== 'hero' && c) {
+        const last = place.filter((p) => p.r === r), k = last.length;
+        let at = 0;
+        last.forEach((p, i) => { p.c = at; p.s = Math.floor(nc / k) + (i < nc % k ? 1 : 0); at += p.s; });
+      }
+      const colW = (W - GAP * (nc - 1)) / sum(colBase);
+      let rowBase = Array(nr).fill(1), H;
+      if (desk) {
+        rowBase = nr > 1 ? [1.5, ...Array(nr - 1).fill(1)] : [1];
+        H = Math.min(Math.max(innerHeight - 150, 520), 820);
+      } else {
+        const unit = colW * ratio;
+        for (const p of place) if (p.c < 0) rowBase[p.r] = Math.max(0.6, natural(p.t) / unit);
+        H = unit * sum(rowBase) + GAP * (nr - 1);
+      }
+      el.style.height = H + 'px';
+      for (const p of place) { p.t.style.gridColumn = p.c < 0 ? '1 / -1' : `${p.c + 1} / span ${p.s}`; p.t.style.gridRow = String(p.r + 1); }
+      b.cols = colBase.map((base, i) => track(base, b.cols.length === nc ? b.cols[i] : null, desk && i === 0));
+      b.rows = rowBase.map((base, i) => track(base, b.rows.length === nr ? b.rows[i] : null, kind === 'hero' && i === 0));
+      b.place = place; b.nc = nc; b.nr = nr;
+      b.aim(); b.write(); b.kick();
+    };
+
+    b.aim = () => {
+      const f = b.focal;
+      const set = (tracks, pos) => tracks.forEach((tr, i) => { tr.t = tr.base + (pos == null ? 0 : 1.6 * Math.exp(-((pos - (i + 0.5)) ** 2) / SIG2)); });
+      set(b.cols, f ? f.u : null); set(b.rows, f ? f.v : null);
+      // Filter squeeze: a track holding only leaving tiles drops to the floor.
+      const floor = (tracks, key) => tracks.forEach((tr, i) => {
+        const own = b.place.filter((p) => p[key] === i);
+        if (own.length && own.every((p) => p.t.dataset.state === 'leaving')) tr.t = 0.15;
+      });
+      floor(b.cols, 'c'); floor(b.rows, 'r');
+    };
+
+    b.write = () => {
+      const tpl = (tr) => `minmax(${tr.minc ? 'min-content' : '0'}, ${Math.max(0.05, tr.x).toFixed(4)}fr)`;
+      el.style.gridTemplateColumns = b.cols.map(tpl).join(' ');
+      el.style.gridTemplateRows = b.rows.map(tpl).join(' ');
+      for (const p of b.place) {
+        const er = b.rows[p.r].x - b.rows[p.r].base;
+        const ex = p.c < 0 ? er : Math.min(Math.max(...b.cols.slice(p.c, p.c + p.s).map((t) => t.x - t.base)), er);
+        const o = p.t.dataset.state === 'leaving' ? 0 : clamp01((1 + ex - 1.4) / 0.8);
+        if (Math.abs((p.o ?? -1) - o) > 0.003) { p.o = o; p.t.style.setProperty('--open', o.toFixed(3)); p.t.classList.toggle('is-open', o > 0.5); }
+      }
+    };
+
+    const tick = (now) => {
+      const dt = Math.min(0.05, (now - b.last) / 1000); b.last = now;
+      const steps = Math.max(1, Math.ceil(dt * 240)), h = dt / steps;
+      let moving = false;
+      for (const tr of [...b.cols, ...b.rows]) {
+        for (let s = 0; s < steps; s++) { tr.v += (K * (tr.t - tr.x) - C * tr.v) * h; tr.x += tr.v * h; }
+        if (Math.abs(tr.t - tr.x) > 1e-3 || Math.abs(tr.v) > 1e-3) moving = true; else { tr.x = tr.t; tr.v = 0; }
+      }
+      b.write();
+      b.raf = moving ? requestAnimationFrame(tick) : 0;
+    };
+    b.kick = () => { if (!b.raf) { b.last = performance.now(); b.raf = requestAnimationFrame(tick); } };
+
+    // Pointer position in rest-layout track units (not the distorted grid, so there is no feedback loop).
+    const units = (tracks, frac) => {
+      const x = frac * sum(tracks.map((t) => t.base));
+      let acc = 0;
+      for (let i = 0; i < tracks.length; i++) {
+        const w = tracks[i].base;
+        if (x <= acc + w || i === tracks.length - 1) return i + clamp01((x - acc) / w);
+        acc += w;
+      }
+      return 0;
+    };
+    b.point = (cx, cy) => {
+      b.lx = cx; b.ly = cy;
+      const r = el.getBoundingClientRect();
+      if (cx < r.left || cx > r.right || cy < r.top || cy > r.bottom) { b.inside = false; return b.release(); }
+      b.focal = { u: units(b.cols, (cx - r.left) / r.width), v: units(b.rows, (cy - r.top) / r.height) };
+      b.aim(); b.kick();
+    };
+    b.focusTile = (t) => {
+      const p = b.place.find((q) => q.t === t);
+      if (!p) return;
+      b.focal = { u: p.c < 0 ? null : p.c + p.s / 2, v: p.r + 0.5 };
+      b.aim(); b.kick();
+    };
+    b.release = () => { b.focal = null; b.aim(); b.kick(); };
+
+    let lastPT = 'mouse';
+    el.addEventListener('pointermove', (e) => { if (e.pointerType === 'touch') return; b.inside = true; b.point(e.clientX, e.clientY); });
+    el.addEventListener('pointerleave', (e) => { if (e.pointerType === 'touch') return; b.inside = false; if (!el.contains(d.activeElement)) b.release(); });
+    el.addEventListener('focusin', (e) => { const t = e.target.closest('.tile'); if (t && !b.inside) b.focusTile(t); });
+    el.addEventListener('focusout', (e) => { if (!el.contains(e.relatedTarget) && !b.inside) b.release(); });
+    el.addEventListener('pointerdown', (e) => {
+      lastPT = e.pointerType;
+      if (e.pointerType !== 'touch') return;
+      const t = e.target.closest('.tile');
+      if (t) { b.tapTile = t; b.tapOpen = t.classList.contains('is-open'); b.focusTile(t); }
+    });
+    // Touch: the first tap on a product magnifies it (and reveals quick add), the second follows the link.
+    el.addEventListener('click', (e) => {
+      if (lastPT !== 'touch') return;
+      const t = e.target.closest('.tile--p');
+      if (t && t === b.tapTile && !b.tapOpen && !e.target.closest('.qa')) e.preventDefault();
+    });
+
+    el.classList.add('is-elastic');
+    boards.push(b);
+    return b;
+  }
+
+  // Catalog: when a filter drops tiles, they fade to 20%, their tracks squeeze, then they are removed (FLIP for the rest).
+  function squeeze(b) {
+    const items = [...b.el.querySelectorAll('.tile')];
+    let timer = 0;
+    const flip = (fn) => {
+      const before = new Map(items.filter((e) => e.dataset.state === 'shown' || e.dataset.state === 'leaving').map((e) => [e, e.getBoundingClientRect()]));
+      fn();
+      for (const e of items) {
+        if (e.dataset.state === 'gone') continue;
+        const a = before.get(e);
+        if (!a) {
+          e.dataset.state = 'shown';
+          e.animate([{ opacity: 0, transform: 'scale(.86)' }, { opacity: 1, transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.2,.8,.2,1)' });
+          continue;
+        }
+        const n = e.getBoundingClientRect(), dx = a.left - n.left, dy = a.top - n.top;
+        if (Math.abs(dx) + Math.abs(dy) > 1) e.animate([{ transform: `translate(${dx}px,${dy}px)` }, { transform: 'none' }], { duration: 520, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      }
+    };
+    const sync = () => {
+      clearTimeout(timer);
+      let leaving = 0;
+      for (const e of items) {
+        const hidden = e.style.display === 'none', s = e.dataset.state;
+        if (hidden && s !== 'gone') { e.style.removeProperty('display'); e.dataset.state = 'leaving'; leaving++; }
+        else if (!hidden && s === 'gone') e.dataset.state = 'entering';
+        else if (!hidden && s === 'leaving') e.dataset.state = 'shown';
+      }
+      flip(() => b.layout());
+      if (leaving) timer = setTimeout(() => flip(() => {
+        for (const e of items) if (e.dataset.state === 'leaving') { e.style.setProperty('display', 'none', 'important'); e.dataset.state = 'gone'; }
+        b.layout();
+      }), 400);
+    };
+    for (const e of items) e.dataset.state = e.style.display === 'none' ? 'gone' : 'shown';
+    onShop = sync;
+  }
+  // Registered now, before the injected shop script (which stops propagation), so these run first;
+  // the timeout lets the shop script apply its filter before the squeeze reads the result.
+  let onShop = null;
+  addEventListener('click', (e) => { if (onShop && e.target.closest && e.target.closest('[data-shop-filter], .chip')) setTimeout(onShop, 0); }, true);
+  addEventListener('input', (e) => { if (onShop && e.target.matches && e.target.matches('input')) setTimeout(onShop, 0); }, true);
+
+  // Intro: one wave rolls across the hero board, then it settles.
+  function sweep(b) {
+    const t0 = performance.now() + 380, dur = 1600;
+    const step = (now) => {
+      if (b.inside) return;
+      const k = clamp01((now - t0) / dur), e = k < 0.5 ? 2 * k * k : 1 - (-2 * k + 2) ** 2 / 2;
+      if (now >= t0) { b.focal = { u: -0.4 + e * (b.nc + 0.8), v: 0.2 + e * (b.nr - 0.4) }; b.aim(); b.kick(); }
+      if (k < 1) requestAnimationFrame(step); else b.release();
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Cart: count bump, image flies to the cart, toast.
+  let n = 0;
+  try { n = +(sessionStorage.getItem('eg-cart') || 0); } catch (e) {}
+  const paint = () => d.querySelectorAll('[data-cart-count]').forEach((c) => { c.textContent = String(n).padStart(2, '0'); });
+  let toastEl, toastT;
+  const toast = (name, price) => {
+    if (!toastEl) {
+      toastEl = d.createElement('div'); toastEl.className = 'toast'; toastEl.setAttribute('role', 'status');
+      toastEl.innerHTML = '<b>+1</b><div><span class="t1"></span><span class="t2 mono"></span></div>';
+      d.body.appendChild(toastEl);
+    }
+    toastEl.querySelector('.t1').textContent = name || '';
+    toastEl.querySelector('.t2').textContent = (price ? price + ' · ' : '') + String(n).padStart(2, '0');
+    requestAnimationFrame(() => toastEl.classList.add('on'));
+    clearTimeout(toastT); toastT = setTimeout(() => toastEl.classList.remove('on'), 2600);
+  };
+  const fly = (img, to) => {
+    if (!img || !to || RM) return;
+    const a = img.getBoundingClientRect(), z = to.getBoundingClientRect();
+    const c = img.cloneNode(); c.className = 'fly'; c.removeAttribute('loading');
+    Object.assign(c.style, { left: a.left + 'px', top: a.top + 'px', width: a.width + 'px', height: a.height + 'px' });
+    d.body.appendChild(c);
+    const dx = z.left + z.width / 2 - (a.left + a.width / 2), dy = z.top + z.height / 2 - (a.top + a.height / 2);
+    c.animate([{ transform: 'none', opacity: 1 }, { transform: `translate(${dx}px,${dy}px) scale(.12)`, opacity: 0.3 }], { duration: 720, easing: 'cubic-bezier(.6,0,.2,1)' }).onfinish = () => c.remove();
+  };
+  d.addEventListener('click', (e) => {
+    const q = e.target.closest && e.target.closest('.qa');
+    if (!q) return;
+    e.preventDefault(); e.stopPropagation();
+    const t = q.closest('.tile');
+    n++;
+    try { sessionStorage.setItem('eg-cart', n); } catch (err) {}
+    paint();
+    const cart = d.querySelector('.hd-cart');
+    if (cart) { cart.classList.remove('bump'); void cart.offsetWidth; cart.classList.add('bump'); }
+    fly(t.querySelector('.pad img'), cart);
+    toast(t.querySelector('.nm')?.textContent, t.querySelector('.pr')?.textContent);
+  });
+
+  // Magnetic buttons (fine pointers only).
+  if (!RM && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    d.querySelectorAll('.mag').forEach((m) => {
+      m.addEventListener('pointermove', (e) => {
+        const r = m.getBoundingClientRect();
+        m.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.18}px,${(e.clientY - r.top - r.height / 2) * 0.28}px)`;
+      });
+      m.addEventListener('pointerleave', () => { m.style.transform = ''; });
+    });
+  }
+
+  const init = () => {
+    paint();
+    if (RM) return;
+    const els = [...d.querySelectorAll('[data-board]')];
+    for (const el of els) {
+      const b = Board(el);
+      if (el.classList.contains('board--cat')) squeeze(b);
+      b.layout();
+      if (el.dataset.board === 'hero') sweep(b);
+    }
+    let q = 0;
+    const relayout = () => { cancelAnimationFrame(q); q = requestAnimationFrame(() => boards.forEach((b) => b.layout())); };
+    addEventListener('resize', relayout);
+    if (d.fonts && d.fonts.ready) d.fonts.ready.then(relayout);
+    addEventListener('scroll', () => boards.forEach((b) => { if (b.inside) b.point(b.lx, b.ly); }), { passive: true });
+  };
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"catalog","lang":"nl","count":"182 producten","products":[{"name":"Balfegó hele tonijn","tag":"Balfegó","category":"Tonijn"},{"name":"Zeeuwse Goudmerk mosselen","tag":"","category":"Mosselen"},{"name":"Zeeuwse Jumbo mosselen","tag":"","category":"Mosselen"},{"name":"The Oyster Grand Impériale","tag":"Oesters","category":"Oesters"},{"name":"Zeeuwse Imperial mosselen","tag":"","category":"Mosselen"},{"name":"Balfegó tonijn loin (geen center)","tag":"Balfegó","category":"Tonijn"},{"name":"The Oyster Prestige Spéciale","tag":"Oesters","category":"Oesters"},{"name":"Alikruik vers","tag":"","category":"Schelpdieren"},{"name":"Zeeuwse Super mosselen","tag":"","category":"Mosselen"},{"name":"Zeebaars Corsica","tag":"","category":"Vis"},{"name":"Dorade Corsica","tag":"","category":"Vis"},{"name":"Balfegó tonijn buik loin","tag":"Balfegó","category":"Tonijn"},{"name":"The Oyster Signature Fines","tag":"Oesters","category":"Oesters"},{"name":"Amandes vers","tag":"","category":"Schelpdieren"},{"name":"Zeeuwse Extra mosselen","tag":"","category":"Mosselen"},{"name":"Ostra Regal Gold Selection","tag":"Oesters","category":"Oesters"},{"name":"Clams vers","tag":"","category":"Schelpdieren"},{"name":"Gerookte zalmsalade","tag":"","category":"Vis"},{"name":"Balfegó tonijn center loin","tag":"Balfegó","category":"Tonijn"},{"name":"Ostra Regal","tag":"Oesters","category":"Oesters"},{"name":"Sentinelle","tag":"","category":"Vis"},{"name":"Roodbaars heel 700+","tag":"","category":"Vis"},{"name":"Schelvishaas met vel geschubd lijnvangst","tag":"Lijnvangst","category":"Vis"},{"name":"Forel","tag":"","category":"Vis"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>
