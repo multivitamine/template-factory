@@ -1,0 +1,54 @@
+{
+  "runId": "2026-10-29T09-39-10",
+  "model": "opus",
+  "concurrency": 10,
+  "sites": 1,
+  "done": 1,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 32,
+  "p50": 32.5,
+  "p95": 32.5,
+  "max": 32.5,
+  "avgPhases": {
+    "crawl": 13,
+    "content": 19.4,
+    "concept": 5.6,
+    "render": 0.1
+  },
+  "throughputPerMin": 1.85,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 21.7,
+  "projected40MinIfSlotsOnly": 2.2,
+  "totalCostUsd": 0.23,
+  "jobs": [
+    {
+      "key": "brinkscoffeeroasters",
+      "status": "done",
+      "template": "Atelier Craft",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 13,
+      "content": 19.4,
+      "concept": 5.6,
+      "render": 0.1,
+      "total": 32.5,
+      "costUsd": 0.2321384,
+      "error": null,
+      "path": "2026-10-29T09-39-10/brinkscoffeeroasters",
+      "name": "Brinks Coffee Roasters",
+      "url": "https://www.brinkscoffeeroasters.nl",
+      "brand": {
+        "primary": "#5A402E",
+        "accent": "#B37756"
+      }
+    }
+  ]
+}

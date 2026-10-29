@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redesign Booth — History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f12; --panel: #15181d; --panel-2: #1c2027; --line: #262b33;
+    --text: #e8eaed; --muted: #8b939e; --accent: #c6ff3d; --run: #5ab0ff; --fail: #ff6b5a;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 "Space Grotesk", system-ui, sans-serif; }
+  header { display: flex; align-items: center; gap: 24px; padding: 18px 28px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  header h1 { font-size: 20px; margin: 0; letter-spacing: -0.02em; }
+  header h1 span { color: var(--accent); }
+  header a { font: 500 13px var(--mono); color: var(--muted); text-decoration: none; }
+  header a:hover { color: var(--accent); }
+  .stats { display: flex; gap: 22px; margin-left: auto; font: 13px var(--mono); color: var(--muted); flex-wrap: wrap; }
+  .stats b { color: var(--text); font-weight: 500; }
+  .tools { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 18px 28px 0; }
+  .tools input[type=search] { flex: 1; min-width: 200px; max-width: 360px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel-2); color: var(--text); font: 14px var(--mono); }
+  .tools input[type=search]:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .tools label { font: 12px var(--mono); color: var(--muted); display: flex; gap: 8px; align-items: center; cursor: pointer; }
+  .tools input[type=checkbox] { accent-color: var(--accent); width: 16px; height: 16px; margin: 0; }
+  main { padding: 8px 28px 48px; }
+  @media (max-width: 900px) { header, .tools { padding-left: 16px; padding-right: 16px; } main { padding: 8px 16px 40px; } }
+
+  .run { margin-top: 26px; }
+  .run-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .run-head h2 { font-size: 17px; margin: 0; letter-spacing: -0.01em; }
+  .run-head span { font: 12px var(--mono); color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .card.failed { border-color: #6b2f28; }
+  .thumb { position: relative; aspect-ratio: 16/10; background: var(--panel-2); overflow: hidden; display: block; }
+  .thumb iframe { position: absolute; inset: 0; width: 400%; height: 400%; transform: scale(.25); transform-origin: 0 0; border: 0; pointer-events: none; background: #fff; }
+  .thumb .empty { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; text-align: center; color: var(--muted); font: 12px var(--mono); }
+  .body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .row { display: flex; align-items: center; gap: 10px; }
+  .name { font-weight: 700; font-size: 15px; }
+  .url { font: 11px var(--mono); color: var(--muted); text-decoration: none; word-break: break-all; }
+  .concept { font-size: 13px; color: var(--muted); }
+  .concept b { color: var(--accent); font-weight: 500; }
+  .why { font-size: 12.5px; color: var(--muted); }
+  .swatches { display: flex; gap: 4px; }
+  .swatches i { width: 16px; height: 16px; border-radius: 4px; border: 1px solid rgba(255,255,255,.12); }
+  .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; align-items: center; }
+  .links a { font: 500 12px var(--mono); color: var(--text); text-decoration: none; border: 1px solid var(--line); padding: 5px 9px; border-radius: 8px; }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links button.mk-creative { font: 500 12px var(--mono); color: #f472b6; background: transparent; border: 1px solid #5a2a48; padding: 5px 9px; border-radius: 8px; cursor: pointer; }
+  .links button.mk-creative:hover { border-color: #f472b6; }
+  .links button.mk-creative:disabled { opacity: .6; cursor: default; }
+  .links button.mk-moon { font: 500 12px var(--mono); color: #ffc93d; background: transparent; border: 1px solid #5a4a1c; padding: 5px 9px; border-radius: 8px; cursor: pointer; }
+  .links button.mk-moon:hover { border-color: #ffc93d; }
+  .links button.mk-moon:disabled { opacity: .6; cursor: default; }
+  .card.creative { box-shadow: inset 0 0 0 1px #5a2a48; }
+  .badge { font: 500 11px var(--mono); color: #f472b6; border: 1px solid #5a2a48; border-radius: 99px; padding: 1px 7px; margin-left: 6px; vertical-align: 2px; }
+  .meta { margin-left: auto; font: 11px var(--mono); color: var(--muted); }
+  .none { color: var(--muted); padding: 40px 0; font: 14px var(--mono); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Redesign Booth <span>/ history</span></h1>
+  <a href="/">← control room</a>
+  <a href="/factory">template factory →</a>
+  <div class="stats">
+    <span>runs <b id="s-runs">–</b></span>
+    <span>sites <b id="s-sites">–</b></span>
+    <span>total cost <b id="s-cost">–</b></span>
+  </div>
+</header>
+<div class="tools">
+  <input id="q" type="search" placeholder="Search site, URL or concept…" aria-label="Search history">
+  <label><input id="onlysaved" type="checkbox" checked> only with saved pages</label>
+</div>
+<main id="main"><div class="none">loading…</div></main>
+<script>
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = (sec) => sec == null ? "–" : `${Math.floor(sec / 60)}:${String(Math.round(sec % 60)).padStart(2, "0")}`;
+// runId looks like 2026-10-29T09-21-50 (UTC).
+const when = (id) => {
+  const d = new Date(id.replace(/T(\d\d)-(\d\d)-(\d\d)$/, "T$1:$2:$3Z"));
+  return isNaN(d) ? id : d.toLocaleString(undefined, { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+};
+
+let history = [];
+
+function card(j) {
+  const colors = [j.brand?.primary, j.brand?.accent].filter(Boolean);
+  const base = j.path ? `/sites/${j.path}` : null;
+  const thumb = j.available
+    ? `<a class="thumb" href="${base}/index.html" target="_blank"><iframe loading="lazy" src="${base}/index.html" tabindex="-1" title="${esc(j.name || j.key)}"></iframe></a>`
+    : `<div class="thumb"><div class="empty">${j.status === "failed" ? "failed: " + esc(j.error || "") : "pages not saved (made before history existed)"}</div></div>`;
+  const links = [];
+  if (j.available) {
+    links.push(`<a href="${base}/index.html" target="_blank">home ↗</a>`);
+    if ((j.pages || []).includes("catalog.html")) links.push(`<a href="${base}/catalog.html" target="_blank">catalog ↗</a>`);
+  }
+  if (j.url) links.push(`<a href="${esc(j.url)}" target="_blank" rel="noopener">original ↗</a>`);
+  if (j.available) links.push(j.moonshots
+    ? `<a href="${base}/moonshots.html" target="_blank">🚀 moonshots ↗</a>`
+    : `<button class="mk-moon" data-path="${esc(j.path)}" title="Claude invents 3 bold ideas that would change what this business is (~30 s)">🚀 moonshots</button>`);
+  if (j.available && j.status === "done" && j.mode !== "creative" && j.templateId)
+    links.push(`<button class="mk-creative" data-path="${esc(j.path)}" title="An agent adapts this concept to their own world (~3–6 min)">✦ make creative</button>`);
+  return `<article class="card ${esc(j.status)}${j.mode === "creative" ? " creative" : ""}">
+    ${thumb}
+    <div class="body">
+      <div><div class="name">${esc((j.name || j.key).replace(/ · creative$/, ""))}${j.mode === "creative" ? `<span class="badge">creative</span>` : ""}</div>${j.url ? `<a class="url" href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.url.replace(/^https?:\/\//, "").replace(/\/$/, ""))}</a>` : ""}</div>
+      ${j.template ? `<div class="row"><div class="swatches">${colors.map((c) => `<i title="${esc(c)}" style="background:${esc(c)}"></i>`).join("")}</div><div class="concept">→ <b>${esc(j.template)}</b></div></div>` : ""}
+      ${j.why ? `<div class="why">${esc(j.why)}</div>` : ""}
+      <div class="links">${links.join("")}<span class="meta">${fmt(j.total)}${j.costUsd ? ` · $${j.costUsd.toFixed(2)}` : ""}</span></div>
+    </div>
+  </article>`;
+}
+
+function draw() {
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const onlySaved = document.getElementById("onlysaved").checked;
+  const match = (j) => (!onlySaved || j.available) &&
+    (!q || [j.name, j.key, j.url, j.template, j.why].some((v) => String(v || "").toLowerCase().includes(q)));
+  const html = history.map((r) => {
+    const list = r.jobs.filter(match);
+    if (!list.length) return "";
+    return `<section class="run">
+      <div class="run-head"><h2>${esc(when(r.runId))}</h2>
+        <span>${r.done}/${r.sites} done${r.failed ? ` · ${r.failed} failed` : ""} · model ${esc(r.model)} · wall clock ${fmt(r.wallSec)} · $${(r.totalCostUsd || 0).toFixed(2)}</span></div>
+      <div class="grid">${list.map(card).join("")}</div>
+    </section>`;
+  }).join("");
+  document.getElementById("main").innerHTML = html || `<div class="none">${history.length ? "nothing matches" : "no runs yet: start one in the control room"}</div>`;
+}
+
+fetch("/api/history").then((r) => r.json()).then((h) => {
+  history = h;
+  const all = h.flatMap((r) => r.jobs);
+  document.getElementById("s-runs").textContent = h.length;
+  document.getElementById("s-sites").textContent = all.length;
+  document.getElementById("s-cost").textContent = "$" + h.reduce((a, r) => a + (r.totalCostUsd || 0), 0).toFixed(2);
+  draw();
+});
+document.getElementById("q").oninput = draw;
+// Creative mode: upgrade a saved fast design. Progress shows in the control room.
+document.getElementById("main").addEventListener("click", async (e) => {
+  const b = e.target.closest("button.mk-moon");
+  if (!b) return;
+  b.disabled = true;
+  b.textContent = "🚀 thinking… ~30 s";
+  const r = await fetch("/api/moonshots", { method: "POST", body: JSON.stringify({ path: b.dataset.path }) }).then((x) => x.json()).catch(() => ({ error: "server not reachable" }));
+  if (r.error) { b.textContent = `✕ ${r.error}`.slice(0, 60); b.disabled = false; return; }
+  b.outerHTML = `<a href="${r.url}" target="_blank">🚀 moonshots ↗</a>`;
+  window.open(r.url, "_blank");
+});
+
+document.getElementById("main").onclick = async (e) => {
+  const b = e.target.closest("button.mk-creative");
+  if (!b) return;
+  b.disabled = true;
+  b.textContent = "✦ starting…";
+  const r = await fetch("/api/creative", { method: "POST", body: JSON.stringify({ path: b.dataset.path }) }).then((x) => x.json()).catch(() => ({ error: "server not reachable" }));
+  b.outerHTML = r.error ? `<span class="meta" style="color:var(--fail)">✕ ${esc(r.error)}</span>` : `<a href="/">✦ started: watch in control room ↗</a>`;
+};
+document.getElementById("onlysaved").onchange = draw;
+</script>
+</body>
+</html>

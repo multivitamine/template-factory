@@ -1,0 +1,58 @@
+{
+  "runId": "2026-10-29T10-54-01",
+  "model": "sonnet",
+  "concurrency": 10,
+  "sites": 1,
+  "done": 1,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 38,
+  "p50": 38.3,
+  "p95": 38.3,
+  "max": 38.3,
+  "avgPhases": {
+    "crawl": 14.9,
+    "content": 23.4,
+    "concept": 4.5,
+    "render": 0.1
+  },
+  "throughputPerMin": 1.57,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 25.6,
+  "projected40MinIfSlotsOnly": 2.6,
+  "totalCostUsd": 0.17,
+  "jobs": [
+    {
+      "key": "teleqare-com",
+      "name": "TeleQare",
+      "url": "https://www.teleqare.com/",
+      "path": "2026-10-29T10-54-01/teleqare-com",
+      "brand": {
+        "primary": "#994A91",
+        "accent": "#D4E3E6"
+      },
+      "templateId": "bento-board",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Crisp modular tiles suit a B2B phone-accessory distributor; purple brand colour pops on light.",
+      "status": "done",
+      "template": "Bento Board",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 14.9,
+      "content": 23.4,
+      "concept": 4.5,
+      "render": 0.1,
+      "total": 38.3,
+      "costUsd": 0.17376779999999997,
+      "error": null
+    }
+  ]
+}

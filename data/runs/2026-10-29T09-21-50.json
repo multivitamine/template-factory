@@ -1,0 +1,54 @@
+{
+  "runId": "2026-10-29T09-21-50",
+  "model": "sonnet",
+  "concurrency": 10,
+  "sites": 1,
+  "done": 1,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 30,
+  "p50": 30.2,
+  "p95": 30.2,
+  "max": 30.2,
+  "avgPhases": {
+    "crawl": 14.7,
+    "content": 14.6,
+    "concept": 15.4,
+    "render": 0
+  },
+  "throughputPerMin": 1.99,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 20.1,
+  "projected40MinIfSlotsOnly": 2,
+  "totalCostUsd": 0.14,
+  "jobs": [
+    {
+      "key": "bohlt-nl",
+      "status": "done",
+      "template": "Velocity",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 14.7,
+      "content": 14.6,
+      "concept": 15.4,
+      "render": 0,
+      "total": 30.2,
+      "costUsd": 0.13792120000000002,
+      "error": null,
+      "path": "2026-10-29T09-21-50/bohlt-nl",
+      "name": "BOHLT",
+      "url": "https://www.bohlt.nl/",
+      "brand": {
+        "primary": "#FEED36",
+        "accent": "#35352D"
+      }
+    }
+  ]
+}

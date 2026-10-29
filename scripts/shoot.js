@@ -1,4 +1,4 @@
-// Screenshots generated pages for a quick visual check: node scripts/shoot.js <key> [page]
+// Screenshots generated pages for a quick visual check: node scripts/shoot.js <runId>/<key> [page]
 import puppeteer from "puppeteer-core";
 import { config } from "../config.js";
 

@@ -1,0 +1,108 @@
+{
+  "runId": "2026-10-29T09-51-25",
+  "model": "sonnet",
+  "concurrency": 10,
+  "sites": 3,
+  "done": 3,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 137,
+  "p50": 136.4,
+  "p95": 136.5,
+  "max": 136.5,
+  "avgPhases": {
+    "crawl": 103,
+    "content": 33.3,
+    "concept": 4.9,
+    "render": 0
+  },
+  "throughputPerMin": 1.32,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 30.3,
+  "projected40MinIfSlotsOnly": 9.1,
+  "totalCostUsd": 0.18,
+  "jobs": [
+    {
+      "key": "aiki-budo-nl",
+      "name": "Aiki-Budo Sport · v1",
+      "url": "https://www.aiki-budo.nl/",
+      "path": "2026-10-29T09-51-25/aiki-budo-nl",
+      "brand": {
+        "primary": "#e63329",
+        "accent": "#1b161c"
+      },
+      "templateId": "velocity",
+      "why": "Aggressive, fast dark look matches 'Fight the Power' and the red-on-black brand.",
+      "status": "done",
+      "template": "Velocity",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 103,
+      "content": 33.3,
+      "concept": 4.9,
+      "render": 0,
+      "total": 136.4,
+      "costUsd": 0.06053306666666667,
+      "error": null
+    },
+    {
+      "key": "aiki-budo-nl-2",
+      "name": "Aiki-Budo Sport · v2",
+      "url": "https://www.aiki-budo.nl/",
+      "path": "2026-10-29T09-51-25/aiki-budo-nl-2",
+      "brand": {
+        "primary": "#e63329",
+        "accent": "#1b161c"
+      },
+      "templateId": "kinetic-poster",
+      "why": "Loud gigantic type suits a combat-sports shop, in a bright light alternative.",
+      "status": "done",
+      "template": "Kinetic Poster",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 103,
+      "content": 33.3,
+      "concept": 4.9,
+      "render": 0,
+      "total": 136.4,
+      "costUsd": 0.06053306666666667,
+      "error": null
+    },
+    {
+      "key": "aiki-budo-nl-3",
+      "name": "Aiki-Budo Sport · v3",
+      "url": "https://www.aiki-budo.nl/",
+      "path": "2026-10-29T09-51-25/aiki-budo-nl-3",
+      "brand": {
+        "primary": "#e63329",
+        "accent": "#1b161c"
+      },
+      "templateId": "warehouse-brutal",
+      "why": "Raw, stamped, data-dense style fits a product-heavy gear shop with a gritty dojo feel.",
+      "status": "done",
+      "template": "Warehouse Brutal",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 103,
+      "content": 33.3,
+      "concept": 4.9,
+      "render": 0.1,
+      "total": 136.5,
+      "costUsd": 0.06053306666666667,
+      "error": null
+    }
+  ]
+}

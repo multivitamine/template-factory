@@ -33,7 +33,7 @@ const jobs = new Map();
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 function draw() {
   list.innerHTML = [...jobs.values()].map((j) => `<li class="${j.status}"><div><b>${esc(j.name)}</b><br><small>${esc(j.url.replace(/^https?:\/\//, ""))}</small></div>
-    <div class="s">${j.status === "done" ? `<a href="/sites/${j.key}/index.html">open ↗</a>` : esc(j.step)}</div></li>`).join("");
+    <div class="s">${j.status === "done" ? `<a href="/sites/${j.path}/index.html">open ↗</a>` : esc(j.step)}</div></li>`).join("");
   document.getElementById("go").disabled = [...jobs.values()].some((j) => j.status === "running" || j.status === "queued");
 }
 document.getElementById("go").onclick = () => { document.getElementById("go").disabled = true; fetch("/api/start", { method: "POST" }); };

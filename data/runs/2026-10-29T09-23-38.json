@@ -1,0 +1,54 @@
+{
+  "runId": "2026-10-29T09-23-38",
+  "model": "opus",
+  "concurrency": 10,
+  "sites": 1,
+  "done": 1,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 58,
+  "p50": 57.9,
+  "p95": 57.9,
+  "max": 57.9,
+  "avgPhases": {
+    "crawl": 15.4,
+    "content": 42.4,
+    "concept": 6.4,
+    "render": 0
+  },
+  "throughputPerMin": 1.04,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 38.6,
+  "projected40MinIfSlotsOnly": 3.9,
+  "totalCostUsd": 0.37,
+  "jobs": [
+    {
+      "key": "teleqare-com",
+      "status": "done",
+      "template": "Swiss Index",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 42.4,
+      "concept": 6.4,
+      "render": 0,
+      "total": 57.9,
+      "costUsd": 0.3658036,
+      "error": null,
+      "path": "2026-10-29T09-23-38/teleqare-com",
+      "name": "TeleQare",
+      "url": "https://teleqare.com/",
+      "brand": {
+        "primary": "#994A91",
+        "accent": "#D4E3E6"
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "runId": "2026-10-29T10-06-04",
+  "model": "sonnet",
+  "concurrency": 10,
+  "sites": 1,
+  "done": 1,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 209,
+  "p50": 209.2,
+  "p95": 209.2,
+  "max": 209.2,
+  "avgPhases": {
+    "crawl": null,
+    "content": null,
+    "concept": null,
+    "render": null
+  },
+  "throughputPerMin": 0.29,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 139.5,
+  "projected40MinIfSlotsOnly": 13.9,
+  "totalCostUsd": 0.82,
+  "jobs": [
+    {
+      "key": "teleqare-com-10-creative",
+      "name": "TeleQare · v10 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-06-04/teleqare-com-10-creative",
+      "brand": {
+        "primary": "#994A91",
+        "accent": "#D4E3E6"
+      },
+      "templateId": "flight-deck",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T09-55-28/teleqare-com-10",
+      "why": "The cockpit became a wholesale accessories panel: search-first hero, circular category screens, brand selector driving the product dials.",
+      "status": "done",
+      "template": "Flight Deck",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 209.2,
+      "costUsd": 0.8166826,
+      "error": null
+    }
+  ]
+}

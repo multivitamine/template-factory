@@ -21,7 +21,8 @@ Produce this JSON (schema and rules):
             "text": "1–2 sentences", "cta": "…", "ctaHref": "catalog.html or #", "cta2": "… or null", "image": "best large image URL or null" },
   "usps": [ { "title": "…", "text": "1 sentence" } ],                 // 3–4, based on real facts from the data
   "categories": [ { "name": "…", "image": "URL or null", "href": "catalog.html" } ],   // 0–6, only real ones
-  "products": [ { "name": "…", "price": "€ 9,95 or null", "oldPrice": null, "image": "URL or null", "tag": "short or null", "href": "#" } ],
+  "products": [ { "name": "…", "price": "€ 9,95 or null", "oldPrice": null, "image": "URL or null", "tag": "short or null", "href": "#",
+                  "category": "exactly one of catalog.filters, or null" } ],
   "story": { "eyebrow": "…", "title": "…", "text": "2–3 sentences", "image": "URL or null" },
   "stats": [ { "value": "1000+", "label": "…" } ],                    // 0–4, ONLY numbers that appear in the data
   "gallery": [ "URL", … ],                                             // 0–8 other good images
@@ -29,7 +30,7 @@ Produce this JSON (schema and rules):
   "cta": { "title": "…", "text": "…", "label": "…", "href": "#" },
   "contact": { "address": "…", "phone": "…", "email": "…" },           // from the data, empty string if unknown
   "footerLinks": [ { "label": "…", "href": "#" } ],
-  "catalog": { "title": "…", "intro": "1 sentence", "filters": ["…"], "count": "13 producten" }
+  "catalog": { "title": "…", "intro": "1 sentence", "filters": ["…"], "count": "13 producten" }   // filters: 2–6 real product groups that the products divide into (used as working filter buttons)
 }
 ```
 Rules:

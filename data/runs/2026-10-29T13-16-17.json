@@ -1,0 +1,58 @@
+{
+  "runId": "2026-10-29T13-16-17",
+  "model": "sonnet",
+  "concurrency": 10,
+  "sites": 1,
+  "done": 1,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 34,
+  "p50": 33.7,
+  "p95": 33.7,
+  "max": 33.7,
+  "avgPhases": {
+    "crawl": 16.4,
+    "content": 17.3,
+    "concept": 5,
+    "render": 0
+  },
+  "throughputPerMin": 1.78,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 22.5,
+  "projected40MinIfSlotsOnly": 2.2,
+  "totalCostUsd": 0.17,
+  "jobs": [
+    {
+      "key": "banksmansion-nl",
+      "name": "Banks Mansion",
+      "url": "https://www.banksmansion.nl/",
+      "path": "2026-10-29T13-16-17/banksmansion-nl",
+      "brand": {
+        "primary": "#DF5435",
+        "accent": "#EEA05F"
+      },
+      "templateId": "noir-gallery",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Dark, hushed, theatrical luxury suits a boutique canal-side hotel in Amsterdam's Golden Bend.",
+      "status": "done",
+      "template": "Noir Gallery",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 16.4,
+      "content": 17.3,
+      "concept": 5,
+      "render": 0,
+      "total": 33.7,
+      "costUsd": 0.1735732,
+      "error": null
+    }
+  ]
+}

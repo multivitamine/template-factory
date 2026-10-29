@@ -1,0 +1,58 @@
+{
+  "runId": "2026-10-29T13-07-03",
+  "model": "sonnet",
+  "concurrency": 10,
+  "sites": 1,
+  "done": 1,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 20,
+  "p50": 19.9,
+  "p95": 19.9,
+  "max": 19.9,
+  "avgPhases": {
+    "crawl": 9.3,
+    "content": 10.6,
+    "concept": 3.7,
+    "render": 0
+  },
+  "throughputPerMin": 3.02,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 13.2,
+  "projected40MinIfSlotsOnly": 1.3,
+  "totalCostUsd": 0.13,
+  "jobs": [
+    {
+      "key": "banksmansion-nl",
+      "name": "Banks Mansion",
+      "url": "https://banksmansion.nl/",
+      "path": "2026-10-29T13-07-03/banksmansion-nl",
+      "brand": {
+        "primary": "#DF5435",
+        "accent": "#EEA05F"
+      },
+      "templateId": "noir-gallery",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Dark, hushed, theatrical luxury suits a Golden Bend boutique hotel; muted teal-grey brand colours work well.",
+      "status": "done",
+      "template": "Noir Gallery",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 9.3,
+      "content": 10.6,
+      "concept": 3.7,
+      "render": 0,
+      "total": 19.9,
+      "costUsd": 0.1325232,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "runId": "2026-10-29T09-17-01",
+  "model": "sonnet",
+  "concurrency": 10,
+  "sites": 1,
+  "done": 1,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 31,
+  "p50": 31.3,
+  "p95": 31.3,
+  "max": 31.3,
+  "avgPhases": {
+    "crawl": 17.3,
+    "content": 13.9,
+    "concept": 6.2,
+    "render": 0.1
+  },
+  "throughputPerMin": 1.92,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 20.9,
+  "projected40MinIfSlotsOnly": 2.1,
+  "totalCostUsd": 0.12,
+  "jobs": [
+    {
+      "key": "brinkscoffeeroasters",
+      "status": "done",
+      "template": "Neon Diner",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 17.3,
+      "content": 13.9,
+      "concept": 6.2,
+      "render": 0.1,
+      "total": 31.3,
+      "costUsd": 0.12168580000000001,
+      "error": null
+    }
+  ]
+}

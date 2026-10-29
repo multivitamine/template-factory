@@ -1,0 +1,590 @@
+{
+  "runId": "2026-10-29T10-33-07",
+  "model": "opus",
+  "concurrency": 10,
+  "sites": 20,
+  "done": 20,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 803,
+  "p50": 54.2,
+  "p95": 644.5,
+  "max": 748.6,
+  "avgPhases": {
+    "crawl": 15.4,
+    "content": 38.1,
+    "concept": 11.7,
+    "render": 0.1
+  },
+  "throughputPerMin": 1.49,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 26.8,
+  "projected40MinIfSlotsOnly": 19,
+  "totalCostUsd": 33.02,
+  "jobs": [
+    {
+      "key": "teleqare-com",
+      "name": "TeleQare · v1",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "warehouse-brutal",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "B2B phone accessory distributor; stamped crate labels suit wholesale logistics and sourcing.",
+      "status": "done",
+      "template": "Warehouse Brutal",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 38.1,
+      "concept": 11.7,
+      "render": 0.1,
+      "total": 53.5,
+      "costUsd": 0.03477264,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-2",
+      "name": "TeleQare · v2",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-2",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "terminal",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Electronics and tech accessories feel native in a crafted command-line interface.",
+      "status": "done",
+      "template": "Terminal",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 38.1,
+      "concept": 11.7,
+      "render": 0,
+      "total": 53.6,
+      "costUsd": 0.03477264,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-3",
+      "name": "TeleQare · v3",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-3",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "bento-board",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Modular tiles showcase distribution, private label, sourcing and product categories crisply.",
+      "status": "done",
+      "template": "Bento Board",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 38.1,
+      "concept": 11.7,
+      "render": 0.1,
+      "total": 53.6,
+      "costUsd": 0.03477264,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-4",
+      "name": "TeleQare · v4",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-4",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "swiss-index",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Rational numbered grid gives a B2B catalogue serious, precise authority.",
+      "status": "done",
+      "template": "Swiss Index",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 38.1,
+      "concept": 11.7,
+      "render": 0,
+      "total": 53.7,
+      "costUsd": 0.03477264,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-5",
+      "name": "TeleQare · v5",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-5",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "chrome-y2k",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Liquid chrome and holographic shine flatter colourful chargers, cases and audio.",
+      "status": "done",
+      "template": "Chrome Y2K",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 38.1,
+      "concept": 11.7,
+      "render": 0.1,
+      "total": 53.7,
+      "costUsd": 0.03477264,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-6",
+      "name": "TeleQare · v6",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-6",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "departure-board",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Dark logistics board dramatises fast shipping across Europe for retailers.",
+      "status": "done",
+      "template": "Departure Board",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 38.1,
+      "concept": 11.7,
+      "render": 0.1,
+      "total": 53.8,
+      "costUsd": 0.03477264,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-7",
+      "name": "TeleQare · v7",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-7",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "blueprint",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Technical annotations on cables and chargers emphasise quality standards and testing.",
+      "status": "done",
+      "template": "Blueprint",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 38.1,
+      "concept": 11.7,
+      "render": 0.1,
+      "total": 53.9,
+      "costUsd": 0.03477264,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-8",
+      "name": "TeleQare · v8",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-8",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "card-catalogue",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Drawer wall maps their ten product categories into an orderly wholesale index.",
+      "status": "done",
+      "template": "Card Catalogue",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 38.1,
+      "concept": 11.7,
+      "render": 0.1,
+      "total": 54,
+      "costUsd": 0.03477264,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-9",
+      "name": "TeleQare · v9",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-9",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "flight-deck",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Instrumented dark panel makes powerbanks and gadgets feel engineered and premium.",
+      "status": "done",
+      "template": "Flight Deck",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 38.1,
+      "concept": 11.7,
+      "render": 0.1,
+      "total": 54.1,
+      "costUsd": 0.03477264,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-10",
+      "name": "TeleQare · v10",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-10",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "kinetic-poster",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Loud typographic marquee captures 'Powerful Sound, Colourful Atmosphere' energy for retail trends.",
+      "status": "done",
+      "template": "Kinetic Poster",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.4,
+      "content": 38.1,
+      "concept": 11.7,
+      "render": 0.1,
+      "total": 54.2,
+      "costUsd": 0.03477264,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-creative",
+      "name": "TeleQare · v1 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-creative",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "warehouse-brutal",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T10-33-07/teleqare-com",
+      "why": "Warehouse crates now carry TeleQare's real article codes, EANs, categories, brands and USP strip, with search and login up front.",
+      "status": "done",
+      "template": "Warehouse Brutal",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 555.2,
+      "costUsd": 3.5565870000000004,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-2-creative",
+      "name": "TeleQare · v2 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-2-creative",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "terminal",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T10-33-07/teleqare-com-2",
+      "why": "Terminal turned into a wholesale console: search prompt, category tree first, article numbers and devices in product listings.",
+      "status": "done",
+      "template": "Terminal",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 417.4,
+      "costUsd": 2.738629,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-3-creative",
+      "name": "TeleQare · v3 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-3-creative",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "bento-board",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T10-33-07/teleqare-com-3",
+      "why": "Bento Board rebuilt as a B2B wholesale front: search, trade login, brands, category discs and a trade-desk contact tile.",
+      "status": "done",
+      "template": "Bento Board",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 401.4,
+      "costUsd": 2.8337664,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-4-creative",
+      "name": "TeleQare · v4 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-4-creative",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "swiss-index",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T10-33-07/teleqare-com-4",
+      "why": "Swiss Index became a B2B wholesale index: search first, categories, article numbers, brands and services, all in grotesk.",
+      "status": "done",
+      "template": "Swiss Index",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 532.9,
+      "costUsd": 3.464790199999999,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-5-creative",
+      "name": "TeleQare · v5 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-5-creative",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "chrome-y2k",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T10-33-07/teleqare-com-5",
+      "why": "Chrome Y2K collectibles became a B2B accessory wholesale catalogue: search first, category tiles, real SKUs and specs.",
+      "status": "done",
+      "template": "Chrome Y2K",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 443.7,
+      "costUsd": 2.7642811999999997,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-6-creative",
+      "name": "TeleQare · v6 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-6-creative",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "departure-board",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T10-33-07/teleqare-com-6",
+      "why": "The station departure board became TeleQare's wholesale product board, with search, real categories, brands and product types.",
+      "status": "done",
+      "template": "Departure Board",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 451.9,
+      "costUsd": 2.9140890000000006,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-7-creative",
+      "name": "TeleQare · v7 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-7-creative",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "blueprint",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T10-33-07/teleqare-com-7",
+      "why": "Blueprint became a wholesaler's spec sheet: catalogue search, category index, article numbers, brands and a self-drawing supply chain.",
+      "status": "done",
+      "template": "Blueprint",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 579.3,
+      "costUsd": 3.8127448,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-8-creative",
+      "name": "TeleQare · v8 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-8-creative",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "card-catalogue",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T10-33-07/teleqare-com-8",
+      "why": "Library card catalogue became a wholesaler's stock catalogue: real categories, SKUs, EANs, brands, services and a catalogue search.",
+      "status": "done",
+      "template": "Card Catalogue",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 644.5,
+      "costUsd": 4.103107600000001,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-9-creative",
+      "name": "TeleQare · v9 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-9-creative",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "flight-deck",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T10-33-07/teleqare-com-9",
+      "why": "Cockpit gauges became a category selector, real speaker specs, and SKU dials that sweep with real catalogue filters.",
+      "status": "done",
+      "template": "Flight Deck",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 748.6,
+      "costUsd": 3.7910444000000005,
+      "error": null
+    },
+    {
+      "key": "teleqare-com-10-creative",
+      "name": "TeleQare · v10 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-33-07/teleqare-com-10-creative",
+      "brand": {
+        "primary": "#994a91",
+        "accent": "#d4e3e6"
+      },
+      "templateId": "kinetic-poster",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T10-33-07/teleqare-com-10",
+      "why": "Kinetic Poster rebuilt around a B2B accessories wholesaler: search, categories, brands, SKUs and four service pillars lead.",
+      "status": "done",
+      "template": "Kinetic Poster",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 392.8,
+      "costUsd": 2.6969312,
+      "error": null
+    }
+  ]
+}

@@ -37,7 +37,18 @@
   .models button[aria-checked="true"] { background: var(--text); color: var(--bg); }
   .models button:disabled { cursor: default; }
   .model-hint { font: 11px var(--mono); color: var(--muted); margin-bottom: 14px; min-height: 16px; }
-  button.go.alt { margin-top: 10px; background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+  .models.modes { grid-template-columns: repeat(2, 1fr); }
+  .models.modes button[data-mode="creative"][aria-checked="true"] { background: #f472b6; color: #1a0d14; }
+  .count { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; color: var(--muted); text-align: left; }
+  .count label { flex: 1; }
+  .count input { width: 100px; padding: 10px 8px 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel-2); color: var(--text); font: 700 16px var(--mono); }
+  .count input:focus, .byurl input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .byurl { margin-bottom: 12px; display: flex; flex-direction: column; gap: 6px; text-align: left; }
+  .byurl label { font-size: 13px; color: var(--muted); }
+  .byurl small { font: 12px var(--mono); opacity: .75; }
+  .byurl input { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel-2); color: var(--text); font: 14px var(--mono); }
+  button.go { overflow-wrap: anywhere; }
+  .err { font: 12.5px var(--mono); color: var(--fail); min-height: 16px; margin-top: 8px; }
   .meta { margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.7; }
 
   /* Job cards */
@@ -72,6 +83,13 @@
   .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
   .links a { font: 500 12px var(--mono); color: var(--text); text-decoration: none; border: 1px solid var(--line); padding: 6px 10px; border-radius: 8px; }
   .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links button.mk-creative { font: 500 12px var(--mono); color: #f472b6; background: transparent; border: 1px solid #5a2a48; padding: 6px 10px; border-radius: 8px; cursor: pointer; }
+  .links button.mk-creative:hover { border-color: #f472b6; }
+  .links button.mk-creative:disabled { opacity: .5; cursor: default; }
+  .links button.mk-moon { font: 500 12px var(--mono); color: #ffc93d; background: transparent; border: 1px solid #5a4a1c; padding: 6px 10px; border-radius: 8px; cursor: pointer; }
+  .links button.mk-moon:hover { border-color: #ffc93d; }
+  .links button.mk-moon:disabled { opacity: .6; cursor: default; }
+  .card.creative { box-shadow: inset 0 0 0 1px #5a2a48; }
   .time { font-family: var(--mono); font-size: 11px; color: var(--muted); }
 
   /* Measurements */
@@ -88,7 +106,7 @@
   .phases b { color: var(--text); font-weight: 500; }
   .legend { display: flex; gap: 14px; flex-wrap: wrap; font: 11px var(--mono); color: var(--muted); margin-bottom: 10px; }
   .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
-  .seg-queue { background: #3a404a; } .seg-crawl { background: #5ab0ff; } .seg-analyse { background: #a78bfa; } .seg-home { background: #c6ff3d; } .seg-catalog { background: #2dd4bf; }
+  .seg-queue { background: #3a404a; } .seg-crawl { background: #5ab0ff; } .seg-analyse { background: #a78bfa; } .seg-home { background: #c6ff3d; } .seg-adapt { background: #f472b6; }
   .grow { animation: pulse 1.2s ease-in-out infinite; }
   @keyframes pulse { 50% { opacity: .55; } }
   .g-row { display: grid; grid-template-columns: 150px 1fr 56px; gap: 10px; align-items: center; height: 24px; }
@@ -105,6 +123,7 @@
 <body>
 <header>
   <h1>Redesign Booth <span>/ control room</span></h1>
+  <a href="/history" style="font:500 13px var(--mono);color:var(--muted);text-decoration:none">history →</a>
   <a href="/factory" style="font:500 13px var(--mono);color:var(--muted);text-decoration:none">template factory →</a>
   <div class="stats">
     <span>queued <b id="s-queued">0</b></span>
@@ -118,13 +137,23 @@
 <main>
   <aside class="phone">
     <h2>Scan to start</h2>
-    <p>Simulates 10 visitors scanning the QR code at the same time.</p>
+    <p>Simulates visitors scanning the QR code at the same time. Each site gets a concept from the template factory.</p>
     <div class="qr"><img src="/api/qr.svg" alt="QR code to the scan page"></div>
     <div class="scanurl" id="scanurl"></div>
     <div class="models" id="models" role="radiogroup" aria-label="Model"></div>
     <div class="model-hint" id="model-hint"></div>
+    <div class="models modes" id="modes" role="radiogroup" aria-label="Mode">
+      <button role="radio" data-mode="fast" aria-checked="true">Fast</button>
+      <button role="radio" data-mode="creative" aria-checked="false">✦ Creative</button>
+    </div>
+    <div class="model-hint" id="mode-hint"></div>
+    <div class="byurl">
+      <label for="url">Website <small>· empty = random test sites</small></label>
+      <input id="url" type="text" inputmode="url" autocomplete="url" placeholder="www.example.nl">
+    </div>
+    <div class="count"><label for="count" id="count-label">Number of scans</label><input id="count" type="number" min="1" max="100" step="1" value="10"></div>
     <button class="go" id="go">▶ Simulate 10 scans</button>
-    <button class="go alt" id="go40">▶ Load test: 40 scans</button>
+    <div class="err" id="url-err" role="alert"></div>
     <div class="meta" id="meta"></div>
   </aside>
   <div class="right">
@@ -139,7 +168,7 @@
       <div class="phases" id="phases"></div>
       <div class="gantt">
         <div class="legend">
-          <span><i class="seg-queue"></i>queue</span><span><i class="seg-crawl"></i>crawl</span><span><i class="seg-analyse"></i>analyse + pick template</span><span><i class="seg-home"></i>homepage</span><span><i class="seg-catalog"></i>catalog</span>
+          <span><i class="seg-queue"></i>queue</span><span><i class="seg-crawl"></i>crawl</span><span><i class="seg-analyse"></i>content + pick concept</span><span><i class="seg-home"></i>render</span><span><i class="seg-adapt"></i>creative adapt</span>
         </div>
         <div id="gantt"></div>
         <div class="axis" id="axis"></div>
@@ -149,8 +178,10 @@
   </div>
 </main>
 <script>
-const STEPS = ["Queued", "Crawling site", "Site crawled", "Agent started", "Looking at their site", "Choosing a Refero template", "Template chosen", "Building homepage", "Building catalog page", "Done"];
+const STEPS = ["Queued", "Crawling site", "Site crawled", "Writing content", "Concept chosen", "Content ready", "Rendering",
+  "Adapting design", "Looking at their site", "Building homepage", "Building catalog page", "Reviewing", "Checking", "Done"];
 const jobs = new Map();
+let busy = false; // a run is queued or running
 let firstStart = null;
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -165,9 +196,12 @@ function progress(j) {
 
 function thumb(j) {
   if (j.status === "done" && j.pages.includes("index.html"))
-    return `<span class="label">NEW</span><iframe loading="lazy" src="/sites/${j.key}/index.html" tabindex="-1"></iframe>`;
+    return `<span class="label">NEW</span><iframe loading="lazy" src="/sites/${j.path}/index.html" tabindex="-1"></iframe>`;
+  // Creative: show the fast version it starts from while the agent works.
+  if (j.mode === "creative" && j.sourcePath)
+    return `<span class="label">ADAPTING…</span><iframe loading="lazy" src="/sites/${j.sourcePath}/index.html" tabindex="-1"></iframe>`;
   if (j.steps.some((s) => s.step === "Site crawled"))
-    return `<span class="label">ORIGINAL</span><img src="/sites/${j.key}/crawl/home.png?${j.startedAt}" alt="">`;
+    return `<span class="label">ORIGINAL</span><img src="/sites/${j.path}/crawl/home.png?${j.startedAt}" alt="">`;
   return `<div class="empty">${j.status === "queued" ? "waiting in queue…" : "crawling…"}</div>`;
 }
 
@@ -176,8 +210,12 @@ function card(j) {
   const colors = [b.primary, b.secondary, b.accent, b.background, b.text].filter(Boolean);
   const t = j.startedAt ? fmt((j.finishedAt || Date.now()) - j.startedAt) : "";
   const links = [`<a href="${esc(j.url)}" target="_blank">original ↗</a>`];
-  if (j.pages.includes("index.html")) links.push(`<a href="/sites/${j.key}/index.html" target="_blank">new home ↗</a>`);
-  if (j.pages.includes("catalog.html")) links.push(`<a href="/sites/${j.key}/catalog.html" target="_blank">new catalog ↗</a>`);
+  if (j.pages.includes("index.html")) links.push(`<a href="/sites/${j.path}/index.html" target="_blank">new home ↗</a>`);
+  if (j.pages.includes("catalog.html")) links.push(`<a href="/sites/${j.path}/catalog.html" target="_blank">new catalog ↗</a>`);
+  if (j.status === "done") links.push(j.moonshots
+    ? `<a href="/sites/${j.path}/moonshots.html" target="_blank">🚀 moonshots ↗</a>`
+    : `<button class="mk-moon" data-path="${esc(j.path)}" title="Claude invents 3 bold ideas that would change what this business is (~30 s)">🚀 moonshots</button>`);
+  if (j.status === "done" && j.mode !== "creative") links.push(`<button class="mk-creative" data-path="${esc(j.path)}" title="An agent adapts this concept to their own world (~3–6 min)">✦ make creative</button>`);
   return `
     <div class="thumb">${thumb(j)}</div>
     <div class="body">
@@ -211,7 +249,7 @@ function render(j) {
   }
   // Avoid reloading the preview iframe on every event once a job is done.
   if (prev && prev.status === "done" && j.status === "done" && prev.costUsd === j.costUsd) return;
-  el.className = "card " + j.status;
+  el.className = "card " + j.status + (j.mode === "creative" ? " creative" : "");
   el.innerHTML = card(j);
   stats();
 }
@@ -222,9 +260,8 @@ function stats() {
   document.getElementById("s-cost").textContent = "$" + all.reduce((a, j) => a + (j.costUsd || 0), 0).toFixed(2);
   const starts = all.map((j) => j.startedAt).filter(Boolean);
   firstStart = starts.length ? Math.min(...starts) : null;
-  const busy = all.some((j) => j.status === "running" || j.status === "queued");
-  document.getElementById("go").disabled = busy;
-  document.getElementById("go40").disabled = busy;
+  busy = all.some((j) => j.status === "running" || j.status === "queued");
+  syncGo();
   for (const b of document.querySelectorAll(".models button")) b.disabled = busy;
 }
 
@@ -249,7 +286,6 @@ function drawModels() {
     `<button role="radio" aria-checked="${m === model}" data-m="${m}">${m}</button>`).join("");
   document.getElementById("model-hint").textContent = MODEL_HINTS[model] || "";
   document.getElementById("meta").innerHTML = `model: ${model}<br>parallel agents: ${cfg.concurrency}<br>sites: ${cfg.sites.length}`;
-  const busy = document.getElementById("go").disabled;
   for (const b of document.querySelectorAll(".models button")) b.disabled = busy;
 }
 
@@ -272,14 +308,88 @@ fetch("/api/config").then((r) => r.json()).then((c) => {
   drawModels();
 });
 
-const start = (copies) => async () => {
-  document.getElementById("go").disabled = document.getElementById("go40").disabled = true;
-  await fetch("/api/start", { method: "POST", body: JSON.stringify({ copies, model }) });
+// One button, two modes: empty website field = simulate N scans of randomly picked test sites;
+// a website filled in = N designs of that one site, each with a different concept.
+// Fast = fill + render (~35 s). Creative = the same, then an agent adapts each design to the client's world.
+const MODE_HINTS = {
+  fast: "fills a concept with their content · ~35 s",
+  creative: "+ adapts each design to their world · ~4–10 min · ~$1 sonnet, ~$4 opus per design",
 };
-document.getElementById("go").onclick = start(1);
-document.getElementById("go40").onclick = start(4);
+let mode = "fast";
+try { if (localStorage.getItem("mode") === "creative") mode = "creative"; } catch {}
+function drawModes() {
+  for (const b of document.querySelectorAll("#modes button")) b.setAttribute("aria-checked", String(b.dataset.mode === mode));
+  document.getElementById("mode-hint").textContent = MODE_HINTS[mode];
+}
+document.getElementById("modes").onclick = (e) => {
+  const m = e.target.closest("button")?.dataset.mode;
+  if (!m) return;
+  mode = m;
+  try { localStorage.setItem("mode", m); } catch {}
+  drawModes();
+  syncGo();
+};
+drawModes();
+
+const countInput = document.getElementById("count");
+const urlInput = document.getElementById("url");
+const goBtn = document.getElementById("go");
+const scanCount = () => Math.min(100, Math.max(1, Math.round(Number(countInput.value)) || 1));
+const typedHost = () => urlInput.value.trim().replace(/^https?:\/\//i, "").replace(/^www\./i, "").split(/[/?#]/)[0];
+function syncGo() {
+  const n = scanCount(), host = typedHost(), s = n === 1 ? "" : "s";
+  document.getElementById("count-label").textContent = host ? "Number of designs" : "Number of scans";
+  const c = mode === "creative" ? "creative " : "";
+  goBtn.textContent = host ? `▶ Make ${n} ${c}design${s} for ${host}` : `▶ Simulate ${n} ${c}scan${s}`;
+  // A website can join the run in progress; the test-site simulation needs an idle booth.
+  goBtn.disabled = countInput.disabled = busy && !host;
+}
+try { const saved = localStorage.getItem("scanCount"); if (saved) countInput.value = saved; } catch {}
+syncGo();
+countInput.oninput = urlInput.oninput = () => { document.getElementById("url-err").textContent = ""; syncGo(); };
+countInput.onchange = () => { countInput.value = scanCount(); syncGo(); try { localStorage.setItem("scanCount", countInput.value); } catch {} };
+
+const start = async () => {
+  if (goBtn.disabled) return;
+  const count = scanCount(), err = document.getElementById("url-err");
+  err.textContent = "";
+  goBtn.disabled = true;
+  if (!typedHost()) {
+    countInput.disabled = true;
+    await fetch("/api/start", { method: "POST", body: JSON.stringify({ count, model, creative: mode === "creative" }) });
+    return;
+  }
+  const r = await fetch("/api/start-url", { method: "POST", body: JSON.stringify({ url: urlInput.value, count, model, creative: mode === "creative" }) })
+    .then((x) => x.json()).catch(() => ({ error: "server not reachable" }));
+  if (r.error) err.textContent = r.error;
+  else urlInput.value = "";
+  syncGo();
+};
+goBtn.onclick = start;
+countInput.onkeydown = urlInput.onkeydown = (e) => { if (e.key === "Enter") start(); };
 
 new EventSource("/api/events").onmessage = (e) => render(JSON.parse(e.data));
+
+// Creative mode: upgrade one finished fast design.
+// Moonshots: generate, then open them. The card turns the button into a link through the job event.
+document.getElementById("grid").addEventListener("click", async (e) => {
+  const b = e.target.closest("button.mk-moon");
+  if (!b) return;
+  b.disabled = true;
+  b.textContent = "🚀 thinking… ~30 s";
+  const r = await fetch("/api/moonshots", { method: "POST", body: JSON.stringify({ path: b.dataset.path, model }) }).then((x) => x.json()).catch(() => ({ error: "server not reachable" }));
+  if (r.error) { b.textContent = `✕ ${r.error}`.slice(0, 60); b.disabled = false; return; }
+  window.open(r.url, "_blank");
+});
+
+document.getElementById("grid").onclick = async (e) => {
+  const b = e.target.closest("button.mk-creative");
+  if (!b) return;
+  b.disabled = true;
+  b.textContent = "✦ starting…";
+  const r = await fetch("/api/creative", { method: "POST", body: JSON.stringify({ path: b.dataset.path, model }) }).then((x) => x.json()).catch(() => ({ error: "server not reachable" }));
+  b.textContent = r.error ? `✕ ${r.error}` : "✦ started";
+};
 
 // ---- Measurements: Gantt timeline + KPIs -----------------------------------
 const at = (j, step) => j.steps.find((s) => s.step === step)?.at;
@@ -287,17 +397,14 @@ const at = (j, step) => j.steps.find((s) => s.step === step)?.at;
 function segments(j, now) {
   const end = j.finishedAt || now;
   const crawled = at(j, "Site crawled");
-  // Write events arrive once a file has been written, so "Building homepage" marks the END of homepage work.
-  const homeWritten = at(j, "Building homepage");
-  const pick = at(j, "Template chosen") || homeWritten;
+  const rendering = at(j, "Rendering");
   const seg = [];
   const add = (cls, a, b) => a && seg.push({ cls, a, b: b || end, live: !b && !j.finishedAt });
   add("queue", j.queuedAt, j.startedAt);
   if (j.startedAt) add("crawl", j.startedAt, crawled);
-  if (crawled) add("analyse", crawled, pick);
-  if (pick) add("home", pick, homeWritten || j.finishedAt);
-  if (homeWritten && (at(j, "Building catalog page") || !j.finishedAt))
-    add("catalog", homeWritten, j.finishedAt);
+  if (crawled) add("analyse", crawled, rendering || j.finishedAt);
+  if (rendering) add("home", rendering, j.finishedAt);
+  if (j.mode === "creative" && j.startedAt) add("adapt", j.startedAt, j.finishedAt);
   return seg;
 }
 
@@ -341,7 +448,7 @@ async function drawKpis() {
   const ph = r.avgPhases;
   const f = (v) => (v == null ? "–" : fmt(v * 1000));
   document.getElementById("phases").innerHTML =
-    `model <b>${esc(r.model)}</b> · avg phases (done sites): crawl <b>${f(ph.crawl)}</b> · analyse+pick <b>${f(ph.analyseAndPick)}</b> · homepage <b>${f(ph.homepage)}</b> · catalog <b>${f(ph.catalog)}</b> · cost <b>$${r.totalCostUsd.toFixed(2)}</b>${r.finished ? ` · report saved: data/runs/${r.runId}.json` : ""}`;
+    `model <b>${esc(r.model)}</b> · avg phases (done sites): crawl <b>${f(ph.crawl)}</b> · content <b>${f(ph.content)}</b> · concept pick <b>${f(ph.concept)}</b> · render <b>${f(ph.render)}</b> · cost <b>$${r.totalCostUsd.toFixed(2)}</b>${r.finished ? ` · report saved: data/runs/${r.runId}.json` : ""}`;
 }
 
 setInterval(drawGantt, 1000);

@@ -1,0 +1,58 @@
+{
+  "runId": "2026-10-29T12-50-11",
+  "model": "sonnet",
+  "concurrency": 10,
+  "sites": 1,
+  "done": 1,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 33,
+  "p50": 32.6,
+  "p95": 32.6,
+  "max": 32.6,
+  "avgPhases": {
+    "crawl": 15.7,
+    "content": 16.7,
+    "concept": 4.3,
+    "render": 0.2
+  },
+  "throughputPerMin": 1.84,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 21.8,
+  "projected40MinIfSlotsOnly": 2.2,
+  "totalCostUsd": 0.15,
+  "jobs": [
+    {
+      "key": "spaansen-nl",
+      "name": "Spaansen",
+      "url": "https://www.spaansen.nl/",
+      "path": "2026-10-29T12-50-11/spaansen-nl",
+      "brand": {
+        "primary": "#ce0000",
+        "accent": "#4b4b4b"
+      },
+      "templateId": "swiss-index",
+      "mode": "fast",
+      "sourcePath": null,
+      "why": "Rational, gridded, bold typography suits a 75-year-old B2B group with three divisions.",
+      "status": "done",
+      "template": "Swiss Index",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 15.7,
+      "content": 16.7,
+      "concept": 4.3,
+      "render": 0.2,
+      "total": 32.6,
+      "costUsd": 0.1476658,
+      "error": null
+    }
+  ]
+}

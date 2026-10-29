@@ -4,8 +4,9 @@ import os from "node:os";
 import path from "node:path";
 import QRCode from "qrcode";
 import { config } from "./config.js";
-import { bus, jobs, publicJob, runs, runSummary, startAll } from "./lib/jobs.js";
-import { buildTemplates, factoryBus, getAutopilot, loadTemplates, publicTemplate, rateTemplate, setAutopilot, templates, templatesDir } from "./lib/factory.js";
+import { bus, jobs, listHistory, markMoonshots, publicJob, runs, runSummary, startAll, startCreative, startUrl } from "./lib/jobs.js";
+import { makeMoonshots } from "./lib/moonshots.js";
+import { buildTemplates, createFromIdea, directionDetails, directionFromIdea, directionPrompts, factoryBus, getAutopilot, listConcepts, listSamples, loadTemplates, normalizeDirection, publicTemplate, rateTemplate, setAutopilot, templates, templatesDir } from "./lib/factory.js";
 
 await loadTemplates();
 
@@ -44,6 +45,8 @@ const server = http.createServer(async (req, res) => {
 
   if (p === "/") return sendFile(res, path.join(config.root, "public/index.html"));
   if (p === "/scan") return sendFile(res, path.join(config.root, "public/scan.html"));
+  if (p === "/history") return sendFile(res, path.join(config.root, "public/history.html"));
+  if (p === "/api/history") return json(res, await listHistory());
 
   if (p === "/api/qr.svg") {
     res.writeHead(200, { "content-type": "image/svg+xml" });
@@ -65,10 +68,63 @@ const server = http.createServer(async (req, res) => {
   if (p === "/api/start" && req.method === "POST") {
     let body = "";
     for await (const c of req) body += c;
-    const { keys, copies, model } = body ? JSON.parse(body) : {};
-    const n = Math.min(10, Math.max(1, Number(copies) || 1));
-    const started = await startAll(keys?.length ? keys.filter((k) => config.sites.includes(k)) : config.sites, n, config.models.includes(model) ? model : config.model);
+    const { keys, count, model, creative } = body ? JSON.parse(body) : {};
+    // Without explicit keys every run draws a random selection, so repeated simulations show different sites.
+    const sites = keys?.length ? keys.filter((k) => config.sites.includes(k)) : [...config.sites].sort(() => Math.random() - 0.5);
+    const n = Math.min(100, Math.max(1, Math.round(Number(count)) || 10));
+    try {
+      const started = await startAll(sites, n, config.models.includes(model) ? model : config.model, creative === true);
+      return json(res, { started });
+    } catch (e) {
+      console.error("start failed:", e);
+      return json(res, { error: e.message }, 500);
+    }
+  }
+
+  // Crawl one site by URL (typed on the dashboard), optionally as several versions.
+  if (p === "/api/start-url" && req.method === "POST") {
+    let body = "";
+    for await (const c of req) body += c;
+    const { url: raw, model, count, creative } = JSON.parse(body || "{}");
+    const typed = String(raw || "").trim();
+    let target;
+    try {
+      target = new URL(/^https?:\/\//i.test(typed) ? typed : `https://${typed}`);
+      if (!/^https?:$/.test(target.protocol) || !target.hostname.includes(".")) throw new Error();
+    } catch {
+      return json(res, { error: "not a valid website address" }, 400);
+    }
+    // Each version gets a different concept, so there can't be more versions than finished concepts.
+    const versions = Math.min(listConcepts().length || 1, Math.max(1, Math.round(Number(count)) || 1));
+    const started = await startUrl(target.href, config.models.includes(model) ? model : config.model, versions, creative === true);
     return json(res, { started });
+  }
+
+  // Creative mode: adapt a finished design (path = "<runId>/<key>") to the client's own world.
+  if (p === "/api/creative" && req.method === "POST") {
+    let body = "";
+    for await (const c of req) body += c;
+    const { path: src, model } = JSON.parse(body || "{}");
+    try {
+      const key = await startCreative(String(src || ""), config.models.includes(model) ? model : config.model);
+      return json(res, { started: [key] });
+    } catch (e) {
+      return json(res, { error: e.message }, 400);
+    }
+  }
+
+  // Moonshots: bold business ideas for a finished design (path = "<runId>/<key>"); ~30 s, one tool-less Claude call.
+  if (p === "/api/moonshots" && req.method === "POST") {
+    let body = "";
+    for await (const c of req) body += c;
+    const { path: src, model } = JSON.parse(body || "{}");
+    try {
+      const r = await makeMoonshots(String(src || ""), { model: config.models.includes(model) ? model : config.model });
+      markMoonshots(src);
+      return json(res, { url: `/sites/${src}/moonshots.html`, count: r.moonshots.length, costUsd: r.costUsd });
+    } catch (e) {
+      return json(res, { error: e.message }, 400);
+    }
   }
 
   if (p === "/api/jobs") return json(res, [...jobs.values()].map(publicJob));
@@ -105,6 +161,32 @@ const server = http.createServer(async (req, res) => {
     const { on, model } = JSON.parse(body || "{}");
     return json(res, setAutopilot(on, config.models.includes(model) ? model : undefined));
   }
+  // ---- New template from your idea ----
+  if (p === "/api/factory/samples") return json(res, await listSamples());
+  if (p === "/api/factory/direction") {
+    const details = await directionDetails(url.searchParams.get("id"));
+    return details ? json(res, details) : json(res, { error: "unknown template" }, 404);
+  }
+  if (p.startsWith("/api/factory/") && ["idea", "preview", "create"].includes(p.slice(13)) && req.method === "POST") {
+    let body = "";
+    for await (const c of req) body += c;
+    const input = JSON.parse(body || "{}");
+    const m = config.models.includes(input.model) ? input.model : "opus";
+    try {
+      if (p.endsWith("/idea")) {
+        if (!String(input.idea || "").trim()) return json(res, { error: "describe your idea first" }, 400);
+        return json(res, await directionFromIdea(input.idea, m));
+      }
+      if (p.endsWith("/preview")) {
+        const direction = await normalizeDirection(input.direction || {});
+        return json(res, { direction, ...(await directionPrompts(direction)) });
+      }
+      return json(res, { id: await createFromIdea({ direction: input.direction || {}, buildPrompt: input.buildPrompt, critiquePrompt: input.critiquePrompt, model: m }) });
+    } catch (e) {
+      return json(res, { error: e.message }, 400);
+    }
+  }
+
   if (p === "/api/factory/rate" && req.method === "POST") {
     let body = "";
     for await (const c of req) body += c;
@@ -130,7 +212,7 @@ const server = http.createServer(async (req, res) => {
     return sendFile(res, file);
   }
 
-  // Generated sites + crawl screenshots: /sites/<key>/<file>
+  // Generated sites + crawl screenshots: /sites/<runId>/<key>/<file>
   const m = p.match(/^\/sites\/([\w-]+)\/(.+)$/);
   if (m) {
     const file = path.normalize(path.join(config.outputDir, m[1], m[2]));

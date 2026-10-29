@@ -1,0 +1,86 @@
+{
+  "runId": "2026-10-29T10-10-04",
+  "model": "opus",
+  "concurrency": 10,
+  "sites": 2,
+  "done": 2,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 641,
+  "p50": 547.7,
+  "p95": 641,
+  "max": 641,
+  "avgPhases": {
+    "crawl": null,
+    "content": null,
+    "concept": null,
+    "render": null
+  },
+  "throughputPerMin": 0.19,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 213.7,
+  "projected40MinIfSlotsOnly": 39.6,
+  "totalCostUsd": 7.54,
+  "jobs": [
+    {
+      "key": "teleqare-com-10-creative",
+      "name": "TeleQare · v10 · creative",
+      "url": "https://teleqare.com/",
+      "path": "2026-10-29T10-10-04/teleqare-com-10-creative",
+      "brand": {
+        "primary": "#994A91",
+        "accent": "#D4E3E6"
+      },
+      "templateId": "flight-deck",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T09-55-28/teleqare-com-10",
+      "why": "Cockpit gauges became a spring-driven category selector, search display, real SKU readouts and brand-matching product needles.",
+      "status": "done",
+      "template": "Flight Deck",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 641,
+      "costUsd": 4.076492400000001,
+      "error": null
+    },
+    {
+      "key": "aiki-budo-nl-creative",
+      "name": "Aiki-Budo Sport · v1 · creative",
+      "url": "https://www.aiki-budo.nl/",
+      "path": "2026-10-29T10-10-04/aiki-budo-nl-creative",
+      "brand": {
+        "primary": "#e63329",
+        "accent": "#1b161c"
+      },
+      "templateId": "velocity",
+      "mode": "creative",
+      "sourcePath": "2026-10-29T09-51-25/aiki-budo-nl",
+      "why": "Racing props became a martial-arts webshop: real search, categories first, brand wall, budo kanji and service facts.",
+      "status": "done",
+      "template": "Velocity",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": null,
+      "content": null,
+      "concept": null,
+      "render": null,
+      "total": 547.7,
+      "costUsd": 3.458609,
+      "error": null
+    }
+  ]
+}

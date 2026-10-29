@@ -1,0 +1,56 @@
+{
+  "runId": "2026-10-29T09-43-51",
+  "model": "sonnet",
+  "concurrency": 10,
+  "sites": 1,
+  "done": 1,
+  "failed": 0,
+  "finished": true,
+  "wallSec": 26,
+  "p50": 26.2,
+  "p95": 26.2,
+  "max": 26.2,
+  "avgPhases": {
+    "crawl": 14,
+    "content": 12.1,
+    "concept": 5.4,
+    "render": 0.1
+  },
+  "throughputPerMin": 2.29,
+  "target": {
+    "sites": 40,
+    "minutes": 20,
+    "neededPerMin": 2
+  },
+  "projected40Min": 17.5,
+  "projected40MinIfSlotsOnly": 1.7,
+  "totalCostUsd": 0.11,
+  "jobs": [
+    {
+      "key": "brinkscoffeeroasters",
+      "name": "Brinks Coffee Roasters",
+      "url": "https://www.brinkscoffeeroasters.nl",
+      "path": "2026-10-29T09-43-51/brinkscoffeeroasters",
+      "brand": {
+        "primary": "#B37756",
+        "accent": "#5A402E"
+      },
+      "templateId": "atelier-craft",
+      "why": "Warm, tactile artisanal roastery feel suits brown brand colours and approachable specialty coffee.",
+      "status": "done",
+      "template": "Atelier Craft",
+      "pages": [
+        "index.html",
+        "catalog.html"
+      ],
+      "waitInQueue": 0,
+      "crawl": 14,
+      "content": 12.1,
+      "concept": 5.4,
+      "render": 0.1,
+      "total": 26.2,
+      "costUsd": 0.1110652,
+      "error": null
+    }
+  ]
+}
