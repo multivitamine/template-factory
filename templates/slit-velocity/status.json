@@ -1,0 +1,83 @@
+{
+  "id": "slit-velocity",
+  "name": "Slit Velocity",
+  "sectors": [
+    "sports",
+    "retail",
+    "tech",
+    "lifestyle"
+  ],
+  "sample": "kartstoreinternational",
+  "stress": "brinkscoffeeroasters",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793300837847
+    },
+    {
+      "step": "Rendering",
+      "at": 1793301291058
+    },
+    {
+      "step": "Critique",
+      "at": 1793301302587
+    },
+    {
+      "step": "Final render",
+      "at": 1793301428766
+    },
+    {
+      "step": "Done",
+      "at": 1793301440259
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793300837847,
+  "startedAt": 1793300837847,
+  "finishedAt": 1793301440259,
+  "model": "opus",
+  "costUsd": 2.5949252000000005,
+  "meta": {
+    "id": "slit-velocity",
+    "name": "Slit Velocity",
+    "scheme": "dark",
+    "sectors": [
+      "sports",
+      "retail",
+      "tech",
+      "lifestyle"
+    ],
+    "mood": [
+      "cold",
+      "fast",
+      "technical",
+      "precise"
+    ],
+    "needsProductImages": true,
+    "notes": "Near-black field where --c-primary is the only live colour (prices on hover, cart count, active filter, scroll meter, slit-scan edge glow); very dark primaries are lifted toward white for text use, --c-accent is only a tiny tag dot."
+  },
+  "score": {
+    "scoreBefore": 6.4,
+    "issues": [
+      "Product frames: white-background packshots render as hard white rectangles of different sizes floating in the dark frames, which looks like a broken catalogue, not a studio shoot (creativity 6, polish 5)",
+      "Hero headline only fills about 60% of the left column at desktop; the brief asks for a towering condensed headline the full viewport height, but it reads as an ordinary H1 with dead space under it (typography 6)",
+      "The '+1' cart toast stays visible as a stray red tab on the right edge (below the fold and in full-page captures) on both pages (polish)",
+      "Gallery reel with only 2 photos (stress brand) leaves a large empty grey slab where the third frame should be (layout 5 on stress)",
+      "The red-shift tear lines use 'lighter', which would disappear on any pale product surface",
+      "Mobile is solid; brand-colour robustness is good thanks to the --c-live lift (7); feels less generic than most, but the product grid let it down"
+    ],
+    "fixed": [
+      "Added a uniform cool-grey studio plate (radial sweep, inset 8%) behind every contained packshot, with mix-blend-mode multiply so white shop backgrounds melt into it. The plate is also painted into the slit-scan base canvas, so the whole lightbox tears into strips at speed and snaps back",
+      "Red-shift edges switch to a multiply tint on plates (lighter stays on full-bleed photos), so the tear lines stay visible in every frame",
+      "Hero headline is fitted by JS (binary search) to the full available column height without breaking words, so it really towers on desktop; mobile keeps the CSS size",
+      "Toast is hidden with opacity and visibility when idle, so no stray '+1' tab on either page",
+      "Gallery frames grow to fill the row at a fixed height, so 2–3 photos make a full-width cinematic strip instead of leaving an empty slab",
+      "Hero pick thumbnail uses the same plate and multiply treatment for consistency"
+    ],
+    "scoreAfterEstimate": 7.4
+  },
+  "version": 1793301440259
+}

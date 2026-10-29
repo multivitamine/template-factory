@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alle producten · Kartstore International</title>
+<meta name="description" content="Ontdek karts, motoren, banden, onderdelen, kleding en gereedschap voor elke klasse, van Mini tot KZ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,800;0,900;1,800;1,900&family=Anonymous+Pro:wght@400;700&family=Epilogue:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#0A0B0C; --c-surface:#141618; --c-text:#E7EAED; --c-muted:#868D94; --c-line:#24282D;
+  --c-primary:#FF4F2B; --c-on-primary:#0A0B0C; --c-accent:#9DB2C4;
+  /* primary lifted for use as text/lines on the near-black field; JS refines it for very dark brands */
+  --c-live:color-mix(in srgb, var(--c-primary) 80%, #fff);
+  --f-display:'Alumni Sans', 'Arial Narrow', sans-serif;
+  --f-mono:'Anonymous Pro', ui-monospace, monospace;
+  --f-body:'Epilogue', 'Helvetica Neue', sans-serif;
+  --gut:clamp(16px, 3vw, 40px);
+  --hdr:64px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --ease-io:cubic-bezier(.7,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--hdr) + 56px)}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 15px/1.6 var(--f-body);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--c-live);outline-offset:3px}
+::selection{background:var(--c-primary);color:var(--c-on-primary)}
+.mono{font:700 11px/1.4 var(--f-mono);letter-spacing:.16em;text-transform:uppercase}
+
+/* ---------- header ---------- */
+.meter{position:fixed;inset:0 0 auto;height:2px;z-index:60;background:var(--c-live);transform-origin:0 50%;transform:scaleX(var(--p,0));pointer-events:none}
+.hdr{position:fixed;inset:0 0 auto;z-index:50;height:var(--hdr);display:flex;align-items:center;gap:24px;padding:0 var(--gut);
+  background:color-mix(in srgb, var(--c-bg) 82%, transparent);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--c-line)}
+.logo{display:flex;align-items:center;gap:10px;min-width:0;flex:0 1 auto;margin-right:auto}
+.logo img{height:30px;width:auto;max-width:170px;object-fit:contain}
+.logo--dark img{filter:brightness(0) invert(1)}
+.logo span{font:900 26px/1 var(--f-display);text-transform:uppercase;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;gap:4px}
+.nav a{position:relative;padding:8px 12px;font:700 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted);transition:color .3s var(--ease)}
+.nav a::after{content:'';position:absolute;left:12px;right:12px;bottom:2px;height:1px;background:var(--c-live);transform:scaleX(0);transform-origin:100% 50%;transition:transform .45s var(--ease)}
+.nav a:hover{color:var(--c-text)}
+.nav a:hover::after{transform:scaleX(1);transform-origin:0 50%}
+.cart{position:relative;display:flex;align-items:center;gap:10px;height:40px;padding:0 4px 0 14px;border:1px solid var(--c-line);font:700 11px/1 var(--f-mono);letter-spacing:.14em;transition:border-color .3s}
+.cart:hover{border-color:var(--c-muted)}
+.cart svg{width:16px;height:16px}
+.cart__n{display:grid;place-items:center;min-width:30px;height:30px;padding:0 6px;background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--c-text) 14%, transparent)}
+.cart.bump .cart__n{animation:bump .5s var(--ease)}
+@keyframes bump{30%{transform:scale(1.35) rotate(-6deg)}}
+.menu{display:none;position:relative}
+.menu summary{list-style:none;display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--c-line);cursor:pointer}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary i,.menu summary i::before{display:block;width:16px;height:1px;background:var(--c-text);position:relative}
+.menu summary i::before{content:'';position:absolute;top:5px}
+.menu summary i{top:-3px}
+.menu[open] .menu__panel{display:flex}
+.menu__panel{display:none;position:fixed;top:var(--hdr);left:0;right:0;flex-direction:column;background:var(--c-bg);border-bottom:1px solid var(--c-line);padding:8px var(--gut) 20px}
+.menu__panel a{padding:14px 0;border-bottom:1px solid var(--c-line);font:800 34px/1 var(--f-display);text-transform:uppercase}
+@media (max-width:860px){.nav{display:none}.menu{display:block}}
+
+/* ---------- frames (slit-scan surfaces) ---------- */
+.frame{--fbg:radial-gradient(70% 60% at 50% 42%, color-mix(in srgb, var(--c-text) 7%, var(--c-surface)), var(--c-surface) 72%);
+  position:relative;display:block;overflow:hidden;isolation:isolate;background:var(--fbg)}
+/* contained packshots sit on one cool studio plate; multiply melts white shop backgrounds into it so every card reads as the same shoot */
+.frame:not([data-fit=cover]){background:radial-gradient(120% 95% at 50% 32%, #F2F4F6, #B9C0C7) 50% 50%/84% 84% no-repeat, var(--fbg)}
+.frame:not([data-fit=cover]).is-live,.frame.is-broken{background:var(--fbg)}
+.frame img{position:absolute;inset:8%;width:84%;height:84%;object-fit:contain;mix-blend-mode:multiply;transition:opacity .4s}
+.frame[data-fit=cover] img{mix-blend-mode:normal}
+.frame[data-fit=cover] img{inset:0;width:100%;height:100%;object-fit:cover}
+.frame__cv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.frame.is-live img{opacity:0}
+.frame::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(125% 95% at 50% 45%, transparent 52%, rgba(0,0,0,.5) 100%)}
+.frame__fb{position:absolute;inset:0;display:grid;place-items:center;font:900 clamp(48px,9vw,140px)/1 var(--f-display);font-style:italic;text-transform:uppercase;color:color-mix(in srgb, var(--c-text) 14%, transparent);
+  background:repeating-linear-gradient(0deg, transparent 0 11px, color-mix(in srgb, var(--c-text) 5%, transparent) 11px 12px)}
+.frame img ~ .frame__fb{display:none}
+
+.btn{position:relative;display:inline-flex;align-items:center;gap:14px;height:54px;padding:0 22px;background:var(--c-primary);color:var(--c-on-primary);
+  font:700 12px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;overflow:hidden;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--c-text) 16%, transparent);transition:transform .5s var(--ease)}
+.btn::after{content:'';position:absolute;inset:0;background:var(--c-on-primary);opacity:.12;transform:translateX(-101%);transition:transform .55s var(--ease)}
+.btn:hover::after{transform:none}
+.btn svg{width:18px;height:18px;transition:transform .5s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.link{font:700 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid var(--c-muted);transition:border-color .3s,color .3s}
+.link:hover{color:var(--c-live);border-color:var(--c-live)}
+
+/* ---------- catalog head + filter bar ---------- */
+.chead{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px clamp(24px,4vw,64px);align-items:end;padding:calc(var(--hdr) + clamp(40px,7vw,96px)) var(--gut) clamp(28px,4vw,48px)}
+.chead__crumb{display:flex;gap:12px;align-items:center;color:var(--c-muted);margin:0 0 18px}
+.chead__crumb::before{content:'';width:28px;height:1px;background:var(--c-live)}
+.chead h1{margin:0;font:900 clamp(4rem,13vw,13rem)/.78 var(--f-display);text-transform:uppercase;letter-spacing:-.005em;overflow-wrap:break-word;hyphens:auto;animation:rise 1.1s var(--ease) both}
+@keyframes rise{from{transform:translateY(24%);opacity:0;clip-path:inset(-20% -10% 100% -10%)}to{transform:none;opacity:1;clip-path:inset(-20% -10% -20% -10%)}}
+.chead__side{display:flex;flex-direction:column;gap:20px}
+.chead__side p{margin:0;color:var(--c-muted);max-width:44ch}
+.chead__row{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--c-line);padding-top:14px}
+.chead__count{color:var(--c-live)}
+.speed__v{font:700 12px/1 var(--f-mono);letter-spacing:.12em;color:var(--c-muted);font-variant-numeric:tabular-nums}
+
+.fbar{position:sticky;top:var(--hdr);z-index:40;display:flex;align-items:center;gap:8px 20px;min-height:56px;padding:0 var(--gut);
+  background:color-mix(in srgb, var(--c-bg) 90%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-block:1px solid var(--c-line)}
+.fbar__f{display:flex;gap:2px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent)}
+.fbar__f::-webkit-scrollbar{display:none}
+.chip{position:relative;flex:none;padding:20px 12px 18px;font:700 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted);white-space:nowrap;transition:color .3s var(--ease)}
+.chip::after{content:'';position:absolute;left:12px;right:12px;bottom:-1px;height:2px;background:var(--c-live);transform:scaleX(0);transition:transform .5s var(--ease)}
+.chip:hover{color:var(--c-text)}
+.chip[aria-pressed="true"]{color:var(--c-live)}
+.chip[aria-pressed="true"]::after{transform:none}
+.fbar__search{flex:0 1 220px;min-width:120px;height:34px;padding:0 0 0 24px;border:0;border-bottom:1px solid var(--c-line);border-radius:0;background:transparent;color:var(--c-text);
+  font:700 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;outline:none;transition:border-color .3s;
+  background-image:radial-gradient(circle at 7px 15px, transparent 4px, var(--c-muted) 4.5px 5.5px, transparent 6px);background-repeat:no-repeat}
+.fbar__search:focus{border-color:var(--c-live)}
+.fbar__search::placeholder{color:var(--c-muted)}
+.seg{display:flex;border:1px solid var(--c-line)}
+.seg button{min-width:36px;height:32px;padding:0 9px;font:700 11px/1 var(--f-mono);letter-spacing:.08em;color:var(--c-muted);transition:color .3s,background .3s}
+.seg button + button{border-left:1px solid var(--c-line)}
+.seg button:hover{color:var(--c-text)}
+.seg button.on{background:var(--c-primary);color:var(--c-on-primary)}
+.fbar__tools{display:flex;gap:10px;align-items:center}
+
+/* ---------- product grid ---------- */
+.sec{padding:0 var(--gut)}
+.grid{--cols:4;display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:1px;background:var(--c-line);border:1px solid var(--c-line);border-top:0}
+.grid[data-d="3"]{--cols:3}.grid[data-d="6"]{--cols:6}
+.card{position:relative;display:flex;flex-direction:column;background:var(--c-bg);min-width:0}
+.card.enter{animation:enter .7s var(--ease) both;animation-delay:calc(var(--i,0) * 40ms)}
+@keyframes enter{from{opacity:0;transform:translateY(20px)}}
+.card__frame{aspect-ratio:4/5}
+.card__tag{position:absolute;top:12px;left:12px;z-index:3;display:flex;align-items:center;gap:7px;padding:5px 8px;font:700 10px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;
+  background:color-mix(in srgb, var(--c-bg) 78%, transparent);border:1px solid var(--c-line)}
+.card__tag::before{content:'';width:5px;height:5px;background:var(--c-accent)}
+.card__strip{display:grid;grid-template-columns:minmax(0,1fr) 54px;border-top:1px solid var(--c-line);flex:1}
+.card__meta{display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:14px 14px 16px;min-width:0}
+.card__name{font:700 11.5px/1.45 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.9em}
+.card__price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font:700 14px/1 var(--f-mono);letter-spacing:.04em;transition:color .35s var(--ease)}
+.card__price s{font-size:11px;color:var(--c-muted)}
+.card:hover .card__price{color:var(--c-live)}
+.add{position:relative;display:grid;place-items:center;border-left:1px solid var(--c-line);overflow:hidden;min-height:54px}
+.add::before{content:'';position:absolute;inset:0;background:var(--c-primary);transform:scaleY(0);transform-origin:50% 100%;transition:transform .45s var(--ease)}
+.add svg{position:relative;width:16px;height:16px;transition:transform .45s var(--ease),color .3s}
+.add:hover::before,.add:focus-visible::before{transform:none}
+.add:hover svg{color:var(--c-on-primary);transform:rotate(90deg)}
+.add.done svg{animation:pop .5s var(--ease)}
+@keyframes pop{40%{transform:scale(1.5)}}
+.card__frame::before{content:'';position:absolute;inset:10px;z-index:3;pointer-events:none;opacity:0;transform:scale(1.04);transition:opacity .4s var(--ease),transform .5s var(--ease);
+  background:linear-gradient(var(--c-live),var(--c-live)) 0 0/12px 1px no-repeat,linear-gradient(var(--c-live),var(--c-live)) 0 0/1px 12px no-repeat,
+  linear-gradient(var(--c-live),var(--c-live)) 100% 100%/12px 1px no-repeat,linear-gradient(var(--c-live),var(--c-live)) 100% 100%/1px 12px no-repeat}
+.card:hover .card__frame::before{opacity:1;transform:none}
+.grid[data-d="6"] .card__strip{grid-template-columns:minmax(0,1fr) 42px}
+.grid[data-d="6"] .card__meta{padding:10px}
+.grid[data-d="6"] .card__name{font-size:10px}
+.grid[data-d="6"] .card__price{font-size:12px}
+.grid[data-d="6"] .card__tag{display:none}
+.shop-empty{border:1px solid var(--c-line);border-top:0;margin:0;font:700 12px/1.4 var(--f-mono)!important;letter-spacing:.14em;text-transform:uppercase}
+.empty{padding:80px var(--gut);text-align:center;color:var(--c-muted)}
+@media (max-width:1000px){.grid,.grid[data-d="3"]{--cols:3}.grid[data-d="6"]{--cols:4}}
+@media (max-width:700px){
+  .grid,.grid[data-d="3"],.grid[data-d="6"]{--cols:2}
+  .card__strip,.grid[data-d="6"] .card__strip{grid-template-columns:minmax(0,1fr) 44px}
+  .card__meta{padding:12px 10px 14px}.card__name{font-size:10.5px}.card__price{font-size:12.5px}
+  .seg--d{display:none}
+}
+
+/* ---------- cta ---------- */
+.cta{margin-top:clamp(72px,10vw,140px);border-top:1px solid var(--c-line);padding:clamp(56px,8vw,110px) var(--gut);display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px;align-items:end}
+.cta h2{margin:0;font:900 clamp(3.4rem,9vw,9rem)/.8 var(--f-display);text-transform:uppercase;overflow-wrap:break-word;hyphens:auto}
+.cta p{margin:0 0 24px;color:var(--c-muted);max-width:44ch}
+
+/* ---------- footer ---------- */
+.ftr{border-top:1px solid var(--c-line);padding:56px var(--gut) 28px;overflow:hidden}
+.ftr__cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;padding-bottom:48px}
+.ftr__cols h4{margin:0 0 16px;color:var(--c-muted)}
+.ftr__cols ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ftr__cols a,.ftr__cols address{font-style:normal;transition:color .3s}
+.ftr__cols a:hover{color:var(--c-live)}
+.ftr__big{margin:0;font:900 9vw/.78 var(--f-display);text-transform:uppercase;letter-spacing:-.01em;overflow-wrap:anywhere;color:var(--c-surface);
+  -webkit-text-stroke:1px color-mix(in srgb, var(--c-text) 22%, transparent);user-select:none}
+.ftr__base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid var(--c-line);padding-top:18px;margin-top:18px;color:var(--c-muted)}
+
+.badge{position:fixed;left:12px;bottom:12px;z-index:70;padding:7px 10px;font:700 10px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;
+  background:color-mix(in srgb, var(--c-bg) 88%, transparent);border:1px solid var(--c-line);color:var(--c-muted);backdrop-filter:blur(8px)}
+.toast{position:fixed;right:12px;bottom:12px;z-index:70;display:flex;gap:12px;align-items:center;max-width:min(360px,calc(100vw - 24px));padding:12px 14px;
+  background:var(--c-surface);border:1px solid var(--c-line);border-left:3px solid var(--c-live);font:700 11px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;
+  transform:translateY(140%);opacity:0;visibility:hidden;transition:transform .55s var(--ease),opacity .3s,visibility 0s .55s}
+.toast.on{transform:none;opacity:1;visibility:visible;transition:transform .55s var(--ease),opacity .3s}
+.toast b{color:var(--c-live);white-space:nowrap}
+.toast span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .chead,.cta{grid-template-columns:1fr}
+  .fbar{flex-wrap:wrap;padding-bottom:10px}
+  .fbar__f{flex:1 0 100%}
+  .fbar__search{flex:1 1 140px}
+}
+@media (max-width:560px){.cart__l{display:none}.badge{font-size:9px}.chip{padding:16px 10px 14px}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#F13240;--c-on-primary:#ffffff;--c-accent:#272727}</style></head>
+<body>
+<div class="meter" aria-hidden="true"></div>
+<header class="hdr">
+  <a class="logo" href="template.html" aria-label="Kartstore International">
+    <img src="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-falcon.svg" alt="Kartstore International">
+  </a>
+  <nav class="nav" aria-label="Hoofdmenu"><a href="catalog.html">Producten</a><a href="#">Kartschool Strijen</a><a href="#">Huurkarts</a><a href="#">Over Kartstore</a><a href="#">Contact</a></nav>
+  <a class="cart" href="catalog.html" data-cart>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7h16l-1.4 13H5.4L4 7Z"/><path d="M8.5 7V5.5a3.5 3.5 0 0 1 7 0V7"/></svg>
+    <span class="cart__n" data-cart-count>0</span>
+  </a>
+  <details class="menu"><summary aria-label="Menu"><i></i></summary><div class="menu__panel"><a href="catalog.html">Producten</a><a href="#">Kartschool Strijen</a><a href="#">Huurkarts</a><a href="#">Over Kartstore</a><a href="#">Contact</a></div></details>
+</header>
+
+<main>
+  <section class="chead">
+    <div>
+      <p class="chead__crumb mono"><a href="template.html">Kartstore International</a></p>
+      <h1>Alle producten</h1>
+    </div>
+    <div class="chead__side">
+      <p>Ontdek karts, motoren, banden, onderdelen, kleding en gereedschap voor elke klasse, van Mini tot KZ.</p>
+      <div class="chead__row mono"><span class="chead__count">4 producten</span><span class="speed__v" data-speed aria-hidden="true">V 00.00</span></div>
+    </div>
+  </section>
+
+  <div class="fbar">
+    <div class="fbar__f" role="group">
+      <button class="chip" type="button" aria-pressed="true">Alle</button>
+      <button data-shop-filter="Karts" class="chip" type="button">Karts</button><button data-shop-filter="Banden" class="chip" type="button">Banden</button><button data-shop-filter="Olie, vet en reiniging" class="chip" type="button">Olie, vet en reiniging</button><button data-shop-filter="Kart onderdelen" class="chip" type="button">Kart onderdelen</button>
+    </div>
+    
+    <input class="fbar__search" type="search" data-shop-search placeholder="Zoeken" aria-label="Zoeken">
+    <div class="fbar__tools">
+      <div class="seg" data-sort-seg>
+        <button type="button" class="on" data-sort="0" title="Standaard">#</button>
+        <button type="button" data-sort="1" title="Prijs oplopend">€↑</button>
+        <button type="button" data-sort="-1" title="Prijs aflopend">€↓</button>
+      </div>
+      <div class="seg seg--d" data-density-seg>
+        <button type="button" data-density="3">3</button>
+        <button type="button" class="on" data-density="4">4</button>
+        <button type="button" data-density="6">6</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="grid" data-d="4">
+      <article data-shop-item="0" class="card">
+        <a class="frame card__frame" href="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;nl&#x2F;product&#x2F;kart-falcon-charlotte-kz-20mm" data-slit>
+          <img src="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;content&#x2F;products&#x2F;100_529.jpg?width&#x3D;360" alt="Kart Falcon Charlotte KZ 2,0mm" loading="lazy" onerror="this.parentNode.classList.add('is-broken');this.remove()">
+          <span class="frame__fb">KI</span>
+          <span class="card__tag">Beperkte voorraad</span>
+        </a>
+        <div class="card__strip">
+          <div class="card__meta">
+            <a class="card__name" href="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;nl&#x2F;product&#x2F;kart-falcon-charlotte-kz-20mm">Kart Falcon Charlotte KZ 2,0mm</a>
+            <span class="card__price"><span data-price>€ 5.282,00</span></span>
+          </div>
+          <button class="add" type="button" data-add="Kart Falcon Charlotte KZ 2,0mm" aria-label="+ Kart Falcon Charlotte KZ 2,0mm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="1" class="card">
+        <a class="frame card__frame" href="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;nl&#x2F;product&#x2F;kartbanden-regen-komet-k3w-set" data-slit>
+          <img src="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;content&#x2F;products&#x2F;304_317.jpg?width&#x3D;360" alt="Kartbanden regen Komet K3W set" loading="lazy" onerror="this.parentNode.classList.add('is-broken');this.remove()">
+          <span class="frame__fb">KI</span>
+          <span class="card__tag">Op voorraad</span>
+        </a>
+        <div class="card__strip">
+          <div class="card__meta">
+            <a class="card__name" href="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;nl&#x2F;product&#x2F;kartbanden-regen-komet-k3w-set">Kartbanden regen Komet K3W set</a>
+            <span class="card__price"><span data-price>€ 185,95</span></span>
+          </div>
+          <button class="add" type="button" data-add="Kartbanden regen Komet K3W set" aria-label="+ Kartbanden regen Komet K3W set"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="2" class="card">
+        <a class="frame card__frame" href="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;nl&#x2F;product&#x2F;rk-kettingspray" data-slit>
+          <img src="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;content&#x2F;products&#x2F;550_715.jpg?width&#x3D;360" alt="RK kettingspray" loading="lazy" onerror="this.parentNode.classList.add('is-broken');this.remove()">
+          <span class="frame__fb">KI</span>
+          <span class="card__tag">Op voorraad</span>
+        </a>
+        <div class="card__strip">
+          <div class="card__meta">
+            <a class="card__name" href="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;nl&#x2F;product&#x2F;rk-kettingspray">RK kettingspray</a>
+            <span class="card__price"><span data-price>€ 12,85</span></span>
+          </div>
+          <button class="add" type="button" data-add="RK kettingspray" aria-label="+ RK kettingspray"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></button>
+        </div>
+      </article>
+      <article data-shop-item="3" class="card">
+        <a class="frame card__frame" href="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;nl&#x2F;product&#x2F;balans-tandwiel-x30-super-iame" data-slit>
+          <img src="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;content&#x2F;products&#x2F;282_071.jpg?width&#x3D;360" alt="Balans tandwiel X30 Super Iame" loading="lazy" onerror="this.parentNode.classList.add('is-broken');this.remove()">
+          <span class="frame__fb">KI</span>
+          <span class="card__tag">Op voorraad</span>
+        </a>
+        <div class="card__strip">
+          <div class="card__meta">
+            <a class="card__name" href="https:&#x2F;&#x2F;www.kartstoreinternational.com&#x2F;nl&#x2F;product&#x2F;balans-tandwiel-x30-super-iame">Balans tandwiel X30 Super Iame</a>
+            <span class="card__price"><span data-price>€ 82,66</span></span>
+          </div>
+          <button class="add" type="button" data-add="Balans tandwiel X30 Super Iame" aria-label="+ Balans tandwiel X30 Super Iame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2 class="rv">Kom ook karten</h2>
+    <div class="rv">
+      <p>Met ons Trainingcenter stap je al op jonge leeftijd in een kart en leer je alle skills. Of ga er met vrienden of collega&#39;s op uit tijdens een bedrijfsuitje op Kartbaan Strijen.</p>
+      <a class="btn magnet" href="#">Ontdek de Kartschool<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="ftr__cols">
+    <div>
+      <h4 class="mono">Kartstore International</h4>
+      <p style="margin:0;color:var(--c-muted);max-width:30ch">Alles voor de kartracer, onder één dak</p>
+    </div>
+    <div>
+      <h4 class="mono">Contact</h4>
+      <ul>
+        <li><address>Ferrarilaan 2, 3261 NC Oud-Beijerland</address></li>
+        <li><a href="tel:+31850410184">+31850410184</a></li>
+        <li><a href="mailto:info@kartstoreinternational.com">info@kartstoreinternational.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="mono">Menu</h4>
+      <ul><li><a href="catalog.html">Producten</a></li><li><a href="#">Kartschool Strijen</a></li><li><a href="#">Huurkarts</a></li><li><a href="#">Over Kartstore</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+    <div>
+      <h4 class="mono">Info</h4>
+      <ul><li><a href="#">Over ons</a></li><li><a href="#">Kartschool Strijen</a></li><li><a href="#">Contact</a></li><li><a href="#">Terms and conditions</a></li><li><a href="#">Cookie settings</a></li><li><a href="#">Webshop dissolution form</a></li></ul>
+    </div>
+  </div>
+  <p class="ftr__big" data-fit-text aria-hidden="true">Kartstore International</p>
+  <div class="ftr__base mono"><span>© 2026 Kartstore International</span><span data-speed>V 00.00</span></div>
+</footer>
+
+<div class="badge">Demo redesign · Slit Velocity</div>
+<div class="toast" role="status" aria-live="polite"><b>+1</b><span data-toast></span></div>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  root.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+
+  // Very dark brand colours vanish on the near-black field: lift them toward white for text, lines and the canvas edge.
+  let live = [255, 79, 43];
+  try {
+    const g = document.createElement('canvas').getContext('2d');
+    g.fillStyle = '#000'; g.fillStyle = getComputedStyle(root).getPropertyValue('--c-primary').trim();
+    const m = g.fillStyle.match(/^#(..)(..)(..)$/) || [];
+    const rgb = m.length ? [1, 2, 3].map((i) => parseInt(m[i], 16)) : (g.fillStyle.match(/\d+/g) || []).slice(0, 3).map(Number);
+    const L = rgb.map((c) => { c /= 255; return c <= .03928 ? c / 12.92 : ((c + .055) / 1.055) ** 2.4; });
+    const lum = .2126 * L[0] + .7152 * L[1] + .0722 * L[2];
+    const t = lum < .03 ? .6 : lum < .08 ? .42 : lum < .16 ? .25 : 0;
+    live = rgb.map((c) => Math.round(c + (255 - c) * t));
+    root.style.setProperty('--c-live', `rgb(${live.join(',')})`);
+  } catch (e) {}
+
+  // Cart: count survives the hop between homepage and catalog.
+  const KEY = 'sv-cart';
+  let count = +(sessionStorage.getItem(KEY) || 0);
+  const countEls = document.querySelectorAll('[data-cart-count]');
+  const cart = document.querySelector('[data-cart]');
+  const toast = document.querySelector('.toast');
+  let toastT;
+  countEls.forEach((el) => el.textContent = count);
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-add]');
+    if (!b) return;
+    e.preventDefault();
+    count++; sessionStorage.setItem(KEY, count);
+    countEls.forEach((el) => el.textContent = count);
+    cart.classList.remove('bump'); void cart.offsetWidth; cart.classList.add('bump');
+    b.classList.remove('done'); void b.offsetWidth; b.classList.add('done');
+    toast.querySelector('[data-toast]').textContent = b.dataset.add;
+    toast.classList.add('on'); clearTimeout(toastT);
+    toastT = setTimeout(() => toast.classList.remove('on'), 2200);
+  });
+
+  // Scroll reveal
+  const rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    rv.forEach((el) => io.observe(el));
+  } else rv.forEach((el) => el.classList.add('in'));
+
+  // Footer name fills the width on one line.
+  const fitText = () => document.querySelectorAll('[data-fit-text]').forEach((el) => {
+    el.style.whiteSpace = 'nowrap'; el.style.fontSize = '100px';
+    const w = el.parentElement.clientWidth - 2;
+    el.style.fontSize = Math.min(w / el.scrollWidth * 100, 360) + 'px';
+  });
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(fitText);
+  addEventListener('resize', fitText);
+
+  // Magnetic CTAs
+  if (!reduce && matchMedia('(pointer:fine)').matches) document.querySelectorAll('.magnet').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px,${(e.clientY - r.top - r.height / 2) * .3}px)`;
+    });
+    el.addEventListener('pointerleave', () => el.style.transform = '');
+  });
+
+  // ---------- slit-scan engine ----------
+  const N = 32, DPR = Math.min(devicePixelRatio || 1, 2);
+  const speedEls = document.querySelectorAll('[data-speed]');
+  const speedBar = document.querySelector('[data-speed-bar]');
+  const meter = document.querySelector('.meter');
+  const slits = [];
+  let vs = 0, kick = 0;
+  window.svKick = (k) => { kick = k; slits.forEach((s) => s.wake()); };
+
+  class Slit {
+    constructor(el) {
+      this.el = el; this.img = el.querySelector('img');
+      this.cover = el.dataset.fit === 'cover';
+      this.oy = new Float32Array(N); this.vy = new Float32Array(N);
+      this.ox = new Float32Array(N); this.vx = new Float32Array(N);
+      this.pt = 0; this.lx = null; this.on = false; this.awake = true; this.ready = false;
+      this.c = document.createElement('canvas'); this.c.className = 'frame__cv'; this.c.setAttribute('aria-hidden', 'true');
+      this.ctx = this.c.getContext('2d');
+      this.base = document.createElement('canvas');
+      this.img.after(this.c);
+      const go = () => this.build();
+      if (this.img.complete && this.img.naturalWidth) go(); else this.img.addEventListener('load', go, { once: true });
+      el.addEventListener('pointermove', (e) => {
+        if (e.pointerType !== 'mouse') return;
+        if (this.lx !== null) this.pt = clamp(this.pt * .5 + (e.clientX - this.lx) * 1.4, -60, 60);
+        this.lx = e.clientX; this.wake();
+      });
+      el.addEventListener('pointerleave', () => this.lx = null);
+    }
+    build() {
+      const img = this.img; if (!img || !img.naturalWidth) return;
+      const w = this.el.clientWidth, h = this.el.clientHeight; if (!w || !h) return;
+      const W = Math.round(w * DPR), H = Math.round(h * DPR);
+      this.c.width = this.base.width = W; this.c.height = this.base.height = H;
+      const b = this.base.getContext('2d'), nw = img.naturalWidth, nh = img.naturalHeight;
+      let bx = 0, by = 0, bw = W, bh = H;
+      if (!this.cover) { bx = W * .08; by = H * .08; bw = W * .84; bh = H * .84; }
+      const s = this.cover ? Math.max(bw / nw, bh / nh) : Math.min(bw / nw, bh / nh);
+      const dw = nw * s, dh = nh * s;
+      this.r = this.cover ? [0, 0, W, H] : [bx, by, bw, bh];
+      b.clearRect(0, 0, W, H);
+      if (!this.cover) {
+        // the studio plate lives in the canvas too, so it tears with the product
+        const cx = bx + bw / 2, cy = by + bh * .32, pg = b.createRadialGradient(cx, cy, 0, cx, cy, Math.max(bw, bh) * .95);
+        pg.addColorStop(0, '#F2F4F6'); pg.addColorStop(1, '#B9C0C7');
+        b.fillStyle = pg; b.fillRect(bx, by, bw, bh);
+        b.globalCompositeOperation = 'multiply';
+      }
+      try { b.drawImage(img, bx + (bw - dw) / 2, by + (bh - dh) / 2, dw, dh); } catch (e) { return; }
+      b.globalCompositeOperation = 'source-over';
+      this.W = W; this.H = H; this.ready = true;
+      this.el.classList.add('is-live'); this.wake();
+    }
+    wake() { this.awake = true; }
+    step(dt) {
+      const ty = vs + kick, tx = this.pt;
+      let rest = Math.abs(ty) < .05 && Math.abs(tx) < .05, ey = 0, ex = 0;
+      for (let i = 0; i < N; i++) {
+        const k = 140 + i * 4, g = .7 + .6 * i / (N - 1);
+        let a = k * (ty * g - this.oy[i]) - 22 * this.vy[i];
+        this.vy[i] += a * dt; this.oy[i] += this.vy[i] * dt;
+        a = k * (tx * g - this.ox[i]) - 22 * this.vx[i];
+        this.vx[i] += a * dt; this.ox[i] += this.vx[i] * dt;
+        ey += Math.abs(this.oy[i]); ex += Math.abs(this.ox[i]);
+        if (Math.abs(this.oy[i] - ty * g) > .1 || Math.abs(this.ox[i] - tx * g) > .1 || Math.abs(this.vy[i]) > .1 || Math.abs(this.vx[i]) > .1) rest = false;
+      }
+      this.pt *= Math.pow(.86, dt * 60);
+      if (Math.abs(this.pt) < .05) this.pt = 0;
+      if (rest) { this.oy.fill(0); this.vy.fill(0); this.ox.fill(0); this.vx.fill(0); this.draw(0, 0, 0); this.awake = false; return; }
+      this.draw(ex > ey ? 2 : 1, ex > ey ? Math.abs(tx) : Math.abs(ty), ex > ey ? ex / N : ey / N);
+    }
+    draw(mode, v, mag) {
+      const { ctx, base, W, H } = this;
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.clearRect(0, 0, W, H);
+      if (!mode) { ctx.drawImage(base, 0, 0); return; }
+      const s = 1 + v * .004, horiz = mode === 1, L = horiz ? H : W, seg = L / N, o = horiz ? this.oy : this.ox;
+      for (let i = 0; i < N; i++) {
+        const p = i * seg, d = seg * s, q = p + o[i] * DPR - (d - seg) / 2;
+        if (horiz) ctx.drawImage(base, 0, p, W, seg, 0, q, W, d + 1);
+        else ctx.drawImage(base, p, 0, seg, H, q, 0, d + 1, H);
+      }
+      // red-shift on the tear lines, only over the photo itself
+      const a = .25 * Math.min(1, mag / 12);
+      if (a > .01) {
+        const [rx, ry, rw, rh] = this.r;
+        // 'lighter' disappears on the pale plate, so plates take the shift as a multiply tint instead
+        ctx.globalCompositeOperation = this.cover ? 'lighter' : 'multiply';
+        ctx.fillStyle = `rgba(${live.join(',')},${this.cover ? a : a * 2.4})`;
+        for (let i = 0; i < N; i++) {
+          const q = i * seg + o[i] * DPR;
+          if (horiz) { if (q > ry && q < ry + rh) ctx.fillRect(rx, q, rw, 2 * DPR); }
+          else if (q > rx && q < rx + rw) ctx.fillRect(q, ry, 2 * DPR, rh);
+        }
+      }
+    }
+  }
+
+  if (!reduce && window.IntersectionObserver && window.ResizeObserver) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { const s = e.target._slit; s.on = e.isIntersecting; if (s.on) s.wake(); }), { rootMargin: '120px 0px' });
+    const ro = new ResizeObserver((es) => es.forEach((e) => { const s = e.target._slit; if (s.ready || (s.img && s.img.naturalWidth)) s.build(); }));
+    document.querySelectorAll('[data-slit]').forEach((el) => {
+      if (!el.querySelector('img')) return;
+      const s = new Slit(el); el._slit = s; slits.push(s); io.observe(el); ro.observe(el);
+    });
+  }
+
+  let lastY = scrollY, lastT = performance.now(), shown = '';
+  const tick = (now) => {
+    const ms = Math.max(1, now - lastT), dt = Math.min(.034, ms / 1000);
+    const y = scrollY, raw = clamp((y - lastY) / (ms / 16.667), -60, 60);
+    lastY = y; lastT = now;
+    vs += (raw - vs) * .22; if (Math.abs(vs) < .01) vs = 0;
+    kick *= Math.pow(.9, dt * 60); if (Math.abs(kick) < .05) kick = 0;
+    const txt = 'V ' + Math.abs(vs).toFixed(2).padStart(5, '0');
+    if (txt !== shown) { shown = txt; speedEls.forEach((el) => el.textContent = txt); if (speedBar) speedBar.style.transform = `scaleX(${Math.abs(vs) / 60})`; }
+    const max = document.documentElement.scrollHeight - innerHeight;
+    meter.style.setProperty('--p', max > 0 ? clamp(y / max, 0, 1) : 0);
+    const moving = vs !== 0 || kick !== 0;
+    for (const s of slits) if (s.on && s.ready && (s.awake || moving)) s.step(dt);
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+
+  // ---------- catalog: density, price sort (visual order only) and the filter "whoosh" ----------
+  const grid = document.querySelector('.grid');
+  if (!grid) return;
+  const cards = [...grid.children];
+  const seg = (sel, fn) => document.querySelectorAll(sel + ' button').forEach((b, _, all) => b.addEventListener('click', () => {
+    all.forEach((x) => x.classList.toggle('on', x === b)); fn(b);
+  }));
+  const enter = () => {
+    if (reduce) return;
+    let i = 0;
+    cards.forEach((c) => { if (c.style.display === 'none') return; c.classList.remove('enter'); void c.offsetWidth; c.style.setProperty('--i', i++); c.classList.add('enter'); });
+    window.svKick(i % 2 ? 34 : -34);
+  };
+  seg('[data-density-seg]', (b) => { grid.dataset.d = b.dataset.density; enter(); });
+  // Dutch "€ 5.282,00" and English "€5,282.00" both parse.
+  const price = (c) => {
+    const el = c.querySelector('[data-price]'); if (!el) return Infinity;
+    let s = el.textContent.replace(/[^\d.,]/g, '');
+    const lc = s.lastIndexOf(','), ld = s.lastIndexOf('.');
+    s = lc > ld ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, '');
+    const n = parseFloat(s); return isNaN(n) ? Infinity : n;
+  };
+  seg('[data-sort-seg]', (b) => {
+    const dir = +b.dataset.sort;
+    const order = dir ? [...cards].sort((a, c) => (price(a) - price(c)) * dir || 0) : cards;
+    if (dir < 0) order.sort((a, c) => (price(a) === Infinity) - (price(c) === Infinity));
+    order.forEach((c, i) => c.style.order = dir ? i : '');
+    enter();
+  });
+  // The shop script hides cards with display:none; replay the entrance and smear when the set changes.
+  // Only a change in which cards are hidden counts, so enter()'s own style writes don't loop.
+  const hidden = () => cards.map((c) => c.style.display === 'none' ? 1 : 0).join('');
+  let last = hidden(), pend;
+  const mo = new MutationObserver(() => { const h = hidden(); if (h === last) return; last = h; clearTimeout(pend); pend = setTimeout(enter, 16); });
+  cards.forEach((c) => mo.observe(c, { attributes: true, attributeFilter: ['style'] }));
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"catalog","lang":"nl","count":"4 producten","products":[{"name":"Kart Falcon Charlotte KZ 2,0mm","tag":"Beperkte voorraad","category":"Karts"},{"name":"Kartbanden regen Komet K3W set","tag":"Op voorraad","category":"Banden"},{"name":"RK kettingspray","tag":"Op voorraad","category":"Olie, vet en reiniging"},{"name":"Balans tandwiel X30 Super Iame","tag":"Op voorraad","category":"Kart onderdelen"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "id": "slit-velocity",
+  "name": "Slit Velocity",
+  "scheme": "dark",
+  "sectors": ["sports", "retail", "tech", "lifestyle"],
+  "mood": ["cold", "fast", "technical", "precise"],
+  "needsProductImages": true,
+  "notes": "Near-black field where --c-primary is the only live colour (prices on hover, cart count, active filter, scroll meter, slit-scan edge glow); very dark primaries are lifted toward white for text use, --c-accent is only a tiny tag dot."
+}
