@@ -1,0 +1,9 @@
+{
+  "id": "rack-focus",
+  "name": "Rack Focus",
+  "scheme": "dark",
+  "sectors": ["hospitality", "luxury", "lifestyle", "food"],
+  "mood": ["cinematic", "warm", "hushed", "editorial"],
+  "needsProductImages": true,
+  "notes": "Espresso ground stays fixed; primary fills the CTA buttons, cart count and a 16% tint on the CTA band, while accent (mixed toward ivory so any hue stays legible) drives the focus brackets, tags and focal-plane marks."
+}

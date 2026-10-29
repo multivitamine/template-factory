@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our rooms in Bruges · Hotel Navarra</title>
+<meta name="description" content="Three room categories, each combining the comfort of a 4-star hotel with the charm of a historic Bruges building.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;500&family=Kalnia:wdth,wght@100..125,100..700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');setTimeout(function(){var r=document.documentElement;if(!r.classList.contains('focus-ready'))r.classList.remove('js')},3000)</script>
+<style>
+:root{
+  --c-bg:#15110E; --c-surface:#1B1612; --c-matte:#201A16; --c-text:#EFE8DC; --c-muted:#9E9487; --c-line:#342C25;
+  --c-primary:#B98A5E; --c-on-primary:#15110E; --c-accent:#D8C29E;
+  --acc:color-mix(in srgb,var(--c-accent) 62%,var(--c-text));
+  --ease:cubic-bezier(.65,0,.35,1); --ease-out:cubic-bezier(.22,1,.36,1);
+  --f-d:'Kalnia',Georgia,serif; --f-b:'Commissioner',sans-serif;
+  --pad:clamp(1.25rem,4vw,4rem); --sec:clamp(5rem,11vw,10rem); --hd:72px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:auto}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:300 14px/1.65 var(--f-b);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+::selection{background:var(--c-primary);color:var(--c-on-primary)}
+:focus-visible{outline:1px solid var(--acc);outline-offset:4px}
+.caps{font:500 10.5px/1.2 var(--f-b);letter-spacing:.22em;text-transform:uppercase}
+.muted{color:var(--c-muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{padding-inline:var(--pad);max-width:1640px;margin-inline:auto}
+
+/* depth of field: JS writes --fb/--fo/--fs; without JS nothing is applied */
+.js [data-focus]{filter:blur(var(--fb,6px));opacity:var(--fo,.55);transform:scale(var(--fs,.97));will-change:filter,opacity,transform}
+.js [data-focus="soft"]{filter:blur(var(--fb,3px))}
+
+/* header */
+.hd{position:fixed;inset:0 0 auto;z-index:50;height:var(--hd);display:flex;align-items:center;gap:2rem;padding-inline:var(--pad);background:color-mix(in srgb,var(--c-bg) 74%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid var(--c-line)}
+.logo{display:flex;align-items:center;flex:none;max-width:46vw;min-width:0}
+.logo img{height:30px;width:auto;max-width:170px;object-fit:contain;filter:brightness(0) invert(.92)}
+.logo.is-light img{filter:none}
+.logo span{font:600 22px/1 var(--f-d);font-stretch:100%;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;gap:clamp(1rem,2.2vw,2.4rem);margin-inline:auto}
+.nav a{position:relative;padding:.45rem 0;opacity:.7;transition:opacity .6s var(--ease)}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .8s var(--ease)}
+.nav a:hover{opacity:1}.nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.bag{display:flex;align-items:center;gap:.65rem;flex:none;padding:.4rem 0}
+.bag__n{min-width:22px;height:22px;padding:0 6px;border-radius:11px;display:grid;place-items:center;background:var(--c-primary);color:var(--c-on-primary);letter-spacing:0;box-shadow:0 0 0 1px color-mix(in srgb,var(--c-text) 22%,transparent)}
+.bag__n.bump{animation:bump .8s var(--ease-out)}
+@keyframes bump{25%{transform:scale(1.4)}}
+.menu{display:none}
+.menu summary{list-style:none;cursor:pointer;padding:.4rem 0}
+.menu summary::-webkit-details-marker{display:none}
+.menu nav{position:fixed;top:var(--hd);left:0;right:0;height:calc(100svh - var(--hd));background:var(--c-bg);padding:2.5rem var(--pad);display:flex;flex-direction:column;gap:1.1rem}
+.menu nav a{font:200 clamp(2rem,9vw,3rem)/1.05 var(--f-d);font-stretch:125%}
+@media (max-width:900px){.nav{display:none}.menu{display:block;margin-left:auto}.hd{gap:1.4rem}}
+
+/* focal plane marks */
+.plane{position:fixed;top:42vh;left:0;right:0;height:0;pointer-events:none;z-index:40}
+.plane::before,.plane::after{content:"";position:absolute;top:0;width:16px;height:1px;background:var(--acc);opacity:.8}
+.plane::before{left:0}.plane::after{right:0}
+.plane span{position:absolute;right:24px;top:-6px;font-size:9px;color:var(--c-muted)}
+@media (max-width:700px){.plane span{display:none}}
+
+/* hero */
+.hero{min-height:100svh;padding:calc(var(--hd) + clamp(1.5rem,4vh,3rem)) var(--pad) clamp(2rem,5vh,3.5rem);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero__meta{width:100%;display:flex;justify-content:space-between;gap:1rem;margin-bottom:clamp(1rem,3vh,2.2rem)}
+.hero__meta span:last-child{text-align:right}
+.hero h1{display:contents}
+.thin{font-family:var(--f-d);font-weight:200;font-stretch:125%;font-size:clamp(2rem,5.4vw,5.8rem);line-height:1;letter-spacing:-.01em;text-align:center;text-wrap:balance;max-width:20ch;margin:0 0 clamp(.9rem,2.6vh,1.8rem);display:block}
+.frame{display:block;position:relative;width:min(100%,58vw,calc((100svh - 410px)*1.5));min-width:min(100%,520px);aspect-ratio:3/2;border:1px solid var(--c-line);padding:clamp(6px,.8vw,12px)}
+.frame__img{position:relative;width:100%;height:100%;overflow:hidden;background:var(--c-matte)}
+.frame__img img{width:100%;height:100%;object-fit:cover}
+.frame__img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,color-mix(in srgb,var(--c-bg) 72%,transparent));pointer-events:none}
+.frame__tick{position:absolute;z-index:3;top:calc(clamp(6px,.8vw,12px) + .8rem);font-size:9px;padding:.4rem .6rem;color:var(--c-text);background:color-mix(in srgb,var(--c-bg) 72%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.frame__tick--l{left:calc(clamp(6px,.8vw,12px) + .8rem)}
+.frame__tick--r{right:calc(clamp(6px,.8vw,12px) + .8rem)}
+.heavy{font-family:var(--f-d);font-weight:600;font-stretch:100%;font-size:clamp(2.8rem,8.6vw,9.2rem);line-height:.86;letter-spacing:-.025em;text-align:center;text-wrap:balance;max-width:15ch;margin-top:-.42em;position:relative;z-index:2;display:block}
+.hero__foot{width:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:2rem;margin-top:clamp(1.6rem,4.4vh,3.2rem)}
+.hero__text{max-width:42ch;margin:0;color:var(--c-muted)}
+.cue{display:flex;flex-direction:column;align-items:center;gap:.8rem;color:var(--c-muted)}
+.cue i{display:block;width:1px;height:44px;background:linear-gradient(var(--acc),var(--acc)) 0 0/1px 40% no-repeat,var(--c-line);animation:cue 2.6s var(--ease) infinite}
+@keyframes cue{0%{background-position:0 -40%}100%{background-position:0 160%}}
+.ctas{justify-self:end;display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.8rem;min-height:52px;padding:0 1.7rem;border-radius:999px;background:var(--c-primary);color:var(--c-on-primary);box-shadow:0 0 0 1px color-mix(in srgb,var(--c-text) 18%,transparent);transform:translate(var(--mx,0px),var(--my,0px));transition:transform .7s var(--ease-out),background-color .6s var(--ease)}
+.btn:hover{background:color-mix(in srgb,var(--c-primary) 84%,var(--c-text))}
+.btn svg{transition:transform .7s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.ulink{display:inline-block;padding:.4rem 0;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .8s var(--ease)}
+.ulink:hover{background-size:0 1px;background-position:100% 100%}
+.js .hero .thin{animation:inThin 2s var(--ease) both .1s}
+.js .frame__img > *{animation:inPull 2.4s var(--ease) both .25s}
+.js .hero .heavy{animation:inHeavy 1.9s var(--ease) both .75s}
+@keyframes inThin{from{filter:blur(8px);opacity:0;letter-spacing:.08em}}
+@keyframes inPull{from{filter:blur(16px);transform:scale(1.07)}60%{filter:blur(0)}}
+@keyframes inHeavy{from{filter:blur(12px);opacity:0;transform:translateY(.12em)}}
+@media (max-width:800px){.hero__foot{grid-template-columns:1fr}.cue{display:none}.ctas{justify-self:start}.hero__meta span:last-child{display:none}}
+
+/* section heads */
+.sh{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:1rem 2rem;padding-bottom:1.4rem;border-bottom:1px solid var(--c-line)}
+.sh h2{margin:0;font:200 clamp(1.9rem,4.2vw,3.8rem)/1 var(--f-d);font-stretch:125%;letter-spacing:-.01em}
+.sh__side{display:flex;flex-direction:column;align-items:flex-end;gap:.6rem;text-align:right}
+@media (max-width:700px){.sh{grid-template-columns:1fr}.sh__side{align-items:flex-start;text-align:left}}
+
+/* matte frames */
+.mat{position:relative;display:block;aspect-ratio:5/4;background:var(--c-matte);padding:clamp(12px,2.4vw,34px);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-text) 6%,transparent)}
+.mat--45{aspect-ratio:4/5}.mat--34{aspect-ratio:3/4;padding:clamp(8px,1vw,14px)}
+.mat__in{position:relative;display:block;width:100%;height:100%;overflow:hidden;background:color-mix(in srgb,var(--c-primary) 12%,var(--c-matte))}
+.mat__in img{width:100%;height:100%;object-fit:cover;transition:transform 1.8s var(--ease)}
+.ph{position:absolute;inset:0;display:grid;place-items:center;font:200 clamp(2.6rem,7vw,6.5rem)/1 var(--f-d);font-stretch:125%;color:color-mix(in srgb,var(--c-primary) 35%,var(--c-text));background:radial-gradient(circle at 32% 30%,color-mix(in srgb,var(--c-primary) 32%,var(--c-matte)),var(--c-matte) 72%)}
+.af{position:absolute;inset:10px;pointer-events:none;opacity:0;transition:opacity .9s var(--ease),inset .9s var(--ease);
+  background:linear-gradient(var(--acc),var(--acc)) 0 0/14px 1px no-repeat,linear-gradient(var(--acc),var(--acc)) 0 0/1px 14px no-repeat,
+  linear-gradient(var(--acc),var(--acc)) 100% 0/14px 1px no-repeat,linear-gradient(var(--acc),var(--acc)) 100% 0/1px 14px no-repeat,
+  linear-gradient(var(--acc),var(--acc)) 0 100%/14px 1px no-repeat,linear-gradient(var(--acc),var(--acc)) 0 100%/1px 14px no-repeat,
+  linear-gradient(var(--acc),var(--acc)) 100% 100%/14px 1px no-repeat,linear-gradient(var(--acc),var(--acc)) 100% 100%/1px 14px no-repeat}
+[data-sharp] .af{opacity:1;inset:4px}
+
+/* product rows */
+.lineup{padding-block:clamp(3rem,8vw,7rem) var(--sec)}
+.rows{list-style:none;margin:0;padding:0;counter-reset:r}
+.row{counter-increment:r;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:clamp(1.5rem,5.5vw,6.5rem);align-items:center;padding-block:clamp(2.5rem,7vh,5.5rem);border-bottom:1px solid var(--c-line)}
+.row:hover .mat__in img{transform:scale(1.035)}
+.row__body{display:flex;flex-direction:column;gap:1rem;max-width:36rem;min-width:0}
+.row__top{display:flex;justify-content:space-between;gap:1rem}
+.row__idx::before{content:counter(r,decimal-leading-zero) " — "}
+.tag{color:var(--acc)}
+.row h3{margin:0;font:600 clamp(1.9rem,3.7vw,3.6rem)/.98 var(--f-d);font-stretch:100%;letter-spacing:-.018em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.row h3 a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .9s var(--ease)}
+.row h3 a:hover{background-size:100% 1px}
+.price{display:flex;flex-wrap:wrap;gap:.3rem .9rem;align-items:baseline;font:500 12px/1.3 var(--f-b);letter-spacing:.18em;text-transform:uppercase}
+.price s{color:var(--c-muted);font-weight:300}
+.price:empty{display:none}
+.row__act{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;margin-top:.6rem;padding-top:1.3rem;border-top:1px solid var(--c-line)}
+.add{display:inline-flex;align-items:center;gap:.55rem;min-height:46px;padding:0 1.35rem;border-radius:999px;border:1px solid color-mix(in srgb,var(--c-text) 28%,transparent);transition:background-color .6s var(--ease),color .6s var(--ease),border-color .6s var(--ease)}
+.add:hover{background:var(--c-primary);color:var(--c-on-primary);border-color:var(--c-primary)}
+.add.is-added{background:var(--c-text);color:var(--c-bg);border-color:var(--c-text)}
+.kijk{display:inline-flex;align-items:center;gap:.6rem}
+.kijk svg{transition:transform 1s var(--ease)}
+.kijk:hover svg{transform:rotate(90deg) scale(1.15)}
+.lineup__foot{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-top:2rem}
+@media (max-width:760px){.row{grid-template-columns:1fr}}
+
+/* cta band */
+.cta{background:color-mix(in srgb,var(--c-primary) 16%,var(--c-surface));border-top:1px solid var(--c-line);padding:var(--sec) var(--pad);display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.6rem}
+.cta h2{margin:0;font:600 clamp(2.4rem,6.4vw,6.4rem)/.92 var(--f-d);font-stretch:100%;letter-spacing:-.025em;max-width:16ch;text-wrap:balance}
+.cta p{margin:0;max-width:46ch;color:color-mix(in srgb,var(--c-text) 72%,var(--c-bg))}
+
+/* footer */
+.ft{padding:clamp(4rem,9vw,7rem) var(--pad) 5rem;border-top:1px solid var(--c-line);overflow-x:clip}
+.ft__grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1.4fr);gap:2.4rem}
+.ft__grid h4{margin:0 0 1.2rem}
+.ft__grid p{margin:0 0 .4rem}
+.ft__links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem 1.4rem}
+.ft__links a{opacity:.75;transition:opacity .5s}.ft__links a:hover{opacity:1}
+.ft__tag{max-width:30ch;color:var(--c-muted);font-size:15px}
+.ft__name{display:block;margin:clamp(3rem,8vw,6rem) 0 1.6rem;font:200 clamp(2.6rem,11.5vw,13rem)/.92 var(--f-d);font-stretch:125%;letter-spacing:-.03em;overflow-wrap:anywhere;cursor:default}
+.ft__name .w{display:inline-block;white-space:nowrap}
+.ft__name .w span{display:inline-block;transition:filter .7s var(--ease-out)}
+.ft__bar{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.4rem;border-top:1px solid var(--c-line)}
+@media (max-width:820px){.ft__grid{grid-template-columns:1fr}}
+
+/* badge, cart drawer, toast, grain */
+.badge{position:fixed;left:12px;bottom:12px;z-index:60;padding:.55rem .85rem;border-radius:999px;background:color-mix(in srgb,var(--c-bg) 82%,transparent);border:1px solid var(--c-line);font-size:9px;color:var(--c-muted);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(10,8,6,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .8s var(--ease)}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(440px,100%);background:var(--c-surface);border-left:1px solid var(--c-line);display:flex;flex-direction:column;transform:translateX(102%);visibility:hidden;transition:transform .9s var(--ease),visibility 0s .9s}
+.cart-open .scrim{opacity:1;pointer-events:auto}
+.cart-open .drawer{transform:none;visibility:visible;transition:transform .9s var(--ease)}
+.drawer__hd{display:flex;justify-content:space-between;align-items:center;height:var(--hd);padding:0 1.6rem;border-bottom:1px solid var(--c-line)}
+.drawer__list{list-style:none;margin:0;padding:.6rem 1.6rem;flex:1;overflow:auto}
+.drawer__list li{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1rem 0;border-bottom:1px solid var(--c-line)}
+.drawer__th{width:64px;aspect-ratio:1;background:var(--c-matte);overflow:hidden;padding:5px}
+.drawer__th img{width:100%;height:100%;object-fit:cover}
+.drawer__nm{font-weight:500;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.qty{display:flex;align-items:center;gap:.6rem;margin-top:.35rem}
+.qty button{width:24px;height:24px;border-radius:50%;border:1px solid var(--c-line)}
+.qty button:hover{border-color:var(--c-text)}
+.drawer__empty{padding:3rem 1.6rem;color:var(--c-muted);text-align:center}
+.drawer__ft{padding:1.4rem 1.6rem 1.8rem;border-top:1px solid var(--c-line);display:grid;gap:1.1rem}
+.drawer__ft .row2{display:flex;justify-content:space-between}
+.toast{position:fixed;left:50%;bottom:22px;z-index:95;display:flex;gap:.8rem;align-items:center;max-width:calc(100% - 2rem);padding:.85rem 1.3rem;border-radius:999px;background:var(--c-text);color:var(--c-bg);transform:translate(-50%,calc(100% + 40px));visibility:hidden;transition:transform .9s var(--ease),visibility 0s .9s}
+.toast.show{transform:translate(-50%,0);visibility:visible;transition:transform .9s var(--ease)}
+.toast b{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40vw}
+.grain{position:fixed;inset:0;width:100%;height:100%;z-index:100;pointer-events:none;opacity:.03;image-rendering:pixelated}
+
+/* catalog */
+.cat-head{padding:calc(var(--hd) + clamp(3rem,8vw,6.5rem)) var(--pad) clamp(2rem,4vw,3.4rem);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem 3rem;align-items:end;border-bottom:1px solid var(--c-line)}
+.cat-head .thin{text-align:left;margin:1.2rem 0 1.4rem;font-size:clamp(2.4rem,6.6vw,7rem);max-width:16ch}
+.cat-head p{margin:0;max-width:48ch;color:var(--c-muted);font-size:15px}
+.js .cat-head .thin{animation:inThin 2s var(--ease) both .1s}
+.shop{display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(1.5rem,4vw,4.5rem);padding:clamp(2rem,4vw,3.5rem) var(--pad) var(--sec)}
+.rail{position:sticky;top:calc(var(--hd) + 28px);align-self:start;display:flex;flex-direction:column;gap:1.6rem;min-width:0}
+.search{width:100%;background:transparent;border:0;border-bottom:1px solid var(--c-line);border-radius:0;padding:.75rem 0;color:var(--c-text);font:inherit;outline:0;transition:border-color .6s var(--ease)}
+.search::placeholder{color:var(--c-muted)}
+.search:focus{border-color:var(--acc)}
+.chips{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem}
+.chip{position:relative;padding:.25rem 0 .25rem 1.1rem;text-align:left;font:200 1.45rem/1.2 var(--f-d);font-stretch:125%;transition:filter .9s var(--ease),opacity .9s var(--ease),font-weight .9s var(--ease),font-stretch .9s var(--ease)}
+.chip::before{content:"";position:absolute;left:0;top:50%;width:5px;height:5px;margin-top:-2px;border-radius:50%;background:var(--acc);transform:scale(0);transition:transform .8s var(--ease)}
+.chip[aria-pressed="true"]{font-weight:600;font-stretch:100%}
+.chip[aria-pressed="true"]::before{transform:scale(1)}
+.js .chip:not([aria-pressed="true"]){filter:blur(1.4px);opacity:.5}
+.js .chip:not([aria-pressed="true"]):hover,.js .chip:not([aria-pressed="true"]):focus-visible{filter:blur(0);opacity:.92}
+.rail__hint{color:var(--c-muted);font-size:9px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(2.2rem,3.4vw,3.4rem) clamp(1rem,2vw,2rem);align-content:start}
+.card{min-width:0}
+.card__media{display:block;position:relative}
+.card .mat{padding:clamp(10px,1.6vw,22px)}
+.card:hover .mat__in img{transform:scale(1.04)}
+.ctag{position:absolute;left:clamp(10px,1.6vw,22px);top:clamp(10px,1.6vw,22px);z-index:2;padding:.45rem .65rem;background:var(--c-bg);color:var(--acc);font-size:9px;max-width:calc(100% - 2rem);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card__body{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem 1rem;align-items:start;padding-top:1.1rem}
+.card h3{margin:0;font:500 15px/1.35 var(--f-b);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .price{grid-column:1}
+.card .add{grid-column:2;grid-row:1/3;width:46px;min-height:46px;padding:0;justify-content:center;font-size:18px;font-weight:300}
+.none{grid-column:1/-1;padding:4rem 0;color:var(--c-muted)}
+@media (max-width:1150px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.shop{grid-template-columns:minmax(0,1fr)}.rail{position:static}.chips{flex-direction:row;gap:1.2rem;overflow-x:auto;padding-bottom:.4rem;scrollbar-width:none}.chip{white-space:nowrap;font-size:1.2rem}.cat-head{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:540px){.grid{grid-template-columns:minmax(0,1fr)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .js [data-focus],.js [data-focus="soft"]{filter:none;transform:none}
+  .js .chip:not([aria-pressed="true"]){filter:none}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#00467F;--c-on-primary:#ffffff;--c-accent:#C19B3C}</style></head>
+<body data-page="catalog" data-brand="Hotel Navarra">
+
+<header class="hd">
+  <a class="logo" href="template.html" aria-label="Hotel Navarra">
+    <img src="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-hotelnavarra.svg" alt="Hotel Navarra">
+  </a>
+  <nav class="nav caps" aria-label="Hoofdmenu"><a href="catalog.html">Rooms</a><a href="#">Hotel Facilities</a><a href="#">Package Deals</a><a href="#">Meetings</a><a href="#">Discover Bruges</a></nav>
+  <details class="menu caps"><summary>Menu</summary><nav><a href="catalog.html">Rooms</a><a href="#">Hotel Facilities</a><a href="#">Package Deals</a><a href="#">Meetings</a><a href="#">Discover Bruges</a></nav></details>
+  <button class="bag caps" type="button" data-cart-open><span data-i18n="bag">Mand</span><span class="bag__n" data-cart-count>0</span></button>
+</header>
+
+<div class="plane" aria-hidden="true"><span class="caps" data-i18n="focus">Focus</span></div>
+
+<main>
+  <section class="cat-head">
+    <div>
+      <span class="caps muted"><a class="ulink" href="template.html">Hotel Navarra</a> &nbsp;/&nbsp; <span data-i18n="collection">Collectie</span></span>
+      <h1 class="thin">Our rooms in Bruges</h1>
+      <p>Three room categories, each combining the comfort of a 4-star hotel with the charm of a historic Bruges building.</p>
+    </div>
+    <div class="caps"><span>3 rooms</span></div>
+  </section>
+
+  <section class="shop">
+    <aside class="rail">
+      <span class="caps muted" data-i18n="filter">Filter</span>
+      <input class="search" type="search" data-shop-search placeholder="Zoek in de collectie…" aria-label="Zoek in de collectie" data-i18n-ph="search">
+      <div class="chips"><button class="chip" type="button" aria-pressed="true" data-i18n="all">Alle</button><button data-shop-filter="Comfort Superior" class="chip" type="button">Comfort Superior</button><button data-shop-filter="Comfort" class="chip" type="button">Comfort</button><button data-shop-filter="Comfort Mini" class="chip" type="button">Comfort Mini</button></div>
+      <span class="rail__hint caps" data-i18n="move">Beweeg om scherp te stellen</span>
+    </aside>
+
+    <div class="grid">
+      <article data-shop-item="0" class="card" data-card><div class="card__in">
+        <a class="card__media" href="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;rooms&#x2F;comfort-superior" data-focus aria-label="Comfort Superior Room">
+          <span class="mat"><span class="mat__in"><img src="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;media&#x2F;homepage-kamer1-new.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;850" alt="Comfort Superior Room" loading="lazy"></span><span class="af"></span></span>
+          <span class="ctag caps">A little more luxury</span>
+        </a>
+        <div class="card__body" data-focus="soft">
+          <h3><a href="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;rooms&#x2F;comfort-superior">Comfort Superior Room</a></h3>
+          <div class="price"></div>
+          <button class="add" type="button" data-add data-name="Comfort Superior Room" data-price="" data-img="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;media&#x2F;homepage-kamer1-new.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;850" aria-label="+ Comfort Superior Room">+</button>
+        </div>
+      </div></article><article data-shop-item="1" class="card" data-card><div class="card__in">
+        <a class="card__media" href="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;rooms&#x2F;comfort" data-focus aria-label="Comfort Room">
+          <span class="mat"><span class="mat__in"><img src="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;media&#x2F;homepage-kamer2-new.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;500" alt="Comfort Room" loading="lazy"></span><span class="af"></span></span>
+          <span class="ctag caps">Total relaxation</span>
+        </a>
+        <div class="card__body" data-focus="soft">
+          <h3><a href="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;rooms&#x2F;comfort">Comfort Room</a></h3>
+          <div class="price"></div>
+          <button class="add" type="button" data-add data-name="Comfort Room" data-price="" data-img="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;media&#x2F;homepage-kamer2-new.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;500" aria-label="+ Comfort Room">+</button>
+        </div>
+      </div></article><article data-shop-item="2" class="card" data-card><div class="card__in">
+        <a class="card__media" href="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;rooms&#x2F;comfort-mini" data-focus aria-label="Comfort Mini Room">
+          <span class="mat"><span class="mat__in"><img src="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;media&#x2F;homepage-kamer3-new.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;500" alt="Comfort Mini Room" loading="lazy"></span><span class="af"></span></span>
+          <span class="ctag caps">Ideal for shorter stays</span>
+        </a>
+        <div class="card__body" data-focus="soft">
+          <h3><a href="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;rooms&#x2F;comfort-mini">Comfort Mini Room</a></h3>
+          <div class="price"></div>
+          <button class="add" type="button" data-add data-name="Comfort Mini Room" data-price="" data-img="https:&#x2F;&#x2F;www.hotelnavarra.com&#x2F;media&#x2F;homepage-kamer3-new.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;500" aria-label="+ Comfort Mini Room">+</button>
+        </div>
+      </div></article>
+      
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Your Bruges stay starts here</h2>
+    <p>Book direct for the lowest rate guaranteed and free cancellation until 24 hours before arrival.</p>
+    <a class="btn caps" href="#">Book now <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor"><path d="M0 5h13M9 1l4 4-4 4"/></svg></a>
+  </section>
+</main>
+
+<footer class="ft">
+  <div class="ft__grid">
+    <div><p class="ft__tag">Historic charm, contemporary comfort in Bruges</p></div>
+    <div>
+      <h4 class="caps muted">Contact</h4>
+      <p>Sint-Jakobsstraat 41, Bruges</p>
+      <p><a class="ulink" href="tel:+32 (0)50 34 05 61">+32 (0)50 34 05 61</a></p>
+      
+    </div>
+    <div>
+      <h4 class="caps muted">Menu</h4>
+      <div class="ft__links"><a href="#">About us</a><a href="catalog.html">Rooms</a><a href="#">Hotel facilities</a><a href="#">Package deals</a><a href="#">Meetings</a><a href="#">Contact</a><a href="#">Jobs</a><a href="#">Photo gallery</a></div>
+    </div>
+  </div>
+  <span class="ft__name">Hotel Navarra</span>
+  <div class="ft__bar caps muted"><span>© 2026 Hotel Navarra</span><span>Sint-Jakobsstraat 41, Bruges</span></div>
+</footer>
+
+<div class="badge caps">Demo redesign · Rack Focus</div>
+
+<div class="scrim" data-cart-close></div>
+<aside class="drawer" aria-label="Mand" aria-hidden="true">
+  <div class="drawer__hd caps"><span><span data-i18n="bag">Mand</span> (<span data-cart-count>0</span>)</span><button type="button" data-cart-close class="ulink" data-i18n="close">Sluiten</button></div>
+  <ul class="drawer__list" data-cart-list></ul>
+  <p class="drawer__empty" data-cart-empty data-i18n="empty">Je mand is nog leeg.</p>
+  <div class="drawer__ft caps">
+    <div class="row2"><span data-i18n="subtotal">Subtotaal</span><span data-cart-total>—</span></div>
+    <a class="btn" href="#"><span data-i18n="checkout">Afrekenen</span></a>
+  </div>
+</aside>
+<div class="toast caps" role="status" aria-live="polite"><span data-i18n="toast">Toegevoegd</span><b data-toast-name></b></div>
+<canvas class="grain" aria-hidden="true"></canvas>
+
+<script>
+(() => {
+  const d = document, root = d.documentElement;
+  root.classList.add('js');
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const HOVER = matchMedia('(hover: hover)').matches;
+  const CAT = d.body.dataset.page === 'catalog';
+
+  // UI strings: Dutch in the markup, swapped for the content language
+  const NL = { add:'In mand', added:'Toegevoegd', toast:'Toegevoegd', empty:'Je mand is nog leeg.', onreq:'Op aanvraag' };
+  const EN = { add:'Add to bag', added:'Added', toast:'Added', view:'View', bag:'Bag', all:'All', empty:'Your bag is empty.', subtotal:'Subtotal',
+    checkout:'Checkout', close:'Close', collection:'Collection', cats:'Categories', viewAll:'View all', scroll:'Scroll to focus', search:'Search…',
+    hintF:'Tab + F · rack focus', move:'Move to focus', onreq:'On request', filter:'Filter' };
+  const DE = { add:'In den Korb', added:'Hinzugefügt', toast:'Hinzugefügt', view:'Ansehen', bag:'Korb', all:'Alle', empty:'Ihr Korb ist leer.',
+    subtotal:'Zwischensumme', checkout:'Zur Kasse', close:'Schließen', collection:'Kollektion', cats:'Kategorien', viewAll:'Alles ansehen',
+    scroll:'Scrollen zum Scharfstellen', search:'Suchen…', hintF:'Tab + F · scharfstellen', move:'Bewegen zum Scharfstellen', onreq:'Auf Anfrage' };
+  const lang = (root.lang || 'nl').slice(0, 2).toLowerCase();
+  const T = { en: EN, de: DE }[lang];
+  const t = (k) => (T && T[k]) || NL[k] || k;
+  if (T) {
+    d.querySelectorAll('[data-i18n]').forEach((el) => { if (T[el.dataset.i18n]) el.textContent = T[el.dataset.i18n]; });
+    d.querySelectorAll('[data-i18n-ph]').forEach((el) => { const v = T[el.dataset.i18nPh]; if (v) { el.placeholder = v; el.setAttribute('aria-label', v); } });
+  }
+
+  // --- depth of field ---------------------------------------------------
+  const items = [...d.querySelectorAll('[data-focus]')].map((el) => {
+    const k = el.dataset.focus === 'soft' ? 0.4 : 1; // text: lighter curve so it stays legible
+    return { el, k, b: RM ? 0 : 6 * k, o: 0.55, s: RM ? 1 : 0.97, w: '', row: el.closest('[data-row],[data-card]') };
+  });
+  const sharpables = [...d.querySelectorAll('[data-row],[data-card]')];
+  let raf = 0, pull = null, point = null, pin = null, lastLock;
+  const planeLab = d.querySelector('.plane span'), planeBase = planeLab && planeLab.textContent;
+
+  function tick() {
+    raf = 0;
+    const vh = innerHeight, fy = vh * 0.42;
+    let P = null;
+    if (CAT) {
+      if (pin && pin.isConnected) { const r = pin.getBoundingClientRect(); P = { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }
+      else if (point) P = point;
+    }
+    const rects = items.map((it) => it.el.getBoundingClientRect()); // read everything first, then write
+    if (CAT && !P && HOVER) {
+      // no pointer yet: rest the focus on the first card in view, like a lens parked on the lead product
+      const i = items.findIndex((it, j) => it.row && it.k === 1 && rects[j].height && rects[j].bottom > 0 && rects[j].top < vh);
+      if (i > -1) { const r = rects[i]; P = { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }
+    }
+    const dz = P ? 60 : vh * 0.08; // depth of field has some depth: a thin band stays fully sharp
+    let moving = false, best = null, bestD = 1e9;
+    items.forEach((it, i) => {
+      const r = rects[i];
+      if (!r.width && !r.height) return; // hidden (filtered out)
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const dist = Math.max(0, (P ? Math.hypot(cx - P.x, cy - P.y) : Math.abs(cy - fy)) - dz);
+      let tb = Math.min(dist / 90, 6) * it.k, to = 1 - Math.min(dist / 1400, 0.45), ts = 1 - Math.min(dist / 4000, 0.03), f = 0.12;
+      if (pull) {
+        if (pull.row.contains(it.el)) { tb = 0; to = 1; ts = 1; f = 0.24; }
+        else { tb = 6 * it.k; to = 0.55; ts = 0.97; }
+      }
+      if (RM) { tb = 0; ts = 1; }
+      it.b += (tb - it.b) * f; it.o += (to - it.o) * f; it.s += (ts - it.s) * f;
+      if (Math.abs(tb - it.b) > 0.02 || Math.abs(to - it.o) > 0.002 || Math.abs(ts - it.s) > 0.0004) moving = true;
+      else { it.b = tb; it.o = to; it.s = ts; }
+      const b = it.b.toFixed(2), o = it.o.toFixed(3), s = it.s.toFixed(4), w = b + o + s;
+      if (w !== it.w) { it.w = w; const st = it.el.style; st.setProperty('--fb', b + 'px'); st.setProperty('--fo', o); st.setProperty('--fs', s); }
+      if (it.row && it.k === 1 && dist < bestD) { bestD = dist; best = it.row; }
+    });
+    const lock = pull ? pull.row : (bestD < 200 ? best : null);
+    sharpables.forEach((r) => r.toggleAttribute('data-sharp', r === lock));
+    if (planeLab && lock !== lastLock) { // lens readout: which frame sits on the focal plane
+      lastLock = lock;
+      const n = sharpables.filter((r) => r.offsetParent).length, i = lock ? sharpables.filter((r) => r.offsetParent).indexOf(lock) + 1 : 0;
+      planeLab.textContent = planeBase + (i ? ' · ' + String(i).padStart(2, '0') + ' / ' + String(n).padStart(2, '0') : ' · ∞');
+    }
+    if (moving || pull) raf = requestAnimationFrame(tick);
+  }
+  const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  addEventListener('scroll', kick, { passive: true });
+  addEventListener('resize', kick);
+
+  // rack-focus pull: scroll the row onto the focal plane, everything else falls out of focus
+  const bez = (x1, y1, x2, y2) => (x) => {
+    let u = x;
+    for (let i = 0; i < 8; i++) {
+      const e = 3 * (1 - u) * (1 - u) * u * x1 + 3 * (1 - u) * u * u * x2 + u * u * u - x;
+      if (Math.abs(e) < 1e-5) break;
+      const dx = 3 * (1 - u) * (1 - u) * x1 + 6 * (1 - u) * u * (x2 - x1) + 3 * u * u * (1 - x2);
+      if (dx) u = Math.min(1, Math.max(0, u - e / dx));
+    }
+    return 3 * (1 - u) * (1 - u) * u * y1 + 3 * (1 - u) * u * u * y2 + u * u * u;
+  };
+  const ease = bez(0.65, 0, 0.35, 1);
+  let anim = 0, hold = 0;
+  const stopPull = () => { cancelAnimationFrame(anim); clearTimeout(hold); if (pull) { pull = null; kick(); } };
+  function pullTo(row) {
+    stopPull();
+    const r = row.getBoundingClientRect(), max = root.scrollHeight - innerHeight;
+    const to = Math.max(0, Math.min(max, scrollY + r.top + r.height / 2 - innerHeight * 0.42));
+    const from = scrollY, t0 = performance.now(), dur = RM ? 0 : 900;
+    pull = { row }; kick();
+    const step = (now) => {
+      const p = dur ? Math.min((now - t0) / dur, 1) : 1;
+      scrollTo(0, from + (to - from) * ease(p));
+      if (p < 1) anim = requestAnimationFrame(step);
+      else hold = setTimeout(() => { pull = null; kick(); }, 320);
+    };
+    anim = requestAnimationFrame(step);
+  }
+  ['wheel', 'touchstart'].forEach((ev) => addEventListener(ev, () => { if (pull) stopPull(); }, { passive: true }));
+
+  d.addEventListener('click', (e) => {
+    const k = e.target.closest('[data-pull]');
+    if (!k) return;
+    const row = k.closest('[data-row]');
+    if (!row) return;
+    const h = k.getAttribute('href');
+    if (row.hasAttribute('data-sharp') && !pull && h && h !== '#') return; // already in focus: follow the link
+    e.preventDefault();
+    pullTo(row);
+  });
+  d.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeCart();
+    if ((e.key === 'f' || e.key === 'F') && !e.metaKey && !e.ctrlKey && !e.altKey && !/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) {
+      const row = d.activeElement && d.activeElement.closest && d.activeElement.closest('[data-row]');
+      if (row) { e.preventDefault(); pullTo(row); }
+    }
+  });
+
+  // catalog: the focal point follows the pointer, keyboard focus pins it to the focused card
+  if (CAT) {
+    const grid = d.querySelector('.grid');
+    if (grid) {
+      if (HOVER) {
+        grid.addEventListener('pointermove', (e) => { if (e.pointerType === 'touch') return; point = { x: e.clientX, y: e.clientY }; pin = null; kick(); });
+        grid.addEventListener('pointerleave', () => { point = null; kick(); });
+      }
+      grid.addEventListener('focusin', (e) => { const c = e.target.closest('[data-card]'); if (c) { pin = c; kick(); } });
+      grid.addEventListener('focusout', (e) => { if (!grid.contains(e.relatedTarget)) { pin = null; kick(); } });
+      // cards the shop script brings back rise into place
+      const cards = [...grid.querySelectorAll('[data-card]')];
+      let n = 0;
+      const mo = new MutationObserver((muts) => {
+        n = 0;
+        muts.forEach((m) => {
+          const c = m.target, vis = c.style.display !== 'none';
+          if (vis && c._hid && !RM) c.querySelector('.card__in').animate(
+            [{ opacity: 0, transform: 'translateY(28px)' }, { opacity: 1, transform: 'none' }],
+            { duration: 900, easing: 'cubic-bezier(.22,1,.36,1)', delay: Math.min(n++, 8) * 60, fill: 'backwards' });
+          c._hid = !vis;
+        });
+        kick();
+      });
+      cards.forEach((c) => { c._hid = c.style.display === 'none'; mo.observe(c, { attributes: true, attributeFilter: ['style'] }); });
+    }
+  }
+
+  // --- cart ---------------------------------------------------------------
+  const KEY = 'rack-focus:' + (d.body.dataset.brand || '');
+  let cart = [];
+  try { cart = JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {} };
+  const num = (s) => {
+    if (!s) return null;
+    let v = String(s).replace(/[^\d,.-]/g, '');
+    v = /,\d{1,2}$/.test(v) ? v.replace(/\./g, '').replace(',', '.') : v.replace(/,/g, '');
+    const x = parseFloat(v);
+    return isFinite(x) ? x : null;
+  };
+  const sym = () => { const p = cart.find((i) => i.price); return (p && (p.price.match(/[^\d\s.,-]+/) || [])[0]) || '€'; };
+  const el = (tag, cls, txt) => { const x = d.createElement(tag); if (cls) x.className = cls; if (txt != null) x.textContent = txt; return x; };
+  const list = d.querySelector('[data-cart-list]'), empty = d.querySelector('[data-cart-empty]'), total = d.querySelector('[data-cart-total]');
+
+  function render() {
+    const count = cart.reduce((a, i) => a + i.q, 0);
+    d.querySelectorAll('[data-cart-count]').forEach((c) => (c.textContent = count));
+    list.textContent = '';
+    cart.forEach((i, idx) => {
+      const li = el('li'), th = el('span', 'drawer__th'), mid = el('div');
+      if (i.img) { const im = el('img'); im.src = i.img; im.alt = ''; th.append(im); }
+      mid.append(el('div', 'drawer__nm', i.name));
+      const q = el('div', 'qty caps'), minus = el('button', '', '−'), plus = el('button', '', '+');
+      minus.type = plus.type = 'button';
+      minus.setAttribute('aria-label', '−'); plus.setAttribute('aria-label', '+');
+      minus.onclick = () => { i.q--; if (i.q <= 0) cart.splice(idx, 1); save(); render(); };
+      plus.onclick = () => { i.q++; save(); render(); };
+      q.append(minus, el('span', '', i.q), plus);
+      mid.append(q);
+      li.append(th, mid, el('span', 'caps', i.price || t('onreq')));
+      list.append(li);
+    });
+    empty.hidden = cart.length > 0;
+    const sum = cart.reduce((a, i) => a + (num(i.price) || 0) * i.q, 0);
+    total.textContent = sum ? sym() + ' ' + sum.toFixed(2).replace('.', ',') : '—';
+  }
+  const toast = d.querySelector('.toast'), toastName = d.querySelector('[data-toast-name]');
+  let tt = 0;
+  d.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-add]');
+    if (!b) return;
+    e.preventDefault();
+    const name = b.dataset.name, hit = cart.find((i) => i.name === name);
+    if (hit) hit.q++; else cart.push({ name, price: b.dataset.price || '', img: b.dataset.img || '', q: 1 });
+    save(); render();
+    d.querySelectorAll('.bag__n').forEach((n) => { n.classList.remove('bump'); void n.offsetWidth; n.classList.add('bump'); });
+    b.classList.add('is-added');
+    const lab = b.querySelector('[data-i18n]');
+    if (lab) lab.textContent = t('added');
+    setTimeout(() => { b.classList.remove('is-added'); if (lab) lab.textContent = t('add'); }, 1600);
+    toastName.textContent = name;
+    toast.classList.add('show');
+    clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), 2400);
+  });
+  const drawer = d.querySelector('.drawer');
+  function openCart() { root.classList.add('cart-open'); drawer.setAttribute('aria-hidden', 'false'); setTimeout(() => drawer.querySelector('[data-cart-close]').focus(), 50); }
+  function closeCart() { if (!root.classList.contains('cart-open')) return; root.classList.remove('cart-open'); drawer.setAttribute('aria-hidden', 'true'); }
+  d.querySelectorAll('[data-cart-open]').forEach((b) => b.addEventListener('click', openCart));
+  d.querySelectorAll('[data-cart-close]').forEach((b) => b.addEventListener('click', closeCart));
+  render();
+
+  // --- details --------------------------------------------------------------
+  if (!RM && HOVER) {
+    d.querySelectorAll('.btn').forEach((b) => {
+      b.addEventListener('pointermove', (e) => {
+        const r = b.getBoundingClientRect();
+        b.style.setProperty('--mx', ((e.clientX - r.left - r.width / 2) * 0.22).toFixed(1) + 'px');
+        b.style.setProperty('--my', ((e.clientY - r.top - r.height / 2) * 0.3).toFixed(1) + 'px');
+      });
+      b.addEventListener('pointerleave', () => { b.style.setProperty('--mx', '0px'); b.style.setProperty('--my', '0px'); });
+    });
+    // footer wordmark: letters fall out of focus away from the pointer
+    const fn = d.querySelector('.ft__name');
+    if (fn) {
+      const txt = fn.textContent.trim(), spans = [];
+      fn.textContent = '';
+      fn.append(el('span', 'sr', txt));
+      txt.split(/\s+/).forEach((word, wi) => {
+        if (wi) fn.append(' ');
+        const w = el('span', 'w'); w.setAttribute('aria-hidden', 'true');
+        [...word].forEach((ch) => { const s = el('span', '', ch); w.append(s); spans.push(s); });
+        fn.append(w);
+      });
+      fn.addEventListener('pointermove', (e) => {
+        spans.forEach((s) => {
+          const r = s.getBoundingClientRect();
+          const dd = Math.hypot(e.clientX - (r.left + r.width / 2), (e.clientY - (r.top + r.height / 2)) * 0.6);
+          s.style.filter = 'blur(' + Math.min(dd / 70, 5).toFixed(2) + 'px)';
+        });
+      });
+      fn.addEventListener('pointerleave', () => spans.forEach((s) => (s.style.filter = '')));
+      // words can't break, so shrink the wordmark until its longest word fits ("International" at 125% width)
+      const fit = () => {
+        fn.style.fontSize = '';
+        const max = fn.clientWidth, w = Math.max(...[...fn.querySelectorAll('.w')].map((x) => x.offsetWidth), 0);
+        if (w > max) fn.style.fontSize = (parseFloat(getComputedStyle(fn).fontSize) * max / w * 0.97).toFixed(1) + 'px';
+      };
+      fit(); addEventListener('resize', fit); if (d.fonts) d.fonts.ready.then(fit);
+    }
+  }
+
+  // film grain: a noise tile drawn at a random offset ~11 times a second
+  const cv = d.querySelector('.grain');
+  if (cv && cv.getContext) {
+    const ctx = cv.getContext('2d'), tile = d.createElement('canvas');
+    tile.width = tile.height = 128;
+    const tc = tile.getContext('2d'), img = tc.createImageData(128, 128);
+    for (let i = 0; i < img.data.length; i += 4) { const v = (Math.random() * 255) | 0; img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 255; }
+    tc.putImageData(img, 0, 0);
+    const pat = ctx.createPattern(tile, 'repeat');
+    const size = () => { cv.width = Math.ceil(innerWidth / 2); cv.height = Math.ceil(innerHeight / 2); last = 0; };
+    let last = 0;
+    const draw = (now) => {
+      if (now - last > 90) {
+        last = now;
+        ctx.setTransform(1, 0, 0, 1, (Math.random() * 128) | 0, (Math.random() * 128) | 0);
+        ctx.fillStyle = pat;
+        ctx.fillRect(-128, -128, cv.width + 256, cv.height + 256);
+      }
+      if (!RM) requestAnimationFrame(draw);
+    };
+    size(); addEventListener('resize', size);
+    requestAnimationFrame(draw);
+  }
+
+  root.classList.add('focus-ready');
+  kick();
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"catalog","lang":"en","count":"3 rooms","products":[{"name":"Comfort Superior Room","tag":"A little more luxury","category":"Comfort Superior"},{"name":"Comfort Room","tag":"Total relaxation","category":"Comfort"},{"name":"Comfort Mini Room","tag":"Ideal for shorter stays","category":"Comfort Mini"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

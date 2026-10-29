@@ -1,0 +1,83 @@
+{
+  "id": "rack-focus",
+  "name": "Rack Focus",
+  "sectors": [
+    "hospitality",
+    "luxury",
+    "lifestyle",
+    "food"
+  ],
+  "sample": "hotelnavarra",
+  "stress": "kartstoreinternational",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793301019073
+    },
+    {
+      "step": "Rendering",
+      "at": 1793301653790
+    },
+    {
+      "step": "Critique",
+      "at": 1793301667659
+    },
+    {
+      "step": "Final render",
+      "at": 1793301800739
+    },
+    {
+      "step": "Done",
+      "at": 1793301814404
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793300837847,
+  "startedAt": 1793301019073,
+  "finishedAt": 1793301814404,
+  "model": "opus",
+  "costUsd": 3.1280104000000004,
+  "meta": {
+    "id": "rack-focus",
+    "name": "Rack Focus",
+    "scheme": "dark",
+    "sectors": [
+      "hospitality",
+      "luxury",
+      "lifestyle",
+      "food"
+    ],
+    "mood": [
+      "cinematic",
+      "warm",
+      "hushed",
+      "editorial"
+    ],
+    "needsProductImages": true,
+    "notes": "Espresso ground stays fixed; primary fills the CTA buttons, cart count and a 16% tint on the CTA band, while accent (mixed toward ivory so any hue stays legible) drives the focus brackets, tags and focal-plane marks."
+  },
+  "score": {
+    "scoreBefore": 6.4,
+    "issues": [
+      "Stress brand: footer wordmark 'Kartstore International' in 125%-wide Kalnia with unbreakable words pushes the page wider than the viewport (horizontal overflow)",
+      "Depth of field too binary: the focal plane is a single line, so anything not exactly on it hits max blur; row text at half strength (3px) is unreadable, so whole sections look broken instead of cinematic",
+      "Catalog opens with every card blurred and card titles illegible until the pointer moves, so the grid reads as a loading glitch",
+      "Hero frame ticks ('NN — 3:2', 'f / 1.4') sit under the frame and collide with the heavy headline word that overlaps the frame bottom",
+      "Toast ('Added') is only shifted 160% down, so it peeks into captures and short viewports at rest",
+      "The focal plane mark is a static 'Focus' label: the signature has no readout that ties the lens metaphor to the content"
+    ],
+    "fixed": [
+      "Footer wordmark is fitted to its longest word (re-measured on resize and fonts.ready) and the footer clips horizontally as a safety net, which removes the stress overflow",
+      "Depth curve gets a real depth of field: a sharp band of ±8% vh around the plane (60px radially in the catalog), and text uses a lighter 0.4 curve (max ~2.4px) so it reads as soft focus and stays legible",
+      "Catalog rests focus on the first card in view before the pointer arrives (a lens parked on the lead product); pointer and keyboard pin still take over",
+      "Frame ticks moved inside the 3:2 frame's top corners as small frosted camera-HUD chips, and accent hairline focus marks were added at the frame's left and right edges on desktop",
+      "Toast is fully hidden (visibility + offset) until shown",
+      "Focal plane label is now a live lens readout ('Focus · 02 / 03', '∞' when nothing is locked) that updates as rows or cards come into focus"
+    ],
+    "scoreAfterEstimate": 7.4
+  },
+  "version": 1793301814404
+}
