@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 6.4,
+  "issues": [
+    "Hero deck: the cards behind scale around a pivot 120% below centre, so they hang ~60px under the top card and run under the Volgende/Terug/Bewaar controls (fully hidden in the Aiki-Budo stress render)",
+    "The empty shortlist tray ('Bewaard 0') is only translated just below the fold, so it shows up mid-page over the USP chips, the mobile deck and the catalog CTA",
+    "Gallery was a horizontal scroller: on desktop two photos with a dead right half, in the stress render a cut-off fourth photo, on mobile lazy images stayed blank as pale tinted boxes",
+    "Homepage 'Verder bladeren' with 3 products leaves an empty fourth column, which reads as a broken grid",
+    "The hero stage is a big white panel with a small card floating in it and nothing that teaches the left/right gesture before you touch it",
+    "Typography and section rhythm are solid but safe; categories and footer feel template-generic"
+  ],
+  "fixed": [
+    "Reserved room under the live deck (58px) and lifted the controls above the stack (z-index), so the peeking cards and buttons never collide; the end-of-deck panel was resized to match",
+    "The empty tray is now visibility:hidden (with a delayed visibility transition so the spring-in still plays) on home and catalog",
+    "Gallery rebuilt as a full-width mosaic grid (auto-fit, 21:9 when single, 2-up on mobile with an odd first photo spanning the row), with a hover zoom",
+    "Short product ranges (3–4 items) use auto-fit, so the row fills instead of leaving a gap",
+    "Added vertical gesture lanes either side of the deck on desktop ('Volgende' in muted grey on the left, 'Bewaar' in a brand tint on the right) so the stage explains the throw before you touch it; deck card widened to 340px"
+  ],
+  "scoreAfterEstimate": 7.3
+}

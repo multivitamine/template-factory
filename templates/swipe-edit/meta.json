@@ -1,0 +1,9 @@
+{
+  "id": "swipe-edit",
+  "name": "Swipe Edit",
+  "scheme": "light",
+  "sectors": ["retail", "lifestyle", "food", "kids"],
+  "mood": ["calm", "tactile", "friendly", "modern"],
+  "needsProductImages": true,
+  "notes": "Primary fills the add-to-cart buttons, the title-accent pill, active filters, the 'Bewaar' stamp, progress dots and counts (always with on-primary text); a 11–20% primary tint backs product photos; accent only tints tag text."
+}

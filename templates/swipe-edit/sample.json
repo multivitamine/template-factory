@@ -1,0 +1,226 @@
+{
+  "brand": {
+    "name": "BOHLT",
+    "tagline": "Aanzetten en wegrijden, zo simpel is het",
+    "logo": "https://www.bohlt.nl/dist/images/logos/logo-bohlt.svg",
+    "logoIsLight": true,
+    "initials": "BO",
+    "lang": "nl",
+    "colors": {
+      "primary": "#FEED36",
+      "accent": "#35352D"
+    }
+  },
+  "nav": [
+    {
+      "label": "Vouwfietsen",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Fatbikes",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Elektrische fietsen",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Accessoires",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Winkel vinden",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Electrify your style",
+    "title": "Take a ride,",
+    "titleAccent": "own the city",
+    "text": "Stoere, minimalistische e-bikes met opvallende details, gemaakt voor jong en oud. Aanzetten en wegrijden: meer hoef je niet te weten.",
+    "cta": "Bekijk onze producten",
+    "ctaHref": "catalog.html",
+    "cta2": "Gratis proefrit maken",
+    "image": "https://www.bohlt.nl/media/bohlt-electrify-your-style-homepage.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  },
+  "usps": [
+    {
+      "title": "Gratis proefrit",
+      "text": "Voel zelf hoe makkelijk elektrisch rijden is en vraag een gratis proefrit aan."
+    },
+    {
+      "title": "Dealers in meerdere landen",
+      "text": "Via ons dealernetwerk vind je BOHLT ook in jouw buurt, in Nederland, België, Duitsland en Frankrijk."
+    },
+    {
+      "title": "Geschikt voor jong en oud",
+      "text": "Toegankelijke, robuuste e-mobility met één gemeenschappelijk idee: eenvoud."
+    },
+    {
+      "title": "Gates Belt Drive, 100% legaal",
+      "text": "Onze elektrische fatbikes rijden met een Gates Belt Drive en voldoen aan de wet."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Elektrische fatbikes",
+      "image": "https://www.bohlt.nl/media/afbeelding_product_categorie_04.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1103",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Elektrische citybikes",
+      "image": "https://www.bohlt.nl/media/bohlt-city-bikes-3-copy.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1298",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Elektrische vouwfietsen",
+      "image": "https://www.bohlt.nl/media/afbeelding_product_categorie_vouwfiets.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1103",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Accessoires",
+      "image": "https://www.bohlt.nl/media/bohlt-accessoires-2-copy.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1296",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "BOHLT Fattwenty",
+      "price": "€ 1.499,00",
+      "oldPrice": null,
+      "image": "https://www.bohlt.nl/content/products/d9abac0cab16e12de10314861d949fd69f6aeb54.jpg?width=150&height=150&background=white",
+      "tag": "Fatbike",
+      "href": "https://www.bohlt.nl/product/bohlt-fattwenty",
+      "category": "Fatbikes"
+    },
+    {
+      "name": "BOHLT Rebel",
+      "price": "€ 1.899,00",
+      "oldPrice": null,
+      "image": "https://www.bohlt.nl/content/products/fdbff358fe50671702b6ff4f09fe397f718e2fa8.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "https://www.bohlt.nl/product/bohlt-rebel",
+      "category": "Citybikes"
+    },
+    {
+      "name": "BOHLT X200 OR",
+      "price": "€ 1.699,00",
+      "oldPrice": null,
+      "image": "https://www.bohlt.nl/content/products/092b39b1a1df91b0d990eda9c1041fdd9da73d8b.jpg?width=150&height=150&background=white",
+      "tag": "Vouwfiets",
+      "href": "https://www.bohlt.nl/product/bohlt-x200-or",
+      "category": "Vouwfietsen"
+    }
+  ],
+  "story": {
+    "eyebrow": "Over BOHLT",
+    "title": "Rijden van A naar B, weer écht leuk",
+    "text": "BOHLT ontwerpt e-mobility die tot de verbeelding spreekt: minimalistisch van vorm, met opvallende details en een stoere uitstraling. Van elektrische vouwfietsen en steps tot citybikes: wij zorgen dat iedereen snel en zonder gedoe op zijn bestemming komt.",
+    "image": "https://www.bohlt.nl/media/bohlt_main_image-_05.jpg?cropX=0&cropY=178&cropW=1275&cropH=519"
+  },
+  "stats": [
+    {
+      "value": "117",
+      "label": "Dealers"
+    },
+    {
+      "value": "7",
+      "label": "Ster-Dealers"
+    }
+  ],
+  "gallery": [
+    "https://www.bohlt.nl/media/ls3_7942-klein.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.bohlt.nl/media/bohlt-proefrit-aanvragen.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Ervaar het zelf",
+    "text": "Benieuwd hoe BOHLT rijdt? Vraag een gratis proefrit aan of zoek een dealer bij jou in de buurt.",
+    "label": "Proefrit aanvragen",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Vareseweg 44, 3047 AV Rotterdam",
+    "phone": "010 304 11 00",
+    "email": "info@bohlt.nl"
+  },
+  "footerLinks": [
+    {
+      "label": "Winkel vinden",
+      "href": "#"
+    },
+    {
+      "label": "Dealer worden",
+      "href": "#"
+    },
+    {
+      "label": "Levertijden",
+      "href": "#"
+    },
+    {
+      "label": "Retouren",
+      "href": "#"
+    },
+    {
+      "label": "Garantie",
+      "href": "#"
+    },
+    {
+      "label": "Klantenservice",
+      "href": "#"
+    },
+    {
+      "label": "Algemene voorwaarden",
+      "href": "#"
+    },
+    {
+      "label": "Privacy statement",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Elektrische fietsen en meer",
+    "intro": "Ontdek de BOHLT collectie: van stoere fatbikes tot compacte vouwfietsen, altijd klaar om weg te rijden.",
+    "filters": [
+      "Fatbikes",
+      "Citybikes",
+      "Vouwfietsen"
+    ],
+    "count": "3 producten"
+  },
+  "featured": [
+    {
+      "name": "BOHLT Fattwenty",
+      "price": "€ 1.499,00",
+      "oldPrice": null,
+      "image": "https://www.bohlt.nl/content/products/d9abac0cab16e12de10314861d949fd69f6aeb54.jpg?width=150&height=150&background=white",
+      "tag": "Fatbike",
+      "href": "https://www.bohlt.nl/product/bohlt-fattwenty",
+      "category": "Fatbikes"
+    },
+    {
+      "name": "BOHLT Rebel",
+      "price": "€ 1.899,00",
+      "oldPrice": null,
+      "image": "https://www.bohlt.nl/content/products/fdbff358fe50671702b6ff4f09fe397f718e2fa8.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "https://www.bohlt.nl/product/bohlt-rebel",
+      "category": "Citybikes"
+    },
+    {
+      "name": "BOHLT X200 OR",
+      "price": "€ 1.699,00",
+      "oldPrice": null,
+      "image": "https://www.bohlt.nl/content/products/092b39b1a1df91b0d990eda9c1041fdd9da73d8b.jpg?width=150&height=150&background=white",
+      "tag": "Vouwfiets",
+      "href": "https://www.bohlt.nl/product/bohlt-x200-or",
+      "category": "Vouwfietsen"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}
