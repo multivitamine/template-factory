@@ -1,0 +1,93 @@
+{
+  "id": "lead-light",
+  "name": "Lead Light",
+  "sectors": [
+    "hospitality",
+    "luxury",
+    "culture",
+    "food"
+  ],
+  "sample": "hotelnavarra",
+  "stress": "kartstoreinternational",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793286019819
+    },
+    {
+      "step": "Rendering",
+      "at": 1793287214514
+    },
+    {
+      "step": "Critique",
+      "at": 1793287228358
+    },
+    {
+      "step": "Final render",
+      "at": 1793287309662
+    },
+    {
+      "step": "Done",
+      "at": 1793287323019
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793286019817,
+  "startedAt": 1793286019819,
+  "finishedAt": 1793287323019,
+  "model": "opus",
+  "costUsd": 4.562295600000001,
+  "meta": {
+    "id": "lead-light",
+    "name": "Lead Light",
+    "scheme": "light",
+    "sectors": [
+      "hospitality",
+      "luxury",
+      "culture",
+      "food"
+    ],
+    "mood": [
+      "luminous",
+      "hushed",
+      "devotional",
+      "warm"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary and accent are clamped to glass lightness and mixed with amber, rose and sea-green to glaze a canvas Voronoi stained-glass window and rose nav; primary also fills CTAs, active filters and illuminated initials on pale limestone."
+  },
+  "score": {
+    "scoreBefore": 7.1,
+    "scores": {
+      "creativity": 8.5,
+      "typography": 7.5,
+      "layout": 6.5,
+      "polish": 6.5,
+      "brandRobustness": 8,
+      "mobile": 6,
+      "generic": 8
+    },
+    "issues": [
+      "Product panes in the window had tiny Voronoi cores, so each photo was a peephole squeezed behind its plaque and cramped against the sill",
+      "Plaques were pulled up 70% of their height, so on mobile they overlapped the 'Our rooms' band heading",
+      "The large clear hero pane read as flat beige paper instead of glass, which broke the stained-glass illusion where it mattered most",
+      "Categories used an auto-fit grid: 6 items wrapped as 5 + 1 orphan on the left, and on mobile became one very tall single column",
+      "Mobile virtues were four full-width arches, a long run of empty stone",
+      "Big dead gap between the category chapels and the story section",
+      "Catalog grid left-aligned 3 items and left an empty fourth column"
+    ],
+    "fixed": [
+      "Product seeds are now about 3x larger (25–32% of the pane on each axis, base weight 10), so photos read as glazed pictures and the spring swell has something to push",
+      "Plaques straddle the lower edge of the pane core (translate -50%) and are capped inside the pane, so they no longer collide with the band on mobile",
+      "Clear panes are quarry-glazed: a faint diamond came lattice drawn on the canvas, clipped to each clear cell",
+      "Categories are a centred flex row of chapels with staggered heights on desktop and two per row on phones; tightened the spacing after them",
+      "Mobile virtues pair up two by two with smaller roundels, which roughly halves the scroll length",
+      "Catalog lancets are centred, capped-width tracks"
+    ],
+    "scoreAfterEstimate": 7.8
+  },
+  "version": 1793287323019
+}

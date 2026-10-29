@@ -1,0 +1,3 @@
+{ "id": "lead-light", "name": "Lead Light", "scheme": "light", "sectors": ["hospitality","luxury","culture","food"],
+  "mood": ["luminous", "hushed", "devotional", "warm"], "needsProductImages": true,
+  "notes": "Primary and accent are clamped to glass lightness and mixed with amber, rose and sea-green to glaze a canvas Voronoi stained-glass window and rose nav; primary also fills CTAs, active filters and illuminated initials on pale limestone." }
