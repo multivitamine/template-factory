@@ -1,0 +1,3 @@
+{ "id": "tumble-tags", "name": "Tumble Tags", "scheme": "light", "sectors": ["kids","sports","retail","lifestyle"],
+  "mood": ["playful", "chunky", "warm", "tactile"], "needsProductImages": true,
+  "notes": "Primary and accent become oklch pastel tints for tags, pads and shapes on an off-white ground; the full primary is kept for buttons, the + add button and the active filter tag." }

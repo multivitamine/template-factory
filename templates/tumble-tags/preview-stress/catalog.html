@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Onze droogijsproducten · Droogijs365</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,300..700&family=Livvic:wght@400;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm');</script>
+<style>
+:root{
+  --c-bg:#FFFCF6;--c-surface:#FFF3E2;--c-text:#231B15;--c-muted:#73675D;--c-line:#ECDFCD;
+  --c-primary:#FF5B3A;--c-on-primary:#ffffff;--c-accent:#FFB938;
+  --c-card:#ffffff;
+  /* Cheerful tints: any brand colour becomes a pastel family, full colour stays on buttons */
+  --p1:color-mix(in oklch,var(--c-primary) 11%,var(--c-bg));
+  --p2:color-mix(in oklch,var(--c-primary) 24%,var(--c-bg));
+  --p3:color-mix(in oklch,var(--c-primary) 36%,var(--c-bg));
+  --a1:color-mix(in oklch,var(--c-accent) 20%,var(--c-bg));
+  --a2:color-mix(in oklch,var(--c-accent) 38%,var(--c-bg));
+  --pa:color-mix(in oklch,color-mix(in oklch,var(--c-primary) 50%,var(--c-accent)) 18%,var(--c-bg));
+  --ink-soft:color-mix(in oklch,var(--c-primary) 30%,var(--c-text));
+  --r:28px;--rl:40px;--pill:999px;
+  --ease:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.56,.64,1);
+  --f-d:'Fredoka',ui-rounded,'Trebuchet MS',sans-serif;--f-b:'Livvic','Trebuchet MS',sans-serif;
+  --pad:clamp(16px,3.2vw,44px);--max:1400px;
+  --sh:0 1px 0 rgb(255 255 255/.6) inset,0 -3px 0 rgb(0 0 0/.07) inset,0 10px 22px -14px rgb(60 30 0/.45);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
+.rm{scroll-behavior:auto}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 15px/1.6 var(--f-b);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3,p,figure,blockquote,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+.d{font-family:var(--f-d);font-stretch:125%;font-variation-settings:"wdth" 125}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+:focus-visible{outline:3px solid var(--c-text);outline-offset:3px;border-radius:12px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border-radius:var(--pill);background:var(--a1);font:600 13px/1.2 var(--f-b);letter-spacing:.02em}
+.eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c-primary);box-shadow:0 0 0 3px var(--c-bg)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;border-radius:var(--pill);border:0;background:var(--c-primary);color:var(--c-on-primary);font:600 17px/1.1 var(--f-d);font-stretch:125%;font-variation-settings:"wdth" 125;text-decoration:none;cursor:pointer;box-shadow:inset 0 -4px 0 rgb(0 0 0/.2),0 14px 26px -14px color-mix(in oklch,var(--c-primary) 85%,transparent);transition:transform .55s var(--spring),box-shadow .3s var(--ease)}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .45s var(--spring)}
+.btn:hover svg{transform:translateX(4px) rotate(-8deg)}
+.btn:active{transform:scale(.96)}
+
+/* Header */
+.hd{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--c-bg) 84%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4)}
+.hd__in{display:flex;align-items:center;gap:20px;min-height:76px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;flex:none;max-width:46%}
+.logo{max-height:38px;max-width:170px;width:auto;object-fit:contain}
+.logo.is-light{filter:brightness(0)}
+.brand__mark{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--p2);font:700 15px/1 var(--f-d);flex:none}
+.brand__name{font-weight:700;font-size:20px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;gap:4px;margin-inline:auto;padding:5px;border-radius:var(--pill);background:var(--c-surface)}
+.nav a{padding:10px 16px;border-radius:var(--pill);text-decoration:none;font:600 14px/1 var(--f-b);white-space:nowrap;transition:background .3s var(--ease),transform .45s var(--spring)}
+.nav a:hover{background:var(--c-card);transform:rotate(-2.5deg) translateY(-1px)}
+.hd__act{display:flex;align-items:center;gap:8px;margin-left:auto}
+.nav+.hd__act{margin-left:0}
+.cartbtn{position:relative;display:grid;place-items:center;width:50px;height:50px;border-radius:50%;background:var(--c-surface);text-decoration:none;transition:transform .45s var(--spring)}
+.cartbtn:hover{transform:rotate(-8deg) scale(1.05)}
+.cartbtn svg{width:22px;height:22px}
+.cartbtn__n{position:absolute;top:-2px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:var(--pill);background:var(--c-primary);color:var(--c-on-primary);font:700 12px/22px var(--f-d);text-align:center;box-shadow:0 0 0 3px var(--c-bg);transform:scale(0);transition:transform .45s var(--spring)}
+.cartbtn.has .cartbtn__n{transform:scale(1)}
+.menu{display:none;position:relative}
+.menu summary{list-style:none;display:grid;place-content:center;gap:5px;width:50px;height:50px;border-radius:50%;background:var(--c-text);cursor:pointer}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary i{display:block;width:18px;height:2px;border-radius:2px;background:var(--c-bg);transition:transform .4s var(--spring)}
+.menu[open] summary i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu[open] summary i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.menu__panel{position:absolute;right:0;top:60px;display:flex;flex-direction:column;gap:4px;min-width:220px;padding:10px;border-radius:24px;background:var(--c-card);box-shadow:0 30px 60px -30px rgb(40 20 0/.5)}
+.menu__panel a{padding:12px 16px;border-radius:16px;text-decoration:none;font:600 16px/1.2 var(--f-d);font-stretch:125%;font-variation-settings:"wdth" 125}
+.menu__panel a:nth-child(3n+1){background:var(--p1)}.menu__panel a:nth-child(3n+2){background:var(--a1)}.menu__panel a:nth-child(3n){background:var(--pa)}
+
+/* Physics stages (catalog tray, footer) */
+.stage{position:relative;border-radius:var(--rl);overflow:hidden;isolation:isolate;background:var(--p1)}
+.pile{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;align-content:flex-end;gap:10px;min-height:inherit;padding:24px}
+.grp{display:contents}
+[data-tumble]:not(.phys) .shape{display:none}
+.js:not(.rm) [data-tumble]:not(.phys) .pile{opacity:0;animation:tt-show .4s 2.6s forwards}
+@keyframes tt-show{to{opacity:1}}
+.phys .pile{position:absolute;inset:0;padding:0}
+.phys [data-body]{position:absolute;left:0;top:0;margin:0;will-change:transform;touch-action:none;-webkit-user-select:none;user-select:none;cursor:grab;-webkit-tap-highlight-color:transparent}
+.phys [data-body].held{cursor:grabbing;z-index:5;box-shadow:0 26px 40px -18px rgb(50 20 0/.5)}
+.tag{display:inline-block;height:54px;padding:0 26px;border-radius:var(--pill);border:0;background:var(--p2);color:var(--c-text);font:600 18px/54px var(--f-d);font-stretch:125%;font-variation-settings:"wdth" 125;letter-spacing:-.01em;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(300px,calc(100% - 20px));box-shadow:var(--sh);cursor:pointer;transition:background-color .3s var(--ease),color .3s var(--ease),box-shadow .3s var(--ease)}
+.tag:hover{background-color:var(--p3)}
+.grp--cat .tag:nth-child(4n+2){background:var(--a2)}
+.grp--cat .tag:nth-child(4n+3){background:var(--c-card)}
+.grp--cat .tag:nth-child(4n+4){background:var(--pa)}
+.shape{display:block;border-radius:var(--pill);box-shadow:var(--sh)}
+.sh1{width:96px;height:96px;background:var(--a2)}
+.sh3{width:58px;height:58px;background:var(--c-card)}
+.sh4{width:124px;height:48px;background:var(--pa)}
+
+/* Catalog head */
+.chd{padding-top:clamp(16px,3vw,44px);padding-bottom:clamp(28px,4vw,56px)}
+.chd__top{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:24px 56px;align-items:end}
+.chd__title{margin-top:18px;font-weight:700;font-size:clamp(38px,6vw,96px);line-height:.95;letter-spacing:-.035em;text-wrap:balance;overflow-wrap:break-word}
+.chd__intro{margin-top:18px;max-width:56ch;color:var(--c-muted);font-size:clamp(15px,1.2vw,17px)}
+.chd__tools{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.count{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:var(--pill);background:var(--a1);font:600 15px/1 var(--f-d);font-stretch:125%;font-variation-settings:"wdth" 125}
+.count:empty{display:none}
+.search{display:flex;align-items:center;gap:10px;width:100%;max-width:440px;height:58px;padding:0 20px;border-radius:var(--pill);background:var(--c-card);box-shadow:0 0 0 2px var(--c-line);transition:box-shadow .3s var(--ease)}
+.search:focus-within{box-shadow:0 0 0 3px var(--c-primary)}
+.search svg{width:20px;height:20px;flex:none;color:var(--c-muted)}
+.search input{flex:1;min-width:0;height:100%;border:0;background:none;font:600 16px var(--f-b);color:var(--c-text);outline:none}
+.search input::placeholder{color:var(--c-muted);font-weight:400}
+
+/* Filter tray + bowl */
+.tray .tag{height:62px;line-height:62px;padding:0 30px;font-size:20px}
+.tray{margin-top:clamp(22px,3vw,36px);min-height:clamp(220px,19vw,260px);background:radial-gradient(circle at 3% 0%,var(--a1) 0 80px,transparent 81px),var(--p1)}
+.tray .tag{max-width:min(260px,54%)}
+.tray .pile .tag:nth-child(4n+2){background:var(--a2)}
+.tray .pile .tag:nth-child(4n+3){background:var(--c-card)}
+.tray .pile .tag:nth-child(4n+4){background:var(--pa)}
+.tray .pile .tag[aria-pressed="true"]{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 -3px 0 rgb(0 0 0/.2),0 12px 24px -12px color-mix(in oklch,var(--c-primary) 80%,transparent)}
+.bowl{display:none}
+.phys .bowl{display:grid;place-items:center;position:absolute;z-index:0;right:0;bottom:0;width:min(36%,320px);height:62%;border:2px dashed color-mix(in oklch,var(--c-primary) 45%,var(--c-text));border-right:0;border-bottom:0;border-radius:46px 0 0 0;background:color-mix(in srgb,var(--c-bg) 62%,transparent);transition:background-color .5s var(--ease),border-color .5s var(--ease)}
+.phys .bowl::before{content:"";position:absolute;left:-9px;bottom:0;width:14px;height:60%;max-height:64px;border-radius:14px 14px 0 0;background:var(--c-text)}
+/* The bowl reads as a target: tinted basin with a chunky icon disc that breathes */
+.phys .bowl{background:radial-gradient(ellipse 80% 70% at 60% 100%,var(--a2),transparent 70%),color-mix(in srgb,var(--c-bg) 70%,transparent);border-width:3px}
+.bowl__ic{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:84px;height:84px;border-radius:50%;background:var(--c-card);box-shadow:var(--sh);color:color-mix(in oklch,var(--c-primary) 55%,var(--c-text));transition:opacity .4s var(--ease),scale .5s var(--spring);animation:tt-breathe 2.4s var(--ease) infinite}
+@keyframes tt-breathe{0%,100%{scale:1}50%{scale:1.08}}
+.bowl__ic svg{width:30px;height:30px}
+.bowl__ic svg:last-child{width:20px;height:20px;animation:tt-bob 1.6s var(--ease) infinite}
+@keyframes tt-bob{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
+.has-filter .bowl{border-style:solid;background:var(--p2)}
+.has-filter .bowl__ic{opacity:0}
+.bowl__x{position:absolute;z-index:3;top:14px;right:14px;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:var(--c-text);color:var(--c-bg);cursor:pointer;transition:transform .45s var(--spring)}
+.bowl__x:hover{transform:rotate(90deg)}
+.bowl__x[hidden]{display:none}
+.bowl__x svg{width:18px;height:18px}
+
+/* Products */
+.clist{padding-bottom:clamp(64px,9vw,140px)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.5vw,22px)}
+.card{position:relative;display:flex;flex-direction:column;padding:10px;border-radius:var(--r);background:var(--c-card);box-shadow:0 0 0 1px var(--c-line);transition:transform .6s var(--spring),box-shadow .4s var(--ease)}
+.card:hover{transform:translateY(-6px) rotate(-.7deg);box-shadow:0 0 0 1px var(--c-line),0 30px 50px -30px color-mix(in oklch,var(--c-primary) 70%,rgb(40 20 0))}
+.card:nth-child(even):hover{transform:translateY(-6px) rotate(.7deg)}
+.card__pad{position:relative;aspect-ratio:1;border-radius:20px;overflow:hidden;background:var(--p1)}
+.card:nth-child(4n+2) .card__pad{background:var(--a1)}
+.card:nth-child(4n+3) .card__pad{background:var(--pa)}
+.card:nth-child(4n+4) .card__pad{background:var(--p2)}
+.card__pad::before{content:"";position:absolute;width:62%;aspect-ratio:1;left:50%;top:54%;translate:-50% -50%;border-radius:50%;background:var(--c-card);opacity:.55;transition:scale .7s var(--spring)}
+.card:hover .card__pad::before{scale:1.12}
+.card__pad img{position:absolute;inset:0;margin:auto;width:auto;height:auto;max-width:84%;max-height:84%;border-radius:18px;mix-blend-mode:multiply;transition:transform .7s var(--spring)}
+.card:hover .card__pad img{transform:scale(1.05) rotate(-1.5deg)}
+.card__fb{position:absolute;inset:0;display:grid;place-items:center;font-weight:700;font-size:clamp(30px,3.6vw,52px);color:var(--ink-soft)}
+.card__tag{position:absolute;z-index:1;left:10px;top:10px;max-width:calc(100% - 20px);padding:7px 12px;border-radius:var(--pill);background:var(--c-bg);font:600 12px/1 var(--f-d);font-stretch:125%;font-variation-settings:"wdth" 125;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card__body{display:flex;flex-direction:column;gap:12px;flex:1;padding:14px 6px 4px}
+.card__name{font:600 15px/1.35 var(--f-b);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card__name a{text-decoration:none}
+.card__name a::after{content:"";position:absolute;inset:0;border-radius:var(--r)}
+.card__row{display:flex;align-items:center;gap:8px;margin-top:auto;min-height:46px}
+.card__price{font-weight:700;font-size:clamp(18px,1.6vw,23px);letter-spacing:-.02em;line-height:1}
+.card__row s{color:var(--c-muted);font-size:13px}
+.add{position:relative;z-index:2;display:grid;place-items:center;flex:none;width:46px;height:46px;margin-left:auto;border:0;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);cursor:pointer;box-shadow:inset 0 -3px 0 rgb(0 0 0/.2);transition:transform .5s var(--spring)}
+.add svg{width:20px;height:20px}
+.add:hover{transform:rotate(90deg) scale(1.08)}
+.add:active{transform:scale(.88)}
+.add .ck,.add.ok .pl{display:none}.add.ok .ck{display:block}
+.add.ok{transform:none}
+/* Small ranges (1–3 products) get bigger, landscape cards instead of a half-empty 4-column row */
+.grid:not(:has(>.card:nth-child(4))){grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid:not(:has(>.card:nth-child(3))){grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid:not(:has(>.card:nth-child(3)))>.card{flex-direction:row;gap:clamp(14px,2vw,28px);padding:12px}
+.grid:not(:has(>.card:nth-child(3)))>.card .card__pad{flex:0 0 54%;aspect-ratio:4/5}
+.grid:not(:has(>.card:nth-child(3)))>.card .card__body{padding:clamp(12px,2vw,26px) 10px 10px 0;gap:16px}
+.grid:not(:has(>.card:nth-child(3)))>.card .card__name{font:700 clamp(22px,2.2vw,34px)/1.05 var(--f-d);font-stretch:125%;font-variation-settings:"wdth" 125;letter-spacing:-.02em}
+.grid:not(:has(>.card:nth-child(3)))>.card .add{width:58px;height:58px}
+.shop-empty{grid-column:1/-1;font:600 18px/1.3 var(--f-d)!important}
+
+/* Footer */
+.ft{margin-top:clamp(10px,2vw,30px);padding-top:clamp(44px,6vw,80px);border-radius:48px 48px 0 0;background:var(--c-text);color:var(--c-bg)}
+.ft__top{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:32px;padding-bottom:clamp(30px,4vw,56px)}
+.ft .logo{filter:brightness(0) invert(1)}
+.ft__brand{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.ft__brand p{max-width:34ch;color:color-mix(in srgb,var(--c-bg) 70%,transparent)}
+.ft h4{margin:0 0 14px;font:600 13px/1 var(--f-b);letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--c-bg) 55%,transparent)}
+.ft__col a,.ft__col span{display:block;width:fit-content;padding:4px 0;text-decoration:none;color:color-mix(in srgb,var(--c-bg) 88%,transparent)}
+.ft__col a:hover{color:var(--c-bg);text-decoration:underline;text-underline-offset:4px}
+.stage--ft{min-height:clamp(250px,26vw,380px);background:color-mix(in oklch,var(--c-text) 86%,var(--c-primary))}
+.stage--ft .tag{background:var(--p2)}
+.stage--ft .grp--cat .tag:nth-child(4n+2){background:var(--a2)}
+.stage--ft .grp--cat .tag:nth-child(4n+3){background:var(--c-bg)}
+.stage--ft .grp--cat .tag:nth-child(4n+4){background:var(--pa)}
+.ft__word{position:absolute;z-index:0;left:0;right:0;top:50%;translate:0 -50%;padding-inline:20px;text-align:center;font-weight:700;font-size:clamp(48px,11vw,180px);line-height:.9;letter-spacing:-.04em;color:color-mix(in oklch,var(--c-primary) 45%,var(--c-text));pointer-events:none;overflow-wrap:anywhere}
+.ft__base{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:22px 80px;font-size:13px;color:color-mix(in srgb,var(--c-bg) 55%,transparent)}
+
+/* Badge, toast, flyer */
+.badge{position:fixed;z-index:60;left:14px;bottom:14px;padding:8px 13px;border-radius:var(--pill);background:var(--c-card);color:var(--c-text);font:600 11px/1 var(--f-b);letter-spacing:.02em;box-shadow:0 0 0 1px var(--c-line),0 10px 24px -14px rgb(40 20 0/.4)}
+.toast{position:fixed;z-index:70;right:16px;bottom:16px;display:flex;align-items:center;gap:12px;max-width:min(360px,calc(100vw - 32px));padding:10px 20px 10px 10px;border-radius:var(--pill);background:var(--c-text);color:var(--c-bg);font:600 14px/1.2 var(--f-b);opacity:0;visibility:hidden;transform:translateY(24px) scale(.8) rotate(4deg);transition:transform .6s var(--spring),opacity .3s var(--ease),visibility 0s .6s}
+.toast.on{opacity:1;visibility:visible;transform:none;transition:transform .6s var(--spring),opacity .2s var(--ease)}
+.toast__ic{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary)}
+.toast__ic svg{width:18px;height:18px}
+.toast b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.flyer{position:fixed;z-index:80;width:18px;height:18px;pointer-events:none}
+.flyer i{display:block;width:100%;height:100%;border-radius:50%;background:var(--c-primary);box-shadow:0 0 0 3px var(--c-bg)}
+.mag{transition:transform .5s var(--spring)}
+
+@media (max-width:1100px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .nav a{padding:10px 12px}
+}
+@media (max-width:900px){
+  .nav{display:none}.menu{display:block}
+  .chd__top{grid-template-columns:1fr}
+  .ft__top{grid-template-columns:1fr 1fr}
+  .ft__brand{grid-column:1/-1}
+}
+@media (max-width:760px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card{padding:8px}
+  .card__body{padding:12px 4px 2px}
+  .card__name{font-size:14px}
+  .add{width:40px;height:40px}
+  .tag{height:48px;line-height:48px;padding:0 20px;font-size:16px}
+  .phys .bowl{width:40%;height:58%;border-radius:34px 0 0 0}
+  .bowl__ic{width:64px;height:64px}
+  .tray .tag{height:50px;line-height:50px;padding:0 22px;font-size:17px}
+  .grid:not(:has(>.card:nth-child(4))){grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid:not(:has(>.card:nth-child(3)))>.card{flex-direction:column;padding:8px}
+  .grid:not(:has(>.card:nth-child(3)))>.card .card__pad{flex:none;aspect-ratio:1}
+  .grid:not(:has(>.card:nth-child(3)))>.card .card__body{padding:12px 4px 2px}
+  .grid:not(:has(>.card:nth-child(3)))>.card .card__name{font-size:18px}
+  .grid:not(:has(>.card:nth-child(3)))>.card .add{width:44px;height:44px}
+}
+@media (max-width:480px){
+  .ft__top{grid-template-columns:1fr}
+  .badge{font-size:10px}
+  .hd__in{min-height:68px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+<style id="brand-tokens">:root{--c-primary:#113BFB;--c-on-primary:#ffffff;--c-accent:#00051A}</style></head>
+<body>
+<header class="hd">
+  <div class="hd__in wrap">
+    <a class="brand" href="index.html" aria-label="Droogijs365">
+      <img class="logo is-light" src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-droogijs365.svg" alt="Droogijs365">
+      
+    </a>
+    <nav class="nav" aria-label="Menu"><a href="#">Over ons</a><a href="#">Toepassingen</a><a href="catalog.html">Producten</a><a href="#">Containers</a><a href="#">Contact</a></nav>
+    <div class="hd__act">
+      <a class="cartbtn" href="catalog.html" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="cartbtn__n" data-cart-count>0</span></a>
+      <details class="menu"><summary aria-label="Menu"><i></i><i></i></summary><div class="menu__panel"><a href="#">Over ons</a><a href="#">Toepassingen</a><a href="catalog.html">Producten</a><a href="#">Containers</a><a href="#">Contact</a></div></details>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="chd wrap">
+  <div class="chd__top">
+    <div>
+      <p class="eyebrow">Droogijs365</p>
+      <h1 class="chd__title d">Onze droogijsproducten</h1>
+      <p class="chd__intro">Pellets, schijven en blokken: voor elke toepassing hebben wij de juiste oplossing.</p>
+    </div>
+    <div class="chd__tools">
+      <span class="count">6 producten</span>
+      <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input type="search" data-shop-search aria-label="Search" autocomplete="off"></label>
+    </div>
+  </div>
+  <div class="stage tray" data-tumble data-tray>
+    <div class="bowl" aria-hidden="true"><span class="bowl__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6 7.5V19l-4-2v-4.5z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v13M6 12l6 6 6-6"/></svg></span></div>
+    <button class="bowl__x" type="button" aria-label="×" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="pile"><button data-shop-filter="Pellets" class="tag" type="button" data-body>Pellets</button><button data-shop-filter="Schijven" class="tag" type="button" data-body>Schijven</button><button data-shop-filter="Blokken" class="tag" type="button" data-body>Blokken</button></div>
+  </div>
+</section>
+
+<section class="clist wrap">
+  <div class="grid cgrid"><article data-shop-item="0" class="card">
+      <div class="card__pad"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="Droogijs pellets 3 mm" loading="lazy"><span class="card__tag">Pellets</span></div>
+      <div class="card__body">
+        <h3 class="card__name"><a href="#">Droogijs pellets 3 mm</a></h3>
+        <div class="card__row"><button class="add" type="button" data-add="Droogijs pellets 3 mm" aria-label="+ Droogijs pellets 3 mm"><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></div>
+      </div>
+    </article><article data-shop-item="1" class="card">
+      <div class="card__pad"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="Droogijs pellets 10 mm" loading="lazy"><span class="card__tag">Pellets</span></div>
+      <div class="card__body">
+        <h3 class="card__name"><a href="#">Droogijs pellets 10 mm</a></h3>
+        <div class="card__row"><button class="add" type="button" data-add="Droogijs pellets 10 mm" aria-label="+ Droogijs pellets 10 mm"><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></div>
+      </div>
+    </article><article data-shop-item="2" class="card">
+      <div class="card__pad"><img src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;media&#x2F;droogijs-container-hr200.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;697" alt="Droogijs pellets 16 mm" loading="lazy"><span class="card__tag">Pellets</span></div>
+      <div class="card__body">
+        <h3 class="card__name"><a href="#">Droogijs pellets 16 mm</a></h3>
+        <div class="card__row"><button class="add" type="button" data-add="Droogijs pellets 16 mm" aria-label="+ Droogijs pellets 16 mm"><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></div>
+      </div>
+    </article><article data-shop-item="3" class="card">
+      <div class="card__pad"><span class="card__fb d" aria-hidden="true">D3</span><span class="card__tag">Schijven</span></div>
+      <div class="card__body">
+        <h3 class="card__name"><a href="#">Droogijsschijven 500 gram</a></h3>
+        <div class="card__row"><button class="add" type="button" data-add="Droogijsschijven 500 gram" aria-label="+ Droogijsschijven 500 gram"><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></div>
+      </div>
+    </article><article data-shop-item="4" class="card">
+      <div class="card__pad"><span class="card__fb d" aria-hidden="true">D3</span><span class="card__tag">Schijven</span></div>
+      <div class="card__body">
+        <h3 class="card__name"><a href="#">Droogijsschijven 700 gram</a></h3>
+        <div class="card__row"><button class="add" type="button" data-add="Droogijsschijven 700 gram" aria-label="+ Droogijsschijven 700 gram"><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></div>
+      </div>
+    </article><article data-shop-item="5" class="card">
+      <div class="card__pad"><span class="card__fb d" aria-hidden="true">D3</span><span class="card__tag">Blokken</span></div>
+      <div class="card__body">
+        <h3 class="card__name"><a href="#">Droogijsblok 5 kilo</a></h3>
+        <div class="card__row"><button class="add" type="button" data-add="Droogijsblok 5 kilo" aria-label="+ Droogijsblok 5 kilo"><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></div>
+      </div>
+    </article></div>
+</section>
+</main>
+
+<footer class="ft">
+  <div class="wrap ft__top">
+    <div class="ft__brand">
+      <img class="logo" src="https:&#x2F;&#x2F;www.droogijs365.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-droogijs365.svg" alt="Droogijs365" loading="lazy">
+      
+      <p>Droogijs op maat, altijd bereikbaar</p>
+    </div>
+    <div class="ft__col"><h4>Menu</h4><a href="#">Over ons</a><a href="#">Toepassingen</a><a href="catalog.html">Producten</a><a href="#">Containers</a><a href="#">Contact</a></div>
+    <div class="ft__col"><h4>Contact</h4><span>Droogijs365 B.V., Tokyostraat 6, 1175 RB Lijnden</span><a href="tel:0294 300 010">0294 300 010</a><a href="mailto:info@droogijs365.nl">info@droogijs365.nl</a><a href="index.html">Droogijs365</a></div>
+  </div>
+  <div class="wrap">
+    <div class="stage stage--ft" data-tumble>
+      <p class="ft__word d" aria-hidden="true">Droogijs365</p>
+      <div class="pile">
+        <div class="grp grp--cat"><a class="tag" data-body href="#" draggable="false">Over ons</a><a class="tag" data-body href="#" draggable="false">Toepassingen</a><a class="tag" data-body href="catalog.html" draggable="false">Producten</a><a class="tag" data-body href="#" draggable="false">Wat is droogijs?</a><a class="tag" data-body href="#" draggable="false">Duurzaamheid</a><a class="tag" data-body href="#" draggable="false">Algemene voorwaarden</a><a class="tag" data-body href="#" draggable="false">Privacyverklaring</a><a class="tag" data-body href="#" draggable="false">Cookieverklaring</a></div>
+        <span class="shape sh1" data-body aria-hidden="true"></span>
+        <span class="shape sh3" data-body aria-hidden="true"></span>
+        <span class="shape sh4" data-body aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap ft__base"><span>© 2026 Droogijs365</span><span>Droogijs op maat, altijd bereikbaar</span></div>
+</footer>
+
+<div class="badge">Demo redesign · Tumble Tags</div>
+<div class="toast" role="status" aria-live="polite"><span class="toast__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b></b></div>
+
+<script>
+(() => {
+const R = document.documentElement, RM = R.classList.contains('rm');
+const G = 2400, E = .35, MU = .6, DT = 1 / 120, ITER = 6, K = 900, C = 40;
+const clamp = (v, a, b) => v < a ? a : v > b ? b : v, c01 = (v) => clamp(v, 0, 1);
+// A drag that ends on a link/button must not also click it; programmatic clicks (bowl) pass through.
+let progClick = false, suppressUntil = 0;
+addEventListener('click', (e) => {
+  if (!progClick && performance.now() < suppressUntil && e.target.closest && e.target.closest('[data-body]')) { e.preventDefault(); e.stopImmediatePropagation(); }
+}, true);
+addEventListener('dragstart', (e) => { if (e.target.closest && e.target.closest('.phys [data-body]')) e.preventDefault(); });
+const click = (el) => { progClick = true; el.click(); progClick = false; };
+
+// Throwable capsule physics: fixed 120Hz steps, sequential impulses + position correction.
+function tumble(el, o = {}) {
+  el.classList.add('phys');
+  const nodes = [...el.querySelectorAll('[data-body]')].filter((n) => n.getClientRects().length);
+  const bodies = nodes.map((node, i) => {
+    const bw = node.offsetWidth, bh = node.offsetHeight, r = bh / 2, hl = Math.max(0, (bw - bh) / 2);
+    const m = (4 * hl * r + Math.PI * r * r) / 1000;
+    node.style.visibility = 'hidden';
+    return { node, bw, bh, r, hl, im: 1 / m, iI: 12 / (m * (bw * bw + bh * bh)), x: 0, y: 0, a: 0, vx: 0, vy: 0, av: 0, spawn: i * .06 + (o.delay || 0), live: false };
+  });
+  let W = 0, H = 0, statics = [], lastW = -1;
+  function fit() {
+    el.style.minHeight = '';
+    const w = el.clientWidth * (o.usable ? o.usable() : 1);
+    const need = bodies.reduce((s, b) => s + b.bw * b.bh, 0) / (w * .42) + Math.max(0, ...bodies.map((b) => b.bh)) * 1.4;
+    if (need > el.clientHeight) el.style.minHeight = Math.ceil(need) + 'px';
+    W = el.clientWidth; H = el.clientHeight;
+    statics = o.statics ? o.statics(W, H) : [];
+  }
+  fit(); lastW = W;
+  const place = (b) => {
+    const span = b.hl + b.r, lo = span + 6, hi = Math.max(lo, (o.maxX ? o.maxX() : W) - span - 6);
+    b.x = lo + Math.random() * (hi - lo); b.y = -span - 20 - Math.random() * 50;
+    b.a = (Math.random() - .5) * .9; b.vx = (Math.random() - .5) * 160; b.vy = 180; b.av = (Math.random() - .5) * 4;
+  };
+  const ends = (b) => { const c = Math.cos(b.a) * b.hl, s = Math.sin(b.a) * b.hl; return [b.x - c, b.y - s, b.x + c, b.y + s]; };
+  const push = (A, B, jx, jy, rax, ray, rbx, rby) => {
+    if (A) { A.vx -= jx * A.im; A.vy -= jy * A.im; A.av -= (rax * jy - ray * jx) * A.iI; }
+    B.vx += jx * B.im; B.vy += jy * B.im; B.av += (rbx * jy - rby * jx) * B.iI;
+  };
+  // Contact between A (null = world) and B, normal n pointing from A to B.
+  function resolve(A, B, nx, ny, pen, px, py, it) {
+    const imA = A ? A.im : 0, iIA = A ? A.iI : 0, ims = imA + B.im;
+    if (!ims) return;
+    const rax = A ? px - A.x : 0, ray = A ? py - A.y : 0, rbx = px - B.x, rby = py - B.y;
+    const rvx = (B.vx - B.av * rby) - (A ? A.vx - A.av * ray : 0), rvy = (B.vy + B.av * rbx) - (A ? A.vy + A.av * rax : 0);
+    const vn = rvx * nx + rvy * ny;
+    if (vn < 0) {
+      const rnA = rax * ny - ray * nx, rnB = rbx * ny - rby * nx;
+      const e = it === 0 && vn < -90 ? E : 0;
+      const j = -(1 + e) * vn / (ims + rnA * rnA * iIA + rnB * rnB * B.iI);
+      push(A, B, nx * j, ny * j, rax, ray, rbx, rby);
+      const tx = -ny, ty = nx, vt = rvx * tx + rvy * ty;
+      const rtA = rax * ty - ray * tx, rtB = rbx * ty - rby * tx;
+      const jt = clamp(-vt / (ims + rtA * rtA * iIA + rtB * rtB * B.iI), -MU * j, MU * j);
+      push(A, B, tx * jt, ty * jt, rax, ray, rbx, rby);
+    }
+    const corr = Math.max(pen - .25, 0) * .45 / ims;
+    if (A) { A.x -= nx * corr * imA; A.y -= ny * corr * imA; }
+    B.x += nx * corr * B.im; B.y += ny * corr * B.im;
+  }
+  function walls(b, it) {
+    const p = b.hl > 0 ? ends(b) : [b.x, b.y];
+    for (let k = 0; k < p.length; k += 2) {
+      const x = p[k], y = p[k + 1];
+      if (y + b.r > H) resolve(null, b, 0, -1, y + b.r - H, x, H, it);
+      if (x - b.r < 0) resolve(null, b, 1, 0, b.r - x, 0, y, it);
+      if (x + b.r > W) resolve(null, b, -1, 0, x + b.r - W, W, y, it);
+    }
+  }
+  // Endpoint of P against the segment of S (n from S to P), plus segment-segment for crossings.
+  function pair(A, B, it) {
+    const reach = A.hl + A.r + B.hl + B.r, dx = B.x - A.x, dy = B.y - A.y;
+    if (dx * dx + dy * dy > reach * reach) return;
+    const ea = ends(A), eb = ends(B), rr = A.r + B.r;
+    let hit = false;
+    const test = (P, S, px, py, s) => {
+      const ddx = s[2] - s[0], ddy = s[3] - s[1], L = ddx * ddx + ddy * ddy;
+      const t = L > 1e-6 ? c01(((px - s[0]) * ddx + (py - s[1]) * ddy) / L) : 0;
+      const cx = s[0] + ddx * t, cy = s[1] + ddy * t;
+      let nx = px - cx, ny = py - cy; const d = Math.hypot(nx, ny);
+      if (d >= rr) return;
+      hit = true;
+      if (d < 1e-4) { nx = 0; ny = -1; } else { nx /= d; ny /= d; }
+      resolve(S, P, nx, ny, rr - d, cx + nx * S.r, cy + ny * S.r, it);
+    };
+    test(A, B, ea[0], ea[1], eb); if (A.hl > 0) test(A, B, ea[2], ea[3], eb);
+    test(B, A, eb[0], eb[1], ea); if (B.hl > 0) test(B, A, eb[2], eb[3], ea);
+    if (hit) return;
+    const d1x = ea[2] - ea[0], d1y = ea[3] - ea[1], d2x = eb[2] - eb[0], d2y = eb[3] - eb[1], rx = ea[0] - eb[0], ry = ea[1] - eb[1];
+    const a = d1x * d1x + d1y * d1y, e = d2x * d2x + d2y * d2y, f = d2x * rx + d2y * ry, c = d1x * rx + d1y * ry, bb = d1x * d2x + d1y * d2y, den = a * e - bb * bb;
+    if (a < 1e-6 || e < 1e-6) return;
+    let s = den > 1e-6 ? c01((bb * f - c * e) / den) : 0, t = (bb * s + f) / e;
+    if (t < 0) { t = 0; s = c01(-c / a); } else if (t > 1) { t = 1; s = c01((bb - c) / a); }
+    const c1x = ea[0] + d1x * s, c1y = ea[1] + d1y * s, c2x = eb[0] + d2x * t, c2y = eb[1] + d2y * t;
+    let nx = c2x - c1x, ny = c2y - c1y; const d = Math.hypot(nx, ny);
+    if (d >= rr) return;
+    if (d < 1e-4) { nx = B.x - A.x; ny = B.y - A.y; const l = Math.hypot(nx, ny) || 1; nx /= l; ny /= l; } else { nx /= d; ny /= d; }
+    resolve(A, B, nx, ny, rr - d, c1x + nx * A.r, c1y + ny * A.r, it);
+  }
+  // Spring joint from the grab point (body-local gx, gy) to the pointer.
+  function spring(b) {
+    const c = Math.cos(b.a), s = Math.sin(b.a), rx = b.gx * c - b.gy * s, ry = b.gx * s + b.gy * c;
+    const ax = K * (b.grab.x - b.x - rx) - C * (b.vx - b.av * ry), ay = K * (b.grab.y - b.y - ry) - C * (b.vy + b.av * rx);
+    b.vx += ax * DT; b.vy += ay * DT; b.av += (rx * ay - ry * ax) / b.im * b.iI * DT;
+  }
+  let t = 0, quiet = 0, lastPoke = 0, asleep = false, held = null;
+  function step() {
+    t += DT;
+    let all = true;
+    for (const b of bodies) {
+      if (!b.live) {
+        if (t >= b.spawn) { b.live = true; place(b); b.node.style.visibility = ''; lastPoke = t; } else { all = false; continue; }
+      }
+      b.vy += G * DT;
+      if (b.grab) spring(b);
+      b.av *= .997;
+    }
+    const live = bodies.filter((b) => b.live), list = statics.concat(live);
+    for (let it = 0; it < ITER; it++) {
+      for (const b of live) walls(b, it);
+      for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) if (!(list[i].static && list[j].static)) pair(list[i], list[j], it);
+    }
+    let max = 0;
+    for (const b of live) {
+      const sp = Math.hypot(b.vx, b.vy) + Math.abs(b.av) * (b.hl + b.r);
+      if (sp < 12 && !b.grab) { b.vx *= .85; b.vy *= .85; b.av *= .85; }
+      b.vx = clamp(b.vx, -5000, 5000); b.vy = clamp(b.vy, -5000, 5000); b.av = clamp(b.av, -40, 40);
+      b.x += b.vx * DT; b.y += b.vy * DT; b.a += b.av * DT;
+      if (!isFinite(b.x + b.y + b.a) || b.y > H + 400) { place(b); b.y = -b.r - 20; }
+      if (sp > max) max = sp;
+    }
+    if (o.onStep) o.onStep(t);
+    quiet = all && !held && max < (t - lastPoke > 5 ? 14 : 2) ? quiet + DT : 0;
+    if (quiet > .5) asleep = true;
+  }
+  function render() {
+    for (const b of bodies) if (b.live) b.node.style.transform = `translate(${(b.x - b.bw / 2).toFixed(2)}px,${(b.y - b.bh / 2).toFixed(2)}px) rotate(${b.a.toFixed(4)}rad)`;
+  }
+  // Runs while visible; the first drop-in always finishes, even if scrolled away mid-fall.
+  let raf = 0, last = 0, acc = 0, vis = false, started = false, settled = false;
+  function frame(now) {
+    raf = 0;
+    acc += Math.min(.05, (now - last) / 1000); last = now;
+    let n = 0;
+    while (acc >= DT && n < 8) { step(); acc -= DT; n++; }
+    if (n === 8) acc = 0;
+    render();
+    if (asleep) { settled = true; return; }
+    if (vis || !settled) raf = requestAnimationFrame(frame);
+  }
+  function wake(poke = true) {
+    asleep = false; quiet = 0; if (poke) lastPoke = t;
+    if (!raf && started && (vis || !settled)) { last = performance.now(); acc = 0; raf = requestAnimationFrame(frame); }
+  }
+  new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (vis) { started = true; wake(false); } }, { threshold: .15 }).observe(el);
+  new ResizeObserver(() => {
+    if (el.clientWidth === lastW) return;
+    lastW = el.clientWidth; fit();
+    for (const b of bodies) if (b.live) { b.x = clamp(b.x, b.r + b.hl, Math.max(b.r + b.hl, W - b.r - b.hl)); b.y = Math.min(b.y, H - b.r); }
+    render(); wake();
+  }).observe(el);
+
+  // Pointer: grab with a spring, toss with the last 60ms of pointer velocity, nudge on fast mouse passes.
+  const local = (e) => { const r = el.getBoundingClientRect(); return { x: e.clientX - r.left - el.clientLeft, y: e.clientY - r.top - el.clientTop, t: performance.now() }; };
+  let drag = null, lastP = null;
+  el.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0 || drag) return;
+    const node = e.target.closest('[data-body]'), b = node && bodies.find((x) => x.node === node);
+    if (!b || !b.live) return;
+    e.preventDefault();
+    try { node.setPointerCapture(e.pointerId); } catch {}
+    const p = local(e), dx = p.x - b.x, dy = p.y - b.y, c = Math.cos(-b.a), s = Math.sin(-b.a);
+    b.gx = dx * c - dy * s; b.gy = dx * s + dy * c; b.grab = { x: p.x, y: p.y }; b.judge = false;
+    drag = { b, id: e.pointerId, sx: e.clientX, sy: e.clientY, moved: 0, hist: [p] };
+    held = b; node.classList.add('held'); el.classList.add('touched'); wake();
+  });
+  el.addEventListener('pointermove', (e) => {
+    const p = local(e);
+    if (drag && e.pointerId === drag.id) {
+      drag.moved = Math.max(drag.moved, Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy));
+      drag.b.grab.x = p.x; drag.b.grab.y = p.y;
+      drag.hist.push(p); while (drag.hist.length > 2 && p.t - drag.hist[0].t > 60) drag.hist.shift();
+      wake(); return;
+    }
+    if (e.pointerType !== 'mouse') return;
+    if (lastP) {
+      const dt = (p.t - lastP.t) / 1000;
+      if (dt > 0 && dt < .1) {
+        const vx = (p.x - lastP.x) / dt, vy = (p.y - lastP.y) / dt, sp = Math.hypot(vx, vy);
+        if (sp > 260) for (const b of bodies) {
+          if (!b.live || b.grab) continue;
+          const s = ends(b), ddx = s[2] - s[0], ddy = s[3] - s[1], L = ddx * ddx + ddy * ddy;
+          const u = L > 1e-6 ? c01(((p.x - s[0]) * ddx + (p.y - s[1]) * ddy) / L) : 0;
+          const d = Math.hypot(p.x - s[0] - ddx * u, p.y - s[1] - ddy * u) - b.r;
+          if (d < 26) {
+            const f = .2 * (1 - Math.max(0, d) / 26), k = Math.min(1, 1600 / sp);
+            b.vx += vx * f * k; b.vy += vy * f * k - 60;
+            b.av += ((p.x - b.x) * vy - (p.y - b.y) * vx) * f * k * .0006;
+            el.classList.add('touched'); wake();
+          }
+        }
+      }
+    }
+    lastP = p;
+  });
+  el.addEventListener('pointerleave', () => { lastP = null; });
+  const up = (e) => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const b = drag.b, p = local(e);
+    b.grab = null; held = null; b.node.classList.remove('held');
+    if (drag.moved >= 6) {
+      suppressUntil = performance.now() + 400;
+      const h = drag.hist.concat(p).filter((q) => p.t - q.t <= 60), a = h[0], dt = (p.t - a.t) / 1000;
+      if (dt > .008) { b.vx = clamp((p.x - a.x) / dt, -4000, 4000); b.vy = clamp((p.y - a.y) / dt, -4000, 4000); }
+      else if (p.t - drag.hist[drag.hist.length - 1].t > 60) { b.vx *= .2; b.vy *= .2; }
+      b.relT = t; b.judge = true;
+    }
+    drag = null; wake();
+  };
+  el.addEventListener('pointerup', up);
+  el.addEventListener('pointercancel', up);
+
+  return {
+    bodies, wake, get W() { return W; }, get H() { return H; },
+    toss(b, tx, ty, T = .6) { b.vx = (tx - b.x) / T; b.vy = (ty - b.y - .5 * G * T * T) / T; b.av = (Math.random() - .5) * 8; b.judge = false; wake(); },
+  };
+}
+
+// Catalog tray: dropping a tag in the bowl applies its filter, throwing it out removes it.
+function tray(el) {
+  const bowl = el.querySelector('.bowl'), x = el.querySelector('.bowl__x');
+  const chips = [...el.querySelectorAll('.pile [data-body]')];
+  let bx = 0, bh = 0, S;
+  const geo = () => { bx = bowl.offsetLeft; bh = bowl.offsetHeight; };
+  const inBowl = (b) => b.x > bx + 4 && b.y > S.H - bh - 12;
+  const pressed = (n) => n.getAttribute('aria-pressed') === 'true';
+  S = tumble(el, {
+    delay: .2, usable: () => .58, maxX: () => (geo(), bx - 22),
+    statics: (W, H) => { geo(); const lip = Math.min(64, bh * .6), r = 7; return [{ static: true, live: true, x: bx, y: H - lip / 2, a: Math.PI / 2, hl: Math.max(0, lip / 2 - r), r, im: 0, iI: 0, vx: 0, vy: 0, av: 0 }]; },
+    onStep(t) {
+      for (const b of S.bodies) {
+        if (!b.judge || b.grab || !b.live) continue;
+        if (Math.hypot(b.vx, b.vy) > 50 && t - b.relT < .8) continue;
+        b.judge = false;
+        if (inBowl(b) !== pressed(b.node)) click(b.node);
+      }
+    },
+  });
+  const sync = () => { const any = chips.some(pressed); el.classList.toggle('has-filter', any); if (x) x.hidden = !any; };
+  new MutationObserver((recs) => {
+    for (const r of recs) {
+      const b = S.bodies.find((q) => q.node === r.target), on = pressed(r.target);
+      if (!b || !b.live || b.grab || b.judge || on === (r.oldValue === 'true')) continue;
+      if (on && !inBowl(b)) S.toss(b, bx + (S.W - bx) / 2 + (Math.random() - .5) * 16, S.H - b.r - 16);
+      if (!on && inBowl(b)) { const span = b.hl + b.r; S.toss(b, span + 10 + Math.random() * Math.max(0, bx - 2 * span - 50), S.H - b.r - 8); }
+    }
+    sync();
+  }).observe(el, { attributes: true, subtree: true, attributeFilter: ['aria-pressed'], attributeOldValue: true });
+  x && x.addEventListener('click', () => { const c = chips.find(pressed); if (c) click(c); });
+  sync();
+}
+
+if (!RM && window.ResizeObserver && window.IntersectionObserver) {
+  const go = () => document.querySelectorAll('[data-tumble]').forEach((el) => el.hasAttribute('data-tray') ? tray(el) : tumble(el, { delay: el.closest('footer') ? .05 : .3 }));
+  Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise((r) => setTimeout(r, 1600))]).then(() => requestAnimationFrame(go));
+} else {
+  // No physics: the bowl's clear button still works.
+  const x = document.querySelector('.bowl__x');
+  if (x) {
+    const chips = [...document.querySelectorAll('.tray .pile [data-body]')], p = (n) => n.getAttribute('aria-pressed') === 'true';
+    x.addEventListener('click', () => { const c = chips.find(p); if (c) click(c); });
+    new MutationObserver(() => { x.hidden = !chips.some(p); }).observe(x.parentElement, { attributes: true, subtree: true, attributeFilter: ['aria-pressed'] });
+  }
+}
+
+// Cart: count bump, an arcing dot into the bag, and a toast.
+const counts = document.querySelectorAll('[data-cart-count]'), toast = document.querySelector('.toast');
+let n = 0, tt; try { n = +sessionStorage.getItem('tt-cart') || 0; } catch {}
+const show = (bump) => counts.forEach((c) => {
+  c.textContent = n; c.parentElement.classList.toggle('has', n > 0);
+  if (bump && !RM && c.animate) c.animate([{ scale: 1 }, { scale: 1.7 }, { scale: 1 }], { duration: 520, easing: 'cubic-bezier(.34,1.56,.64,1)' });
+});
+show(false);
+function fly(btn) {
+  const cart = document.querySelector('.cartbtn');
+  if (RM || !cart || !document.body.animate) return 0;
+  const a = btn.getBoundingClientRect(), b = cart.getBoundingClientRect();
+  const d = document.createElement('span'); d.className = 'flyer'; d.innerHTML = '<i></i>';
+  d.style.left = a.left + a.width / 2 - 9 + 'px'; d.style.top = a.top + a.height / 2 - 9 + 'px';
+  document.body.appendChild(d);
+  const dx = b.left + b.width / 2 - a.left - a.width / 2, dy = b.top + b.height / 2 - a.top - a.height / 2;
+  d.animate([{ transform: 'none' }, { transform: `translateX(${dx}px)` }], { duration: 640, easing: 'cubic-bezier(.4,0,.6,1)' });
+  d.firstChild.animate([{ transform: 'none' }, { transform: `translateY(${dy}px) scale(.45)` }], { duration: 640, easing: 'cubic-bezier(.35,-0.9,.7,1)' }).onfinish = () => d.remove();
+  return 600;
+}
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest && e.target.closest('.add');
+  if (!btn) return;
+  e.preventDefault();
+  n++; try { sessionStorage.setItem('tt-cart', n); } catch {}
+  setTimeout(() => show(true), fly(btn));
+  btn.classList.add('ok'); setTimeout(() => btn.classList.remove('ok'), 1300);
+  if (toast) { toast.querySelector('b').textContent = btn.dataset.add || ''; toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('on'), 2300); }
+});
+
+// Footer wordmark: shrink long brand names to one line where possible.
+const word = document.querySelector('.ft__word');
+if (word) {
+  const size = () => { word.style.fontSize = ''; word.style.whiteSpace = 'nowrap'; const max = word.clientWidth - 40, w = word.scrollWidth - 40; if (w > max) word.style.fontSize = Math.max(40, parseFloat(getComputedStyle(word).fontSize) * max / w) + 'px'; word.style.whiteSpace = ''; };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(size); addEventListener('resize', size);
+}
+
+// Search field placeholder in the shop's language.
+const L = { nl: 'Zoek in de shop…', en: 'Search the shop…', de: 'Shop durchsuchen…', fr: 'Rechercher…', es: 'Buscar…' };
+document.querySelectorAll('[data-shop-search]').forEach((i) => { i.placeholder = L[R.lang] || L.en; i.setAttribute('aria-label', i.placeholder); });
+
+// Catalog grid: soft fade when the shop script filters; the count pops.
+const grid = document.querySelector('.cgrid'), count = document.querySelector('.chd .count');
+if (grid && !RM && grid.animate) {
+  let q = 0;
+  new MutationObserver(() => {
+    if (q) return;
+    q = requestAnimationFrame(() => {
+      q = 0; let i = 0;
+      for (const c of grid.children) if (c.style.display !== 'none') c.animate([{ opacity: 0, transform: 'translateY(18px) scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: 560, delay: Math.min(i++, 10) * 40, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
+    });
+  }).observe(grid, { attributes: true, subtree: true, attributeFilter: ['style'] });
+  if (count) new MutationObserver(() => count.animate([{ scale: 1 }, { scale: 1.12 }, { scale: 1 }], { duration: 420, easing: 'cubic-bezier(.34,1.56,.64,1)' })).observe(count, { childList: true, characterData: true, subtree: true });
+}
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"catalog","lang":"nl","count":"6 producten","products":[{"name":"Droogijs pellets 3 mm","tag":"Pellets","category":"Pellets"},{"name":"Droogijs pellets 10 mm","tag":"Pellets","category":"Pellets"},{"name":"Droogijs pellets 16 mm","tag":"Pellets","category":"Pellets"},{"name":"Droogijsschijven 500 gram","tag":"Schijven","category":"Schijven"},{"name":"Droogijsschijven 700 gram","tag":"Schijven","category":"Schijven"},{"name":"Droogijsblok 5 kilo","tag":"Blokken","category":"Blokken"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

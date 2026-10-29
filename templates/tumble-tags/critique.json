@@ -1,0 +1,23 @@
+{
+  "scoreBefore": 5.8,
+  "scores": { "creativity": 7, "typography": 6.5, "layout": 5, "polish": 5, "brandRobustness": 6.5, "mobile": 4.5, "generic": 6 },
+  "issues": [
+    "Scroll reveals hid sections with opacity:0: the stats, quote, CTA (and categories on the stress brand) rendered as ~1600px of blank page; on mobile the whole lower half was empty",
+    "The cart toast was only translated below the viewport, so in full-page captures it hung off the right edge as a cut-off dark pill mid-page",
+    "Mobile horizontal overflow: the rotated story backdrop (inset -4% + 4deg) and the story dot stuck out past the 16px gutter",
+    "Hero accent highlight was a flat lower-half bar in a lighter weight; with the grey Droogijs accent it read as a redaction strike, not a cheerful marker",
+    "Hero stage: the pile only fills the bottom third, and the top 60% was an empty pastel box",
+    "Two-product shops (Birth Bear) left half of the 4-column grid empty on both home and catalog, with tiny cards that had no price, just a lonely + button",
+    "Catalog bowl was a faint dashed outline with a small icon that did not read as a drop target, and the tray tags looked undersized for a tray 1200px wide"
+  ],
+  "fixed": [
+    "Reveals are now transform-only (spring lift) so content is always visible; nothing ever renders blank",
+    "Toast is hidden with opacity and visibility plus a spring scale-in, so it no longer leaks into captures",
+    "Clipped html/main horizontally and pulled in the mobile story backdrop and dot, so the page no longer overflows at 390px",
+    "Hero accent words now sit on chunky rounded tinted 'tags' in --ink-soft (primary tint with an inner lip), echoing the physics pills for any brand colour",
+    "Added a giant ghost brand wordmark in a primary tint inside the hero stage, so tags tumble in front of it and the stage reads as a set, not a blank box",
+    "Adaptive grid: 1–2 products become large landscape cards with a 4:5 tinted photo pad and chunky display names, and 3 products use 3 columns; mobile falls back to the 2-column card",
+    "Catalog bowl redesigned as a tinted basin with a breathing icon disc on a card-white circle; tray tags are bigger and chunkier (62px desktop, 50px mobile)"
+  ],
+  "scoreAfterEstimate": 7.3
+}
