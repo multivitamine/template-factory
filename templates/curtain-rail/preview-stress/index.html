@@ -1,0 +1,1020 @@
+<!doctype html>
+<html lang="en" data-rail>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nacra Sailing · Empowering sailors since 1975</title>
+<meta name="description" content="Easy handling, ultimate cruising. Meet the latest addition to the Nacra Leisure range, built for any adventure and every sailor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,700;1,400;1,700&family=Ysabeau+Office:wght@400;600&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;h.classList.add('js');var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;try{if(!rm&&sessionStorage.getItem('cr-iris'))h.classList.add('iris-in')}catch(e){}if(h.hasAttribute('data-rail')&&!rm&&matchMedia('(min-width: 960px) and (hover: hover) and (pointer: fine)').matches)h.classList.add('hz')})()</script>
+<style>
+:root{
+  --c-bg:#1B1714; --c-surface:#25201C; --c-text:#F2EADC; --c-muted:#A99D8C; --c-line:#3A322B;
+  --c-primary:#C8A26B; --c-on-primary:#1B1714; --c-accent:#8E5B3E;
+  --hi:color-mix(in srgb,var(--c-primary) 55%,var(--c-text));
+  --tint:color-mix(in srgb,var(--c-primary) 14%,var(--c-surface));
+  --f-d:'Ibarra Real Nova',Georgia,'Times New Roman',serif;
+  --f-b:'Ysabeau Office','Segoe UI',sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1); --ease-io:cubic-bezier(.76,0,.24,1);
+  --pad:clamp(1.25rem,4vw,4rem);
+  --pleats:radial-gradient(90% 60% at 50% 0%,color-mix(in srgb,var(--c-primary) 34%,transparent),transparent 70%),
+    repeating-linear-gradient(90deg,transparent 0 1.6rem,color-mix(in srgb,#000 24%,transparent) 2.8rem,transparent 4rem),
+    color-mix(in srgb,var(--c-primary) 14%,var(--c-surface));
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 1rem/1.55 var(--f-b);overflow-x:clip;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0;z-index:58;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+ul,ol{list-style:none;margin:0;padding:0}
+h1,h2,h3,p,figure,blockquote,dl,dd{margin:0}
+::selection{background:var(--c-primary);color:var(--c-on-primary)}
+:focus-visible{outline:2px solid var(--hi);outline-offset:3px}
+.sr{position:absolute;width:0;height:0;overflow:hidden}
+
+/* type + controls */
+.eyebrow{display:flex;align-items:center;gap:.9em;font:600 .72rem/1.2 var(--f-b);letter-spacing:.24em;text-transform:uppercase;color:var(--hi)}
+.eyebrow::before{content:"";width:2.4em;height:1px;background:currentColor;flex:none}
+.p-idx{font:600 .72rem/1.2 var(--f-b);letter-spacing:.22em;text-transform:uppercase;color:var(--c-muted)}
+.h2{font:italic 400 clamp(2.2rem,4.4vw,4.4rem)/1 var(--f-d);letter-spacing:-.018em;text-wrap:balance}
+.btn{display:inline-flex;align-items:center;gap:.75em;padding:1.05em 1.7em;border:0;border-radius:999px;background:var(--c-primary);color:var(--c-on-primary);
+  font:600 .92rem/1 var(--f-b);letter-spacing:.03em;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-text) 22%,transparent);transition:transform .6s var(--ease),filter .3s}
+.btn i{font-style:normal;transition:transform .5s var(--ease)}
+.btn:hover{filter:brightness(1.08)}
+.btn:hover i{transform:translateX(5px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.6em;padding:1.05em 1.5em;border-radius:999px;border:1px solid color-mix(in srgb,var(--c-text) 34%,transparent);
+  font:600 .92rem/1 var(--f-b);letter-spacing:.03em;transition:background .4s var(--ease),color .4s,border-color .4s}
+.btn-ghost:hover{background:var(--c-text);color:var(--c-bg);border-color:var(--c-text)}
+.mag{transition:transform .7s var(--ease)}
+
+/* header */
+.hdr{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;gap:1.5rem;padding:1rem var(--pad);border-bottom:1px solid transparent;transition:background .5s,border-color .5s,backdrop-filter .5s}
+.hdr.solid{background:color-mix(in srgb,var(--c-bg) 84%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--c-line)}
+.logo{display:flex;align-items:center;gap:.7rem;min-width:0;max-width:min(52vw,300px)}
+.logo img{max-height:40px;width:auto;max-width:100%;object-fit:contain}
+.logo.is-dark img{filter:brightness(0) invert(.93)}
+.logo-mark{flex:none;display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);font:700 .92rem/1 var(--f-d);letter-spacing:.02em;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-text) 22%,transparent)}
+.logo-name{font:italic 400 1.4rem/1 var(--f-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{margin-left:auto}
+.nav ul{display:flex;gap:clamp(1rem,1.8vw,2rem)}
+.nav a{position:relative;display:block;padding:.45em 0;font:600 .76rem/1 var(--f-b);letter-spacing:.15em;text-transform:uppercase;white-space:nowrap;color:color-mix(in srgb,var(--c-text) 76%,transparent);transition:color .3s}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--hi);transform:scaleX(0);transform-origin:right;transition:transform .6s var(--ease)}
+.nav a:hover{color:var(--c-text)}
+.nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.hdr-act{display:flex;align-items:center;gap:.6rem}
+.hdr-shop{padding:.75em 1.2em;border-radius:999px;border:1px solid var(--c-line);font:600 .76rem/1 var(--f-b);letter-spacing:.15em;text-transform:uppercase;background:color-mix(in srgb,var(--c-bg) 45%,transparent)}
+.hdr-shop:hover{border-color:var(--hi)}
+.cart-btn,.menu-btn{position:relative;display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid var(--c-line);background:color-mix(in srgb,var(--c-bg) 45%,transparent);transition:border-color .3s}
+.cart-btn:hover,.menu-btn:hover{border-color:var(--hi)}
+.cart-btn svg{width:1.1rem;height:1.1rem}
+.cart-n{position:absolute;top:-.3rem;right:-.3rem;min-width:1.3rem;height:1.3rem;padding:0 .32rem;border-radius:999px;background:var(--c-primary);color:var(--c-on-primary);font:700 .68rem/1.3rem var(--f-b);text-align:center;transform:scale(0);transition:transform .5s var(--ease);box-shadow:0 0 0 2px var(--c-bg)}
+.cart-btn.has .cart-n{transform:scale(1)}
+.cart-btn.bump .cart-n{animation:bump .7s var(--ease)}
+@keyframes bump{35%{transform:scale(1.6)}}
+.menu-btn{display:none}
+.menu-btn span{position:absolute;width:1rem;height:1px;background:currentColor;transition:transform .5s var(--ease)}
+.menu-btn span:first-child{transform:translateY(-3px)}
+.menu-btn span:last-child{transform:translateY(3px)}
+.menu-open .menu-btn span:first-child{transform:rotate(45deg)}
+.menu-open .menu-btn span:last-child{transform:rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:35;display:flex;flex-direction:column;justify-content:center;gap:.2rem;padding:6rem var(--pad) 3rem;background:var(--pleats);
+  clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .8s var(--ease-io),visibility 0s .8s}
+.menu-open .menu{clip-path:inset(0);visibility:visible;transition-delay:0s}
+.menu a{font:italic 400 clamp(2.2rem,9vw,3.8rem)/1.15 var(--f-d);padding:.15em 0;border-bottom:1px solid color-mix(in srgb,var(--c-text) 14%,transparent)}
+@media (max-width:1099px){.nav{display:none}.hdr-act{margin-left:auto}.menu-btn{display:grid}}
+@media (max-width:520px){.hdr-shop{display:none}.logo-name{font-size:1.15rem}}
+
+/* frames: every image sits on a tinted "curtain" mat, so missing and odd photos still look staged */
+.frame{position:relative;overflow:hidden;background:var(--pleats)}
+.frame img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none}
+.frame.is-mat img{object-fit:contain;padding:9%;background:color-mix(in srgb,var(--c-primary) 10%,#EFE7DA)}
+/* no photo: each card becomes its own little stage, spotlight and tint vary so a grid of them doesn't read as a repeated placeholder */
+.fb{--sx:50%;position:absolute;inset:0;display:grid;place-items:center;padding:1.4rem;text-align:center;
+  background:radial-gradient(48% 42% at var(--sx) -4%,color-mix(in srgb,var(--c-text) 20%,transparent),transparent 72%),radial-gradient(58% 10% at 50% 97%,color-mix(in srgb,#000 50%,transparent),transparent 72%)}
+.card:nth-child(3n+2) .fb{--sx:18%}
+.card:nth-child(3n) .fb{--sx:84%}
+.card:nth-child(4n+3) .fb{background-color:color-mix(in srgb,var(--c-accent) 26%,transparent)}
+.card:nth-child(4n+1) .fb{background-color:color-mix(in srgb,#000 22%,transparent)}
+.fb::after{content:"";position:absolute;left:30%;right:30%;bottom:13%;height:1px;background:linear-gradient(90deg,transparent,var(--hi),transparent);opacity:.7}
+.fb::before{content:"";position:absolute;inset:.75rem;border:1px solid color-mix(in srgb,var(--c-text) 16%,transparent)}
+.fb span{font:italic 400 clamp(1.3rem,2.4vw,2.1rem)/1.05 var(--f-d);letter-spacing:-.01em;color:var(--c-text);text-wrap:balance;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;text-shadow:0 2px 20px color-mix(in srgb,#000 40%,transparent)}
+.tag{position:absolute;top:.8rem;left:.8rem;z-index:2;padding:.42em .8em;border-radius:999px;background:var(--c-primary);color:var(--c-on-primary);font:600 .64rem/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase}
+
+/* product card */
+.card{position:relative;display:flex;flex-direction:column}
+.card-link{display:flex;flex-direction:column;gap:.95rem;height:100%}
+.card .frame{aspect-ratio:4/5;border-radius:2px}
+.card .frame::after{content:counter(p,decimal-leading-zero);position:absolute;right:.9rem;top:.75rem;z-index:2;font:700 .8rem/1 var(--f-d);color:color-mix(in srgb,var(--c-text) 80%,transparent);mix-blend-mode:difference}
+.card-meta{display:grid;gap:.35rem;padding-right:3.3rem;min-height:3.2rem}
+.card-name{font:600 .98rem/1.3 var(--f-b);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-price{font:700 1.15rem/1 var(--f-d);color:var(--hi);white-space:nowrap;font-variant-numeric:lining-nums}
+.card-price s{margin-right:.45em;font-weight:400;font-size:.82em;color:var(--c-muted)}
+.add{display:grid;place-items:center;flex:none;width:2.7rem;height:2.7rem;padding:0;border-radius:50%;border:1px solid var(--c-line);background:transparent;font:400 1.35rem/1 var(--f-b);
+  transition:background .4s var(--ease),color .4s,border-color .4s,transform .6s var(--ease)}
+.add:hover,.add.done{background:var(--c-primary);color:var(--c-on-primary);border-color:var(--c-primary);transform:rotate(90deg)}
+.card .add{position:absolute;right:0;bottom:.15rem}
+.card-link:hover .card-name{color:var(--hi)}
+
+/* the rail (vertical stack by default, horizontal theatre with .hz) */
+.rail{position:relative}
+.rail-track{counter-reset:p}
+.panel{position:relative;padding:clamp(4rem,9vw,6rem) var(--pad)}
+.panel + .panel{border-top:1px solid var(--c-line)}
+.swipe{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--pad) * -1);padding:0 var(--pad) .5rem;scroll-padding-inline:var(--pad);scrollbar-width:none;overscroll-behavior-x:contain}
+.swipe::-webkit-scrollbar{display:none}
+.swipe > *{flex:0 0 auto;scroll-snap-align:start}
+
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;gap:2.2rem;padding-top:7rem;padding-bottom:4rem;overflow:hidden;isolation:isolate}
+.hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden;background:var(--pleats)}
+.hero-img{width:100%;height:100%;object-fit:cover;transform:scale(1.06)}
+.hero-fallback{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
+.hero-fallback span{font:italic 700 min(62vw,70vh)/1 var(--f-d);color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--c-text) 26%,transparent);letter-spacing:-.04em;transform:translateX(12%)}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,color-mix(in srgb,var(--c-bg) 60%,transparent) 0%,transparent 26%,transparent 42%,color-mix(in srgb,var(--c-bg) 72%,transparent) 72%,var(--c-bg) 100%),
+  linear-gradient(90deg,color-mix(in srgb,var(--c-bg) 66%,transparent),transparent 72%)}
+.hero-in{position:relative;max-width:60rem}
+.h1{margin:.42em 0 .32em;font:italic 400 clamp(2.7rem,min(7.4vw,12vh),8.6rem)/.93 var(--f-d);letter-spacing:-.028em;text-wrap:balance}
+.h1 .ln{display:block;overflow:hidden;padding:0 .06em .12em 0;margin-bottom:-.12em}
+.h1 .ln > *{display:inline-block}
+.h1 em{color:var(--hi)}
+.hero-text{max-width:36rem;color:color-mix(in srgb,var(--c-text) 84%,transparent);font-size:clamp(1rem,1.15vw,1.12rem);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.8rem}
+.hero-hint{display:none}
+@media (max-width:959px){.hero{padding-bottom:5.5rem;gap:1.8rem}.hero .h1{font-size:clamp(2.5rem,11vw,4rem)}.pick{width:100%;max-width:none}}
+.pick{position:relative;max-width:26rem;padding:1.1rem 1.2rem .5rem;border:1px solid color-mix(in srgb,var(--c-text) 14%,transparent);border-radius:4px;
+  background:color-mix(in srgb,var(--c-bg) 70%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.pick-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--c-line)}
+.pick-all{font:600 .72rem/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase;color:var(--hi)}
+.pick-list{counter-reset:pk}
+.pick-it{counter-increment:pk;display:flex;align-items:center;gap:.9rem;padding:.7rem 0;border-bottom:1px solid var(--c-line)}
+.pick-it:last-child{border-bottom:0}
+.pick-link{display:flex;align-items:center;gap:.9rem;flex:1;min-width:0}
+.pick-th{flex:none;width:3.4rem;height:3.4rem;border-radius:2px}
+.pick-th:empty::after{content:counter(pk,decimal-leading-zero);position:absolute;inset:0;display:grid;place-items:center;font:700 1rem/1 var(--f-d)}
+.pick-tx{display:grid;gap:.2rem;min-width:0}
+.pick-tx .card-name{font-size:.9rem;-webkit-line-clamp:1}
+.pick-price{font:700 1rem/1 var(--f-d);color:var(--hi)}
+.pick-link:hover .card-name{color:var(--hi)}
+.pick .add{width:2.3rem;height:2.3rem;font-size:1.15rem}
+
+/* categories */
+.p-head{display:grid;gap:1rem;margin-bottom:2rem}
+.p-head p:not(.p-idx){max-width:28rem;color:var(--c-muted)}
+.cats-list{counter-reset:c}
+.cat{counter-increment:c;width:min(62vw,17rem)}
+.cat a{display:grid;gap:.9rem}
+.cat .frame{aspect-ratio:3/4}
+.cat-name{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;font:italic 400 clamp(1.35rem,2vw,1.8rem)/1.05 var(--f-d);transition:color .3s}
+.cat-name::before{content:counter(c,decimal-leading-zero);order:2;font:700 .75rem/1 var(--f-d);color:var(--c-muted)}
+.cat a:hover .cat-name{color:var(--hi)}
+
+/* lookbook */
+.look-intro{display:grid;gap:1.1rem;margin-bottom:2rem;max-width:34rem}
+.look-intro p:not(.p-idx){color:var(--c-muted)}
+.look-intro .btn-ghost{justify-self:start;margin-top:.6rem}
+.look-list .card{width:min(72vw,20rem);counter-increment:p}
+.look-list .card:nth-child(n+9){display:none}
+
+/* story */
+.story{display:grid;gap:2rem}
+.story-media{aspect-ratio:4/5;max-width:34rem;border-radius:2px}
+.story-tx{display:grid;gap:1.2rem;max-width:34rem}
+.story-tx p:not(.eyebrow){color:color-mix(in srgb,var(--c-text) 80%,transparent);font-size:1.05rem}
+
+/* gallery */
+.gal-grid figure{width:min(70vw,19rem);aspect-ratio:4/5;border-radius:2px}
+.gal-grid figure:nth-child(3n+2){aspect-ratio:1}
+
+/* usps + stats */
+.trust{display:grid;gap:2.2rem}
+.usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:2rem 2.5rem;counter-reset:u}
+.usps li{counter-increment:u;display:grid;gap:.6rem;padding-top:1.1rem;border-top:1px solid var(--c-line)}
+.usps li::before{content:counter(u,decimal-leading-zero);font:700 1rem/1 var(--f-d);color:var(--hi)}
+.usps h3{font:italic 400 clamp(1.4rem,2vw,1.85rem)/1.08 var(--f-d)}
+.usps p{color:var(--c-muted);font-size:.96rem}
+.stats{display:flex;flex-wrap:wrap;gap:2.5rem 4rem}
+.stats div{display:grid;gap:.5rem;max-width:15rem}
+.stats dt{font:700 clamp(3.4rem,8vw,7.5rem)/.85 var(--f-d);letter-spacing:-.03em;color:var(--hi);font-variant-numeric:lining-nums}
+.stats dd{color:var(--c-muted);font-size:.95rem}
+
+/* quote */
+.quote blockquote{font:italic 400 clamp(1.9rem,3.8vw,3.8rem)/1.08 var(--f-d);letter-spacing:-.015em;max-width:24ch;text-wrap:balance}
+.quote cite{display:block;margin-top:1.4rem;font:600 .74rem/1 var(--f-b);letter-spacing:.2em;text-transform:uppercase;font-style:normal;color:var(--c-muted)}
+
+/* finale */
+.finale{display:grid;gap:3rem;background:radial-gradient(70% 80% at 85% 30%,color-mix(in srgb,var(--c-primary) 22%,transparent),transparent 70%)}
+.finale-cta{display:grid;gap:1.4rem;max-width:44rem}
+.finale-cta .h2{font-size:clamp(2.6rem,6vw,6.2rem);line-height:.95}
+.finale-cta p{color:color-mix(in srgb,var(--c-text) 80%,transparent);max-width:34rem}
+.finale-cta .btn{justify-self:start;margin-top:.4rem}
+.contact{display:grid;gap:1.4rem;align-content:end}
+.contact div{display:grid;gap:.35rem;padding-top:1rem;border-top:1px solid var(--c-line)}
+.contact a,.contact p{font:italic 400 clamp(1.2rem,1.7vw,1.6rem)/1.25 var(--f-d);overflow-wrap:anywhere}
+.contact a:hover{color:var(--hi)}
+
+/* horizontal theatre (desktop, fine pointer, motion allowed) */
+.hz body{overflow:hidden auto}
+.hz .rail{height:100vh;overflow:hidden}
+.hz .rail-track{display:flex;height:100vh;width:max-content;will-change:transform;user-select:none}
+.hz .panel{flex:none;height:100vh;display:flex;align-items:center;gap:clamp(2.5rem,4.5vw,5.5rem);padding:6.5rem clamp(2.5rem,5vw,6rem) 4.75rem}
+.hz .panel + .panel{border-top:0;border-left:1px solid var(--c-line)}
+.hz .swipe{overflow:visible;margin:0;padding:0;gap:clamp(1rem,1.7vw,2rem);align-items:center}
+.hz .hero{width:100vw;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding-bottom:4.75rem}
+.hz .hero-in{max-width:min(58vw,60rem)}
+.hz .h1{font-size:clamp(2.6rem,min(6.4vw,11.5vh),8.4rem)}
+.hz .pick{position:absolute;right:clamp(2.5rem,5vw,6rem);bottom:4.75rem;width:min(25rem,30vw)}
+.hz .hero-hint{display:flex;align-items:center;gap:.8rem;position:absolute;left:50%;bottom:1.7rem;transform:translateX(-50%);font:600 .7rem/1 var(--f-b);letter-spacing:.24em;text-transform:uppercase;color:var(--c-muted)}
+.hz .hero-hint::after{content:"";width:3.5rem;height:1px;background:linear-gradient(90deg,var(--hi),transparent);animation:hint 2.4s var(--ease-io) infinite}
+@keyframes hint{0%{transform:scaleX(0);transform-origin:left}50%{transform:scaleX(1);transform-origin:left}50.1%{transform-origin:right}100%{transform:scaleX(0);transform-origin:right}}
+.hz .p-head,.hz .look-intro{flex:none;width:clamp(16rem,24vw,25rem);margin:0}
+.hz .cat{width:clamp(12rem,29vh,21rem)}
+.hz .cat:nth-child(odd){transform:translateY(-4vh)}
+.hz .cat:nth-child(even){transform:translateY(5vh)}
+.hz .look-list .card{--w:.78;height:70vh;width:calc(70vh * var(--w))}
+.hz .look-list .card:nth-child(4n+2){--w:1.12}
+.hz .look-list .card:nth-child(4n+3){--w:.64}
+.hz .look-list .card:nth-child(4n+4){--w:.94}
+.hz .look-list .card .frame{aspect-ratio:auto;flex:1;min-height:0}
+.hz .look-list .frame:not(.is-mat) img{transform:translate3d(var(--px,0px),0,0) scale(1.16)}
+.hz .story-media{flex:none;height:72vh;width:56vh;max-width:none;aspect-ratio:auto}
+.hz .story-tx{width:clamp(20rem,30vw,32rem)}
+.hz .gal-grid{display:grid;grid-auto-flow:column dense;grid-template-rows:repeat(2,33vh);gap:1.2vw}
+.hz .gal-grid figure,.hz .gal-grid figure:nth-child(3n+2){width:30vh;aspect-ratio:auto}
+.hz .gal-grid figure:nth-child(3n+1){grid-row:span 2;width:50vh}
+.hz .trust{display:flex}
+.hz .trust .p-head{width:clamp(14rem,20vw,20rem)}
+.hz .usps{width:min(58vw,56rem);grid-template-columns:repeat(2,1fr);gap:2.6rem 3.5rem}
+.hz .stats{flex-wrap:nowrap;gap:5vw}
+.hz .quote blockquote{width:min(62vw,56rem)}
+.hz .finale{width:100vw;display:grid;grid-template-columns:1.3fr .7fr;align-items:end}
+.hz.dragging,.hz.dragging *{cursor:grabbing !important}
+.cursor{position:fixed;left:0;top:0;z-index:57;width:5.4rem;height:5.4rem;margin:-2.7rem 0 0 -2.7rem;border-radius:50%;display:grid;place-items:center;pointer-events:none;
+  background:var(--c-text);color:var(--c-bg);font:600 .66rem/1 var(--f-b);letter-spacing:.2em;text-transform:uppercase;scale:0;transition:scale .5s var(--ease)}
+.cursor.on{scale:1}
+.dragging .cursor{scale:.8}
+
+/* footer */
+.ftr{position:relative;overflow:hidden;padding:clamp(4rem,8vw,6rem) var(--pad) 5.5rem;border-top:1px solid var(--c-line);background:linear-gradient(180deg,var(--c-bg) 30%,color-mix(in srgb,var(--c-primary) 12%,var(--c-bg)))}
+.ftr-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:2.2rem}
+.ftr-col{display:grid;gap:.55rem;align-content:start}
+.ftr-col .p-idx{margin-bottom:.5rem}
+.ftr-col a,.ftr-col p{color:color-mix(in srgb,var(--c-text) 82%,transparent);font-size:.95rem;width:fit-content}
+.ftr-col a:hover{color:var(--hi)}
+.ftr-tag{font:italic 400 clamp(1.4rem,2.2vw,2rem)/1.15 var(--f-d);max-width:20ch}
+.ftr-name{display:block;margin:clamp(3rem,7vw,5rem) 0 1.4rem;font:italic 400 clamp(3.2rem,12.5vw,15rem)/.86 var(--f-d);letter-spacing:-.04em;overflow-wrap:anywhere;transition:color .6s var(--ease)}
+.ftr-name:hover{color:var(--hi)}
+.ftr-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem 2rem;padding-top:1.2rem;border-top:1px solid var(--c-line);color:var(--c-muted);font-size:.82rem}
+.ftr-bot a:hover{color:var(--c-text)}
+
+/* fixed chrome */
+.badge{position:fixed;left:1rem;bottom:1rem;z-index:45;padding:.5rem .85rem;border-radius:999px;border:1px solid var(--c-line);background:color-mix(in srgb,var(--c-bg) 82%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  font:600 .62rem/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted);max-width:calc(100vw - 9rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.counter{display:none}
+.js .counter{position:fixed;right:var(--pad);bottom:1.1rem;z-index:45;display:flex;align-items:baseline;gap:.35rem;pointer-events:none;font:700 clamp(1.5rem,2.4vw,2.4rem)/1 var(--f-d);font-variant-numeric:tabular-nums lining-nums;text-shadow:0 1px 14px color-mix(in srgb,var(--c-bg) 80%,transparent)}
+.cn-cur{display:inline-block}
+.cn-sep,.cn-tot{font-size:.5em;color:var(--c-muted)}
+.cn-bar{position:absolute;left:0;right:0;bottom:-.45rem;height:1px;background:var(--c-line)}
+.cn-bar i{display:block;height:100%;background:var(--hi);transform-origin:left;transform:scaleX(var(--p,0));transition:transform .3s}
+.toast{position:fixed;left:50%;bottom:1.1rem;z-index:65;display:flex;align-items:center;gap:.9rem;max-width:min(26rem,calc(100vw - 2rem));padding:.8rem 1rem .8rem 1.1rem;border-radius:999px;
+  background:var(--c-text);color:var(--c-bg);box-shadow:0 18px 50px -12px #000;transform:translate(-50%,160%);visibility:hidden;transition:transform .7s var(--ease),visibility 0s .7s;cursor:pointer}
+.toast.on{transform:translate(-50%,0);visibility:visible;transition-delay:0s}
+.toast-dot{flex:none;width:.6rem;height:.6rem;border-radius:50%;background:var(--c-primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--c-primary) 30%,transparent)}
+.toast-tx{display:grid;min-width:0;line-height:1.2}
+.toast-l{font:600 .64rem/1.2 var(--f-b);letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+.toast-n{font:italic 400 1.05rem/1.2 var(--f-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toast-go{flex:none;font:600 .68rem/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase;padding:.55em .9em;border-radius:999px;border:1px solid color-mix(in srgb,var(--c-bg) 25%,transparent)}
+.fly{position:fixed;z-index:80;width:14px;height:14px;border-radius:50%;background:var(--c-primary);box-shadow:0 0 0 2px var(--c-text);pointer-events:none}
+.drawer{position:fixed;inset:0;z-index:70;visibility:hidden;transition:visibility 0s .7s}
+.drawer.on{visibility:visible;transition-delay:0s}
+.drawer-veil{position:absolute;inset:0;background:color-mix(in srgb,#000 58%,transparent);opacity:0;transition:opacity .6s var(--ease)}
+.drawer.on .drawer-veil{opacity:1}
+.drawer-sheet{position:absolute;top:0;right:0;bottom:0;width:min(100%,27rem);display:flex;flex-direction:column;background:var(--c-surface);border-left:1px solid var(--c-line);transform:translateX(102%);transition:transform .8s var(--ease)}
+.drawer.on .drawer-sheet{transform:none}
+.d-head{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 1.5rem;border-bottom:1px solid var(--c-line)}
+.d-title{font:italic 400 1.9rem/1 var(--f-d)}
+.d-close{width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid var(--c-line);background:transparent;font-size:1.3rem}
+.drawer-list{flex:1;overflow:auto;padding:.5rem 1.5rem}
+.d-it{display:grid;grid-template-columns:auto 1fr auto auto;align-items:baseline;gap:.8rem;padding:1rem 0;border-bottom:1px solid var(--c-line)}
+.d-q{font:700 .95rem/1 var(--f-d);color:var(--hi)}
+.d-n{font-weight:600;font-size:.95rem;line-height:1.3}
+.d-p{font:700 1rem/1 var(--f-d);white-space:nowrap}
+.d-x{border:0;background:none;color:var(--c-muted);font-size:1.1rem;padding:0 .2rem}
+.d-x:hover{color:var(--c-text)}
+.drawer-empty{padding:2.5rem 1.5rem;font:italic 400 1.4rem/1.2 var(--f-d);color:var(--c-muted)}
+.d-foot{display:grid;gap:1rem;padding:1.3rem 1.5rem 1.6rem;border-top:1px solid var(--c-line)}
+.d-sum{display:flex;justify-content:space-between;align-items:baseline}
+.d-sum span{font:600 .72rem/1 var(--f-b);letter-spacing:.18em;text-transform:uppercase;color:var(--c-muted)}
+.d-sum strong{font:700 1.6rem/1 var(--f-d)}
+.d-foot .btn{justify-content:center}
+
+/* iris: the page-to-page curtain */
+.iris{position:fixed;inset:0;z-index:100;display:grid;place-items:center;pointer-events:none;visibility:hidden;color:var(--c-on-primary);
+  background:repeating-linear-gradient(90deg,transparent 0 3rem,color-mix(in srgb,#000 13%,transparent) 5.2rem,transparent 7.4rem),var(--c-primary);clip-path:circle(0px at 50% 50%)}
+.iris.on,.iris-in .iris{visibility:visible}
+.iris-in .iris{clip-path:circle(150vmax at 50% 50%);animation:iris-safe .01s 3.2s forwards}
+@keyframes iris-safe{to{clip-path:circle(0px at 50% 50%);visibility:hidden}}
+.iris-title{max-width:16ch;padding:0 var(--pad);text-align:center;font:italic 400 clamp(2.4rem,7vw,6.6rem)/1 var(--f-d);letter-spacing:-.02em;text-wrap:balance;opacity:0}
+.iris-in .iris-title{opacity:1}
+
+/* catalog page */
+.c-hero{display:grid;gap:2rem;padding:clamp(7.5rem,14vw,11rem) var(--pad) clamp(2.5rem,5vw,4rem);background:radial-gradient(60% 90% at 90% 0%,color-mix(in srgb,var(--c-primary) 20%,transparent),transparent 70%)}
+.c-title{margin-top:1.2rem;font:italic 400 clamp(3rem,9vw,9.5rem)/.9 var(--f-d);letter-spacing:-.035em;text-wrap:balance}
+.c-hero-r{display:grid;gap:1.4rem;align-content:end;max-width:30rem}
+.c-intro{color:color-mix(in srgb,var(--c-text) 80%,transparent);font-size:1.05rem}
+.c-count{font:700 clamp(1.5rem,2.6vw,2.4rem)/1 var(--f-d);color:var(--hi)}
+@media (min-width:900px){.c-hero{grid-template-columns:1.5fr 1fr;align-items:end}}
+.ticker{overflow:hidden;border-block:1px solid var(--c-line);padding:.9rem 0;white-space:nowrap}
+.ticker-in{display:inline-flex;gap:3rem;padding-left:3rem;animation:tick 38s linear infinite}
+.ticker-in span{display:inline-flex;align-items:center;gap:3rem;font:italic 400 1.25rem/1 var(--f-d);color:color-mix(in srgb,var(--c-text) 78%,transparent)}
+.ticker-in span::after{content:"";width:.4rem;height:.4rem;border-radius:50%;background:var(--c-primary)}
+@keyframes tick{to{transform:translateX(-50%)}}
+.toolbar{position:sticky;top:var(--hdr-h,4.6rem);z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.5rem;padding:.9rem var(--pad);background:color-mix(in srgb,var(--c-bg) 90%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--c-line)}
+.chips{display:flex;gap:.5rem;flex:1 1 24rem;min-width:0;overflow-x:auto;scrollbar-width:none;padding:.15rem 0}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:.6em 1.15em;border-radius:999px;border:1px solid var(--c-line);background:transparent;font:italic 400 1.08rem/1 var(--f-d);white-space:nowrap;transition:background .4s var(--ease),color .4s,border-color .4s}
+.chip:hover{border-color:var(--hi)}
+.chip[aria-pressed="true"]{background:var(--c-primary);color:var(--c-on-primary);border-color:var(--c-primary)}
+.tools{display:flex;gap:.6rem;flex-wrap:wrap;margin-left:auto}
+.search{position:relative;display:flex;align-items:center}
+.search svg{position:absolute;left:.95rem;width:.95rem;height:.95rem;color:var(--c-muted);pointer-events:none}
+.search input{width:min(15rem,58vw);padding:.72em 1em .72em 2.5em;border-radius:999px;border:1px solid var(--c-line);background:color-mix(in srgb,var(--c-text) 4%,transparent);font-size:.9rem;outline:0;transition:border-color .3s,width .6s var(--ease)}
+.search input:focus{border-color:var(--hi);width:min(19rem,70vw)}
+.search input::placeholder{color:var(--c-muted)}
+.sort{position:relative;display:flex;align-items:center;gap:.5rem;padding:0 1rem;border-radius:999px;border:1px solid var(--c-line)}
+.sort span{font:600 .66rem/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted)}
+.sort select{appearance:none;-webkit-appearance:none;border:0;background:transparent;padding:.72em 1.1em .72em 0;font-size:.9rem;outline:0;cursor:pointer}
+.sort::after{content:"";position:absolute;right:1rem;width:.38rem;height:.38rem;border-right:1px solid;border-bottom:1px solid;transform:translateY(-25%) rotate(45deg);pointer-events:none}
+.sort select option{background:var(--c-surface);color:var(--c-text)}
+.grid-wrap{padding:clamp(2rem,4vw,3.5rem) var(--pad) clamp(4rem,8vw,6rem)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,15.5rem),1fr));gap:clamp(2rem,3.5vw,3.25rem) clamp(1rem,2vw,1.75rem);counter-reset:p}
+.grid .card{counter-increment:p}
+.c-empty{display:grid;gap:1.4rem;justify-items:start;padding:3rem 0}
+.c-empty p{font:italic 400 clamp(1.6rem,3vw,2.6rem)/1.1 var(--f-d);max-width:24ch}
+.band{display:grid;gap:2.5rem;padding:clamp(4rem,8vw,6.5rem) var(--pad);border-top:1px solid var(--c-line);background:radial-gradient(60% 80% at 10% 100%,color-mix(in srgb,var(--c-primary) 18%,transparent),transparent 70%)}
+@media (min-width:900px){.band{grid-template-columns:1.3fr .7fr;align-items:end}}
+
+@media (max-width:600px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.8rem .8rem}
+  .grid .card-name{font-size:.86rem}
+  .grid .card-price{font-size:1rem}
+  .grid .card-meta{padding-right:2.6rem}
+  .grid .add{width:2.25rem;height:2.25rem;font-size:1.1rem}
+  .grid .fb span{font-size:1.15rem}
+  .tools{width:100%;margin:0}
+  .search{flex:1}
+  .search input,.search input:focus{width:100%}
+  .toast{bottom:3.6rem}
+}
+
+@media (prefers-reduced-motion:no-preference){
+  .h1 .ln > *{animation:rise 1.3s var(--ease) backwards}
+  .h1 .ln:nth-child(2) > *{animation-delay:.12s}
+  .hero-img{animation:settle 2.6s var(--ease) backwards}
+  .hero-text,.hero-cta,.hero .eyebrow{animation:fade 1.2s .35s var(--ease) backwards}
+  .pick{animation:fade 1.2s .55s var(--ease) backwards}
+  .iris-in .h1 .ln > *,.iris-in .hero-text,.iris-in .hero-cta,.iris-in .hero .eyebrow,.iris-in .pick{animation-delay:.75s}
+}
+@keyframes rise{from{transform:translateY(108%)}}
+@keyframes settle{from{transform:scale(1.2)}}
+@keyframes fade{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}.ticker-in{animation:none}}
+</style>
+<style id="brand-tokens">:root{--c-primary:#FF8652;--c-on-primary:#ffffff;--c-accent:#333333}</style></head>
+<body class="page-home">
+<div class="iris" aria-hidden="true"><span class="iris-title"></span></div>
+<svg class="sr" aria-hidden="true" focusable="false"><filter id="cr-ripple" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.008 0.02" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+<header class="hdr" id="top">
+  <a class="logo is-dark" href="index.html" data-title="Nacra Sailing" aria-label="Nacra Sailing">
+    <span class="logo-mark">NS</span><span class="logo-name">Nacra Sailing</span>
+  </a>
+  <nav class="nav" aria-label="Menu"><ul><li><a href="catalog.html" data-title="Store">Store</a></li><li><a href="#" data-title="Leisure">Leisure</a></li><li><a href="#" data-title="Racing">Racing</a></li><li><a href="#" data-title="Olympic">Olympic</a></li><li><a href="#" data-title="Contact">Contact</a></li></ul></nav>
+  <div class="hdr-act">
+    <a class="hdr-shop mag" href="catalog.html" data-title="Nacra Webshop">Shop</a>
+    <button class="cart-btn mag" type="button" aria-label="Winkelmand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cart-n">0</span></button>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+<nav class="menu" id="menu" aria-label="Menu"><a href="catalog.html" data-title="Store">Store</a><a href="#" data-title="Leisure">Leisure</a><a href="#" data-title="Racing">Racing</a><a href="#" data-title="Olympic">Olympic</a><a href="#" data-title="Contact">Contact</a></nav>
+
+<main class="rail" id="rail">
+  <div class="rail-track">
+
+    <section class="panel hero" data-snap>
+      <div class="hero-media media"><img class="hero-img" src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacramoretonisland-7408937_1000.jpg?cropX&#x3D;0&amp;cropY&#x3D;142&amp;cropW&#x3D;2000&amp;cropH&#x3D;1191&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" fetchpriority="high"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-in">
+        <p class="eyebrow">Out now</p>
+        <h1 class="h1"><span class="ln"><span>The New Nacra</span></span><span class="ln"><em>450 MK²</em></span></h1>
+        <p class="hero-text">Easy handling, ultimate cruising. Meet the latest addition to the Nacra Leisure range, built for any adventure and every sailor.</p>
+        <div class="hero-cta">
+          <a class="btn mag" href="catalog.html" data-title="Shop the store">Shop the store <i>→</i></a>
+          
+          <a class="btn-ghost" href="catalog.html" data-title="Discover the 450 MK²">Discover the 450 MK²</a>
+        </div>
+      </div>
+      <aside class="pick" aria-label="Uitgelicht">
+        <div class="pick-head"><span class="p-idx" data-i18n="featured">Uitgelicht</span><a class="pick-all" href="catalog.html" data-title="Nacra Webshop" data-i18n="viewall">Alles bekijken</a></div>
+        <ol class="pick-list"><li class="pick-it" data-key="p-Nacra Inter 20 MK²" data-price=""><a class="pick-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-inter-20-mk2" data-title="Nacra Inter 20 MK²"><span class="pick-th frame"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-inter-20-mk2-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="" loading="lazy"></span><span class="pick-tx"><span class="card-name">Nacra Inter 20 MK²</span></span></a><button class="add" type="button" aria-label="+ Nacra Inter 20 MK²">+</button></li><li class="pick-it" data-key="p-Nacra 450 MK²" data-price=""><a class="pick-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-450-mk2" data-title="Nacra 450 MK²"><span class="pick-th frame"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;450-mk2-render-xs.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="" loading="lazy"></span><span class="pick-tx"><span class="card-name">Nacra 450 MK²</span></span></a><button class="add" type="button" aria-label="+ Nacra 450 MK²">+</button></li><li class="pick-it" data-key="p-Nacra 500 MK² School" data-price=""><a class="pick-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-500-mk2" data-title="Nacra 500 MK² School"><span class="pick-th frame"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-500-mk2-school-render-v3.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="" loading="lazy"></span><span class="pick-tx"><span class="card-name">Nacra 500 MK² School</span></span></a><button class="add" type="button" aria-label="+ Nacra 500 MK² School">+</button></li><li class="pick-it" data-key="p-Nacra 500 MK² Sport" data-price=""><a class="pick-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-500-mk2" data-title="Nacra 500 MK² Sport"><span class="pick-th frame"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;n500-mk2-sport.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="" loading="lazy"></span><span class="pick-tx"><span class="card-name">Nacra 500 MK² Sport</span></span></a><button class="add" type="button" aria-label="+ Nacra 500 MK² Sport">+</button></li></ol>
+      </aside>
+      <span class="hero-hint" aria-hidden="true" data-i18n="scroll">Scroll</span>
+    </section>
+
+    <section class="panel cats" data-snap aria-labelledby="cats-h">
+      <div class="p-head">
+        <p class="p-idx">Nacra Sailing</p>
+        <h2 class="h2" id="cats-h" data-i18n="collections">Collecties</h2>
+        <p>Empowering sailors since 1975</p>
+      </div>
+      <ul class="cats-list swipe"><li class="cat" data-key="c-Boats"><a href="catalog.html" data-title="Boats"><figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;boats.jpg?width&#x3D;150" alt="Boats" loading="lazy"></figure><span class="cat-name">Boats</span></a></li><li class="cat" data-key="c-Sails"><a href="catalog.html" data-title="Sails"><figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;sails.jpg?width&#x3D;150" alt="Sails" loading="lazy"></figure><span class="cat-name">Sails</span></a></li><li class="cat" data-key="c-Spars"><a href="catalog.html" data-title="Spars"><figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;spars-and-rigging.jpg?width&#x3D;150" alt="Spars" loading="lazy"></figure><span class="cat-name">Spars</span></a></li><li class="cat" data-key="c-Rigging"><a href="catalog.html" data-title="Rigging"><figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;f16.jpg?width&#x3D;150" alt="Rigging" loading="lazy"></figure><span class="cat-name">Rigging</span></a></li><li class="cat" data-key="c-Hardware"><a href="catalog.html" data-title="Hardware"><figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;hardware-1.jpg?width&#x3D;150" alt="Hardware" loading="lazy"></figure><span class="cat-name">Hardware</span></a></li><li class="cat" data-key="c-Used &amp; Demo"><a href="catalog.html" data-title="Used &amp; Demo"><figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;used-boats-1.jpg?width&#x3D;150" alt="Used &amp; Demo" loading="lazy"></figure><span class="cat-name">Used &amp; Demo</span></a></li></ul>
+    </section>
+
+    <section class="panel look" aria-labelledby="look-h">
+      <div class="look-intro" data-snap>
+        <p class="p-idx">13 categories</p>
+        <h2 class="h2" id="look-h">Nacra Webshop</h2>
+        <p>Boats, sails, spars, rigging and hardware, everything to keep your Nacra on the water.</p>
+        <a class="btn-ghost" href="catalog.html" data-title="Nacra Webshop"><span data-i18n="viewall">Alles bekijken</span> →</a>
+      </div>
+      <div class="look-list swipe"><article data-shop-item="0" class="card" data-key="p-Nacra Inter 20 MK²" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-inter-20-mk2" data-title="Nacra Inter 20 MK²">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-inter-20-mk2-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra Inter 20 MK²" loading="lazy"><span class="tag">New</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra Inter 20 MK²</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra Inter 20 MK²">+</button>
+      </article><article data-shop-item="1" class="card" data-key="p-Nacra 450 MK²" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-450-mk2" data-title="Nacra 450 MK²">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;450-mk2-render-xs.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 450 MK²" loading="lazy"><span class="tag">New</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra 450 MK²</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra 450 MK²">+</button>
+      </article><article data-shop-item="2" class="card" data-key="p-Nacra 500 MK² School" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-500-mk2" data-title="Nacra 500 MK² School">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-500-mk2-school-render-v3.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 500 MK² School" loading="lazy"><span class="tag">Leisure</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra 500 MK² School</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra 500 MK² School">+</button>
+      </article><article data-shop-item="3" class="card" data-key="p-Nacra 500 MK² Sport" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-500-mk2" data-title="Nacra 500 MK² Sport">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;n500-mk2-sport.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 500 MK² Sport" loading="lazy"><span class="tag">Leisure</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra 500 MK² Sport</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra 500 MK² Sport">+</button>
+      </article><article data-shop-item="4" class="card" data-key="p-Nacra 570 MK² School" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-570-mk2" data-title="Nacra 570 MK² School">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-570-mk2-school-render.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 570 MK² School" loading="lazy"><span class="tag">Leisure</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra 570 MK² School</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra 570 MK² School">+</button>
+      </article><article data-shop-item="5" class="card" data-key="p-Nacra 570 MK² Sport" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-570-mk2" data-title="Nacra 570 MK² Sport">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;n570-mk2-sport.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 570 MK² Sport" loading="lazy"><span class="tag">Leisure</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra 570 MK² Sport</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra 570 MK² Sport">+</button>
+      </article><article data-shop-item="6" class="card" data-key="p-Nacra 15" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-15" data-title="Nacra 15">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-15-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 15" loading="lazy"><span class="tag">Racing</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra 15</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra 15">+</button>
+      </article><article data-shop-item="7" class="card" data-key="p-Nacra F16" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-f16" data-title="Nacra F16">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;f16.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra F16" loading="lazy"><span class="tag">Racing</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra F16</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra F16">+</button>
+      </article><article data-shop-item="8" class="card" data-key="p-Nacra 17" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-olympic&#x2F;nacra-17" data-title="Nacra 17">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-17-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 17" loading="lazy"><span class="tag">Olympic</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra 17</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra 17">+</button>
+      </article><article data-shop-item="9" class="card" data-key="p-Nacra F18 Evolution" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-f18-evolution" data-title="Nacra F18 Evolution">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;f18-evo.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra F18 Evolution" loading="lazy"><span class="tag">Racing</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra F18 Evolution</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra F18 Evolution">+</button>
+      </article><article data-shop-item="10" class="card" data-key="p-Nacra F20 Carbon" data-price="" data-snap>
+        <a class="card-link" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-f20-carbon" data-title="Nacra F20 Carbon">
+          <figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;f20.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra F20 Carbon" loading="lazy"><span class="tag">Racing</span></figure>
+          <span class="card-meta"><span class="card-name">Nacra F20 Carbon</span></span>
+        </a>
+        <button class="add" type="button" aria-label="+ Nacra F20 Carbon">+</button>
+      </article></div>
+    </section>
+
+    <section class="panel story" data-snap>
+      <figure class="story-media frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;240804_paris24_sb4_7999.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1200" alt="" loading="lazy"></figure>
+      <div class="story-tx">
+        <p class="eyebrow">Our story</p>
+        <h2 class="h2">Built in The Hague, sailed worldwide</h2>
+        <p>Since 1975 Nacra has built catamarans for every kind of sailor, from relaxed cruising to Olympic racing. Our home is Scheveningen, The Hague, and our boats, sails and parts reach sailors everywhere through the webshop and our dealer network.</p>
+      </div>
+    </section>
+
+    <section class="panel gal" data-snap aria-label="Nacra Sailing">
+      <div class="gal-grid swipe"><figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra_inter20_laurensmorel_l6a_7043_optimized_1000.jpg?cropX&#x3D;0&amp;cropY&#x3D;364&amp;cropW&#x3D;2264&amp;cropH&#x3D;1142&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></figure><figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacramoretonisland-7409028_1000.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></figure><figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;54109528256_59b44a4f8f_o.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></figure><figure class="frame media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;10-low-res-vertical.png?cropX&#x3D;0&amp;cropY&#x3D;222&amp;cropW&#x3D;960&amp;cropH&#x3D;873&amp;quality&#x3D;90&amp;width&#x3D;960" alt="" loading="lazy"></figure></div>
+    </section>
+
+    <section class="panel trust" data-snap>
+      <div class="p-head"><p class="p-idx">Nacra Sailing</p><h2 class="h2" data-i18n="why">Waarom bij ons</h2></div>
+      <ol class="usps"><li><h3>Since 1975</h3><p>Nearly five decades of catamaran building, from beach cats to racing machines.</p></li><li><h3>Olympic pedigree</h3><p>The Nacra 17 is the Olympic mixed multihull class, so you sail what the best sail.</p></li><li><h3>Hand-crafted sails</h3><p>Designed and made by Performance Sails, Nacra&#39;s own sail loft.</p></li><li><h3>Everything for your boat</h3><p>Parts, rigging, hardware, covers and more, available straight from the webshop.</p></li></ol>
+    </section>
+
+    <section class="panel stats-p" data-snap>
+      <dl class="stats"><div><dt>1975</dt><dd>Building catamarans since</dd></div><div><dt>27</dt><dd>Price regions: 26 EU countries plus Outside EU</dd></div></dl>
+    </section>
+
+
+    <section class="panel finale" data-snap>
+      <div class="finale-cta">
+        <h2 class="h2">Find your Nacra, from relaxation to racing</h2>
+        <p>Browse boats, sails and parts in the webshop, or locate your nearest Nacra partner.</p>
+        <a class="btn mag" href="catalog.html" data-title="Visit the store">Visit the store <i>→</i></a>
+      </div>
+      <div class="contact">
+        <div><span class="p-idx" data-i18n="address">Adres</span><p>Hellingweg 108-116, 2583 DX, The Hague (The Netherlands)</p></div>
+        <div><span class="p-idx" data-i18n="phone">Telefoon</span><a href="tel:+31 (0) 70 338 2900">+31 (0) 70 338 2900</a></div>
+        
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="ftr">
+  <div class="ftr-top">
+    <div class="ftr-col"><p class="ftr-tag">Empowering sailors since 1975</p></div>
+    <div class="ftr-col"><span class="p-idx">Menu</span><a href="catalog.html" data-title="Store">Store</a><a href="#" data-title="Leisure">Leisure</a><a href="#" data-title="Racing">Racing</a><a href="#" data-title="Olympic">Olympic</a><a href="#" data-title="Contact">Contact</a></div>
+    <div class="ftr-col"><span class="p-idx">Info</span><a href="#">Our Story</a><a href="#">Nacra Partners locator</a><a href="#">Contact</a><a href="#">General Terms</a><a href="#">Terms &amp; Conditions Charters</a><a href="#">Privacy &amp; Cookie-Policy</a></div>
+    <div class="ftr-col"><span class="p-idx" data-i18n="contact">Contact</span><p>Hellingweg 108-116, 2583 DX, The Hague (The Netherlands)</p><a href="tel:+31 (0) 70 338 2900">+31 (0) 70 338 2900</a></div>
+  </div>
+  <a class="ftr-name" href="index.html" data-title="Nacra Sailing">Nacra Sailing</a>
+  <div class="ftr-bot"><span>© 2026 Nacra Sailing</span><a href="#top">↑ Top</a></div>
+</footer>
+
+<div class="badge">Demo redesign · Curtain Rail</div>
+<div class="counter" aria-hidden="true"><span class="cn-cur">01</span><span class="cn-sep">/</span><span class="cn-tot">01</span><span class="cn-bar"><i></i></span></div>
+<div class="cursor" aria-hidden="true"><span data-i18n="drag">Sleep</span></div>
+<div class="toast" role="status" aria-live="polite"><span class="toast-dot"></span><span class="toast-tx"><span class="toast-l"></span><span class="toast-n"></span></span><span class="toast-go" data-i18n="view">Bekijk</span></div>
+<div class="drawer" aria-hidden="true">
+  <div class="drawer-veil"></div>
+  <aside class="drawer-sheet" role="dialog" aria-label="Winkelmand">
+    <div class="d-head"><h2 class="d-title" data-i18n="cart">Winkelmand</h2><button class="d-close" type="button" aria-label="Sluiten">×</button></div>
+    <ul class="drawer-list"></ul>
+    <p class="drawer-empty"></p>
+    <div class="d-foot"><div class="d-sum"><span data-i18n="sub">Subtotaal</span><strong class="drawer-sum">€ 0,00</strong></div><button class="btn d-go" type="button"><span data-i18n="onward">Verder winkelen</span> <i>→</i></button></div>
+  </aside>
+</div>
+
+<script>
+(() => {
+  const H = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const lang = (H.lang || 'nl').slice(0, 2).toLowerCase();
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const pad = (n) => String(n).padStart(2, '0');
+  const norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+  const num = (s) => { let v = String(s || '').replace(/[^\d,.-]/g, ''); if (v.includes(',')) v = v.replace(/\./g, '').replace(',', '.'); return parseFloat(v) || 0; };
+  const money = (n) => new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(n);
+
+  // UI chrome is Dutch in the markup; other languages swap it here.
+  const L = {
+    en: { collections: 'Collections', why: 'Why choose us', all: 'All', sort: 'Sort', featured: 'Featured', viewall: 'View all', cart: 'Your cart', sub: 'Subtotal', onward: 'Continue shopping', address: 'Address', phone: 'Phone', email: 'Email', search: 'Search products…', rec: 'Recommended', asc: 'Price: low to high', desc: 'Price: high to low', az: 'Name A–Z', drag: 'Drag', scroll: 'Scroll', view: 'View', added: 'Added to your cart', empty: 'Your cart is still empty.', remove: 'Remove' },
+    de: { collections: 'Kollektionen', why: 'Warum wir', all: 'Alle', sort: 'Sortieren', featured: 'Empfohlen', viewall: 'Alle ansehen', cart: 'Warenkorb', sub: 'Zwischensumme', onward: 'Weiter einkaufen', address: 'Adresse', phone: 'Telefon', email: 'E-Mail', search: 'Produkte durchsuchen…', rec: 'Empfohlen', asc: 'Preis aufsteigend', desc: 'Preis absteigend', az: 'Name A–Z', drag: 'Ziehen', scroll: 'Scrollen', view: 'Ansehen', added: 'In den Warenkorb gelegt', empty: 'Dein Warenkorb ist noch leer.', remove: 'Entfernen' },
+  };
+  const T = Object.assign({ added: 'Toegevoegd aan je mand', empty: 'Je winkelmand is nog leeg.', remove: 'Verwijder' }, L[lang] || {});
+  $$('[data-i18n]').forEach((el) => { const v = L[lang]?.[el.dataset.i18n]; if (v) el.textContent = v; });
+  $$('[data-i18n-ph]').forEach((el) => { const v = L[lang]?.[el.dataset.i18nPh]; if (v) { el.placeholder = v; el.setAttribute('aria-label', v); } });
+
+  /* header + menu */
+  const hdr = $('.hdr');
+  const setHdr = () => H.style.setProperty('--hdr-h', hdr.offsetHeight + 'px');
+  setHdr(); addEventListener('resize', setHdr);
+  const solid = () => hdr.classList.toggle('solid', scrollY > 30 || H.classList.contains('hz-moved'));
+  addEventListener('scroll', solid, { passive: true }); solid();
+  const menuBtn = $('.menu-btn');
+  menuBtn?.addEventListener('click', () => { menuBtn.setAttribute('aria-expanded', H.classList.toggle('menu-open')); });
+  $$('.menu a').forEach((a) => a.addEventListener('click', () => H.classList.remove('menu-open')));
+  document.addEventListener('click', (e) => { if (e.target.closest('a[href="#"]')) e.preventDefault(); });
+
+  /* images: odd aspect ratios go on a mat instead of being cropped to death */
+  const frames = [];
+  const matCheck = (img) => { const f = img.closest('.frame'); if (!f || !img.naturalWidth || !f.clientHeight) return; const q = (img.naturalWidth / img.naturalHeight) / (f.clientWidth / f.clientHeight); f.classList.toggle('is-mat', q > 1.9 || q < .52); };
+  $$('.media img, .frame img').forEach((img) => {
+    img.draggable = false;
+    const bad = () => { img.closest('.frame, .media')?.classList.add('is-broken'); img.remove(); };
+    const ok = () => { frames.push(img); matCheck(img); };
+    if (img.complete) img.naturalWidth ? ok() : bad();
+    else { img.addEventListener('load', ok, { once: true }); img.addEventListener('error', bad, { once: true }); }
+  });
+  addEventListener('resize', () => frames.forEach(matCheck));
+
+  /* hover ripple: feDisplacementMap scale 0 → 12 → 0 */
+  const disp = $('#cr-ripple feDisplacementMap'), turb = $('#cr-ripple feTurbulence');
+  let ripRaf = 0, ripEl = null;
+  const ripple = (el) => {
+    if (ripEl && ripEl !== el) ripEl.style.filter = '';
+    ripEl = el; el.style.filter = 'url(#cr-ripple)';
+    cancelAnimationFrame(ripRaf);
+    const t0 = performance.now();
+    const step = (t) => {
+      const p = clamp((t - t0) / 760, 0, 1);
+      disp.setAttribute('scale', (Math.sin(Math.PI * (1 - (1 - p) ** 2)) * 12).toFixed(2));
+      turb.setAttribute('baseFrequency', `${(.008 + p * .01).toFixed(4)} ${(.02 + p * .012).toFixed(4)}`);
+      if (p < 1) ripRaf = requestAnimationFrame(step); else { el.style.filter = ''; ripEl = null; }
+    };
+    ripRaf = requestAnimationFrame(step);
+  };
+  if (fine && !reduce && disp) $$('.media').forEach((m) => m.addEventListener('mouseenter', () => { const el = m.querySelector('img, .fb span'); if (el) ripple(el); }));
+
+  /* magnetic controls */
+  if (fine && !reduce) $$('.mag').forEach((el) => {
+    el.addEventListener('pointermove', (e) => { const r = el.getBoundingClientRect(); el.style.transform = `translate(${((e.clientX - r.left - r.width / 2) * .26).toFixed(1)}px,${((e.clientY - r.top - r.height / 2) * .36).toFixed(1)}px)`; });
+    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+  });
+
+  /* counter */
+  const cnCur = $('.cn-cur'), cnTot = $('.cn-tot'), cnBar = $('.cn-bar');
+  let lastI = -1;
+  const setCounter = (i, n, p) => {
+    cnTot.textContent = pad(n);
+    if (i !== lastI) { lastI = i; cnCur.textContent = pad(i); if (!reduce) cnCur.animate([{ transform: 'translateY(55%)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 520, easing: 'cubic-bezier(.22,1,.36,1)' }); }
+    if (p != null) cnBar.style.setProperty('--p', clamp(p, 0, 1).toFixed(4));
+  };
+
+  /* cart: localStorage, count bump, flying dot, toast, drawer */
+  const KEY = 'curtain-rail-cart';
+  let cart = []; try { cart = JSON.parse(localStorage.getItem(KEY)) || []; } catch {}
+  const cartBtn = $('.cart-btn'), cartN = $('.cart-n'), drawer = $('.drawer'), dList = $('.drawer-list'), dSum = $('.drawer-sum'), dEmpty = $('.drawer-empty'), toast = $('.toast');
+  dEmpty.textContent = T.empty;
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch {} };
+  const renderCart = () => {
+    const n = cart.reduce((s, i) => s + i.q, 0);
+    cartN.textContent = n; cartBtn.classList.toggle('has', n > 0);
+    dList.replaceChildren(...cart.map((it, k) => {
+      const li = document.createElement('li'); li.className = 'd-it';
+      li.innerHTML = '<span class="d-q"></span><span class="d-n"></span><span class="d-p"></span><button type="button" class="d-x">×</button>';
+      li.querySelector('.d-q').textContent = it.q + '×'; li.querySelector('.d-n').textContent = it.n; li.querySelector('.d-p').textContent = it.p || '';
+      const x = li.querySelector('.d-x'); x.setAttribute('aria-label', T.remove); x.onclick = () => { cart.splice(k, 1); save(); renderCart(); };
+      return li;
+    }));
+    dEmpty.hidden = cart.length > 0;
+    dSum.textContent = money(cart.reduce((s, i) => s + num(i.p) * i.q, 0));
+  };
+  renderCart();
+  const bump = () => { cartBtn.classList.remove('bump'); void cartBtn.offsetWidth; cartBtn.classList.add('bump'); };
+  const fly = (from) => {
+    const a = from.getBoundingClientRect(), b = cartBtn.getBoundingClientRect();
+    const d = document.createElement('i'); d.className = 'fly';
+    d.style.left = a.left + a.width / 2 - 7 + 'px'; d.style.top = a.top + a.height / 2 - 7 + 'px';
+    document.body.append(d);
+    const dx = b.left + b.width / 2 - a.left - a.width / 2, dy = b.top + b.height / 2 - a.top - a.height / 2;
+    d.animate([{ transform: 'none' }, { transform: `translate(${dx * .45}px,${dy * .45 - 90}px) scale(1.3)` }, { transform: `translate(${dx}px,${dy}px) scale(.35)` }], { duration: 720, easing: 'cubic-bezier(.5,0,.25,1)' }).onfinish = () => { d.remove(); bump(); };
+  };
+  let toastT = 0;
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('.add'); if (!b) return;
+    e.preventDefault();
+    const item = b.closest('[data-price]');
+    const n = item?.querySelector('.card-name')?.textContent.trim() || '';
+    const p = item?.dataset.price || '';
+    const ex = cart.find((i) => i.n === n); ex ? ex.q++ : cart.push({ n, p, q: 1 });
+    save(); renderCart();
+    b.classList.add('done'); setTimeout(() => b.classList.remove('done'), 900);
+    reduce ? bump() : fly(b);
+    toast.querySelector('.toast-l').textContent = T.added; toast.querySelector('.toast-n').textContent = n;
+    toast.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => toast.classList.remove('on'), 2800);
+  });
+  const openD = (o) => { drawer.classList.toggle('on', o); drawer.setAttribute('aria-hidden', String(!o)); if (o) { toast.classList.remove('on'); $('.d-close', drawer).focus(); } };
+  cartBtn.addEventListener('click', () => openD(true));
+  toast.addEventListener('click', () => openD(true));
+  drawer.addEventListener('click', (e) => { if (e.target.closest('.d-close, .drawer-veil, .d-go')) openD(false); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') { openD(false); H.classList.remove('menu-open'); } });
+
+  /* iris: page-to-page curtain */
+  const iris = $('.iris'), irisT = $('.iris-title');
+  const EASE = 'cubic-bezier(.76,0,.24,1)';
+  const farR = (x, y) => Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+  document.addEventListener('click', (e) => {
+    if (reduce || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest('a[href]');
+    if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return;
+    let url; try { url = new URL(a.getAttribute('href'), location.href); } catch { return; }
+    if (!/^https?:$/.test(url.protocol) || url.origin !== location.origin) return;
+    if (url.pathname === location.pathname && url.search === location.search) return;
+    e.preventDefault();
+    const r = a.getBoundingClientRect();
+    const x = e.detail ? e.clientX : r.left + r.width / 2, y = e.detail ? e.clientY : r.top + r.height / 2;
+    const title = (a.dataset.title || a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 64) || document.title;
+    try { sessionStorage.setItem('cr-iris', JSON.stringify({ key: a.closest('[data-key]')?.dataset.key || '', title })); } catch {}
+    H.classList.remove('menu-open');
+    irisT.textContent = title;
+    iris.classList.add('on');
+    const R = farR(x, y);
+    iris.animate([{ clipPath: `circle(0px at ${x}px ${y}px)` }, { clipPath: `circle(${R}px at ${x}px ${y}px)` }], { duration: 650, easing: EASE, fill: 'forwards' }).onfinish = () => { location.href = url.href; };
+    irisT.animate([{ opacity: 0, transform: 'translateY(20px)' }, { opacity: 1, transform: 'none' }], { duration: 450, delay: 260, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'both' });
+  });
+  let st = null; try { st = JSON.parse(sessionStorage.getItem('cr-iris') || 'null'); sessionStorage.removeItem('cr-iris'); } catch {}
+  const findKey = (key) => {
+    if (!key) return null;
+    try { const el = document.querySelector(`[data-key="${CSS.escape(key)}"]`); if (el) return el; } catch {}
+    if (key.startsWith('c-')) { const k = norm(key.slice(2)); return $$('.chip[data-key]').find((c) => { const v = norm(c.dataset.key.slice(2)); return v && (k.includes(v) || v.includes(k)); }) || null; }
+    return null;
+  };
+  const irisOpen = () => {
+    if (!H.classList.contains('iris-in')) return;
+    const el = findKey(st?.key);
+    let x = innerWidth / 2, y = innerHeight / 2;
+    if (el?.classList.contains('chip')) {
+      const bar = el.parentElement; bar.scrollLeft = el.offsetLeft - bar.clientWidth / 2 + el.offsetWidth / 2;
+      setTimeout(() => el.click(), 0); // land on the clicked category, already filtered
+    }
+    if (el) { const r = el.getBoundingClientRect(); if (r.width && r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth) { x = r.left + r.width / 2; y = r.top + r.height / 2; } }
+    irisT.textContent = st?.title || '';
+    const R = farR(x, y);
+    irisT.animate([{ opacity: 1 }, { opacity: 0, transform: 'translateY(-14px)' }], { duration: 320, delay: 140, easing: 'ease-out', fill: 'both' });
+    iris.animate([{ clipPath: `circle(${R}px at ${x}px ${y}px)` }, { clipPath: `circle(0px at ${x}px ${y}px)` }], { duration: 760, delay: 260, easing: EASE, fill: 'forwards' }).onfinish = () => H.classList.remove('iris-in');
+  };
+  addEventListener('pageshow', (e) => {
+    if (!e.persisted) return;
+    H.classList.remove('iris-in'); iris.classList.remove('on');
+    [...iris.getAnimations(), ...irisT.getAnimations()].forEach((a) => a.cancel());
+  });
+
+  /* home: horizontal rail, wheel/drag/keys mapped to x with lerp 0.1 and snap */
+  const rail = $('.rail'), track = $('.rail-track');
+  if (rail && track && H.hasAttribute('data-rail')) {
+    const mq = matchMedia('(min-width: 960px) and (hover: hover) and (pointer: fine)');
+    const heroMedia = $('.hero-media'), looks = $$('.look-list .card').slice(0, 8), panels = $$('.panel', track), cursor = $('.cursor');
+    let hz = false, cur = 0, tgt = 0, maxX = 0, snaps = [], idle = 0, settled = false, dragging = false, moved = false;
+    const write = () => {
+      track.style.transform = `translate3d(${(-cur).toFixed(2)}px,0,0)`;
+      if (heroMedia) heroMedia.style.transform = `translate3d(${(cur * .45).toFixed(1)}px,0,0)`;
+      for (const c of looks) { const r = c.getBoundingClientRect(); if (r.right < -200 || r.left > innerWidth + 200) continue; c.querySelector('.frame')?.style.setProperty('--px', (((r.left + r.width / 2) / innerWidth - .5) * -r.width * .1).toFixed(1) + 'px'); }
+      cnBar.style.setProperty('--p', maxX ? (cur / maxX).toFixed(4) : '0');
+      H.classList.toggle('hz-moved', cur > 30); solid();
+    };
+    const nearest = (x) => { let bi = 0, bd = Infinity; snaps.forEach((s, i) => { const d = Math.abs(s - x); if (d < bd) { bd = d; bi = i; } }); return [bi, bd]; };
+    const measure = () => {
+      hz = mq.matches && !reduce;
+      H.classList.toggle('hz', hz);
+      if (!hz) { track.style.transform = ''; if (heroMedia) heroMedia.style.transform = ''; H.classList.remove('hz-moved'); vCount(); return; }
+      maxX = Math.max(0, track.scrollWidth - innerWidth);
+      const tl = track.getBoundingClientRect().left;
+      snaps = $$('[data-snap]', track).map((el) => { const r = el.getBoundingClientRect(), l = r.left - tl; return clamp(r.width >= innerWidth * .9 ? l : l - (innerWidth - r.width) / 2, 0, maxX); });
+      tgt = clamp(tgt, 0, maxX); cur = tgt; write(); settled = true;
+      setCounter(nearest(cur)[0] + 1, snaps.length);
+    };
+    const vCount = () => {
+      if (hz) return;
+      let i = 0; panels.forEach((p, k) => { if (p.getBoundingClientRect().top < innerHeight * .5) i = k; });
+      const max = document.documentElement.scrollHeight - innerHeight;
+      setCounter(i + 1, panels.length, max > 0 ? scrollY / max : 0);
+    };
+    const go = (x) => { tgt = clamp(x, 0, maxX); settled = false; };
+    const snapSoon = () => { clearTimeout(idle); idle = setTimeout(() => { if (dragging) return; const [i, d] = nearest(tgt); if (d > 1 && d < innerWidth * .6) go(snaps[i]); }, 170); };
+    const pinned = () => Math.abs(rail.getBoundingClientRect().top) < 2;
+    const tick = () => {
+      if (hz && !settled) {
+        const d = tgt - cur;
+        if (Math.abs(d) > .4) cur += d * .1; else { cur = tgt; settled = true; setCounter(nearest(cur)[0] + 1, snaps.length); }
+        write();
+      }
+      requestAnimationFrame(tick);
+    };
+    addEventListener('wheel', (e) => {
+      if (!hz || e.ctrlKey || drawer.classList.contains('on')) return;
+      let d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      d *= e.deltaMode === 1 ? 32 : e.deltaMode === 2 ? innerHeight : 1;
+      if (!pinned()) return;
+      if ((d > 0 && tgt < maxX - .5) || (d < 0 && tgt > .5)) { e.preventDefault(); go(tgt + d * 1.1); snapSoon(); }
+    }, { passive: false });
+    addEventListener('keydown', (e) => {
+      if (!hz || !pinned() || e.target.closest('input, select, textarea') || drawer.classList.contains('on')) return;
+      const k = e.key, fwd = ['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(k), back = ['ArrowLeft', 'ArrowUp', 'PageUp'].includes(k);
+      if (!fwd && !back) return;
+      const next = fwd ? snaps.find((s) => s > tgt + 2) : [...snaps].reverse().find((s) => s < tgt - 2);
+      if (next == null) return;
+      e.preventDefault(); go(next);
+    });
+    track.addEventListener('pointerdown', (e) => {
+      if (!hz || e.pointerType !== 'mouse' || e.button !== 0 || e.target.closest('button, input, select')) return;
+      dragging = true; moved = false;
+      const sx = e.clientX, s0 = tgt;
+      const mv = (ev) => { const dx = ev.clientX - sx; if (!moved && Math.abs(dx) > 6) { moved = true; H.classList.add('dragging'); } if (moved) go(s0 - dx * 1.5); };
+      const up = () => { dragging = false; H.classList.remove('dragging'); removeEventListener('pointermove', mv); removeEventListener('pointerup', up); if (moved) snapSoon(); setTimeout(() => { moved = false; }, 0); };
+      addEventListener('pointermove', mv); addEventListener('pointerup', up);
+    });
+    track.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+    track.addEventListener('dragstart', (e) => e.preventDefault());
+    track.addEventListener('focusin', (e) => {
+      if (!hz) return;
+      rail.scrollLeft = 0;
+      const r = e.target.getBoundingClientRect();
+      if (r.left < 0 || r.right > innerWidth) go(cur + r.left + r.width / 2 - innerWidth / 2);
+    });
+    if (cursor && fine && !reduce) {
+      let mx = -100, my = -100, cx = -100, cy = -100;
+      addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; cursor.classList.toggle('on', hz && !!e.target.closest('.rail-track') && !e.target.closest('button, .btn, .btn-ghost, .pick, .hdr')); }, { passive: true });
+      document.addEventListener('pointerleave', () => cursor.classList.remove('on'));
+      const loop = () => { cx += (mx - cx) * .2; cy += (my - cy) * .2; cursor.style.transform = `translate3d(${cx.toFixed(1)}px,${cy.toFixed(1)}px,0)`; requestAnimationFrame(loop); };
+      loop();
+    }
+    addEventListener('scroll', vCount, { passive: true });
+    let rz = 0; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(measure, 120); });
+    measure(); requestAnimationFrame(tick);
+    document.fonts?.ready.then(measure);
+    addEventListener('load', measure);
+  }
+
+  /* catalog: animated filter/search (FLIP), sort via CSS order, position counter */
+  const grid = $('.grid');
+  if (grid) {
+    const cards = () => $$('.card', grid);
+    let shot = null;
+    const cCount = () => {
+      const vis = cards().filter((c) => c.offsetParent);
+      let i = 0; for (const c of vis) if (c.getBoundingClientRect().top < innerHeight * .72) i++;
+      setCounter(vis.length ? Math.max(1, i) : 0, vis.length, vis.length ? i / vis.length : 0);
+    };
+    const snapshot = () => { shot = new Map(); for (const c of cards()) if (c.offsetParent) shot.set(c, c.getBoundingClientRect()); };
+    const play = () => {
+      const s = shot; shot = null; cCount();
+      if (!s || reduce) return;
+      for (const c of cards()) {
+        if (!c.offsetParent) continue;
+        const r = c.getBoundingClientRect(), o = s.get(c);
+        if (o) { const dx = o.left - r.left, dy = o.top - r.top; if (Math.abs(dx) + Math.abs(dy) > 1) c.animate([{ transform: `translate(${dx}px,${dy}px)` }, { transform: 'none' }], { duration: 720, easing: 'cubic-bezier(.22,1,.36,1)' }); }
+        else if (r.top < innerHeight && r.bottom > 0) c.animate([{ opacity: 0, transform: 'translateY(30px) scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: 640, delay: 90, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
+      }
+    };
+    // Capture runs before the injected shop script, so the "before" positions are still on screen.
+    addEventListener('click', (e) => { if (e.target.closest('.chip')) { snapshot(); requestAnimationFrame(play); } }, true);
+    addEventListener('input', (e) => { if (e.target.matches?.('[data-shop-search]')) { snapshot(); requestAnimationFrame(play); } }, true);
+    const sel = $('[data-sort]');
+    sel?.addEventListener('change', () => {
+      snapshot();
+      const v = sel.value;
+      const list = cards().map((c, i) => ({ c, i, p: num(c.dataset.price), n: norm(c.querySelector('.card-name')?.textContent) }));
+      if (v === 'asc') list.sort((a, b) => (!a.p - !b.p) || a.p - b.p);
+      if (v === 'desc') list.sort((a, b) => (!a.p - !b.p) || b.p - a.p);
+      if (v === 'az') list.sort((a, b) => a.n.localeCompare(b.n));
+      list.forEach((o, k) => { o.c.style.order = v === 'rec' ? '' : k; });
+      play();
+    });
+    let q = false; addEventListener('scroll', () => { if (!q) { q = true; requestAnimationFrame(() => { q = false; cCount(); }); } }, { passive: true });
+    addEventListener('resize', cCount);
+    cCount();
+  }
+
+  requestAnimationFrame(irisOpen);
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"en","count":"13 categories","products":[{"name":"Nacra Inter 20 MK²","tag":"New","category":"Leisure"},{"name":"Nacra 450 MK²","tag":"New","category":"Racing"},{"name":"Nacra 500 MK² School","tag":"Leisure","category":"Leisure"},{"name":"Nacra 500 MK² Sport","tag":"Leisure","category":"Leisure"},{"name":"Nacra 570 MK² School","tag":"Leisure","category":"Leisure"},{"name":"Nacra 570 MK² Sport","tag":"Leisure","category":"Leisure"},{"name":"Nacra 15","tag":"Racing","category":"Racing"},{"name":"Nacra F16","tag":"Racing","category":"Racing"},{"name":"Nacra 17","tag":"Olympic","category":"Olympic"},{"name":"Nacra F18 Evolution","tag":"Racing","category":"Racing"},{"name":"Nacra F20 Carbon","tag":"Racing","category":"Racing"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

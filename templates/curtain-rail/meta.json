@@ -1,0 +1,3 @@
+{ "id": "curtain-rail", "name": "Curtain Rail", "scheme": "dark", "sectors": ["retail","lifestyle","travel","culture"],
+  "mood": ["cinematic", "warm umber", "editorial", "theatrical"], "needsProductImages": true,
+  "notes": "Primary fills the iris page curtain, CTAs, tags, active filters and tints every image mat; a 55% primary/ivory mix carries prices and accents so near-black or pastel brands stay readable on the umber ground." }

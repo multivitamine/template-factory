@@ -1,0 +1,18 @@
+{
+  "scoreBefore": 6.6,
+  "scores": { "creativity": 7, "typography": 8, "layout": 6, "polish": 6, "brandRobustness": 8, "mobile": 6, "notGeneric": 7 },
+  "issues": [
+    "The off-screen add-to-cart toast stayed rendered and showed up as an empty 'Bekijk' pill floating in the middle of the page (desktop, mobile and catalog)",
+    "On desktop the 'Scroll' hint sat at top:50% on the right, directly behind the featured card, so it showed as a clipped ghost label",
+    "Without product photos, all 24 catalog cards and the lookbook rail used the exact same pleated placeholder, which reads like a wall of repeated template boxes",
+    "On mobile the hero was cramped: the featured card ran into the fixed badge and the counter, and the CTAs crowded the card",
+    "On mobile the featured card was only partly wide (max 26rem) and left a ragged edge"
+  ],
+  "fixed": [
+    "Toast is now visibility:hidden until it is triggered, so it no longer appears as a ghost (both pages)",
+    "Moved the Scroll hint to the bottom centre of the hero, between the badge and the counter, so it no longer collides with the featured card",
+    "Placeholder frames are now staged 'curtain' vignettes: a spotlight that moves left, centre or right per card, an accent or shadow tint on alternating cards, a floor shadow and a hairline footlight. A grid of them now has rhythm instead of looking like clones, and it follows the brand colours",
+    "Mobile hero: more bottom padding to clear the fixed chrome, a tighter gap, a headline size clamped for 375–960px, and a full-width featured card"
+  ],
+  "scoreAfterEstimate": 7.3
+}
