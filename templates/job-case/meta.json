@@ -1,0 +1,3 @@
+{ "id": "job-case", "name": "Job Case", "scheme": "light", "sectors": ["makers","retail","wholesale","b2b"],
+  "mood": ["warm", "tactile", "letterpress", "confident"], "needsProductImages": true,
+  "notes": "Primary is the printing ink (accent band in the title, registration marks, proof frames, matched letters, CTA lock-up) and the paint on the stick knee and drawer pulls; accent is the rubber-stamp tag colour. Text on primary always uses on-primary." }

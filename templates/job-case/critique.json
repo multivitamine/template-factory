@@ -1,0 +1,18 @@
+{
+  "scoreBefore": 6.9,
+  "issues": [
+    "Hero job case reads as a grid of dark empty boxes: the lead sorts are tiny (34cqmin) and the piles are flat stripes, so the 'heap of metal type' idea is weak at a glance",
+    "Composing-stick demo starts at 1.4 s with a .13 s stagger, so screenshots and first impressions catch stray sorts in mid-flight over the logo and a mirrored, unreadable word ('2qaaaz') in the stick",
+    "Ink-coloured numerals (--ink = primary mixed with black) go a muddy olive with a yellow brand (BOHLT): the USP numbers, stats and drop cap lose punch",
+    "Mobile: product proofs stack one per row at full width, so four products take ~2.5 screens of scrolling",
+    "Homepage proofs use auto-fill, so three products leave an empty fourth column on desktop (stress brand)"
+  ],
+  "fixed": [
+    "Rebuilt the compartments: sorts are 46cqmin, piles have dotted type faces, layered lead stripes and depth shading, and a second leaning sort sits behind each top sort (template + catalog)",
+    "Demo composition now starts at 0.7 s with a 0.08 s stagger and flips to readable 260 ms after the last sort lands",
+    "USP numbers, stat figures and the drop cap are now set in two-colour misregistration (text colour with a primary-ink offset). This works with red, yellow or any other brand colour",
+    "Phones get a two-up sheet of proofs with square images and smaller stamps, names and chases (template + catalog)",
+    "Homepage proofs switched to auto-fit so the row always fills the press bed"
+  ],
+  "scoreAfterEstimate": 7.6
+}

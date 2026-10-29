@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOHLT · Aanzetten en wegrijden, zo simpel is het</title>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Sedan+SC&family=Ultra&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#ece3cf; --c-surface:#f8f2e3; --c-text:#1e1812; --c-muted:#6b5d4d; --c-line:#cdbd9b;
+  --c-primary:#b8261b; --c-on-primary:#fff; --c-accent:#1d4f7a;
+  --ink:color-mix(in srgb, var(--c-primary) 74%, #120c07);
+  --wood-l:#d4a46e; --wood:#b07a45; --wood-d:#7a4c27; --cab:#2a1c12;
+  --lead-l:#d3d7db; --lead:#8b9198; --lead-d:#50555c;
+  --brass-l:#f0d892; --brass:#b48a37;
+  --grain:repeating-linear-gradient(91deg, rgba(70,36,10,.16) 0 1px, transparent 1px 7px, rgba(255,228,184,.1) 7px 9px, transparent 9px 18px, rgba(70,36,10,.1) 18px 20px, transparent 20px 33px);
+  --wood-bg:var(--grain), linear-gradient(180deg, var(--wood-l), var(--wood));
+  --paper:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --pad:clamp(16px, 4vw, 48px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--paper), var(--c-bg); color:var(--c-text); font:400 1.0625rem/1.6 'Old Standard TT', Georgia, serif; overflow-x:clip}
+img{max-width:100%; display:block}
+a{color:inherit}
+h1,h2,h3{font-family:'Ultra', Georgia, serif; font-weight:400; margin:0; letter-spacing:-.012em; overflow-wrap:break-word; hyphens:auto}
+.wrap{max-width:1360px; margin:0 auto; padding:0 var(--pad)}
+.eyebrow{display:flex; align-items:center; gap:.65em; margin:0 0 18px; font:400 .92rem/1.2 'Sedan SC', serif; letter-spacing:.08em; color:var(--c-muted)}
+.eyebrow::before{content:""; flex:none; width:10px; height:15px; border-radius:1px; background:var(--c-primary); box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}
+:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+
+/* ---------- header ---------- */
+.top{background:var(--paper), var(--c-surface); border-bottom:1px solid var(--c-line)}
+.top-in{display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:74px}
+.logo{display:flex; align-items:center; text-decoration:none; flex:none}
+.logo img{max-height:44px; max-width:190px; width:auto}
+.logo.is-light img{filter:brightness(0)}
+.logo span{font:400 1.45rem/1 'Ultra', serif; letter-spacing:-.01em}
+.nav{display:flex; gap:clamp(14px, 2.2vw, 34px)}
+.nav a{font:400 .98rem/1 'Sedan SC', serif; letter-spacing:.06em; text-decoration:none; padding:8px 0; background:linear-gradient(var(--c-primary), var(--c-primary)) 0 100%/0 2px no-repeat; transition:background-size .35s var(--ease)}
+.nav a:hover{background-size:100% 2px}
+@media (max-width:760px){
+  .top-in{flex-wrap:wrap; gap:6px 20px; padding-top:12px; padding-bottom:6px}
+  .nav{width:100%; overflow-x:auto; white-space:nowrap; scrollbar-width:none}
+}
+
+/* ---------- composing stick ---------- */
+.stickbar{position:sticky; top:0; z-index:40; padding:11px 0 13px; background:var(--grain), linear-gradient(180deg, #3b291b, var(--cab)); box-shadow:0 2px 0 var(--brass), 0 12px 24px -14px rgba(0,0,0,.7)}
+.stick{position:relative; height:54px; border-radius:3px 6px 6px 3px; background:linear-gradient(180deg, #eef1f3 0, #b2b8bf 14%, #8a9199 52%, #a7adb4 80%, #6c727a 100%); box-shadow:inset 0 1px 0 #fff, 0 3px 0 #150e08, 0 6px 12px rgba(0,0,0,.4); transition:box-shadow .25s}
+.stick:focus-within{box-shadow:inset 0 1px 0 #fff, 0 3px 0 #150e08, 0 0 0 3px var(--brass-l)}
+.stick::before{content:""; position:absolute; left:40px; right:54px; top:6px; bottom:6px; border-radius:2px; background:linear-gradient(180deg, rgba(0,0,0,.3), rgba(0,0,0,.08) 35%, rgba(255,255,255,.14)); box-shadow:inset 0 2px 3px rgba(0,0,0,.35)}
+.knee{position:absolute; left:7px; top:-7px; bottom:-7px; width:26px; z-index:2; border-radius:3px; background:linear-gradient(90deg, color-mix(in srgb, var(--c-primary) 65%, #fff), var(--c-primary) 40%, color-mix(in srgb, var(--c-primary) 62%, #000)); box-shadow:0 2px 4px rgba(0,0,0,.45), inset 0 0 0 1px rgba(0,0,0,.25)}
+.knee i{position:absolute; left:50%; top:50%; width:12px; height:12px; translate:-50% -50%; border-radius:50%; background:radial-gradient(circle at 35% 35%, #fff, var(--lead) 55%, var(--lead-d)); box-shadow:0 1px 2px rgba(0,0,0,.5)}
+.knee i::after{content:""; position:absolute; left:2px; right:2px; top:50%; height:1.5px; translate:0 -50%; rotate:35deg; background:var(--lead-d)}
+.line{position:absolute; left:42px; right:58px; top:8px; bottom:8px; z-index:2; display:flex; align-items:center; gap:1px; overflow:hidden; pointer-events:none}
+.line.full{justify-content:flex-end}
+.stick input{position:absolute; left:0; top:0; bottom:0; width:calc(100% - 52px); z-index:1; margin:0; padding:0 12px 0 50px; border:0; border-radius:0; background:transparent; font:italic 400 16px/1 'Old Standard TT', serif; color:var(--c-text); outline:none; -webkit-appearance:none; appearance:none}
+.stick input::-webkit-search-cancel-button{-webkit-appearance:none; display:none}
+.stick input::placeholder{color:#2b3036; opacity:.85}
+.js .stick input{color:transparent; caret-color:transparent}
+.stick.has input::placeholder{color:transparent}
+.go{position:absolute; right:7px; top:7px; bottom:7px; width:40px; z-index:3; display:grid; place-items:center; border-radius:3px; background:var(--c-primary); color:var(--c-on-primary); box-shadow:inset 0 -3px 0 rgba(0,0,0,.22)}
+.go svg{width:18px; height:18px}
+.ss{position:relative; flex:none; display:inline-flex; align-items:center; justify-content:center; height:36px; min-width:16px; padding:0 3px 3px; font:400 23px/1 'Ultra', serif; color:#17110b; background:linear-gradient(180deg, var(--lead-l), var(--lead) 72%, #6f757c); border-radius:2px; box-shadow:inset 0 1px 0 rgba(255,255,255,.75), inset 0 -4px 0 rgba(0,0,0,.18), 1px 0 0 rgba(0,0,0,.35)}
+.ss::after{content:""; position:absolute; left:2px; right:2px; bottom:7px; height:1px; background:rgba(0,0,0,.3)}
+.ss i{display:inline-block; font-style:normal; transition:transform .55s cubic-bezier(.5,-.5,.3,1.5)}
+.ss.mir i{transform:scaleX(-1)}
+.ss.quad{min-width:12px; height:24px; align-self:flex-end; margin-bottom:2px; background:linear-gradient(180deg, #8a9097, #5b6067)}
+.ss.quad::after{display:none}
+.ss.pending{visibility:hidden}
+.ss.fly{position:fixed; left:0; top:0; z-index:9999; margin:0; pointer-events:none; will-change:transform; box-shadow:inset 0 1px 0 rgba(255,255,255,.75), inset 0 -4px 0 rgba(0,0,0,.18), 0 14px 22px rgba(0,0,0,.35)}
+.caret{flex:none; width:2px; height:28px; margin-left:3px; background:var(--ink); opacity:0}
+.stick:focus-within .caret{animation:blink 1.05s steps(1) infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@media (max-width:600px){
+  .stick{height:48px} .ss{height:31px; font-size:19px} .ss.quad{height:20px} .caret{height:24px}
+}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex; align-items:center; gap:.6em; padding:.95em 1.35em .85em; font:400 .98rem/1 'Sedan SC', serif; letter-spacing:.06em; text-decoration:none; color:var(--c-text); background:var(--c-surface); border:2px solid var(--c-text); border-radius:3px; box-shadow:4px 4px 0 var(--c-text); transition:transform .2s var(--ease), box-shadow .2s var(--ease)}
+.btn:hover{transform:translate(2px,2px); box-shadow:2px 2px 0 var(--c-text)}
+.btn:active{transform:translate(4px,4px); box-shadow:0 0 0 var(--c-text)}
+.btn.ink{background:var(--c-primary); color:var(--c-on-primary)}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(30px, 5vw, 64px) 0 clamp(48px, 6vw, 88px)}
+.hero-in{display:grid; grid-template-columns:minmax(0, 4fr) minmax(0, 8fr); grid-template-areas:"title title" "txt case"; gap:clamp(24px, 3.5vw, 52px) clamp(24px, 4vw, 64px); align-items:start}
+.hero-title{grid-area:title}
+.hero-txt{grid-area:txt}
+.hero-case{grid-area:case; position:sticky; top:96px}
+.h-hero{font-size:clamp(2.35rem, .9rem + 4.4vw, 5.4rem); line-height:.94; text-wrap:balance; filter:url(#squash)}
+.acc-w{display:block; margin-top:.28em; font-size:.5em; line-height:1.3; rotate:-1.2deg; transform-origin:0 50%}
+.acc{background:var(--c-primary); color:var(--c-on-primary); padding:.04em .26em .1em; -webkit-box-decoration-break:clone; box-decoration-break:clone}
+.lede{margin:0 0 30px; font-size:clamp(1.05rem, 1rem + .3vw, 1.25rem); line-height:1.55; max-width:38ch}
+.btns{display:flex; flex-wrap:wrap; gap:14px 16px}
+.hero-proof{position:relative; margin:44px 0 0; max-width:420px; padding:12px 12px 34px; background:var(--paper), var(--c-surface); rotate:-1.6deg; box-shadow:0 1px 0 rgba(0,0,0,.08), 0 18px 30px -18px rgba(60,35,10,.55)}
+.hero-proof .frame{aspect-ratio:16/10; overflow:hidden; background:color-mix(in srgb, var(--c-primary) 10%, var(--c-surface))}
+.hero-proof img{width:100%; height:100%; object-fit:cover; mix-blend-mode:multiply}
+.hero-proof .reg{position:absolute; bottom:9px}
+.hero-proof .reg:first-of-type{left:12px} .hero-proof .reg:last-of-type{right:12px}
+@media (max-width:980px){
+  .hero-in{grid-template-columns:1fr; grid-template-areas:"title" "txt" "case"}
+  .hero-case{position:static}
+  .hero-proof{max-width:340px}
+}
+
+/* ---------- the job case ---------- */
+.case{position:relative; padding:12px 12px 0; border-radius:6px 6px 4px 4px; background:var(--grain), linear-gradient(180deg, #8f5c31, var(--wood-d)); box-shadow:inset 0 1px 0 rgba(255,235,200,.35), 0 34px 50px -24px rgba(40,20,5,.6), 0 4px 0 #4a2d16}
+.case-body{display:grid; grid-template-columns:minmax(0, 2fr) minmax(0, 1fr); gap:10px}
+.lower{display:grid; grid-template-columns:repeat(8, minmax(0, 1fr)); grid-template-rows:1.3fr 1.3fr 1.15fr 1fr .78fr .66fr; gap:5px; padding:5px; aspect-ratio:1.2; background:var(--wood-bg); border-radius:2px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.c{position:relative; container-type:size; margin:0; padding:0; border:0; cursor:pointer; overflow:hidden; font:inherit; color:inherit; background:radial-gradient(ellipse at 50% 115%, #4f3421, #24160c 72%); box-shadow:inset 0 9px 12px -5px rgba(0,0,0,.75), inset 0 0 0 1px rgba(0,0,0,.45)}
+.c.w2{grid-column:span 2}
+.c.e{grid-column:span 2; grid-row:span 2}
+.c .lab{position:absolute; top:5px; left:7px; z-index:2; font:400 clamp(9px, 20cqmin, 13px)/1 'Sedan SC', serif; color:rgba(246,226,192,.62); transition:color .2s}
+.c .pile{position:absolute; left:6%; right:6%; bottom:0; height:42%; border-radius:50% 50% 3px 3px / 40% 40% 3px 3px; background:radial-gradient(circle at 50% 50%, rgba(255,255,255,.32) 0 1.2px, transparent 1.8px) 0 0/6px 5px, repeating-linear-gradient(0deg, rgba(0,0,0,.4) 0 1px, transparent 1px 5px), repeating-linear-gradient(90deg, #a3a9b0 0 4px, #5b6067 4px 5px, #8d939a 5px 9px, #4b5057 9px 10px); box-shadow:inset 0 4px 5px rgba(255,255,255,.22), inset 0 -6px 8px rgba(0,0,0,.4), 0 -2px 6px rgba(0,0,0,.35)}
+.c.w2 .pile{height:48%} .c.e .pile{height:58%}
+/* a second, leaning sort behind the top one makes each box read as a heap of type */
+.c:not(.r):not(.q) .pile::after{content:""; position:absolute; left:calc(50% - 30cqmin); bottom:55%; width:22cqmin; height:34cqmin; border-radius:2px; background:linear-gradient(180deg, var(--lead), var(--lead-d)); rotate:-16deg; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 .1em .2em rgba(0,0,0,.5)}
+.c .sort{position:absolute; left:50%; bottom:22%; z-index:1; translate:-50% 0; padding:.06em .16em .16em; font:400 46cqmin/1 'Ultra', serif; color:#1a140e; background:linear-gradient(180deg, var(--lead-l), var(--lead)); border-radius:2px; box-shadow:0 .12em 0 #4b5057, 0 .28em .3em rgba(0,0,0,.5); transition:translate .25s var(--ease)}
+.c .sort i{display:inline-block; font-style:normal; transform:scaleX(-1)}
+.c.r .sort{display:none}
+.c.r .lab{top:auto; left:50%; bottom:22%; translate:-50% 0; font-size:clamp(10px, 34cqmin, 15px); color:rgba(246,226,192,.85)}
+.c.r .pile{height:30%}
+.c.q .sort{display:none}
+.c:hover .sort{translate:-50% -6px}
+.c:hover .lab{color:var(--brass-l)}
+.c:focus-visible{outline:2px solid var(--brass-l); outline-offset:-3px}
+.c.pick .sort{animation:pick .5s var(--ease)}
+.c.pick .pile{animation:jig .5s var(--ease)}
+@keyframes pick{40%{translate:-50% -40%}}
+@keyframes jig{30%{translate:0 2px}}
+.caps{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); grid-auto-rows:1fr; gap:5px; padding:5px; background:var(--wood-bg); border-radius:2px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.cap{position:relative; display:block; min-height:96px; overflow:hidden; text-decoration:none; background:radial-gradient(ellipse at 50% 115%, #4f3421, #24160c 72%)}
+.cap:last-child:nth-child(odd){grid-column:span 2}
+.cap img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:sepia(.22) saturate(.9) brightness(.86); transition:transform .7s var(--ease), filter .4s}
+.cap::after{content:""; position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 12px 18px -6px rgba(0,0,0,.85), inset 0 0 0 1px rgba(0,0,0,.5)}
+.cap-fb{position:absolute; left:9%; right:9%; bottom:0; height:46%; border-radius:50% 50% 3px 3px / 36% 36% 3px 3px; background:repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 1px, transparent 1px 8px), repeating-linear-gradient(90deg, #8d939a 0 8px, #565b62 8px 9px)}
+.cap-label{position:absolute; left:8px; right:8px; bottom:8px; z-index:2; padding:3px; border-radius:2px; background:linear-gradient(180deg, var(--brass-l), var(--brass)); box-shadow:0 2px 4px rgba(0,0,0,.45)}
+.cap-label span{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; padding:.38em .5em .3em; text-align:center; font:400 .8rem/1.15 'Sedan SC', serif; letter-spacing:.04em; color:var(--c-text); background:var(--c-surface); transition:background .25s, color .25s}
+.cap:hover img{transform:scale(1.06); filter:sepia(0) saturate(1) brightness(.95)}
+.cap:hover .cap-label span{background:var(--c-primary); color:var(--c-on-primary)}
+.cap-empty{display:grid; place-items:center; grid-column:span 2}
+.cap-empty b{position:relative; z-index:1; padding:.05em .2em .15em; font:400 clamp(2.4rem, 6vw, 4.5rem)/1 'Ultra', serif; color:#1a140e; background:linear-gradient(180deg, var(--lead-l), var(--lead)); border-radius:3px; box-shadow:0 .1em 0 #4b5057, 0 .25em .3em rgba(0,0,0,.5)}
+.drawer{display:flex; align-items:center; justify-content:center; gap:clamp(14px, 6%, 64px); height:62px; margin:12px -12px 0; padding:0 16px; border-radius:0 0 4px 4px; background:var(--wood-bg); border-top:3px solid #4a2d16; box-shadow:inset 0 1px 0 rgba(255,235,200,.4)}
+.pull{flex:none; width:clamp(56px, 9vw, 96px); height:24px; border-radius:0 0 50px 50px / 0 0 24px 24px; background:linear-gradient(180deg, color-mix(in srgb, var(--c-primary) 60%, #fff), var(--c-primary) 45%, color-mix(in srgb, var(--c-primary) 60%, #000)); box-shadow:0 4px 5px rgba(0,0,0,.4), inset 0 2px 0 rgba(255,255,255,.3); translate:0 -4px}
+.holder{min-width:0; padding:3px; border-radius:2px; background:linear-gradient(180deg, var(--brass-l), var(--brass)); box-shadow:0 2px 3px rgba(0,0,0,.4)}
+.holder span{display:block; max-width:30ch; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; padding:.32em .8em .26em; font:400 .86rem/1.1 'Sedan SC', serif; letter-spacing:.06em; background:var(--c-surface)}
+@media (max-width:760px){
+  .case-body{grid-template-columns:1fr}
+  .caps{grid-auto-rows:110px}
+  .pull:last-child{display:none}
+}
+
+/* ---------- rules ---------- */
+.rule{display:grid; gap:4px}
+.rule .brass{height:4px; border-radius:1px; background:linear-gradient(90deg, var(--brass), var(--brass-l) 30%, var(--brass) 55%, var(--brass-l) 80%, var(--brass))}
+.rule .reglet{height:12px; border-radius:1px; background:var(--wood-bg); box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
+
+/* ---------- proofs ---------- */
+.sec{padding:clamp(56px, 8vw, 112px) 0}
+.press{background:var(--paper), color-mix(in srgb, var(--c-text) 6%, var(--c-bg))}
+.sec-head{display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 40ch) auto; gap:20px 40px; align-items:end; margin-bottom:clamp(32px, 4vw, 56px)}
+.sec-head h2{font-size:clamp(2rem, 1.2rem + 2.8vw, 3.8rem); line-height:.98}
+.sec-head .intro{margin:0; color:var(--c-muted)}
+@media (max-width:900px){ .sec-head{grid-template-columns:1fr} .sec-head .btn{justify-self:start} }
+.proofs{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap:clamp(18px, 2.4vw, 34px); counter-reset:proof}
+/* phones: proofs pinned two-up, like a sheet of pulls */
+@media (max-width:600px){
+  .proofs{grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px 12px}
+  .proof > a{padding:8px 8px 12px}
+  .proof-img{aspect-ratio:1}
+  .stamp{top:30px; font-size:.64rem}
+  .pn{margin:10px 0; font-size:1rem}
+  .chase .pr{font-size:.86rem}
+  .proof-foot .reg{display:none}
+}
+.proof{counter-increment:proof; min-width:0}
+.proof > a{position:relative; display:flex; flex-direction:column; height:100%; padding:12px 14px 16px; text-decoration:none; color:inherit; background:var(--paper), var(--c-surface); rotate:var(--r, 0deg); box-shadow:0 1px 0 rgba(0,0,0,.08), 0 14px 26px -16px rgba(60,35,10,.5); transition:transform .4s var(--ease), rotate .4s var(--ease), box-shadow .4s var(--ease)}
+.proof:nth-child(3n+1) > a{--r:-.7deg} .proof:nth-child(3n+2) > a{--r:.5deg} .proof:nth-child(4n) > a{--r:.9deg}
+.proof > a:hover{transform:translateY(-6px); rotate:0deg; box-shadow:0 1px 0 rgba(0,0,0,.08), 0 26px 36px -18px rgba(60,35,10,.6)}
+.proof-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; font:400 .74rem/1 'Sedan SC', serif; letter-spacing:.08em; color:var(--c-muted)}
+.proof-top .no::before{content:"№ " counter(proof, decimal-leading-zero)}
+.proof-img{position:relative; display:block; aspect-ratio:4/3; overflow:hidden; background:color-mix(in srgb, var(--c-primary) 9%, var(--c-surface))}
+.proof-img img{width:100%; height:100%; object-fit:cover; mix-blend-mode:multiply; filter:saturate(.92) contrast(1.04); transition:transform .7s var(--ease)}
+.proof-img::after{content:""; position:absolute; inset:0; border:2px solid var(--ink); opacity:.85; filter:url(#squash); pointer-events:none}
+.proof > a:hover .proof-img img{transform:scale(1.05)}
+.noimg{position:absolute; inset:0; display:grid; place-items:center; font:400 clamp(3rem, 6vw, 4.5rem)/1 'Ultra', serif; color:color-mix(in srgb, var(--c-primary) 45%, var(--c-surface)); background:radial-gradient(color-mix(in srgb, var(--c-primary) 22%, transparent) 1px, transparent 1.6px) 0 0/6px 6px}
+.stamp{position:absolute; top:40px; right:4px; z-index:2; max-width:70%; padding:.38em .6em .3em; font:400 .78rem/1 'Sedan SC', serif; letter-spacing:.06em; color:color-mix(in srgb, var(--c-accent) 72%, var(--c-text)); border:2px solid currentColor; border-radius:2px; background:color-mix(in srgb, var(--c-surface) 88%, transparent); rotate:7deg; filter:url(#squash); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pn{margin:16px 0 14px; font-size:clamp(1.12rem, .95rem + .55vw, 1.45rem); line-height:1.05; color:var(--c-text); filter:url(#squash); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
+.pn .ch.hit{background:var(--c-primary); color:var(--c-on-primary); animation:flash .7s var(--ease)}
+@keyframes flash{0%{background:transparent; color:var(--c-text)}35%{background:var(--c-primary); box-shadow:0 0 0 3px var(--c-primary)}}
+.proof-foot{display:flex; align-items:flex-end; justify-content:space-between; gap:10px; margin-top:auto}
+.chase{display:inline-flex; flex-wrap:wrap; align-items:center; gap:4px; min-width:0; padding:4px; border:3px solid #6f757c; border-radius:2px; background:repeating-linear-gradient(90deg, var(--wood-l) 0 13px, var(--wood) 13px 14px); box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
+.chase .pr{padding:.32em .55em .24em; font:400 1rem/1 'Ultra', serif; white-space:nowrap; background:var(--c-surface); transition:background .25s, color .25s}
+.chase s{padding:.3em .45em; font-size:.82rem; line-height:1; color:var(--c-muted); background:var(--c-surface)}
+.proof > a:hover .chase .pr{background:var(--c-primary); color:var(--c-on-primary)}
+.reg{position:relative; flex:none; display:inline-block; width:15px; height:15px; border:1.5px solid var(--ink); border-radius:50%}
+.reg::before,.reg::after{content:""; position:absolute; background:var(--ink)}
+.reg::before{left:50%; top:-5px; bottom:-5px; width:1.5px; translate:-50% 0}
+.reg::after{top:50%; left:-5px; right:-5px; height:1.5px; translate:0 -50%}
+.shop-empty{font-style:italic; font-size:1.2rem}
+
+/* ---------- specimen (usps) ---------- */
+.usps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 230px), 1fr)); counter-reset:u; border-top:2px solid var(--c-text)}
+.usps li{counter-increment:u; padding:30px 28px 6px 0}
+.usps li + li{padding-left:28px; border-left:1px solid var(--c-line)}
+.usps li::before{content:counter(u, decimal-leading-zero); display:block; margin-bottom:16px; font:400 3.2rem/1 'Ultra', serif; color:var(--c-text); text-shadow:.06em .045em 0 var(--c-primary); filter:url(#squash)}
+.usps h3{margin-bottom:10px; font-size:1.3rem; line-height:1.1}
+.usps p{margin:0; color:var(--c-muted)}
+@media (max-width:760px){ .usps li + li{padding-left:0; border-left:0; border-top:1px solid var(--c-line)} }
+
+/* ---------- story ---------- */
+.story-in{display:grid; grid-template-columns:minmax(0, 5fr) minmax(0, 6fr); gap:clamp(32px, 6vw, 96px); align-items:center}
+.story-img{position:relative; margin:0; padding:14px 14px 40px; background:var(--paper), var(--c-surface); rotate:1.2deg; box-shadow:0 22px 36px -20px rgba(60,35,10,.55)}
+.story-img .frame{position:relative; aspect-ratio:4/5; overflow:hidden; background:color-mix(in srgb, var(--c-primary) 10%, var(--c-surface))}
+.story-img img{width:100%; height:100%; object-fit:cover; mix-blend-mode:multiply}
+.story-img .frame::after{content:""; position:absolute; inset:0; background:radial-gradient(rgba(30,20,10,.16) 1px, transparent 1.5px) 0 0/5px 5px; mix-blend-mode:multiply; pointer-events:none}
+.story-img .reg{position:absolute; bottom:13px; left:14px}
+.story-txt h2{margin-bottom:24px; font-size:clamp(2rem, 1.2rem + 2.6vw, 3.6rem); line-height:1}
+.story-txt .body{margin:0; font-size:clamp(1.08rem, 1rem + .3vw, 1.25rem); max-width:52ch}
+.story-txt .body::first-letter{float:left; margin:.04em .1em 0 0; font:400 3.4em/.8 'Ultra', serif; color:var(--c-text); text-shadow:.06em .045em 0 var(--c-primary)}
+@media (max-width:860px){ .story-in{grid-template-columns:1fr} .story-img{max-width:440px} }
+
+/* ---------- stats: locked furniture ---------- */
+.stats{padding:clamp(48px, 6vw, 80px) 0; background:var(--grain), linear-gradient(180deg, #3b291b, var(--cab)); color:#f4e8d2}
+.stat-row{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap:14px}
+.stat-row li{padding:9px; border-radius:2px; background:var(--wood-bg); box-shadow:0 0 0 3px #6f757c, 0 10px 18px -8px rgba(0,0,0,.6)}
+.stat-row li div{height:100%; padding:22px 20px 20px; background:var(--paper), var(--c-surface); color:var(--c-text)}
+.stat-row b{display:block; font:400 clamp(2.2rem, 1.5rem + 2.4vw, 3.6rem)/1 'Ultra', serif; color:var(--c-text); text-shadow:.055em .04em 0 var(--c-primary); overflow-wrap:anywhere; filter:url(#squash)}
+.stat-row span{display:block; margin-top:10px; font:400 .95rem/1.25 'Sedan SC', serif; letter-spacing:.04em; color:var(--c-muted)}
+
+/* ---------- gallery: proofs drying on a line ---------- */
+.dry{position:relative; padding-top:clamp(56px, 7vw, 96px)}
+.dry::before{content:""; position:absolute; left:0; right:0; top:calc(clamp(56px, 7vw, 96px) + 26px); height:2px; background:#5d4b36; box-shadow:0 1px 0 rgba(255,255,255,.4)}
+.hangs{display:flex; gap:clamp(16px, 2.5vw, 30px); overflow-x:auto; padding:12px var(--pad) 40px; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:var(--wood) transparent}
+.hang{position:relative; flex:0 0 clamp(210px, 25vw, 300px); margin:12px 0 0; padding:10px 10px 28px; background:var(--paper), var(--c-surface); scroll-snap-align:start; transform-origin:50% 0; rotate:var(--r, -1.5deg); box-shadow:0 18px 26px -18px rgba(60,35,10,.6); transition:rotate .5s var(--ease)}
+.hang:nth-child(even){--r:1.8deg} .hang:nth-child(3n){--r:-.6deg}
+.hang:hover{rotate:0deg}
+.hang img{width:100%; aspect-ratio:4/5; object-fit:cover; mix-blend-mode:multiply}
+.peg{position:absolute; top:-20px; left:50%; translate:-50% 0; width:12px; height:36px; border-radius:3px; background:var(--wood-bg); box-shadow:0 2px 3px rgba(0,0,0,.35), inset 0 0 0 1px rgba(0,0,0,.2)}
+.peg::after{content:""; position:absolute; left:2px; right:2px; top:12px; height:5px; border-radius:50%; background:#6f757c}
+
+/* ---------- quote ---------- */
+.quote{max-width:980px; margin:0 auto; text-align:center}
+.quote blockquote{margin:0; font:400 clamp(1.6rem, 1rem + 2.4vw, 3rem)/1.15 'Ultra', serif; filter:url(#squash)}
+.quote blockquote::before{content:"\201C"; display:block; height:.5em; font-size:2.6em; line-height:1; color:var(--ink)}
+.quote cite{display:block; margin-top:22px; font:400 1rem/1 'Sedan SC', serif; font-style:normal; letter-spacing:.08em; color:var(--c-muted)}
+
+/* ---------- cta: a locked-up chase ---------- */
+.lockup{position:relative; padding:9px; border-radius:3px; background:linear-gradient(135deg, #c7ccd1, #7d838a 45%, #a9afb5); box-shadow:0 26px 40px -24px rgba(40,20,5,.65)}
+.lock-in{display:grid; grid-template-columns:minmax(0, 1fr) auto; gap:24px 48px; align-items:end; padding:clamp(28px, 5vw, 64px); border:clamp(14px, 2vw, 22px) solid transparent; background:linear-gradient(var(--c-primary), var(--c-primary)) padding-box, var(--wood-bg) border-box; color:var(--c-on-primary)}
+.lock-in h2{font-size:clamp(2rem, 1.2rem + 3vw, 4rem); line-height:.98; filter:url(#squash)}
+.lock-in p{margin:16px 0 0; max-width:48ch; font-size:1.15rem; opacity:.9}
+.btn.inv{background:var(--c-on-primary); color:var(--c-primary); border-color:var(--c-on-primary); box-shadow:4px 4px 0 color-mix(in srgb, var(--c-on-primary) 35%, transparent)}
+.quoin{position:absolute; width:34px; height:12px; border-radius:2px; background:linear-gradient(180deg, var(--lead-l), var(--lead-d)); box-shadow:0 1px 2px rgba(0,0,0,.4)}
+.quoin.q1{top:22px; right:clamp(40px, 8vw, 120px)} .quoin.q2{bottom:22px; left:clamp(40px, 8vw, 120px)}
+@media (max-width:760px){ .lock-in{grid-template-columns:1fr} }
+
+/* ---------- footer: the cabinet ---------- */
+.foot{margin-top:clamp(56px, 8vw, 112px); padding:clamp(48px, 6vw, 80px) 0 28px; color:#f2e6cf; background:var(--grain), linear-gradient(180deg, #3b291b, var(--cab)); border-top:4px solid var(--brass)}
+.foot-in{display:grid; grid-template-columns:minmax(0, 2fr) repeat(3, minmax(0, 1fr)); gap:36px}
+.foot-name{margin:0 0 12px; font:400 clamp(2rem, 1.2rem + 2.6vw, 3.4rem)/1 'Ultra', serif; overflow-wrap:break-word}
+.foot p{margin:0; color:#cdbb9d}
+.foot ul{list-style:none; margin:0; padding:0; display:grid; gap:10px}
+.foot a{text-decoration:none; color:#f2e6cf}
+.foot a:hover{color:var(--brass-l)}
+.foot-col{font:400 .98rem/1.3 'Sedan SC', serif; letter-spacing:.04em; padding-top:14px; border-top:2px solid var(--brass)}
+.foot-base{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; margin-top:52px; padding-top:20px; border-top:1px solid rgba(240,216,146,.25); font:400 .85rem/1.3 'Sedan SC', serif; letter-spacing:.06em; color:#bfae90}
+@media (max-width:900px){ .foot-in{grid-template-columns:1fr 1fr} .foot-brand{grid-column:1/-1} }
+@media (max-width:480px){ .foot-in{grid-template-columns:1fr} }
+
+.badge{position:fixed; left:12px; bottom:12px; z-index:60; padding:7px 11px 6px; font:400 .74rem/1 'Sedan SC', serif; letter-spacing:.06em; color:#f2e6cf; background:var(--cab); border:1px solid var(--brass); border-radius:3px; box-shadow:0 6px 14px rgba(0,0,0,.3)}
+
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none !important; transition:none !important} }
+</style>
+<style id="brand-tokens">:root{--c-primary:#FEED36;--c-on-primary:#111111;--c-accent:#35352D}</style></head>
+<body data-page="home" data-brand="BOHLT">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="squash"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter>
+</svg>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo is-light" href="index.html"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-bohlt.svg" alt="BOHLT"></a>
+    <nav class="nav"><a href="catalog.html">Vouwfietsen</a><a href="catalog.html">Fatbikes</a><a href="catalog.html">Elektrische fietsen</a><a href="catalog.html">Accessoires</a><a href="#">Winkel vinden</a><a href="#">Contact</a></nav>
+  </div>
+</header>
+
+<div class="stickbar">
+  <div class="wrap">
+    <div class="stick">
+      <span class="knee" aria-hidden="true"><i></i></span>
+      <div class="line" aria-hidden="true"><span class="caret"></span></div>
+      <input id="q" type="search" data-shop-search placeholder="Zoek in het assortiment…" aria-label="Zoeken" autocomplete="off" spellcheck="false" maxlength="32">
+      <a class="go" href="catalog.html" aria-label="Zoeken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-title">
+      <p class="eyebrow">Electrify your style</p>
+      <h1 class="h-hero">Take a ride, <span class="acc-w"><span class="acc">own the city</span></span></h1>
+    </div>
+    <div class="hero-txt">
+      <p class="lede">Stoere, minimalistische e-bikes met opvallende details, gemaakt voor jong en oud. Aanzetten en wegrijden: meer hoef je niet te weten.</p>
+      <div class="btns">
+        <a class="btn ink" href="catalog.html">Bekijk onze producten <span aria-hidden="true">→</span></a>
+        <a class="btn" href="catalog.html">Gratis proefrit maken</a>
+      </div>
+      <figure class="hero-proof"><div class="frame"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-electrify-your-style-homepage.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="BOHLT"></div><span class="reg" aria-hidden="true"></span><span class="reg" aria-hidden="true"></span></figure>
+    </div>
+    <div class="hero-case">
+      <div class="case" id="case">
+        <div class="case-body">
+          <div class="lower" role="group" aria-label="Letterkast">
+            <button type="button" class="c e" data-l="e" aria-label="e"><span class="lab">e</span><i class="pile"></i><b class="sort"><i>e</i></b></button>
+            <button type="button" class="c w2" data-l="n" aria-label="n"><span class="lab">n</span><i class="pile"></i><b class="sort"><i>n</i></b></button>
+            <button type="button" class="c w2" data-l="a" aria-label="a"><span class="lab">a</span><i class="pile"></i><b class="sort"><i>a</i></b></button>
+            <button type="button" class="c" data-l="b" aria-label="b"><span class="lab">b</span><i class="pile"></i><b class="sort"><i>b</i></b></button>
+            <button type="button" class="c" data-l="c" aria-label="c"><span class="lab">c</span><i class="pile"></i><b class="sort"><i>c</i></b></button>
+            <button type="button" class="c w2" data-l="t" aria-label="t"><span class="lab">t</span><i class="pile"></i><b class="sort"><i>t</i></b></button>
+            <button type="button" class="c w2" data-l="i" aria-label="i"><span class="lab">i</span><i class="pile"></i><b class="sort"><i>i</i></b></button>
+            <button type="button" class="c" data-l="d" aria-label="d"><span class="lab">d</span><i class="pile"></i><b class="sort"><i>d</i></b></button>
+            <button type="button" class="c" data-l="f" aria-label="f"><span class="lab">f</span><i class="pile"></i><b class="sort"><i>f</i></b></button>
+            <button type="button" class="c w2" data-l="r" aria-label="r"><span class="lab">r</span><i class="pile"></i><b class="sort"><i>r</i></b></button>
+            <button type="button" class="c w2" data-l="o" aria-label="o"><span class="lab">o</span><i class="pile"></i><b class="sort"><i>o</i></b></button>
+            <button type="button" class="c w2" data-l="s" aria-label="s"><span class="lab">s</span><i class="pile"></i><b class="sort"><i>s</i></b></button>
+            <button type="button" class="c" data-l="g" aria-label="g"><span class="lab">g</span><i class="pile"></i><b class="sort"><i>g</i></b></button>
+            <button type="button" class="c" data-l="h" aria-label="h"><span class="lab">h</span><i class="pile"></i><b class="sort"><i>h</i></b></button>
+            <button type="button" class="c w2 q" data-l=" " aria-label="quad"><span class="lab">quad</span><i class="pile"></i></button>
+            <button type="button" class="c" data-l="l" aria-label="l"><span class="lab">l</span><i class="pile"></i><b class="sort"><i>l</i></b></button>
+            <button type="button" class="c" data-l="m" aria-label="m"><span class="lab">m</span><i class="pile"></i><b class="sort"><i>m</i></b></button>
+            <button type="button" class="c" data-l="u" aria-label="u"><span class="lab">u</span><i class="pile"></i><b class="sort"><i>u</i></b></button>
+            <button type="button" class="c" data-l="k" aria-label="k"><span class="lab">k</span><i class="pile"></i><b class="sort"><i>k</i></b></button>
+            <button type="button" class="c" data-l="p" aria-label="p"><span class="lab">p</span><i class="pile"></i><b class="sort"><i>p</i></b></button>
+            <button type="button" class="c" data-l="v" aria-label="v"><span class="lab">v</span><i class="pile"></i><b class="sort"><i>v</i></b></button>
+            <button type="button" class="c r" data-l="w" aria-label="w"><span class="lab">w</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="y" aria-label="y"><span class="lab">y</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="z" aria-label="z"><span class="lab">z</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="j" aria-label="j"><span class="lab">j</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="q" aria-label="q"><span class="lab">q</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="x" aria-label="x"><span class="lab">x</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="ij" aria-label="ij"><span class="lab">ij</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="&amp;" aria-label="&amp;"><span class="lab">&amp;</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="." aria-label="."><span class="lab">.</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="," aria-label=","><span class="lab">,</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="-" aria-label="-"><span class="lab">-</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="'" aria-label="'"><span class="lab">'</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="!" aria-label="!"><span class="lab">!</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l="?" aria-label="?"><span class="lab">?</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l=":" aria-label=":"><span class="lab">:</span><i class="pile"></i></button>
+            <button type="button" class="c r" data-l=";" aria-label=";"><span class="lab">;</span><i class="pile"></i></button>
+          </div>
+          <div class="caps">
+            <a class="cap" href="catalog.html"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;afbeelding_product_categorie_04.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1103" alt="" loading="lazy"><span class="cap-label"><span>Elektrische fatbikes</span></span></a><a class="cap" href="catalog.html"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-city-bikes-3-copy.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1298" alt="" loading="lazy"><span class="cap-label"><span>Elektrische citybikes</span></span></a><a class="cap" href="catalog.html"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;afbeelding_product_categorie_vouwfiets.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1103" alt="" loading="lazy"><span class="cap-label"><span>Elektrische vouwfietsen</span></span></a><a class="cap" href="catalog.html"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-accessoires-2-copy.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;width&#x3D;1296" alt="" loading="lazy"><span class="cap-label"><span>Accessoires</span></span></a>
+            
+          </div>
+        </div>
+        <div class="drawer"><span class="pull" aria-hidden="true"></span><span class="holder"><span>BOHLT</span></span><span class="pull" aria-hidden="true"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap rule" aria-hidden="true"><span class="brass"></span><span class="reglet"></span></div>
+
+<section class="sec press" id="proeven">
+  <div class="wrap">
+    <header class="sec-head">
+      <div>
+        <p class="eyebrow">3 producten</p>
+        <h2>Elektrische fietsen en meer</h2>
+      </div>
+      <p class="intro">Ontdek de BOHLT collectie: van stoere fatbikes tot compacte vouwfietsen, altijd klaar om weg te rijden.</p>
+      <a class="btn" href="catalog.html">Bekijk onze producten <span aria-hidden="true">→</span></a>
+    </header>
+    <div class="proofs">
+      <article class="proof"><a href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-fattwenty">
+        <span class="proof-top"><span class="no"></span><span class="reg" aria-hidden="true"></span></span>
+        <span class="proof-img"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;d9abac0cab16e12de10314861d949fd69f6aeb54.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT Fattwenty" loading="lazy"></span>
+        <span class="stamp">Fatbike</span>
+        <h3 class="pn">BOHLT Fattwenty</h3>
+        <span class="proof-foot"><span class="chase"><span class="pr">€ 1.499,00</span></span><span class="reg" aria-hidden="true"></span></span>
+      </a></article><article class="proof"><a href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-rebel">
+        <span class="proof-top"><span class="no"></span><span class="reg" aria-hidden="true"></span></span>
+        <span class="proof-img"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;fdbff358fe50671702b6ff4f09fe397f718e2fa8.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT Rebel" loading="lazy"></span>
+        
+        <h3 class="pn">BOHLT Rebel</h3>
+        <span class="proof-foot"><span class="chase"><span class="pr">€ 1.899,00</span></span><span class="reg" aria-hidden="true"></span></span>
+      </a></article><article class="proof"><a href="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;product&#x2F;bohlt-x200-or">
+        <span class="proof-top"><span class="no"></span><span class="reg" aria-hidden="true"></span></span>
+        <span class="proof-img"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;content&#x2F;products&#x2F;092b39b1a1df91b0d990eda9c1041fdd9da73d8b.jpg?width&#x3D;150&amp;height&#x3D;150&amp;background&#x3D;white" alt="BOHLT X200 OR" loading="lazy"></span>
+        <span class="stamp">Vouwfiets</span>
+        <h3 class="pn">BOHLT X200 OR</h3>
+        <span class="proof-foot"><span class="chase"><span class="pr">€ 1.699,00</span></span><span class="reg" aria-hidden="true"></span></span>
+      </a></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <ol class="usps"><li><h3>Gratis proefrit</h3><p>Voel zelf hoe makkelijk elektrisch rijden is en vraag een gratis proefrit aan.</p></li><li><h3>Dealers in meerdere landen</h3><p>Via ons dealernetwerk vind je BOHLT ook in jouw buurt, in Nederland, België, Duitsland en Frankrijk.</p></li><li><h3>Geschikt voor jong en oud</h3><p>Toegankelijke, robuuste e-mobility met één gemeenschappelijk idee: eenvoud.</p></li><li><h3>Gates Belt Drive, 100% legaal</h3><p>Onze elektrische fatbikes rijden met een Gates Belt Drive en voldoen aan de wet.</p></li></ol>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap story-in">
+    <figure class="story-img"><div class="frame"><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt_main_image-_05.jpg?cropX&#x3D;0&amp;cropY&#x3D;178&amp;cropW&#x3D;1275&amp;cropH&#x3D;519" alt="Rijden van A naar B, weer écht leuk" loading="lazy"></div><span class="reg" aria-hidden="true"></span></figure>
+    <div class="story-txt">
+      <p class="eyebrow">Over BOHLT</p>
+      <h2>Rijden van A naar B, weer écht leuk</h2>
+      <p class="body">BOHLT ontwerpt e-mobility die tot de verbeelding spreekt: minimalistisch van vorm, met opvallende details en een stoere uitstraling. Van elektrische vouwfietsen en steps tot citybikes: wij zorgen dat iedereen snel en zonder gedoe op zijn bestemming komt.</p>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap"><ul class="stat-row"><li><div><b>117</b><span>Dealers</span></div></li><li><div><b>7</b><span>Ster-Dealers</span></div></li></ul></div>
+</section>
+
+<section class="dry">
+  <div class="hangs"><figure class="hang"><span class="peg" aria-hidden="true"></span><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;ls3_7942-klein.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure class="hang"><span class="peg" aria-hidden="true"></span><img src="https:&#x2F;&#x2F;www.bohlt.nl&#x2F;media&#x2F;bohlt-proefrit-aanvragen.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure></div>
+</section>
+
+
+<section class="sec" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="lockup">
+      <div class="lock-in">
+        <div><h2>Ervaar het zelf</h2><p>Benieuwd hoe BOHLT rijdt? Vraag een gratis proefrit aan of zoek een dealer bij jou in de buurt.</p></div>
+        <a class="btn inv" href="#">Proefrit aanvragen <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="quoin q1" aria-hidden="true"></span><span class="quoin q2" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <p class="foot-name">BOHLT</p>
+      <p>Aanzetten en wegrijden, zo simpel is het</p>
+    </div>
+    <ul class="foot-col">
+      <li>Vareseweg 44, 3047 AV Rotterdam</li>
+      <li><a href="tel:010 304 11 00">010 304 11 00</a></li>
+      <li><a href="mailto:info@bohlt.nl">info@bohlt.nl</a></li>
+    </ul>
+    <ul class="foot-col"><li><a href="catalog.html">Vouwfietsen</a></li><li><a href="catalog.html">Fatbikes</a></li><li><a href="catalog.html">Elektrische fietsen</a></li><li><a href="catalog.html">Accessoires</a></li><li><a href="#">Winkel vinden</a></li><li><a href="#">Contact</a></li></ul>
+    <ul class="foot-col"><li><a href="#">Winkel vinden</a></li><li><a href="#">Dealer worden</a></li><li><a href="#">Levertijden</a></li><li><a href="#">Retouren</a></li><li><a href="#">Garantie</a></li><li><a href="#">Klantenservice</a></li><li><a href="#">Algemene voorwaarden</a></li><li><a href="#">Privacy statement</a></li></ul>
+  </div>
+  <div class="wrap foot-base"><span>© 2026 BOHLT</span><span>Aanzetten en wegrijden, zo simpel is het</span></div>
+</footer>
+
+<div class="badge">Demo redesign · Job Case</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const G = !RM && window.gsap ? window.gsap : null;
+  const norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+  // Product names get one span per letter, so letters matching the composed word can flash in ink.
+  const names = $$('.pn').map((el) => {
+    const txt = el.textContent.trim(), chars = [];
+    el.setAttribute('aria-label', txt); el.textContent = '';
+    for (const c of txt) { const s = document.createElement('span'); s.className = 'ch'; s.setAttribute('aria-hidden', 'true'); s.textContent = c; el.appendChild(s); chars.push(s); }
+    return { chars, key: [...txt].map((c) => norm(c).charAt(0) || ' ').join('') };
+  });
+  function mark(q) {
+    q = norm(q).trim();
+    for (const n of names) {
+      const on = new Set();
+      for (let i = q ? n.key.indexOf(q) : -1; i > -1; i = n.key.indexOf(q, i + 1)) for (let j = i; j < i + q.length; j++) on.add(j);
+      n.chars.forEach((s, i) => s.classList.toggle('hit', on.has(i)));
+    }
+  }
+
+  // Intro: the drawer slides out of the cabinet, the sorts settle into their boxes.
+  if (G) {
+    const cs = $('.case');
+    if (cs) G.from(cs, { rotateX: 24, y: -28, transformPerspective: 1300, transformOrigin: '50% 0%', duration: 1.1, ease: 'power3.out' });
+    if ($('.c .sort')) G.from('.c .sort', { y: -16, opacity: 0, duration: .45, ease: 'back.out(2.2)', stagger: { each: .012, from: 'random' }, delay: .25 });
+    const h = $('.h-hero, .cat-head h1');
+    if (h) G.from(h, { y: 22, opacity: 0, duration: .8, ease: 'power3.out' });
+  }
+
+  const input = $('[data-shop-search]'), stick = $('.stick'), line = $('.line'), caret = $('.caret'), go = $('a.go');
+  if (!input || !line) return;
+
+  const boxOf = (ch) => {
+    const k = ch === ' ' ? ' ' : norm(ch);
+    const b = $$('.c[data-l]').find((x) => x.dataset.l === k) || $('.c[data-l="&"]');
+    return b && b.getBoundingClientRect().width ? b : null;
+  };
+  const mk = (ch) => {
+    const s = document.createElement('span');
+    s.className = ch === ' ' ? 'ss quad' : 'ss';
+    s.dataset.ch = ch;
+    s.innerHTML = '<i></i>';
+    s.firstChild.textContent = ch === ' ' ? '' : ch;
+    return s;
+  };
+  const pick = (box) => { box.classList.remove('pick'); void box.offsetWidth; box.classList.add('pick'); };
+
+  // One sort flies along a quadratic bezier between its compartment and its slot in the stick, mirrored like real type.
+  function flight(ch, box, to, back, delay) {
+    return new Promise((done) => {
+      const b = box.getBoundingClientRect(), f = mk(ch);
+      f.classList.add('fly'); f.style.width = to.width + 'px'; f.style.height = to.height + 'px';
+      document.body.appendChild(f);
+      const p = { x: b.left + b.width / 2 - to.width / 2, y: b.top + b.height / 2 - to.height / 2 }, q = { x: to.left, y: to.top };
+      const [A, B] = back ? [q, p] : [p, q];
+      const C = { x: A.x + (B.x - A.x) * .55, y: Math.max(4, Math.min(A.y, B.y) - 120) };
+      const o = { t: 0 };
+      const draw = () => {
+        const t = o.t, u = 1 - t, s = back ? 1 + .35 * t : 1.35 - .35 * t;
+        const x = u * u * A.x + 2 * u * t * C.x + t * t * B.x, y = u * u * A.y + 2 * u * t * C.y + t * t * B.y;
+        f.style.transform = `translate(${x}px,${y}px) rotate(${Math.sin(t * Math.PI) * (back ? -26 : 26)}deg) scale(${-s},${s})`;
+      };
+      draw();
+      G.to(o, { t: 1, delay, duration: .55 + Math.min(.4, Math.hypot(B.x - A.x, B.y - A.y) / 2400), ease: back ? 'power2.in' : 'power3.inOut', onUpdate: draw, onComplete: () => { f.remove(); done(); } });
+    });
+  }
+
+  let prev = '', flipT;
+  // A pause in typing means the word is complete: the mirrored sorts turn round to read correctly.
+  const flipAll = () => $$('.ss.mir:not(.pending)', line).forEach((s) => s.classList.remove('mir'));
+  const later = () => { clearTimeout(flipT); flipT = setTimeout(flipAll, 700); };
+  const clearDemo = () => $$('.demo', line).forEach((s) => s.remove());
+  const state = () => {
+    stick.classList.toggle('has', !!input.value || !!$('.demo', line));
+    line.classList.toggle('full', line.scrollWidth > line.clientWidth + 1);
+    if (go) go.href = 'catalog.html' + (input.value.trim() ? '?q=' + encodeURIComponent(input.value.trim()) : '');
+  };
+
+  // Diff the field against the stick: the shop script owns the input event, so we only watch the value.
+  function sync(instant) {
+    const cur = input.value;
+    if (cur === prev) return;
+    clearDemo();
+    let k = 0;
+    while (k < prev.length && k < cur.length && prev[k] === cur[k]) k++;
+    const gone = prev.length - k, add = [...cur.slice(k)];
+    prev = cur;
+    const fly = G && !instant && gone + add.length <= 8;
+    const sorts = $$('.ss:not(.demo)', line);
+    for (let i = 0; i < gone; i++) {
+      const el = sorts[sorts.length - 1 - i];
+      if (!el) continue;
+      const r = el.getBoundingClientRect(), ch = el.dataset.ch;
+      el.remove();
+      const box = fly && boxOf(ch);
+      if (box) flight(ch, box, r, true, i * .05).then(() => pick(box));
+    }
+    add.forEach((ch, i) => {
+      const el = mk(ch);
+      line.insertBefore(el, caret);
+      if (ch === ' ') flipAll();
+      const box = fly && boxOf(ch);
+      if (!box) return;
+      el.classList.add('pending', 'mir');
+      pick(box);
+      flight(ch, box, el.getBoundingClientRect(), false, i * .07).then(() => {
+        el.classList.remove('pending');
+        G.fromTo(el, { y: -7 }, { y: 0, duration: .35, ease: 'bounce.out' });
+        later();
+      });
+    });
+    later(); state(); mark(cur);
+  }
+
+  // Homepage: the stick sets the brand's name once, as a demonstration, until the visitor starts typing.
+  if (document.body.dataset.page === 'home') setTimeout(() => {
+    if (input.value || document.activeElement === input) return;
+    const word = (document.body.dataset.brand || '').trim().split(/\s+/)[0].slice(0, 12);
+    [...word].forEach((ch, i) => {
+      const el = mk(ch);
+      el.classList.add('demo');
+      line.insertBefore(el, caret);
+      const box = G && boxOf(ch);
+      if (!box) return;
+      el.classList.add('pending', 'mir');
+      flight(ch, box, el.getBoundingClientRect(), false, i * .08).then(() => {
+        el.classList.remove('pending');
+        if (i === word.length - 1) setTimeout(() => $$('.demo.mir', line).forEach((s) => s.classList.remove('mir')), 260);
+      });
+    });
+    state();
+  }, G ? 700 : 0);
+
+  input.addEventListener('focus', () => { clearDemo(); state(); });
+  ['keyup', 'input', 'change', 'paste', 'cut'].forEach((e) => input.addEventListener(e, () => setTimeout(sync)));
+  setInterval(() => sync(), 150);
+  // Clicking a compartment types its letter.
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('.c[data-l]');
+    if (!b) return;
+    input.value = (input.value + b.dataset.l).slice(0, 32);
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    sync();
+  });
+  // Runs after the shop script has put ?q= into the field: set that word at once, without flights.
+  setTimeout(() => { sync(true); state(); });
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"nl","count":"3 producten","products":[{"name":"BOHLT Fattwenty","tag":"Fatbike","category":"Fatbikes"},{"name":"BOHLT Rebel","tag":"","category":"Citybikes"},{"name":"BOHLT X200 OR","tag":"Vouwfiets","category":"Vouwfietsen"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>
