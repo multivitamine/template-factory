@@ -1,0 +1,80 @@
+{
+  "id": "signal-index",
+  "name": "Signal Index",
+  "sectors": [
+    "wholesale",
+    "b2b",
+    "industrial",
+    "food"
+  ],
+  "sample": "droogijs365",
+  "stress": "fredimare",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793301814408
+    },
+    {
+      "step": "Rendering",
+      "at": 1793302574859
+    },
+    {
+      "step": "Critique",
+      "at": 1793302586772
+    },
+    {
+      "step": "Final render",
+      "at": 1793302666428
+    },
+    {
+      "step": "Done",
+      "at": 1793302678385
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793300837847,
+  "startedAt": 1793301814408,
+  "finishedAt": 1793302678385,
+  "model": "opus",
+  "costUsd": 3.2379858,
+  "meta": {
+    "id": "signal-index",
+    "name": "Signal Index",
+    "scheme": "light",
+    "sectors": [
+      "wholesale",
+      "b2b",
+      "industrial",
+      "food"
+    ],
+    "mood": [
+      "cold",
+      "precise",
+      "data-driven",
+      "trustworthy"
+    ],
+    "needsProductImages": true,
+    "notes": "Monochrome cool off-white on a 12-column hairline grid; --c-primary only marks selected data: brushed histogram bars and band, active filters, price-range bars, cart count, primary buttons and the title highlight (darkened edge via color-mix keeps pastels legible)."
+  },
+  "score": {
+    "scoreBefore": 6.2,
+    "issues": [
+      "Homepage below the first product row was blank on desktop, mobile and stress: the .rv scroll reveal kept the rest of the grid, categories, story, quote, CTA and footer at opacity 0 (fallback only after 4 s)",
+      "The '+1 CART' toast sat visible mid-page in every capture, because translateY alone does not hide a fixed element in tall viewports",
+      "Missing prices showed as '€ —' everywhere (hero spec, cards, catalog rows), which reads as broken data in a template that is meant to be about trustworthy data",
+      "Catalog histogram without prices drew 24 flat dashes plus '€ — / —' axis labels, so the signature interaction looked broken instead of degrading on purpose",
+      "Creativity 7, typography 7.5, layout 7, polish 5, brand robustness 7 (gold Fredimare holds up), mobile 5.5 because content disappears, genericness: low"
+    ],
+    "fixed": [
+      "Reveal: elements already in the viewport show on load, and the safety net drops from 4 s to 1.2 s on both pages, so no section can stay blank",
+      "Toast is visibility:hidden until it is triggered (with a delayed visibility transition), on both pages",
+      "A missing price now renders as a mono 'Op aanvraag' / 'Prijs op aanvraag' data chip, a deliberate state that fits the index look",
+      "The histogram's no-price state hides the bars and axis and shows a hairline 24-bin grid with 'No price signal · prijzen op aanvraag · filter per categorie'. The readout says 'Op aanvraag' and the key label says 'PRICE / N.A.'"
+    ],
+    "scoreAfterEstimate": 7.3
+  },
+  "version": 1793302678385
+}

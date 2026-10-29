@@ -1,0 +1,3 @@
+{ "id": "signal-index", "name": "Signal Index", "scheme": "light", "sectors": ["wholesale","b2b","industrial","food"],
+  "mood": ["cold", "precise", "data-driven", "trustworthy"], "needsProductImages": true,
+  "notes": "Monochrome cool off-white on a 12-column hairline grid; --c-primary only marks selected data: brushed histogram bars and band, active filters, price-range bars, cart count, primary buttons and the title highlight (darkened edge via color-mix keeps pastels legible)." }
