@@ -1,0 +1,3 @@
+{ "id": "pinball-playfield", "name": "Pinball Playfield", "scheme": "dark", "sectors": ["sports", "retail", "kids", "tech"],
+  "mood": ["loud", "playful", "arcade", "chrome-lit"], "needsProductImages": true,
+  "notes": "Primary lights every insert, bumper cap, flipper rubber and the DMD glow against a black-and-chrome cabinet; accent only tints the painted playfield lines." }

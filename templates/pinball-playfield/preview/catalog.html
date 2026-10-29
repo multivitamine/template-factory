@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drums · Terpstra Muziek Drumland</title>
+<meta name="description" content="Van akoestische kits en Roland e-drums tot snaredrums, cymbals, vellen en hardware: alles om jouw set te perfectioneren.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Orbitron:wght@800&family=Sen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#0c0b10; --c-surface:#17151e; --c-text:#f4efe4; --c-muted:#a39dae; --c-line:#2d2938;
+  --c-primary:#ff3b6b; --c-on-primary:#ffffff; --c-accent:#ffd23f;
+  --hi:color-mix(in srgb,var(--c-primary) 55%,#fff);
+  --glow:color-mix(in srgb,var(--c-primary) 65%,transparent);
+  --dim:color-mix(in srgb,var(--c-primary) 24%,#08070b);
+  --chrome:linear-gradient(180deg,#fbfbfd 0%,#a9abb6 24%,#eceef3 46%,#6b6d79 72%,#d4d5dc 100%);
+  --ease:cubic-bezier(.2,.9,.25,1.15);
+  --pad:clamp(16px,3vw,40px);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:
+  radial-gradient(ellipse 80% 50% at 50% -10%,color-mix(in srgb,var(--c-primary) 22%,transparent),transparent 70%),
+  var(--c-bg);color:var(--c-text);font:400 1rem/1.6 'Sen',ui-sans-serif,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:55;
+  background:linear-gradient(118deg,transparent 30%,rgba(255,255,255,.035) 38%,transparent 47%,transparent 70%,rgba(255,255,255,.02) 76%,transparent 82%)}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:'Bungee',sans-serif;font-weight:400;margin:0;line-height:1.02;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1320px;margin-inline:auto;padding-inline:var(--pad)}
+.eyebrow{display:inline-flex;align-items:center;gap:.6em;font:700 .72rem/1.2 'Sen',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--hi)}
+.lamp-dot{width:.7em;height:.7em;border-radius:50%;background:var(--c-primary);box-shadow:0 0 0 2px #0008,0 0 12px 2px var(--glow);flex:none}
+
+.btn{display:inline-flex;align-items:center;gap:.6em;font:400 .92rem/1 'Bungee',sans-serif;padding:1em 1.45em;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s,filter .2s;white-space:nowrap}
+.btn-lit{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 2px 0 rgba(255,255,255,.32),inset 0 -3px 0 rgba(0,0,0,.25),0 0 0 2px #000,0 0 0 4px #c9cad2,0 12px 30px -8px var(--glow)}
+.btn-lit:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.btn-chrome{background:var(--chrome);color:#121118;box-shadow:inset 0 1px 0 #fff,0 0 0 2px #000,0 10px 24px -12px #000}
+.btn-chrome:hover{transform:translateY(-2px)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--hi);outline-offset:3px}
+
+/* Header: cabinet top */
+.top{position:sticky;top:0;z-index:60;background:rgba(10,9,14,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:var(--chrome);opacity:.85}
+.top-in{max-width:1440px;margin:auto;display:flex;align-items:center;gap:1.2rem;padding:.65rem var(--pad)}
+.logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;min-width:0;flex:0 1 auto}
+.logo-plate{display:block}
+.logo:not(.is-light) .logo-plate{background:#f4f1ea;padding:6px 10px;border-radius:10px;box-shadow:0 0 0 2px #000,0 0 0 4px #9fa1ab}
+.logo img{height:34px;width:auto;max-width:170px;object-fit:contain}
+.coin-ins{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;font:400 .8rem/1 'Bungee',sans-serif;background:var(--c-primary);color:var(--c-on-primary);box-shadow:0 0 0 2px #000,0 0 0 4px #d8d9e0,0 0 18px -2px var(--glow)}
+.logo-name{font:400 clamp(.85rem,1.4vw,1.05rem)/1.05 'Bungee',sans-serif;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.nav{display:flex;gap:.15rem;margin-left:auto}
+.nav a{font:700 .74rem/1 'Sen',sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:.7rem .8rem;border-radius:999px;color:var(--c-muted);transition:color .2s,background .2s}
+.nav a:hover{color:var(--c-text);background:var(--dim)}
+.top-cta{padding:.8em 1.15em;font-size:.78rem}
+.menu{display:none;position:relative;margin-left:auto}
+.menu summary{list-style:none;cursor:pointer;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#1d1b24;box-shadow:0 0 0 2px #34313d}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary span,.menu summary span::before,.menu summary span::after{display:block;width:18px;height:2px;background:var(--c-text);border-radius:2px;position:relative}
+.menu summary span::before,.menu summary span::after{content:"";position:absolute;left:0}
+.menu summary span::before{top:-6px}.menu summary span::after{top:6px}
+.menu[open] summary{background:var(--c-primary)}
+.menu[open] summary span,.menu[open] summary span::before,.menu[open] summary span::after{background:var(--c-on-primary)}
+.menu-panel{position:absolute;right:0;top:calc(100% + 12px);min-width:230px;background:#121017;border-radius:16px;padding:.6rem;box-shadow:0 0 0 2px #34313d,0 30px 60px -10px #000;display:grid}
+.menu-panel a{padding:.85rem 1rem;border-radius:10px;text-decoration:none;font:400 .85rem/1 'Bungee',sans-serif}
+.menu-panel a:hover{background:var(--dim)}
+@media (max-width:1100px){.nav{display:none}.menu{display:block}.top-cta{display:none}}
+@media (min-width:1101px){.top-cta{margin-left:.4rem}}
+
+/* Catalogue backglass */
+.cat-head{max-width:1440px;margin:auto;padding:clamp(16px,2vw,26px) var(--pad) 0}
+.backglass{position:relative;border-radius:24px;border:3px solid transparent;background:linear-gradient(#0a090e,#0a090e) padding-box,var(--chrome) border-box;overflow:hidden;isolation:isolate;box-shadow:0 30px 70px -30px #000}
+.bg-art{position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(circle,rgba(0,0,0,.55) 1.1px,transparent 1.6px) 0 0/7px 7px,
+  linear-gradient(90deg,#0a090e 25%,rgba(10,9,14,.55)),
+  repeating-conic-gradient(from 0deg at 85% 130%,var(--dim) 0 5deg,#0a090e 5deg 10deg)}
+.bulbs{position:absolute;inset:9px;border-radius:17px;z-index:-1;padding:7px;pointer-events:none;
+  background:radial-gradient(circle,var(--hi) 2.1px,transparent 2.8px) 0 0/16px 16px;
+  -webkit-mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:.75;filter:drop-shadow(0 0 4px var(--glow))}
+@media (prefers-reduced-motion:no-preference){.bulbs{animation:chase 1.2s steps(2) infinite}}
+@keyframes chase{to{background-position:16px 0}}
+.bg-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,340px);gap:clamp(20px,3vw,48px);align-items:end;padding:clamp(28px,4vw,60px)}
+.bg-title{font:400 clamp(2.2rem,6vw,5.4rem)/.95 'Bungee Shade',sans-serif;text-shadow:0 0 30px var(--glow),0 4px 0 #000;overflow-wrap:anywhere;hyphens:auto;margin-top:.7rem}
+.intro{margin-top:1rem;max-width:60ch;color:color-mix(in srgb,var(--c-text) 82%,transparent)}
+.dmd{position:relative;background:#050405;border-radius:14px;border:2px solid #2b2831;padding:.9rem 1.1rem;box-shadow:inset 0 0 34px #000,0 0 0 4px #121016;color:var(--hi);text-shadow:0 0 12px var(--glow);overflow:hidden}
+.dmd::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,transparent .9px,rgba(5,4,5,.88) 1.4px) 0 0/4px 4px}
+.dmd-row{display:flex;justify-content:space-between;gap:1rem;font:800 .66rem/1 'Orbitron',sans-serif;letter-spacing:.22em;text-transform:uppercase}
+.dmd-count{display:block;font:800 clamp(1.4rem,2.6vw,2.2rem)/1.15 'Orbitron',sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.04em;margin-top:.45rem;overflow-wrap:anywhere}
+@media (max-width:760px){.bg-in{grid-template-columns:1fr}}
+
+/* Filters as lit lane buttons */
+.cat-body{padding-block:clamp(2rem,4vw,3rem) clamp(4rem,8vw,7rem)}
+.filter-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-bottom:clamp(1.4rem,3vw,2.2rem)}
+.lanes-bar{display:flex;flex-wrap:wrap;gap:8px;min-width:0}
+.lanes-bar:not(:has(.lane-btn + .lane-btn)){display:none}
+.lane-btn{display:inline-flex;align-items:center;gap:.55em;font:400 .76rem/1 'Bungee',sans-serif;padding:.8em 1.1em;border-radius:999px;background:#17151e;color:var(--c-text);border:2px solid #34313d;cursor:pointer;transition:background .2s,border-color .2s,box-shadow .2s,transform .2s var(--ease)}
+.lane-btn::before{content:"";width:.6em;height:.6em;border-radius:50%;background:var(--dim);box-shadow:0 0 0 1.5px #000}
+.lane-btn:hover{border-color:var(--c-primary);transform:translateY(-1px)}
+.lane-btn[aria-pressed="true"]{background:var(--c-primary);color:var(--c-on-primary);border-color:color-mix(in srgb,var(--c-primary) 55%,#fff);box-shadow:0 0 22px -4px var(--glow)}
+.lane-btn[aria-pressed="true"]::before{background:var(--c-on-primary);box-shadow:0 0 8px var(--c-on-primary)}
+.search{display:flex;align-items:center;gap:.4rem;background:#050405;border:2px solid #34313d;border-radius:999px;padding:0 .4rem 0 1rem;flex:0 1 320px;min-width:min(100%,260px);transition:border-color .2s}
+.search:focus-within{border-color:var(--c-primary)}
+.search svg{width:18px;height:18px;flex:none;fill:none;stroke:var(--hi);stroke-width:2.2;stroke-linecap:round}
+.search input{background:none;border:0;color:var(--c-text);font:inherit;padding:.8rem .4rem;width:100%;min-width:0;outline:none}
+.search input::placeholder{color:var(--c-muted)}
+
+/* Insert grid with chrome rails */
+.ins-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:clamp(12px,1.6vw,22px)}
+.insert-card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:16px;padding:10px 12px 14px;
+  background:linear-gradient(90deg,#55565f,#e9eaef 45%,#8d8f9a) left/5px 100% no-repeat,linear-gradient(90deg,#8d8f9a,#e9eaef 55%,#55565f) right/5px 100% no-repeat,var(--c-surface);
+  box-shadow:0 0 0 2px #000,0 0 0 4px #2d2938;transition:transform .35s var(--ease),box-shadow .3s}
+.well{position:relative;display:block;aspect-ratio:4/3;background:#fff;border-radius:10px;overflow:hidden}
+.well img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.fb{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--c-primary) 30%,#1c1a23),#121017)}
+.fb svg{width:34%;fill:var(--hi);opacity:.7}
+.tag{position:absolute;top:8px;left:8px;font:400 .6rem/1 'Bungee',sans-serif;font-style:normal;padding:.5em .7em;border-radius:999px;background:var(--c-primary);color:var(--c-on-primary);box-shadow:0 0 0 2px #000;max-width:calc(100% - 16px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ic-name{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-weight:700;font-size:.95rem;line-height:1.3;margin:.85rem .15rem .55rem;min-height:calc(1.3em * 2);overflow-wrap:anywhere}
+.ic-foot{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:.6rem}
+.ic-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .6rem;margin:0 .15rem}
+.ic-price b{font:800 1.05rem/1.1 'Orbitron',sans-serif;font-variant-numeric:tabular-nums;color:var(--hi);text-shadow:0 0 14px var(--glow)}
+.ic-price s{font-size:.82rem;color:var(--c-muted)}
+.lamp{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--dim);box-shadow:0 0 0 2px #000,0 0 0 4px #9fa1ab;color:var(--hi);font:400 .8rem/1 'Bungee',sans-serif;transition:background .2s,box-shadow .2s,color .2s}
+.insert-card:hover{transform:translateY(-5px);box-shadow:0 0 0 2px #000,0 0 0 4px var(--c-primary),0 22px 44px -18px var(--glow)}
+.insert-card:hover .lamp{background:var(--c-primary);color:var(--c-on-primary);box-shadow:0 0 0 2px #000,0 0 0 4px #fff,0 0 18px 2px var(--glow)}
+.insert-card:hover .well img{transform:scale(1.05)}
+@media (max-width:560px){.ins-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.insert-card{padding:8px 9px 11px}.ic-name{font-size:.84rem}.ic-price b{font-size:.92rem}.lamp{display:none}}
+
+/* Footer: coin door */
+.coin{padding:clamp(1rem,3vw,2rem) 0 6rem;background:linear-gradient(transparent,#050407 40%)}
+.coin-door{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2rem;align-items:center;border-radius:20px;padding:clamp(22px,3vw,36px);background:linear-gradient(#25232c,#141319);border:2px solid #36333f;box-shadow:inset 0 1px 0 #ffffff1a,0 30px 60px -30px #000}
+.slots{display:flex;gap:12px}
+.slot{width:48px;height:92px;border-radius:10px;background:var(--chrome);box-shadow:0 0 0 2px #000;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:12px 0 10px}
+.slot::before{content:"";width:5px;height:34px;border-radius:3px;background:#000;box-shadow:inset 0 0 3px #000}
+.slot::after{content:"";width:26px;height:18px;border-radius:4px;background:var(--c-primary);box-shadow:0 0 0 2px #000,0 0 16px 2px var(--glow)}
+.foot-brand{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.foot-brand .name{font:400 clamp(1.1rem,2vw,1.5rem)/1.1 'Bungee',sans-serif;overflow-wrap:anywhere}
+.foot-brand .tl{color:var(--c-muted);font-size:.92rem}
+.foot-links{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;margin-top:.4rem}
+.foot-links a{color:var(--c-muted);text-decoration:none;font-size:.9rem}
+.foot-links a:hover{color:var(--hi)}
+.foot-contact{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;color:var(--c-text);font-size:.9rem;font-weight:700}
+.foot-contact a{text-decoration:none}
+.legal{font:800 .68rem/1.4 'Orbitron',sans-serif;letter-spacing:.14em;color:var(--c-muted);text-transform:uppercase;text-align:right}
+@media (max-width:760px){.coin-door{grid-template-columns:1fr}.legal{text-align:left}}
+
+.demo-badge{position:fixed;left:12px;bottom:12px;z-index:70;font:700 .68rem/1 'Sen',sans-serif;letter-spacing:.06em;padding:.55rem .8rem;border-radius:999px;background:rgba(5,4,8,.85);color:var(--c-muted);box-shadow:0 0 0 1px #ffffff22;backdrop-filter:blur(6px)}
+</style>
+<style id="brand-tokens">:root{--c-primary:#A80819;--c-on-primary:#ffffff;--c-accent:#333333}</style></head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="logo is-light" href="index.html" aria-label="Terpstra Muziek Drumland">
+      
+      <span class="coin-ins" aria-hidden="true">TM</span><span class="logo-name">Terpstra Muziek Drumland</span>
+    </a>
+    <nav class="nav" aria-label="Main"><a href="catalog.html">Webshop</a><a href="#">Occasions</a><a href="#">Aanbiedingen</a><a href="#">Reparatieatelier</a><a href="#">Over ons</a><a href="#">Contact</a></nav>
+    <a class="btn btn-lit top-cta" href="catalog.html">Bekijk de drums</a>
+    <details class="menu">
+      <summary aria-label="Menu"><span></span></summary>
+      <div class="menu-panel"><a href="catalog.html">Webshop</a><a href="#">Occasions</a><a href="#">Aanbiedingen</a><a href="#">Reparatieatelier</a><a href="#">Over ons</a><a href="#">Contact</a></div>
+    </details>
+  </div>
+</header>
+
+<main>
+<section class="cat-head">
+  <div class="backglass">
+    <div class="bg-art" aria-hidden="true"></div>
+    <span class="bulbs" aria-hidden="true"></span>
+    <div class="bg-in">
+      <div>
+        <p class="eyebrow"><span class="lamp-dot"></span>Terpstra Muziek Drumland</p>
+        <h1 class="bg-title">Drums</h1>
+        <p class="intro">Van akoestische kits en Roland e-drums tot snaredrums, cymbals, vellen en hardware: alles om jouw set te perfectioneren.</p>
+      </div>
+      <div class="dmd">
+        <div class="dmd-row"><span>Score</span><span>TM</span></div>
+        <span class="dmd-count">4688 producten</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cat-body">
+  <div class="wrap">
+    <div class="filter-row">
+      <div class="lanes-bar">
+        <button type="button" class="lane-btn">✱ Drums</button>
+        <button data-shop-filter="Snaredrums" type="button" class="lane-btn">Snaredrums</button><button data-shop-filter="Drumvellen" type="button" class="lane-btn">Drumvellen</button><button data-shop-filter="Hardware" type="button" class="lane-btn">Hardware</button><button data-shop-filter="Accessoires" type="button" class="lane-btn">Accessoires</button><button data-shop-filter="Stellen &amp; cymbals" type="button" class="lane-btn">Stellen &amp; cymbals</button><button data-shop-filter="Overig" type="button" class="lane-btn">Overig</button>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input type="search" data-shop-search placeholder="Drums…" aria-label="Search">
+      </label>
+    </div>
+
+    <div class="ins-grid">
+      <a data-shop-item="0" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-ar1622-hoes-voor-22-x-16-bass-drum">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189_807008.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ahead AR1622 hoes voor 22&quot; x 16&quot; bassdrum" loading="lazy"></span>
+        <span class="ic-name">Ahead AR1622 hoes voor 22&quot; x 16&quot; bassdrum</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 148,00</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="1" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189%20spgbbr3_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning" loading="lazy"></span>
+        <span class="ic-name">Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 329,00</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="2" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-spg-r-3-spinal-g-drumkruk-rood">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189_spgr3.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ahead SPG-R-3 Spinal G drumkruk rood" loading="lazy"></span>
+        <span class="ic-name">Ahead SPG-R-3 Spinal G drumkruk rood</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 249,00</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="3" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqcc16-classic-clear-drumvel-16">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqcc16.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQCC16 Classic Clear drumvel 16&quot;" loading="lazy"></span>
+        <span class="ic-name">Aquarian AQCC16 Classic Clear drumvel 16&quot;</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 22,90</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="4" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqfb20-full-force-i-bassdrumvel-20">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqfb20.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQFB20 Full Force I bassdrumvel 20&quot;" loading="lazy"></span>
+        <span class="ic-name">Aquarian AQFB20 Full Force I bassdrumvel 20&quot;</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 51,90</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="5" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqfor10-force-ten-drumvel-10">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqfor10.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQFOR10 Force Ten drumvel 10&quot;" loading="lazy"></span>
+        <span class="ic-name">Aquarian AQFOR10 Force Ten drumvel 10&quot;</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 30,50</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="6" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqref14-reflector-black-drumvel-14">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqref14.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQREF14 Reflector Black drumvel 14&quot;" loading="lazy"></span>
+        <span class="ic-name">Aquarian AQREF14 Reflector Black drumvel 14&quot;</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 38,90</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="7" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqtcfb22-texture-coated-full-force-i-bassdrumvel-22">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233%20aqtcfb22_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22&quot;" loading="lazy"></span>
+        <span class="ic-name">Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22&quot;</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 56,50</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="8" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;asba-snaredrum-14x6-blueberry-&#x2F;-agathe-the-blue-rive-gauche">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7359_rg1406atb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="ASBA snaredrum 14x6&quot; Blueberry &#x2F; Agathe The Blue Rive Gauche" loading="lazy"><em class="tag">Actie</em></span>
+        <span class="ic-name">ASBA snaredrum 14x6&quot; Blueberry &#x2F; Agathe The Blue Rive Gauche</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 735,00</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="9" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;big-fat-snare-drum-14-snare-bourine">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;bigfat_14bfsdsb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Big Fat Snare Drum 14&quot; Snare Bourine" loading="lazy"></span>
+        <span class="ic-name">Big Fat Snare Drum 14&quot; Snare Bourine</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 42,90</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="10" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;big-fat-snare-drum-big-fat-snare-drum-14-steve-s-donut">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;1250_bfsd14don.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Big Fat Snare Drum 14&quot; Steve&#39;s Donut" loading="lazy"></span>
+        <span class="ic-name">Big Fat Snare Drum 14&quot; Steve&#39;s Donut</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 36,00</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="11" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bone-snaredrum-aluminium-14-x6-5-nickel-black-hardware">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7528_sdua1465nb.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Bone snaredrum aluminium 14&quot;x6,5&quot; Nickel Black Hardware" loading="lazy"><em class="tag">Actie</em></span>
+        <span class="ic-name">Bone snaredrum aluminium 14&quot;x6,5&quot; Nickel Black Hardware</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 799,00</b><s>€ 816,75</s></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="12" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bone-snaredrum-carbcutter-14-x5-5-charcoal-smoke-chrome-hw">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7528_sdcbc1455csc.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Bone snaredrum Carbcutter 14&quot;x5,5&quot; Charcoal Smoke" loading="lazy"><em class="tag">Actie</em></span>
+        <span class="ic-name">Bone snaredrum Carbcutter 14&quot;x5,5&quot; Charcoal Smoke</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 975,00</b><s>€ 1.149,00</s></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="13" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ds-drum-dsx2251tsk-dsx-stage-kit-titanium-sparkle">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;2763_44671.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="DS Drum DSX Stage Kit Titanium Sparkle" loading="lazy"><em class="tag">OP &#x3D; OP</em></span>
+        <span class="ic-name">DS Drum DSX Stage Kit Titanium Sparkle</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 499,00</b><s>€ 699,00</s></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="14" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;lite-stix-rock-drumsticks-u-s-hickory">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;7166_rock.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Lite Stix Rock drumsticks U.S. Hickory" loading="lazy"><em class="tag">Actie</em></span>
+        <span class="ic-name">Lite Stix Rock drumsticks U.S. Hickory</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 79,00</b><s>€ 109,00</s></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="15" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;dixon-occasion-snaredrum-artisan-hout-14x5-5">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20slag4753_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Occasion Dixon snaredrum Artisan hout 14x5,5&quot;" loading="lazy"><em class="tag">Occasion</em></span>
+        <span class="ic-name">Occasion Dixon snaredrum Artisan hout 14x5,5&quot;</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 375,00</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="16" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;istanbul-agop-occasion-vezir-ride-21">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20b0959_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Occasion Istanbul Agop Vezir ride 21&quot;" loading="lazy"><em class="tag">Occasion</em></span>
+        <span class="ic-name">Occasion Istanbul Agop Vezir ride 21&quot;</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 365,00</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="17" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bach-occasion-omega-trombone-met-kwartventiel-2105">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3928%20b0959_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Occasion Bach Omega trombone met kwartventiel 2105" loading="lazy"><em class="tag">Occasion</em></span>
+        <span class="ic-name">Occasion Bach Omega trombone met kwartventiel 2105</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 650,00</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="18" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;dw-dwcp5500d-hihat-stand-3-benig">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8216_dwcp5500d.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="DW DWCP5500D hihatstand 3-benig" loading="lazy"><em class="tag">Actie</em></span>
+        <span class="ic-name">DW DWCP5500D hihatstand 3-benig</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 419,00</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="19" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;k-m-km19790-ipad-houder-met-microfoonstand-bevestiging">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;1865_1979031655.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="K&amp;M KM19790 iPad-houder met microfoonstandbevestiging" loading="lazy"><em class="tag">Actie</em></span>
+        <span class="ic-name">K&amp;M KM19790 iPad-houder met microfoonstandbevestiging</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 51,90</b></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="20" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;bg-s41sh-classic-harnas-vrouw-kunstst-snaphaak-zwart">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;4470_6010404.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="BG S41SH Classic harnas vrouw, zwart" loading="lazy"><em class="tag">Actie</em></span>
+        <span class="ic-name">BG S41SH Classic harnas vrouw, zwart</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 35,03</b><s>€ 46,70</s></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="21" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;gewa-1&#x2F;8-viool-allegro-speelklaar-incl-vormkoffer">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;0216_gs4000552111.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Gewa 1&#x2F;8 viool Allegro speelklaar incl. vormkoffer" loading="lazy"><em class="tag">OP &#x3D; OP</em></span>
+        <span class="ic-name">Gewa 1&#x2F;8 viool Allegro speelklaar incl. vormkoffer</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 199,00</b><s>€ 447,00</s></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="22" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;stagg-kinderhoorn-bb-franse-gigbag">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;4100_77fhbjsc.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Stagg kinderhoorn Bb Franse gigbag" loading="lazy"><em class="tag">OP &#x3D; OP</em></span>
+        <span class="ic-name">Stagg kinderhoorn Bb Franse gigbag</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 565,00</b><s>€ 929,00</s></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a><a data-shop-item="23" class="insert-card" href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ritter-rdp2-s&#x2F;brd-stick-bag-black-red-performance">
+        <span class="well"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;3488_rdp2sbrd.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ritter RDP2-S&#x2F;BRD stick bag Black-Red Performance" loading="lazy"><em class="tag">OP &#x3D; OP</em></span>
+        <span class="ic-name">Ritter RDP2-S&#x2F;BRD stick bag Black-Red Performance</span>
+        <span class="ic-foot">
+          <span class="ic-price"><b>€ 8,40</b><s>€ 12,00</s></span>
+          <span class="lamp" aria-hidden="true">→</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="coin">
+  <div class="wrap">
+    <div class="coin-door">
+      <div class="slots" aria-hidden="true"><span class="slot"></span><span class="slot"></span></div>
+      <div class="foot-brand">
+        <p class="name">Terpstra Muziek Drumland</p>
+        <p class="tl">Speciaalzaak in blaas- en slaginstrumenten</p>
+        <p class="foot-contact"><span>Lijnden (Amsterdam &#x2F; A9)</span></p>
+        <nav class="foot-links" aria-label="Footer"><a href="#">Drumstel huren</a><a href="#">Blaasinstrument huren</a><a href="#">Reparatie</a><a href="#">Openingstijden</a><a href="#">Over ons</a><a href="#">Contact</a></nav>
+      </div>
+      <p class="legal">© 2026<br>Terpstra Muziek Drumland</p>
+    </div>
+  </div>
+</footer>
+
+<div class="demo-badge">Demo redesign · Pinball Playfield</div>
+<script id="shop-data" type="application/json">{"page":"catalog","lang":"nl","count":"4688 producten","products":[{"name":"Ahead AR1622 hoes voor 22\" x 16\" bassdrum","tag":"","category":"Accessoires"},{"name":"Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning","tag":"","category":"Hardware"},{"name":"Ahead SPG-R-3 Spinal G drumkruk rood","tag":"","category":"Hardware"},{"name":"Aquarian AQCC16 Classic Clear drumvel 16\"","tag":"","category":"Drumvellen"},{"name":"Aquarian AQFB20 Full Force I bassdrumvel 20\"","tag":"","category":"Drumvellen"},{"name":"Aquarian AQFOR10 Force Ten drumvel 10\"","tag":"","category":"Drumvellen"},{"name":"Aquarian AQREF14 Reflector Black drumvel 14\"","tag":"","category":"Drumvellen"},{"name":"Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22\"","tag":"","category":"Drumvellen"},{"name":"ASBA snaredrum 14x6\" Blueberry / Agathe The Blue Rive Gauche","tag":"Actie","category":"Snaredrums"},{"name":"Big Fat Snare Drum 14\" Snare Bourine","tag":"","category":"Snaredrums"},{"name":"Big Fat Snare Drum 14\" Steve's Donut","tag":"","category":"Snaredrums"},{"name":"Bone snaredrum aluminium 14\"x6,5\" Nickel Black Hardware","tag":"Actie","category":"Snaredrums"},{"name":"Bone snaredrum Carbcutter 14\"x5,5\" Charcoal Smoke","tag":"Actie","category":"Snaredrums"},{"name":"DS Drum DSX Stage Kit Titanium Sparkle","tag":"OP = OP","category":"Stellen & cymbals"},{"name":"Lite Stix Rock drumsticks U.S. Hickory","tag":"Actie","category":"Accessoires"},{"name":"Occasion Dixon snaredrum Artisan hout 14x5,5\"","tag":"Occasion","category":"Snaredrums"},{"name":"Occasion Istanbul Agop Vezir ride 21\"","tag":"Occasion","category":"Stellen & cymbals"},{"name":"Occasion Bach Omega trombone met kwartventiel 2105","tag":"Occasion","category":"Overig"},{"name":"DW DWCP5500D hihatstand 3-benig","tag":"Actie","category":"Hardware"},{"name":"K&M KM19790 iPad-houder met microfoonstandbevestiging","tag":"Actie","category":"Hardware"},{"name":"BG S41SH Classic harnas vrouw, zwart","tag":"Actie","category":"Overig"},{"name":"Gewa 1/8 viool Allegro speelklaar incl. vormkoffer","tag":"OP = OP","category":"Overig"},{"name":"Stagg kinderhoorn Bb Franse gigbag","tag":"OP = OP","category":"Overig"},{"name":"Ritter RDP2-S/BRD stick bag Black-Red Performance","tag":"OP = OP","category":"Accessoires"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

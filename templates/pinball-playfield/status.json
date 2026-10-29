@@ -1,0 +1,82 @@
+{
+  "id": "pinball-playfield",
+  "name": "Pinball Playfield",
+  "sectors": [
+    "sports",
+    "retail",
+    "kids",
+    "tech"
+  ],
+  "sample": "terpstrav2",
+  "stress": "hotelnavarra",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793285324512
+    },
+    {
+      "step": "Rendering",
+      "at": 1793286092458
+    },
+    {
+      "step": "Critique",
+      "at": 1793286105405
+    },
+    {
+      "step": "Final render",
+      "at": 1793286194645
+    },
+    {
+      "step": "Done",
+      "at": 1793286207396
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793285324511,
+  "startedAt": 1793285324512,
+  "finishedAt": 1793286207396,
+  "model": "opus",
+  "costUsd": 3.2698040000000006,
+  "meta": {
+    "id": "pinball-playfield",
+    "name": "Pinball Playfield",
+    "scheme": "dark",
+    "sectors": [
+      "sports",
+      "retail",
+      "kids",
+      "tech"
+    ],
+    "mood": [
+      "loud",
+      "playful",
+      "arcade",
+      "chrome-lit"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary lights every insert, bumper cap, flipper rubber and the DMD glow against a black-and-chrome cabinet; accent only tints the painted playfield lines."
+  },
+  "score": {
+    "scoreBefore": 6.7,
+    "issues": [
+      "Desktop hero: the playable table collapsed to ~290px (auto grid column + percentage width is circular), so the signature interaction reads as a sidebar widget and the bumper labels crowd the caps",
+      "Stress brand gallery: images that fail or lazy-load late leave seven flat black panes, and the 2x2/span-2 grid leaves holes for 7 and 8 items",
+      "Category 'modes' section is a plain left-aligned row of circles; with 3 categories (hotel) it leaves two thirds of the row empty and has nothing pinball about it besides chrome rings",
+      "Ramp of drop targets: thin hairline rails look like stray lines, and 3 products leave a dead gap on the right",
+      "Mobile: USP lanes stack into four tall, mostly empty blocks with full-height rails, which bloats the scroll",
+      "Typography and colour robustness are strong (Bungee Shade backglass, Orbitron DMD, blue hotel palette holds up); catalog page is solid"
+    ],
+    "fixed": [
+      "Gave the playfield an explicit cabinet column (clamp 340–520px) and a viewport-height-aware size, so the table is about 1.6x larger on desktop and the physics game is now the hero",
+      "Gallery panes get a brand-coloured starburst insert behind every image, broken images remove themselves, and grid-auto-flow:dense plus a 7-item span close the holes",
+      "Category modes are centred, sit on a chrome rail with a lit brand underglow, and labels are arrow-shaped inserts that chase-light in --c-primary (static under reduced motion)",
+      "Ramp rails are thicker chrome with a drop shadow and an animated lit dash, and 2 or 3 targets re-grid to fill the ramp with a steeper climb",
+      "Mobile lanes are compact rows with the arrow insert next to the copy and dashed separators"
+    ],
+    "scoreAfterEstimate": 7.6
+  },
+  "version": 1793286207396
+}
