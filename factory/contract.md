@@ -58,7 +58,12 @@ Rules for robustness:
   Use `{{#brand.logoIsLight}}…{{/brand.logoIsLight}}` to switch a class.
 - Text lengths vary: titles 2–9 words, product names up to 60 characters, 0–24 products. Use clamp() and line clamping.
 - `catalog.html` uses the same header/footer and shows ALL `products` in the template's own listing style, plus
-  `catalog.title`, `catalog.intro`, `catalog.filters` (visual only) and `catalog.count`. Link to it with `catalog.html`.
+  `catalog.title`, `catalog.intro`, `catalog.filters` and `catalog.count`. Link to it with `catalog.html`.
+- Search and filters WORK: a shop script is injected at render time. It finds product cards and filter buttons by the
+  first element inside `{{#products}}…{{/products}}` and `{{#catalog.filters}}…{{/catalog.filters}}`, so each loop must start
+  with one element (one card / one `<button>` with `{{.}}` as its text). Style the active filter with `[aria-pressed="true"]`.
+  If the design has room for it, add a search field with `data-shop-search` near the filters (otherwise one is added for you).
+  Do NOT write your own filter, search or sort JavaScript; it would fight with the shop script.
 - Bottom-left fixed badge (small, tasteful): `Demo redesign · {{meta.templateName}}`.
 
 ## Technical

@@ -68,6 +68,32 @@
   .links a, .links button { font: 500 12px var(--mono); color: var(--text); text-decoration: none; border: 1px solid var(--line); background: none; padding: 6px 10px; border-radius: 8px; cursor: pointer; }
   .links a:hover, .links button:hover { border-color: var(--accent); color: var(--accent); }
   .jury { font: 12px var(--mono); color: var(--muted); }
+
+  /* New template from your idea */
+  .go.idea-toggle { background: transparent; color: #f472b6; box-shadow: inset 0 0 0 1.5px #f472b6; }
+  .go.idea-toggle[aria-expanded="true"] { background: #f472b6; color: #1a0d14; }
+  .idea { margin: 18px 28px 0; background: var(--panel); border: 1px solid #5a2a48; border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px; }
+  .idea[hidden], #idea-form[hidden] { display: none; }
+  #idea-form { display: flex; flex-direction: column; gap: 14px; }
+  .idea h2 { margin: 0; font-size: 18px; letter-spacing: -0.01em; }
+  .idea h3 { margin: 6px 0 0; font-size: 15px; }
+  .idea p { margin: 0; color: var(--muted); font-size: 13.5px; }
+  .idea label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: var(--muted); }
+  .idea input, .idea textarea, .idea select { width: 100%; font: 14px/1.5 "Space Grotesk"; color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .idea textarea.mono { font: 12.5px/1.55 var(--mono); }
+  .idea textarea { resize: vertical; }
+  .idea :is(input, textarea, select):focus { outline: 2px solid #f472b6; outline-offset: 1px; }
+  .idea .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .idea .wide { grid-column: 1 / -1; }
+  .idea .actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .idea .go.pink { background: #f472b6; color: #1a0d14; }
+  .idea .ghost { font: 500 12.5px var(--mono); color: var(--text); background: none; border: 1px solid var(--line); padding: 7px 11px; border-radius: 8px; cursor: pointer; }
+  .idea .ghost:hover { border-color: #f472b6; color: #f472b6; }
+  .idea .state { font: 12.5px var(--mono); color: var(--muted); }
+  .idea .state.edited { color: #f472b6; }
+  .idea .state.err { color: var(--fail); }
+  .idea details summary { cursor: pointer; font-weight: 700; font-size: 15px; }
+  .idea code { font: 12.5px var(--mono); color: var(--text); }
   .jury b { color: var(--text); font-weight: 500; }
 </style>
 </head>
@@ -90,9 +116,57 @@
   <button class="go" id="build">▶ Build all missing templates</button>
   <button class="go pilot" id="pilot" aria-pressed="false">✦ Autopilot: off</button>
   <span class="hint" id="pilot-status"></span>
+  <button class="go idea-toggle" id="idea-toggle" aria-expanded="false" aria-controls="idea">✦ New template from your idea</button>
   <div class="seg" id="filter"><button aria-pressed="true" data-f="all">all</button><button aria-pressed="false" data-f="done">done</button><button aria-pressed="false" data-f="good">★4+</button><button aria-pressed="false" data-f="unrated">unrated</button></div>
   <span class="hint">Each template: build → render with 2 real brands → jury round → final. Rate with stars; only ★4+ go to the event.</span>
 </div>
+<section class="idea" id="idea" hidden>
+  <h2 id="idea-title">✦ New template from your idea</h2>
+  <p>Describe a concept in your own words. Claude works it out into an art direction; you can change every field and the
+    exact prompts below before anything is built.</p>
+  <label>Your idea
+    <textarea id="idea-text" rows="3" placeholder="e.g. A garden centre catalogue built like a seed-packet rack: every product is a little illustrated packet you can flip over…"></textarea></label>
+  <div class="actions">
+    <button class="go pink" id="idea-go">Work it out with Claude</button>
+    <span class="state" id="idea-state">~30 s · uses the model chosen above</span>
+  </div>
+
+  <div id="idea-form" hidden>
+    <h3>Art direction</h3>
+    <div class="fields">
+      <label>Name<input id="f-name" maxlength="60"></label>
+      <label>ID (folder name)<input id="f-id" maxlength="60"></label>
+      <label>Sectors (comma separated)<input id="f-sectors"></label>
+      <label>Sample brand (preview content)<select id="f-sample"></select></label>
+      <label>Stress brand (other colours)<select id="f-stress"></select></label>
+      <label class="wide">Brief: layout concept, hero, sections, textures, mood<textarea id="f-brief" rows="5"></textarea></label>
+      <label class="wide">Typography<input id="f-type"></label>
+      <label class="wide">Signature interaction<textarea id="f-signature" rows="2"></textarea></label>
+    </div>
+
+    <h3>Prompt sent to the build agent</h3>
+    <div class="actions">
+      <span class="state" id="bp-state">generated from the fields above · you can edit it</span>
+      <button class="ghost" id="bp-reset" hidden>↺ regenerate from the fields</button>
+    </div>
+    <textarea class="mono" id="bp" rows="20" spellcheck="false"></textarea>
+
+    <details>
+      <summary>Prompt sent to the jury round (after the first render)</summary>
+      <p style="margin:8px 0"><code>{{issues}}</code> is replaced by the automatic check results (JavaScript errors, overflow) during the build.</p>
+      <div class="actions" style="margin-bottom:8px">
+        <span class="state" id="cp-state">generated from the fields above · you can edit it</span>
+        <button class="ghost" id="cp-reset" hidden>↺ regenerate from the fields</button>
+      </div>
+      <textarea class="mono" id="cp" rows="16" spellcheck="false"></textarea>
+    </details>
+
+    <div class="actions">
+      <button class="go pink" id="idea-build">▶ Build this template</button>
+      <span class="state" id="build-state"></span>
+    </div>
+  </div>
+</section>
 <main><section class="grid" id="grid"></section></main>
 <script>
 const STEPS = ["Queued", "Building", "Rendering", "Critique", "Final render", "Done"];
@@ -138,6 +212,7 @@ function card(t) {
           <a href="/tpl/${t.id}/preview-stress/index.html" target="_blank">other brand ↗</a>
           <a href="/tpl/${t.id}/shots/before-home-desktop.jpg?v=${t.version}" target="_blank">before jury ↗</a>` : ""}
         <button data-rebuild="${t.id}" ${busy ? "disabled" : ""}>${t.status === "todo" ? "build" : "rebuild"}</button>
+        <button data-prompt="${t.id}" title="See the direction and prompt of this template, and start a variation">prompt</button>
         ${t.costUsd ? `<span class="time" style="margin-left:auto;align-self:center">$${t.costUsd.toFixed(2)}</span>` : ""}
       </div>
       ${t.pushed ? `<div class="pushed ${t.pushed.startsWith("pushed") ? "ok" : ""}">github: ${esc(t.pushed)}</div>` : ""}
@@ -206,6 +281,8 @@ document.getElementById("grid").onclick = async (e) => {
     await fetch("/api/factory/rate", { method: "POST", body: JSON.stringify({ id, stars: cur === n ? 0 : n }) });
     return;
   }
+  const pr = e.target.closest("[data-prompt]");
+  if (pr) { openFromTemplate(pr.dataset.prompt); return; }
   const rb = e.target.closest("[data-rebuild]");
   if (rb && !rb.disabled) { rb.disabled = true; build([rb.dataset.rebuild]); }
 };
@@ -230,6 +307,108 @@ function drawPilot() {
 }
 document.getElementById("pilot").onclick = () =>
   fetch("/api/factory/autopilot", { method: "POST", body: JSON.stringify({ on: !pilot.on, model }) });
+
+// ---- New template from your idea ------------------------------------------------------------
+// Fields -> /api/factory/preview gives the exact prompts the build will send (same code as the real build).
+// Once you edit a prompt by hand it stops following the fields, until you regenerate it.
+const $ = (id) => document.getElementById(id);
+const ideaEl = $("idea");
+const FIELDS = ["name", "id", "sectors", "sample", "stress", "brief", "type", "signature"];
+let source = "", edited = { bp: false, cp: false }, previewTimer = null;
+
+function setIdeaOpen(open) {
+  ideaEl.hidden = !open;
+  $("idea-toggle").setAttribute("aria-expanded", String(open));
+  if (open) ideaEl.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+$("idea-toggle").onclick = () => setIdeaOpen(ideaEl.hidden);
+
+fetch("/api/factory/samples").then((r) => r.json()).then((list) => {
+  const opts = list.map((s) => `<option value="${esc(s.key)}">${esc(s.name)} (${esc(s.key)})</option>`).join("");
+  $("f-sample").innerHTML = opts;
+  $("f-stress").innerHTML = opts;
+});
+
+const readDirection = () => ({ ...Object.fromEntries(FIELDS.map((f) => [f, $("f-" + f).value])), source });
+function fillForm(d) {
+  for (const f of FIELDS) $("f-" + f).value = f === "sectors" ? (d.sectors || []).join(", ") : d[f] ?? "";
+  source = d.source || "";
+}
+function setPromptState(which, isEdited) {
+  edited[which] = isEdited;
+  const st = $(which + "-state");
+  st.textContent = isEdited ? "edited by hand · no longer follows the fields" : "generated from the fields above · you can edit it";
+  st.className = "state" + (isEdited ? " edited" : "");
+  $(which + "-reset").hidden = !isEdited;
+}
+async function refreshPrompts(force) {
+  const r = await fetch("/api/factory/preview", { method: "POST", body: JSON.stringify({ direction: readDirection() }) }).then((x) => x.json()).catch(() => ({ error: "server not reachable" }));
+  if (r.error) { $("build-state").textContent = r.error; $("build-state").className = "state err"; return; }
+  $("build-state").textContent = ""; $("build-state").className = "state";
+  // The server may adjust the ID to keep it unique; the prompt mentions it, so show the final one.
+  if (r.direction.id !== $("f-id").value) $("f-id").value = r.direction.id;
+  if (force === "bp" || !edited.bp) { $("bp").value = r.build; setPromptState("bp", false); }
+  if (force === "cp" || !edited.cp) { $("cp").value = r.critique; setPromptState("cp", false); }
+}
+for (const f of FIELDS) $("f-" + f).addEventListener("input", () => { clearTimeout(previewTimer); previewTimer = setTimeout(refreshPrompts, 400); });
+$("bp").addEventListener("input", () => setPromptState("bp", true));
+$("cp").addEventListener("input", () => setPromptState("cp", true));
+$("bp-reset").onclick = () => refreshPrompts("bp");
+$("cp-reset").onclick = () => refreshPrompts("cp");
+
+function showForm(title) {
+  $("idea-title").textContent = title;
+  $("idea-form").hidden = false;
+  $("idea-build").disabled = false;
+}
+
+$("idea-go").onclick = async () => {
+  const idea = $("idea-text").value.trim();
+  const st = $("idea-state");
+  if (!idea) { st.textContent = "describe your idea first"; st.className = "state err"; return; }
+  $("idea-go").disabled = true;
+  st.className = "state"; st.textContent = `Claude (${model}) is working out your idea…`;
+  const t0 = Date.now();
+  const r = await fetch("/api/factory/idea", { method: "POST", body: JSON.stringify({ idea, model }) }).then((x) => x.json()).catch(() => ({ error: "server not reachable" }));
+  $("idea-go").disabled = false;
+  if (r.error) { st.textContent = r.error; st.className = "state err"; return; }
+  st.textContent = `worked out in ${Math.round((Date.now() - t0) / 1000)} s${r.costUsd ? ` · $${r.costUsd.toFixed(2)}` : ""} · adjust anything below`;
+  fillForm(r.direction);
+  showForm("✦ New template from your idea");
+  setPromptState("bp", false); setPromptState("cp", false);
+  await refreshPrompts();
+};
+
+// "prompt" on a card: show what that template was built with, as the start of a new variation.
+async function openFromTemplate(id) {
+  const r = await fetch("/api/factory/direction?id=" + encodeURIComponent(id)).then((x) => x.json()).catch(() => ({ error: "server not reachable" }));
+  if (r.error) return;
+  fillForm({ ...r.direction, name: `${r.direction.name} Variant`, id: "", source: `variation of ${r.direction.name}` });
+  showForm(`Prompt of “${r.direction.name}”`);
+  $("idea-state").textContent = r.saved
+    ? `showing the exact prompts sent when ${r.direction.name} was built · change anything to build a variation`
+    : `${r.direction.name} was built before prompts were saved: this is the prompt today's files would send`;
+  $("idea-state").className = "state";
+  $("bp").value = r.build;
+  $("cp").value = r.critique;
+  // Loaded prompts count as hand-made: they don't follow the fields until you regenerate.
+  setPromptState("bp", true); setPromptState("cp", true);
+  setIdeaOpen(true);
+  // The saved prompt mentions the old id; get the new unique id for the variation.
+  const p = await fetch("/api/factory/preview", { method: "POST", body: JSON.stringify({ direction: readDirection() }) }).then((x) => x.json()).catch(() => null);
+  if (p?.direction) $("f-id").value = p.direction.id;
+}
+
+$("idea-build").onclick = async () => {
+  const st = $("build-state");
+  $("idea-build").disabled = true;
+  st.className = "state"; st.textContent = "starting…";
+  const body = { direction: readDirection(), model, buildPrompt: edited.bp ? $("bp").value : undefined, critiquePrompt: edited.cp ? $("cp").value : undefined };
+  const r = await fetch("/api/factory/create", { method: "POST", body: JSON.stringify(body) }).then((x) => x.json()).catch(() => ({ error: "server not reachable" }));
+  if (r.error) { st.textContent = r.error; st.className = "state err"; $("idea-build").disabled = false; return; }
+  st.textContent = `building “${r.id}” with ${model}: follow it in the gallery below (~15–25 min)`;
+  document.getElementById("t-" + r.id)?.scrollIntoView({ behavior: "smooth", block: "center" });
+};
 
 const events = new EventSource("/api/factory/events");
 events.onmessage = (e) => { const t = JSON.parse(e.data); items.set(t.id, t); draw(); };

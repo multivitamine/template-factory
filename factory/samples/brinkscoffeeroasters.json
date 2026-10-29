@@ -75,7 +75,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2179.png?width=360",
       "tag": "Proefpakket",
-      "href": "#"
+      "href": "#",
+      "category": "Proefpakketten"
     },
     {
       "name": "Brinks koffiebonen proefpakket black collection 3-pack",
@@ -83,7 +84,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2180.png?width=360",
       "tag": "Proefpakket",
-      "href": "#"
+      "href": "#",
+      "category": "Proefpakketten"
     },
     {
       "name": "Brasil Black Diamond 500 gram",
@@ -91,7 +93,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2128.png?width=360",
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Koffiebonen"
     },
     {
       "name": "Chocolate Berry 250 gram",
@@ -99,7 +102,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2265.png?width=360",
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Koffiebonen"
     },
     {
       "name": "Guatemala Adventure 500 gram",
@@ -107,7 +111,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2132.png?width=360",
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Koffiebonen"
     },
     {
       "name": "PC Blend 500 gram",
@@ -115,7 +120,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2130.png?width=360",
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Koffiebonen"
     },
     {
       "name": "Supreme Black 500 gram",
@@ -123,7 +129,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2129.png?width=360",
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Koffiebonen"
     },
     {
       "name": "Sweet Combo 500 gram",
@@ -131,7 +138,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2131.png?width=360",
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Koffiebonen"
     },
     {
       "name": "Decaf Peru Swiss Water 500gr (espresso maling)",
@@ -139,7 +147,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/1007.png?width=360",
       "tag": "Cafeïnevrij",
-      "href": "#"
+      "href": "#",
+      "category": "Cafeïnevrij"
     },
     {
       "name": "Decaf Peru Swiss Water 500gr bonen",
@@ -147,7 +156,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/1008.png?width=360",
       "tag": "Cafeïnevrij",
-      "href": "#"
+      "href": "#",
+      "category": "Cafeïnevrij"
     },
     {
       "name": "Decafe cups doos 20 cups",
@@ -155,7 +165,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2335.png?width=360",
       "tag": "Cafeïnevrij",
-      "href": "#"
+      "href": "#",
+      "category": "Cafeïnevrij"
     },
     {
       "name": "Cafferati espresso dispenser doos 80 cups",
@@ -163,7 +174,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/1012.png?width=360",
       "tag": "Cups",
-      "href": "#"
+      "href": "#",
+      "category": "Cups"
     },
     {
       "name": "Cafferati lungo dispenser doos 80 cups",
@@ -171,7 +183,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/1096.png?width=360",
       "tag": "Cups",
-      "href": "#"
+      "href": "#",
+      "category": "Cups"
     }
   ],
   "story": {
@@ -248,8 +261,10 @@
     "title": "Koffie",
     "intro": "Ontdek onze premium en specialty koffies, proefpakketten en cups, allemaal met een smaak die je makkelijk waardeert.",
     "filters": [
-      "Premium koffie",
-      "Specialty koffie"
+      "Proefpakketten",
+      "Koffiebonen",
+      "Cafeïnevrij",
+      "Cups"
     ],
     "count": "13 producten"
   },
@@ -260,7 +275,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2179.png?width=360",
       "tag": "Proefpakket",
-      "href": "#"
+      "href": "#",
+      "category": "Proefpakketten"
     },
     {
       "name": "Brinks koffiebonen proefpakket black collection 3-pack",
@@ -268,7 +284,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2180.png?width=360",
       "tag": "Proefpakket",
-      "href": "#"
+      "href": "#",
+      "category": "Proefpakketten"
     },
     {
       "name": "Brasil Black Diamond 500 gram",
@@ -276,7 +293,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2128.png?width=360",
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Koffiebonen"
     },
     {
       "name": "Chocolate Berry 250 gram",
@@ -284,7 +302,8 @@
       "oldPrice": null,
       "image": "https://www.brinkscoffeeroasters.nl/content/products/2265.png?width=360",
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Koffiebonen"
     }
   ],
   "hasProducts": true,

@@ -94,7 +94,8 @@
       "oldPrice": null,
       "image": "https://www.bohlt.nl/content/products/d9abac0cab16e12de10314861d949fd69f6aeb54.jpg?width=150&height=150&background=white",
       "tag": "Fatbike",
-      "href": "https://www.bohlt.nl/product/bohlt-fattwenty"
+      "href": "https://www.bohlt.nl/product/bohlt-fattwenty",
+      "category": "Fatbikes"
     },
     {
       "name": "BOHLT Rebel",
@@ -102,7 +103,8 @@
       "oldPrice": null,
       "image": "https://www.bohlt.nl/content/products/fdbff358fe50671702b6ff4f09fe397f718e2fa8.jpg?width=150&height=150&background=white",
       "tag": null,
-      "href": "https://www.bohlt.nl/product/bohlt-rebel"
+      "href": "https://www.bohlt.nl/product/bohlt-rebel",
+      "category": "Citybikes"
     },
     {
       "name": "BOHLT X200 OR",
@@ -110,7 +112,8 @@
       "oldPrice": null,
       "image": "https://www.bohlt.nl/content/products/092b39b1a1df91b0d990eda9c1041fdd9da73d8b.jpg?width=150&height=150&background=white",
       "tag": "Vouwfiets",
-      "href": "https://www.bohlt.nl/product/bohlt-x200-or"
+      "href": "https://www.bohlt.nl/product/bohlt-x200-or",
+      "category": "Vouwfietsen"
     }
   ],
   "story": {
@@ -183,10 +186,9 @@
     "title": "Elektrische fietsen en meer",
     "intro": "Ontdek de BOHLT collectie: van stoere fatbikes tot compacte vouwfietsen, altijd klaar om weg te rijden.",
     "filters": [
-      "Vouwfietsen",
       "Fatbikes",
       "Citybikes",
-      "Accessoires"
+      "Vouwfietsen"
     ],
     "count": "3 producten"
   },
@@ -197,7 +199,8 @@
       "oldPrice": null,
       "image": "https://www.bohlt.nl/content/products/d9abac0cab16e12de10314861d949fd69f6aeb54.jpg?width=150&height=150&background=white",
       "tag": "Fatbike",
-      "href": "https://www.bohlt.nl/product/bohlt-fattwenty"
+      "href": "https://www.bohlt.nl/product/bohlt-fattwenty",
+      "category": "Fatbikes"
     },
     {
       "name": "BOHLT Rebel",
@@ -205,7 +208,8 @@
       "oldPrice": null,
       "image": "https://www.bohlt.nl/content/products/fdbff358fe50671702b6ff4f09fe397f718e2fa8.jpg?width=150&height=150&background=white",
       "tag": null,
-      "href": "https://www.bohlt.nl/product/bohlt-rebel"
+      "href": "https://www.bohlt.nl/product/bohlt-rebel",
+      "category": "Citybikes"
     },
     {
       "name": "BOHLT X200 OR",
@@ -213,7 +217,8 @@
       "oldPrice": null,
       "image": "https://www.bohlt.nl/content/products/092b39b1a1df91b0d990eda9c1041fdd9da73d8b.jpg?width=150&height=150&background=white",
       "tag": "Vouwfiets",
-      "href": "https://www.bohlt.nl/product/bohlt-x200-or"
+      "href": "https://www.bohlt.nl/product/bohlt-x200-or",
+      "category": "Vouwfietsen"
     }
   ],
   "hasProducts": true,

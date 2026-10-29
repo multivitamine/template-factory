@@ -290,14 +290,14 @@ h1,h2,h3,p{margin:0}
     </div>
     <div class="tabs" role="group">
       <button class="tab is-on" type="button" aria-pressed="true" aria-label="All">✱</button>
-      <button class="tab" type="button" aria-pressed="false">Premium koffie</button><button class="tab" type="button" aria-pressed="false">Specialty koffie</button>
+      <button data-shop-filter="Proefpakketten" class="tab" type="button" aria-pressed="false">Proefpakketten</button><button data-shop-filter="Koffiebonen" class="tab" type="button" aria-pressed="false">Koffiebonen</button><button data-shop-filter="Cafeïnevrij" class="tab" type="button" aria-pressed="false">Cafeïnevrij</button><button data-shop-filter="Cups" class="tab" type="button" aria-pressed="false">Cups</button>
     </div>
   </section>
 
   <section class="panel" id="products" style="padding-top:clamp(32px,4vw,56px)">
     <span class="gluetab gluetab--r" aria-hidden="true"></span>
     <div class="grid">
-      <article class="carton" tabindex="0" aria-label="Brinks Specialty koffiebonen proefpakket 2-pack">
+      <article data-shop-item="0" class="carton" tabindex="0" aria-label="Brinks Specialty koffiebonen proefpakket 2-pack">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -335,7 +335,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 34,00</b><span class="chip">Proefpakket</span></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Brinks koffiebonen proefpakket black collection 3-pack">
+      <article data-shop-item="1" class="carton" tabindex="0" aria-label="Brinks koffiebonen proefpakket black collection 3-pack">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -373,7 +373,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 47,00</b><span class="chip">Proefpakket</span></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Brasil Black Diamond 500 gram">
+      <article data-shop-item="2" class="carton" tabindex="0" aria-label="Brasil Black Diamond 500 gram">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -411,7 +411,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 15,75</b></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Chocolate Berry 250 gram">
+      <article data-shop-item="3" class="carton" tabindex="0" aria-label="Chocolate Berry 250 gram">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -449,7 +449,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 9,95</b></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Guatemala Adventure 500 gram">
+      <article data-shop-item="4" class="carton" tabindex="0" aria-label="Guatemala Adventure 500 gram">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -487,7 +487,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 17,45</b></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="PC Blend 500 gram">
+      <article data-shop-item="5" class="carton" tabindex="0" aria-label="PC Blend 500 gram">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -525,7 +525,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 15,95</b></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Supreme Black 500 gram">
+      <article data-shop-item="6" class="carton" tabindex="0" aria-label="Supreme Black 500 gram">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -563,7 +563,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 15,50</b></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Sweet Combo 500 gram">
+      <article data-shop-item="7" class="carton" tabindex="0" aria-label="Sweet Combo 500 gram">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -601,7 +601,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 16,75</b></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Decaf Peru Swiss Water 500gr (espresso maling)">
+      <article data-shop-item="8" class="carton" tabindex="0" aria-label="Decaf Peru Swiss Water 500gr (espresso maling)">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -639,7 +639,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 21,76</b><span class="chip">Cafeïnevrij</span></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Decaf Peru Swiss Water 500gr bonen">
+      <article data-shop-item="9" class="carton" tabindex="0" aria-label="Decaf Peru Swiss Water 500gr bonen">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -677,7 +677,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 21,76</b><span class="chip">Cafeïnevrij</span></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Decafe cups doos 20 cups">
+      <article data-shop-item="10" class="carton" tabindex="0" aria-label="Decafe cups doos 20 cups">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -715,7 +715,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 5,98</b><span class="chip">Cafeïnevrij</span></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Cafferati espresso dispenser doos 80 cups">
+      <article data-shop-item="11" class="carton" tabindex="0" aria-label="Cafferati espresso dispenser doos 80 cups">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -753,7 +753,7 @@ h1,h2,h3,p{margin:0}
           <div class="lbl__row"><b>€ 21,75</b><span class="chip">Cups</span></div>
         </div>
       </article>
-      <article class="carton" tabindex="0" aria-label="Cafferati lungo dispenser doos 80 cups">
+      <article data-shop-item="12" class="carton" tabindex="0" aria-label="Cafferati lungo dispenser doos 80 cups">
         <div class="stage">
           <div class="pos"><div class="idle"><div class="spin"><div class="flip"><div class="cube">
             <div class="pn pn--f"><div class="fc fc--f">
@@ -962,6 +962,140 @@ h1,h2,h3,p{margin:0}
       setTimeout(function(){if(!first.matches(':hover')&&document.activeElement!==first)first._unfold()},2300);
     },900);
   }});
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"catalog","lang":"nl","count":"13 producten","products":[{"name":"Brinks Specialty koffiebonen proefpakket 2-pack","tag":"Proefpakket","category":"Proefpakketten"},{"name":"Brinks koffiebonen proefpakket black collection 3-pack","tag":"Proefpakket","category":"Proefpakketten"},{"name":"Brasil Black Diamond 500 gram","tag":"","category":"Koffiebonen"},{"name":"Chocolate Berry 250 gram","tag":"","category":"Koffiebonen"},{"name":"Guatemala Adventure 500 gram","tag":"","category":"Koffiebonen"},{"name":"PC Blend 500 gram","tag":"","category":"Koffiebonen"},{"name":"Supreme Black 500 gram","tag":"","category":"Koffiebonen"},{"name":"Sweet Combo 500 gram","tag":"","category":"Koffiebonen"},{"name":"Decaf Peru Swiss Water 500gr (espresso maling)","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Decaf Peru Swiss Water 500gr bonen","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Decafe cups doos 20 cups","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Cafferati espresso dispenser doos 80 cups","tag":"Cups","category":"Cups"},{"name":"Cafferati lungo dispenser doos 80 cups","tag":"Cups","category":"Cups"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
 })();
 </script>
 </body>

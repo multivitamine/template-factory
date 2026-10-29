@@ -100,7 +100,8 @@
       "oldPrice": null,
       "image": "https://www.kartstoreinternational.com/content/products/100_529.jpg?width=360",
       "tag": "Beperkte voorraad",
-      "href": "https://www.kartstoreinternational.com/nl/product/kart-falcon-charlotte-kz-20mm"
+      "href": "https://www.kartstoreinternational.com/nl/product/kart-falcon-charlotte-kz-20mm",
+      "category": "Karts"
     },
     {
       "name": "Kartbanden regen Komet K3W set",
@@ -108,7 +109,8 @@
       "oldPrice": null,
       "image": "https://www.kartstoreinternational.com/content/products/304_317.jpg?width=360",
       "tag": "Op voorraad",
-      "href": "https://www.kartstoreinternational.com/nl/product/kartbanden-regen-komet-k3w-set"
+      "href": "https://www.kartstoreinternational.com/nl/product/kartbanden-regen-komet-k3w-set",
+      "category": "Banden"
     },
     {
       "name": "RK kettingspray",
@@ -116,7 +118,8 @@
       "oldPrice": null,
       "image": "https://www.kartstoreinternational.com/content/products/550_715.jpg?width=360",
       "tag": "Op voorraad",
-      "href": "https://www.kartstoreinternational.com/nl/product/rk-kettingspray"
+      "href": "https://www.kartstoreinternational.com/nl/product/rk-kettingspray",
+      "category": "Olie, vet en reiniging"
     },
     {
       "name": "Balans tandwiel X30 Super Iame",
@@ -124,7 +127,8 @@
       "oldPrice": null,
       "image": "https://www.kartstoreinternational.com/content/products/282_071.jpg?width=360",
       "tag": "Op voorraad",
-      "href": "https://www.kartstoreinternational.com/nl/product/balans-tandwiel-x30-super-iame"
+      "href": "https://www.kartstoreinternational.com/nl/product/balans-tandwiel-x30-super-iame",
+      "category": "Kart onderdelen"
     }
   ],
   "story": {
@@ -196,13 +200,9 @@
     "intro": "Ontdek karts, motoren, banden, onderdelen, kleding en gereedschap voor elke klasse, van Mini tot KZ.",
     "filters": [
       "Karts",
-      "Motoren",
       "Banden",
       "Olie, vet en reiniging",
-      "Kleding / accessoires",
-      "Kart onderdelen",
-      "Motor onderdelen",
-      "Gereedschap"
+      "Kart onderdelen"
     ],
     "count": "4 producten"
   },
@@ -213,7 +213,8 @@
       "oldPrice": null,
       "image": "https://www.kartstoreinternational.com/content/products/100_529.jpg?width=360",
       "tag": "Beperkte voorraad",
-      "href": "https://www.kartstoreinternational.com/nl/product/kart-falcon-charlotte-kz-20mm"
+      "href": "https://www.kartstoreinternational.com/nl/product/kart-falcon-charlotte-kz-20mm",
+      "category": "Karts"
     },
     {
       "name": "Kartbanden regen Komet K3W set",
@@ -221,7 +222,8 @@
       "oldPrice": null,
       "image": "https://www.kartstoreinternational.com/content/products/304_317.jpg?width=360",
       "tag": "Op voorraad",
-      "href": "https://www.kartstoreinternational.com/nl/product/kartbanden-regen-komet-k3w-set"
+      "href": "https://www.kartstoreinternational.com/nl/product/kartbanden-regen-komet-k3w-set",
+      "category": "Banden"
     },
     {
       "name": "RK kettingspray",
@@ -229,7 +231,8 @@
       "oldPrice": null,
       "image": "https://www.kartstoreinternational.com/content/products/550_715.jpg?width=360",
       "tag": "Op voorraad",
-      "href": "https://www.kartstoreinternational.com/nl/product/rk-kettingspray"
+      "href": "https://www.kartstoreinternational.com/nl/product/rk-kettingspray",
+      "category": "Olie, vet en reiniging"
     },
     {
       "name": "Balans tandwiel X30 Super Iame",
@@ -237,7 +240,8 @@
       "oldPrice": null,
       "image": "https://www.kartstoreinternational.com/content/products/282_071.jpg?width=360",
       "tag": "Op voorraad",
-      "href": "https://www.kartstoreinternational.com/nl/product/balans-tandwiel-x30-super-iame"
+      "href": "https://www.kartstoreinternational.com/nl/product/balans-tandwiel-x30-super-iame",
+      "category": "Kart onderdelen"
     }
   ],
   "hasProducts": true,

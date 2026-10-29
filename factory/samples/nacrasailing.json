@@ -100,7 +100,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/nacra-inter-20-mk2-render-small.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "New",
-      "href": "https://nacrasailing.com/nacra-racing/nacra-inter-20-mk2"
+      "href": "https://nacrasailing.com/nacra-racing/nacra-inter-20-mk2",
+      "category": "Leisure"
     },
     {
       "name": "Nacra 450 MK²",
@@ -108,7 +109,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/450-mk2-render-xs.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "New",
-      "href": "https://nacrasailing.com/nacra-leisure/nacra-450-mk2"
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-450-mk2",
+      "category": "Racing"
     },
     {
       "name": "Nacra 500 MK² School",
@@ -116,7 +118,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/nacra-500-mk2-school-render-v3.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Leisure",
-      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2"
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2",
+      "category": "Leisure"
     },
     {
       "name": "Nacra 500 MK² Sport",
@@ -124,7 +127,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/n500-mk2-sport.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Leisure",
-      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2"
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2",
+      "category": "Leisure"
     },
     {
       "name": "Nacra 570 MK² School",
@@ -132,7 +136,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/nacra-570-mk2-school-render.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Leisure",
-      "href": "https://nacrasailing.com/nacra-leisure/nacra-570-mk2"
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-570-mk2",
+      "category": "Leisure"
     },
     {
       "name": "Nacra 570 MK² Sport",
@@ -140,7 +145,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/n570-mk2-sport.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Leisure",
-      "href": "https://nacrasailing.com/nacra-leisure/nacra-570-mk2"
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-570-mk2",
+      "category": "Leisure"
     },
     {
       "name": "Nacra 15",
@@ -148,7 +154,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/nacra-15-render-small.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Racing",
-      "href": "https://nacrasailing.com/nacra-racing/nacra-15"
+      "href": "https://nacrasailing.com/nacra-racing/nacra-15",
+      "category": "Racing"
     },
     {
       "name": "Nacra F16",
@@ -156,7 +163,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/f16.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Racing",
-      "href": "https://nacrasailing.com/nacra-racing/nacra-f16"
+      "href": "https://nacrasailing.com/nacra-racing/nacra-f16",
+      "category": "Racing"
     },
     {
       "name": "Nacra 17",
@@ -164,7 +172,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/nacra-17-render-small.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Olympic",
-      "href": "https://nacrasailing.com/nacra-olympic/nacra-17"
+      "href": "https://nacrasailing.com/nacra-olympic/nacra-17",
+      "category": "Olympic"
     },
     {
       "name": "Nacra F18 Evolution",
@@ -172,7 +181,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/f18-evo.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Racing",
-      "href": "https://nacrasailing.com/nacra-racing/nacra-f18-evolution"
+      "href": "https://nacrasailing.com/nacra-racing/nacra-f18-evolution",
+      "category": "Racing"
     },
     {
       "name": "Nacra F20 Carbon",
@@ -180,7 +190,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/f20.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Racing",
-      "href": "https://nacrasailing.com/nacra-racing/nacra-f20-carbon"
+      "href": "https://nacrasailing.com/nacra-racing/nacra-f20-carbon",
+      "category": "Racing"
     }
   ],
   "story": {
@@ -247,19 +258,9 @@
     "title": "Nacra Webshop",
     "intro": "Boats, sails, spars, rigging and hardware, everything to keep your Nacra on the water.",
     "filters": [
-      "Apparel",
-      "Boats",
-      "Cordage",
-      "Covers",
-      "Fasteners",
-      "Hardware",
-      "Instruments",
-      "Platform components",
-      "Rigging",
-      "Sails",
-      "Spars",
-      "Transport & Storage",
-      "Used & Demo"
+      "Racing",
+      "Leisure",
+      "Olympic"
     ],
     "count": "13 categories"
   },
@@ -270,7 +271,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/nacra-inter-20-mk2-render-small.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "New",
-      "href": "https://nacrasailing.com/nacra-racing/nacra-inter-20-mk2"
+      "href": "https://nacrasailing.com/nacra-racing/nacra-inter-20-mk2",
+      "category": "Leisure"
     },
     {
       "name": "Nacra 450 MK²",
@@ -278,7 +280,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/450-mk2-render-xs.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "New",
-      "href": "https://nacrasailing.com/nacra-leisure/nacra-450-mk2"
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-450-mk2",
+      "category": "Racing"
     },
     {
       "name": "Nacra 500 MK² School",
@@ -286,7 +289,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/nacra-500-mk2-school-render-v3.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Leisure",
-      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2"
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2",
+      "category": "Leisure"
     },
     {
       "name": "Nacra 500 MK² Sport",
@@ -294,7 +298,8 @@
       "oldPrice": null,
       "image": "https://nacrasailing.com/media/n500-mk2-sport.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=225",
       "tag": "Leisure",
-      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2"
+      "href": "https://nacrasailing.com/nacra-leisure/nacra-500-mk2",
+      "category": "Leisure"
     }
   ],
   "hasProducts": true,

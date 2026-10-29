@@ -100,7 +100,8 @@
       "oldPrice": null,
       "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
       "tag": "Pellets",
-      "href": "#"
+      "href": "#",
+      "category": "Pellets"
     },
     {
       "name": "Droogijs pellets 10 mm",
@@ -108,7 +109,8 @@
       "oldPrice": null,
       "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
       "tag": "Pellets",
-      "href": "#"
+      "href": "#",
+      "category": "Pellets"
     },
     {
       "name": "Droogijs pellets 16 mm",
@@ -116,7 +118,8 @@
       "oldPrice": null,
       "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
       "tag": "Pellets",
-      "href": "#"
+      "href": "#",
+      "category": "Pellets"
     },
     {
       "name": "Droogijsschijven 500 gram",
@@ -124,7 +127,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Schijven",
-      "href": "#"
+      "href": "#",
+      "category": "Schijven"
     },
     {
       "name": "Droogijsschijven 700 gram",
@@ -132,7 +136,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Schijven",
-      "href": "#"
+      "href": "#",
+      "category": "Schijven"
     },
     {
       "name": "Droogijsblok 5 kilo",
@@ -140,7 +145,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Blokken",
-      "href": "#"
+      "href": "#",
+      "category": "Blokken"
     }
   ],
   "story": {
@@ -221,7 +227,6 @@
     "title": "Onze droogijsproducten",
     "intro": "Pellets, schijven en blokken: voor elke toepassing hebben wij de juiste oplossing.",
     "filters": [
-      "Alle producten",
       "Pellets",
       "Schijven",
       "Blokken"
@@ -235,7 +240,8 @@
       "oldPrice": null,
       "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
       "tag": "Pellets",
-      "href": "#"
+      "href": "#",
+      "category": "Pellets"
     },
     {
       "name": "Droogijs pellets 10 mm",
@@ -243,7 +249,8 @@
       "oldPrice": null,
       "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
       "tag": "Pellets",
-      "href": "#"
+      "href": "#",
+      "category": "Pellets"
     },
     {
       "name": "Droogijs pellets 16 mm",
@@ -251,7 +258,8 @@
       "oldPrice": null,
       "image": "https://www.droogijs365.nl/media/droogijs-container-hr200.png?cropX=0&cropY=0&cropW=0&cropH=0&quality=90&width=697",
       "tag": "Pellets",
-      "href": "#"
+      "href": "#",
+      "category": "Pellets"
     },
     {
       "name": "Droogijsschijven 500 gram",
@@ -259,7 +267,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Schijven",
-      "href": "#"
+      "href": "#",
+      "category": "Schijven"
     }
   ],
   "hasProducts": true,

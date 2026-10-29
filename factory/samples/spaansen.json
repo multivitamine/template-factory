@@ -1,0 +1,266 @@
+{
+  "brand": {
+    "name": "Spaansen",
+    "tagline": "Verbinding is ons succes sinds 1946",
+    "logo": "https://www.spaansen.nl/dist/images/logos/logo-default.svg",
+    "logoIsLight": false,
+    "initials": "SP",
+    "lang": "nl",
+    "colors": {
+      "primary": "#ce0000",
+      "accent": "#4b4b4b"
+    }
+  },
+  "nav": [
+    {
+      "label": "Assortiment",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Jubileumdeals",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Tuininspiratie",
+      "href": "#"
+    },
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "80 jaar Spaansen",
+    "title": "Alles voor jouw tuin,",
+    "titleAccent": "van bestrating tot barbecue",
+    "text": "Spaansen Tuin en Bestrating is dé bestratingsspecialist van Noord-Holland. Ontdek online of in onze vestigingen een enorm assortiment voor tuin en terras.",
+    "cta": "Bekijk ons assortiment",
+    "ctaHref": "catalog.html",
+    "cta2": "Jubileumdeals",
+    "image": "https://www.spaansen.nl/media/5-1-keramiek.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1800"
+  },
+  "usps": [
+    {
+      "title": "Uitstekende service",
+      "text": "Verbinding is ons succes: persoonlijke aandacht voor elke klant."
+    },
+    {
+      "title": "Betrouwbaar",
+      "text": "Een familiebedrijf dat al sinds 1946 meebouwt aan tuinen en terrassen."
+    },
+    {
+      "title": "Enorm assortiment",
+      "text": "Meer dan 3000 artikelen voor tuin, terras en bouw."
+    },
+    {
+      "title": "Online én in de winkel",
+      "text": "Bestel in de webshop of bezoek onze vestigingen in Uitgeest en Zuidoostbeemster."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Afwatering",
+      "image": "https://www.spaansen.nl/dist/images/categories/Afwatering.jpg?width=320",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Bestrating",
+      "image": "https://www.spaansen.nl/dist/images/categories/Bestrating.jpg?width=320",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Betonplaten",
+      "image": "https://www.spaansen.nl/dist/images/categories/Betonplaten.jpg?width=320",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Kunstgras",
+      "image": "https://www.spaansen.nl/dist/images/categories/Kunstgras.jpg?width=320",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Tuinmeubelen",
+      "image": "https://www.spaansen.nl/dist/images/categories/Tuinmeubelen.jpg?width=320",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Afwatering",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.spaansen.nl/dist/images/categories/Afwatering.jpg?width=320",
+      "tag": null,
+      "href": "#",
+      "category": "Tuin en terras"
+    },
+    {
+      "name": "Bestrating",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.spaansen.nl/dist/images/categories/Bestrating.jpg?width=320",
+      "tag": null,
+      "href": "#",
+      "category": "Bestrating en beton"
+    },
+    {
+      "name": "Betonplaten",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.spaansen.nl/dist/images/categories/Betonplaten.jpg?width=320",
+      "tag": null,
+      "href": "#",
+      "category": "Bestrating en beton"
+    },
+    {
+      "name": "Kunstgras",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.spaansen.nl/dist/images/categories/Kunstgras.jpg?width=320",
+      "tag": null,
+      "href": "#",
+      "category": "Tuin en terras"
+    },
+    {
+      "name": "Tuinmeubelen",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.spaansen.nl/dist/images/categories/Tuinmeubelen.jpg?width=320",
+      "tag": null,
+      "href": "#",
+      "category": "Tuin en terras"
+    },
+    {
+      "name": "Spaansen Jubileum Deals",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.spaansen.nl/media/spaansen-jubileum-deals.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1920",
+      "tag": "Jubileum",
+      "href": "#",
+      "category": "Jubileum en outlet"
+    }
+  ],
+  "story": {
+    "eyebrow": "Familiebedrijf sinds 1946",
+    "title": "Verbinding is ons succes",
+    "text": "De Spaansen Groep bestaat uit drie divisies: Grondstoffen en Logistiek, Bouwsystemen en Tuin en Bestrating. Als familiebedrijf bouwen we al generaties mee aan tuinen, terrassen en gebouwen in Noord-Holland.",
+    "image": "https://www.spaansen.nl/media/spaansen-tuin-en-bestrating-zuidoostbeemster-5.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1000"
+  },
+  "stats": [
+    {
+      "value": "3000+",
+      "label": "artikelen in het assortiment"
+    },
+    {
+      "value": "3",
+      "label": "divisies binnen de Spaansen Groep"
+    },
+    {
+      "value": "1946",
+      "label": "familiebedrijf sinds"
+    },
+    {
+      "value": "80",
+      "label": "jaar Spaansen"
+    }
+  ],
+  "gallery": [
+    "https://www.spaansen.nl/media/headertuininspiratie-tuinheiloo-spaansenxlifs-05272.jpg?cropX=0&cropY=0&cropW=1920&cropH=1280&width=1920",
+    "https://www.spaansen.nl/media/yakiniku-header.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=714",
+    "https://www.spaansen.nl/media/jubileum-1200-x-630-px-4.jpg?cropX=0&cropY=0&cropW=960&cropH=630&width=1200",
+    "https://www.spaansen.nl/media/verano_sfeerafbeelding_terrasoverkapping_v908_ledro_005_25.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=1462",
+    "https://www.spaansen.nl/media/catalogus-header-2023.jpg?cropX=0&cropY=0&cropW=1152&cropH=770&width=1500"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Op zoek naar tuininspiratie?",
+    "text": "Ontdek de laatste tuintrends, handige tips en de leukste tuinklussen.",
+    "label": "Laat me inspireren",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Uitgeest en Zuidoostbeemster",
+    "phone": "",
+    "email": ""
+  },
+  "footerLinks": [
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Vestigingen",
+      "href": "#"
+    },
+    {
+      "label": "Brochures",
+      "href": "#"
+    },
+    {
+      "label": "Veelgestelde vragen",
+      "href": "#"
+    },
+    {
+      "label": "Bezorgkosten",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Ons assortiment",
+    "intro": "Van bestrating en betonplaten tot kunstgras en tuinmeubelen: alles voor een tuin waar je trots op bent.",
+    "filters": [
+      "Bestrating en beton",
+      "Tuin en terras",
+      "Jubileum en outlet"
+    ],
+    "count": "6 producten"
+  },
+  "featured": [
+    {
+      "name": "Afwatering",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.spaansen.nl/dist/images/categories/Afwatering.jpg?width=320",
+      "tag": null,
+      "href": "#",
+      "category": "Tuin en terras"
+    },
+    {
+      "name": "Bestrating",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.spaansen.nl/dist/images/categories/Bestrating.jpg?width=320",
+      "tag": null,
+      "href": "#",
+      "category": "Bestrating en beton"
+    },
+    {
+      "name": "Betonplaten",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.spaansen.nl/dist/images/categories/Betonplaten.jpg?width=320",
+      "tag": null,
+      "href": "#",
+      "category": "Bestrating en beton"
+    },
+    {
+      "name": "Kunstgras",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.spaansen.nl/dist/images/categories/Kunstgras.jpg?width=320",
+      "tag": null,
+      "href": "#",
+      "category": "Tuin en terras"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

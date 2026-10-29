@@ -85,7 +85,8 @@
       "oldPrice": null,
       "image": "https://www.hotelnavarra.com/media/homepage-kamer1-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=850",
       "tag": "A little more luxury",
-      "href": "https://www.hotelnavarra.com/rooms/comfort-superior"
+      "href": "https://www.hotelnavarra.com/rooms/comfort-superior",
+      "category": "Comfort Superior"
     },
     {
       "name": "Comfort Room",
@@ -93,7 +94,8 @@
       "oldPrice": null,
       "image": "https://www.hotelnavarra.com/media/homepage-kamer2-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=500",
       "tag": "Total relaxation",
-      "href": "https://www.hotelnavarra.com/rooms/comfort"
+      "href": "https://www.hotelnavarra.com/rooms/comfort",
+      "category": "Comfort"
     },
     {
       "name": "Comfort Mini Room",
@@ -101,7 +103,8 @@
       "oldPrice": null,
       "image": "https://www.hotelnavarra.com/media/homepage-kamer3-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=500",
       "tag": "Ideal for shorter stays",
-      "href": "https://www.hotelnavarra.com/rooms/comfort-mini"
+      "href": "https://www.hotelnavarra.com/rooms/comfort-mini",
+      "category": "Comfort Mini"
     }
   ],
   "story": {
@@ -190,7 +193,6 @@
     "title": "Our rooms in Bruges",
     "intro": "Three room categories, each combining the comfort of a 4-star hotel with the charm of a historic Bruges building.",
     "filters": [
-      "All",
       "Comfort Superior",
       "Comfort",
       "Comfort Mini"
@@ -204,7 +206,8 @@
       "oldPrice": null,
       "image": "https://www.hotelnavarra.com/media/homepage-kamer1-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=850",
       "tag": "A little more luxury",
-      "href": "https://www.hotelnavarra.com/rooms/comfort-superior"
+      "href": "https://www.hotelnavarra.com/rooms/comfort-superior",
+      "category": "Comfort Superior"
     },
     {
       "name": "Comfort Room",
@@ -212,7 +215,8 @@
       "oldPrice": null,
       "image": "https://www.hotelnavarra.com/media/homepage-kamer2-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=500",
       "tag": "Total relaxation",
-      "href": "https://www.hotelnavarra.com/rooms/comfort"
+      "href": "https://www.hotelnavarra.com/rooms/comfort",
+      "category": "Comfort"
     },
     {
       "name": "Comfort Mini Room",
@@ -220,7 +224,8 @@
       "oldPrice": null,
       "image": "https://www.hotelnavarra.com/media/homepage-kamer3-new.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=500",
       "tag": "Ideal for shorter stays",
-      "href": "https://www.hotelnavarra.com/rooms/comfort-mini"
+      "href": "https://www.hotelnavarra.com/rooms/comfort-mini",
+      "category": "Comfort Mini"
     }
   ],
   "hasProducts": true,

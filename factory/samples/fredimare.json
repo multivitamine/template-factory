@@ -104,7 +104,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Balfegó",
-      "href": "#"
+      "href": "#",
+      "category": "Tonijn"
     },
     {
       "name": "Zeeuwse Goudmerk mosselen",
@@ -112,7 +113,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Mosselen"
     },
     {
       "name": "Zeeuwse Jumbo mosselen",
@@ -120,7 +122,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Mosselen"
     },
     {
       "name": "The Oyster Grand Impériale",
@@ -128,7 +131,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Oesters",
-      "href": "#"
+      "href": "#",
+      "category": "Oesters"
     },
     {
       "name": "Zeeuwse Imperial mosselen",
@@ -136,7 +140,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Mosselen"
     },
     {
       "name": "Balfegó tonijn loin (geen center)",
@@ -144,7 +149,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Balfegó",
-      "href": "#"
+      "href": "#",
+      "category": "Tonijn"
     },
     {
       "name": "The Oyster Prestige Spéciale",
@@ -152,7 +158,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Oesters",
-      "href": "#"
+      "href": "#",
+      "category": "Oesters"
     },
     {
       "name": "Alikruik vers",
@@ -160,7 +167,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Schelpdieren"
     },
     {
       "name": "Zeeuwse Super mosselen",
@@ -168,7 +176,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Mosselen"
     },
     {
       "name": "Zeebaars Corsica",
@@ -176,7 +185,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Vis"
     },
     {
       "name": "Dorade Corsica",
@@ -184,7 +194,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Vis"
     },
     {
       "name": "Balfegó tonijn buik loin",
@@ -192,7 +203,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Balfegó",
-      "href": "#"
+      "href": "#",
+      "category": "Tonijn"
     },
     {
       "name": "The Oyster Signature Fines",
@@ -200,7 +212,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Oesters",
-      "href": "#"
+      "href": "#",
+      "category": "Oesters"
     },
     {
       "name": "Amandes vers",
@@ -208,7 +221,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Schelpdieren"
     },
     {
       "name": "Zeeuwse Extra mosselen",
@@ -216,7 +230,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Mosselen"
     },
     {
       "name": "Ostra Regal Gold Selection",
@@ -224,7 +239,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Oesters",
-      "href": "#"
+      "href": "#",
+      "category": "Oesters"
     },
     {
       "name": "Clams vers",
@@ -232,7 +248,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Schelpdieren"
     },
     {
       "name": "Gerookte zalmsalade",
@@ -240,7 +257,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Vis"
     },
     {
       "name": "Balfegó tonijn center loin",
@@ -248,7 +266,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Balfegó",
-      "href": "#"
+      "href": "#",
+      "category": "Tonijn"
     },
     {
       "name": "Ostra Regal",
@@ -256,7 +275,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Oesters",
-      "href": "#"
+      "href": "#",
+      "category": "Oesters"
     },
     {
       "name": "Sentinelle",
@@ -264,7 +284,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Vis"
     },
     {
       "name": "Roodbaars heel 700+",
@@ -272,7 +293,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Vis"
     },
     {
       "name": "Schelvishaas met vel geschubd lijnvangst",
@@ -280,7 +302,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Lijnvangst",
-      "href": "#"
+      "href": "#",
+      "category": "Vis"
     },
     {
       "name": "Forel",
@@ -288,7 +311,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Vis"
     }
   ],
   "story": {
@@ -357,14 +381,11 @@
     "title": "Ons assortiment",
     "intro": "Van Balfegó-tonijn en oesters tot Zeeuwse mosselen en verse vis: kies zakelijk of particulier.",
     "filters": [
-      "Bluefin Tonijn",
-      "Langoustines",
-      "Dorade",
+      "Tonijn",
       "Oesters",
-      "Kaviaar",
-      "Kreeften",
       "Mosselen",
-      "Gerookte vis"
+      "Schelpdieren",
+      "Vis"
     ],
     "count": "182 producten"
   },
@@ -375,7 +396,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Balfegó",
-      "href": "#"
+      "href": "#",
+      "category": "Tonijn"
     },
     {
       "name": "Zeeuwse Goudmerk mosselen",
@@ -383,7 +405,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Mosselen"
     },
     {
       "name": "Zeeuwse Jumbo mosselen",
@@ -391,7 +414,8 @@
       "oldPrice": null,
       "image": null,
       "tag": null,
-      "href": "#"
+      "href": "#",
+      "category": "Mosselen"
     },
     {
       "name": "The Oyster Grand Impériale",
@@ -399,7 +423,8 @@
       "oldPrice": null,
       "image": null,
       "tag": "Oesters",
-      "href": "#"
+      "href": "#",
+      "category": "Oesters"
     }
   ],
   "hasProducts": true,

@@ -104,7 +104,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8189_807008.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/ahead-ar1622-hoes-voor-22-x-16-bass-drum"
+      "href": "https://www.terpstra-muziek.nl/product/ahead-ar1622-hoes-voor-22-x-16-bass-drum",
+      "category": "Accessoires"
     },
     {
       "name": "Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning",
@@ -112,7 +113,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8189%20spgbbr3_01.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning"
+      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning",
+      "category": "Hardware"
     },
     {
       "name": "Ahead SPG-R-3 Spinal G drumkruk rood",
@@ -120,7 +122,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8189_spgr3.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-r-3-spinal-g-drumkruk-rood"
+      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-r-3-spinal-g-drumkruk-rood",
+      "category": "Hardware"
     },
     {
       "name": "Aquarian AQCC16 Classic Clear drumvel 16\"",
@@ -128,7 +131,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8233_aqcc16.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqcc16-classic-clear-drumvel-16"
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqcc16-classic-clear-drumvel-16",
+      "category": "Drumvellen"
     },
     {
       "name": "Aquarian AQFB20 Full Force I bassdrumvel 20\"",
@@ -136,7 +140,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8233_aqfb20.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqfb20-full-force-i-bassdrumvel-20"
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqfb20-full-force-i-bassdrumvel-20",
+      "category": "Drumvellen"
     },
     {
       "name": "Aquarian AQFOR10 Force Ten drumvel 10\"",
@@ -144,7 +149,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8233_aqfor10.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqfor10-force-ten-drumvel-10"
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqfor10-force-ten-drumvel-10",
+      "category": "Drumvellen"
     },
     {
       "name": "Aquarian AQREF14 Reflector Black drumvel 14\"",
@@ -152,7 +158,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8233_aqref14.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqref14-reflector-black-drumvel-14"
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqref14-reflector-black-drumvel-14",
+      "category": "Drumvellen"
     },
     {
       "name": "Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22\"",
@@ -160,7 +167,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8233%20aqtcfb22_01.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqtcfb22-texture-coated-full-force-i-bassdrumvel-22"
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqtcfb22-texture-coated-full-force-i-bassdrumvel-22",
+      "category": "Drumvellen"
     },
     {
       "name": "ASBA snaredrum 14x6\" Blueberry / Agathe The Blue Rive Gauche",
@@ -168,7 +176,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/7359_rg1406atb.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "Actie",
-      "href": "https://www.terpstra-muziek.nl/product/asba-snaredrum-14x6-blueberry-/-agathe-the-blue-rive-gauche"
+      "href": "https://www.terpstra-muziek.nl/product/asba-snaredrum-14x6-blueberry-/-agathe-the-blue-rive-gauche",
+      "category": "Snaredrums"
     },
     {
       "name": "Big Fat Snare Drum 14\" Snare Bourine",
@@ -176,7 +185,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/bigfat_14bfsdsb.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/big-fat-snare-drum-14-snare-bourine"
+      "href": "https://www.terpstra-muziek.nl/product/big-fat-snare-drum-14-snare-bourine",
+      "category": "Snaredrums"
     },
     {
       "name": "Big Fat Snare Drum 14\" Steve's Donut",
@@ -184,7 +194,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/1250_bfsd14don.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/big-fat-snare-drum-big-fat-snare-drum-14-steve-s-donut"
+      "href": "https://www.terpstra-muziek.nl/product/big-fat-snare-drum-big-fat-snare-drum-14-steve-s-donut",
+      "category": "Snaredrums"
     },
     {
       "name": "Bone snaredrum aluminium 14\"x6,5\" Nickel Black Hardware",
@@ -192,7 +203,8 @@
       "oldPrice": "€ 816,75",
       "image": "https://www.terpstra-muziek.nl/content/products/7528_sdua1465nb.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "Actie",
-      "href": "https://www.terpstra-muziek.nl/product/bone-snaredrum-aluminium-14-x6-5-nickel-black-hardware"
+      "href": "https://www.terpstra-muziek.nl/product/bone-snaredrum-aluminium-14-x6-5-nickel-black-hardware",
+      "category": "Snaredrums"
     },
     {
       "name": "Bone snaredrum Carbcutter 14\"x5,5\" Charcoal Smoke",
@@ -200,7 +212,8 @@
       "oldPrice": "€ 1.149,00",
       "image": "https://www.terpstra-muziek.nl/content/products/7528_sdcbc1455csc.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "Actie",
-      "href": "https://www.terpstra-muziek.nl/product/bone-snaredrum-carbcutter-14-x5-5-charcoal-smoke-chrome-hw"
+      "href": "https://www.terpstra-muziek.nl/product/bone-snaredrum-carbcutter-14-x5-5-charcoal-smoke-chrome-hw",
+      "category": "Snaredrums"
     },
     {
       "name": "DS Drum DSX Stage Kit Titanium Sparkle",
@@ -208,7 +221,8 @@
       "oldPrice": "€ 699,00",
       "image": "https://www.terpstra-muziek.nl/content/products/2763_44671.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "OP = OP",
-      "href": "https://www.terpstra-muziek.nl/product/ds-drum-dsx2251tsk-dsx-stage-kit-titanium-sparkle"
+      "href": "https://www.terpstra-muziek.nl/product/ds-drum-dsx2251tsk-dsx-stage-kit-titanium-sparkle",
+      "category": "Stellen & cymbals"
     },
     {
       "name": "Lite Stix Rock drumsticks U.S. Hickory",
@@ -216,7 +230,8 @@
       "oldPrice": "€ 109,00",
       "image": "https://www.terpstra-muziek.nl/content/products/7166_rock.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "Actie",
-      "href": "https://www.terpstra-muziek.nl/product/lite-stix-rock-drumsticks-u-s-hickory"
+      "href": "https://www.terpstra-muziek.nl/product/lite-stix-rock-drumsticks-u-s-hickory",
+      "category": "Accessoires"
     },
     {
       "name": "Occasion Dixon snaredrum Artisan hout 14x5,5\"",
@@ -224,7 +239,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/3928%20slag4753_01.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "Occasion",
-      "href": "https://www.terpstra-muziek.nl/product/dixon-occasion-snaredrum-artisan-hout-14x5-5"
+      "href": "https://www.terpstra-muziek.nl/product/dixon-occasion-snaredrum-artisan-hout-14x5-5",
+      "category": "Snaredrums"
     },
     {
       "name": "Occasion Istanbul Agop Vezir ride 21\"",
@@ -232,7 +248,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/3928%20b0959_01.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "Occasion",
-      "href": "https://www.terpstra-muziek.nl/product/istanbul-agop-occasion-vezir-ride-21"
+      "href": "https://www.terpstra-muziek.nl/product/istanbul-agop-occasion-vezir-ride-21",
+      "category": "Stellen & cymbals"
     },
     {
       "name": "Occasion Bach Omega trombone met kwartventiel 2105",
@@ -240,7 +257,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/3928%20b0959_01.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "Occasion",
-      "href": "https://www.terpstra-muziek.nl/product/bach-occasion-omega-trombone-met-kwartventiel-2105"
+      "href": "https://www.terpstra-muziek.nl/product/bach-occasion-omega-trombone-met-kwartventiel-2105",
+      "category": "Overig"
     },
     {
       "name": "DW DWCP5500D hihatstand 3-benig",
@@ -248,7 +266,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8216_dwcp5500d.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "Actie",
-      "href": "https://www.terpstra-muziek.nl/product/dw-dwcp5500d-hihat-stand-3-benig"
+      "href": "https://www.terpstra-muziek.nl/product/dw-dwcp5500d-hihat-stand-3-benig",
+      "category": "Hardware"
     },
     {
       "name": "K&M KM19790 iPad-houder met microfoonstandbevestiging",
@@ -256,7 +275,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/1865_1979031655.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "Actie",
-      "href": "https://www.terpstra-muziek.nl/product/k-m-km19790-ipad-houder-met-microfoonstand-bevestiging"
+      "href": "https://www.terpstra-muziek.nl/product/k-m-km19790-ipad-houder-met-microfoonstand-bevestiging",
+      "category": "Hardware"
     },
     {
       "name": "BG S41SH Classic harnas vrouw, zwart",
@@ -264,7 +284,8 @@
       "oldPrice": "€ 46,70",
       "image": "https://www.terpstra-muziek.nl/content/products/4470_6010404.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "Actie",
-      "href": "https://www.terpstra-muziek.nl/product/bg-s41sh-classic-harnas-vrouw-kunstst-snaphaak-zwart"
+      "href": "https://www.terpstra-muziek.nl/product/bg-s41sh-classic-harnas-vrouw-kunstst-snaphaak-zwart",
+      "category": "Overig"
     },
     {
       "name": "Gewa 1/8 viool Allegro speelklaar incl. vormkoffer",
@@ -272,7 +293,8 @@
       "oldPrice": "€ 447,00",
       "image": "https://www.terpstra-muziek.nl/content/products/0216_gs4000552111.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "OP = OP",
-      "href": "https://www.terpstra-muziek.nl/product/gewa-1/8-viool-allegro-speelklaar-incl-vormkoffer"
+      "href": "https://www.terpstra-muziek.nl/product/gewa-1/8-viool-allegro-speelklaar-incl-vormkoffer",
+      "category": "Overig"
     },
     {
       "name": "Stagg kinderhoorn Bb Franse gigbag",
@@ -280,7 +302,8 @@
       "oldPrice": "€ 929,00",
       "image": "https://www.terpstra-muziek.nl/content/products/4100_77fhbjsc.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "OP = OP",
-      "href": "https://www.terpstra-muziek.nl/product/stagg-kinderhoorn-bb-franse-gigbag"
+      "href": "https://www.terpstra-muziek.nl/product/stagg-kinderhoorn-bb-franse-gigbag",
+      "category": "Overig"
     },
     {
       "name": "Ritter RDP2-S/BRD stick bag Black-Red Performance",
@@ -288,7 +311,8 @@
       "oldPrice": "€ 12,00",
       "image": "https://www.terpstra-muziek.nl/content/products/3488_rdp2sbrd.jpg?width=273&height=180&anchor=center&background=white",
       "tag": "OP = OP",
-      "href": "https://www.terpstra-muziek.nl/product/ritter-rdp2-s/brd-stick-bag-black-red-performance"
+      "href": "https://www.terpstra-muziek.nl/product/ritter-rdp2-s/brd-stick-bag-black-red-performance",
+      "category": "Accessoires"
     }
   ],
   "story": {
@@ -363,16 +387,12 @@
     "title": "Drums",
     "intro": "Van akoestische kits en Roland e-drums tot snaredrums, cymbals, vellen en hardware: alles om jouw set te perfectioneren.",
     "filters": [
-      "Elektronische drums",
-      "Drumstellen",
       "Snaredrums",
-      "Cymbals",
-      "Drumstokken & brushes",
-      "Hardware",
       "Drumvellen",
-      "Oefenpads & sets",
-      "Drumkoffers & hoezen",
-      "Drum accessoires"
+      "Hardware",
+      "Accessoires",
+      "Stellen & cymbals",
+      "Overig"
     ],
     "count": "4688 producten"
   },
@@ -383,7 +403,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8189_807008.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/ahead-ar1622-hoes-voor-22-x-16-bass-drum"
+      "href": "https://www.terpstra-muziek.nl/product/ahead-ar1622-hoes-voor-22-x-16-bass-drum",
+      "category": "Accessoires"
     },
     {
       "name": "Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning",
@@ -391,7 +412,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8189%20spgbbr3_01.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning"
+      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning",
+      "category": "Hardware"
     },
     {
       "name": "Ahead SPG-R-3 Spinal G drumkruk rood",
@@ -399,7 +421,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8189_spgr3.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-r-3-spinal-g-drumkruk-rood"
+      "href": "https://www.terpstra-muziek.nl/product/ahead-spg-r-3-spinal-g-drumkruk-rood",
+      "category": "Hardware"
     },
     {
       "name": "Aquarian AQCC16 Classic Clear drumvel 16\"",
@@ -407,7 +430,8 @@
       "oldPrice": null,
       "image": "https://www.terpstra-muziek.nl/content/products/8233_aqcc16.jpg?width=273&height=180&anchor=center&background=white",
       "tag": null,
-      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqcc16-classic-clear-drumvel-16"
+      "href": "https://www.terpstra-muziek.nl/product/aquarian-aqcc16-classic-clear-drumvel-16",
+      "category": "Drumvellen"
     }
   ],
   "hasProducts": true,
