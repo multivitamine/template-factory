@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 6.4,
+  "issues": [
+    "Hero broken on every brand: the secondary CTA (.btn.ghost) inherited the replay canvas rule .ghost (position:absolute; inset:0; 100% size), so 'Neem contact op' / 'Reparatieatelier' floated as a transparent full-panel button over the headline and blocked clicks on the briefing",
+    "Camera feeds, the instructor-log monitor and half the drill grid rendered as empty black boxes (loading=lazy images never loaded below the fold; stress brand lost its about image and 3 of 6 drills, mobile lost all drill photos)",
+    "Missing or dead images had no fallback, so an empty slot looked like a rendering bug and not part of the console",
+    "Scenario cards used auto-fill: 3 categories left an empty 4th column on desktop, so the module looked unfinished",
+    "Two-drill home grid left a third of the row empty under a strict 3-column grid",
+    "Typography and the scenario bay concept are strong (Rajdhani/Ubuntu Mono HUD, a real playable branch tree, replay), but the bay's brief panel and the catalogue are close to generic dark-UI cards"
+  ],
+  "fixed": [
+    "Renamed the replay canvas class to .gcv so .btn.ghost is a normal inline CTA again; the briefing headline is clean and both CTAs sit together",
+    "Swapped loading=lazy for decoding=async on all photo slots (home + catalogue) so feeds, monitor and drills are filled when the page is shown",
+    "Added a 'no signal' plate (crosshair, live-colour reticle ring, hatch) behind every photo slot, plus a JS onerror that drops dead images so the plate shows, which keeps empty media on-concept",
+    "Scenario cards now auto-fit, so 3 categories stretch across the full row",
+    "When there are 1 or 2 drills on the home grid it switches to a wide auto-fit layout with 16:9 images, so no columns are left empty"
+  ],
+  "scoreAfterEstimate": 7.5
+}

@@ -1,0 +1,3 @@
+{ "id": "street-sim", "name": "Street Simulator", "scheme": "dark", "sectors": ["services","tech","b2b","sports"],
+  "mood": ["calm", "exact", "tense", "instrumented"], "needsProductImages": true,
+  "notes": "Slate cockpit stays fixed; primary is the only live colour (timer ring, taken branch, buttons, score bars), lifted toward white for strokes on dark; accent marks branch nodes and the de-escalation dial." }

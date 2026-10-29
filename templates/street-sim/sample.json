@@ -1,0 +1,200 @@
+{
+  "brand": {
+    "name": "Twyns",
+    "tagline": "Digitaal toezicht en handhaving binnen handbereik",
+    "logo": "https://www.twyns.com/dist/images/logos/logo-twyns.svg",
+    "logoIsLight": false,
+    "initials": "TW",
+    "lang": "nl",
+    "colors": {
+      "primary": "#1FA4D9",
+      "accent": "#222A53"
+    }
+  },
+  "nav": [
+    {
+      "label": "Toezicht en handhaving",
+      "href": "#"
+    },
+    {
+      "label": "Parkeerhandhaving",
+      "href": "#"
+    },
+    {
+      "label": "Platform",
+      "href": "#"
+    },
+    {
+      "label": "Cases",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    },
+    {
+      "label": "Over Twyns",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Digitaal toezicht",
+    "title": "Een bereikbare, veilige en leefbare omgeving",
+    "titleAccent": "binnen handbereik",
+    "text": "Twyns is uw partner in digitaal toezicht en handhaving. Vijftien jaar ervaring in één gebruikersvriendelijk, configureerbaar en stabiel platform.",
+    "cta": "Bekijk onze cases",
+    "ctaHref": "catalog.html",
+    "cta2": "Neem contact op",
+    "image": "https://www.twyns.com/media/twyns-homepageslider1a.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  },
+  "usps": [
+    {
+      "title": "Werkt samen met uw systemen",
+      "text": "Het platform koppelt met alle ketenpartners, ook met systemen van 20 jaar geleden."
+    },
+    {
+      "title": "Uw proces is leidend",
+      "text": "Modulair en configureerbaar, dus flexibel en snel te implementeren."
+    },
+    {
+      "title": "Hoogste veiligheidseisen",
+      "text": "Het platform voldoet aan de hoogste en strengste veiligheidseisen en is toekomstbestendig."
+    },
+    {
+      "title": "Op iOS en Android",
+      "text": "Geschikt voor elk digitaal toezicht- en handhaafproces, waar uw handhavers ook zijn."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Toezicht en handhaving",
+      "image": "https://www.twyns.com/media/twyns-homepage-ingang-toezicht.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Parkeerhandhaving",
+      "image": "https://www.twyns.com/media/twyns-homepage-ingang-parkeerhandhaving.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Het Twyns platform",
+      "image": "https://www.twyns.com/media/twyns-homepage-platformapp1d.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "WPG Audit Accoris",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.twyns.com/media/twyns-informatiegestuurd-handhaven-whitepaper.jpg?cropX=0&cropY=0&cropW=420&cropH=259&width=420",
+      "tag": "Audit",
+      "href": "https://www.twyns.com/cases/wpg-audit-accoris",
+      "category": "Audits"
+    },
+    {
+      "name": "Rijkswaterstaat: te land en ter zee",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.twyns.com/media/twyns-cases-overview-rijkswaterstaat.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=420",
+      "tag": "Case",
+      "href": "https://www.twyns.com/cases/rijkswaterstaat",
+      "category": "Klantcases"
+    }
+  ],
+  "story": {
+    "eyebrow": "Briefing",
+    "title": "Informatiegestuurd de straat op",
+    "text": "Het briefen van handhavers kan makkelijker en beter. Met Twyns briefing hebben handhavers alle briefinginformatie altijd en overal bij de hand, onafhankelijk van tijd en plaats. Zo laat u alleen nog zien wat echt belangrijk is.",
+    "image": "https://www.twyns.com/media/twyns-homepageslider3a.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  },
+  "stats": [
+    {
+      "value": "15",
+      "label": "jaar ervaring in digitaal toezicht en handhaving"
+    },
+    {
+      "value": "100",
+      "label": "weginspecteurs van Rijkswaterstaat werken met Twyns"
+    },
+    {
+      "value": "150",
+      "label": "collega's op het water gebruiken het platform"
+    }
+  ],
+  "gallery": [
+    "https://www.twyns.com/media/twyns-homepageslider2.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.twyns.com/media/twyns-homepageslider4.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.twyns.com/media/twyns-homepageslider5b.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.twyns.com/media/twyns-homepageslider6a.jpg?cropX=0&cropY=0&cropW=0&cropH=0"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Klaar voor slimmer toezicht?",
+    "text": "Ontdek hoe het Twyns platform uw handhavingsproces eenvoudiger, veiliger en flexibeler maakt.",
+    "label": "Neem contact op",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Marathon 2, 1213 PH Hilversum",
+    "phone": "+31 (0) 85 760 24 22",
+    "email": ""
+  },
+  "footerLinks": [
+    {
+      "label": "Over Twyns",
+      "href": "#"
+    },
+    {
+      "label": "Cases",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Vacatures",
+      "href": "#"
+    },
+    {
+      "label": "Privacy Policy",
+      "href": "#"
+    },
+    {
+      "label": "Certificeringen",
+      "href": "#"
+    },
+    {
+      "label": "Cookie-instellingen",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Cases en rapporten",
+    "intro": "Zie hoe organisaties als Rijkswaterstaat dagelijks werken met het Twyns platform.",
+    "filters": [
+      "Klantcases",
+      "Audits"
+    ],
+    "count": "2 cases"
+  },
+  "featured": [
+    {
+      "name": "WPG Audit Accoris",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.twyns.com/media/twyns-informatiegestuurd-handhaven-whitepaper.jpg?cropX=0&cropY=0&cropW=420&cropH=259&width=420",
+      "tag": "Audit",
+      "href": "https://www.twyns.com/cases/wpg-audit-accoris",
+      "category": "Audits"
+    },
+    {
+      "name": "Rijkswaterstaat: te land en ter zee",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.twyns.com/media/twyns-cases-overview-rijkswaterstaat.jpg?cropX=0&cropY=0&cropW=0&cropH=0&width=420",
+      "tag": "Case",
+      "href": "https://www.twyns.com/cases/rijkswaterstaat",
+      "category": "Klantcases"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}
