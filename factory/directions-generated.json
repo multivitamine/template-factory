@@ -525,5 +525,43 @@
     "generated": true,
     "fromIdea": true,
     "generatedAt": "2026-10-29T14:03:12.274Z"
+  },
+  {
+    "id": "hair-passport-mill",
+    "name": "Hair Passport Mill",
+    "sectors": [
+      "wholesale",
+      "makers",
+      "b2b",
+      "lifestyle"
+    ],
+    "sample": "kondorhair",
+    "stress": "brinkscoffeeroasters",
+    "brief": "The whole site is one unbroken strand that runs from giver to wearer. A single fine thread, drawn in the brand colour and twisted with a thinner accent strand, enters at the top of the page and weaves down the full length of the homepage through numbered mill stations: 01 Gift (the hero), 02 Sort (categories), 03 Comb (featured products), 04 Knot (services: maatwerk, repair, academy), 05 Passport (story and trust), 06 Wearer (contact and partner locations). The hero is set on undyed oatmeal paper with a faint texture of combed parallel hairlines drawn in CSS repeating-linear-gradients, deliberately directional and loose rather than gridded, unlike Cross-Stitch Loom's even-weave squares. It holds a huge serif headline, one handwritten 'donor note' slip pinned by the thread, and a hank of 40–60 fine SVG strands that gather into a single knot at the CTA button. Every product is shown as a hair passport: a small booklet card with a perforated spine, a mono issue number (KH-0001), an origin line, a row of round process stamps (cut, sorted, combed, knotted, checked) with the last stamp in the brand colour, and an optional handwritten note in the corner. For a coffee roaster or a hotel the same stamps read as provenance steps such as farm, roast, pack, or arrival, stay, departure. Categories appear as labelled bobbins on a slim horizontal spindle rail, each bobbin wound with a different thickness of thread. The catalog page is a mill ledger: filters sit as bobbin tabs along the top and products as passports in a calm 3-column grid (1 column at 375px). The mood is warm, quiet and humane, a gift between strangers recorded with industrial care, rather than a rustic workshop (Atelier Craft) or a decorative sampler.",
+    "type": "Display: 'Imbue' (tall high-contrast condensed didone for headlines and station numerals); handwritten donor notes in 'Nanum Pen Script'; passport numbers, stamps and ledger data in 'Victor Mono'; body 'Source Sans 3'.",
+    "signature": "The Thread: one absolutely positioned SVG covers the full height of <main> behind the content. On load and on resize (debounced), JS reads the centre point of every [data-station] element (a small knot glyph beside each section heading). It builds one smooth cubic path that zig-zags between these points, alternating between the left and right gutter, and draws it twice: a 2px stroke in var(--c-primary) and a 1px stroke in var(--c-accent) with a 3px sine offset, so the two strands read as twisted yarn. The path's total length becomes stroke-dasharray, and a GSAP ScrollTrigger with scrub:0.6 maps scroll progress to stroke-dashoffset, so the thread spins out exactly as far as the reader has scrolled. When the tip passes a station, that station's knot circle tightens (scale 1.6→1, rotate 90°, 300ms back.out), and a matching numbered stamp lights up in a small fixed 'passport strip' at the bottom-left of the viewport (6 circles, 01–06, each filling with --c-primary as it is stamped). Without JS, or with prefers-reduced-motion, the SVG is not injected: a static CSS 1px dashed vertical line in --c-primary runs down the gutter and all stamps show as filled, so all content stays fully visible. On screens narrower than 640px the path stays inside a 16px left gutter so it never causes horizontal scroll.",
+    "source": "Moonshot for Kondor Hair: Kondor Hair Mill, the traceable human-hair refinery",
+    "generated": true,
+    "fromIdea": true,
+    "generatedAt": "2026-10-29T14:25:37.667Z"
+  },
+  {
+    "id": "keratin-culture-lab",
+    "name": "Culture Lab",
+    "sectors": [
+      "wholesale",
+      "b2b",
+      "makers",
+      "lifestyle"
+    ],
+    "sample": "kondorhair",
+    "stress": "brinkscoffeeroasters",
+    "brief": "The page is a clean-room bench under cool LED light: pale clinical white-grey (#F3F5F4) with a faint 8px laboratory graph-paper grid. Living cultures in --c-primary are the only warm, saturated colour, and hairline instrument rules and small mono labels (BATCH, MEDIUM, pH 7.2, 37.0 °C, PASSAGE 04) sit in every corner. The hero is split. On the left is a huge, tightly set headline with the brand name stamped like a culture label. On the right is a large circular petri dish, drawn as a canvas inside layered CSS rings (glass rim highlight, meniscus shadow and a printed millimetre scale on the lid) with a 'Inoculeer' CTA beneath it and a vertical bioreactor gauge showing culture density. The homepage continues as lab sections. Categories become a rack of round culture plates, each labelled with a pigment-style code chip derived from the category name, for example 'KR-07 / Sandyblonde Rooted' for a wig maker or 'KR-03 / Espresso Medium' for a roaster. The featured product sits in a 'Batch of the week' bioreactor panel with a tall glass vessel, a CSS fill level and growth-media readouts. In the catalogue, every product card is a specimen record: a small circular dish window holding the product image (masked to a circle, so images of any shape sit naturally), a mono SKU/batch line, a pigment swatch strip in primary and accent tints, and price set in large tabular numerals. The cards are laid out on a microscope-slide grid with frosted-glass filter chips. Contact is a 'request a culture' lab-order form card with a barcode-like strip drawn in CSS. The mood is precise, cool and calm with something warm and alive growing in the middle.",
+    "type": "Display: 'Funnel Display' (tight, large, light-to-bold weights for headlines and huge batch numbers); labels and readouts 'Reddit Mono' (uppercase, tracked, small); body 'Reddit Sans'.",
+    "signature": "Live reaction-diffusion cultures. Each dish canvas (the hero dish at a 192×192 grid and the category plates at 96×96, upscaled with image-smoothing on and clipped to a circle) runs a Gray-Scott reaction-diffusion simulation in two Float32Array fields, U and V. Each frame runs 8–12 iterations of U' = U + (Du∇²U − UV² + F(1−U))·dt and V' = V + (Dv∇²V + UV² − (F+k)V)·dt, using a 9-point Laplacian with Du=1.0, Dv=0.5 and dt=1. Wrap-around is off and cells outside the dish radius are clamped to U=1, V=0, so the culture can never grow past the glass. V is rendered through a colour ramp from transparent through --c-accent to --c-primary, which is read from getComputedStyle at startup so the culture always takes the customer's brand colour, and a soft specular highlight is drawn on top. Pointer down or drag on a dish 'inoculates' it, setting V=0.5 in a 5-cell radius at the pointer. Enter or Space seeds the centre of a focused dish. The pattern visibly grows outward from the seed into living spots, worms or labyrinths. Each category plate gets its own (F, k) preset chosen from a hash of the category name, for example (0.035, 0.065) for spots, (0.042, 0.059) for worms and (0.029, 0.057) for maze, so every category grows a recognisably different 'curl pattern'. On the hero dish, the parameter dial under it ('Krul: steil / golf / kroes') tweens F and k between those presets, and the existing culture morphs smoothly from one pattern to another. In the catalogue, choosing a filter re-seeds the hero-sized header dish with that category's preset, and the density gauge beside it (a CSS height bound to the mean of V, sampled every 30 frames) rises as the culture grows. Hovering a product card injects a single seed into its small dish ring overlay, rendered with a cheap 64×64 sim that runs only while hovered and for 1.5s after. Performance: one shared rAF loop, simulations pause when off-screen (IntersectionObserver) or when the tab is hidden, and a dish freezes once total change in V per frame drops below an epsilon. Under prefers-reduced-motion, each dish runs 2500 iterations once off-screen at load and draws a single static frame, and inoculation is disabled. Without JS the dishes show a CSS radial-gradient culture in --c-primary and all content stays visible.",
+    "source": "Moonshot for Kondor Hair: Kondor Keratin, grow human hair in a lab",
+    "generated": true,
+    "fromIdea": true,
+    "generatedAt": "2026-10-29T14:37:11.450Z"
   }
 ]

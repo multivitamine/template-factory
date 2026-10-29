@@ -1,0 +1,414 @@
+{
+  "brand": {
+    "name": "Kondor Hair",
+    "tagline": "Uw partner in professionele haarwerken",
+    "logo": "https://www.kondorhair.nl/media/logo/stores/1/logo-kondor2--small_1.jpg",
+    "logoIsLight": false,
+    "initials": "KH",
+    "lang": "nl",
+    "colors": {
+      "primary": "#023452",
+      "accent": "#63ADF2"
+    }
+  },
+  "nav": [
+    {
+      "label": "Producten",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Merken",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Services",
+      "href": "#"
+    },
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Haarwerkgroothandel",
+    "title": "Alles voor de",
+    "titleAccent": "haarwerkspecialist",
+    "text": "Kondor Hair is uw partner in haarwerken, haaraanvullingen, haarstukken en haaropvullingen. Topmerken, training en persoonlijke begeleiding vanuit Enschede.",
+    "cta": "Bekijk de collectie",
+    "ctaHref": "catalog.html",
+    "cta2": "Klant worden",
+    "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/z/o/zonder_titel_250_x_150_px_9_.jpg"
+  },
+  "usps": [
+    {
+      "title": "Topmerken onder één dak",
+      "text": "Van Jon Renau en Ellen Wille tot Gisela Mayer: de merken waar uw klanten om vragen."
+    },
+    {
+      "title": "Trainingen & cursussen",
+      "text": "Van beginnerstraining tot permanente bevestiging en training op maat."
+    },
+    {
+      "title": "Begeleiding & service",
+      "text": "Hulp bij het starten van een haarwerksalon, certificering en persoonlijk advies."
+    },
+    {
+      "title": "Maatwerk mogelijk",
+      "text": "Ook voor bijzondere wensen denken onze haarwerkspecialisten met u mee."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Dames pruiken",
+      "image": null,
+      "href": "catalog.html"
+    },
+    {
+      "name": "Turbans",
+      "image": null,
+      "href": "catalog.html"
+    },
+    {
+      "name": "Haaraanvulling",
+      "image": null,
+      "href": "catalog.html"
+    },
+    {
+      "name": "Verzorging & Styling",
+      "image": null,
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Layla | Jon Renau | Human Hair",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/z/o/zonder_titel_250_x_150_px_9_.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Overige modellen"
+    },
+    {
+      "name": "Geneviève 8\"-10\" | Jon Renau | Cheveux Femme Professionnel",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/g/e/genevieve_ffa_cheveux_femme.png",
+      "tag": null,
+      "href": "#",
+      "category": "Cheveux Femme"
+    },
+    {
+      "name": "Geneviève 14\" | Jon Renau | Cheveux Femme Professionnel",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/g/e/genevieve_ffa_cheveux_femme_1.png",
+      "tag": null,
+      "href": "#",
+      "category": "Cheveux Femme"
+    },
+    {
+      "name": "Bridgette | Jon Renau | Cheveux Femme Professional",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/b/r/bridgette_ffa_cheveux_femme.png",
+      "tag": null,
+      "href": "#",
+      "category": "Cheveux Femme"
+    },
+    {
+      "name": "Top Form Lace HH 14\" | Jon Renau | Topper Collection",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/2/_/2_6.jpg",
+      "tag": "Topper",
+      "href": "#",
+      "category": "Toppers"
+    },
+    {
+      "name": "Top Form Lace HH 18\" | Jon Renau | Topper Collection",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/8/_/8_1.jpg",
+      "tag": "Topper",
+      "href": "#",
+      "category": "Toppers"
+    },
+    {
+      "name": "Top Trend Lace Straight HD | Jon Renau | 14\"",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/t/o/top_trend_lace_straight_14inch_2__1.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Toppers"
+    },
+    {
+      "name": "Top Trend Lace HD Wavy | Jon Renau | 18\"",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/x/t/xtop_trend_lace_wavy_18_inch.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Toppers"
+    },
+    {
+      "name": "Mallory | Jon Renau | Professionel",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/m/a/mallory.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Professionnel"
+    },
+    {
+      "name": "Mackenzie | Jon Renau | Professionel",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/m/a/mackenzie.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Professionnel"
+    },
+    {
+      "name": "Carolina | Jon Renau | Professionel",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/c/a/caroline.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Professionnel"
+    },
+    {
+      "name": "Vivian | Jon Renau | Professionel",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/v/i/vivian.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Professionnel"
+    },
+    {
+      "name": "Vivian Petite | Jon Renau | Professionel",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/v/i/vivian_petite.jpg",
+      "tag": "Petite",
+      "href": "#",
+      "category": "Professionnel"
+    },
+    {
+      "name": "Lana | Jon Renau | Professionel",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/l/a/lana.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Professionnel"
+    },
+    {
+      "name": "Jennifer | Jon Renau",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/j/e/jennifer-22f16s8-main.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Overige modellen"
+    },
+    {
+      "name": "Ravello (EURO)",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/r/a/ravello-main.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Overige modellen"
+    },
+    {
+      "name": "Positano (EURO)",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/p/o/positano-alt.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Overige modellen"
+    },
+    {
+      "name": "5149 Natalie - Petite",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/n/a/natalie_12fs8_alt.jpg",
+      "tag": "Petite",
+      "href": "#",
+      "category": "Overige modellen"
+    },
+    {
+      "name": "easiCrown HH 12\"",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/e/a/easicrown3_1.png",
+      "tag": "Topper",
+      "href": "#",
+      "category": "Toppers"
+    },
+    {
+      "name": "Kristen | Jon Renau",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/k/r/kristen-main-fs.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Overige modellen"
+    },
+    {
+      "name": "Evan | Jon Renau",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/e/v/even-voorkant-1brh30.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Overige modellen"
+    },
+    {
+      "name": "Blair | Jon Renau",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/b/l/blair-main.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Overige modellen"
+    },
+    {
+      "name": "Vanessa",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/v/a/vanessa-b-voor.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Overige modellen"
+    },
+    {
+      "name": "Jadore Deluxe | Pure Power | Ellen Wille",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/bc398df1e717b0cf2408b427081aeb45/j/a/jadore_deluxe_lightchampagnerooted_01.jpg_1.jpg",
+      "tag": "Nieuw",
+      "href": "#",
+      "category": "Overige modellen"
+    }
+  ],
+  "story": {
+    "eyebrow": "Over Kondor Hair",
+    "title": "Een vaste partner voor de haarwerkspecialist",
+    "text": "Kondor Hair levert professionele haarwerken, haaraanvullingen en verzorgingsproducten aan salons in Nederland en België. Naast een breed assortiment van topmerken biedt Kondor trainingen, certificering en hulp bij het starten van een eigen haarwerksalon.",
+    "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/m/a/mallory.jpg"
+  },
+  "stats": [
+    {
+      "value": "142",
+      "label": "modellen van Jon Renau in het assortiment"
+    },
+    {
+      "value": "6",
+      "label": "trainingen & cursussen"
+    }
+  ],
+  "gallery": [
+    "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/m/a/mackenzie.jpg",
+    "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/c/a/caroline.jpg",
+    "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/v/i/vivian.jpg",
+    "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/l/a/lana.jpg",
+    "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/2/_/2_6.jpg",
+    "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/g/e/genevieve_ffa_cheveux_femme.png",
+    "https://www.kondorhair.nl/media/catalog/product/cache/bc398df1e717b0cf2408b427081aeb45/p/o/pony_ultra_light_shaded_honey.jpg.jpg"
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Klant worden bij Kondor Hair?",
+    "text": "Neem contact op met één van onze haarwerkspecialisten en ontdek wat wij voor uw salon kunnen betekenen.",
+    "label": "Klant worden",
+    "href": "#"
+  },
+  "contact": {
+    "address": "Brinkstraat 66, 7512 EE Enschede",
+    "phone": "+31(0) 53 - 488 44 00",
+    "email": "info@kondorhair.nl"
+  },
+  "footerLinks": [
+    {
+      "label": "Haarwerksalon beginnen",
+      "href": "#"
+    },
+    {
+      "label": "Certificering",
+      "href": "#"
+    },
+    {
+      "label": "Algemene voorwaarden",
+      "href": "#"
+    },
+    {
+      "label": "Privacy policy",
+      "href": "#"
+    },
+    {
+      "label": "Disclaimer",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Onze collectie haarwerken",
+    "intro": "Pruiken, toppers en haarstukken van Jon Renau, Ellen Wille en meer, speciaal voor de haarwerkspecialist.",
+    "filters": [
+      "Toppers",
+      "Professionnel",
+      "Cheveux Femme",
+      "Overige modellen"
+    ],
+    "count": "24 producten"
+  },
+  "featured": [
+    {
+      "name": "Layla | Jon Renau | Human Hair",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/z/o/zonder_titel_250_x_150_px_9_.jpg",
+      "tag": null,
+      "href": "#",
+      "category": "Overige modellen"
+    },
+    {
+      "name": "Geneviève 8\"-10\" | Jon Renau | Cheveux Femme Professionnel",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/g/e/genevieve_ffa_cheveux_femme.png",
+      "tag": null,
+      "href": "#",
+      "category": "Cheveux Femme"
+    },
+    {
+      "name": "Geneviève 14\" | Jon Renau | Cheveux Femme Professionnel",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/g/e/genevieve_ffa_cheveux_femme_1.png",
+      "tag": null,
+      "href": "#",
+      "category": "Cheveux Femme"
+    },
+    {
+      "name": "Bridgette | Jon Renau | Cheveux Femme Professional",
+      "price": null,
+      "oldPrice": null,
+      "image": "https://www.kondorhair.nl/media/catalog/product/cache/6a26e1b0e8afc3fd8bc7278ea9dfca25/b/r/bridgette_ffa_cheveux_femme.png",
+      "tag": null,
+      "href": "#",
+      "category": "Cheveux Femme"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

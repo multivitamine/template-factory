@@ -1,0 +1,22 @@
+{
+  "scoreBefore": 6.6,
+  "scores": { "creativity": 7.5, "typography": 6, "layout": 6, "polish": 6.5, "brandRobustness": 7, "mobile": 6.5, "generic": 7 },
+  "issues": [
+    "The thread entered from the middle of the hero and threw one big loop straight across the headline, so it read as a stray scribble and not a strand running from giver to wearer. Further down there was no visible route at all until you scrolled.",
+    "The hero headline was clamped to 11ch at 7.6rem, so it broke as 'haarwerkspe-cialist'. hyphens:auto also split section titles mid-word ('professi-onele').",
+    "Stations 02, 05 and 06 showed only a hollow number with no heading, which left empty, unfinished section starts and no mill vocabulary.",
+    "The spindle rail was made of short per-bobbin segments covering about 60% of the width. With one category (stress brand) it turned into a lonely stub.",
+    "The process stamps overlapped with negative margins and tiny roman numerals, so they read as a smudge instead of five distinct stamps ending in a brand-coloured check.",
+    "Section padding was up to 150px top and bottom, giving about 300px dead bands between stations that killed the rhythm.",
+    "The hank strands ran behind the hero paragraph and made the text harder to read."
+  ],
+  "fixed": [
+    "The thread now enters at the left gutter, a faint dotted 'un-spun' guide shows the whole route ahead, and a small bobbin tip rides the end of the spun strand, so the scroll-spinning reads at a glance.",
+    "The hero h1 is resized to fit (5.7vw, max 6.3rem) with no ch clamp, hyphens:manual and text-wrap:balance on every display heading. Hero type gets a paper-coloured halo so it stays legible over the hank.",
+    "Every station now has a mono mill label under its number (SORT, COMB, KNOT, PASSPORT, WEARER) and a ruled head. 02 shows the catalog intro as a serif statement, 05 shows the story eyebrow plus a dashed passport issue tag, and 06 shows a dashed 'to wearer' tag.",
+    "The spindle is now one continuous full-width rail with end caps and bigger bobbins that share the width, so it looks complete with 1 or 8 categories.",
+    "The stamps are separate double-ring rubber stamps with alternating tilt, and the last one is a brand-colour check stamp (home and catalog).",
+    "Section padding is tightened to clamp(56px,7vw,100px) for a steadier station rhythm."
+  ],
+  "scoreAfterEstimate": 7.5
+}

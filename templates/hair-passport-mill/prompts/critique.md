@@ -1,0 +1,21 @@
+You are the harshest juror at Awwwards and the creative developer who must fix the problems. Work automatically.
+
+The template "Hair Passport Mill" in this directory (`template.html`, `catalog.html`) was rendered with real content.
+Art direction it must deliver: The whole site is one unbroken strand that runs from giver to wearer. A single fine thread, drawn in the brand colour and twisted with a thinner accent strand, enters at the top of the page and weaves down the full length of the homepage through numbered mill stations: 01 Gift (the hero), 02 Sort (categories), 03 Comb (featured products), 04 Knot (services: maatwerk, repair, academy), 05 Passport (story and trust), 06 Wearer (contact and partner locations). The hero is set on undyed oatmeal paper with a faint texture of combed parallel hairlines drawn in CSS repeating-linear-gradients, deliberately directional and loose rather than gridded, unlike Cross-Stitch Loom's even-weave squares. It holds a huge serif headline, one handwritten 'donor note' slip pinned by the thread, and a hank of 40–60 fine SVG strands that gather into a single knot at the CTA button. Every product is shown as a hair passport: a small booklet card with a perforated spine, a mono issue number (KH-0001), an origin line, a row of round process stamps (cut, sorted, combed, knotted, checked) with the last stamp in the brand colour, and an optional handwritten note in the corner. For a coffee roaster or a hotel the same stamps read as provenance steps such as farm, roast, pack, or arrival, stay, departure. Categories appear as labelled bobbins on a slim horizontal spindle rail, each bobbin wound with a different thickness of thread. The catalog page is a mill ledger: filters sit as bobbin tabs along the top and products as passports in a calm 3-column grid (1 column at 375px). The mood is warm, quiet and humane, a gift between strangers recorded with industrial care, rather than a rustic workshop (Atelier Craft) or a decorative sampler.
+Signature interaction: The Thread: one absolutely positioned SVG covers the full height of <main> behind the content. On load and on resize (debounced), JS reads the centre point of every [data-station] element (a small knot glyph beside each section heading). It builds one smooth cubic path that zig-zags between these points, alternating between the left and right gutter, and draws it twice: a 2px stroke in var(--c-primary) and a 1px stroke in var(--c-accent) with a 3px sine offset, so the two strands read as twisted yarn. The path's total length becomes stroke-dasharray, and a GSAP ScrollTrigger with scrub:0.6 maps scroll progress to stroke-dashoffset, so the thread spins out exactly as far as the reader has scrolled. When the tip passes a station, that station's knot circle tightens (scale 1.6→1, rotate 90°, 300ms back.out), and a matching numbered stamp lights up in a small fixed 'passport strip' at the bottom-left of the viewport (6 circles, 01–06, each filling with --c-primary as it is stamped). Without JS, or with prefers-reduced-motion, the SVG is not injected: a static CSS 1px dashed vertical line in --c-primary runs down the gutter and all stamps show as filled, so all content stays fully visible. On screens narrower than 640px the path stays inside a 16px left gutter so it never causes horizontal scroll.
+
+Screenshots (look at ALL of them with the Read tool):
+- `shots/home-desktop.jpg`: homepage with Kondor Hair content + brand colours
+- `shots/home-mobile.jpg`: same, 390px wide
+- `shots/home-stress.jpg`: homepage with a DIFFERENT brand (Brinks Coffee Roasters) and its colours: must still look great
+- `shots/catalog-desktop.jpg`: catalog page
+
+
+# Do this
+1. Judge it honestly (1–10) on: creativity/originality, typography, layout & rhythm, polish, brand-colour robustness,
+   mobile, and whether it still looks like a generic template.
+2. Pick the 3–6 changes with the biggest impact (broken or empty areas, awkward image crops, weak hero, low contrast,
+   boring sections, mobile breakage, a signature interaction that's missing) and fix them by editing the files.
+   Push the creativity UP, never down. Keep the Mustache contract intact.
+3. Write `critique.json`: `{ "scoreBefore": n, "issues": ["…"], "fixed": ["…"], "scoreAfterEstimate": n }`
+Reply `DONE` when finished.
