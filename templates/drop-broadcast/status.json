@@ -1,0 +1,80 @@
+{
+  "id": "drop-broadcast",
+  "name": "Live Drop",
+  "sectors": [
+    "retail",
+    "wholesale",
+    "tech",
+    "b2b"
+  ],
+  "sample": "teleqare",
+  "stress": "brinkscoffeeroasters",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793282592295
+    },
+    {
+      "step": "Rendering",
+      "at": 1793283172295
+    },
+    {
+      "step": "Critique",
+      "at": 1793283187465
+    },
+    {
+      "step": "Final render",
+      "at": 1793283250860
+    },
+    {
+      "step": "Done",
+      "at": 1793283264999
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793282592292,
+  "startedAt": 1793282592294,
+  "finishedAt": 1793283264998,
+  "model": "opus",
+  "costUsd": 2.3864911999999996,
+  "meta": {
+    "id": "drop-broadcast",
+    "name": "Live Drop",
+    "scheme": "dark",
+    "sectors": [
+      "retail",
+      "wholesale",
+      "tech",
+      "b2b"
+    ],
+    "mood": [
+      "theatrical",
+      "tense",
+      "broadcast",
+      "high-contrast"
+    ],
+    "needsProductImages": true,
+    "notes": "Charcoal studio feed stays fixed; --c-primary only drives live graphics (channel ident, LIVE bug, lower-third bars, INTACT stamp, seal, active camera switch) with --c-on-primary text, and readable accents use a primary/white mix so any colour works."
+  },
+  "score": {
+    "scoreBefore": 7,
+    "issues": [
+      "Promise certificate: the 'CAM 3 · ARCHIVE' monitor rendered as a large black hole on both brands (lazy or broken story image with no fallback)",
+      "Heats with only one or two categories (Brinks) left a single tiny thumbnail floating in a huge empty segment",
+      "Mobile: the monitor wall became one endless single column of giant square tiles, about 8 screen heights of scrolling",
+      "Mobile: the scoreboard stacked into a tall single-column list that kills the 'ticker board' feel",
+      "Hero lower third and T-minus block sit a little small for the size of the frame, but the broadcast metaphor, tower stage and scoreboard are strong and survive both primaries"
+    ],
+    "fixed": [
+      "Archive monitor now has an SMPTE test card plus brand-colour bars and an initials ident behind the photo, scanlines on top, eager loading and onerror removal, so it is never an empty black box",
+      "One or two heats now become wide 'start line' cards: 16:10 image, huge condensed name, a primary rule on top, a 'Heat 01 · on the start line' label and an 'All results →' button",
+      "Mobile monitor wall is now 2-up with smaller camera labels, a tighter mini lower third and verdict chip",
+      "Mobile scoreboard is now a 2-up grid with a full-width header row, which reads like a real broadcast results board"
+    ],
+    "scoreAfterEstimate": 7.6
+  },
+  "version": 1793283264998
+}

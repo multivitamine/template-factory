@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Products · TeleQare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Sofia+Sans+Extra+Condensed:wght@700;800;900&family=Sofia+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#0d0e10; --c-surface:#16181b; --c-text:#f3f3ef; --c-muted:#8e939a; --c-line:#2b2e33;
+  --c-primary:#e0322b; --c-on-primary:#ffffff; --c-accent:#f4c430;
+  --live:#ff2b2b; --ok:#22c55e; --paper:#f7f7f2; --ink:#0d0e10;
+  --f-d:'Sofia Sans Extra Condensed',Impact,sans-serif; --f-m:'Share Tech Mono',ui-monospace,monospace; --f-b:'Sofia Sans',sans-serif;
+  --hair:1px solid color-mix(in srgb,#fff 15%,transparent);
+  --pad:clamp(16px,3.4vw,44px);
+  --p-text:color-mix(in srgb,var(--c-primary) 38%,#fff);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:#070809;color-scheme:dark;scroll-behavior:smooth}
+body{font:400 16px/1.55 var(--f-b);color:var(--c-text);background:#070809;padding:clamp(0px,1.1vw,16px);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid #fff;outline-offset:2px}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px),
+  radial-gradient(120% 90% at 50% 50%,transparent 60%,rgba(0,0,0,.45))}
+.feed{max-width:1480px;margin:0 auto;background:var(--c-bg);border:var(--hair);position:relative;overflow-x:clip}
+
+/* ---------- header: ident · nav · live bug ---------- */
+.bar{position:sticky;top:0;z-index:50;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;
+  padding:10px var(--pad);background:color-mix(in srgb,var(--c-bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:var(--hair)}
+.ident{display:flex;align-items:center;gap:12px;min-width:0}
+.ch{display:grid;place-items:center;min-width:46px;height:40px;padding:0 8px;background:var(--c-primary);color:var(--c-on-primary);
+  font:900 1.45rem/1 var(--f-d);letter-spacing:.02em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.logo{display:flex;align-items:center;min-width:0}
+.logo img{max-height:30px;max-width:150px;width:auto;object-fit:contain}
+.logo.plate{background:var(--paper);padding:5px 9px}
+.logo span{font:800 1.35rem/1 var(--f-d);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}
+.nav{display:flex;gap:2px;justify-content:center;flex-wrap:wrap}
+.nav a{font:13px/1 var(--f-m);text-transform:uppercase;letter-spacing:.06em;padding:9px 11px;color:#c8cbd0;transition:background .2s,color .2s}
+.nav a:hover{background:var(--paper);color:var(--ink)}
+.onair{display:flex;align-items:center;gap:12px}
+.bug{display:inline-flex;align-items:center;gap:8px;padding:6px 11px 5px;background:var(--c-primary);color:var(--c-on-primary);font:900 1.05rem/1 var(--f-d);letter-spacing:.12em}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--live);box-shadow:0 0 0 2px var(--c-on-primary);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.tc{font:14px/1 var(--f-m);font-variant-numeric:tabular-nums;color:#fff;min-width:11ch;text-align:right}
+@media (max-width:860px){
+  .bar{grid-template-columns:1fr auto;gap:8px 12px}
+  .nav{grid-column:1/-1;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--pad)*-1);padding:0 var(--pad)}
+  .nav a{white-space:nowrap;padding:8px 10px}
+  .tc{display:none}
+}
+.btn{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--c-primary);color:var(--c-on-primary);
+  font:800 1.25rem/1 var(--f-d);text-transform:uppercase;letter-spacing:.04em;padding:13px 14px 11px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);transition:background .2s,color .2s}
+.btn::after{content:"→";font-family:var(--f-m);transition:transform .25s var(--ease)}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn:hover::after{transform:translateX(4px)}
+
+/* ---------- results graphic header ---------- */
+.res-head{position:relative;padding:clamp(48px,7vw,100px) var(--pad) clamp(28px,4vw,48px);border-bottom:var(--hair);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--c-primary) 10%,var(--c-bg)),var(--c-bg) 70%)}
+.res-head::after{content:"";position:absolute;inset:6% 4%;border:1px dashed rgba(255,255,255,.07);pointer-events:none}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px 14px;font:13px/1.3 var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--c-muted)}
+.crumbs a:hover{color:#fff}
+.crumbs .rp{background:#fff;color:#000;padding:2px 7px}
+.res-head h1{display:inline-block;margin-top:22px;background:var(--c-primary);color:var(--c-on-primary);font:900 clamp(2.8rem,8vw,7.4rem)/.86 var(--f-d);text-transform:uppercase;
+  padding:.1em .2em .02em;overflow-wrap:anywhere;max-width:100%;box-shadow:inset 0 -4px 0 rgba(0,0,0,.18)}
+.res-sub{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin-top:0}
+.res-sub p{background:var(--paper);color:var(--ink);font:600 clamp(.95rem,1.1vw,1.05rem)/1.4 var(--f-b);padding:10px 18px;max-width:62ch}
+.res-sub .cnt{display:flex;align-items:center;gap:8px;background:#000;border:var(--hair);padding:10px 16px;font:14px/1 var(--f-m);letter-spacing:.1em;text-transform:uppercase}
+.res-sub .cnt::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--live);animation:pulse 1.2s infinite}
+
+/* ---------- camera switcher + search ---------- */
+.controls{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;padding:clamp(24px,3vw,36px) var(--pad);border-bottom:var(--hair);background:#000}
+.sw-wrap{display:grid;gap:8px;min-width:0}
+.sw-wrap small,.find small{font:11px/1 var(--f-m);letter-spacing:.14em;color:var(--c-muted)}
+.switcher{display:flex;flex-wrap:wrap;gap:6px;counter-reset:sw}
+.sw{counter-increment:sw;display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:108px;max-width:240px;padding:9px 12px 10px;text-align:left;
+  background:#1a1c1f;border:1px solid #34373c;border-top:3px solid #34373c;border-bottom-color:#000;font:800 1.15rem/1 var(--f-d);text-transform:uppercase;letter-spacing:.03em;
+  transition:background .2s,border-color .2s,color .2s}
+.sw::before{content:"CAM " counter(sw);font:10px/1 var(--f-m);letter-spacing:.12em;color:var(--c-muted)}
+.sw.sw-all{counter-increment:none}
+.sw.sw-all::before{content:"PGM"}
+.sw:hover{border-color:#fff;border-top-color:#fff}
+.sw[aria-pressed="true"]{background:var(--c-primary);color:var(--c-on-primary);border-top-color:var(--live);border-color:var(--c-primary)}
+.sw[aria-pressed="true"]::before{color:inherit;opacity:.75}
+.find{display:grid;gap:8px;flex:0 1 340px;min-width:min(100%,240px)}
+.find span{display:flex;align-items:center;gap:10px;border:1px solid #34373c;background:#0a0b0c;padding:0 12px;min-height:54px;transition:border-color .2s}
+.find span::before{content:"▸";font-family:var(--f-m);color:var(--p-text)}
+.find span:focus-within{border-color:#fff}
+.find input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:#fff;font:15px/1 var(--f-m);letter-spacing:.04em}
+.find input::placeholder{color:#62666c}
+
+/* ---------- results table ---------- */
+.results{padding:clamp(28px,4vw,56px) var(--pad) clamp(60px,8vw,110px)}
+.table{border:var(--hair);background:#050506}
+.thead,.row{display:grid;grid-template-columns:56px 84px minmax(0,1fr) minmax(210px,auto);gap:18px;align-items:center;padding:12px 18px}
+.thead{font:11px/1 var(--f-m);letter-spacing:.14em;color:var(--c-muted);background:#000;border-bottom:var(--hair)}
+.thead span:last-child{text-align:right}
+.rows{counter-reset:pos}
+.row{counter-increment:pos;border-bottom:1px solid #1f2226;transition:background .2s}
+.row:last-child{border-bottom:0}
+.row:hover{background:var(--c-surface)}
+.row:hover .r-name{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.pos{font:1.25rem/1 var(--f-m);color:var(--c-muted);font-variant-numeric:tabular-nums}
+.pos::before{content:counter(pos,decimal-leading-zero)}
+.row:hover .pos{color:#fff}
+.thumb{position:relative;aspect-ratio:1;overflow:hidden;background:#e9e9e4;border:3px solid #111;outline:1px solid #34373c}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.nosig{position:absolute;inset:0;display:grid;place-items:center;filter:saturate(.55) brightness(.82);
+  background:linear-gradient(90deg,#c0c0c0 0 14.3%,#c0c000 0 28.6%,#00c0c0 0 42.9%,#00c000 0 57.1%,#c000c0 0 71.4%,#c00000 0 85.7%,#0000c0 0) top/100% 72% no-repeat,
+  linear-gradient(90deg,#0000c0 0 14.3%,#111 0 28.6%,#c000c0 0 42.9%,#111 0 57.1%,#00c0c0 0 71.4%,#111 0 85.7%,#c0c0c0 0) bottom/100% 28% no-repeat}
+.nosig span{background:#000;color:#fff;padding:3px 5px;font:900 .95rem/1 var(--f-d)}
+.r-main{min-width:0;display:grid;gap:5px}
+.r-name{font:600 1.05rem/1.3 var(--f-b);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.r-tag{font:11px/1 var(--f-m);letter-spacing:.1em;color:var(--c-muted);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.out{display:flex;align-items:center;justify-content:flex-end;gap:12px}
+.price{display:flex;align-items:baseline;gap:8px;font:1.2rem/1 var(--f-m);font-variant-numeric:tabular-nums;white-space:nowrap}
+.price s{font-size:12px;color:var(--c-muted)}
+.price.na{color:#55595f}
+.verdict{display:inline-flex;align-items:center;gap:5px;background:var(--ok);color:#03160a;font:12px/1 var(--f-m);letter-spacing:.1em;padding:6px 8px 5px;border-radius:2px;white-space:nowrap}
+.empty{padding:60px 20px;text-align:center;font:14px/1.5 var(--f-m);letter-spacing:.1em;text-transform:uppercase;color:var(--c-muted)}
+.back{display:flex;justify-content:flex-end;margin-top:28px}
+.back .btn{min-width:min(100%,280px)}
+@media (max-width:720px){
+  .thead{display:none}
+  .row{grid-template-columns:34px 72px minmax(0,1fr);grid-template-areas:"pos thumb main" "pos thumb out";gap:8px 12px;padding:12px}
+  .pos{grid-area:pos;align-self:start;font-size:1rem}
+  .thumb{grid-area:thumb;align-self:start}
+  .r-main{grid-area:main}
+  .out{grid-area:out;justify-content:flex-start;flex-wrap:wrap}
+}
+
+/* ---------- end credits ---------- */
+.credits{padding:clamp(40px,6vw,72px) var(--pad) 90px;display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:32px 48px;border-top:var(--hair)}
+.credits h4{font:11px/1 var(--f-m);letter-spacing:.14em;color:var(--c-muted);margin-bottom:14px;font-weight:400}
+.credits ul{list-style:none;display:grid;gap:8px}
+.credits ul a{color:#d4d6da;transition:color .2s}
+.credits ul a:hover{color:#fff}
+.cr-brand strong{display:block;font:900 clamp(2rem,4vw,3.2rem)/.9 var(--f-d);text-transform:uppercase}
+.cr-brand p{color:var(--c-muted);margin-top:10px;max-width:40ch}
+.eot{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-top:22px;border-top:var(--hair);font:11px/1.4 var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--c-muted)}
+.bars{grid-column:1/-1;height:6px;background:linear-gradient(90deg,#bdbdbd 0 14.3%,#bdbd00 0 28.6%,#00bdbd 0 42.9%,#00bd00 0 57.1%,#bd00bd 0 71.4%,#bd0000 0 85.7%,#0000bd 0);opacity:.55}
+@media (max-width:760px){.credits{grid-template-columns:1fr 1fr}.cr-brand{grid-column:1/-1}}
+.badge{position:fixed;left:12px;bottom:12px;z-index:95;font:11px/1 var(--f-m);letter-spacing:.06em;background:rgba(0,0,0,.82);color:#d8dadd;border:var(--hair);padding:7px 10px;backdrop-filter:blur(6px)}
+
+/* rows switch on like monitors, only when JS runs */
+.motion .row{animation:on .5s var(--ease) both;animation-delay:calc(min(var(--i,0),12) * 40ms)}
+@keyframes on{from{opacity:0;transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#994A91;--c-on-primary:#ffffff;--c-accent:#D4E3E6}</style></head>
+<body>
+<div class="feed">
+<header class="bar">
+  <a class="ident" href="template.html" aria-label="TeleQare">
+    <span class="ch">TQ</span>
+    
+    <span class="logo"><span>TeleQare</span></span>
+  </a>
+  <nav class="nav"><a href="catalog.html">Products</a><a href="#">Brands</a><a href="#">Devices</a><a href="#">About us</a><a href="#">Contact</a></nav>
+  <div class="onair"><span class="bug"><i class="dot"></i>LIVE</span><span class="tc" data-tc>00:00:00:00</span></div>
+</header>
+
+<main>
+<section class="res-head">
+  <p class="crumbs"><a href="template.html">CH TQ</a><span>/</span><span>Results table</span><span class="rp">REPLAY</span></p>
+  <h1>Products</h1>
+  <div class="res-sub">
+    <p>Browse cases, screen protection, audio and more from leading accessory brands.</p>
+    <span class="cnt"><span>1693 products</span></span>
+  </div>
+</section>
+
+<section class="controls" aria-label="Filters">
+  <div class="sw-wrap"><small>VISION MIXER · HEATS</small>
+    <div class="switcher"><button class="sw sw-all" type="button" aria-pressed="true">All</button><button data-shop-filter="Protection cases" class="sw" type="button">Protection cases</button><button data-shop-filter="Screen protection" class="sw" type="button">Screen protection</button><button data-shop-filter="Audio" class="sw" type="button">Audio</button></div>
+  </div>
+  <label class="find"><small>FIND A TEST SUBJECT</small><span><input type="search" data-shop-search placeholder="Search…" aria-label="Search products"></span></label>
+</section>
+
+<section class="results">
+  <div class="table">
+    <div class="thead" aria-hidden="true"><span>POS</span><span>CAM</span><span>TEST SUBJECT</span><span>RESULT · VERDICT</span></div>
+    <div class="rows">
+      <a data-shop-item="0" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1806fs.png?width&#x3D;360" alt="Pitaka Suite Moonrise iPhone Duo, 1001 Nights" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Pitaka Suite Moonrise iPhone Duo, 1001 Nights</span><span class="r-tag">KI1806FS</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="1" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1805fs.png?width&#x3D;360" alt="Pitaka Suite Sunet iPhone Duo, California Dream" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Pitaka Suite Sunet iPhone Duo, California Dream</span><span class="r-tag">KI1805FS</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="2" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1804fs.png?width&#x3D;360" alt="Pitaka Suite Classic Twill iPhone Duo, Black Grey" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Pitaka Suite Classic Twill iPhone Duo, Black Grey</span><span class="r-tag">KI1804FS</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="3" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-sil.jpg?width&#x3D;360" alt="ScreenArmor Lens Shield iPhone Duo, silver" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">ScreenArmor Lens Shield iPhone Duo, silver</span><span class="r-tag">SA-LS-IP26F-SIL</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="4" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-ls-ip26f-blu.jpg?width&#x3D;360" alt="ScreenArmor Lens Shield iPhone Duo, blue" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">ScreenArmor Lens Shield iPhone Duo, blue</span><span class="r-tag">SA-LS-IP26F-BLU</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="5" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-gg-ip26f.jpg?width&#x3D;360" alt="ScreenArmor Guard Glass iPhone Duo" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">ScreenArmor Guard Glass iPhone Duo</span><span class="r-tag">SA-GG-IP26F</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="6" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;sa-fc-ip26f.jpg?width&#x3D;360" alt="ScreenArmor Full Cover Glass iPhone Duo" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">ScreenArmor Full Cover Glass iPhone Duo</span><span class="r-tag">SA-FC-IP26F</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="7" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1803f.png?width&#x3D;360" alt="Pitaka Moonrise Case iPhone Duo, 1001 Nights" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Pitaka Moonrise Case iPhone Duo, 1001 Nights</span><span class="r-tag">KI1803F</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="8" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1802f.png?width&#x3D;360" alt="Pitaka Sunset Edge Case iPhone Duo, California Dream" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Pitaka Sunset Edge Case iPhone Duo, California Dream</span><span class="r-tag">KI1802F</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="9" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;ki1801f.png?width&#x3D;360" alt="Pitaka Twill Edge Case iPhone Duo, Black Grey" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Pitaka Twill Edge Case iPhone Duo, Black Grey</span><span class="r-tag">KI1801F</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="10" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;fixop3-1729-bk.jpg?width&#x3D;360" alt="FIXED Opus for Samsung Galaxy A18, black" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">FIXED Opus for Samsung Galaxy A18, black</span><span class="r-tag">FIXOP3-1729-BK</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="11" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffptbk.jpg?width&#x3D;360" alt="Laut Flexi Protect iPhone Duo, Black" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Laut Flexi Protect iPhone Duo, Black</span><span class="r-tag">LIP26FFPTBK</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="12" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26ffcc.jpg?width&#x3D;360" alt="Laut Fizz Crystal iPhone Duo, Crystal" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Laut Fizz Crystal iPhone Duo, Crystal</span><span class="r-tag">LIP26FFCC</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="13" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfc.jpg?width&#x3D;360" alt="Laut Crystal Fluro iPhone Duo, Crystal" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Laut Crystal Fluro iPhone Duo, Crystal</span><span class="r-tag">LIP26FCFC</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="14" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;lip26fcfbk.jpg?width&#x3D;360" alt="Laut Crystal Fluro iPhone Duo, Midnight" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Laut Crystal Fluro iPhone Duo, Midnight</span><span class="r-tag">LIP26FCFBK</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="15" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><img src="https:&#x2F;&#x2F;teleqare.com&#x2F;content&#x2F;products&#x2F;groen10.png?width&#x3D;360" alt="Divoom Astrotoo 20W Desktop Speaker, green" loading="lazy"></span>
+        <span class="r-main"><span class="r-name">Divoom Astrotoo 20W Desktop Speaker, green</span><span class="r-tag">90100058298</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="16" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><span class="nosig"><span>TQ</span></span></span>
+        <span class="r-main"><span class="r-name">Divoom Astrotoo 20W Desktop Speaker, pink</span><span class="r-tag">90100058297</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="17" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><span class="nosig"><span>TQ</span></span></span>
+        <span class="r-main"><span class="r-name">Divoom Astrotoo 20W Desktop Speaker, white</span><span class="r-tag">90100058296</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="18" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><span class="nosig"><span>TQ</span></span></span>
+        <span class="r-main"><span class="r-name">Urbanista Biarritz Portable Speaker, green</span><span class="r-tag">UB9975</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="19" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><span class="nosig"><span>TQ</span></span></span>
+        <span class="r-main"><span class="r-name">Urbanista Biarritz Portable Speaker, sand</span><span class="r-tag">UB9978</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="20" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><span class="nosig"><span>TQ</span></span></span>
+        <span class="r-main"><span class="r-name">Urbanista Biarritz Portable Speaker, black</span><span class="r-tag">UB9994</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="21" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><span class="nosig"><span>TQ</span></span></span>
+        <span class="r-main"><span class="r-name">Urbanista Shibuya Wireless Headphone, white</span><span class="r-tag">UB9910</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="22" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><span class="nosig"><span>TQ</span></span></span>
+        <span class="r-main"><span class="r-name">Urbanista Shibuya Wireless Headphone, black</span><span class="r-tag">UB9925</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a><a data-shop-item="23" class="row" href="#">
+        <span class="pos"></span>
+        <span class="thumb"><span class="nosig"><span>TQ</span></span></span>
+        <span class="r-main"><span class="r-name">Urbanista Porto In-Ear, storm blue</span><span class="r-tag">1040264</span></span>
+        <span class="out"><span class="price na">—</span><span class="verdict">INTACT ✓</span></span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="back"><a class="btn" href="template.html">Back to the live feed</a></div>
+</section>
+</main>
+
+<footer class="credits">
+  <div class="cr-brand"><strong>TeleQare</strong><p>Mobile accessories, sourced and delivered</p></div>
+  <div><h4>PROGRAMME</h4><ul><li><a href="catalog.html">Products</a></li><li><a href="#">Brands</a></li><li><a href="#">Devices</a></li><li><a href="#">About us</a></li><li><a href="#">Contact</a></li></ul></div>
+  <div><h4>CREDITS</h4><ul><li><a href="#">News</a></li><li><a href="#">About us</a></li><li><a href="#">Terms &amp; Conditions (NL)</a></li><li><a href="#">Cookie policy</a></li><li><a href="#">Privacy policy</a></li><li><a href="#">Newsletter</a></li></ul></div>
+  <div class="bars" aria-hidden="true"></div>
+  <div class="eot"><span>© 2026 TeleQare</span><span>End of transmission · CH TQ</span></div>
+</footer>
+</div>
+<div class="badge">Demo redesign · Live Drop</div>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  root.classList.add("js");
+  const tcs = document.querySelectorAll("[data-tc]");
+  const t0 = Date.now();
+  const pad = (n) => String(n).padStart(2, "0");
+  setInterval(() => {
+    const ms = Date.now() - t0, s = Math.floor(ms / 1000);
+    const txt = `${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(s % 60)}:${pad(Math.floor(ms / 40) % 25)}`;
+    tcs.forEach((el) => (el.textContent = txt));
+  }, 40);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.querySelectorAll(".row").forEach((r, i) => r.style.setProperty("--i", i));
+  root.classList.add("motion");
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"catalog","lang":"en","count":"1693 products","products":[{"name":"Pitaka Suite Moonrise iPhone Duo, 1001 Nights","tag":"KI1806FS","category":"Protection cases"},{"name":"Pitaka Suite Sunet iPhone Duo, California Dream","tag":"KI1805FS","category":"Protection cases"},{"name":"Pitaka Suite Classic Twill iPhone Duo, Black Grey","tag":"KI1804FS","category":"Protection cases"},{"name":"ScreenArmor Lens Shield iPhone Duo, silver","tag":"SA-LS-IP26F-SIL","category":"Screen protection"},{"name":"ScreenArmor Lens Shield iPhone Duo, blue","tag":"SA-LS-IP26F-BLU","category":"Screen protection"},{"name":"ScreenArmor Guard Glass iPhone Duo","tag":"SA-GG-IP26F","category":"Screen protection"},{"name":"ScreenArmor Full Cover Glass iPhone Duo","tag":"SA-FC-IP26F","category":"Screen protection"},{"name":"Pitaka Moonrise Case iPhone Duo, 1001 Nights","tag":"KI1803F","category":"Protection cases"},{"name":"Pitaka Sunset Edge Case iPhone Duo, California Dream","tag":"KI1802F","category":"Protection cases"},{"name":"Pitaka Twill Edge Case iPhone Duo, Black Grey","tag":"KI1801F","category":"Protection cases"},{"name":"FIXED Opus for Samsung Galaxy A18, black","tag":"FIXOP3-1729-BK","category":"Protection cases"},{"name":"Laut Flexi Protect iPhone Duo, Black","tag":"LIP26FFPTBK","category":"Protection cases"},{"name":"Laut Fizz Crystal iPhone Duo, Crystal","tag":"LIP26FFCC","category":"Protection cases"},{"name":"Laut Crystal Fluro iPhone Duo, Crystal","tag":"LIP26FCFC","category":"Protection cases"},{"name":"Laut Crystal Fluro iPhone Duo, Midnight","tag":"LIP26FCFBK","category":"Protection cases"},{"name":"Divoom Astrotoo 20W Desktop Speaker, green","tag":"90100058298","category":"Audio"},{"name":"Divoom Astrotoo 20W Desktop Speaker, pink","tag":"90100058297","category":"Audio"},{"name":"Divoom Astrotoo 20W Desktop Speaker, white","tag":"90100058296","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, green","tag":"UB9975","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, sand","tag":"UB9978","category":"Audio"},{"name":"Urbanista Biarritz Portable Speaker, black","tag":"UB9994","category":"Audio"},{"name":"Urbanista Shibuya Wireless Headphone, white","tag":"UB9910","category":"Audio"},{"name":"Urbanista Shibuya Wireless Headphone, black","tag":"UB9925","category":"Audio"},{"name":"Urbanista Porto In-Ear, storm blue","tag":"1040264","category":"Audio"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

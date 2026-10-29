@@ -1,0 +1,3 @@
+{ "id": "drop-broadcast", "name": "Live Drop", "scheme": "dark", "sectors": ["retail","wholesale","tech","b2b"],
+  "mood": ["theatrical", "tense", "broadcast", "high-contrast"], "needsProductImages": true,
+  "notes": "Charcoal studio feed stays fixed; --c-primary only drives live graphics (channel ident, LIVE bug, lower-third bars, INTACT stamp, seal, active camera switch) with --c-on-primary text, and readable accents use a primary/white mix so any colour works." }

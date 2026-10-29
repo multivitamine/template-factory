@@ -1,0 +1,17 @@
+{
+  "scoreBefore": 7.0,
+  "issues": [
+    "Promise certificate: the 'CAM 3 · ARCHIVE' monitor rendered as a large black hole on both brands (lazy or broken story image with no fallback)",
+    "Heats with only one or two categories (Brinks) left a single tiny thumbnail floating in a huge empty segment",
+    "Mobile: the monitor wall became one endless single column of giant square tiles, about 8 screen heights of scrolling",
+    "Mobile: the scoreboard stacked into a tall single-column list that kills the 'ticker board' feel",
+    "Hero lower third and T-minus block sit a little small for the size of the frame, but the broadcast metaphor, tower stage and scoreboard are strong and survive both primaries"
+  ],
+  "fixed": [
+    "Archive monitor now has an SMPTE test card plus brand-colour bars and an initials ident behind the photo, scanlines on top, eager loading and onerror removal, so it is never an empty black box",
+    "One or two heats now become wide 'start line' cards: 16:10 image, huge condensed name, a primary rule on top, a 'Heat 01 · on the start line' label and an 'All results →' button",
+    "Mobile monitor wall is now 2-up with smaller camera labels, a tighter mini lower third and verdict chip",
+    "Mobile scoreboard is now a 2-up grid with a full-width header row, which reads like a real broadcast results board"
+  ],
+  "scoreAfterEstimate": 7.6
+}
