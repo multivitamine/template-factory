@@ -1,0 +1,3 @@
+{ "id": "pocket-screen", "name": "Pocket Screen", "scheme": "light", "sectors": ["tech", "retail", "services", "lifestyle"],
+  "mood": ["tactile", "friendly", "clean", "playful"], "needsProductImages": false,
+  "notes": "Neutral iOS-like chrome; primary drives the lock-screen mesh wallpaper (with accent), the call/CTA buttons, app icons, live-activity card and tinted GET pills (text uses a darkened primary for contrast)" }

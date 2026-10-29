@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Koffie · Brinks Coffee Roasters</title>
+<meta name="description" content="Ontdek onze premium en specialty koffies, proefpakketten en cups, allemaal met een smaak die je makkelijk waardeert.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-bg:#f2f2f7; --c-surface:#ffffff; --c-text:#1c1c1e; --c-muted:#6e6e73; --c-line:#d1d1d6;
+  --c-primary:#0a84ff; --c-on-primary:#ffffff; --c-accent:#ff375f;
+  /* derived: tint for pills/fallbacks, ink = primary darkened so it reads on light chrome even when the brand is pastel */
+  --tint:color-mix(in srgb,var(--c-primary) 14%,var(--c-surface));
+  --ink:color-mix(in srgb,var(--c-primary) 62%,#000);
+  --bezel:#1c1c1e; --stage:#e9e6e1;
+  --phone-w:476px; --bz:12px; --frame-top:44px; --sb-h:52px;
+  --r-xl:28px; --r-lg:22px; --r-md:16px; --r-sm:12px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --f-d:'Urbanist',sans-serif; --f-b:'Plus Jakarta Sans',sans-serif; --f-m:'Roboto Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--stage);-webkit-text-size-adjust:100%}
+body{margin:0;font:400 15px/1.45 var(--f-b);color:var(--c-text);overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:repeating-radial-gradient(circle at 50% 46%,rgba(28,28,30,.07) 0 1px,transparent 1.5px 86px),
+             radial-gradient(60% 50% at 50% 46%,#f4f1ec,transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at 50% 46%,#000 25%,transparent 72%);mask-image:radial-gradient(circle at 50% 46%,#000 25%,transparent 72%)}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+ul{list-style:none;margin:0;padding:0}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--c-primary);outline-offset:3px;border-radius:6px}
+
+/* ---------- stage + device ---------- */
+.stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,var(--phone-w)) minmax(0,1fr);column-gap:64px;padding:var(--frame-top) 24px 110px}
+.phone{grid-column:2;position:relative;padding:var(--bz);background:var(--bezel);border-radius:58px;
+  box-shadow:inset 0 0 0 1.5px #48484a,inset 0 0 0 5px #0d0d0e,0 0 0 1px #0b0b0c,0 60px 90px -40px rgba(40,32,24,.5),0 24px 40px -24px rgba(40,32,24,.35)}
+.phone::after{content:"";position:absolute;left:12%;right:12%;bottom:-46px;height:40px;border-radius:50%;background:rgba(40,32,24,.28);filter:blur(22px);z-index:-1}
+.hw{position:absolute;width:4px;border-radius:2px;background:linear-gradient(90deg,#3a3a3c,#5a5a5e 60%,#2c2c2e)}
+.hw-a{left:-4px;top:150px;height:34px}.hw-v1{left:-4px;top:208px;height:62px}.hw-v2{left:-4px;top:284px;height:62px}
+.hw-p{right:-4px;top:230px;height:98px;background:linear-gradient(270deg,#3a3a3c,#5a5a5e 60%,#2c2c2e)}
+.screen{position:relative;border-radius:46px;overflow:clip;background:var(--c-bg);min-height:calc(100svh - 2*var(--frame-top))}
+
+/* ---------- status bar ---------- */
+.sb{position:sticky;top:0;z-index:40;height:var(--sb-h);margin-bottom:calc(-1 * var(--sb-h));display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 26px;
+  font:500 14px var(--f-m);color:var(--c-text);background:color-mix(in srgb,var(--c-bg) 78%,transparent);-webkit-backdrop-filter:blur(18px) saturate(1.8);backdrop-filter:blur(18px) saturate(1.8);
+  box-shadow:0 .5px 0 var(--c-line)}
+.sb-time{letter-spacing:.02em}
+.island{width:118px;height:34px;border-radius:20px;background:#000;box-shadow:inset 0 0 0 1px #1a1a1a}
+.island::after{content:"";display:block;width:10px;height:10px;margin:12px 0 0 auto;transform:translateX(-14px);border-radius:50%;background:radial-gradient(circle at 35% 35%,#2c3a5a,#0a0a12 70%)}
+.sb-icons{justify-self:end;display:flex;align-items:center;gap:6px;font-size:12px}
+.sb-icons svg{width:17px;height:12px;fill:currentColor}
+.bat{display:inline-flex;align-items:center;gap:2px}
+.bat i{position:relative;display:block;width:24px;height:12px;border-radius:4px;border:1.2px solid currentColor;opacity:.9}
+.bat i::before{content:"";position:absolute;inset:1.5px;right:5px;border-radius:2px;background:currentColor}
+.bat::after{content:"";width:2px;height:4px;border-radius:0 1px 1px 0;background:currentColor;opacity:.5}
+
+.brandlogo img{max-height:26px;max-width:160px;width:auto;object-fit:contain}
+.on-dark .brandlogo img{filter:brightness(0) invert(1)}
+.lg-light .on-dark .brandlogo img{filter:none}
+.lg-light .on-light .brandlogo img{filter:brightness(0)}
+
+/* ---------- catalog: app-store list ---------- */
+.cat{padding:calc(var(--sb-h) + 6px) 16px 44px;
+  background:radial-gradient(110% 28% at 0% 0%,color-mix(in srgb,var(--c-primary) 18%,transparent),transparent 70%),
+             radial-gradient(80% 22% at 100% 4%,color-mix(in srgb,var(--c-accent) 14%,transparent),transparent 70%),var(--c-bg)}
+.navbar{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:46px}
+.back{display:inline-flex;align-items:center;gap:6px;min-width:0;font:600 15px var(--f-b);color:var(--ink);text-decoration:none}
+.back span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.back svg{flex:none;width:10px;height:17px}
+.back:hover span{text-decoration:underline;text-underline-offset:3px}
+.nb-ico{width:32px;height:32px;border-radius:9px;font-size:11.5px}
+.n-ico,.w-app,.nb-ico{display:grid;place-items:center;background:var(--c-primary);color:var(--c-on-primary);font-family:var(--f-d);font-weight:700;box-shadow:inset 0 0 0 .5px rgba(255,255,255,.25)}
+.w-app{width:22px;height:22px;border-radius:6px;font-size:9.5px}
+.eyebrow{margin-top:12px;font:500 11px var(--f-m);letter-spacing:.07em;text-transform:uppercase;color:var(--c-muted)}
+.large{font:700 clamp(34px,10vw,44px)/1.02 var(--f-d);letter-spacing:-.02em;margin-top:4px;text-wrap:balance}
+.cat-intro{margin-top:10px;font-size:15px;line-height:1.5;color:color-mix(in srgb,var(--c-text) 72%,var(--c-bg))}
+.searchf{display:flex;align-items:center;gap:8px;margin-top:20px;min-height:42px;padding:0 12px;border-radius:12px;background:rgba(118,118,128,.14);color:var(--c-muted)}
+.searchf svg{flex:none;width:16px;height:16px}
+.searchf input{flex:1;min-width:0;border:0;background:none;outline:none;font-size:16px;color:var(--c-text)}
+.searchf input::placeholder{color:var(--c-muted)}
+.searchf:focus-within{outline:2px solid var(--c-primary);outline-offset:2px}
+.segwrap{margin:14px -16px 0;padding:0 16px;overflow-x:auto;scrollbar-width:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 16px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,transparent,#000 16px,#000 calc(100% - 28px),transparent)}
+.segwrap::-webkit-scrollbar{display:none}
+.segbar{display:inline-flex;gap:2px;min-width:100%;padding:2px;border-radius:11px;background:rgba(118,118,128,.14)}
+.seg{flex:1 0 auto;border:0;background:none;padding:7px 14px;border-radius:9px;font:600 13px var(--f-b);white-space:nowrap;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s}
+.seg:hover{color:var(--ink)}
+.seg[aria-pressed="true"]{background:var(--c-surface);color:var(--ink);box-shadow:0 3px 8px -2px rgba(0,0,0,.16),0 0 0 .5px rgba(0,0,0,.05)}
+.count{margin:18px 4px 8px;font:500 11.5px var(--f-m);letter-spacing:.05em;text-transform:uppercase;color:var(--c-muted)}
+.results{background:var(--c-surface);border-radius:var(--r-lg);padding:0 16px;box-shadow:0 14px 30px -24px rgba(0,0,0,.3)}
+.res{padding:16px 0 18px}
+.res+.res{border-top:.5px solid var(--c-line)}
+.app{display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:12px;align-items:center}
+.app-ico{display:grid;place-items:center;width:60px;aspect-ratio:1;border-radius:14px;overflow:clip;background:#fff;box-shadow:inset 0 0 0 .5px var(--c-line)}
+.app-ico img{width:100%;height:100%;object-fit:contain;padding:5px}
+.ph{display:grid;place-items:center;width:100%;height:100%;background:var(--tint);color:var(--ink);font:700 19px var(--f-d)}
+.app-txt{min-width:0}
+.app-txt h2{font:600 15px/1.25 var(--f-b);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.app-txt h2 a{text-decoration:none}
+.app-txt h2 a:hover{text-decoration:underline;text-underline-offset:2px}
+.sub{margin-top:2px;font-size:12.5px;color:var(--c-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub span+span::before{content:" · "}
+.get{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:74px;min-height:32px;padding:5px 12px;border-radius:999px;background:var(--tint);color:var(--ink);
+  font:500 12.5px/1.1 var(--f-m);text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,transform .25s var(--ease)}
+.get s{font-size:10px;opacity:.6}
+.get:hover{background:var(--c-primary);color:var(--c-on-primary)}
+.get:active{transform:scale(.95)}
+/* App Store style: only the top result gets a big "screenshot" banner, the rest stay a tight list */
+.shot{position:relative;display:block;margin-top:14px;aspect-ratio:16/9;border-radius:18px;overflow:clip;
+  background:radial-gradient(70% 90% at 80% 20%,color-mix(in srgb,var(--c-accent) 22%,#fff),transparent 70%),radial-gradient(80% 90% at 10% 100%,var(--tint),#fff 75%);box-shadow:inset 0 0 0 .5px var(--c-line)}
+.shot img{width:100%;height:100%;object-fit:contain;padding:18px;filter:drop-shadow(0 14px 18px rgba(0,0,0,.18));transition:transform .8s var(--ease)}
+.res:not(:first-child) .shot{display:none}
+.res:not(:first-child){padding:12px 0}
+.shot:hover img{transform:scale(1.04)}
+.shot .chip{position:absolute;left:10px;top:10px}
+.chip{display:inline-block;max-width:calc(100% - 20px);padding:3px 9px;border-radius:999px;background:var(--tint);color:var(--ink);font:600 11px var(--f-b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.empty{padding:40px 16px;text-align:center;color:var(--c-muted);background:var(--c-surface);border-radius:var(--r-lg)}
+.help{margin-top:34px}
+.help-h{margin:0 4px;font:500 11px var(--f-m);letter-spacing:.07em;text-transform:uppercase;color:var(--c-muted)}
+
+.group{margin-top:12px;background:var(--c-surface);border-radius:14px;overflow:clip}
+.group li+li a::before{content:"";position:absolute;left:58px;right:0;top:0;border-top:.5px solid var(--c-line)}
+.group.plain li+li a::before{left:16px}
+.group a{position:relative;display:flex;align-items:center;gap:12px;min-height:52px;padding:10px 14px 10px 16px;text-decoration:none;transition:background .2s}
+.group a:hover{background:color-mix(in srgb,var(--c-text) 4%,transparent)}
+.g-ico{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:8px}
+.g-ico svg{width:17px;height:17px}
+.g1{background:var(--c-primary);color:var(--c-on-primary)}.g2{background:#1c1c1e;color:#fff}.g3{background:var(--tint);color:var(--ink)}
+.g-txt{flex:1;min-width:0;font-size:15px;overflow-wrap:anywhere}
+.g-txt small{display:block;font-size:12px;color:var(--c-muted)}
+.chev{flex:none;width:8px;height:14px;color:#c4c4c7}
+
+.foot{padding:4px 16px 26px}
+.foot-h{margin:0 4px;font:500 11px var(--f-m);letter-spacing:.07em;text-transform:uppercase;color:var(--c-muted)}
+.foot .group{margin-top:16px}
+.legal{margin:18px 4px 0;font-size:12px;color:var(--c-muted)}
+
+/* ---------- dock ---------- */
+.dock{position:sticky;bottom:14px;z-index:45;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;margin:0 10px 14px;padding:9px 6px 8px;border-radius:30px;
+  background:color-mix(in srgb,#fff 70%,transparent);-webkit-backdrop-filter:blur(26px) saturate(1.8);backdrop-filter:blur(26px) saturate(1.8);
+  box-shadow:0 14px 34px -14px rgba(0,0,0,.35),inset 0 0 0 .5px rgba(0,0,0,.08)}
+.dk{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;font:600 10.5px var(--f-b);color:var(--c-text);text-decoration:none;cursor:pointer;list-style:none}
+.dk::-webkit-details-marker{display:none}
+.dk>span:last-child{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dk-i{display:grid;place-items:center;width:30px;height:30px;border-radius:10px;transition:transform .25s var(--ease),background .25s}
+.dk-i svg{width:22px;height:22px}
+.dk:hover .dk-i{background:rgba(118,118,128,.14)}
+.dk.is-here{color:var(--ink)}
+.dk-call .dk-i{width:58px;height:58px;margin-top:-30px;border-radius:50%;background:var(--c-primary);color:var(--c-on-primary);
+  box-shadow:0 0 0 4px color-mix(in srgb,#fff 70%,transparent),0 12px 22px -8px color-mix(in srgb,var(--c-primary) 70%,#000)}
+.dk-call:hover .dk-i{background:var(--c-primary);transform:translateY(-2px) scale(1.04)}
+.dk-call .dk-i svg{width:24px;height:24px}
+.menu{position:static}
+.menu summary{list-style:none}
+.sheet{position:absolute;right:6px;bottom:calc(100% + 10px);width:min(290px,calc(100vw - 40px));padding:8px 0;border-radius:22px;background:var(--c-surface);
+  box-shadow:0 24px 50px -16px rgba(0,0,0,.4),inset 0 0 0 .5px rgba(0,0,0,.06);text-align:left;animation:pop .3s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}}
+.sheet-h{padding:8px 16px 6px;font:500 11px var(--f-m);letter-spacing:.07em;text-transform:uppercase;color:var(--c-muted)}
+.sheet a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;font:600 15px var(--f-b);text-decoration:none}
+.sheet li+li a{border-top:.5px solid var(--c-line)}
+.sheet a:hover{color:var(--ink)}
+
+/* ---------- desktop side notes ---------- */
+.side{display:none}
+@media (min-width:1180px){
+  .side{display:block;position:sticky;top:96px;align-self:start;max-width:300px}
+  .side-l{grid-column:1;grid-row:1;justify-self:end;text-align:right}
+  .side-r{grid-column:3;grid-row:1;justify-self:start}
+  .side-l .brandlogo{display:inline-block;font:800 30px/1.05 var(--f-d);letter-spacing:-.01em}
+  .side-l .brandlogo img{max-height:44px;max-width:220px;margin-left:auto}
+  .side-tag{margin-top:12px;color:var(--c-muted);font-size:15px}
+  .side-nav{margin-top:28px;display:grid;gap:4px}
+  .side-nav a{font:600 15px var(--f-b);text-decoration:none;padding:4px 0;transition:color .2s}
+  .side-nav a:hover{color:var(--ink)}
+  .side-k{font:500 11px var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--c-muted)}
+  .side-hint{font:700 22px/1.15 var(--f-d)}
+  .side-r p{margin-top:6px;font-size:14px;color:var(--c-muted)}
+  .side-r .side-hint{color:var(--c-text);max-width:16ch}
+  .side-r .side-k{margin-top:30px}
+  .side-r a{text-decoration:none;font-weight:600;color:var(--c-text);overflow-wrap:anywhere}
+  .side-r a:hover{color:var(--ink)}
+}
+
+.badge{position:fixed;left:14px;bottom:14px;z-index:100;padding:6px 11px;border-radius:999px;background:rgba(28,28,30,.82);color:#fff;font:500 10.5px var(--f-m);letter-spacing:.02em;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);pointer-events:none}
+
+@media (max-width:480px){
+  :root{--frame-top:0px;--bz:0px;--sb-h:44px}
+  html{background:var(--c-bg)}
+  body::before{display:none}
+  .stage{display:block;padding:0}
+  .phone{border-radius:0;background:none;box-shadow:none;padding:0}
+  .phone::after,.hw,.island{display:none}
+  .screen{border-radius:0;min-height:100svh}
+  .sb{padding:0 18px;grid-template-columns:1fr 1fr}
+  .dock{bottom:30px;margin-bottom:30px}
+  .badge{left:50%;bottom:auto;top:12px;transform:translateX(-50%);padding:4px 9px;font-size:9.5px;white-space:nowrap}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#5A402E;--c-on-primary:#ffffff;--c-accent:#B37756}</style></head>
+<body class="lg-light">
+<div class="stage">
+  <aside class="side side-l on-light" aria-label="Brinks Coffee Roasters">
+    <a class="brandlogo" href="index.html" style="text-decoration:none"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;dist&#x2F;images&#x2F;logos&#x2F;logo-brinks-b2c.svg" alt="Brinks Coffee Roasters"></a>
+    <p class="side-tag">Easy to love, recognized by most.</p>
+    <nav class="side-nav" aria-label="Menu"><a href="#">Home</a><a href="catalog.html">Shop</a><a href="#">Over ons</a><a href="#">Contact</a><a href="#">Account aanmaken</a></nav>
+  </aside>
+
+  <div class="phone">
+    <span class="hw hw-a"></span><span class="hw hw-v1"></span><span class="hw hw-v2"></span><span class="hw hw-p"></span>
+    <div class="screen">
+      <header class="sb" id="top">
+        <span class="sb-time" data-time>09:41</span>
+        <span class="island" aria-hidden="true"></span>
+        <span class="sb-icons" aria-hidden="true">
+          <svg viewBox="0 0 17 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.6" y="5.5" width="3" height="6.5" rx="1"/><rect x="9.2" y="3" width="3" height="9" rx="1"/><rect x="13.8" y="0" width="3" height="12" rx="1"/></svg>
+          <svg viewBox="0 0 16 12"><path d="M8 2.4c2.4 0 4.6.9 6.2 2.5l1.2-1.2A10.4 10.4 0 0 0 8 .6 10.4 10.4 0 0 0 .6 3.7l1.2 1.2A8.7 8.7 0 0 1 8 2.4zm0 3.5c1.4 0 2.7.5 3.7 1.5l1.2-1.2A7 7 0 0 0 8 4.1a7 7 0 0 0-4.9 2.1l1.2 1.2c1-1 2.3-1.5 3.7-1.5zm0 3.4c.5 0 1 .2 1.3.5L8 11.2 6.7 9.8c.3-.3.8-.5 1.3-.5z"/></svg>
+          <span class="bat"><i></i></span>
+        </span>
+      </header>
+
+      <main class="cat on-light">
+        <div class="navbar">
+          <a class="back" href="index.html"><svg viewBox="0 0 10 17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 1.5 1.5 8.5l7 7"/></svg><span>Brinks Coffee Roasters</span></a>
+          <span class="nb-ico" aria-hidden="true">BC</span>
+        </div>
+        <p class="eyebrow">Shop · Brinks Coffee Roasters</p>
+        <h1 class="large">Koffie</h1>
+        <p class="cat-intro">Ontdek onze premium en specialty koffies, proefpakketten en cups, allemaal met een smaak die je makkelijk waardeert.</p>
+
+        <label class="searchf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.6-4.6"/></svg><input type="search" data-shop-search placeholder="Zoek in de producten" aria-label="Zoek in de producten"></label>
+
+        <div class="segwrap">
+          <div class="segbar" role="group" aria-label="Categorieën"><button class="seg" type="button" aria-pressed="true">Alle</button><button data-shop-filter="Proefpakketten" class="seg" type="button" aria-pressed="false">Proefpakketten</button><button data-shop-filter="Koffiebonen" class="seg" type="button" aria-pressed="false">Koffiebonen</button><button data-shop-filter="Cafeïnevrij" class="seg" type="button" aria-pressed="false">Cafeïnevrij</button><button data-shop-filter="Cups" class="seg" type="button" aria-pressed="false">Cups</button></div>
+        </div>
+
+        <p class="count"><span>13 producten</span></p>
+
+        <ul class="results">
+          <li data-shop-item="0" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2179.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Brinks Specialty koffiebonen proefpakket 2-pack</a></h2><p class="sub"><span>Proefpakketten</span><span>Proefpakket</span></p></div>
+              <a class="get" href="#">€ 34,00</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2179.png?width&#x3D;360" alt="Brinks Specialty koffiebonen proefpakket 2-pack" loading="lazy"><span class="chip">Proefpakket</span></a>
+          </li><li data-shop-item="1" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2180.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Brinks koffiebonen proefpakket black collection 3-pack</a></h2><p class="sub"><span>Proefpakketten</span><span>Proefpakket</span></p></div>
+              <a class="get" href="#">€ 47,00</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2180.png?width&#x3D;360" alt="Brinks koffiebonen proefpakket black collection 3-pack" loading="lazy"><span class="chip">Proefpakket</span></a>
+          </li><li data-shop-item="2" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2128.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Brasil Black Diamond 500 gram</a></h2><p class="sub"><span>Koffiebonen</span></p></div>
+              <a class="get" href="#">€ 15,75</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2128.png?width&#x3D;360" alt="Brasil Black Diamond 500 gram" loading="lazy"></a>
+          </li><li data-shop-item="3" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2265.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Chocolate Berry 250 gram</a></h2><p class="sub"><span>Koffiebonen</span></p></div>
+              <a class="get" href="#">€ 9,95</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2265.png?width&#x3D;360" alt="Chocolate Berry 250 gram" loading="lazy"></a>
+          </li><li data-shop-item="4" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2132.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Guatemala Adventure 500 gram</a></h2><p class="sub"><span>Koffiebonen</span></p></div>
+              <a class="get" href="#">€ 17,45</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2132.png?width&#x3D;360" alt="Guatemala Adventure 500 gram" loading="lazy"></a>
+          </li><li data-shop-item="5" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2130.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">PC Blend 500 gram</a></h2><p class="sub"><span>Koffiebonen</span></p></div>
+              <a class="get" href="#">€ 15,95</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2130.png?width&#x3D;360" alt="PC Blend 500 gram" loading="lazy"></a>
+          </li><li data-shop-item="6" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2129.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Supreme Black 500 gram</a></h2><p class="sub"><span>Koffiebonen</span></p></div>
+              <a class="get" href="#">€ 15,50</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2129.png?width&#x3D;360" alt="Supreme Black 500 gram" loading="lazy"></a>
+          </li><li data-shop-item="7" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2131.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Sweet Combo 500 gram</a></h2><p class="sub"><span>Koffiebonen</span></p></div>
+              <a class="get" href="#">€ 16,75</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2131.png?width&#x3D;360" alt="Sweet Combo 500 gram" loading="lazy"></a>
+          </li><li data-shop-item="8" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;1007.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Decaf Peru Swiss Water 500gr (espresso maling)</a></h2><p class="sub"><span>Cafeïnevrij</span><span>Cafeïnevrij</span></p></div>
+              <a class="get" href="#">€ 21,76</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;1007.png?width&#x3D;360" alt="Decaf Peru Swiss Water 500gr (espresso maling)" loading="lazy"><span class="chip">Cafeïnevrij</span></a>
+          </li><li data-shop-item="9" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;1008.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Decaf Peru Swiss Water 500gr bonen</a></h2><p class="sub"><span>Cafeïnevrij</span><span>Cafeïnevrij</span></p></div>
+              <a class="get" href="#">€ 21,76</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;1008.png?width&#x3D;360" alt="Decaf Peru Swiss Water 500gr bonen" loading="lazy"><span class="chip">Cafeïnevrij</span></a>
+          </li><li data-shop-item="10" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2335.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Decafe cups doos 20 cups</a></h2><p class="sub"><span>Cafeïnevrij</span><span>Cafeïnevrij</span></p></div>
+              <a class="get" href="#">€ 5,98</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;2335.png?width&#x3D;360" alt="Decafe cups doos 20 cups" loading="lazy"><span class="chip">Cafeïnevrij</span></a>
+          </li><li data-shop-item="11" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;1012.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Cafferati espresso dispenser doos 80 cups</a></h2><p class="sub"><span>Cups</span><span>Cups</span></p></div>
+              <a class="get" href="#">€ 21,75</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;1012.png?width&#x3D;360" alt="Cafferati espresso dispenser doos 80 cups" loading="lazy"><span class="chip">Cups</span></a>
+          </li><li data-shop-item="12" class="res">
+            <div class="app">
+              <a class="app-ico" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;1096.png?width&#x3D;360" alt="" loading="lazy"></a>
+              <div class="app-txt"><h2><a href="#">Cafferati lungo dispenser doos 80 cups</a></h2><p class="sub"><span>Cups</span><span>Cups</span></p></div>
+              <a class="get" href="#">€ 21,75</a>
+            </div>
+            <a class="shot" href="#" tabindex="-1"><img src="https:&#x2F;&#x2F;www.brinkscoffeeroasters.nl&#x2F;content&#x2F;products&#x2F;1096.png?width&#x3D;360" alt="Cafferati lungo dispenser doos 80 cups" loading="lazy"><span class="chip">Cups</span></a>
+          </li>
+        </ul>
+        
+
+        <section class="help" aria-label="Contact">
+          <p class="help-h">Hulp nodig?</p>
+          <ul class="group">
+            <li><a href="tel:+31 073-7200721"><span class="g-ico g1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span><span class="g-txt"><small>Telefoon</small>+31 073-7200721</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+            <li><a href="mailto:hallo@brinkscoffeeroasters.nl"><span class="g-ico g3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg></span><span class="g-txt"><small>E-mail</small>hallo@brinkscoffeeroasters.nl</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Veldweg 26, 5321 JE Hedel" target="_blank" rel="noopener"><span class="g-ico g2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.5s7-6.1 7-11.8a7 7 0 0 0-14 0c0 5.7 7 11.8 7 11.8z"/><circle cx="12" cy="9.6" r="2.6"/></svg></span><span class="g-txt"><small>Adres</small>Veldweg 26, 5321 JE Hedel</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="foot on-light">
+        <p class="foot-h">Instellingen</p>
+        <ul class="group plain"><li><a href="catalog.html"><span class="g-txt">Koffie</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#"><span class="g-txt">Thee</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#"><span class="g-txt">Accessoires</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#"><span class="g-txt">Barista tools</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#"><span class="g-txt">Onderhoudsproducten</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#"><span class="g-txt">Zakelijk</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#"><span class="g-txt">Cookieverklaring</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#"><span class="g-txt">Privacyverklaring</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#"><span class="g-txt">Algemene voorwaarden</span><svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li></ul>
+        <p class="legal">© 2026 Brinks Coffee Roasters · Veldweg 26, 5321 JE Hedel</p>
+      </footer>
+
+      <nav class="dock" aria-label="Hoofdmenu">
+        <a class="dk" href="index.html"><span class="dk-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z"/></svg></span><span>Home</span></a>
+        <a class="dk is-here" href="#top" aria-current="page"><span class="dk-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><path d="M5 8h14l-1.2 12.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></span><span>Shop</span></a>
+        <a class="dk dk-call" href="catalog.html"><span class="dk-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span><span>Bekijk ons assortiment</span></a>
+        <a class="dk" href="index.html#contact"><span class="dk-i"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span><span>Contact</span></a>
+        <details class="menu"><summary class="dk"><span class="dk-i"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></span><span>Menu</span></summary>
+          <div class="sheet"><p class="sheet-h">Brinks Coffee Roasters</p><ul><li><a href="#">Home<svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="catalog.html">Shop<svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#">Over ons<svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#">Contact<svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#">Account aanmaken<svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li></ul></div>
+        </details>
+      </nav>
+    </div>
+  </div>
+
+  <aside class="side side-r on-light" aria-label="Info">
+    <p class="side-hint">Zoek, filter en tik op een prijs.</p>
+    <p class="side-k">Bel</p><p><a href="tel:+31 073-7200721">+31 073-7200721</a></p>
+    <p class="side-k">Mail</p><p><a href="mailto:hallo@brinkscoffeeroasters.nl">hallo@brinkscoffeeroasters.nl</a></p>
+    <p class="side-k">Bezoek</p><p>Veldweg 26, 5321 JE Hedel</p>
+  </aside>
+</div>
+
+<div class="badge">Demo redesign · Pocket Screen</div>
+
+<script>
+(() => {
+  const lang = document.documentElement.lang || "nl";
+  const tick = () => {
+    let t;
+    try { t = new Date().toLocaleTimeString(lang, { hour: "2-digit", minute: "2-digit" }); } catch { return; }
+    document.querySelectorAll("[data-time]").forEach((el) => (el.textContent = t));
+  };
+  tick(); setInterval(tick, 15000);
+  const menu = document.querySelector(".menu");
+  if (menu) {
+    document.addEventListener("click", (e) => { if (menu.open && (!menu.contains(e.target) || e.target.closest(".sheet a"))) menu.open = false; });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") menu.open = false; });
+  }
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"catalog","lang":"nl","count":"13 producten","products":[{"name":"Brinks Specialty koffiebonen proefpakket 2-pack","tag":"Proefpakket","category":"Proefpakketten"},{"name":"Brinks koffiebonen proefpakket black collection 3-pack","tag":"Proefpakket","category":"Proefpakketten"},{"name":"Brasil Black Diamond 500 gram","tag":"","category":"Koffiebonen"},{"name":"Chocolate Berry 250 gram","tag":"","category":"Koffiebonen"},{"name":"Guatemala Adventure 500 gram","tag":"","category":"Koffiebonen"},{"name":"PC Blend 500 gram","tag":"","category":"Koffiebonen"},{"name":"Supreme Black 500 gram","tag":"","category":"Koffiebonen"},{"name":"Sweet Combo 500 gram","tag":"","category":"Koffiebonen"},{"name":"Decaf Peru Swiss Water 500gr (espresso maling)","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Decaf Peru Swiss Water 500gr bonen","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Decafe cups doos 20 cups","tag":"Cafeïnevrij","category":"Cafeïnevrij"},{"name":"Cafferati espresso dispenser doos 80 cups","tag":"Cups","category":"Cups"},{"name":"Cafferati lungo dispenser doos 80 cups","tag":"Cups","category":"Cups"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

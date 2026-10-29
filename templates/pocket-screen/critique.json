@@ -1,0 +1,20 @@
+{
+  "scoreBefore": 6.4,
+  "issues": [
+    "Creativity 8: the lock-screen hero with live clock, frosted notification USPs and an incoming-call contact screen is a strong, coherent device metaphor. Typography 7: Urbanist 200 clock vs 700 titles works, but the mono eyebrows are overused. Layout 5, Polish 5, Brand robustness 8 (the mesh under a scrim handles both red and brown well), Mobile 5. Generic-template feel: low.",
+    "At scroll 0 the unlock timeline faded every widget (featured stack, note, stats, search) to opacity 0, so a large dead pink band sat directly under the lock screen on desktop, mobile and stress.",
+    "Only the home screen was counter-translated, not the footer, so a second empty band about one lock-screen tall opened between the contact list and the 'Instellingen' footer (very visible on mobile).",
+    "Mobile: the fixed demo badge sat on top of the 'Veeg omhoog om te openen' pill, and the lock content (3 notifications with 2-line text) pushed the pill below the fold.",
+    "Catalog: every result repeated its icon image as a big 16:10 'screenshot' box, which tripled the list length. It read as a product grid, not an App Store list.",
+    "Catalog segmented control was cut off hard at the right edge ('Kart onder…') with no hint that it scrolls.",
+    "Dock is a sticky element, so in full-page captures it appears mid-page on the catalog. This is a capture artefact and correct in a real viewport, so it was left alone."
+  ],
+  "fixed": [
+    "Widgets now only drift and settle (y + scale) during the unlock instead of fading from 0. The part peeking out below the lock screen is real content, not a void. Icon rows still scale in from 0.85, staggered row by row.",
+    "The footer is translated together with the home screen in the ScrollTrigger timeline, which removes the gap between the contact and footer sections.",
+    "On mobile the badge moved to the top centre, where the camera island would be. The clock was tightened, notification text clamped to 1 line and lock padding reduced, so the pill and home bar fit on the first screen.",
+    "Catalog: only the top result keeps a large App Store-style 'screenshot' banner (brand-tinted mesh backdrop, drop-shadowed product). All other results are compact icon/name/GET rows.",
+    "Segmented control gets an edge fade mask, so the overflow reads as scrollable rather than broken."
+  ],
+  "scoreAfterEstimate": 7.3
+}
