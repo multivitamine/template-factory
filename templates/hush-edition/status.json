@@ -1,0 +1,82 @@
+{
+  "id": "hush-edition",
+  "name": "Hush Edition",
+  "sectors": [
+    "luxury",
+    "lifestyle",
+    "hospitality",
+    "retail"
+  ],
+  "sample": "banksmansion",
+  "stress": "kartstoreinternational",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793299880624
+    },
+    {
+      "step": "Rendering",
+      "at": 1793300477050
+    },
+    {
+      "step": "Critique",
+      "at": 1793300489353
+    },
+    {
+      "step": "Final render",
+      "at": 1793300569576
+    },
+    {
+      "step": "Done",
+      "at": 1793300581492
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793299880623,
+  "startedAt": 1793299880624,
+  "finishedAt": 1793300581492,
+  "model": "opus",
+  "costUsd": 2.9635704000000005,
+  "meta": {
+    "id": "hush-edition",
+    "name": "Hush Edition",
+    "scheme": "light",
+    "sectors": [
+      "luxury",
+      "lifestyle",
+      "hospitality",
+      "retail"
+    ],
+    "mood": [
+      "quiet",
+      "editorial",
+      "precise",
+      "gallery-like"
+    ],
+    "needsProductImages": true,
+    "notes": "Warm paper-white template palette; --c-primary appears only as a 4% mat tint behind products, the cart-count pill, the active filter underline and the add-to-cart button."
+  },
+  "score": {
+    "scoreBefore": 6.6,
+    "issues": [
+      "Top-left brand is invisible for Banks Mansion: the crawled logo is a white SVG with logoIsLight=false, so the header looks brandless; on the stress brand it shows a partner logo instead of the shop name",
+      "An empty black toast box sits mid-right on every page (hidden only by transform, still painted in full-page renders)",
+      "Hierarchy breaks the art direction: section, story and CTA headings are as big as the hero headline, so the hero is not the single large type moment",
+      "The sparse asymmetric index reads as missing items/empty gaps rather than a deliberate catalogue",
+      "Catalog grid is pushed right by an extra 1/12 left padding, misaligned with the headline and filter bar",
+      "Scores: creativity 7, typography 6.5, layout & rhythm 6.5, polish 6, brand-colour robustness 7.5, mobile 6.5, generic-ness 6.5"
+    ],
+    "fixed": [
+      "Brand is now the shop name set tiny in tracked caps top-left on both pages, independent of unreliable logo files",
+      "Toast is visibility:hidden until shown, removing the stray black box",
+      "Hero headline scaled up (to 120px) and all section/story/CTA headings reduced to a quiet 26–40px, so the hero is the only large type",
+      "Added leading-zero catalogue numbers (01, 02…) before every product name on home and catalog so the scattered index reads as an intentional edition index",
+      "Catalog grid realigned to the page margins for a calm, even three-column layout; catalog CTA heading quieted to match"
+    ],
+    "scoreAfterEstimate": 7.5
+  },
+  "version": 1793300581492
+}

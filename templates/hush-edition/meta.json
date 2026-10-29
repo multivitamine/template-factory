@@ -1,0 +1,9 @@
+{
+  "id": "hush-edition",
+  "name": "Hush Edition",
+  "scheme": "light",
+  "sectors": ["luxury", "lifestyle", "hospitality", "retail"],
+  "mood": ["quiet", "editorial", "precise", "gallery-like"],
+  "needsProductImages": true,
+  "notes": "Warm paper-white template palette; --c-primary appears only as a 4% mat tint behind products, the cart-count pill, the active filter underline and the add-to-cart button."
+}

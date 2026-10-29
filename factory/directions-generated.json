@@ -601,5 +601,157 @@
     "generated": true,
     "fromIdea": true,
     "generatedAt": "2026-10-29T15:18:15.204Z"
+  },
+  {
+    "id": "hush-edition",
+    "name": "Hush Edition",
+    "sectors": [
+      "luxury",
+      "lifestyle",
+      "hospitality",
+      "retail"
+    ],
+    "sample": "banksmansion",
+    "stress": "kartstoreinternational",
+    "brief": "The homepage opens on a near-empty warm paper-white field (#F7F5F1). It holds one full-bleed featured image cropped to 21:9, the brand name set tiny in the top-left corner, and a single short headline as the only large type on the page. Products are a sparse asymmetric index: small thumbnails in fixed 4:5 frames, contained on a faint mat of color-mix(var(--c-primary) 4%, white) so mixed photo backgrounds look deliberate, floated at irregular column offsets on a 12-column grid, with name and price in 11px tracked caps beneath. The catalog is a calm three-column grid with a hairline filter bar of text-only toggles and a sort control styled as a single underlined word. Motion is slow and precise: 900ms easings, images settle from 0.96 scale, nothing bounces. --c-primary appears only on the cart count, the active filter underline and the add-to-cart button, and trust and contact sit in a narrow two-column colophon with generous leading.",
+    "type": "Display: 'Hedvig Letters Serif' 400, used at both extremes (11–13px for labels and clamp(40px, 7vw, 88px) for the one headline per section), never bold; body 'Hedvig Letters Sans' 400 at 13–15px with letterspaced caps for prices and navigation.",
+    "signature": "Shared-element morph into a detail sheet. Clicking a product thumbnail gives its image and name a view-transition-name and calls document.startViewTransition. Inside the callback the DOM swaps to an in-page detail sheet (a full-viewport overlay with the image full-bleed on the left 60% and details, quantity stepper and add-to-cart on the right), so the small thumbnail morphs continuously into the full-bleed image while everything else cross-fades. Where View Transitions are unsupported, a FLIP fallback measures the thumbnail rect, places a fixed-position clone there and tweens its transform to the target rect over 700ms with cubic-bezier(.2,.7,.1,1). The open sheet pushes history state (#p-<index>), so Escape, the close word or browser Back morphs the image back into its exact slot. Focus is trapped in the sheet and returned to the thumbnail on close. Under prefers-reduced-motion the sheet simply cross-fades.",
+    "source": "Quiet-luxury editorial commerce: vast whitespace, micro-typography, full-bleed imagery and slow cinematic motion",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T18:51:20.621Z"
+  },
+  {
+    "id": "tension-type",
+    "name": "Tension Type",
+    "sectors": [
+      "industrial",
+      "tech",
+      "b2b",
+      "retail"
+    ],
+    "sample": "droogijs365",
+    "stress": "bohlt",
+    "brief": "A stark white page with black type and --c-primary as the single electric accent. The hero is the brand name set in one line from edge to edge and fitted to exactly 100vw whatever its length, with the shop CTA and a one-line pitch tucked small underneath. Products are small precise objects: 160px square images contained with generous padding on a #EDEDED tile, in a strict 6-up row (2-up on mobile) with tiny name, price and quick-add labels, so the giant type and the small goods play off each other. Every section title is another full-width fitted word, and the trust and contact blocks use the same scale contrast. In the catalog, the category filters are words set in the variable display face at 32px whose weight swells when active, next to a minimal sort select and result count. The mood is loud but disciplined: only black, white, grey and one colour.",
+    "type": "Display: 'Roboto Flex' across its full axes (wght 100–1000, wdth 25–151, opsz, GRAD) for the fitted wordmark, section words and filter words; body 'Radio Canada Big' 400/500 at small sizes for labels, prices and text.",
+    "signature": "Proximity axes on a fitted wordmark. The hero wordmark is split into per-letter spans. On pointermove, each letter computes its distance d from the pointer, with target wght = 100 + 900·exp(−d²/2σ²) and target wdth = 60 + 70·exp(−d²/2σ²), where σ is 18% of the viewport width. Each letter's current values follow the targets with a spring (stiffness 170, damping 26) applied through font-variation-settings, so a heavy, wide bulge travels with the cursor. Once per frame, after the letters update, the line is measured with one getBoundingClientRect and the container gets transform: scaleX(100vw / width), so the word always spans the viewport exactly. After 2s of idle, a slow sine wave of weight runs across the letters. On touch devices, scroll position drives the same bulge sweeping left to right. Section words get the effect only while hovered, and in the catalog, switching filter tweens the old word to wght 100 and the new one to 900. Under prefers-reduced-motion all words sit statically at weight 700.",
+    "source": "Oversized variable-font typography that responds to the cursor, with products shown as small precise objects",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T18:51:20.621Z"
+  },
+  {
+    "id": "open-canvas",
+    "name": "Open Canvas",
+    "sectors": [
+      "retail",
+      "wholesale",
+      "lifestyle",
+      "makers"
+    ],
+    "sample": "spaansen",
+    "stress": "birthbear",
+    "brief": "The homepage hero is a full-viewport pannable field on charcoal (#161616). Products, category cards, a headline card and USP cards lie on an endlessly wrapping grid of irregular card sizes with 48px gutters, so the whole assortment is visible at a glance. A fixed bottom dock holds the shop CTA, category chips and zoom +/− controls. Below the field, a normal scrolling section (bestseller row, trust, contact) serves visitors who never drag. Product images sit contained in uniform #242424 frames with a 1px #333 hairline, and the name, price and quick-add sit outside the image, so mixed photos read as a curated wall. The catalog reuses the same canvas engine with a toggle to a conventional grid view (the default on mobile), and the filter chips and sort live in the dock. The mood is calm, dark and gallery-like, with --c-primary reserved for the dock CTA, active chips and the cart.",
+    "type": "Display: 'Hubot Sans' 800 at wdth 125 (wide) for headline cards and section titles; body 'Mona Sans' 400/500 for labels, prices and text.",
+    "signature": "Infinite momentum canvas. Tiles are absolutely positioned in a container, and the canvas state is an offset (x, y), a velocity and a scale. Pointer drag moves the offset 1:1 and estimates velocity from the last 80ms of samples; on release the velocity decays by 0.94 per frame. Each tile is drawn at ((baseX + x) mod W) − margin (and the same for y), so the field repeats seamlessly in both axes, and content is duplicated when there are fewer than about 24 items. The wheel pans. Ctrl+wheel or pinch zooms between 0.5 and 1.6 around the pointer, adjusting the offset so the point under the cursor stays fixed. A pointerup with less than 6px of travel on a product counts as a click: it tweens the offset and scale until that card is centred at 1.4×, dims the other tiles to 30%, and slides in a right-hand detail panel with add-to-cart. Choosing a category chip shrinks non-matching tiles to 0.85 at 20% opacity and glides the canvas to the nearest matching cluster. All tiles stay in DOM order and tabbable, and focusing one pans it to the centre; arrow keys pan by 120px. Without JS or under prefers-reduced-motion, the field is a plain responsive grid.",
+    "source": "Draggable infinite canvas product field with momentum, inertia and zoom-to-product",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T18:51:20.621Z"
+  },
+  {
+    "id": "afterglow-launch",
+    "name": "Afterglow Launch",
+    "sectors": [
+      "sports",
+      "tech",
+      "luxury",
+      "industrial"
+    ],
+    "sample": "nacrasailing",
+    "stress": "fredimare",
+    "brief": "The page is near-black (#07080A), lit only by soft radial glows of --c-primary at about 12% opacity. The hero centres the featured product large over a circular glow plinth, with a whisper-thin headline above and four spec figures set in mono around it. A pinned storytelling chapter follows, then a dark product grid. Each product image sits in a rounded inner light box (an inset radial gradient from #1A1C20 to #0B0C0E with a 1px hairline border), so white-backed photos read as lit displays rather than holes. The catalog is a dark grid with a mono spec line per card and a segmented filter control whose active indicator is a sliding glow, plus a sort menu and live count. Trust is shown as large thin numerals, and contact as a single glowing CTA band. The mood is cold, premium and technical.",
+    "type": "Display: 'Host Grotesk' 200 at huge sizes for headlines and 700 for big numerals; specs and labels 'Sono' with MONO=1, 400, uppercase with tracking; body 'Wix Madefor Text' 400.",
+    "signature": "Exploded image layers. The featured product image is rendered 5 times, stacked in a perspective(1400px) container, with each copy clipped to one horizontal band (clip-path: inset) so together they form the intact image. A pinned section of 300vh (GSAP ScrollTrigger, scrub 0.8) maps progress to separation: layer i translates translateZ((i−2)·120px) and translateY((i−2)·28px) and the stack rotates rotateX(−18deg). The image fans apart into floating slices, each with a --c-primary glow along its top edge. As each slice reaches full separation, a spec card from the content (USP or product fact) slides in beside it with a mono index, and a vertical progress rail with 5 ticks fills. In the last 15% the slices recombine and an add-to-cart button for that product fades in under the intact image. On mobile the scroll distance halves and the Z offsets scale by 0.5. Without JS or under prefers-reduced-motion, the image is shown whole with the spec cards as a plain list.",
+    "source": "Dark product-launch aesthetic: deep blacks, soft glows and spec typography, with scroll-driven product storytelling",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T18:51:20.621Z"
+  },
+  {
+    "id": "liquid-pane",
+    "name": "Liquid Pane",
+    "sectors": [
+      "tech",
+      "services",
+      "lifestyle",
+      "horeca"
+    ],
+    "sample": "teleqare",
+    "stress": "brinkscoffeeroasters",
+    "brief": "The whole page sits on a slowly drifting mesh gradient built from tints of --c-primary and --c-accent mixed generously with white, so any brand colour becomes an airy pastel atmosphere. All UI is frosted glass: a floating pill nav with the cart, glass product slabs with 28px radius, backdrop-filter blur(24px) saturate(1.6), a 1px white inner border and a specular highlight along the top edge. Product images sit in white rounded inset wells, which unifies mixed backgrounds. The hero holds a large glass panel with the headline and shop CTA, plus a draggable glass 'Shop' orb. The catalog has a glass filter sidebar on desktop, a draggable bottom sheet on mobile and a sticky glass add-to-cart bar. The mood is light, cool and calm, with soft depth.",
+    "type": "Display: 'Parkinsans' 600/800 for headlines and prices; body 'Afacad' 400/500 for UI labels and text.",
+    "signature": "Refracting glass orb over a reactive mesh. The background is a canvas with 5 soft colour points moving on slow Lissajous paths, rendered at 1/8 resolution and upscaled with smoothing. Colours are read from getComputedStyle at startup, with a CSS gradient as fallback. The pointer is a gravity well: points within 300px are drawn toward it by a spring, so colour pools around the cursor. The hero 'Shop' orb is draggable with pointer events. In Chromium it refracts what is behind it through backdrop-filter: url(#refract), an SVG filter that uses feImage to load a generated radial displacement map (edge normals encoded in R/G) into feDisplacementMap at scale 40, with ±2px channel offsets for slight chromatic aberration. Other browsers fall back to blur plus a scale. Dragging the orb over a product card lifts that card (scale 1.04 plus highlight). Dropping it on the card adds the product to the cart with a gooey merge: the orb squashes into the card's add button through a feGaussianBlur + feColorMatrix goo filter, then reappears at its home spot. A tap on the orb scrolls to the products. The cart is stored in localStorage. Under prefers-reduced-motion the gradient is static and the orb is a plain button.",
+    "source": "Liquid-glass UI layers floating over a brand-tinted living mesh gradient",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T18:51:20.621Z"
+  },
+  {
+    "id": "modular-shift",
+    "name": "Modular Shift",
+    "sectors": [
+      "sports",
+      "retail",
+      "wholesale",
+      "b2b"
+    ],
+    "sample": "aiki-budo",
+    "stress": "droogijs365",
+    "brief": "A cool light-grey ground (#EEF0F1) with a visible 12-column hairline grid that every element snaps to. Everything is black, grey and white except --c-primary, which marks only the live state (active filter, add button, cart count). The hero is a modular composition: the headline spans 6×3 cells, the featured product 4×4, and a stat cell and the CTA fill the rest, all with ultra-thin 1px rules. Every product tile carries a data label row (index number, short code, category, price) set in condensed mono caps, and images are contained on a white field inside the tile, so mixed photos look catalogued. The catalog leads with sort (price, name, new), category filters and a density toggle for 2, 4 or 6 columns. The mood is cold, exact and quietly technical.",
+    "type": "Display: 'Pathway Extreme' 800 at high optical size for headlines, and wdth 75 for big numerals; labels 'Inconsolata' 500 at wdth 80, uppercase with tracking; body 'Gantari' 400.",
+    "signature": "Rank-packing FLIP grid. Whenever sort, filter or density changes, tiles get spans from their new rank (rank 1 = 2×2, ranks 2–3 = 2×1, the rest 1×1) in a CSS grid with grid-auto-flow: dense, so the layout re-composes itself rather than just reordering. FLIP: record every tile's rect (First), apply the new order and span classes (Last), set the inverse transform including scaleX/scaleY for the size change (Invert), then animate to identity with WAAPI over 520ms using a spring-like cubic-bezier (Play). The image inside each tile gets the inverse scale on the same timeline, so photos never distort. Removed tiles are pinned absolutely at their old rect and fade to 0. New tiles enter from scale 0.9 and 0 opacity with a 30ms stagger, and the result count rolls like an odometer. Magnetic quick-add: within 60px of the pointer, a tile's add button eases toward the pointer by up to 8px and snaps back on leave. Under prefers-reduced-motion the layout changes instantly.",
+    "source": "Strict modular grid in monochrome with one electric accent, data-like product labels and FLIP-animated filtering",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T18:51:20.621Z"
+  },
+  {
+    "id": "curtain-rail",
+    "name": "Curtain Rail",
+    "sectors": [
+      "retail",
+      "lifestyle",
+      "travel",
+      "culture"
+    ],
+    "sample": "fredimare",
+    "stress": "nacrasailing",
+    "brief": "A warm, dark umber ground (#1B1714) with ivory type sets a cinematic mood. On desktop, the homepage is a horizontal sequence of full-viewport panels with vertical wheel input mapped to horizontal travel: a full-bleed hero with a large italic headline and shop CTA, category panels, a lookbook rail of products at 70vh height with varied widths, then trust and contact panels. On mobile it becomes a vertical stack with swipeable rails. Rail images use cover framing by default, but JS checks naturalWidth/naturalHeight and switches extreme aspect ratios to contain on a soft tinted mat, so odd photos stay intentional. Hovering an image plays a brief SVG displacement ripple (feTurbulence + feDisplacementMap, scale tweened 0 → 12 → 0). The catalog is a vertical grid with a horizontal category rail and sort, and a large '03 / 12' style counter tracks position throughout.",
+    "type": "Display: 'Ibarra Real Nova' 400 italic for headlines and 700 for numerals and counters; body 'Ysabeau Office' 400/600 for labels, prices and text.",
+    "signature": "Iris transition across pages. Same-origin link clicks (home, catalog, category and product anchors) are intercepted. The click coordinates, target URL and target title go into sessionStorage, and a fixed overlay in --c-primary grows its clip-path from circle(0 at x y) to circle(R at x y), where R is the distance to the farthest viewport corner, over 650ms. The destination title fades in at the centre in the display italic, then location.href navigates. On load, the next page reads sessionStorage, starts fully covered and shrinks the circle toward the element with the matching data-key (the clicked category or product), or toward the centre otherwise, then clears the key. pageshow with persisted skips the effect so Back stays instant. The horizontal home rail eases wheel and drag input with lerp 0.1, and the panel counter updates on snap. Without JS links work normally, and under prefers-reduced-motion navigation is plain.",
+    "source": "Horizontal lookbook rails and full-screen image sequences with masked page transitions",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T18:51:20.621Z"
+  },
+  {
+    "id": "soft-spring",
+    "name": "Soft Spring",
+    "sectors": [
+      "kids",
+      "food",
+      "lifestyle",
+      "retail"
+    ],
+    "sample": "birthbear",
+    "stress": "terpstrav2",
+    "brief": "A warm cream background with pastel blocks derived from the brand through color-mix(in oklch, var(--c-primary) 14%, white), so any colour turns into a gentle tint while the full colour stays reserved for buttons and the cart. Everything is rounded: 32px blocks, pill buttons and circular badges. The hero is a large tinted capsule with a chunky headline, the featured product in a rounded image well, and category pills floating around it on slow bobbing loops. Product cards have rounded tinted image wells (contain, centred), so mixed photos sit like objects on a plate, plus a big round '+' quick-add button. On mobile a sticky add-to-cart bar appears. The catalog has pill filters with a sliding blob indicator, a sort pill and cheerful empty states. The mood is light, warm and happily loud, without clutter.",
+    "type": "Display: 'Gabarito' 800/900 for headlines, prices and pills; body 'Kumbh Sans' 400/600 for labels and text.",
+    "signature": "Squash-and-stretch add to cart. Pressing '+' squashes the button (scaleX 1.1, scaleY 0.85) and it springs back on release. A 56px circular clone of the product image then flies to the sticky cart pill along a quadratic bezier computed from the two rects, with the control point 160px above the midpoint. It is driven in requestAnimationFrame: each frame the clone rotates to the curve's tangent angle and stretches along it by 1 + speed·k while compressing across it, preserving area. On arrival the cart pill wobbles like jelly through a damped spring on scaleX and scaleY in opposite phase, and the count rolls up vertically. Cards also respond to touch: on pointerdown a card scales to 0.97 with its transform-origin at the pointer, and releases with a little overshoot. The cart is stored in localStorage and the cart pill opens a rounded drawer. Under prefers-reduced-motion the count simply updates with a fade.",
+    "source": "Soft modern minimal: rounded geometry, pastel brand tints, playful micro-interactions and a sticky add-to-cart",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T18:51:20.621Z"
   }
 ]

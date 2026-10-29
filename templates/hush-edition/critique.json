@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 6.6,
+  "issues": [
+    "Top-left brand is invisible for Banks Mansion: the crawled logo is a white SVG with logoIsLight=false, so the header looks brandless; on the stress brand it shows a partner logo instead of the shop name",
+    "An empty black toast box sits mid-right on every page (hidden only by transform, still painted in full-page renders)",
+    "Hierarchy breaks the art direction: section, story and CTA headings are as big as the hero headline, so the hero is not the single large type moment",
+    "The sparse asymmetric index reads as missing items/empty gaps rather than a deliberate catalogue",
+    "Catalog grid is pushed right by an extra 1/12 left padding, misaligned with the headline and filter bar",
+    "Scores: creativity 7, typography 6.5, layout & rhythm 6.5, polish 6, brand-colour robustness 7.5, mobile 6.5, generic-ness 6.5"
+  ],
+  "fixed": [
+    "Brand is now the shop name set tiny in tracked caps top-left on both pages, independent of unreliable logo files",
+    "Toast is visibility:hidden until shown, removing the stray black box",
+    "Hero headline scaled up (to 120px) and all section/story/CTA headings reduced to a quiet 26–40px, so the hero is the only large type",
+    "Added leading-zero catalogue numbers (01, 02…) before every product name on home and catalog so the scattered index reads as an intentional edition index",
+    "Catalog grid realigned to the page margins for a calm, even three-column layout; catalog CTA heading quieted to match"
+  ],
+  "scoreAfterEstimate": 7.5
+}
