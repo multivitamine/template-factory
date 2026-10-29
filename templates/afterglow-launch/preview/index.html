@@ -1,0 +1,1123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nacra Sailing · Empowering sailors since 1975</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;700&family=Sono:wght,MONO@400,1&family=Wix+Madefor+Text:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --c-bg:#07080A;--c-surface:#0D0E11;--c-text:#ECEEF2;--c-muted:#8A909B;--c-line:#1C1F25;
+  --c-primary:#4F7DFF;--c-on-primary:#ffffff;--c-accent:#7CE0FF;
+  /* glow = primary nudged toward a cool grey, so near-black and navy brands still emit visible light */
+  --glow:color-mix(in srgb,var(--c-primary) 80%,#a9b2c4);
+  --hi:color-mix(in srgb,var(--c-primary) 52%,#ffffff);
+  --lb-a:#1A1C20;--lb-b:#0B0C0E;
+  --f-d:'Host Grotesk',ui-sans-serif,sans-serif;--f-m:'Sono',ui-monospace,monospace;--f-b:'Wix Madefor Text',ui-sans-serif,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);--r-sm:10px;--r-md:16px;--r-lg:24px;
+  --pad:clamp(1.1rem,4vw,3.5rem);--max:1380px;--hd:68px;
+}
+html{background:var(--c-bg);color:var(--c-text);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font:400 1rem/1.6 var(--f-b);overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(55vw 45vw at 85% -10%,color-mix(in srgb,var(--glow) 12%,transparent),transparent 70%),
+             radial-gradient(45vw 40vw at -10% 55%,color-mix(in srgb,var(--glow) 8%,transparent),transparent 70%)}
+main,footer{position:relative;z-index:1}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--c-primary);color:var(--c-on-primary)}
+:focus-visible{outline:2px solid var(--hi);outline-offset:3px}
+.mono{font-family:var(--f-m);font-variation-settings:"MONO" 1;text-transform:uppercase;letter-spacing:.14em;font-size:.7rem;font-weight:400}
+.muted{color:var(--c-muted)}
+.eyebrow{display:inline-flex;align-items:center;gap:.65rem;color:var(--c-muted);margin:0}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--hi);box-shadow:0 0 12px 1px var(--glow)}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:3rem;padding:.8rem 1.45rem;border-radius:999px;border:0;cursor:pointer;
+  font:500 .9rem/1.1 var(--f-b);text-decoration:none;white-space:nowrap;transition:transform .6s var(--ease),box-shadow .45s var(--ease),background .3s,color .3s}
+.btn-primary{background:var(--c-primary);color:var(--c-on-primary);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,#fff 20%,var(--c-primary)),0 10px 40px -12px color-mix(in srgb,var(--glow) 80%,transparent)}
+.btn-primary:hover{box-shadow:inset 0 0 0 1px color-mix(in srgb,#fff 35%,var(--c-primary)),0 14px 60px -8px var(--glow)}
+.btn-ghost{color:var(--c-text);background:rgba(255,255,255,.03);box-shadow:inset 0 0 0 1px #2a2e36}
+.btn-ghost:hover{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--glow) 55%,#2a2e36)}
+.btn svg{width:16px;height:16px;flex:none}
+.btn.is-added{background:color-mix(in srgb,var(--c-primary) 70%,#fff)}
+
+/* header */
+.hd{position:fixed;inset:0 0 auto;z-index:50;height:var(--hd);display:flex;align-items:center;gap:1.5rem;padding:0 var(--pad);
+  border-bottom:1px solid transparent;transition:background .4s,border-color .4s,backdrop-filter .4s}
+.hd.is-scrolled{background:color-mix(in srgb,var(--c-bg) 74%,transparent);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);border-color:var(--c-line)}
+.logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;min-width:0;flex:0 1 auto}
+.logo img{height:30px;width:auto;max-width:150px;object-fit:contain}
+.logo-dark img{filter:brightness(0) invert(1)}
+.logo-mark{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 .74rem/1 var(--f-d);letter-spacing:.02em;
+  background:radial-gradient(circle at 50% 25%,color-mix(in srgb,var(--glow) 50%,#17191d),#0c0d10 75%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 0 24px -6px var(--glow)}
+.logo-name{font:500 1rem/1.1 var(--f-d);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:24ch}
+.nav{display:flex;gap:.15rem;margin-inline:auto}
+.nav a{padding:.5rem .85rem;border-radius:999px;color:var(--c-muted);text-decoration:none;font-size:.9rem;transition:color .3s,background .3s}
+.nav a:hover{color:var(--c-text);background:rgba(255,255,255,.05)}
+.hd-r{display:flex;align-items:center;gap:.5rem;margin-left:auto}
+.cart-btn{position:relative;width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;color:var(--c-text);
+  background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--c-line);transition:box-shadow .4s,background .3s}
+.cart-btn:hover{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--glow) 60%,var(--c-line))}
+.cart-btn svg{width:18px;height:18px}
+.cart-n{position:absolute;top:-3px;right:-3px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;display:grid;place-items:center;
+  font:500 .64rem/1 var(--f-m);background:var(--c-primary);color:var(--c-on-primary);box-shadow:0 0 14px -2px var(--glow);transform:scale(0);transition:transform .5s var(--ease)}
+.cart-btn.has .cart-n{transform:scale(1)}
+.cart-n.bump{animation:bump .6s var(--ease)}
+@keyframes bump{0%{transform:scale(1)}35%{transform:scale(1.55)}100%{transform:scale(1)}}
+.menu{display:none;position:relative}
+.menu summary{list-style:none;width:44px;height:44px;border-radius:50%;display:grid;place-content:center;gap:5px;cursor:pointer;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--c-line)}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary span{display:block;width:16px;height:1px;background:var(--c-text);transition:transform .4s var(--ease)}
+.menu[open] summary span:first-child{transform:translateY(3px) rotate(45deg)}
+.menu[open] summary span:last-child{transform:translateY(-3px) rotate(-45deg)}
+.menu-panel{position:absolute;right:0;top:calc(100% + .6rem);width:min(78vw,280px);padding:.5rem;border-radius:var(--r-md);background:#0c0d10f2;backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px var(--c-line),0 30px 60px -20px #000}
+.menu-panel a{display:block;padding:.8rem 1rem;border-radius:var(--r-sm);text-decoration:none;font:300 1.35rem/1.1 var(--f-d)}
+.menu-panel a:hover{background:rgba(255,255,255,.05)}
+
+/* light box: every product image sits in an inset radial "display case" */
+.lightbox{position:relative;overflow:hidden;border-radius:var(--r-lg);background:radial-gradient(120% 95% at 50% 32%,var(--lb-a) 0%,var(--lb-b) 72%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),inset 0 1px 0 rgba(255,255,255,.07)}
+.lightbox::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,25%),rgba(255,255,255,.07),transparent 65%)}
+/* the photo sizes to its own box, so white-backed shots become a rounded lit panel with a glow instead of a flat hole */
+.lightbox img{position:absolute;inset:0;margin:auto;width:auto;height:auto;max-width:84%;max-height:84%;object-fit:contain;border-radius:12px;transition:transform 1s var(--ease);
+  filter:drop-shadow(0 0 1px rgba(255,255,255,.25)) drop-shadow(0 22px 28px rgba(0,0,0,.7)) drop-shadow(0 0 34px color-mix(in srgb,var(--glow) 32%,transparent))}
+.lightbox img.cover{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;border-radius:0;filter:none}
+.ph{position:absolute;inset:0;display:grid;place-items:center;font:300 clamp(2rem,6vw,5rem)/1 var(--f-d);letter-spacing:-.05em;
+  color:color-mix(in srgb,var(--hi) 55%,transparent);text-shadow:0 0 40px var(--glow)}
+
+/* hero */
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:100svh;display:flex;flex-direction:column;align-items:center;
+  padding:calc(var(--hd) + clamp(1.5rem,5vh,3.5rem)) var(--pad) clamp(2rem,5vh,3.5rem)}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.13;filter:grayscale(1) contrast(1.15);-webkit-mask-image:linear-gradient(#000 0%,transparent 80%);mask-image:linear-gradient(#000 0%,transparent 80%)}
+.hero-bg::before{content:"";position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(var(--c-line) 1px,transparent 1px),linear-gradient(90deg,var(--c-line) 1px,transparent 1px);background-size:80px 80px;background-position:center;
+  -webkit-mask-image:radial-gradient(60% 55% at 50% 55%,#000,transparent 80%);mask-image:radial-gradient(60% 55% at 50% 55%,#000,transparent 80%)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(42% 48% at 50% 62%,color-mix(in srgb,var(--glow) 14%,transparent),transparent 72%)}
+.hero h1{font:300 clamp(2.6rem,7vw,7.2rem)/.94 var(--f-d);letter-spacing:-.05em;text-align:center;margin:1rem 0 0;max-width:15ch;text-wrap:balance;overflow-wrap:break-word}
+.hero h1 .acc{color:var(--hi);text-shadow:0 0 50px color-mix(in srgb,var(--glow) 45%,transparent)}
+.hero-stage{position:relative;width:min(100%,1180px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px) minmax(0,1fr);grid-template-rows:1fr 1fr;
+  column-gap:clamp(1rem,3vw,3rem);margin-top:clamp(1.2rem,3.5vh,2.4rem)}
+.hero-product{grid-column:2;grid-row:1/3;position:relative}
+.hero-product::before{content:"";position:absolute;left:50%;top:50%;width:135%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;z-index:-1;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--glow) 15%,transparent),transparent 75%)}
+.hero-float{animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.hero-frame{aspect-ratio:16/12;width:100%;transform:perspective(1200px) rotateY(var(--rx,0deg)) rotateX(var(--ry,0deg));transition:transform 1s var(--ease)}
+.plinth{position:absolute;left:50%;bottom:-11%;width:115%;aspect-ratio:4/1;translate:-50% 0;z-index:-1;border-radius:50%;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--glow) 38%,transparent),color-mix(in srgb,var(--glow) 9%,transparent) 60%,transparent)}
+.plinth::after{content:"";position:absolute;inset:22% 12%;border-radius:50%;box-shadow:0 0 0 1px color-mix(in srgb,var(--hi) 35%,transparent),0 0 30px color-mix(in srgb,var(--glow) 40%,transparent)}
+.specs{display:contents;list-style:none}
+.spec{position:relative;align-self:center;padding:.85rem 0;border-top:1px solid var(--c-line);min-width:0}
+.spec::before{content:"";position:absolute;top:-3px;width:5px;height:5px;border-radius:50%;background:var(--hi);box-shadow:0 0 10px var(--glow)}
+.spec:nth-child(odd){grid-column:1;text-align:right}
+.spec:nth-child(odd)::before{right:0}
+.spec:nth-child(even){grid-column:3}
+.spec:nth-child(even)::before{left:0}
+.spec:nth-child(1),.spec:nth-child(2){grid-row:1}
+.spec:nth-child(3),.spec:nth-child(4){grid-row:2}
+.spec:nth-child(n+5){display:none}
+.spec b{display:block;font:400 clamp(1rem,1.7vw,1.5rem)/1.15 var(--f-m);font-variation-settings:"MONO" 1;letter-spacing:.01em;margin-bottom:.35rem;overflow-wrap:break-word}
+.spec span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--c-muted)}
+.hero-foot{width:min(100%,1180px);display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem 2.5rem;align-items:end;margin-top:clamp(2.2rem,6vh,3.6rem)}
+.hero-text{margin:0;color:var(--c-muted);font-size:.95rem;max-width:40ch;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.hero-buy{text-align:center;display:grid;justify-items:center;gap:.45rem}
+.hero-buy-name{margin:0;font:500 1.15rem/1.2 var(--f-d);max-width:28ch}
+.hero-buy .row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:.3rem}
+.hero-ctas{justify-self:end;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-end}
+.price{font:500 .95rem/1.2 var(--f-m);font-variation-settings:"MONO" 1;letter-spacing:.02em;white-space:nowrap}
+.price s{color:var(--c-muted);font-weight:400;font-size:.8em;margin-left:.45em}
+.ask{font:400 .68rem/1.2 var(--f-m);font-variation-settings:"MONO" 1;text-transform:uppercase;letter-spacing:.12em;color:var(--c-muted);white-space:normal}
+
+/* exploded view */
+.xp{position:relative;border-top:1px solid var(--c-line);background:radial-gradient(50% 60% at 40% 55%,color-mix(in srgb,var(--glow) 9%,transparent),transparent 75%)}
+.xp-pin{--w:min(100%,520px);max-width:var(--max);margin-inline:auto;padding:clamp(4rem,10vh,7rem) var(--pad);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2rem clamp(2rem,5vw,5rem);align-items:center}
+.xp-head{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem 2rem}
+.xp-head h2{margin:.7rem 0 0;font:300 clamp(2rem,4.6vw,4.4rem)/.95 var(--f-d);letter-spacing:-.045em;max-width:16ch;overflow-wrap:break-word}
+.xp-stage{perspective:1400px;display:grid;place-items:center;min-width:0}
+.xp-stack{position:relative;width:var(--w);aspect-ratio:4/3;transform-style:preserve-3d}
+.xp-layer{position:absolute;inset:0;clip-path:inset(calc(var(--i) * 20%) 0 calc((4 - var(--i)) * 20%) 0);will-change:transform}
+.xp-layer .lightbox{position:absolute;inset:0}
+.xp-edge{position:absolute;left:3%;right:3%;top:calc(var(--i) * 20%);height:1px;z-index:2;opacity:calc(.2 + var(--s,0) * .8);
+  background:linear-gradient(90deg,transparent,var(--hi) 20%,var(--hi) 80%,transparent);box-shadow:0 0 16px 2px color-mix(in srgb,var(--glow) 75%,transparent)}
+.xp-rail{display:none}
+.xp-cards{list-style:none;margin:0;padding:0;display:grid;gap:.7rem;counter-reset:xp;min-width:0}
+.xp-card{counter-increment:xp;position:relative;padding:1rem 1.15rem;border-radius:var(--r-md);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012));box-shadow:inset 0 0 0 1px var(--c-line)}
+.xp-card .idx{color:var(--hi)}
+.xp-card .idx::before{content:counter(xp,decimal-leading-zero)}
+.xp-card h3{margin:.35rem 0 .2rem;font:500 1.05rem/1.25 var(--f-d);letter-spacing:-.01em}
+.xp-card p{margin:0;color:var(--c-muted);font-size:.86rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.xp-buy{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+.xp-live .xp-pin{height:100svh;max-width:none;--w:min(36vw,540px,62svh);grid-template-columns:56px minmax(0,1.2fr) minmax(0,.8fr);grid-template-rows:auto 1fr auto;
+  padding-block:calc(var(--hd) + 1.5rem) clamp(1.2rem,4vh,2.5rem);gap:1rem clamp(2rem,4vw,4rem)}
+.xp-live .xp-stage{grid-column:2;grid-row:2;height:100%}
+.xp-live .xp-rail{display:block;grid-column:1;grid-row:2;align-self:center;position:relative;height:calc(var(--w) * .75)}
+.xp-rail::before,.xp-fill{content:"";position:absolute;left:4px;top:10%;bottom:10%;width:1px;background:var(--c-line)}
+.xp-fill{background:linear-gradient(var(--hi),var(--glow));box-shadow:0 0 10px var(--glow);transform-origin:top;transform:scaleY(0)}
+.xp-tick{position:absolute;left:0;top:calc(var(--i) * 20% + 10%);translate:0 -50%;display:flex;align-items:center;gap:.6rem;color:var(--c-muted);transition:color .4s}
+.xp-tick::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c-bg);box-shadow:inset 0 0 0 1px #3a3f48;transition:background .4s,box-shadow .4s}
+.xp-tick.on{color:var(--c-text)}
+.xp-tick.on::before{background:var(--hi);box-shadow:0 0 12px 2px var(--glow)}
+.xp-live .xp-cards{grid-column:3;grid-row:2;align-self:center;position:relative;display:block;height:calc(var(--w) * .75)}
+/* at rest the cards wait dimmed beside their slice, so the composition is never half empty */
+.xp-live .xp-card{position:absolute;left:0;right:0;top:calc(var(--i,0) * 20% + 10%);translate:0 var(--y,0px);transform:translate(32px,-50%);opacity:.28;filter:saturate(0);
+  transition:opacity .6s var(--ease),transform .9s var(--ease),box-shadow .5s}
+.xp-live .xp-card::before{content:"";position:absolute;right:100%;top:50%;width:clamp(1rem,3vw,3rem);height:1px;margin-right:.6rem;background:linear-gradient(90deg,transparent,var(--hi));opacity:.6}
+.xp-live .xp-card.on{opacity:1;filter:none;transform:translate(0,-50%);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--glow) 35%,var(--c-line)),0 20px 50px -30px var(--glow)}
+.xp-live.is-whole .xp-card.on{opacity:.5}
+.xp-live .xp-buy{grid-column:2;grid-row:3;opacity:0;pointer-events:none}
+@media (max-width:760px){
+  .xp-pin{grid-template-columns:1fr}
+  .xp-live .xp-pin{--w:min(76vw,44svh);grid-template-columns:22px minmax(0,1fr);grid-template-rows:auto auto auto auto;align-content:center;gap:1.2rem .8rem}
+  .xp-live .xp-cards{grid-column:1/-1;grid-row:3;height:7.6rem}
+  .xp-live .xp-card{top:0;translate:none;transform:translateY(14px)}
+  .xp-live .xp-card.on{transform:none}
+  .xp-live .xp-card:not(.on),.xp-live .xp-card.on:not(.cur){opacity:0}
+  .xp-live .xp-card:first-child:not(.on){opacity:.45}
+  .xp-live .xp-card::before{display:none}
+  .xp-live .xp-buy{grid-column:1/-1;grid-row:4}
+  .xp-tick span{display:none}
+}
+
+/* sections */
+.sec{padding-block:clamp(4.5rem,12vh,8rem)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1.2rem 2rem;padding-bottom:1.3rem;margin-bottom:clamp(1.6rem,4vh,2.6rem);border-bottom:1px solid var(--c-line)}
+.sec-head h2{margin:.7rem 0 0;font:300 clamp(2.2rem,5.4vw,5rem)/.95 var(--f-d);letter-spacing:-.045em;overflow-wrap:break-word}
+.link-arrow{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--c-text);padding:.6rem 0;border-bottom:1px solid var(--c-line);transition:border-color .4s,gap .4s var(--ease)}
+.link-arrow:hover{border-color:var(--hi);gap:.9rem}
+.cats{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:clamp(1.6rem,4vh,2.4rem)}
+.cat{display:inline-flex;align-items:center;gap:.7rem;padding:.35rem 1.1rem .35rem .35rem;border-radius:999px;text-decoration:none;font-size:.9rem;
+  background:rgba(255,255,255,.025);box-shadow:inset 0 0 0 1px var(--c-line);transition:box-shadow .4s,background .3s}
+.cat:hover{background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--glow) 50%,var(--c-line))}
+.cat-thumb{position:relative;width:36px;height:36px;border-radius:50%;overflow:hidden;flex:none;background:radial-gradient(circle at 50% 30%,#22252b,#0b0c0e)}
+.cat-thumb img{width:100%;height:100%;object-fit:cover}
+.cat-thumb .ph{font-size:.8rem}
+
+/* product grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:clamp(.7rem,1.5vw,1.2rem);counter-reset:card}
+.grid-home .card:nth-child(n+9){display:none}
+.card{counter-increment:card;position:relative;display:flex;flex-direction:column;min-width:0;padding:.5rem;border-radius:var(--r-lg);background:var(--c-surface);
+  box-shadow:inset 0 0 0 1px var(--c-line);transition:box-shadow .5s var(--ease),transform .7s var(--ease),opacity .9s var(--ease)}
+.card:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--glow) 40%,var(--c-line)),0 34px 70px -36px color-mix(in srgb,var(--glow) 60%,transparent)}
+.card-media{display:block;aspect-ratio:1;border-radius:calc(var(--r-lg) - .5rem)}
+.card:hover .card-media img{transform:scale(1.05)}
+.card-media::before{content:"";position:absolute;left:15%;right:15%;bottom:0;height:40%;border-radius:50%;filter:blur(18px);opacity:0;transition:opacity .6s;
+  background:color-mix(in srgb,var(--glow) 30%,transparent)}
+.card:hover .card-media::before{opacity:1}
+.tag{position:absolute;top:.7rem;left:.7rem;z-index:2;display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:999px;
+  background:rgba(7,8,10,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);font-size:.6rem;max-width:calc(100% - 1.4rem);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tag::before{content:"";flex:none;width:5px;height:5px;border-radius:50%;background:color-mix(in srgb,var(--c-accent) 60%,var(--hi));box-shadow:0 0 8px var(--glow)}
+.card-body{display:flex;flex-direction:column;gap:.45rem;flex:1;padding:1rem .55rem .45rem}
+.spec-line{display:flex;gap:.7rem;color:var(--c-muted);font-size:.62rem;margin:0;white-space:nowrap;overflow:hidden}
+.spec-line .ix::before{content:"N°" counter(card,decimal-leading-zero)}
+.spec-line .ix{color:var(--hi)}
+.card h3{margin:0;font:500 clamp(.95rem,1.15vw,1.06rem)/1.3 var(--f-d);letter-spacing:-.005em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.card h3 a{text-decoration:none}
+.card h3 a::after{content:"";position:absolute;inset:0;border-radius:inherit}
+.card-foot{margin-top:auto;padding-top:.55rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+.add{position:relative;z-index:2;flex:none;width:42px;height:42px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;color:var(--c-text);
+  background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px #2a2e36;transition:background .3s,color .3s,box-shadow .45s var(--ease),transform .5s var(--ease)}
+.add:hover{background:var(--c-primary);color:var(--c-on-primary);box-shadow:inset 0 0 0 1px var(--c-primary),0 0 28px -4px var(--glow)}
+.add:active{transform:scale(.9)}
+.add svg{width:16px;height:16px;grid-area:1/1;transition:transform .5s var(--ease),opacity .3s}
+.add .ok{opacity:0;transform:scale(.4)}
+.add.is-added{background:var(--c-primary);color:var(--c-on-primary)}
+.add.is-added .plus{opacity:0;transform:rotate(90deg) scale(.4)}
+.add.is-added .ok{opacity:1;transform:none}
+
+/* story chapter */
+.story{position:relative}
+.story-panel{position:relative;isolation:isolate;min-height:100svh;display:grid;align-items:end;padding:calc(var(--hd) + 2rem) var(--pad) clamp(2.5rem,8vh,5rem);overflow:hidden}
+.story-media{position:absolute;inset:0;z-index:-1;clip-path:inset(2.5% 2.5% round 28px);
+  background:radial-gradient(60% 70% at 70% 30%,color-mix(in srgb,var(--glow) 22%,transparent),transparent 70%),#0b0c0f}
+.story-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.05)}
+.story-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,10,.15) 0%,rgba(7,8,10,.35) 45%,rgba(7,8,10,.92) 100%),
+  radial-gradient(80% 60% at 0% 100%,color-mix(in srgb,var(--glow) 18%,transparent),transparent 70%)}
+.story-copy{max-width:min(62rem,100%)}
+.story-copy h2{margin:1rem 0 1.2rem;font:300 clamp(2.4rem,6.4vw,6.2rem)/.94 var(--f-d);letter-spacing:-.05em;text-wrap:balance;overflow-wrap:break-word}
+.story-copy p.txt{margin:0;max-width:52ch;color:#c5c9d1;font-size:clamp(.98rem,1.2vw,1.1rem)}
+.story-live{height:210vh}
+.story-live .story-panel{position:sticky;top:0;height:100svh}
+
+/* trust */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));border-top:1px solid var(--c-line)}
+.stat{padding:clamp(1.6rem,4vh,2.6rem) clamp(1rem,2vw,2rem) 0 0;border-right:1px solid var(--c-line);min-width:0}
+.stat:last-child{border-right:0}
+.stat b{display:block;font:300 clamp(3.4rem,8.4vw,8rem)/.9 var(--f-d);letter-spacing:-.065em;font-variant-numeric:tabular-nums;overflow-wrap:break-word;
+  background:linear-gradient(180deg,#fff 20%,color-mix(in srgb,var(--hi) 50%,#4b5160));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.stat span{display:block;margin-top:1rem;max-width:28ch;color:var(--c-muted)}
+
+/* usps (fallback when there is no featured product) */
+.usps .xp-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+
+/* gallery */
+.gal{display:flex;gap:clamp(.7rem,1.4vw,1.1rem);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 var(--pad) .5rem;counter-reset:g}
+.gal::-webkit-scrollbar{display:none}
+.gal figure{counter-increment:g;position:relative;flex:0 0 clamp(230px,30vw,440px);aspect-ratio:4/5;margin:0;border-radius:var(--r-lg);overflow:hidden;scroll-snap-align:start;
+  background:#0b0c0f;box-shadow:inset 0 0 0 1px var(--c-line)}
+.gal figure:nth-child(even){aspect-ratio:4/4.4;align-self:end}
+.gal img{width:100%;height:100%;object-fit:cover;filter:saturate(.75) brightness(.9);transition:filter .8s var(--ease),transform 1.2s var(--ease)}
+.gal figure:hover img{filter:none;transform:scale(1.03)}
+.gal figure::after{content:counter(g,decimal-leading-zero);position:absolute;left:.9rem;bottom:.8rem;font:400 .66rem/1 var(--f-m);letter-spacing:.14em;color:#fff;
+  padding:.35rem .55rem;border-radius:999px;background:rgba(7,8,10,.55);backdrop-filter:blur(6px)}
+
+/* quote */
+.quote blockquote{margin:0 auto;max-width:58rem;text-align:center}
+.quote p{margin:0;font:300 clamp(1.7rem,3.6vw,3.2rem)/1.12 var(--f-d);letter-spacing:-.03em;text-wrap:balance}
+.quote footer{margin-top:1.6rem;color:var(--c-muted)}
+
+/* cta band */
+.ctab-in{position:relative;overflow:hidden;isolation:isolate;text-align:center;border-radius:32px;padding:clamp(2.8rem,8vw,6.5rem) clamp(1.3rem,5vw,5rem);
+  background:radial-gradient(70% 110% at 50% 115%,color-mix(in srgb,var(--glow) 34%,transparent),transparent 70%),#0b0c0f;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--glow) 22%,var(--c-line)),0 0 140px -50px color-mix(in srgb,var(--glow) 70%,transparent)}
+.ctab-in::before{content:"";position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,var(--hi),transparent);box-shadow:0 0 20px 2px var(--glow)}
+.ctab h2{margin:1.1rem auto 1rem;max-width:18ch;font:300 clamp(2.2rem,5.6vw,5.2rem)/.95 var(--f-d);letter-spacing:-.05em;text-wrap:balance}
+.ctab p.txt{margin:0 auto;max-width:48ch;color:#b9bec8}
+.ctab .row{display:flex;justify-content:center;flex-wrap:wrap;gap:.7rem;margin-top:2.2rem}
+
+/* footer */
+.ft{border-top:1px solid var(--c-line);padding:clamp(3.5rem,9vh,6rem) 0 1.4rem;overflow:hidden;margin-top:clamp(3rem,8vh,5rem)}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:2.5rem 2rem}
+.ft h4{margin:0 0 1rem;color:var(--c-muted)}
+.ft ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.ft ul a,.ft address a{text-decoration:none;color:#c9cdd5;transition:color .3s}
+.ft ul a:hover,.ft address a:hover{color:var(--hi)}
+.ft address{font-style:normal;display:grid;gap:.55rem;color:#c9cdd5}
+.ft-tag{margin:1rem 0 0;color:var(--c-muted);max-width:30ch}
+.ft-mega{margin:clamp(3rem,8vh,5rem) 0 0;text-align:center;font:300 clamp(3rem,12.5vw,13rem)/.84 var(--f-d);letter-spacing:-.065em;overflow-wrap:anywhere;user-select:none;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--hi) 70%,#fff) 0%,color-mix(in srgb,var(--glow) 35%,transparent) 55%,transparent 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ft-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem;margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--c-line);color:var(--c-muted)}
+.ft-bottom a{text-decoration:none}
+.badge{position:fixed;left:12px;bottom:12px;z-index:60;padding:.45rem .75rem;border-radius:999px;font-size:.6rem;color:var(--c-muted);
+  background:rgba(7,8,10,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px var(--c-line);pointer-events:none}
+
+/* cart drawer + toast */
+.drawer{position:fixed;inset:0;z-index:90;pointer-events:none;overflow:hidden}
+.drawer-scrim{position:absolute;inset:0;background:rgba(3,4,5,.6);backdrop-filter:blur(4px);opacity:0;transition:opacity .5s var(--ease)}
+.drawer-panel{position:absolute;top:0;right:0;bottom:0;width:min(420px,100%);display:flex;flex-direction:column;gap:1.2rem;padding:1.4rem;
+  background:#0a0b0e;box-shadow:-1px 0 0 var(--c-line),-40px 0 120px -40px color-mix(in srgb,var(--glow) 40%,transparent);transform:translateX(100%);transition:transform .7s var(--ease)}
+.drawer.open{pointer-events:auto}
+.drawer.open .drawer-scrim{opacity:1}
+.drawer.open .drawer-panel{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between}
+.x{width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;color:var(--c-text);background:rgba(255,255,255,.05);font-size:1.2rem;line-height:1}
+.drawer-list{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;overflow:auto;flex:1;align-content:start}
+.drawer-list li{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;border-radius:var(--r-md);box-shadow:inset 0 0 0 1px var(--c-line);background:rgba(255,255,255,.02)}
+.drawer-list .nm{font:500 .95rem/1.3 var(--f-d)}
+.drawer-list button{border:0;background:none;color:var(--c-muted);cursor:pointer;font:400 .62rem/1 var(--f-m);letter-spacing:.12em;text-transform:uppercase}
+.drawer-empty{color:var(--c-muted);margin:0}
+.toast{position:fixed;right:clamp(.75rem,3vw,1.5rem);bottom:clamp(.75rem,3vw,1.5rem);z-index:95;display:flex;align-items:center;gap:.8rem;max-width:min(360px,calc(100vw - 1.5rem));
+  padding:.8rem 1rem .8rem .8rem;border-radius:var(--r-md);background:#0d0e12f2;backdrop-filter:blur(14px);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--glow) 35%,var(--c-line)),0 24px 60px -20px #000,0 0 50px -20px var(--glow);
+  opacity:0;transform:translateY(14px) scale(.98);pointer-events:none;transition:opacity .45s var(--ease),transform .6s var(--ease)}
+.toast.show{opacity:1;transform:none}
+.toast i{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--c-primary);color:var(--c-on-primary);font-style:normal;box-shadow:0 0 18px -2px var(--glow)}
+.toast .t1{display:block;color:var(--c-muted)}
+.toast .t2{display:block;font:500 .92rem/1.3 var(--f-d);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* reveal (only when JS + motion allowed) */
+.rv-on .rv:not(.in){opacity:0;transform:translateY(26px)}
+.rv{transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.mag{transition:transform .6s var(--ease),box-shadow .45s var(--ease),background .3s,color .3s}
+
+@media (max-width:980px){
+  .ft-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .nav{display:none}
+  .menu{display:block}
+  .hero-stage{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:.2rem 1rem}
+  .hero-product{grid-column:1/-1;grid-row:auto;margin-bottom:2.2rem}
+  .spec:nth-child(n){grid-column:auto;grid-row:auto;text-align:left}
+  .spec:nth-child(n)::before{left:0;right:auto}
+  .hero-foot{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .hero-ctas{justify-self:center;justify-content:center}
+  .hero-text{order:3}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card{padding:.35rem;border-radius:18px}
+  .card-media{border-radius:14px}
+  .card-body{padding:.75rem .35rem .3rem}
+  .add{width:36px;height:36px}
+  .price{font-size:.82rem}
+  .ft-grid{grid-template-columns:1fr}
+  .logo-name{max-width:14ch}
+  .spec b{font-size:1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+<style id="brand-tokens">:root{--c-primary:#FF8652;--c-on-primary:#ffffff;--c-accent:#333333}</style></head>
+<body id="top">
+
+<header class="hd">
+  <a class="logo logo-dark" href="#top" aria-label="Nacra Sailing">
+    
+    <span class="logo-mark">NS</span><span class="logo-name">Nacra Sailing</span>
+  </a>
+  <nav class="nav" aria-label="Main"><a href="catalog.html">Store</a><a href="#">Leisure</a><a href="#">Racing</a><a href="#">Olympic</a><a href="#">Contact</a></nav>
+  <div class="hd-r">
+    <button class="cart-btn" type="button" data-cart-open aria-label="Cart" data-t-aria="cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span class="cart-n" data-cart-n>0</span>
+    </button>
+    <details class="menu">
+      <summary aria-label="Menu"><span></span><span></span></summary>
+      <div class="menu-panel"><a href="catalog.html">Store</a><a href="#">Leisure</a><a href="#">Racing</a><a href="#">Olympic</a><a href="#">Contact</a></div>
+    </details>
+  </div>
+</header>
+
+<main>
+  <!-- HERO: featured product on a glow plinth -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacramoretonisland-7408937_1000.jpg?cropX&#x3D;0&amp;cropY&#x3D;142&amp;cropW&#x3D;2000&amp;cropH&#x3D;1191&amp;quality&#x3D;90&amp;width&#x3D;1920" alt=""></div>
+    <p class="eyebrow mono" data-intro>Out now</p>
+    <h1 data-intro>The New Nacra <span class="acc">450 MK²</span></h1>
+
+    <div class="hero-stage">
+      <div class="hero-product">
+        <div class="plinth" aria-hidden="true"></div>
+        <div class="hero-float">
+          <div class="hero-frame lightbox" data-tilt>
+              <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-inter-20-mk2-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra Inter 20 MK²" fetchpriority="high">
+              
+          </div>
+        </div>
+      </div>
+      <ul class="specs">
+        <li class="spec" data-intro><b>1975</b><span class="mono">Building catamarans since</span></li><li class="spec" data-intro><b>27</b><span class="mono">Price regions: 26 EU countries plus Outside EU</span></li>
+        <li class="spec" data-intro><b>Since 1975</b><span class="mono">Nearly five decades of catamaran building, from beach cats to racing machines.</span></li><li class="spec" data-intro><b>Olympic pedigree</b><span class="mono">The Nacra 17 is the Olympic mixed multihull class, so you sail what the best sail.</span></li><li class="spec" data-intro><b>Hand-crafted sails</b><span class="mono">Designed and made by Performance Sails, Nacra&#39;s own sail loft.</span></li><li class="spec" data-intro><b>Everything for your boat</b><span class="mono">Parts, rigging, hardware, covers and more, available straight from the webshop.</span></li>
+      </ul>
+    </div>
+
+    <div class="hero-foot">
+      <p class="hero-text" data-intro>Easy handling, ultimate cruising. Meet the latest addition to the Nacra Leisure range, built for any adventure and every sailor.</p>
+      <div class="hero-buy" data-intro>
+        <p class="mono muted" style="margin:0">New · <span data-t="featured">Featured</span></p>
+        <p class="hero-buy-name">Nacra Inter 20 MK²</p>
+        <div class="row">
+          <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+          <button class="btn btn-primary mag" type="button" data-add data-name="Nacra Inter 20 MK²" data-price="">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg><span data-t="add">Add to cart</span>
+          </button>
+        </div>
+      </div>
+      <div class="hero-ctas" data-intro>
+        <a class="btn btn-ghost mag" href="catalog.html">Shop the store</a>
+        <a class="btn btn-ghost mag" href="#discover">Discover the 450 MK²</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNATURE: exploded image layers -->
+  <section class="xp" id="discover">
+    <div class="xp-pin">
+      <div class="xp-head">
+        <div>
+          <p class="eyebrow mono"><span data-t="xp">Exploded view</span>&nbsp;· New</p>
+          <h2>Nacra Inter 20 MK²</h2>
+        </div>
+        <p class="mono muted" style="margin:0">Nacra Sailing</p>
+      </div>
+
+      <div class="xp-rail" aria-hidden="true">
+        <i class="xp-fill"></i>
+        <span class="xp-tick mono" style="--i:0"><span>01</span></span>
+        <span class="xp-tick mono" style="--i:1"><span>02</span></span>
+        <span class="xp-tick mono" style="--i:2"><span>03</span></span>
+        <span class="xp-tick mono" style="--i:3"><span>04</span></span>
+        <span class="xp-tick mono" style="--i:4"><span>05</span></span>
+      </div>
+
+      <div class="xp-stage">
+        <div class="xp-stack">
+          <div class="xp-layer" style="--i:0"><div class="lightbox"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-inter-20-mk2-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra Inter 20 MK²" loading="lazy"></div><i class="xp-edge"></i></div>
+          <div class="xp-layer" style="--i:1" aria-hidden="true"><div class="lightbox"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-inter-20-mk2-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="" loading="lazy"></div><i class="xp-edge"></i></div>
+          <div class="xp-layer" style="--i:2" aria-hidden="true"><div class="lightbox"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-inter-20-mk2-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="" loading="lazy"></div><i class="xp-edge"></i></div>
+          <div class="xp-layer" style="--i:3" aria-hidden="true"><div class="lightbox"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-inter-20-mk2-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="" loading="lazy"></div><i class="xp-edge"></i></div>
+          <div class="xp-layer" style="--i:4" aria-hidden="true"><div class="lightbox"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-inter-20-mk2-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="" loading="lazy"></div><i class="xp-edge"></i></div>
+        </div>
+      </div>
+
+      <ol class="xp-cards">
+        <li class="xp-card"><span class="idx mono"></span><h3>Since 1975</h3><p>Nearly five decades of catamaran building, from beach cats to racing machines.</p></li><li class="xp-card"><span class="idx mono"></span><h3>Olympic pedigree</h3><p>The Nacra 17 is the Olympic mixed multihull class, so you sail what the best sail.</p></li><li class="xp-card"><span class="idx mono"></span><h3>Hand-crafted sails</h3><p>Designed and made by Performance Sails, Nacra&#39;s own sail loft.</p></li><li class="xp-card"><span class="idx mono"></span><h3>Everything for your boat</h3><p>Parts, rigging, hardware, covers and more, available straight from the webshop.</p></li>
+        <li class="xp-card"><span class="idx mono"></span><h3>Nacra Inter 20 MK²</h3><p class="price"><span class="ask" data-t="ask">Price on request</span></p></li>
+      </ol>
+
+      <div class="xp-buy">
+        <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+        <button class="btn btn-primary mag" type="button" data-add data-name="Nacra Inter 20 MK²" data-price="">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg><span data-t="add">Add to cart</span>
+        </button>
+        <a class="btn btn-ghost" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-inter-20-mk2" aria-label="Nacra Inter 20 MK²">→</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINEUP -->
+  <section class="sec" id="lineup">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="eyebrow mono">Empowering sailors since 1975</p>
+          <h2>Nacra Webshop</h2>
+        </div>
+        <a class="link-arrow mono" href="catalog.html"><span data-t="viewall">View all</span> <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="cats rv">
+        <a class="cat" href="catalog.html"><span class="cat-thumb"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;boats.jpg?width&#x3D;150" alt="" loading="lazy"></span>Boats</a><a class="cat" href="catalog.html"><span class="cat-thumb"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;sails.jpg?width&#x3D;150" alt="" loading="lazy"></span>Sails</a><a class="cat" href="catalog.html"><span class="cat-thumb"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;spars-and-rigging.jpg?width&#x3D;150" alt="" loading="lazy"></span>Spars</a><a class="cat" href="catalog.html"><span class="cat-thumb"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;f16.jpg?width&#x3D;150" alt="" loading="lazy"></span>Rigging</a><a class="cat" href="catalog.html"><span class="cat-thumb"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;hardware-1.jpg?width&#x3D;150" alt="" loading="lazy"></span>Hardware</a><a class="cat" href="catalog.html"><span class="cat-thumb"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;content&#x2F;categories&#x2F;used-boats-1.jpg?width&#x3D;150" alt="" loading="lazy"></span>Used &amp; Demo</a>
+      </div>
+      <div class="grid grid-home">
+        <article data-shop-item="0" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-inter-20-mk2" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-inter-20-mk2-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra Inter 20 MK²" loading="lazy">
+            <span class="tag mono">New</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-inter-20-mk2">Nacra Inter 20 MK²</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra Inter 20 MK²" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article><article data-shop-item="1" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-450-mk2" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;450-mk2-render-xs.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 450 MK²" loading="lazy">
+            <span class="tag mono">New</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-450-mk2">Nacra 450 MK²</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra 450 MK²" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article><article data-shop-item="2" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-500-mk2" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-500-mk2-school-render-v3.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 500 MK² School" loading="lazy">
+            <span class="tag mono">Leisure</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-500-mk2">Nacra 500 MK² School</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra 500 MK² School" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article><article data-shop-item="3" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-500-mk2" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;n500-mk2-sport.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 500 MK² Sport" loading="lazy">
+            <span class="tag mono">Leisure</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-500-mk2">Nacra 500 MK² Sport</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra 500 MK² Sport" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article><article data-shop-item="4" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-570-mk2" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-570-mk2-school-render.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 570 MK² School" loading="lazy">
+            <span class="tag mono">Leisure</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-570-mk2">Nacra 570 MK² School</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra 570 MK² School" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article><article data-shop-item="5" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-570-mk2" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;n570-mk2-sport.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 570 MK² Sport" loading="lazy">
+            <span class="tag mono">Leisure</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-leisure&#x2F;nacra-570-mk2">Nacra 570 MK² Sport</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra 570 MK² Sport" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article><article data-shop-item="6" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-15" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-15-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 15" loading="lazy">
+            <span class="tag mono">Racing</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-15">Nacra 15</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra 15" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article><article data-shop-item="7" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-f16" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;f16.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra F16" loading="lazy">
+            <span class="tag mono">Racing</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-f16">Nacra F16</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra F16" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article><article data-shop-item="8" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-olympic&#x2F;nacra-17" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra-17-render-small.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra 17" loading="lazy">
+            <span class="tag mono">Olympic</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-olympic&#x2F;nacra-17">Nacra 17</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra 17" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article><article data-shop-item="9" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-f18-evolution" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;f18-evo.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra F18 Evolution" loading="lazy">
+            <span class="tag mono">Racing</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-f18-evolution">Nacra F18 Evolution</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra F18 Evolution" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article><article data-shop-item="10" class="card rv">
+          <a class="card-media lightbox" href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-f20-carbon" tabindex="-1" aria-hidden="true">
+            <img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;f20.png?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;225" alt="Nacra F20 Carbon" loading="lazy">
+            <span class="tag mono">Racing</span>
+          </a>
+          <div class="card-body">
+            <p class="spec-line mono"><span class="ix"></span></p>
+            <h3><a href="https:&#x2F;&#x2F;nacrasailing.com&#x2F;nacra-racing&#x2F;nacra-f20-carbon">Nacra F20 Carbon</a></h3>
+            <div class="card-foot">
+              <span class="price"><span class="ask" data-t="ask">Price on request</span></span>
+              <button class="add" type="button" data-add data-name="Nacra F20 Carbon" data-price="" aria-label="Add to cart" data-t-aria="add">
+                <svg class="plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                <svg class="ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 8.5 3 3 6-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY: pinned chapter -->
+  <section class="story" id="story">
+    <div class="story-panel">
+      <div class="story-media"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;240804_paris24_sb4_7999.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1200" alt="" loading="lazy"></div>
+      <div class="story-copy">
+        <p class="eyebrow mono">Our story</p>
+        <h2>Built in The Hague, sailed worldwide</h2>
+        <p class="txt">Since 1975 Nacra has built catamarans for every kind of sailor, from relaxed cruising to Olympic racing. Our home is Scheveningen, The Hague, and our boats, sails and parts reach sailors everywhere through the webshop and our dealer network.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="eyebrow mono rv" style="margin-bottom:1.6rem">Nacra Sailing</p>
+      <div class="stats"><div class="stat rv"><b>1975</b><span class="mono">Building catamarans since</span></div><div class="stat rv"><b>27</b><span class="mono">Price regions: 26 EU countries plus Outside EU</span></div></div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0" aria-label="Gallery">
+    <div class="gal"><figure class="rv"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacra_inter20_laurensmorel_l6a_7043_optimized_1000.jpg?cropX&#x3D;0&amp;cropY&#x3D;364&amp;cropW&#x3D;2264&amp;cropH&#x3D;1142&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></figure><figure class="rv"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;nacramoretonisland-7409028_1000.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></figure><figure class="rv"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;54109528256_59b44a4f8f_o.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0&amp;quality&#x3D;90&amp;width&#x3D;1920" alt="" loading="lazy"></figure><figure class="rv"><img src="https:&#x2F;&#x2F;nacrasailing.com&#x2F;media&#x2F;10-low-res-vertical.png?cropX&#x3D;0&amp;cropY&#x3D;222&amp;cropW&#x3D;960&amp;cropH&#x3D;873&amp;quality&#x3D;90&amp;width&#x3D;960" alt="" loading="lazy"></figure></div>
+  </section>
+
+
+  <section class="ctab">
+    <div class="wrap">
+      <div class="ctab-in rv">
+        <p class="eyebrow mono">Nacra Sailing</p>
+        <h2>Find your Nacra, from relaxation to racing</h2>
+        <p class="txt">Browse boats, sails and parts in the webshop, or locate your nearest Nacra partner.</p>
+        <div class="row">
+          <a class="btn btn-primary mag" href="catalog.html">Visit the store <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost mag" href="tel:+31 (0) 70 338 2900">+31 (0) 70 338 2900</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ft" id="contact">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <a class="logo logo-dark" href="#top" aria-label="Nacra Sailing">
+          
+          <span class="logo-mark">NS</span><span class="logo-name">Nacra Sailing</span>
+        </a>
+        <p class="ft-tag">Empowering sailors since 1975</p>
+      </div>
+      <div><h4 class="mono" data-t="explore">Explore</h4><ul><li><a href="catalog.html">Store</a></li><li><a href="#">Leisure</a></li><li><a href="#">Racing</a></li><li><a href="#">Olympic</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><h4 class="mono" data-t="links">Info</h4><ul><li><a href="#">Our Story</a></li><li><a href="#">Nacra Partners locator</a></li><li><a href="#">Contact</a></li><li><a href="#">General Terms</a></li><li><a href="#">Terms &amp; Conditions Charters</a></li><li><a href="#">Privacy &amp; Cookie-Policy</a></li></ul></div>
+      <div><h4 class="mono" data-t="contact">Contact</h4>
+        <address>
+          <span>Hellingweg 108-116, 2583 DX, The Hague (The Netherlands)</span>
+          <a href="tel:+31 (0) 70 338 2900">+31 (0) 70 338 2900</a>
+          
+        </address>
+      </div>
+    </div>
+    <p class="ft-mega" aria-hidden="true">Nacra Sailing</p>
+    <div class="ft-bottom mono"><span>© 2026 Nacra Sailing</span><a href="#top"><span data-t="top">Back to top</span> ↑</a></div>
+  </div>
+</footer>
+
+<div class="badge mono">Demo redesign · Afterglow Launch</div>
+
+<div class="drawer" data-drawer aria-hidden="true">
+  <div class="drawer-scrim" data-cart-close></div>
+  <aside class="drawer-panel" role="dialog" aria-label="Cart">
+    <div class="drawer-head"><p class="mono" style="margin:0"><span data-t="cart">Cart</span> (<span data-cart-n>0</span>)</p><button class="x" type="button" data-cart-close aria-label="Close">×</button></div>
+    <ul class="drawer-list" data-cart-list></ul>
+    <p class="drawer-empty" data-cart-empty data-t="empty">Your cart is empty.</p>
+    <a class="btn btn-primary" href="#contact" data-cart-close data-t="checkout">Continue</a>
+  </aside>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const d = document, root = d.documentElement;
+  root.classList.add("js");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(pointer: fine)").matches;
+  const gsap = window.gsap, ST = window.ScrollTrigger;
+
+  // UI labels follow the content language
+  const T = {
+    en: { add: "Add to cart", added: "Added to cart", ask: "Price on request", all: "All", sort: "Sort", s0: "Featured", s1: "Price low–high", s2: "Price high–low", s3: "Name A–Z", search: "Search products", cart: "Cart", empty: "Your cart is empty.", checkout: "Continue", viewall: "View all", featured: "Featured", xp: "Exploded view", top: "Back to top", remove: "Remove", contact: "Contact", explore: "Explore", links: "Info", lineup: "The lineup" },
+    nl: { add: "In winkelwagen", added: "Toegevoegd aan winkelwagen", ask: "Prijs op aanvraag", all: "Alle", sort: "Sorteer", s0: "Uitgelicht", s1: "Prijs laag–hoog", s2: "Prijs hoog–laag", s3: "Naam A–Z", search: "Zoek producten", cart: "Winkelwagen", empty: "Je winkelwagen is leeg.", checkout: "Verder", viewall: "Bekijk alles", featured: "Uitgelicht", xp: "Exploded view", top: "Naar boven", remove: "Verwijder", contact: "Contact", explore: "Ontdek", links: "Info", lineup: "De collectie" },
+    de: { add: "In den Warenkorb", added: "Zum Warenkorb hinzugefügt", ask: "Preis auf Anfrage", all: "Alle", sort: "Sortieren", s0: "Empfohlen", s1: "Preis aufsteigend", s2: "Preis absteigend", s3: "Name A–Z", search: "Produkte suchen", cart: "Warenkorb", empty: "Dein Warenkorb ist leer.", checkout: "Weiter", viewall: "Alle ansehen", featured: "Empfohlen", xp: "Explosionsansicht", top: "Nach oben", remove: "Entfernen", contact: "Kontakt", explore: "Entdecken", links: "Info", lineup: "Die Kollektion" },
+    fr: { add: "Ajouter au panier", added: "Ajouté au panier", ask: "Prix sur demande", all: "Tous", sort: "Trier", s0: "En vedette", s1: "Prix croissant", s2: "Prix décroissant", s3: "Nom A–Z", search: "Rechercher", cart: "Panier", empty: "Votre panier est vide.", checkout: "Continuer", viewall: "Tout voir", featured: "En vedette", xp: "Vue éclatée", top: "Haut de page", remove: "Retirer", contact: "Contact", explore: "Explorer", links: "Infos", lineup: "La collection" },
+  };
+  const t = T[(root.lang || "nl").slice(0, 2).toLowerCase()] || T.en;
+  d.querySelectorAll("[data-t]").forEach((el) => { if (t[el.dataset.t]) el.textContent = t[el.dataset.t]; });
+  d.querySelectorAll("[data-t-aria]").forEach((el) => { if (t[el.dataset.tAria]) el.setAttribute("aria-label", t[el.dataset.tAria]); });
+  d.querySelectorAll("[data-t-ph]").forEach((el) => { if (t[el.dataset.tPh]) { el.placeholder = t[el.dataset.tPh]; el.setAttribute("aria-label", t[el.dataset.tPh]); } });
+
+  // header glass once scrolled
+  const hd = d.querySelector(".hd");
+  const onScroll = () => hd.classList.toggle("is-scrolled", scrollY > 24);
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  d.querySelectorAll(".menu-panel a").forEach((a) => a.addEventListener("click", () => a.closest("details").open = false));
+
+  // cart: count bump, toast and a small drawer; survives the hop to catalog.html
+  const KEY = "afterglow-cart";
+  let cart = []; try { cart = JSON.parse(sessionStorage.getItem(KEY)) || []; } catch {}
+  const drawer = d.querySelector("[data-drawer]"), list = d.querySelector("[data-cart-list]"), emptyEl = d.querySelector("[data-cart-empty]");
+  const toast = d.createElement("div"); toast.className = "toast"; toast.setAttribute("role", "status"); d.body.append(toast);
+  let toastTimer;
+  function renderCart(bump) {
+    d.querySelectorAll("[data-cart-n]").forEach((n) => {
+      n.textContent = cart.length;
+      const btn = n.closest(".cart-btn");
+      if (btn) btn.classList.toggle("has", cart.length > 0);
+      if (bump && btn) { n.classList.remove("bump"); void n.offsetWidth; n.classList.add("bump"); }
+    });
+    list.replaceChildren(...cart.map((it, i) => {
+      const li = d.createElement("li"), nm = d.createElement("span"), right = d.createElement("span"), rm = d.createElement("button");
+      nm.className = "nm"; nm.textContent = it.name;
+      right.className = "price"; right.textContent = it.price || "";
+      rm.type = "button"; rm.textContent = t.remove; rm.dataset.rm = i;
+      const col = d.createElement("div"); col.append(nm, d.createElement("br"), right);
+      li.append(col, rm); return li;
+    }));
+    emptyEl.hidden = cart.length > 0;
+    try { sessionStorage.setItem(KEY, JSON.stringify(cart)); } catch {}
+  }
+  function showToast(name) {
+    toast.replaceChildren();
+    const i = d.createElement("i"); i.textContent = "✓";
+    const box = d.createElement("div"), a = d.createElement("span"), b = d.createElement("span");
+    a.className = "t1 mono"; a.textContent = t.added; b.className = "t2"; b.textContent = name;
+    box.append(a, b); toast.append(i, box);
+    toast.classList.add("show"); clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+  }
+  const openDrawer = (on) => { drawer.classList.toggle("open", on); drawer.setAttribute("aria-hidden", String(!on)); };
+  d.addEventListener("click", (e) => {
+    const add = e.target.closest("[data-add]");
+    if (add) {
+      e.preventDefault();
+      cart.push({ name: add.dataset.name || "", price: add.dataset.price || "" });
+      renderCart(true); showToast(add.dataset.name || "");
+      add.classList.add("is-added"); setTimeout(() => add.classList.remove("is-added"), 1400);
+      return;
+    }
+    const rm = e.target.closest("[data-rm]");
+    if (rm) { cart.splice(Number(rm.dataset.rm), 1); renderCart(true); return; }
+    if (e.target.closest("[data-cart-open]")) { openDrawer(true); return; }
+    if (e.target.closest("[data-cart-close]")) openDrawer(false);
+  });
+  addEventListener("keydown", (e) => { if (e.key === "Escape") openDrawer(false); });
+  renderCart(false);
+
+  // cursor-aware touches
+  if (fine && !reduce) {
+    d.addEventListener("pointermove", (e) => {
+      const lb = e.target.closest && e.target.closest(".lightbox");
+      if (!lb) return;
+      const r = lb.getBoundingClientRect();
+      lb.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100).toFixed(1) + "%");
+      lb.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100).toFixed(1) + "%");
+    }, { passive: true });
+    d.querySelectorAll(".mag").forEach((el) => {
+      el.addEventListener("pointermove", (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.transform = `translate(${((e.clientX - r.left - r.width / 2) * .22).toFixed(1)}px,${((e.clientY - r.top - r.height / 2) * .32).toFixed(1)}px)`;
+      });
+      el.addEventListener("pointerleave", () => { el.style.transform = ""; });
+    });
+    const tilt = d.querySelector("[data-tilt]"), hero = d.querySelector(".hero");
+    if (tilt && hero) {
+      hero.addEventListener("pointermove", (e) => {
+        tilt.style.setProperty("--rx", ((e.clientX / innerWidth - .5) * 9).toFixed(2) + "deg");
+        tilt.style.setProperty("--ry", ((e.clientY / innerHeight - .5) * -7).toFixed(2) + "deg");
+      });
+      hero.addEventListener("pointerleave", () => { tilt.style.setProperty("--rx", "0deg"); tilt.style.setProperty("--ry", "0deg"); });
+    }
+  }
+
+  // scroll reveals
+  if (!reduce && "IntersectionObserver" in window) {
+    root.classList.add("rv-on");
+    const io = new IntersectionObserver((es) => es.forEach((en) => {
+      if (!en.isIntersecting) return;
+      en.target.style.transitionDelay = (en.target.dataset.delay || 0) + "ms";
+      en.target.classList.add("in"); io.unobserve(en.target);
+      setTimeout(() => { en.target.style.transitionDelay = ""; }, 1200);
+    }), { rootMargin: "0px 0px -6% 0px" });
+    d.querySelectorAll(".rv").forEach((el) => {
+      const sibs = [...el.parentElement.children].filter((c) => c.classList.contains("rv"));
+      el.dataset.delay = Math.min(sibs.indexOf(el) % 4, 3) * 80;
+      io.observe(el);
+    });
+  }
+
+  // catalog: sliding glow on the segmented filter (the shop script owns the filtering itself)
+  const seg = d.querySelector(".seg");
+  if (seg) {
+    const glow = seg.querySelector(".seg-glow");
+    const place = () => {
+      const on = seg.querySelector('.seg-btn[aria-pressed="true"]') || seg.querySelector(".seg-btn");
+      if (!on) return;
+      glow.style.width = on.offsetWidth + "px";
+      glow.style.transform = `translateX(${on.offsetLeft}px)`;
+    };
+    seg.classList.add("has-glow");
+    new MutationObserver(place).observe(seg, { subtree: true, attributes: true, attributeFilter: ["aria-pressed"] });
+    addEventListener("resize", place); d.fonts && d.fonts.ready.then(place); place();
+  }
+
+  // catalog: sort by reordering cards (never hides anything, so it composes with the shop filter) + FLIP motion
+  const grid = d.querySelector("[data-grid]");
+  if (grid) {
+    const cards = [...grid.children].filter((c) => c.classList.contains("card"));
+    const original = cards.slice();
+    let rects = new Map();
+    const snap = () => { rects = new Map(cards.map((c) => { const r = c.getBoundingClientRect(); return [c, { x: r.left + scrollX, y: r.top + scrollY, w: r.width }]; })); };
+    const flip = () => {
+      if (!reduce) cards.forEach((c) => {
+        if (c.style.display === "none") return;
+        const r = c.getBoundingClientRect(), o = rects.get(c);
+        if (!o || !o.w) { c.animate([{ opacity: 0, transform: "translateY(18px) scale(.97)" }, { opacity: 1, transform: "none" }], { duration: 650, easing: "cubic-bezier(.16,1,.3,1)" }); return; }
+        const dx = o.x - (r.left + scrollX), dy = o.y - (r.top + scrollY);
+        if (Math.abs(dx) + Math.abs(dy) < 1) return;
+        c.animate([{ transform: `translate(${dx}px,${dy}px)` }, { transform: "none" }], { duration: 700, easing: "cubic-bezier(.16,1,.3,1)" });
+      });
+      snap();
+    };
+    let pending = false;
+    const mo = new MutationObserver(() => { if (pending) return; pending = true; requestAnimationFrame(() => { pending = false; flip(); }); });
+    cards.forEach((c) => mo.observe(c, { attributes: true, attributeFilter: ["style"] }));
+    const num = (c) => {
+      let s = ((c.querySelector("[data-price]") || {}).dataset || {}).price || "";
+      s = s.replace(/[^\d,.]/g, "");
+      if (!s) return null;
+      s = /,\d{1,2}$/.test(s) ? s.replace(/\./g, "").replace(",", ".") : s.replace(/,/g, "");
+      const v = parseFloat(s); return isNaN(v) ? null : v;
+    };
+    const sel = d.querySelector("[data-sort]");
+    if (sel) sel.addEventListener("change", () => {
+      snap();
+      const m = sel.value;
+      let order = original.slice();
+      if (m === "asc" || m === "desc") order.sort((a, b) => {
+        const x = num(a), y = num(b);
+        if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1;
+        return m === "asc" ? x - y : y - x;
+      });
+      if (m === "name") order.sort((a, b) => a.querySelector("h3").textContent.trim().localeCompare(b.querySelector("h3").textContent.trim()));
+      const tail = grid.querySelector(".shop-empty");
+      order.forEach((c) => grid.insertBefore(c, tail && tail.parentElement === grid ? tail : null));
+      flip();
+    });
+    addEventListener("load", snap); addEventListener("resize", snap); snap();
+  }
+
+  if (!gsap || reduce) return;
+
+  // hero entrance (from visible: only runs when GSAP is here)
+  gsap.from("[data-intro]", { y: 26, opacity: 0, duration: 1.3, ease: "expo.out", stagger: .07, delay: .05, clearProps: "transform,opacity" });
+  gsap.from(".hero-product", { scale: .9, opacity: 0, duration: 1.8, ease: "expo.out", delay: .15, clearProps: "transform,opacity" });
+  gsap.from(".plinth", { scaleX: .3, opacity: 0, duration: 2, ease: "expo.out", delay: .25, clearProps: "transform,opacity" });
+
+  if (!ST) return;
+  gsap.registerPlugin(ST);
+
+  // SIGNATURE: exploded image layers
+  const xp = d.querySelector(".xp");
+  if (xp) {
+    xp.classList.add("xp-live");
+    const stack = xp.querySelector(".xp-stack"), layers = [...xp.querySelectorAll(".xp-layer")];
+    const cards = [...xp.querySelectorAll(".xp-card")].slice(0, 5);
+    xp.querySelectorAll(".xp-card").forEach((c, i) => { if (i > 4) c.style.display = "none"; c.style.setProperty("--i", i); });
+    const ticks = [...xp.querySelectorAll(".xp-tick")], fill = xp.querySelector(".xp-fill"), buy = xp.querySelector(".xp-buy");
+    const mq = matchMedia("(max-width: 760px)");
+    const cl = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+    const ease = (v) => 1 - Math.pow(1 - v, 3);
+    const START = .04, STEP = .13, SPAN = .2; // slice i is fully apart at START + i*STEP + SPAN (.24 … .76)
+    const sepOf = (p, i, back) => ease(Math.min(cl((p - START - i * STEP) / SPAN), back));
+    const draw = (p) => {
+      const k = mq.matches ? .5 : 1, back = cl((1 - p) / .15);
+      stack.style.transform = `rotateX(${(-18 * ease(Math.min(cl(p / .12), back))).toFixed(2)}deg)`;
+      layers.forEach((l, i) => {
+        const s = sepOf(p, i, back), o = i - 2;
+        l.style.transform = `translate3d(0,${(o * 28 * s).toFixed(1)}px,${(o * 120 * k * s).toFixed(1)}px)`;
+        l.style.setProperty("--s", s.toFixed(3));
+      });
+      let cur = -1;
+      cards.forEach((c, i) => {
+        const on = p >= START + i * STEP + SPAN * .9;
+        c.classList.toggle("on", on); if (on) cur = i;
+        c.style.setProperty("--y", ((i - 2) * 28 * sepOf(p, i, back)).toFixed(1) + "px");
+      });
+      cards.forEach((c, i) => c.classList.toggle("cur", i === cur));
+      ticks.forEach((tk, i) => tk.classList.toggle("on", p >= START + i * STEP + SPAN * .9));
+      fill.style.transform = `scaleY(${cl(p / .85).toFixed(3)})`;
+      const b = cl((p - .86) / .1);
+      buy.style.opacity = b.toFixed(3); buy.style.transform = `translateY(${((1 - b) * 16).toFixed(1)}px)`;
+      buy.style.pointerEvents = b > .5 ? "auto" : "none";
+      xp.classList.toggle("is-whole", p > .86);
+    };
+    const st = { p: 0 };
+    gsap.to(st, {
+      p: 1, ease: "none", onUpdate: () => draw(st.p),
+      scrollTrigger: { trigger: xp, start: "top top", end: () => "+=" + Math.round(innerHeight * (mq.matches ? 1.5 : 3)), pin: true, scrub: .8, invalidateOnRefresh: true },
+    });
+    draw(0);
+  }
+
+  // story chapter: the image opens up from a lit card to full bleed while the panel is pinned
+  const story = d.querySelector(".story");
+  if (story) {
+    story.classList.add("story-live");
+    const media = story.querySelector(".story-media"), img = media.querySelector("img");
+    const tl = gsap.timeline({ scrollTrigger: { trigger: story, start: "top top", end: "bottom bottom", scrub: .8 } });
+    tl.fromTo(media, { clipPath: "inset(14% 16% 14% 16% round 28px)" }, { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "power2.inOut" }, 0);
+    if (img) tl.fromTo(img, { scale: 1.18 }, { scale: 1, ease: "power2.out" }, 0);
+    tl.from(story.querySelectorAll(".story-copy > *"), { y: 40, stagger: .08, ease: "power2.out", duration: .5 }, .15);
+  }
+
+  addEventListener("load", () => ST.refresh());
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"en","count":"13 categories","products":[{"name":"Nacra Inter 20 MK²","tag":"New","category":"Leisure"},{"name":"Nacra 450 MK²","tag":"New","category":"Racing"},{"name":"Nacra 500 MK² School","tag":"Leisure","category":"Leisure"},{"name":"Nacra 500 MK² Sport","tag":"Leisure","category":"Leisure"},{"name":"Nacra 570 MK² School","tag":"Leisure","category":"Leisure"},{"name":"Nacra 570 MK² Sport","tag":"Leisure","category":"Leisure"},{"name":"Nacra 15","tag":"Racing","category":"Racing"},{"name":"Nacra F16","tag":"Racing","category":"Racing"},{"name":"Nacra 17","tag":"Olympic","category":"Olympic"},{"name":"Nacra F18 Evolution","tag":"Racing","category":"Racing"},{"name":"Nacra F20 Carbon","tag":"Racing","category":"Racing"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "id": "afterglow-launch",
+  "name": "Afterglow Launch",
+  "scheme": "dark",
+  "sectors": ["sports", "tech", "luxury", "industrial"],
+  "mood": ["cold", "premium", "technical", "nocturnal"],
+  "needsProductImages": true,
+  "notes": "Near-black stage lit only by soft --c-primary glows (mixed toward cool grey so dark brands still glow); primary fills add-to-cart buttons and the slice edges, a lightened primary tints accents, accent only dots the tags."
+}

@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 6.4,
+  "issues": [
+    "White-backed product photos fill the light box as flat white rectangles: in the hero, the exploded view and every catalog card they read as holes, not lit displays",
+    "Exploded view at rest: the right column (spec cards) is completely empty because cards start at opacity 0, so half the pinned stage is black void",
+    "Nothing hints at the slices before scrolling: the signature reads as a plain image in a box",
+    "The hero frame is very landscape (16/10.5), so portrait products (sail boats) shrink to a narrow strip in the middle",
+    "Mobile exploded view: the card slot is blank until the first slice separates",
+    "Typography is strong (whisper-thin Host Grotesk with Sono mono), and the stress brand holds up well thanks to the glow mix"
+  ],
+  "fixed": [
+    "Light box images now size to their own box with rounded corners and layered drop shadows (hairline, depth, primary glow), so white photos become floating lit panels and transparent PNGs get a silhouette glow (template + catalog)",
+    "Spec cards wait dimmed and desaturated beside their slices at rest, then light up at full separation, so the stage is balanced from the first frame",
+    "Slice glow edges show at 20% at rest, so the five-band structure is visible before the explosion starts",
+    "Hero frame changed to 16/12, which gives portrait products more presence over the plinth",
+    "Mobile: the first spec card sits dimmed in the card slot at rest, and only the current card shows after that"
+  ],
+  "scoreAfterEstimate": 7.3
+}
