@@ -1,0 +1,83 @@
+{
+  "id": "phrase-shop",
+  "name": "Phrase Shop",
+  "sectors": [
+    "food",
+    "retail",
+    "makers",
+    "services"
+  ],
+  "sample": "spaansen",
+  "stress": "kartstoreinternational",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793302274275
+    },
+    {
+      "step": "Rendering",
+      "at": 1793303042096
+    },
+    {
+      "step": "Critique",
+      "at": 1793303054106
+    },
+    {
+      "step": "Final render",
+      "at": 1793303220309
+    },
+    {
+      "step": "Done",
+      "at": 1793303232545
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793300837847,
+  "startedAt": 1793302274275,
+  "finishedAt": 1793303232545,
+  "model": "opus",
+  "costUsd": 3.910877,
+  "meta": {
+    "id": "phrase-shop",
+    "name": "Phrase Shop",
+    "scheme": "light",
+    "sectors": [
+      "food",
+      "retail",
+      "makers",
+      "services"
+    ],
+    "mood": [
+      "warm",
+      "literate",
+      "editorial",
+      "inviting"
+    ],
+    "needsProductImages": true,
+    "notes": "Cream and ink-brown stay fixed; --c-primary marks the rolling sentence words, underlines, cart count, tags, buttons and the CTA panel, and its tints make the product photo pads."
+  },
+  "score": {
+    "scoreBefore": 6.4,
+    "issues": [
+      "Signature sentence only had two words (category, label); the brief's price threshold ('onder € 50') was missing entirely, so the 'shop entrance' felt half-built",
+      "Changing a word on the homepage only rolled the CTA count; the editorial product grid right below ignored the sentence",
+      "Product/hero pads mixed 7% primary into the surface: with a red brand (Spaansen, Kartstore) every pad turned salmon-pink, fighting the warm cream art direction",
+      "Mobile: horizontal overflow from the absolutely positioned roller options (opacity 0 but still in layout) plus body-only overflow clip",
+      "Mobile two-up cards: the 42px quick-add stole the name column, cutting single long words ('Tuinmeubelen') mid-letter",
+      "Hero sentence was not dominant enough versus the intro headline above it; generic 'section + chips' feel on the catalog besides the sticky phrase"
+    ],
+    "fixed": [
+      "Added a third rolling word derived from content prices: thresholds that actually split the range (max 4, e.g. 'onder € 50 / € 250'), shown only when there are ≥2 priced products, hidden without JS; it feeds the CTA odometer, the URL (?p=) and the catalog filter (class-based so it stacks on the shop runtime), with live count text",
+      "Homepage grid now answers the sentence: non-matching products step back (grayscale, 32% opacity) while matches stay in ink",
+      "Pads re-tinted to a near-neutral warm cream (3% primary on #F0E8DB, 8% on hover) so any brand palette keeps the editorial calm",
+      "html overflow-x:clip on both pages removes the mobile horizontal scroll",
+      "Mobile cards: quick-add docks as a round button on the pad's corner, names get full width and wrap instead of being cut",
+      "Hero sentence enlarged (up to 6.2rem) so the phrase is unmistakably the entrance"
+    ],
+    "scoreAfterEstimate": 7.4
+  },
+  "version": 1793303232545
+}

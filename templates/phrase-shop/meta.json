@@ -1,0 +1,3 @@
+{ "id": "phrase-shop", "name": "Phrase Shop", "scheme": "light", "sectors": ["food","retail","makers","services"],
+  "mood": ["warm", "literate", "editorial", "inviting"], "needsProductImages": true,
+  "notes": "Cream and ink-brown stay fixed; --c-primary marks the rolling sentence words, underlines, cart count, tags, buttons and the CTA panel, and its tints make the product photo pads." }
