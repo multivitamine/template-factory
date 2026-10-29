@@ -1,0 +1,9 @@
+{
+  "id": "live-handset",
+  "name": "Live Handset",
+  "scheme": "light",
+  "sectors": ["tech", "retail", "wholesale", "lifestyle"],
+  "mood": ["tactile", "playful", "premium", "device-native"],
+  "needsProductImages": true,
+  "notes": "Primary is the phone case, app icons, price pills and buttons; accent lights the Control Center toggles and the wallpaper mesh, always under a dark scrim or on graphite so any brand colour reads."
+}

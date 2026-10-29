@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 6.3,
+  "issues": [
+    "Handset screen broken on desktop: .screen used font-size:3.5cqw on the size container itself, so it resolved against the viewport. Every screen element rendered about 3x too large: the Dynamic Island turned into a black bar across the top, the clock showed as a cropped giant '13', and the catalog Spotlight screen clipped to 'Protection ca'. The signature 'live phone' read as a glitch.",
+    "Product photos cropped with object-fit:cover. The kart chassis, tyre set and sprocket lost their edges, and on square 2x2 widgets the glass label covered the bottom third of the product.",
+    "Catalog Spotlight showed duplicate sections ('Protection cases' twice) because rows were grouped only when consecutive and products weren't ordered by category.",
+    "Hero home-screen widgets (photo plus tagline) were hidden behind an opacity entrance animation and missing from the captures, which left a dead gap under the CTAs on desktop.",
+    "Mobile nav row cut off hard at the edge ('Cont') with no hint that it scrolls.",
+    "Typography is strong (Sora/Manrope/JetBrains Mono) and the section metaphors (Control Center, App Library, widgets) land well. Brand robustness holds for both purple and red."
+  ],
+  "fixed": [
+    "Screen type is now sized from the handset width (calc(var(--pw) * .032)) in both pages. The status bar, island pill, home-screen clock, wallpaper headline, Control Center, widgets and Spotlight screen now render at true phone scale.",
+    "Product images use object-fit:contain on a soft white studio backdrop with multiply blending, in widgets, on handset widget/product screens and in catalog thumbnails. Square widgets reserve bottom padding so the glass label no longer covers the product.",
+    "Catalog rows are stable-sorted by first appearance of their category before grouping, giving one Spotlight section per category.",
+    "Hero widgets get a transform-only spring entrance, so they never go invisible and the hero fills properly.",
+    "Mobile nav gets a fade mask on the right edge to signal it scrolls horizontally."
+  ],
+  "scoreAfterEstimate": 7.4
+}
