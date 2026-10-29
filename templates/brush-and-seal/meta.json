@@ -1,0 +1,3 @@
+{ "id": "brush-and-seal", "name": "Brush and Seal", "scheme": "light", "sectors": ["food","makers","lifestyle","luxury"],
+  "mood": ["calm", "severe", "spacious", "ink-and-paper"], "needsProductImages": true,
+  "notes": "Primary is the red seal: logo chop, price chops, cart impression, active filters and ink-wash tints behind products; accent tints the silk mounting band." }

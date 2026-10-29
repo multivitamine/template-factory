@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terpstra Muziek Drumland · Speciaalzaak in blaas- en slaginstrumenten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<style>
+:root{
+  --c-bg:#f4eee1; --c-surface:#ebe3d0; --c-text:#1b1814; --c-muted:#6d6558; --c-line:#d7cbb2;
+  --c-primary:#b8322a; --c-on-primary:#ffffff; --c-accent:#4b584d;
+  --silk:color-mix(in srgb, var(--c-accent) 20%, #a9a492);
+  --silk-deep:color-mix(in srgb, var(--silk) 78%, #2a2620);
+  --brocade:color-mix(in srgb, var(--c-primary) 30%, #c2ab76);
+  --wash:color-mix(in srgb, var(--c-primary) 16%, var(--c-bg));
+  --wall:#e4ded2;
+  --f-display:'Shippori Mincho B1', 'Times New Roman', serif;
+  --f-body:'Zen Kaku Gothic New', 'Segoe UI', sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2.5rem; --s5:4rem; --s6:clamp(4rem,9vw,8rem);
+  --leaf-pad:clamp(1.25rem,5vw,5rem);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--wall);-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--f-body);font-weight:400;color:var(--c-text);line-height:1.7;font-size:clamp(.95rem,.9rem + .2vw,1.05rem);overflow-x:clip;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,255,255,.55), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(90,70,40,.025) 0 1px, transparent 1px 7px),
+    var(--wall)}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+::selection{background:var(--c-primary);color:var(--c-on-primary)}
+:focus-visible{outline:2px solid var(--c-primary);outline-offset:3px}
+
+/* ---------- the hanging scroll ---------- */
+.scroll{position:relative;width:min(1180px,calc(100% - 44px));margin:clamp(34px,6vw,70px) auto clamp(60px,8vw,110px)}
+.cord{position:absolute;left:50%;top:-34px;width:160px;height:40px;transform:translateX(-50%);overflow:visible}
+.rod-top{position:relative;height:14px;margin:0 -12px;border-radius:7px;z-index:2;
+  background:repeating-linear-gradient(90deg,rgba(0,0,0,.07) 0 2px,transparent 2px 11px),linear-gradient(180deg,#7a5333,#a8774a 35%,#6c4528 70%,#3d2716);
+  box-shadow:0 3px 6px rgba(40,25,10,.35)}
+.rod-bottom{position:relative;height:30px;margin:0 -22px;border-radius:15px;z-index:2;
+  background:repeating-linear-gradient(90deg,rgba(0,0,0,.08) 0 2px,transparent 2px 13px),linear-gradient(180deg,#3d2716,#86593a 22%,#b4844f 40%,#7a4f2f 68%,#2f1e10);
+  box-shadow:0 14px 22px -8px rgba(40,25,10,.5)}
+.rod-bottom::before,.rod-bottom::after{content:"";position:absolute;top:-5px;width:26px;height:40px;border-radius:9px;
+  background:linear-gradient(180deg,#120d0a,#4a3b31 30%,#2a201a 60%,#0d0907);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.rod-bottom::before{left:-6px}.rod-bottom::after{right:-6px}
+.mount{position:relative;padding:clamp(48px,8vw,118px) clamp(10px,3.6vw,54px) clamp(56px,9vw,130px);
+  background:
+    linear-gradient(115deg,transparent 18%,rgba(255,255,255,.16) 34%,transparent 46%,transparent 62%,rgba(255,255,255,.1) 74%,transparent 86%),
+    repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px),
+    repeating-linear-gradient(-45deg,rgba(0,0,0,.04) 0 1px,transparent 1px 3px),
+    var(--silk);
+  box-shadow:0 40px 70px -40px rgba(30,20,10,.55),inset 0 0 0 1px rgba(0,0,0,.06)}
+.futai{position:absolute;top:0;width:clamp(12px,1.8vw,22px);height:clamp(48px,8vw,118px);
+  background:linear-gradient(90deg,rgba(0,0,0,.12),transparent 25%,transparent 75%,rgba(0,0,0,.12)),var(--silk-deep);
+  border-bottom:2px solid var(--brocade)}
+.futai.l{left:34%}.futai.r{right:34%}
+.frame{padding:10px 0;background:
+    radial-gradient(circle at 50% 50%,rgba(255,255,255,.35) 0 1.2px,transparent 1.6px) 0 0/10px 10px,
+    linear-gradient(90deg,rgba(0,0,0,.08),transparent 20%,transparent 80%,rgba(0,0,0,.08)),var(--brocade)}
+.paper{position:relative;background-color:var(--c-bg);box-shadow:0 0 0 1px rgba(60,40,20,.12);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.008 0.3' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.33 0 0 0 0 0.2 3.2 0 0 0 -1.75'/%3E%3C/filter%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.3 0.01' numOctaves='3' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.33 0 0 0 0 0.2 3.2 0 0 0 -1.8'/%3E%3C/filter%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.28 0 0 0 0 0.18 2.4 0 0 0 -1.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)' opacity='.22'/%3E%3Crect width='100%25' height='100%25' filter='url(%23b)' opacity='.16'/%3E%3Crect width='100%25' height='100%25' filter='url(%23c)' opacity='.14'/%3E%3C/svg%3E")}
+.unroll-rod{display:none}
+
+/* opening: the scroll unrolls downward */
+@keyframes unroll{0%{clip-path:inset(0 -40px calc(100% - 64px) -40px)}100%{clip-path:inset(0 -40px calc(100% - 100vh - 60px) -40px)}}
+@keyframes rodDrop{0%{transform:translateY(50px);opacity:1}85%{opacity:1}100%{transform:translateY(calc(100vh + 30px));opacity:0}}
+.motion .scroll{animation:unroll 1.25s cubic-bezier(.55,.05,.25,1) .1s backwards}
+.motion .unroll-rod{display:block;position:absolute;left:-22px;right:-22px;top:0;height:30px;border-radius:15px;z-index:20;pointer-events:none;
+  background:linear-gradient(180deg,#3d2716,#86593a 22%,#b4844f 40%,#7a4f2f 68%,#2f1e10);box-shadow:0 16px 24px -6px rgba(40,25,10,.5);
+  animation:rodDrop 1.25s cubic-bezier(.55,.05,.25,1) .1s both}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap;
+  padding:.85rem var(--leaf-pad);background:color-mix(in srgb,var(--c-bg) 90%,transparent);backdrop-filter:blur(8px);
+  border-bottom:1px solid color-mix(in srgb,var(--c-line) 70%,transparent)}
+.brand{display:flex;align-items:center;gap:.8rem;text-decoration:none;min-width:0;margin-right:auto}
+.seal-mark{flex:none;display:grid;place-items:center;width:2.6rem;height:2.6rem;position:relative;color:var(--c-on-primary);
+  font:800 .95rem/1 var(--f-display);letter-spacing:.02em;transform:rotate(-3deg)}
+.seal-mark::before{content:"";position:absolute;inset:0;background:var(--c-primary);border-radius:3px;filter:url(#speckle);
+  box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--c-on-primary) 70%,var(--c-primary)),0 0 0 3px var(--c-primary)}
+.seal-mark span{position:relative;max-width:2.2rem;overflow:hidden;white-space:nowrap}
+.brand-logo{max-height:36px;max-width:min(160px,38vw);width:auto;object-fit:contain}
+.brand-logo.is-light{filter:brightness(0)}
+.brand-name{font:700 1.05rem/1.15 var(--f-display);letter-spacing:.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nav{display:flex;flex-wrap:wrap;gap:.2rem clamp(.8rem,2vw,1.8rem)}
+.nav a{position:relative;text-decoration:none;font-weight:500;font-size:.92rem;padding:.25rem 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:2px;background:var(--c-primary);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);
+  -webkit-mask:linear-gradient(90deg,#000 60%,transparent);mask:linear-gradient(90deg,#000 60%,transparent)}
+.nav a:hover::after{transform:scaleX(1)}
+.cart{flex:none;display:flex;align-items:center;gap:.55rem;text-decoration:none;font-size:.8rem;color:var(--c-muted)}
+.cart-chop{display:grid;place-items:center;min-width:2.1rem;height:2.1rem;padding:0 .3rem;border:2px solid var(--c-text);border-radius:2px;
+  font:700 .95rem/1 var(--f-display);color:var(--c-text);background:var(--c-bg)}
+.cart.has .cart-chop{background:var(--c-primary);border-color:var(--c-primary);color:var(--c-on-primary)}
+.cart.press .cart-chop{animation:chopPress .42s cubic-bezier(.3,1.5,.5,1)}
+@keyframes chopPress{0%{transform:scale(1.25) rotate(-8deg)}100%{transform:none}}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.8rem;padding:.95rem 1.5rem .95rem 1.05rem;border:0;border-radius:2px;cursor:pointer;
+  background:var(--c-text);color:var(--c-bg);text-decoration:none;font-weight:500;letter-spacing:.02em;position:relative;overflow:hidden;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.btn::before{content:"";width:.7rem;height:.7rem;flex:none;background:var(--c-primary);box-shadow:0 0 0 2px color-mix(in srgb,var(--c-bg) 25%,transparent);transform:rotate(-4deg);transition:transform .4s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px -14px rgba(20,15,10,.7)}
+.btn:hover::before{transform:rotate(86deg) scale(1.15)}
+.link{display:inline-flex;align-items:center;gap:.5rem;font-weight:500;text-decoration:none;padding:.5rem 0;position:relative}
+.link::after{content:"";position:absolute;left:0;right:0;bottom:.2rem;height:2px;background:currentColor;transform-origin:right;transition:transform .5s var(--ease)}
+.link:hover::after{transform:scaleX(.35)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;touch-action:pan-y;padding:clamp(2.5rem,6vw,5rem) var(--leaf-pad) clamp(3rem,7vw,6rem);
+  display:grid;grid-template-columns:minmax(0,1fr) auto minmax(13rem,17rem);gap:clamp(1.5rem,3.4vw,3.4rem);align-items:start;min-height:min(88vh,860px)}
+.hero>*{position:relative;z-index:1}
+.ink{position:absolute;inset:0;z-index:0;mix-blend-mode:multiply;pointer-events:none}
+.stage{position:relative;align-self:stretch;min-height:clamp(16rem,40vw,34rem);display:grid;place-items:center}
+/* a faint vertical rule of the brushwork's grid: emphasises the emptiness around the word */
+.stage::before{content:"";position:absolute;left:50%;top:4%;bottom:4%;width:1px;background:linear-gradient(transparent,color-mix(in srgb,var(--c-line) 90%,transparent) 20% 80%,transparent)}
+.swash{position:absolute;left:-4%;top:52%;width:108%;height:auto;transform:translateY(-50%) rotate(-4deg);overflow:visible}
+.swash path{fill:var(--wash)}
+.brushword{position:relative;display:inline-block;white-space:nowrap;font:800 clamp(8rem,28vw,26rem)/.9 var(--f-display);letter-spacing:-.04em;
+  color:var(--c-text);filter:url(#bleed);padding:0 .06em}
+@supports (-webkit-background-clip:text){
+  .brushword{color:transparent;-webkit-background-clip:text;background-clip:text;
+    background-image:linear-gradient(100deg,var(--c-text) 0 58%,transparent 80%),repeating-linear-gradient(176deg,var(--c-text) 0 3px,transparent 3px 4.5px,var(--c-text) 4.5px 6px,transparent 6px 9px)}
+}
+.hero-seal{position:absolute;right:2%;bottom:12%;width:clamp(3.6rem,7vw,5.4rem);aspect-ratio:1;display:grid;place-items:center;transform:rotate(4deg)}
+.hero-seal::before{content:"";position:absolute;inset:0;background:var(--c-primary);border-radius:4px;filter:url(#speckle)}
+.hero-seal::after{content:"";position:absolute;inset:12%;border:2px solid color-mix(in srgb,var(--c-on-primary) 80%,transparent);border-radius:2px;filter:url(#speckle)}
+.hero-seal span{position:relative;color:var(--c-on-primary);font:800 clamp(1.1rem,2.2vw,1.6rem)/1 var(--f-display);writing-mode:vertical-rl;letter-spacing:.08em;max-height:70%;overflow:hidden}
+.hero-title{margin:0;writing-mode:vertical-rl;inline-size:min(34rem,72vh);font:800 clamp(1.7rem,3vw,2.7rem)/1.35 var(--f-display);letter-spacing:.06em;
+  text-wrap:balance}
+.hero-title .t{display:block}
+.hero-title .acc{display:block;margin-block-start:.35em;color:color-mix(in srgb,var(--c-text) 55%,var(--c-bg));font-weight:700;padding-top:2.2em}
+.hero-side{align-self:end;display:flex;flex-direction:column;gap:var(--s3);padding-bottom:1rem}
+.eyebrow{display:flex;align-items:center;gap:.7rem;font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--c-muted);margin:0}
+.eyebrow::before{content:"";width:1.6rem;height:2px;background:var(--c-primary);flex:none}
+.hero-text{margin:0;max-width:34ch;color:color-mix(in srgb,var(--c-text) 82%,var(--c-bg))}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;align-items:center}
+.inset{margin:0;width:min(100%,12rem);padding:9px;background:var(--silk);box-shadow:0 18px 30px -20px rgba(30,20,10,.6);transform:rotate(1.2deg)}
+.inset img,.inset .ph{width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.85) contrast(1.02)}
+.brush-ui{display:none}
+.brush-on .brush-ui{display:flex;position:absolute;left:var(--leaf-pad);bottom:1.1rem;z-index:2;gap:1rem;align-items:center;font-size:.75rem;color:var(--c-muted)}
+.brush-ui .hint::before{content:"";display:inline-block;width:1.4rem;height:6px;margin-right:.55rem;vertical-align:middle;border-radius:3px;
+  background:linear-gradient(90deg,var(--c-text),transparent)}
+.wash-btn{border:1px solid var(--c-line);background:color-mix(in srgb,var(--c-bg) 70%,transparent);padding:.3rem .7rem;border-radius:2px;cursor:pointer;font-size:.72rem;letter-spacing:.06em}
+.wash-btn:hover{border-color:var(--c-text)}
+
+.motion .brushword{animation:stroke 1.5s cubic-bezier(.6,.05,.25,1) 1.05s both}
+@keyframes stroke{0%{clip-path:inset(-10% 100% -10% -5%)}100%{clip-path:inset(-10% -5% -10% -5%)}}
+.motion .swash{animation:fadeIn 1.4s var(--ease) .9s both}
+.motion .hero-seal{animation:stamp .5s cubic-bezier(.3,1.5,.5,1) 2.45s both}
+@keyframes stamp{0%{opacity:0;transform:scale(1.6) rotate(-10deg)}60%{opacity:1}100%{opacity:1;transform:scale(1) rotate(4deg)}}
+.motion .hero-title,.motion .hero-side{animation:rise 1.1s var(--ease) 1.5s both}
+.motion .hero-side{animation-delay:1.75s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ---------- album leaves ---------- */
+main{counter-reset:leaf}
+.leaf{counter-increment:leaf;position:relative;margin:clamp(1.5rem,4vw,3rem) var(--leaf-pad);padding:clamp(2rem,5vw,4.5rem) clamp(1.25rem,4.5vw,4.5rem);
+  background:color-mix(in srgb,var(--c-surface) 55%,var(--c-bg));box-shadow:0 1px 0 rgba(60,40,20,.08),0 22px 40px -36px rgba(40,25,10,.6);
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(1.5rem,5vw,5rem);
+  transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.leaf::before{content:"";position:absolute;inset:8px;border:1px solid color-mix(in srgb,var(--c-line) 80%,transparent);pointer-events:none}
+.leaf::after{content:counter(leaf,cjk-decimal);position:absolute;top:1.1rem;right:1.3rem;font:500 .85rem/1 var(--f-display);color:var(--c-muted);opacity:.7}
+/* leaves are never hidden by default: the unfold only plays once a leaf below the fold scrolls in */
+.leaf.unfold{animation:leafIn 1.1s var(--ease) both}
+@keyframes leafIn{from{opacity:0;transform:translateY(30px);clip-path:inset(0 0 60% 0)}to{opacity:1;transform:none;clip-path:inset(0 0 -10% 0)}}
+.leaf-head{display:flex;flex-direction:row-reverse;gap:.9rem;align-items:flex-start}
+.leaf-head .eyebrow{writing-mode:vertical-rl;letter-spacing:.24em}
+.leaf-head .eyebrow::before{width:2px;height:1.6rem}
+.vt{margin:0;writing-mode:vertical-rl;inline-size:min(24rem,64vh);font:800 clamp(1.5rem,2.4vw,2.2rem)/1.4 var(--f-display);letter-spacing:.05em}
+.leaf-body{min-width:0;display:flex;flex-direction:column;gap:var(--s3)}
+.col{max-width:36ch;margin:0;color:color-mix(in srgb,var(--c-text) 84%,var(--c-bg))}
+.h3{font:700 1.15rem/1.35 var(--f-display);margin:0}
+
+/* usps: short columns separated by hairlines */
+.usps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:0}
+.usps li{padding:.4rem clamp(1rem,2vw,1.8rem) 1rem;border-left:1px solid var(--c-line);display:flex;flex-direction:column;gap:.6rem}
+.usps li:first-child{border-left-color:transparent;padding-left:0}
+.usps .k{font:700 .8rem/1 var(--f-display);color:var(--c-primary);filter:saturate(.9)}
+.usps p{margin:0;font-size:.92rem;color:var(--c-muted)}
+
+/* categories: little hanging scrolls */
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr));gap:clamp(1rem,2.4vw,2rem)}
+.cat{display:flex;flex-direction:column;text-decoration:none;background:var(--silk);padding:7px 7px 0;position:relative;transition:transform .5s var(--ease)}
+.cat::before{content:"";position:absolute;left:-5px;right:-5px;top:-5px;height:6px;border-radius:3px;background:linear-gradient(180deg,#a8774a,#5a3a22)}
+.cat:hover{transform:translateY(-6px) rotate(-.6deg)}
+.cat img,.cat .ph{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--c-bg)}
+.cat span{display:block;padding:.75rem .3rem .9rem;font:700 .95rem/1.3 var(--f-display);color:var(--c-text);background:var(--c-bg);
+  border-top:4px solid var(--silk);overflow-wrap:anywhere}
+.ph{display:grid;place-items:center;background:radial-gradient(circle at 45% 55%,var(--wash) 0 38%,transparent 66%),var(--c-bg)}
+.ph svg{width:46%;height:auto;opacity:.75}
+
+/* product album */
+.album{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(2.5rem,5vw,4.5rem) clamp(2rem,6vw,6rem);list-style:none;margin:0;padding:0}
+.album>.piece:nth-child(even){transform:translateY(clamp(0rem,4vw,3.5rem))}
+.piece{position:relative;display:grid;grid-template-columns:clamp(6.5rem,11vw,9rem) minmax(0,1fr);gap:clamp(1rem,2vw,1.6rem);align-items:start}
+.swatch{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.swatch::before{content:"";position:absolute;inset:-6%;border-radius:47% 53% 44% 56%/52% 45% 55% 48%;
+  background:radial-gradient(circle at 42% 58%,color-mix(in srgb,var(--c-primary) 22%,var(--c-bg)) 0 30%,color-mix(in srgb,var(--c-text) 10%,var(--c-bg)) 52%,transparent 71%);
+  filter:url(#bleed);transition:transform .8s var(--ease)}
+.piece:hover .swatch::before{transform:scale(1.08) rotate(8deg)}
+.swatch img{position:relative;width:78%;height:78%;object-fit:contain;mix-blend-mode:multiply;
+  -webkit-mask:radial-gradient(closest-side,#000 82%,transparent);mask:radial-gradient(closest-side,#000 82%,transparent);transition:transform .6s var(--ease)}
+.piece:hover .swatch img{transform:scale(1.06)}
+.swatch .enso{position:relative;width:62%;height:auto;opacity:.8}
+.piece-text{display:flex;flex-direction:column;gap:.55rem;min-width:0;padding-top:.3rem}
+.piece-cat{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted)}
+.piece-name{margin:0;font:700 clamp(1.02rem,1.4vw,1.2rem)/1.5 var(--f-display);max-width:19ch;text-wrap:balance;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.piece-name a{text-decoration:none;background:linear-gradient(var(--c-primary),var(--c-primary)) 0 100%/0 2px no-repeat;transition:background-size .5s var(--ease)}
+.piece:hover .piece-name a{background-size:100% 2px}
+.piece-tag{align-self:flex-start;font-size:.7rem;font-weight:700;letter-spacing:.1em;padding:.1rem .45rem;border:1px solid var(--c-primary);color:var(--c-text);border-radius:2px}
+.piece-row{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;margin-top:.3rem}
+.chop{position:relative;display:grid;place-items:center;min-width:4.4rem;min-height:4.4rem;padding:.45rem;text-align:center;transform:rotate(-3deg);
+  color:var(--c-on-primary);font:700 .92rem/1.15 var(--f-display);max-width:6.5rem}
+.chop::before{content:"";position:absolute;inset:0;background:var(--c-primary);border-radius:3px;filter:url(#speckle)}
+.chop::after{content:"";position:absolute;inset:5px;border:1px solid color-mix(in srgb,var(--c-on-primary) 70%,transparent);border-radius:2px}
+.chop span{position:relative;font-weight:800;letter-spacing:.01em;text-shadow:0 0 2px color-mix(in srgb,var(--c-primary) 80%,#000)}
+.old{font-size:.8rem;color:var(--c-muted)}
+.add{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--c-text);background:transparent;padding:.42rem .8rem;border-radius:2px;cursor:pointer;
+  font-size:.8rem;font-weight:500;transition:background .3s,color .3s}
+.add:hover{background:var(--c-text);color:var(--c-bg)}
+.add b{font:700 1rem/1 var(--f-display)}
+.impress-spot{position:absolute;left:58%;top:-10%;width:3.4rem;height:3.4rem;pointer-events:none;z-index:2}
+.impress-spot svg{width:100%;height:100%;display:block;overflow:visible}
+.more{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:clamp(2rem,5vw,4rem)}
+.more .count{color:var(--c-muted);font-size:.85rem}
+
+/* story */
+.story-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(12rem,20rem);gap:clamp(1.5rem,5vw,4rem);align-items:end}
+.hanging{margin:0;padding:10px 10px 0;background:var(--silk);box-shadow:0 22px 34px -24px rgba(30,20,10,.6);position:relative}
+.hanging::after{content:"";display:block;height:16px;margin:0 -16px;border-radius:8px;background:linear-gradient(180deg,#3d2716,#9c6c42 40%,#3d2716)}
+.hanging img,.hanging .ph{width:100%;aspect-ratio:4/5;object-fit:cover}
+.hanging .ph{margin-bottom:10px}
+.hanging img{margin-bottom:10px}
+
+/* stats */
+.stats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1.5rem 0}
+.stats li{display:flex;flex-direction:column;gap:.35rem;padding:0 1.3rem;border-left:1px solid var(--c-line)}
+.stats li:first-child{border-left:0;padding-left:0}
+.stats strong{font:800 clamp(2rem,4.4vw,3.4rem)/1 var(--f-display);letter-spacing:-.02em}
+.stats span{font-size:.82rem;color:var(--c-muted);max-width:18ch}
+
+/* gallery album */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,13rem),1fr));gap:clamp(1rem,3vw,2.4rem)}
+.gallery figure{margin:0;padding:8px;background:var(--c-bg);box-shadow:0 0 0 1px var(--c-line)}
+.gallery figure:nth-child(3n+2){transform:translateY(1.6rem)}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;filter:saturate(.82) sepia(.08)}
+
+/* quote */
+.quote{margin:0;font:700 clamp(1.3rem,2.6vw,2rem)/1.55 var(--f-display);max-width:28ch;position:relative}
+.quote::before{content:"「";position:absolute;left:-1.1em;top:-.3em;color:var(--c-primary);font-size:1.6em}
+.quote-by{margin:0;color:var(--c-muted);font-size:.9rem}
+
+/* contact + guestbook */
+.contact-list{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.contact-list li{display:grid;grid-template-columns:5.5rem 1fr;gap:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--c-line);font-size:.95rem}
+.contact-list small{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--c-muted);padding-top:.25rem}
+.contact-list a{text-decoration:none;overflow-wrap:anywhere}
+.contact-list a:hover{color:var(--c-primary)}
+.guestbook{display:none;position:relative;height:clamp(11rem,22vw,14rem);touch-action:none;cursor:crosshair;
+  background:repeating-linear-gradient(90deg,transparent 0 calc(3rem - 1px),color-mix(in srgb,var(--c-primary) 22%,transparent) calc(3rem - 1px) 3rem),var(--c-bg);
+  box-shadow:inset 0 0 0 1px var(--c-line)}
+.brush-on .guestbook{display:block}
+.guestbook .gb-label{position:absolute;right:.8rem;top:.7rem;writing-mode:vertical-rl;font:700 .85rem/1 var(--f-display);letter-spacing:.2em;color:var(--c-muted);pointer-events:none}
+.guestbook .wash-btn{position:absolute;left:.6rem;bottom:.6rem;z-index:2}
+
+/* ---------- footer ---------- */
+.foot{padding:clamp(3rem,6vw,5rem) var(--leaf-pad) 2rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(2rem,5vw,4rem);
+  border-top:1px solid var(--c-line);margin-top:clamp(2rem,5vw,4rem)}
+.foot-brand{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.foot-brand p{margin:0;color:var(--c-muted);max-width:30ch;font-size:.92rem}
+.foot-links{list-style:none;margin:0;padding:0;columns:2 11rem;column-gap:2rem}
+.foot-links li{break-inside:avoid;padding:.22rem 0}
+.foot-links a{text-decoration:none;font-size:.9rem;color:color-mix(in srgb,var(--c-text) 80%,var(--c-bg))}
+.foot-links a:hover{color:var(--c-primary)}
+.colophon{grid-column:1/-1;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.75rem;color:var(--c-muted);padding-top:1.5rem;border-top:1px solid color-mix(in srgb,var(--c-line) 60%,transparent)}
+
+.demo-badge{position:fixed;left:12px;bottom:12px;z-index:60;display:flex;align-items:center;gap:.5rem;padding:.38rem .7rem .38rem .45rem;
+  background:color-mix(in srgb,var(--c-bg) 92%,transparent);border:1px solid var(--c-line);border-radius:2px;font-size:.7rem;letter-spacing:.04em;color:var(--c-muted);
+  box-shadow:0 6px 16px -10px rgba(30,20,10,.5);max-width:calc(100vw - 24px)}
+.demo-badge i{width:.65rem;height:.65rem;background:var(--c-primary);flex:none;transform:rotate(-4deg)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1020px){
+  .hero{grid-template-columns:minmax(0,1fr) auto}
+  .hero-side{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:flex-end;gap:var(--s3) var(--s4)}
+  .hero-side>div{flex:1 1 18rem;display:flex;flex-direction:column;gap:var(--s3)}
+}
+@media (max-width:760px){
+  .scroll{width:calc(100% - 24px)}
+  .rod-top{margin:0 -8px}.rod-bottom{margin:0 -10px;height:24px}
+  .rod-bottom::before,.rod-bottom::after{width:16px;height:32px;top:-4px}
+  .rod-bottom::before{left:-2px}.rod-bottom::after{right:-2px}
+  .motion .unroll-rod{left:-10px;right:-10px;height:24px}
+  .futai.l{left:22%}.futai.r{right:22%}
+  .top{gap:.6rem 1rem}
+  .nav{order:3;width:100%;gap:.1rem 1rem}
+  .nav a{font-size:.86rem}
+  .cart span.lbl{display:none}
+  .hero{grid-template-columns:1fr;min-height:0;gap:var(--s3)}
+  .stage{min-height:13rem;order:1}
+  .hero-title{order:2;writing-mode:horizontal-tb;inline-size:auto;font-size:clamp(1.6rem,7vw,2.2rem);letter-spacing:.01em;line-height:1.2}
+  .hero-title .acc{padding-top:0;margin-block-start:.2em}
+  .hero-side{order:3}
+  .brush-on .brush-ui{position:relative;left:auto;bottom:auto;order:4}
+  .leaf{grid-template-columns:1fr;margin-inline:.6rem}
+  .leaf-head{flex-direction:column;gap:.7rem}
+  .leaf-head .eyebrow{writing-mode:horizontal-tb}
+  .leaf-head .eyebrow::before{width:1.6rem;height:2px}
+  .vt{writing-mode:horizontal-tb;inline-size:auto;font-size:clamp(1.45rem,6.4vw,1.9rem);line-height:1.25;letter-spacing:.01em}
+  .album{grid-template-columns:1fr}
+  .album>.piece:nth-child(even){transform:none}
+  .story-grid{grid-template-columns:1fr}
+  .hanging{max-width:17rem}
+  .usps li{border-left:0;padding-left:0;border-top:1px solid var(--c-line);padding-top:1rem}
+  .usps li:first-child{border-top:0}
+  .stats li{padding:0 .9rem}
+  .stats li:nth-child(odd){border-left:0;padding-left:0}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gallery figure:nth-child(3n+2){transform:none}
+  .gallery figure:nth-child(even){transform:translateY(1rem)}
+  .foot{grid-template-columns:1fr}
+  .quote::before{position:static;display:block}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+<style id="brand-tokens">:root{--c-primary:#A80819;--c-on-primary:#ffffff;--c-accent:#333333}</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="bleed" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="5" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feGaussianBlur in="d" stdDeviation="1.4" result="b"/>
+    <feComponentTransfer in="b" result="halo"><feFuncA type="linear" slope=".45"/></feComponentTransfer>
+    <feMerge><feMergeNode in="halo"/><feMergeNode in="d"/></feMerge>
+  </filter>
+  <filter id="speckle" x="-8%" y="-8%" width="116%" height="116%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.42" numOctaves="3" seed="11" result="n2"/>
+    <feColorMatrix in="n2" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -5 0 0 0 3.45" result="holes"/>
+    <feComposite in="d" in2="holes" operator="in"/>
+  </filter>
+</svg>
+
+<div class="scroll">
+  <svg class="cord" viewBox="0 0 160 40" aria-hidden="true"><path d="M8 40 Q80 -14 152 40" fill="none" stroke="#5a3a22" stroke-width="2.4"/><circle cx="80" cy="6" r="3.2" fill="#3a2a1c"/></svg>
+  <div class="rod-top" aria-hidden="true"></div>
+  <div class="unroll-rod" aria-hidden="true"></div>
+  <div class="mount">
+    <i class="futai l" aria-hidden="true"></i><i class="futai r" aria-hidden="true"></i>
+    <div class="frame">
+    <div class="paper">
+
+<header class="top">
+  <a class="brand" href="template.html" aria-label="Terpstra Muziek Drumland">
+    <span class="seal-mark" aria-hidden="true"><span>TM</span></span>
+    
+    <span class="brand-name">Terpstra Muziek Drumland</span>
+  </a>
+  <nav class="nav" aria-label="Menu"><a href="catalog.html">Webshop</a><a href="#">Occasions</a><a href="#">Aanbiedingen</a><a href="#">Reparatieatelier</a><a href="#">Over ons</a><a href="#">Contact</a></nav>
+  <a class="cart" href="catalog.html" data-cart><span class="lbl">Mandje</span><span class="cart-chop" data-cart-count>0</span></a>
+</header>
+
+<main>
+<section class="hero" data-brush="hover">
+  <canvas class="ink" aria-hidden="true"></canvas>
+  <div class="stage">
+    <svg class="swash" viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#bleed)" d="M6 70 C70 34 210 18 380 22 C470 24 560 34 594 52 C598 62 588 72 560 74 C430 80 300 84 180 92 C110 97 50 100 14 92 C2 88 0 78 6 70 Z"/></svg>
+    <span class="brushword" aria-hidden="true">TM</span>
+    <span class="hero-seal" aria-hidden="true"><span>TM</span></span>
+  </div>
+  <h1 class="hero-title"><span class="t">Alles voor de drummer</span><span class="acc">en elke andere muzikant</span></h1>
+  <div class="hero-side">
+    <div>
+      <p class="eyebrow">Drumland sinds 40+ jaar</p>
+      <p class="hero-text">Van akoestische drumkits tot Roland V-Drums, van klarinet tot trompet: ontdek het grootste assortiment in Noord-Holland, met deskundig advies in onze showroom in Lijnden.</p>
+      <div class="hero-actions">
+        <a class="btn" href="catalog.html">Bekijk de drums</a>
+        <a class="link" href="catalog.html">Reparatieatelier →</a>
+      </div>
+    </div>
+    <figure class="inset"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;drums_michael_dobrinski_unsplash_01.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Alles voor de drummer" loading="lazy"></figure>
+  </div>
+  <div class="brush-ui"><span class="hint" data-t="hint"></span><button class="wash-btn" type="button" data-wash data-t="wash"></button></div>
+</section>
+
+<section class="leaf">
+  <div class="leaf-head">
+    <h2 class="vt">Speciaalzaak in blaas- en slaginstrumenten</h2>
+    
+  </div>
+  <div class="leaf-body">
+    <ul class="usps"><li><span class="k">◆</span><h3 class="h3">Morgen in huis</h3><p>Voor 13:00 uur besteld, morgen bij je thuis (*zie voorwaarden).</p></li><li><span class="k">◆</span><h3 class="h3">Demoruimten</h3><p>Probeer instrumenten rustig uit in onze demoruimten, met advies van echte specialisten.</p></li><li><span class="k">◆</span><h3 class="h3">Eigen reparatieatelier</h3><p>Ons reparatieatelier houdt jouw instrument in topconditie.</p></li><li><span class="k">◆</span><h3 class="h3">Instrumenten huren</h3><p>Huur een drumstel of blaasinstrument en begin direct met spelen.</p></li></ul>
+  </div>
+</section>
+
+<section class="leaf" id="shop">
+  <div class="leaf-head">
+    <h2 class="vt">Drums</h2>
+    
+  </div>
+  <div class="leaf-body">
+    <p class="col">Van akoestische kits en Roland e-drums tot snaredrums, cymbals, vellen en hardware: alles om jouw set te perfectioneren.</p>
+    <ul class="album">
+      <li class="piece">
+        <div class="swatch">
+          <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189_807008.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ahead AR1622 hoes voor 22&quot; x 16&quot; bassdrum" loading="lazy">
+          
+          <span class="impress-spot" aria-hidden="true"></span>
+        </div>
+        <div class="piece-text">
+          <span class="piece-cat">Accessoires</span>
+          <h3 class="piece-name"><a href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-ar1622-hoes-voor-22-x-16-bass-drum">Ahead AR1622 hoes voor 22&quot; x 16&quot; bassdrum</a></h3>
+          
+          <div class="piece-row">
+            <span class="chop"><span>€ 148,00</span></span>
+            
+            <button class="add" type="button" data-add aria-label="In mandje: Ahead AR1622 hoes voor 22&quot; x 16&quot; bassdrum"><b>+</b> Mandje</button>
+          </div>
+        </div>
+      </li><li class="piece">
+        <div class="swatch">
+          <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189%20spgbbr3_01.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning" loading="lazy">
+          
+          <span class="impress-spot" aria-hidden="true"></span>
+        </div>
+        <div class="piece-text">
+          <span class="piece-cat">Hardware</span>
+          <h3 class="piece-name"><a href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-spg-bbr3-spinal-g-kruk-zwart-met-rugleuning">Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning</a></h3>
+          
+          <div class="piece-row">
+            <span class="chop"><span>€ 329,00</span></span>
+            
+            <button class="add" type="button" data-add aria-label="In mandje: Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning"><b>+</b> Mandje</button>
+          </div>
+        </div>
+      </li><li class="piece">
+        <div class="swatch">
+          <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8189_spgr3.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Ahead SPG-R-3 Spinal G drumkruk rood" loading="lazy">
+          
+          <span class="impress-spot" aria-hidden="true"></span>
+        </div>
+        <div class="piece-text">
+          <span class="piece-cat">Hardware</span>
+          <h3 class="piece-name"><a href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;ahead-spg-r-3-spinal-g-drumkruk-rood">Ahead SPG-R-3 Spinal G drumkruk rood</a></h3>
+          
+          <div class="piece-row">
+            <span class="chop"><span>€ 249,00</span></span>
+            
+            <button class="add" type="button" data-add aria-label="In mandje: Ahead SPG-R-3 Spinal G drumkruk rood"><b>+</b> Mandje</button>
+          </div>
+        </div>
+      </li><li class="piece">
+        <div class="swatch">
+          <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;content&#x2F;products&#x2F;8233_aqcc16.jpg?width&#x3D;273&amp;height&#x3D;180&amp;anchor&#x3D;center&amp;background&#x3D;white" alt="Aquarian AQCC16 Classic Clear drumvel 16&quot;" loading="lazy">
+          
+          <span class="impress-spot" aria-hidden="true"></span>
+        </div>
+        <div class="piece-text">
+          <span class="piece-cat">Drumvellen</span>
+          <h3 class="piece-name"><a href="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;product&#x2F;aquarian-aqcc16-classic-clear-drumvel-16">Aquarian AQCC16 Classic Clear drumvel 16&quot;</a></h3>
+          
+          <div class="piece-row">
+            <span class="chop"><span>€ 22,90</span></span>
+            
+            <button class="add" type="button" data-add aria-label="In mandje: Aquarian AQCC16 Classic Clear drumvel 16&quot;"><b>+</b> Mandje</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="more">
+      <a class="btn" href="catalog.html">Drums</a>
+      <span class="count">4688 producten</span>
+    </div>
+  </div>
+</section>
+
+<section class="leaf">
+  <div class="leaf-head">
+    <h2 class="vt">Webshop</h2>
+  </div>
+  <div class="leaf-body">
+    <div class="cats">
+      <a class="cat" href="catalog.html">
+        <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;blaasinstrumenten_v2.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Blaasinstrumenten" loading="lazy">
+        
+        <span>Blaasinstrumenten</span>
+      </a><a class="cat" href="catalog.html">
+        <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;drums_michael_dobrinski_unsplash_01.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Drums" loading="lazy">
+        
+        <span>Drums</span>
+      </a><a class="cat" href="catalog.html">
+        <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;percussie_640x385.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Percussie" loading="lazy">
+        
+        <span>Percussie</span>
+      </a><a class="cat" href="catalog.html">
+        <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;concert_640x385.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Concert &amp; Marching" loading="lazy">
+        
+        <span>Concert &amp; Marching</span>
+      </a><a class="cat" href="catalog.html">
+        <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;gitaar_640x385.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Snaarinstrumenten" loading="lazy">
+        
+        <span>Snaarinstrumenten</span>
+      </a><a class="cat" href="catalog.html">
+        <img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;piano_640x385.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Toetsen" loading="lazy">
+        
+        <span>Toetsen</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="leaf">
+  <div class="leaf-head">
+    <p class="eyebrow">Over Terpstra Muziek</p>
+    <h2 class="vt">Een thuishaven voor muzikanten, al 40+ jaar</h2>
+  </div>
+  <div class="leaf-body story-grid">
+    <p class="col">Terpstra Muziek Drumland in Lijnden is dé specialist in blaas- en slaginstrumenten, met de grootste drumspeciaalzaak van Noord-Holland. Of je nu net begint of al jaren op het podium staat: bij ons vind je het juiste instrument, advies, reparatie en verhuur onder één dak.</p>
+    <figure class="hanging"><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;reparatieatelier-bovenheader.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="Een thuishaven voor muzikanten, al 40+ jaar" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="leaf">
+  <div class="leaf-head"><span class="seal-mark" aria-hidden="true"><span>TM</span></span></div>
+  <div class="leaf-body">
+    <ul class="stats"><li><strong>4688</strong><span>producten in de categorie Drums</span></li><li><strong>€ 400</strong><span>korting op geselecteerde klarinetten</span></li><li><strong>€ 600</strong><span>korting op geselecteerde instrumenten</span></li></ul>
+  </div>
+</section>
+
+<section class="leaf">
+  <div class="leaf-head"><p class="eyebrow">Over Terpstra Muziek</p></div>
+  <div class="leaf-body">
+    <div class="gallery"><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;roland_qa_261128_02.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;buffetcrampon_261006.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;besson_261006.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;dw-banner2603.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;yamaha-pro-trumpet.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;yamaha_ead50_01.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;buffet-crampon_gala_klarinet_01.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure><figure><img src="https:&#x2F;&#x2F;www.terpstra-muziek.nl&#x2F;media&#x2F;audio_midi_fernando_lavin_640x385.jpg?cropX&#x3D;0&amp;cropY&#x3D;0&amp;cropW&#x3D;0&amp;cropH&#x3D;0" alt="" loading="lazy"></figure></div>
+  </div>
+</section>
+
+
+<section class="leaf" id="contact">
+  <div class="leaf-head">
+    <h2 class="vt">Kom langs in Lijnden</h2>
+    
+  </div>
+  <div class="leaf-body">
+    <p class="col">Proef de klank van je volgende instrument in onze demoruimten, of laat je adviseren door onze specialisten.</p>
+    <div><a class="btn" href="#">Neem contact op</a></div>
+    <ul class="contact-list">
+      <li><small>Adres</small><span>Lijnden (Amsterdam &#x2F; A9)</span></li>
+      
+      
+    </ul>
+    <div class="guestbook" data-brush="press">
+      <canvas class="ink" aria-hidden="true"></canvas>
+      <span class="gb-label" data-t="sign"></span>
+      <button class="wash-btn" type="button" data-wash data-t="wash"></button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-brand">
+    <a class="brand" href="template.html" aria-label="Terpstra Muziek Drumland">
+      <span class="seal-mark" aria-hidden="true"><span>TM</span></span>
+      <span class="brand-name">Terpstra Muziek Drumland</span>
+    </a>
+    <p>Speciaalzaak in blaas- en slaginstrumenten</p>
+  </div>
+  <ul class="foot-links"><li><a href="#">Drumstel huren</a></li><li><a href="#">Blaasinstrument huren</a></li><li><a href="#">Reparatie</a></li><li><a href="#">Openingstijden</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul>
+  <div class="colophon"><span>© 2026 Terpstra Muziek Drumland</span><span>Lijnden (Amsterdam &#x2F; A9)</span></div>
+</footer>
+
+    </div>
+    </div>
+  </div>
+  <div class="rod-bottom" aria-hidden="true"></div>
+</div>
+
+<div class="demo-badge"><i></i>Demo redesign · Brush and Seal</div>
+
+<script>
+(() => {
+  const d = document, root = d.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const T = { nl: { hint: 'Beweeg over het papier: de kwast schildert', wash: 'Papier wassen', sign: 'Teken het gastenboek' },
+              en: { hint: 'Move across the paper: the brush paints', wash: 'Wash the paper', sign: 'Sign the guestbook' } }[(root.lang || 'nl').slice(0, 2) === 'en' ? 'en' : 'nl'];
+  d.querySelectorAll('[data-t]').forEach((el) => { el.textContent = T[el.dataset.t] || ''; });
+
+  // Big brushed initials: shrink to fit their stage instead of overflowing.
+  const word = d.querySelector('.brushword');
+  const fit = () => {
+    if (!word) return;
+    word.style.fontSize = '';
+    const max = word.parentElement.clientWidth * 0.98, w = word.getBoundingClientRect().width;
+    if (w > max) word.style.fontSize = (parseFloat(getComputedStyle(word).fontSize) * max / w) + 'px';
+  };
+  fit(); d.fonts && d.fonts.ready.then(fit); addEventListener('resize', fit);
+
+  // Leaves unfold as they enter. Content stays visible until then, so full-page captures never show blank paper.
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('unfold'); io.unobserve(e.target); } }), { threshold: 0.08 });
+    d.querySelectorAll('.leaf').forEach((l) => { if (l.getBoundingClientRect().top > innerHeight) io.observe(l); });
+  }
+
+  // A broken product photo becomes an ink ensō instead of an empty wash.
+  const enso = '<svg class="enso" viewBox="0 0 100 100" aria-hidden="true"><path d="M78 30 A34 34 0 1 0 84 56" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" filter="url(#bleed)"/></svg>';
+  d.querySelectorAll('.swatch img').forEach((img) => {
+    const swap = () => { if (img.isConnected) { img.insertAdjacentHTML('afterend', enso); img.remove(); } };
+    if (img.complete && !img.naturalWidth) swap(); else img.addEventListener('error', swap, { once: true });
+  });
+
+  // ---------- velocity-sensitive brush ----------
+  const INK = [27, 24, 20];
+  const tone = (a) => { a = Math.max(0, Math.min(1, a)); return `rgb(${INK.map((c) => Math.round(255 - (255 - c) * a)).join(',')})`; };
+  const hash = (i) => { const s = Math.sin(i * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+  const noise = (x) => { const i = Math.floor(x), f = x - i, u = f * f * (3 - 2 * f); return hash(i) * (1 - u) + hash(i + 1) * u; };
+  const smooth = (a, b, x) => { const t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+  function brush(host) {
+    const cv = host.querySelector('canvas.ink'), ctx = cv && cv.getContext('2d');
+    if (!ctx) return;
+    const press = host.dataset.brush === 'press';
+    let W = 0, H = 0, dpr = 1;
+    const size = () => {
+      const w = Math.round(host.clientWidth), h = Math.round(host.clientHeight);
+      if (!w || !h || (w === W && h === H)) return;
+      let snap = null;
+      if (W && H) { snap = d.createElement('canvas'); snap.width = cv.width; snap.height = cv.height; snap.getContext('2d').drawImage(cv, 0, 0); }
+      W = w; H = h; dpr = Math.min(2, devicePixelRatio || 1);
+      cv.width = w * dpr; cv.height = h * dpr; cv.style.width = w + 'px'; cv.style.height = h + 'px';
+      if (snap) ctx.drawImage(snap, 0, 0);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    size();
+    'ResizeObserver' in window ? new ResizeObserver(size).observe(host) : addEventListener('resize', size);
+
+    const P = { x: 0, y: 0, in: false, down: false, mouse: false };
+    let S = null, raf = 0, lastT = 0;
+    const load = () => Math.max(0, 1 - S.dist / 1300);
+    const quad = (a, b, c, e) => { ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(c[0], c[1]); ctx.lineTo(e[0], e[1]); ctx.closePath(); ctx.fill(); };
+
+    // One slice of the stroke: a filled quad (wet) or 8–12 bristle quads with noise gaps (dry).
+    function segment(x0, y0, w0, x1, y1, w1) {
+      const L = load(), dx = x1 - x0, dy = y1 - y0, len = Math.hypot(dx, dy) || 1, nx = -dy / len, ny = dx / len;
+      ctx.globalCompositeOperation = 'darken';
+      if (L > 0.5) {
+        ctx.shadowColor = 'rgba(27,24,20,.35)'; ctx.shadowBlur = 2.5;
+        ctx.fillStyle = tone(0.62 + 0.36 * L);
+        quad([x0 + nx * w0 / 2, y0 + ny * w0 / 2], [x1 + nx * w1 / 2, y1 + ny * w1 / 2], [x1 - nx * w1 / 2, y1 - ny * w1 / 2], [x0 - nx * w0 / 2, y0 - ny * w0 / 2]);
+        ctx.beginPath(); ctx.arc(x1, y1, w1 / 2, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+        return;
+      }
+      const dry = (0.5 - L) / 0.5, n = S.n, spread = 1 + dry * 0.35;
+      for (let j = 0; j < n; j++) {
+        const g = noise(j * 7.31 + S.seed + S.dist * 0.05);
+        if (g < dry * 0.85 - 0.1 + (hash(j + S.seed) - 0.5) * 0.25 * dry) continue;
+        const u = (j / (n - 1) - 0.5) * spread, o0 = u * w0, o1 = u * w1;
+        const b0 = Math.max(0.5, w0 / n * (1.15 - dry * 0.55)) / 2, b1 = Math.max(0.5, w1 / n * (1.15 - dry * 0.55)) / 2;
+        const cx0 = x0 + nx * o0, cy0 = y0 + ny * o0, cx1 = x1 + nx * o1, cy1 = y1 + ny * o1;
+        ctx.fillStyle = tone(0.4 + 0.48 * (1 - dry) + (hash(j * 3.7 + S.seed) - 0.5) * 0.18);
+        quad([cx0 + nx * b0, cy0 + ny * b0], [cx1 + nx * b1, cy1 + ny * b1], [cx1 - nx * b1, cy1 - ny * b1], [cx0 - nx * b0, cy0 - ny * b0]);
+      }
+    }
+    // Pausing lets the ink spread into a soft blot.
+    function blot() {
+      const L = load(), grow = Math.min(1, (S.still - 180) / 1000), r = S.w * 0.55 + grow * S.w * 1.6 + 3;
+      const g = ctx.createRadialGradient(S.x, S.y, 0, S.x, S.y, r);
+      g.addColorStop(0, `rgba(27,24,20,${0.09 * L})`); g.addColorStop(0.6, `rgba(27,24,20,${0.05 * L})`); g.addColorStop(1, 'rgba(27,24,20,0)');
+      ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(S.x + (noise(S.still * 0.01) - 0.5) * 2, S.y + (noise(S.still * 0.013 + 9) - 0.5) * 2, r, 0, Math.PI * 2); ctx.fill();
+    }
+    // Lifting the brush: taper the tail out along the last direction.
+    function lift() {
+      if (S && S.drawn && S.still < 150 && load() > 0) {
+        const len = S.w * 1.6;
+        let px = S.x, py = S.y, pw = S.w;
+        for (let k = 1; k <= 6; k++) {
+          const t = k / 6, x = S.x + S.ux * len * t, y = S.y + S.uy * len * t, w = S.w * (1 - t) * (1 - t) + 0.3;
+          S.dist += len / 6; segment(px, py, pw, x, y, w); px = x; py = y; pw = w;
+        }
+      }
+      S = null;
+    }
+    const active = () => P.in && (press ? P.down : (P.mouse || P.down));
+    function tick(now) {
+      raf = 0;
+      const dt = Math.max(8, Math.min(64, now - lastT || 16)); lastT = now;
+      if (!active()) { if (S) lift(); return; }
+      if (!S) S = { x: P.x, y: P.y, w: 6, dist: 0, still: 0, seed: Math.random() * 999, n: 8 + Math.floor(Math.random() * 5), ux: 1, uy: 0, drawn: false };
+      const dx = P.x - S.x, dy = P.y - S.y, dist = Math.hypot(dx, dy);
+      const target = 28 - 26 * Math.min(1, (dist / dt) / 2.4);  // fast = thin, slow = fat
+      const w1 = S.w + (target - S.w) * 0.25;
+      if (dist < 0.5) {
+        S.still += dt; S.w = w1;
+        if (S.still > 180 && S.still < 1400 && load() > 0.08) blot();
+        if (S.still > 1400) { S = null; return; }  // brush lifted; next move starts a fresh, loaded stroke
+      } else {
+        S.still = 0;
+        const steps = Math.max(1, Math.ceil(dist / 5));
+        let px = S.x, py = S.y, pw = S.w * (0.18 + 0.82 * smooth(0, 46, S.dist));
+        for (let i = 1; i <= steps; i++) {
+          const t = i / steps, x = S.x + dx * t, y = S.y + dy * t;
+          S.dist += dist / steps;
+          const w = (S.w + (w1 - S.w) * t) * (0.18 + 0.82 * smooth(0, 46, S.dist));
+          segment(px, py, pw, x, y, w); px = x; py = y; pw = w;
+        }
+        S.x = P.x; S.y = P.y; S.w = w1; S.ux = dx / dist; S.uy = dy / dist; S.drawn = true;
+        if (load() <= 0) S = null;  // ran dry: re-ink for the next stroke
+      }
+      raf = requestAnimationFrame(tick);
+    }
+    const wake = () => { if (!raf) { lastT = performance.now(); raf = requestAnimationFrame(tick); } };
+    const pos = (e) => { const r = cv.getBoundingClientRect(); P.x = e.clientX - r.left; P.y = e.clientY - r.top; };
+    host.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('a,button,input')) return;
+      pos(e); P.in = true; P.down = true; P.mouse = e.pointerType === 'mouse';
+      if (press) { host.setPointerCapture(e.pointerId); e.preventDefault(); }
+      S = null; wake();
+    });
+    host.addEventListener('pointermove', (e) => { pos(e); P.in = true; P.mouse = e.pointerType === 'mouse'; wake(); });
+    host.addEventListener('pointerleave', () => { P.in = false; });
+    addEventListener('pointerup', () => { P.down = false; });
+    host.addEventListener('pointercancel', () => { P.down = false; P.in = false; });
+    const wash = host.querySelector('[data-wash]');
+    wash && wash.addEventListener('click', () => {
+      const a = cv.animate ? cv.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 500, easing: 'ease-out' }) : null;
+      const clear = () => { ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.restore(); S = null; };
+      a ? (a.onfinish = clear) : clear();
+    });
+  }
+  if (!reduce && window.HTMLCanvasElement) {
+    root.classList.add('brush-on');
+    d.querySelectorAll('[data-brush]').forEach(brush);
+  }
+
+  // ---------- add to cart: press the seal ----------
+  const cart = d.querySelector('[data-cart]'), count = d.querySelector('[data-cart-count]');
+  const initials = ((d.querySelector('.seal-mark') || {}).textContent || '').trim().slice(0, 3);
+  let n = 0;
+  const sealSVG = () => `<svg viewBox="0 0 100 100" aria-hidden="true"><g filter="url(#speckle)">
+    <rect x="6" y="6" width="88" height="88" rx="6" style="fill:var(--c-primary)"/>
+    <rect x="15" y="15" width="70" height="70" rx="3" fill="none" style="stroke:var(--c-on-primary)" stroke-width="2.5"/>
+    <text x="50" y="52" text-anchor="middle" dominant-baseline="central" style="fill:var(--c-on-primary);font:800 ${initials.length > 2 ? 26 : 34}px 'Shippori Mincho B1',serif">${initials.replace(/[<&>]/g, '')}</text></g></svg>`;
+  d.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-add]');
+    if (!b) return;
+    e.preventDefault();
+    n++;
+    if (count) count.textContent = n;
+    if (cart) { cart.classList.add('has'); cart.classList.remove('press'); void cart.offsetWidth; cart.classList.add('press'); }
+    const spot = b.closest('.piece') && b.closest('.piece').querySelector('.impress-spot');
+    if (!spot) return;
+    spot.innerHTML = sealSVG();
+    const svg = spot.firstChild, r = (Math.random() - 0.5) * 14;
+    svg.style.transform = `rotate(${r}deg)`; svg.style.opacity = '.93';
+    if (!reduce && svg.animate) svg.animate([{ transform: `scale(1.15) rotate(${r + 6}deg)`, opacity: 0 }, { transform: `scale(1.15) rotate(${r + 6}deg)`, opacity: 1, offset: .25 }, { transform: `scale(1) rotate(${r}deg)`, opacity: .93 }],
+      { duration: 460, easing: 'cubic-bezier(.3,1.3,.5,1)' });
+  });
+})();
+</script>
+<script id="shop-data" type="application/json">{"page":"home","lang":"nl","count":"4688 producten","products":[{"name":"Ahead AR1622 hoes voor 22\" x 16\" bassdrum","tag":"","category":"Accessoires"},{"name":"Ahead SPG-BBR3 Spinal G kruk zwart met rugleuning","tag":"","category":"Hardware"},{"name":"Ahead SPG-R-3 Spinal G drumkruk rood","tag":"","category":"Hardware"},{"name":"Aquarian AQCC16 Classic Clear drumvel 16\"","tag":"","category":"Drumvellen"},{"name":"Aquarian AQFB20 Full Force I bassdrumvel 20\"","tag":"","category":"Drumvellen"},{"name":"Aquarian AQFOR10 Force Ten drumvel 10\"","tag":"","category":"Drumvellen"},{"name":"Aquarian AQREF14 Reflector Black drumvel 14\"","tag":"","category":"Drumvellen"},{"name":"Aquarian AQTCFB22 Texture Coated Full Force I bassdrumvel 22\"","tag":"","category":"Drumvellen"},{"name":"ASBA snaredrum 14x6\" Blueberry / Agathe The Blue Rive Gauche","tag":"Actie","category":"Snaredrums"},{"name":"Big Fat Snare Drum 14\" Snare Bourine","tag":"","category":"Snaredrums"},{"name":"Big Fat Snare Drum 14\" Steve's Donut","tag":"","category":"Snaredrums"},{"name":"Bone snaredrum aluminium 14\"x6,5\" Nickel Black Hardware","tag":"Actie","category":"Snaredrums"},{"name":"Bone snaredrum Carbcutter 14\"x5,5\" Charcoal Smoke","tag":"Actie","category":"Snaredrums"},{"name":"DS Drum DSX Stage Kit Titanium Sparkle","tag":"OP = OP","category":"Stellen & cymbals"},{"name":"Lite Stix Rock drumsticks U.S. Hickory","tag":"Actie","category":"Accessoires"},{"name":"Occasion Dixon snaredrum Artisan hout 14x5,5\"","tag":"Occasion","category":"Snaredrums"},{"name":"Occasion Istanbul Agop Vezir ride 21\"","tag":"Occasion","category":"Stellen & cymbals"},{"name":"Occasion Bach Omega trombone met kwartventiel 2105","tag":"Occasion","category":"Overig"},{"name":"DW DWCP5500D hihatstand 3-benig","tag":"Actie","category":"Hardware"},{"name":"K&M KM19790 iPad-houder met microfoonstandbevestiging","tag":"Actie","category":"Hardware"},{"name":"BG S41SH Classic harnas vrouw, zwart","tag":"Actie","category":"Overig"},{"name":"Gewa 1/8 viool Allegro speelklaar incl. vormkoffer","tag":"OP = OP","category":"Overig"},{"name":"Stagg kinderhoorn Bb Franse gigbag","tag":"OP = OP","category":"Overig"},{"name":"Ritter RDP2-S/BRD stick bag Black-Red Performance","tag":"OP = OP","category":"Accessoires"}]}</script>
+<script id="shop-runtime">// Browser script inlined into every rendered page (see lib/render.js): makes search and filter buttons work.
+// render.js marks product cards with data-shop-item="<index>" and filter buttons with data-shop-filter="<name>",
+// and puts the product list in <script id="shop-data">. The script takes over those clicks, so a template's own
+// (visual-only or half-working) filter code does not fight with it.
+(() => {
+  const dataEl = document.getElementById("shop-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const T = {
+    nl: { search: "Zoek in de producten…", none: "Geen producten gevonden." },
+    en: { search: "Search products…", none: "No products found." },
+    de: { search: "Produkte durchsuchen…", none: "Keine Produkte gefunden." },
+    fr: { search: "Rechercher un produit…", none: "Aucun produit trouvé." },
+    es: { search: "Buscar productos…", none: "No se encontraron productos." },
+  };
+  const t = T[data.lang] || T.en;
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const isSearchInput = (el) => el.matches("[data-shop-search]") || (el.matches('input[type=search], input[type=text], input:not([type])') &&
+    !el.closest("footer") && /zoek|search|such|cherch|busc|find|vind|filter|sku/i.test([el.placeholder, el.getAttribute("aria-label"), el.name, el.id].join(" ")));
+  const searches = [...document.querySelectorAll("input")].filter(isSearchInput);
+
+  // Homepage: a search field sends the visitor to the catalogue with the query.
+  if (data.page !== "catalog") {
+    for (const input of searches) {
+      const go = (e) => { e.preventDefault(); e.stopImmediatePropagation(); location.href = "catalog.html?q=" + encodeURIComponent(input.value.trim()); };
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(e); }, true);
+      input.form?.addEventListener("submit", go, true);
+    }
+    return;
+  }
+
+  const items = [...document.querySelectorAll("[data-shop-item]")];
+  if (!items.length) return;
+  const ALL = /\b(all|alle|alles|tout|tous|todos?|tutti|omnia)\b/i;
+  const tagged = [...document.querySelectorAll("[data-shop-filter]")];
+  // A filter named "All"/"Alles" (it happens in crawled content) acts as the reset button, not as a filter.
+  const chips = tagged.filter((c) => !ALL.test(c.dataset.shopFilter));
+  // Filter bars: the container of each filter group (a template may show the filters in more than one place).
+  const bars = [...new Set(tagged.map((c) => (c.parentElement.tagName === "LI" ? c.parentElement.parentElement : c.parentElement)))];
+  const bar = bars[0];
+  // The template's own "all" button resets the filters: it says "all" in some language, or it looks exactly like a
+  // filter button (same element and classes, ignoring "active" state classes) without being one.
+  const STATE = /^(on|is-on|active|is-active|selected|is-selected|current|is-current)$/;
+  const look = (el) => `${el.tagName}.${[...el.classList].filter((k) => !STATE.test(k)).sort().join(".")}`;
+  const chipLooks = new Set(chips.map(look));
+  const resets = bars.flatMap((b) => [...b.querySelectorAll("button, a, [role=button]")]).filter((b) =>
+    !chips.some((c) => c === b || c.contains(b) || b.contains(c)) &&
+    ((b.textContent.trim().length <= 24 && ALL.test(b.textContent)) || chipLooks.has(look(b))));
+
+  // The list that holds most product cards gets the "nothing found" message.
+  const lists = new Map();
+  for (const el of items) lists.set(el.parentElement, (lists.get(el.parentElement) || 0) + 1);
+  const mainList = [...lists].sort((a, b) => b[1] - a[1])[0][0];
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .shop-search { display: block; box-sizing: border-box; width: min(100%, 26rem); min-width: min(100%, 16rem); flex: 0 1 26rem; grid-column: 1 / -1;
+      margin: 0 0 1.25rem; padding: .75em 1em; font: inherit;
+      color: inherit; background: color-mix(in srgb, currentColor 6%, transparent); border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: .5em; }
+    .shop-search:focus { outline: 2px solid var(--c-primary, currentColor); outline-offset: 2px; }
+    .shop-empty { padding: 2.5rem 1rem; text-align: center; opacity: .75; font: inherit; }`;
+  document.head.appendChild(style);
+
+  let input = searches[0];
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "search";
+    input.className = "shop-search";
+    input.placeholder = t.search;
+    input.setAttribute("aria-label", t.search);
+    const anchor = bar || mainList;
+    anchor.parentElement.insertBefore(input, anchor);
+  }
+  const empty = document.createElement("p");
+  empty.className = "shop-empty";
+  empty.textContent = t.none;
+  empty.hidden = true;
+  mainList.after(empty);
+
+  const countEl = data.count ? [...document.querySelectorAll("body *")].find((el) => !el.children.length && el.textContent.trim() === data.count) : null;
+
+  let active = null;
+  let query = new URLSearchParams(location.search).get("q") || "";
+  input.value = query;
+
+  const setOn = (el, on) => {
+    el.setAttribute("aria-pressed", String(on));
+    for (const k of ["on", "is-on", "is-active", "active"]) el.classList.toggle(k, on);
+  };
+  const fits = (p) => {
+    if (active && !(p.category ? norm(p.category) === norm(active) : norm(`${p.name} ${p.tag}`).includes(norm(active)))) return false;
+    const q = norm(query.trim());
+    return !q || norm(`${p.name} ${p.tag} ${p.category}`).includes(q);
+  };
+  function apply() {
+    const shown = new Set();
+    for (const el of items) {
+      const p = data.products[Number(el.dataset.shopItem)] || {};
+      if (fits(p)) { el.style.removeProperty("display"); shown.add(el.dataset.shopItem); }
+      else el.style.setProperty("display", "none", "important");
+    }
+    for (const c of chips) setOn(c, !!active && norm(c.dataset.shopFilter) === norm(active));
+    for (const r of resets) setOn(r, !active);
+    if (countEl) countEl.textContent = /\d/.test(data.count) ? data.count.replace(/\d+/, shown.size) : `${shown.size} · ${data.count}`;
+    empty.hidden = shown.size > 0;
+    // Let scroll-reveal code notice cards that just came into view.
+    window.dispatchEvent(new Event("scroll"));
+  }
+
+  // Capture on window: runs before the template's own handlers, which are then skipped for these controls.
+  window.addEventListener("click", (e) => {
+    const chip = chips.find((c) => c.contains(e.target));
+    const reset = !chip && resets.find((r) => r.contains(e.target));
+    if (!chip && !reset) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    active = chip && norm(chip.dataset.shopFilter) !== norm(active) ? chip.dataset.shopFilter : null;
+    apply();
+  }, true);
+  window.addEventListener("input", (e) => {
+    if (e.target !== input) return;
+    e.stopImmediatePropagation();
+    query = input.value;
+    apply();
+  }, true);
+  window.addEventListener("keydown", (e) => {
+    if (e.target === input && e.key === "Enter") { e.preventDefault(); e.stopImmediatePropagation(); }
+  }, true);
+  input.form?.addEventListener("submit", (e) => { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+
+  apply();
+})();
+</script>
+</body>
+</html>

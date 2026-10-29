@@ -1,0 +1,405 @@
+{
+  "brand": {
+    "name": "Aiki-Budo Sport",
+    "tagline": "Dé vechtsportspecialist sinds 1979",
+    "logo": "https://www.aiki-budo.nl/dist/images/logos/logo-aiki-budo.svg",
+    "logoIsLight": true,
+    "initials": "AB",
+    "lang": "nl",
+    "colors": {
+      "primary": "#E63329",
+      "accent": "#1B161C"
+    }
+  },
+  "nav": [
+    {
+      "label": "Webshop",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Merken",
+      "href": "catalog.html"
+    },
+    {
+      "label": "Sporten",
+      "href": "#"
+    },
+    {
+      "label": "Over ons",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "#"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Vechtsportwinkel sinds 1979",
+    "title": "Fight the power.",
+    "titleAccent": "Kies de juiste uitrusting.",
+    "text": "Van bokshandschoenen en judopakken tot dojo-materiaal: bij Aiki-Budo Sport vind je alles om je vechtsport op topniveau te beoefenen. Met ruim 40 jaar ervaring helpen we je graag verder.",
+    "cta": "Naar de webshop",
+    "ctaHref": "catalog.html",
+    "cta2": "Bekijk de merken",
+    "image": "https://www.aiki-budo.nl/media/dsc00300.jpg?="
+  },
+  "usps": [
+    {
+      "title": "Vandaag besteld, vandaag verstuurd",
+      "text": "Op werkdagen besteld voor 16.00 uur gaat dezelfde dag nog op transport."
+    },
+    {
+      "title": "Gratis verzending vanaf € 100",
+      "text": "Bestel je uitrusting zonder extra verzendkosten zodra je boven de 100 euro uitkomt."
+    },
+    {
+      "title": "Meer dan 3000 artikelen",
+      "text": "Van bitjes en boksschoenen tot mats en oefenwapens: alles voor jouw sport op één plek."
+    },
+    {
+      "title": "Persoonlijk advies",
+      "text": "Twijfel je over de juiste spullen? Ons team met ruim 40 jaar ervaring denkt graag met je mee."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Bokshandschoenen",
+      "image": "https://www.aiki-budo.nl/media/bokshandschoenen-categorie.jpg?=",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Protectie/bescherming",
+      "image": "https://www.aiki-budo.nl/media/targets-categorie-optie-2-s.jpg?=",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Oefenwapens",
+      "image": "https://www.aiki-budo.nl/media/oefenwapens-categorie-s.jpg?=",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Kleding",
+      "image": "https://www.aiki-budo.nl/media/kleding-s.jpg?=",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Schoenen",
+      "image": "https://www.aiki-budo.nl/media/schoenen-categorie-s.jpg?=",
+      "href": "catalog.html"
+    },
+    {
+      "name": "Dojo materiaal",
+      "image": "https://www.aiki-budo.nl/media/dsc00274.jpg?=",
+      "href": "catalog.html"
+    }
+  ],
+  "products": [
+    {
+      "name": "Ronin Karate puzzelmat 100x100x2cm - Zwart/Grijs",
+      "price": "€ 27,50",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/ronin-puzzelmat-zwart-grijs-2.77e40e.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Accessoires"
+    },
+    {
+      "name": "Muay Dark Line Bokshandschoen Original - Zwart",
+      "price": "€ 119,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/msgvl-dl-01pair.07c529.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Muay A'damXXX Bokshandschoen Premium - Zwart/Rood",
+      "price": "€ 129,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/muay-bokshandschoen-premium-amsterdam-zwart-rood-3.50d223.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Muay Legacy Bokshandschoen - wijnrood/zwart",
+      "price": "€ 136,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/muay-legacy-bokshandschoen-rood-2-1.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Ronin Bokshandschoen Challenger - zwart/beige",
+      "price": "€ 67,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/ronin-bhs-challenger-beige-1.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Ronin Bokshandschoen Challenger - zwart/blauw",
+      "price": "€ 67,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/ronin-bhs-challenger-blauw-1.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Hayabusa Bokshandschoen T3 LX - Crimson",
+      "price": "€ 229,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/hayabusa-t3-lx-crimson-1.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Hayabusa Bokshandschoen T3 - Charcoal/Lime",
+      "price": "€ 179,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/hayabusa-t3-charcoal-lime-1.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Ronin Fighter Bokshandschoen - Grijs/Zwart",
+      "price": "€ 89,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/ronin-bhs-fighter-grijs-1.d9fa0c.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Ronin Bokshandschoen Jab - zwart",
+      "price": "€ 99,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/ronin-bhs-jab-1.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Ronin Bokshandschoenen Kids Tiger-Line - zwart/rood",
+      "price": "€ 26,50",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/ronin-tiger-line-bokshandschoen-rood-1.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Ronin Punching Bokshandschoen - Zwart/Wit",
+      "price": "€ 38,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/ronin-punching-wit.aedf68.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Twins BGVL3 Bokshandschoen - Zwart",
+      "price": "€ 189,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/twins-bokshandschoen-zwart-1.c641f6.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Adidas BHS Power 350 Training gloves wit",
+      "price": "€ 109,94",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/bhs-power-350-wit-1.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Muay Curved Coaching Mitt Lang met Hand per paar - zwart/grijs",
+      "price": "€ 225,00",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/muay-curved-focus-mitt-1.png?width=150&height=150&background=white",
+      "tag": "Nieuw",
+      "href": "#",
+      "category": "Pads & mitts"
+    },
+    {
+      "name": "Muay Arm Striking Pad Leer per paar - zwart/grijs",
+      "price": "€ 274,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/muay-arm-striking-pad-1.png?width=150&height=150&background=white",
+      "tag": "Nieuw",
+      "href": "#",
+      "category": "Pads & mitts"
+    },
+    {
+      "name": "Nike Machomai 3.0 Boksschoen - zwart/wit",
+      "price": "€ 124,90",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/nike-machomai-3-zwart-5.jpg?width=150&height=150&background=white",
+      "tag": "Nieuw",
+      "href": "#",
+      "category": "Boksschoenen"
+    },
+    {
+      "name": "Nike Hyper K.O. 3.0 - zwart/wit",
+      "price": "€ 219,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/nike-hyper-ko-30-zwart-wit-1.jpg?width=150&height=150&background=white",
+      "tag": "Nieuw",
+      "href": "#",
+      "category": "Boksschoenen"
+    },
+    {
+      "name": "Nike Hyper K.O. 3.0 - crimson/grijs/zwart",
+      "price": "€ 219,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/nike-hyper-ko-30-se-bright-crimson-alu-black-1.jpg?width=150&height=150&background=white",
+      "tag": "Nieuw",
+      "href": "#",
+      "category": "Boksschoenen"
+    },
+    {
+      "name": "Fairtex Calf Kick Beschermers",
+      "price": "€ 299,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/fairtex-calf-kick-1.jpg?width=150&height=150&background=white",
+      "tag": "Nieuw",
+      "href": "#",
+      "category": "Accessoires"
+    }
+  ],
+  "story": {
+    "eyebrow": "Onze merken",
+    "title": "Eigen merken, topmerken, één adres",
+    "text": "Naast gerenommeerde namen als Hayabusa, Nike, Fairtex en Twins ontwikkelt Aiki-Budo Sport ook zelf: RONIN en MUAY. Zo combineren we vakkennis uit de praktijk met uitrusting waar je op kunt vertrouwen.",
+    "image": "https://www.aiki-budo.nl/media/merken.jpg?cropX=0&cropY=23&cropW=1262&cropH=808"
+  },
+  "stats": [
+    {
+      "value": "1979",
+      "label": "Opgericht"
+    },
+    {
+      "value": "40+",
+      "label": "Jaar ervaring"
+    },
+    {
+      "value": "3000+",
+      "label": "Vechtsportartikelen"
+    },
+    {
+      "value": "16:00",
+      "label": "Besteld = dezelfde dag verstuurd"
+    }
+  ],
+  "gallery": [
+    "https://www.aiki-budo.nl/media/merken-ronin.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.aiki-budo.nl/media/merken-muay.jpg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.aiki-budo.nl/media/plyo-box-soft-3-26cf37.jpeg?cropX=0&cropY=0&cropW=0&cropH=0",
+    "https://www.aiki-budo.nl/media/dsc00274.jpg?="
+  ],
+  "quote": null,
+  "cta": {
+    "title": "Kom je er niet uit? Wij helpen je graag.",
+    "text": "Neem contact op voor advies van specialisten met meer dan 40 jaar ervaring, of bestel direct online.",
+    "label": "Bekijk de webshop",
+    "href": "catalog.html"
+  },
+  "contact": {
+    "address": "Dennenlaan 28, 1161 CR Zwanenburg",
+    "phone": "020-6136764",
+    "email": "info@aiki-budo.nl"
+  },
+  "footerLinks": [
+    {
+      "label": "Contact",
+      "href": "#"
+    },
+    {
+      "label": "Nieuws",
+      "href": "#"
+    },
+    {
+      "label": "Sportscholen",
+      "href": "#"
+    },
+    {
+      "label": "Vacatures",
+      "href": "#"
+    },
+    {
+      "label": "Algemene voorwaarden",
+      "href": "#"
+    },
+    {
+      "label": "Betaal- en verzendinformatie",
+      "href": "#"
+    },
+    {
+      "label": "Retourinformatie",
+      "href": "#"
+    },
+    {
+      "label": "Privacy- en cookieverklaring",
+      "href": "#"
+    }
+  ],
+  "catalog": {
+    "title": "Alle merken en producten",
+    "intro": "Ontdek bokshandschoenen, protectie en trainingsmateriaal van RONIN, MUAY, Hayabusa, Twins en meer.",
+    "filters": [
+      "Bokshandschoenen",
+      "Pads & mitts",
+      "Boksschoenen",
+      "Accessoires"
+    ],
+    "count": "21 producten"
+  },
+  "featured": [
+    {
+      "name": "Ronin Karate puzzelmat 100x100x2cm - Zwart/Grijs",
+      "price": "€ 27,50",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/ronin-puzzelmat-zwart-grijs-2.77e40e.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Accessoires"
+    },
+    {
+      "name": "Muay Dark Line Bokshandschoen Original - Zwart",
+      "price": "€ 119,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/msgvl-dl-01pair.07c529.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Muay A'damXXX Bokshandschoen Premium - Zwart/Rood",
+      "price": "€ 129,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/muay-bokshandschoen-premium-amsterdam-zwart-rood-3.50d223.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    },
+    {
+      "name": "Muay Legacy Bokshandschoen - wijnrood/zwart",
+      "price": "€ 136,95",
+      "oldPrice": null,
+      "image": "https://www.aiki-budo.nl/content/products/muay-legacy-bokshandschoen-rood-2-1.jpg?width=150&height=150&background=white",
+      "tag": null,
+      "href": "#",
+      "category": "Bokshandschoenen"
+    }
+  ],
+  "hasProducts": true,
+  "hasCatalog": true
+}

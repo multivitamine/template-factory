@@ -1,0 +1,82 @@
+{
+  "id": "brush-and-seal",
+  "name": "Brush and Seal",
+  "sectors": [
+    "food",
+    "makers",
+    "lifestyle",
+    "luxury"
+  ],
+  "sample": "aiki-budo",
+  "stress": "terpstrav2",
+  "status": "done",
+  "step": "Done",
+  "steps": [
+    {
+      "step": "Building",
+      "at": 1793286019820
+    },
+    {
+      "step": "Rendering",
+      "at": 1793286699062
+    },
+    {
+      "step": "Critique",
+      "at": 1793286713882
+    },
+    {
+      "step": "Final render",
+      "at": 1793286855139
+    },
+    {
+      "step": "Done",
+      "at": 1793286869446
+    }
+  ],
+  "rating": null,
+  "error": null,
+  "queuedAt": 1793286019817,
+  "startedAt": 1793286019820,
+  "finishedAt": 1793286869446,
+  "model": "opus",
+  "costUsd": 3.3376996000000005,
+  "meta": {
+    "id": "brush-and-seal",
+    "name": "Brush and Seal",
+    "scheme": "light",
+    "sectors": [
+      "food",
+      "makers",
+      "lifestyle",
+      "luxury"
+    ],
+    "mood": [
+      "calm",
+      "severe",
+      "spacious",
+      "ink-and-paper"
+    ],
+    "needsProductImages": true,
+    "notes": "Primary is the red seal: logo chop, price chops, cart impression, active filters and ink-wash tints behind products; accent tints the silk mounting band."
+  },
+  "score": {
+    "scoreBefore": 5.6,
+    "issues": [
+      "Homepage has a gigantic stretch of blank paper (2000+ px on desktop, even more on the stress brand and mobile): the USP and product leaves were opacity:0 until an IntersectionObserver fired, so captures and fast scrollers saw nothing. Broken first impression.",
+      "Hero is crowded into three equal-ish columns; the 'single large brushed word' is small and pushed into a corner, the seal floats disconnected below it, and the photo inset competes for attention: not the calm, empty composition the direction asks for.",
+      "Catalog: several products whose photos fail to load show only an empty pink wash blob, which looks like a bug.",
+      "Price chops are hard to read: thin white serif on a speckled red stamp.",
+      "Catalog head leaves a large dead zone of paper beside the vertical title.",
+      "Strengths: the hanging scroll (rollers, futai, brocade, silk sheen) and the vertical headlines are genuinely original, colours survive the stress brand, and the velocity brush and seal press are fully implemented."
+    ],
+    "fixed": [
+      "Leaves are never hidden by default any more. Only leaves that start below the fold get an unfold animation (clip and rise) when they enter, so the page is never blank (home and catalog).",
+      "Hero rebalanced: the brush-word column is wider, the type is larger (up to 26rem, fitted to 98% of the stage), there is a faint vertical guide rule for spaciousness, the seal now presses against the word, and the photo inset is smaller.",
+      "Broken product photos are swapped at runtime for an ink-brushed ensō on the wash swatch (home and catalog).",
+      "Price chop text is heavier, with a primary-tinted halo, so it stays legible on the speckled seal for any brand colour.",
+      "Catalog head gets a pale dry-brush echo of the brand initials that fills the dead paper and ties it to the homepage brushword."
+    ],
+    "scoreAfterEstimate": 7.3
+  },
+  "version": 1793286869446
+}
