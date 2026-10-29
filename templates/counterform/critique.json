@@ -1,0 +1,19 @@
+{
+  "scoreBefore": 5.6,
+  "issues": [
+    "Homepage below the hero is blank in both brands: the scroll-reveal (.rv) only fires on IntersectionObserver, so products, USPs, story, stats, gallery, quote, CTA and footer stay at opacity 0 unless each one is scrolled into view",
+    "Mobile has horizontal overflow: the nowrap 'Alles bekijken · N' link in the section header is pushed past 390px next to a three-line display title",
+    "The pinned hero is 230vh instead of the 220vh in the spec, which leaves a long empty run before the grid",
+    "Price-less products show a tiny 11px label, which breaks the 'oversized prices' rhythm of the grid",
+    "At rest the counters read as flat beige fills, not as windows onto the product; nothing tells the visitor that the image sits behind the letters",
+    "Creativity 7, typography 7, layout 5 (blank page), polish 5, brand robustness 7, mobile 5, generic-ness: low; the concept is strong but broken in execution"
+  ],
+  "fixed": [
+    "Reveal failsafe on home and catalog: everything gets .in 1.6s after load, so content can never stay hidden",
+    "Section header wraps on ≤760px and the link may break, which removes the mobile horizontal overflow",
+    "Hero pin set to 220vh to match the art direction",
+    "'Prijs op aanvraag' now uses the wide display face at a larger size, so tiles keep their typographic weight",
+    "Hover parallax behind the letters: the product photo drifts against the mouse inside the counters and the drift fades out as the zoom runs, so the counters read as windows"
+  ],
+  "scoreAfterEstimate": 7.3
+}

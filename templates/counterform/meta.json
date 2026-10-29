@@ -1,0 +1,3 @@
+{ "id": "counterform", "name": "Counterform", "scheme": "light", "sectors": ["retail","lifestyle","culture","makers"],
+  "mood": ["stark", "typographic", "loud but disciplined", "gallery-clean"], "needsProductImages": true,
+  "notes": "Paper-white and black throughout; --c-primary only marks the cart, add-to-cart, active filter underline and the 2px rim that traces the counter during the zoom." }

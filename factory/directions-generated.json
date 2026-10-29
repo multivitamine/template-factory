@@ -905,5 +905,157 @@
     "focus": "ecommerce",
     "generated": true,
     "generatedAt": "2026-10-29T19:07:17.846Z"
+  },
+  {
+    "id": "chroma-field",
+    "name": "Chroma Field",
+    "sectors": [
+      "retail",
+      "lifestyle",
+      "food",
+      "sports"
+    ],
+    "sample": "droogijs365",
+    "stress": "brinkscoffeeroasters",
+    "brief": "The whole page is a single saturated colour field in the brand's own primary. It is built from stacked full-width bands with no cards around the sections, so the brand colour itself is the ground. Each band carries one gigantic headline that runs off the edge, with products set as crisp cut-out tiles on a matte pad that alternates between ink and bone, and price plus quick-add sitting in a hard-edged strip under each image. The homepage runs hero, then featured products, a four-tile category band, a USP band with oversized numerals, and contact. The catalog keeps the field behind a sticky filter bar of pill toggles and a sort select, with the grid in three columns on desktop and two on mobile. The mood is loud, confident and graphic, with no textures, only colour, type and product.",
+    "type": "Display: 'Darker Grotesque' 900 at clamp(64px, 14vw, 220px) with line-height 0.82 and -0.03em tracking, plus 300 for oversized secondary words; body 'Inter' 400/500 at 15px, with 600 uppercase at 11px letterspaced for labels and prices.",
+    "signature": "Scroll-mapped OKLab colour field. At startup JS reads --c-primary with getComputedStyle, converts it from sRGB to OKLab/OKLCH with the standard matrices, and derives 5 tones: the primary itself, a deep shade (L−0.2), a pale tint (L+0.3, C×0.35), a hue-rotated sibling (h+40°, same L, chroma clamped to stay in gamut) and a near-ink (L 0.18). Each band has data-tone=0–4. On every rAF after scroll, it finds the two bands that straddle the viewport's 50% line, computes progress t between their tops, interpolates the two tones in OKLab (not RGB, so there is no muddy midpoint) and writes the result to --field on <body>. The text colour --ink is chosen per frame by relative luminance (threshold 0.42) and crossfades over 0.15 of t, so type flips between black and white exactly when contrast demands it. The same interpolated colour, darkened by 8%, becomes the pad behind every product image so mixed photo backgrounds read as one system. Without JS each band gets a static colour-mix() of its tone; under prefers-reduced-motion the field switches per band with a 200ms fade instead of interpolating.",
+    "source": "Saturated colour-field branding and scroll-driven colour systems from contemporary digital-native fashion and DTC launches",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:26:58.689Z"
+  },
+  {
+    "id": "elastic-grid",
+    "name": "Elastic Grid",
+    "sectors": [
+      "sports",
+      "retail",
+      "b2b",
+      "tech"
+    ],
+    "sample": "kartstoreinternational",
+    "stress": "fredimare",
+    "brief": "A cool mid-tone concrete ground (#A9AEB2) holds stark white inset tiles separated by 2px gutters of the ground colour, so the page reads like a precise, tight-packed product wall. The hero is a 4×2 board: one large headline tile with the shop CTA and seven category or product tiles. Below it the featured products form a dense 4-column board, followed by a USP strip of three white tiles and a contact tile. In the catalog the entire product range is one elastic board under a slim filter rail with category toggles, sort and result count. Each tile shows the photo object-fit cover on a white pad with name and price in a corner label. Motion is purely structural: the grid itself breathes toward the pointer.",
+    "type": "Display: 'League Spartan' 800 with tight -0.02em tracking for headlines and 300 for oversized counts; body 'Asap' 400/500 at 14px; prices, SKUs and counts 'Fira Code' 500 at 12px with tabular figures.",
+    "signature": "Fisheye track grid. The board is a CSS grid whose grid-template-columns and grid-template-rows are written by JS as fr values. On pointermove, each column i gets target weight w = 1 + 1.6·exp(−dx²/(2·0.9²)), where dx is the distance from the pointer to that column's centre in column units, and rows get the same treatment. Every track weight follows its target through its own spring (stiffness 210, damping 24) and the grid is rewritten once per rAF, so the tile under the cursor swells to about 2.6× while its neighbours compress smoothly with no reflow jumps. A tile's label opacity and quick-add button are bound to a CSS variable --open = clamp(0, (w−1.4)/0.8, 1), so detail appears only on the magnified tile. Pointer leave springs every track back to 1. Keyboard focus sets the focal point to the focused tile, and a tap on touch does the same. When a filter is chosen, non-matching tiles get a weight floor of 0.15 and 20% opacity before being removed after 400ms, so the board visibly squeezes them out. Without JS or under prefers-reduced-motion the board is an even grid and hover only raises the label.",
+    "source": "Fisheye and elastic-track grids from interactive portfolio and product-index design",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:26:58.689Z"
+  },
+  {
+    "id": "snap-cursor",
+    "name": "Snap Cursor",
+    "sectors": [
+      "luxury",
+      "hospitality",
+      "lifestyle",
+      "culture"
+    ],
+    "sample": "banksmansion",
+    "stress": "teleqare",
+    "brief": "A deep slate-ink ground (#1B2130) is split asymmetrically: a full-height plane of --c-primary occupies the right third of the hero and returns as colour blocks behind the featured product and the footer, so the page reads as two planes of colour rather than a dark theme. Headlines are set large and light in a high-contrast serif over the ink plane, while the featured product sits half on the ink and half on the brand plane. Products follow on home in an offset two-column list with large images in fixed 4:5 frames on a slightly lighter slate pad, and prices are set in italic. The catalog uses a three-column grid with generous gutters, plus a left sticky column that holds category links and sort as plain text buttons. The overall mood is calm, nocturnal and precise, and every interactive element feels physically attracted to the hand.",
+    "type": "Display: 'Noto Serif Display' 200 at very large sizes, with 600 italic for single emphasised words and prices; body 'Inclusive Sans' 400 at 15px, with uppercase letterspaced 11px for nav and labels.",
+    "signature": "Shape-shifting snap cursor that doubles as the focus ring. A fixed div replaces the pointer on (pointer: fine) devices as a 14px dot in --c-primary with mix-blend-mode: difference. Its x, y, width, height and border-radius are each driven by a spring (stiffness 320, damping 30). Over any [data-snap] element (nav links, buttons, filter chips, product cards), the targets become that element's rect plus 6px padding and its computed border-radius, so the dot morphs into an outline that wraps the element. The element itself translates up to 6px toward the pointer (magnetic offset = (pointer − centre)·0.18, clamped), and the outline follows the shifted rect. Over product images the cursor becomes a 92px filled disc reading 'Bekijk · €price'. On free movement the dot stretches along its heading by 1 + speed·0.002, up to 1.6×, with an inverse squash across it. The same spring outline snaps to whichever element has :focus-visible, so keyboard users get the identical morphing ring as their focus indicator. On touch devices the native cursor is used. Under prefers-reduced-motion the outline jumps instantly with no stretch or magnetic offset.",
+    "source": "Magnetic, shape-shifting cursor systems from award-winning interactive studio sites, applied to a commerce UI",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:26:58.689Z"
+  },
+  {
+    "id": "quick-find",
+    "name": "Quick Find",
+    "sectors": [
+      "wholesale",
+      "b2b",
+      "industrial",
+      "retail"
+    ],
+    "sample": "terpstrav2",
+    "stress": "spaansen",
+    "brief": "The homepage is built around one huge search field. A full-width band of --c-primary fills the top 62vh with the brand name, a one-line promise and an oversized input ('Wat zoek je vandaag?') with popular category chips beneath it. Below this band the page drops onto a pale stone ground (#E6E3DD) with an asymmetric two-column layout: a narrow column of categories and USPs on the left and a wide product list on the right. Each product is a horizontal row with a square image pad, name, short description, price and a quick-add button. The catalog page puts the same search engine inline above a sortable list and grid toggle. The mood is efficient, quick and confident, ideal for large ranges, with a premium edge from the restraint and the motion of the results.",
+    "type": "Display: 'Red Rose' 700 for headlines and the search input text, with 300 for large secondary words; body 'Rubik' 400/500 at 14–15px; SKUs, prices, shortcut keycaps and result counts 'DM Mono' 400/500.",
+    "signature": "Fuzzy command palette with a live preview pane. Pressing Ctrl/Cmd+K or '/' anywhere (or clicking the nav search) opens a centred palette over a dimmed page, built from an index of products, categories, USPs and contact entries. Scoring is a hand-written fuzzy subsequence matcher: +10 for each matched character, +15 for consecutive matches, +20 for matches at a word start, +30 for a prefix match and −1 per skipped character. Results are grouped (Producten, Categorieën, Info), the top 8 per group are shown, and matched characters are wrapped in <mark> tinted with --c-primary. A selection bar moves between rows with a FLIP translate/height transition (180ms), and the right pane shows the selected product's image, price and an add-to-cart button. Arrow keys move the selection, Enter opens, Shift+Enter adds to cart, and Tab jumps between groups. Recent queries are kept in localStorage and appear as the zero state. The palette is an ARIA combobox with aria-activedescendant. On the catalog page the same engine runs inline: typing reorders the grid by score with a FLIP animation and hides non-matches. Without JS the hero field is a normal GET form to catalog.html?q=, and under prefers-reduced-motion the selection bar jumps instead of sliding.",
+    "source": "Command-palette and keyboard-first interfaces from modern productivity software, turned into a shopping front door",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:26:58.689Z"
+  },
+  {
+    "id": "parallax-plates",
+    "name": "Parallax Plates",
+    "sectors": [
+      "sports",
+      "travel",
+      "retail",
+      "lifestyle"
+    ],
+    "sample": "nacrasailing",
+    "stress": "aiki-budo",
+    "brief": "The page alternates between two planes derived from the brand: deep sections in color-mix(in oklch, var(--c-primary) 28%, black) and pale sections in color-mix(in oklch, var(--c-primary) 10%, white). This gives a duotone rhythm that works with any colour. The hero is one big overlapping stack: the featured product image floats on a tinted plate, with category plates fanning behind it at deeper offsets, and a headline overlaps the stack's edge. On home, products are shown as tall plate cards in a staggered 3-column layout where alternate columns are offset by 80px. Image, name chip, price and add button sit on visibly separate layers. The catalog uses the same cards in an even grid with a sticky filter strip of segmented buttons and a sort control. The mood is athletic, crisp and tactile, energetic but clean.",
+    "type": "Display: 'Kanit' 800 italic in uppercase for headlines and big numerals, with 300 italic for secondary lines; body 'Mada' 400/600 at 15px; specs and prices 'Source Code Pro' 500 at 12px.",
+    "signature": "Layered depth-tilt plates. Each product card is a perspective(900px) container with transform-style: preserve-3d, made of four layers: a tinted backdrop plate (translateZ 0), the product image on its own pad (translateZ 40px), the name and price chip (translateZ 70px) and the add-to-cart button (translateZ 90px). On pointermove over a card, the normalised offset from its centre maps to rotateY ±10° and rotateX ∓8°, each driven by a spring (stiffness 170, damping 20). A specular glare layer (a radial-gradient positioned opposite the pointer, mix-blend-mode: soft-light) slides across the plate, and the chip and button visibly parallax over the image. In the hero the whole fanned stack tilts with the pointer's position across the full viewport, with deeper plates moving less. On mobile, a 'Kantel' toggle requests DeviceOrientation permission where required and tilts all visible cards together from beta/gamma, clamped to ±8°. Pointer leave springs back with a slight overshoot. Without JS or under prefers-reduced-motion the plates are flat with a simple hover shadow, and all content stays visible.",
+    "source": "Layered 3D tilt cards and depth-stacked UI from premium sports and outdoor product launches",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:26:58.689Z"
+  },
+  {
+    "id": "mosaic-resolve",
+    "name": "Mosaic Resolve",
+    "sectors": [
+      "retail",
+      "lifestyle",
+      "makers",
+      "culture"
+    ],
+    "sample": "bohlt",
+    "stress": "droogijs365",
+    "brief": "The homepage opens on a full-bleed photographic hero: the featured product image fills the viewport, the brand wordmark is set in small wide caps at the top, and a large italic serif headline sits in the lower left beside a shop CTA. Below the hero the page settles into deep olive-grey bands (#383B34) with bone type, where products appear in a 3-column grid of full-bleed image tiles with no pads or borders. Name and price sit beneath each tile in a thin bone rule-line row. Categories are a row of four tall image tiles with the category name set across the image. The catalog is a full-width grid with a category bar and sort, and switching category is itself a visual event. The mood is moody, cinematic and fashion-forward, with images as the protagonist.",
+    "type": "Display: 'Syncopate' 700 for the wordmark, nav and section labels in very wide caps at 11–14px; headlines 'Libre Baskerville' 400 italic at large sizes; body 'Cabin' 400/500 at 15px.",
+    "signature": "Canvas mosaic resolve and mosaic crossfade. Every product and hero image is drawn into a canvas the size of its frame (object-fit cover maths done in JS). A mosaic at cell size s is drawn by downscaling to an offscreen canvas of (w/s × h/s) with imageSmoothingEnabled true (so each cell averages its region), then upscaling to the visible canvas with smoothing false. Because pixels are never read, cross-origin images still work. When a tile enters view (IntersectionObserver, threshold 0.3, with a 70ms stagger) its cell size steps 48 → 24 → 12 → 6 → 3 → 1 at 80ms intervals, so the photo resolves out of colour blocks. The hero is scroll-scrubbed: over the first 100vh the cell size goes from 1 to 40 as the headline settles in, quantised to integer steps. In the catalog, switching category coarsens every tile to 32px, swaps the product data at the coarsest step (where old and new images are indistinguishable blocks), then resolves back, so the filter change happens inside the mosaic. A hover-only 'resolve wave' re-runs the step sequence radially from the pointer cell on the hero image. Real <img> elements remain underneath for no-JS and SEO, and under prefers-reduced-motion the canvases are never created.",
+    "source": "Pixel-mosaic image transitions from experimental editorial and fashion e-commerce",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:26:58.689Z"
+  },
+  {
+    "id": "stacked-sheets",
+    "name": "Stacked Sheets",
+    "sectors": [
+      "food",
+      "makers",
+      "hospitality",
+      "retail"
+    ],
+    "sample": "fredimare",
+    "stress": "hotelnavarra",
+    "brief": "The page sits on a warm mid-tone clay ground (#BFB3A3), and every section is a large rounded sheet (28px top corners) that slides up over the previous one. Sheets alternate between bone (#EFE9DF), deep ink (#1F1D1A) and one sheet in full --c-primary, so the stack reads as overlapping coloured layers. The hero sheet carries a big headline set at weight extremes with the featured product image in a rounded frame and the shop CTA. The following sheets hold featured products (4-column cards on bone pads), categories (large text links with a small thumbnail each), USPs, and contact. The catalog page is built from one sheet per category, each with its own product grid, under a sticky filter row whose chips jump to the matching sheet. The mood is warm, tactile and calm with a modern rhythm.",
+    "type": "Display: 'Frank Ruhl Libre' at both extremes, 900 for the single key word and 300 for the rest of the headline, never mid-weights; body 'Pontano Sans' 400 at 15px, with uppercase letterspaced 11px for labels and prices.",
+    "signature": "Sticky sheet stack with a living tab index. Each section is position: sticky with top: calc(var(--i) * 14px), so covered sheets leave a 14px stripe visible at the top of the viewport. On every rAF after scroll, JS computes for each sheet how far the next sheet has covered it (overlap / viewport height, 0–1). It writes --cover, and CSS applies transform: scale(1 − 0.05·depth) translateY(−6px·depth) to the covered sheet, plus a dimming overlay at 0.35·--cover opacity. Older sheets recede in perspective like paper settling into a pile. Each visible stripe shows its sheet's label in small caps and is a real button; clicking it smooth-scrolls back to that sheet, so the stack doubles as a section index. A sheet's corner radius tweens from 28px to 8px as it gets covered, to sell the paper weight. On the catalog, the active filter chip is synchronised with the top uncovered sheet. Without JS or under prefers-reduced-motion the sheets keep their colours and radius but scroll as normal blocks with no scaling.",
+    "source": "Sticky stacking-section layouts and layered card sheets from modern brand and product storytelling sites",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:26:58.689Z"
+  },
+  {
+    "id": "counter-columns",
+    "name": "Counter Columns",
+    "sectors": [
+      "retail",
+      "kids",
+      "culture",
+      "lifestyle"
+    ],
+    "sample": "spaansen",
+    "stress": "kartstoreinternational",
+    "brief": "A warm light sand ground (#E8DFD0) is divided by thick 3px black vertical rules into four columns, with a centred axial composition on top. The brand wordmark and a short headline sit dead centre over the columns, with the shop CTA beneath. The hero is a pinned stage where four tall columns of product tiles move in opposite directions, so the shop's range literally flows past the headline. After the stage unpins, the homepage continues with a centred category list in huge condensed caps, a USP row split by the same black rules, and contact. The catalog shows a 4-column grid that keeps the rules, with category and sort controls centred in a black bar. Product tiles are framed on white pads with a fixed 3:4 ratio, and name and price sit in a black strip under each one. The mood is lively, rhythmic and editorial, bold without being noisy.",
+    "type": "Display: 'Antonio' 700 in tall uppercase for the wordmark, category list and headlines, with 300 for secondary lines; body 'Lato' 400/700 at 15px; prices and counts 'PT Mono' 400 at 12px.",
+    "signature": "Opposing infinite product columns. The hero is a 100vh stage pinned for 250vh (GSAP ScrollTrigger, or a plain sticky + scroll-progress fallback). It holds four columns (two on mobile), each filled with product tiles duplicated until the column is at least twice the stage height. A shared 'travel' value follows scroll with lerp 0.09 for inertia. Each column translates by travel × its own rate (1, −1.35, 0.8, −1.15) and wraps with modulo of the column's content height, so columns flow endlessly up and down against each other. While the user scrolls, the stage's centre headline stays still above the flowing columns on a sand pad. Hovering a tile eases its column's personal rate to 0 over 300ms, so the user can read it, then scales the tile to 1.04 and slides in its price and a quick-add button. Pointer leave restores the flow. Clicking a category in the centred list re-populates the columns with that category's products as the stage replays. Tiles are real links in DOM order, so focusing one stops its column and scrolls it into view. Without JS or under prefers-reduced-motion the stage is a static 4-column grid separated by the black rules.",
+    "source": "Opposing-direction parallax product columns from contemporary fashion and creative e-commerce showcases",
+    "focus": "ecommerce",
+    "generated": true,
+    "generatedAt": "2026-10-29T19:26:58.689Z"
   }
 ]
